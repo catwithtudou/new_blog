@@ -7,8 +7,8 @@ site_description: >-
 edit_uri: edit/main/docs/
 
 # Repository =====================================================
-repo_name: catwithtudou/new_blog
-repo_url: https://github.com/catwithtudou/new_blog
+repo_name: catwithtudou
+repo_url: https://github.com/catwithtudou
 
 # Copyright =====================================================
 copyright: Copyright &copy; 2024 catwithtudou
@@ -39,8 +39,6 @@ theme:
     - content.tabs.link
     - content.code.annotation
     - content.code.copy
-    - content.action.edit
-    - content.action.view
     - header.autohide
   # language
   language: en
@@ -69,8 +67,6 @@ theme:
   # repository icon
   icon:
     repo: fontawesome/brands/github
-    edit: material/pencil
-    view: material/eye
 
 # Plugins =====================================================
 plugins:

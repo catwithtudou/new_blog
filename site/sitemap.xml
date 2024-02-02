@@ -21,21 +21,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://zhengyua.cn/new_blog/blog/2024/02/02/about-me/</loc>
-         <lastmod>2024-02-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zhengyua.cn/new_blog/blog/2024/02/02/about-geek-course-1th/</loc>
-         <lastmod>2024-02-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zhengyua.cn/new_blog/blog/2024/02/02/about-geek-course-2th/</loc>
-         <lastmod>2024-02-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://zhengyua.cn/new_blog/language/</loc>
          <lastmod>2024-02-02</lastmod>
          <changefreq>daily</changefreq>
@@ -47,21 +32,6 @@
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/language/rust/</loc>
-         <lastmod>2024-02-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zhengyua.cn/new_blog/blog/archive/2024/</loc>
-         <lastmod>2024-02-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zhengyua.cn/new_blog/blog/category/romance/</loc>
-         <lastmod>2024-02-02</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zhengyua.cn/new_blog/blog/category/golang/</loc>
          <lastmod>2024-02-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
