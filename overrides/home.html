@@ -1,0 +1,207 @@
+{% extends "main.html" %}
+{% block tabs %}
+{{ super() }}
+<!-- The big featured header  -->
+<header style="background-image: url('assets/mood.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            height: 100vh;
+            position: relative;"
+>
+    <style>
+        .cursor {
+            display: inline-block;
+            margin-left: 5px; /* 为光标和文本添加些许间距 */
+            width: 2px; /* 光标宽度 */
+            height: 1em; /* 光标高度与字体大小相同 */
+            vertical-align: bottom; /* 使光标底部与文本底部对齐 */
+            background-color: white; /* 光标颜色 */
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const text = "always the self-reflection";
+            const typingDelay = 200; // 打字的速度，以毫秒计
+            const erasingDelay = 100; // 擦除的速度，以毫秒计
+            const newTextDelay = 2000; // 新文本之前的延迟，以毫秒计
+            let typedTextSpan = document.getElementById("typed-text");
+            let charIndex = 0;
+
+            function type() {
+                if (charIndex < text.length) {
+                    typedTextSpan.textContent += text.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(type, typingDelay);
+                } else {
+                    // 打完一轮文本后的暂停
+                    setTimeout(erase, newTextDelay);
+                }
+            }
+
+            function erase() {
+                if (charIndex > 0) {
+                    // 移除字符
+                    typedTextSpan.textContent = text.substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(erase, erasingDelay);
+                } else {
+                    // 一旦全部擦除，重新开始打字
+                    setTimeout(type, typingDelay);
+                }
+            }
+
+            // 初始化打字效果
+            setTimeout(type, newTextDelay + 250);
+        });
+
+        // 37vh：视口高度的37%。视口（viewport）是浏览器可见区域的大小，而 vh 是一个长度单位，等于视口高度的1%。
+        // 44px：像素单位，是固定大小的单位，与屏幕或视口的大小无关。
+        // calc(37vh - 44px)：计算37%的视口高度然后减去44像素。这意味着最终的上内边距会基于浏览器窗口的大小动态计算，但总会比视口高度的37%少44像素。
+        // 这种类型的计算特别有用于响应式设计，允许元素的大小根据视口大小的变化而变化，同时保持设计上的某些固定元素，比如减去固定的导航栏高度或页眉高度。
+    </script>
+    <div style="text-align: center; padding-top: calc(37vh - 40px);">
+        <h1 style="color: white; font-size:50px; overflow: hidden;">
+            <span id="typed-text"></span><span class="cursor"></span>
+        </h1>
+    </div>
+    <style>
+        /* Style for the scroll down arrow */
+        #scroll-down-arrow {
+            position: absolute;
+            bottom: 5%; /* Adjust as necessary */
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+        }
+
+        #scroll-down-arrow .arrow {
+            display: inline-block;
+            color: white; /* Arrow color */
+            font-size: 30px; /* Arrow size */
+            animation: bounce 2s infinite; /* Bounce effect */
+        }
+
+        /* Simple bounce animation for the arrow */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+    </style>
+    <!-- Arrow down icon -->
+    <div id="scroll-down-arrow">
+        <a href="#intro-cards">
+            <!-- The arrow can be a simple text character or an icon font -->
+            <span class="arrow">↓</span>
+        </a>
+    </div>
+
+</header>
+
+{% endblock %}
+
+<!-- Content -->
+{% block content %}
+<!-- Introduction Cards Section -->
+<style>
+    #intro-cards {
+        text-align: center;
+        padding: 50px 0;
+    }
+
+    #intro-cards .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 20px;
+    }
+
+    #intro-cards .card-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    #intro-cards .card {
+        width: 30%;
+        margin: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    #intro-cards .card img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
+
+    #intro-cards .card h3 {
+        margin: 10px 0;
+    }
+
+    #intro-cards .card p {
+        font-style: italic;
+        color: #777;
+    }
+
+    #intro-cards blockquote {
+        font-size: 14px;
+        line-height: 1.6;
+        color: #555;
+        margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+        #intro-cards .card {
+            width: 100%;
+            margin: 20px 0;
+        }
+    }
+</style>
+<body style="background-color: rgb(0, 0, 0);">
+<section id="intro-cards">
+    <div class="container">
+        <h2>For what?</h2>
+        <div class="card-container">
+            <!-- Card 1 -->
+            <div class="card" style="background-color: white;">
+                <img src="assets/logo.png" alt="catwithtudou">
+                <h3>catwithtudou</h3>
+                <blockquote>
+                    渺小得像一颗沙粒
+                </blockquote>
+            </div>
+
+        </div>
+    </div>
+</section>
+</body>
+
+
+{% endblock %}
+
+{% block footer %}
+{{ super() }}
+{% endblock %}

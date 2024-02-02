@@ -1,4 +1,180 @@
-site_name: 🌦️
+# Site information =====================================================
+site_name: catwithtudou️
+site_url: https://zhengyua.cn/new_blog/
+site_author: catwithtudou️
+site_description: >-
+  Life
+edit_uri: edit/main/docs/
 
+# Repository =====================================================
+repo_name: catwithtudou/new_blog
+repo_url: https://github.com/catwithtudou/new_blog
+
+# Copyright =====================================================
+copyright: Copyright &copy; 2024 catwithtudou
+# The footer displays a Made with Material for MkDocs notice to denote how the site was generated.
+
+# Configuration =====================================================
 theme:
   name: material
+  custom_dir: overrides
+  # site logo
+  logo: assets/logo.png
+  # page tab logo
+  favicon: assets/logo.png
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.path
+    - navigation.prune
+    - navigation.indexes
+    - navigation.top
+    # - toc.integrate
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+    - content.action.edit
+    - content.action.view
+    - header.autohide
+  # language
+  language: en
+
+  # color scheme
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: black
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    #  accent: purple
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: black
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+  # regular font
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+  # repository icon
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+
+# Plugins =====================================================
+plugins:
+  - blog:
+      blog_toc: true
+      blog_dir: blog
+      post_date_format: full
+      post_url_date_format: yyyy/MM/dd
+      archive_toc: true
+      categories_toc: true
+  - tags:
+      enabled: true
+      tags_file: blog/tags.md
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+      lang:
+        - en
+        - zh
+
+
+
+
+markdown_extensions:
+  - tables
+  - pymdownx.highlight:
+      anchor_linenums: true
+      auto_title: true
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.critic:
+      mode: view
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.mark
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.snippets
+  - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - sane_lists         # order list
+  - abbr
+  - def_list
+  - pymdownx.smartsymbols
+  - toc:
+      permalink: true
+      title: On this page
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+
+
+# Customization =====================================================
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/catwithtudou
+    - icon: fontawesome/brands/x-twitter
+      link: https://twitter.com/catwithtudou
+      cards_layout_options:
+        font_family: Noto Sans SC
+  comments: false
+  consent:
+    title: Cookie consent
+    description: >-
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+  # analytics:
+  #   provider: google
+  #   property: G-
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# Page tree
+nav:
+  - Home: index.md
+  - Algorithms:
+      - algorithms/index.md
+  - Language:
+      - language/index.md
+      - Golang:
+          - language/golang/README.md
+      - Rust:
+          - language/rust/README.md
+
+
+  - Romance:
+      - blog/index.md
+      - blog/tags.md
+
