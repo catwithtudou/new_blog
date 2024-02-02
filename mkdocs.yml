@@ -23,8 +23,6 @@ theme:
   # page tab logo
   favicon: assets/logo.png
   features:
-    - navigation.instant
-    - navigation.instant.prefetch
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.sections
