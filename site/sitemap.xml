@@ -2,42 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://zhengyua.cn/new_blog/</loc>
-         <lastmod>2024-02-02</lastmod>
+         <lastmod>2024-02-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/algorithms/</loc>
-         <lastmod>2024-02-02</lastmod>
+         <lastmod>2024-02-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhengyua.cn/new_blog/algorithms/books/</loc>
+         <lastmod>2024-02-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhengyua.cn/new_blog/algorithms/books/code_caprice/</loc>
+         <lastmod>2024-02-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhengyua.cn/new_blog/algorithms/books/code_caprice/array/array_algorithms/</loc>
+         <lastmod>2024-02-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhengyua.cn/new_blog/algorithms/books/code_caprice/array/basic/</loc>
+         <lastmod>2024-02-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/blog/</loc>
-         <lastmod>2024-02-02</lastmod>
+         <lastmod>2024-02-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/blog/tags/</loc>
-         <lastmod>2024-02-02</lastmod>
+         <lastmod>2024-02-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/language/</loc>
-         <lastmod>2024-02-02</lastmod>
+         <lastmod>2024-02-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/language/golang/</loc>
-         <lastmod>2024-02-02</lastmod>
+         <lastmod>2024-02-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/language/rust/</loc>
-         <lastmod>2024-02-02</lastmod>
+         <lastmod>2024-02-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/blog/tags/</loc>
-         <lastmod>2024-02-02</lastmod>
+         <lastmod>2024-02-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

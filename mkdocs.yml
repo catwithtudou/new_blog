@@ -159,6 +159,13 @@ nav:
   - Home: index.md
   - Algorithms:
       - algorithms/index.md
+      - Books:
+        - algorithms/books/README.md
+        - 代码随想录:
+            - algorithms/books/code_caprice/README.md
+            - 数组:
+                - algorithms/books/code_caprice/array/basic.md
+                - algorithms/books/code_caprice/array/array_algorithms.md
   - Language:
       - language/index.md
       - Golang:
