@@ -31,12 +31,27 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://zhengyua.cn/new_blog/architecture/</loc>
+         <lastmod>2024-02-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://zhengyua.cn/new_blog/blog/</loc>
          <lastmod>2024-02-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/blog/tags/</loc>
+         <lastmod>2024-02-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhengyua.cn/new_blog/common/</loc>
+         <lastmod>2024-02-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhengyua.cn/new_blog/ds/</loc>
          <lastmod>2024-02-03</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -52,6 +67,26 @@
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/language/rust/</loc>
+         <lastmod>2024-02-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhengyua.cn/new_blog/middleware/</loc>
+         <lastmod>2024-02-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhengyua.cn/new_blog/network/</loc>
+         <lastmod>2024-02-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhengyua.cn/new_blog/os/</loc>
+         <lastmod>2024-02-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhengyua.cn/new_blog/project/</loc>
          <lastmod>2024-02-03</lastmod>
          <changefreq>daily</changefreq>
     </url>

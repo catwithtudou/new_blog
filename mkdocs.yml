@@ -157,6 +157,12 @@ extra_javascript:
 # Page tree
 nav:
   - Home: index.md
+  - Language:
+      - language/index.md
+      - Golang:
+          - language/golang/README.md
+      - Rust:
+          - language/rust/README.md
   - Algorithms:
       - algorithms/index.md
       - Books:
@@ -166,14 +172,20 @@ nav:
             - 数组:
                 - algorithms/books/code_caprice/array/basic.md
                 - algorithms/books/code_caprice/array/array_algorithms.md
-  - Language:
-      - language/index.md
-      - Golang:
-          - language/golang/README.md
-      - Rust:
-          - language/rust/README.md
-
-
+  - OS:
+      - os/index.md
+  - Network:
+      - network/index.md
+  - DS:
+      - ds/index.md
+  - Architecture:
+      - architecture/index.md
+  - Middleware:
+      - middleware/index.md
+  - Project:
+      - project/index.md
+  - Common:
+      - common/index.md
   - Romance:
       - blog/index.md
       - blog/tags.md
