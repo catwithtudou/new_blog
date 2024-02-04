@@ -54,10 +54,82 @@ func search(nums []int, target int) int {
 ```
 
 
-### 1.2 LeetCode题目
+### 1.2 相关题目
 
 - [x] 704二分查找
 - [ ] 35.搜索插入位置 
 - [ ] 34.在排序数组中查找元素的第一个和最后一个位置 
 - [ ] 69.x 的平方根 
 - [ ] 367.有效的完全平方数
+
+## 2. 移除元素
+
+对应 LeetCode 题目：
+![](https://img.zhengyua.cn/blog/202402050645933.png)
+
+!!! note 核心思路
+    数组的元素在内存地址中是连续的，不能单独删除数组中的某个元素，只能覆盖。
+
+若采取暴力解法，则类似于冒泡排序进行两层遍历，下面重点说明双指针法。
+
+### 2.1 算法—双指针法
+
+双指针法（快慢指针法）： 
+
+- **通过一个快指针和慢指针在一个for循环下完成两个for循环的工作**
+
+定义快慢指针：
+
+- 快指针：寻找新数组的元素，新数组就是不含有目标元素的数组 
+- 慢指针：指向更新新数组下标的位置
+
+> 此思路不仅应用在数组中，在其他如链表、字符串等都有相应应用。
+
+下面两个解法均可满足题意，后者的优点在于确保移动的最小次数：
+
+```go
+func removeElement(nums []int, val int) int {
+	slow := 0
+	for fast := 0; fast < len(nums); fast++ {
+		if val != nums[fast] {
+			nums[slow] = nums[fast]
+			slow++
+		}
+	}
+	return slow
+}
+```
+
+
+
+```go
+func removeElement(nums []int, val int) int {
+	leftIdx, rightIdx := 0, len(nums)-1
+	for leftIdx <= rightIdx {
+
+		for leftIdx <= rightIdx && nums[leftIdx] != val {
+			leftIdx++
+		}
+
+		for leftIdx <= rightIdx && nums[rightIdx] == val {
+			rightIdx--
+		}
+
+		if leftIdx < rightIdx {
+			nums[leftIdx] = nums[rightIdx]
+			leftIdx++
+			rightIdx--
+		}
+	}
+
+	return leftIdx
+}
+```
+
+### 2.2 相关题目
+
+- [x] 27.移除元素
+- [ ] 26.删除排序数组中的重复项
+- [ ] 283.移动零
+- [ ] 844.比较含退格的字符串
+- [x] 977.有序数组的平方

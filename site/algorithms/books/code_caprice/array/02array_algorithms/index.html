@@ -1007,9 +1007,42 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-leetcode题目" class="md-nav__link">
+  <a href="#12-相关题目" class="md-nav__link">
     <span class="md-ellipsis">
-      1.2 LeetCode题目
+      1.2 相关题目
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-移除元素" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 移除元素
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 移除元素">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-算法双指针法" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 算法—双指针法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-相关题目" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 相关题目
     </span>
   </a>
   
@@ -1623,9 +1656,42 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-leetcode题目" class="md-nav__link">
+  <a href="#12-相关题目" class="md-nav__link">
     <span class="md-ellipsis">
-      1.2 LeetCode题目
+      1.2 相关题目
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-移除元素" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 移除元素
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 移除元素">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-算法双指针法" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 算法—双指针法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-相关题目" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 相关题目
     </span>
   </a>
   
@@ -1707,13 +1773,76 @@
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="p">}</span>
 </code></pre></div>
-<h3 id="12-leetcode题目">1.2 LeetCode题目<a class="headerlink" href="#12-leetcode题目" title="Permanent link">&para;</a></h3>
+<h3 id="12-相关题目">1.2 相关题目<a class="headerlink" href="#12-相关题目" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 704二分查找</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 35.搜索插入位置 </li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 34.在排序数组中查找元素的第一个和最后一个位置 </li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 69.x 的平方根 </li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 367.有效的完全平方数</li>
+</ul>
+<h2 id="2-移除元素">2. 移除元素<a class="headerlink" href="#2-移除元素" title="Permanent link">&para;</a></h2>
+<p>对应 LeetCode 题目：
+<img alt="" src="https://img.zhengyua.cn/blog/202402050645933.png" /></p>
+<div class="admonition note 核心思路">
+<p class="admonition-title">Note</p>
+<p>数组的元素在内存地址中是连续的，不能单独删除数组中的某个元素，只能覆盖。</p>
+</div>
+<p>若采取暴力解法，则类似于冒泡排序进行两层遍历，下面重点说明双指针法。</p>
+<h3 id="21-算法双指针法">2.1 算法—双指针法<a class="headerlink" href="#21-算法双指针法" title="Permanent link">&para;</a></h3>
+<p>双指针法（快慢指针法）： </p>
+<ul>
+<li><strong>通过一个快指针和慢指针在一个for循环下完成两个for循环的工作</strong></li>
+</ul>
+<p>定义快慢指针：</p>
+<ul>
+<li>快指针：寻找新数组的元素，新数组就是不含有目标元素的数组 </li>
+<li>慢指针：指向更新新数组下标的位置</li>
+</ul>
+<blockquote>
+<p>此思路不仅应用在数组中，在其他如链表、字符串等都有相应应用。</p>
+</blockquote>
+<p>下面两个解法均可满足题意，后者的优点在于确保移动的最小次数：</p>
+<div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">removeElement</span><span class="p">(</span><span class="nx">nums</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">val</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nx">slow</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">fast</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">fast</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">nums</span><span class="p">);</span><span class="w"> </span><span class="nx">fast</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">val</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nx">nums</span><span class="p">[</span><span class="nx">fast</span><span class="p">]</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">            </span><span class="nx">nums</span><span class="p">[</span><span class="nx">slow</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">nums</span><span class="p">[</span><span class="nx">fast</span><span class="p">]</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">            </span><span class="nx">slow</span><span class="o">++</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">slow</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span>
+</code></pre></div>
+<div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">removeElement</span><span class="p">(</span><span class="nx">nums</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">val</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="nx">leftIdx</span><span class="p">,</span><span class="w"> </span><span class="nx">rightIdx</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">nums</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">leftIdx</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">rightIdx</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nx">leftIdx</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">rightIdx</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">nums</span><span class="p">[</span><span class="nx">leftIdx</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nx">val</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">            </span><span class="nx">leftIdx</span><span class="o">++</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nx">leftIdx</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">rightIdx</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">nums</span><span class="p">[</span><span class="nx">rightIdx</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">val</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">            </span><span class="nx">rightIdx</span><span class="o">--</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">leftIdx</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nx">rightIdx</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">            </span><span class="nx">nums</span><span class="p">[</span><span class="nx">leftIdx</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">nums</span><span class="p">[</span><span class="nx">rightIdx</span><span class="p">]</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">            </span><span class="nx">leftIdx</span><span class="o">++</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">            </span><span class="nx">rightIdx</span><span class="o">--</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">leftIdx</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="22-相关题目">2.2 相关题目<a class="headerlink" href="#22-相关题目" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 27.移除元素</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 26.删除排序数组中的重复项</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 283.移动零</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 844.比较含退格的字符串</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> 977.有序数组的平方</li>
 </ul>
 
 
