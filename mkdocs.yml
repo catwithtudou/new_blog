@@ -167,11 +167,11 @@ nav:
       - algorithms/index.md
       - Books:
         - algorithms/books/README.md
-        - 代码随想录:
+        - 🚧代码随想录:
             - algorithms/books/code_caprice/README.md
             - 数组:
-                - algorithms/books/code_caprice/array/basic.md
-                - algorithms/books/code_caprice/array/array_algorithms.md
+                - algorithms/books/code_caprice/array/01basic.md
+                - algorithms/books/code_caprice/array/02array_algorithms.md
   - OS:
       - os/index.md
   - Network:

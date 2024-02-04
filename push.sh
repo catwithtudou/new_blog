@@ -6,12 +6,12 @@ msg="update: default by script"
 # 默认 commit 分之
 branch="main"
 
-if [  $1 ]
+if [ -n "$1" ]
 then
   msg=$1
 fi
 
-if [  $2 ]
+if [ -n "$2" ]
 then
   branch=$2
 fi
@@ -19,7 +19,7 @@ fi
 echo "git commit message:[$msg]"
 echo "git branch:[$branch]"
 
-sleep 1
+read -p "Press Enter to continue"
 
 # 执行 git push 过程
 git add .

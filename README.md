@@ -6,3 +6,5 @@
 Expansion Todo:
 
 - [ ] Implement automatic mapping blog directory tree configuration about repo directory
+- [ ] code abbreviation
+- [ ] directory folding
