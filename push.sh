@@ -29,9 +29,7 @@ sleep 1
 
 git commit -m "$msg"
 
-sleep 1
+read -p "Press Enter to continue"
 
-# git push origin "$branch"
-
-# sleep 1
+git push origin "$branch"
 
