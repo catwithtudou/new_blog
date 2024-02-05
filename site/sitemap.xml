@@ -2,97 +2,117 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://zhengyua.cn/new_blog/</loc>
-         <lastmod>2024-02-04</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/algorithms/</loc>
-         <lastmod>2024-02-04</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/algorithms/books/</loc>
-         <lastmod>2024-02-04</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/algorithms/books/code_caprice/</loc>
-         <lastmod>2024-02-04</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/algorithms/books/code_caprice/array/01basic/</loc>
-         <lastmod>2024-02-04</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/algorithms/books/code_caprice/array/02array_algorithms/</loc>
-         <lastmod>2024-02-04</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/architecture/</loc>
-         <lastmod>2024-02-04</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/blog/</loc>
-         <lastmod>2024-02-04</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/blog/tags/</loc>
-         <lastmod>2024-02-04</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/common/</loc>
-         <lastmod>2024-02-04</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/ds/</loc>
-         <lastmod>2024-02-04</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/language/</loc>
-         <lastmod>2024-02-04</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/language/golang/</loc>
-         <lastmod>2024-02-04</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/language/rust/</loc>
-         <lastmod>2024-02-04</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/middleware/</loc>
-         <lastmod>2024-02-04</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/network/</loc>
-         <lastmod>2024-02-04</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/os/</loc>
-         <lastmod>2024-02-04</lastmod>
+         <lastmod>2024-02-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhengyua.cn/new_blog/os/mit6s081/</loc>
+         <lastmod>2024-02-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhengyua.cn/new_blog/os/mit6s081/labs/lab1/</loc>
+         <lastmod>2024-02-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhengyua.cn/new_blog/os/mit6s081/notes/lec1/</loc>
+         <lastmod>2024-02-05</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhengyua.cn/new_blog/os/mit6s081/notes/lec2/</loc>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/project/</loc>
-         <lastmod>2024-02-04</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/blog/tags/</loc>
-         <lastmod>2024-02-04</lastmod>
+         <lastmod>2024-02-05</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
