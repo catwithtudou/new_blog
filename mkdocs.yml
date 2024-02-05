@@ -166,14 +166,21 @@ nav:
   - Algorithms:
       - algorithms/index.md
       - Books:
-        - algorithms/books/README.md
-        - 🚧代码随想录:
-            - algorithms/books/code_caprice/README.md
-            - 数组:
-                - algorithms/books/code_caprice/array/01basic.md
-                - algorithms/books/code_caprice/array/02array_algorithms.md
+          - algorithms/books/README.md
+          - 🚧代码随想录:
+              - algorithms/books/code_caprice/README.md
+              - 数组:
+                  - algorithms/books/code_caprice/array/01basic.md
+                  - algorithms/books/code_caprice/array/02array_algorithms.md
   - OS:
       - os/index.md
+      - MIT6.S081:
+          - os/mit6s081/README.md
+          - Notes:
+              - os/mit6s081/notes/lec1.md
+              - os/mit6s081/notes/lec2.md
+          - Labs:
+              - os/mit6s081/labs/lab1.md
   - Network:
       - network/index.md
   - DS:

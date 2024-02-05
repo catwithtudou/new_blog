@@ -5,5 +5,5 @@ hide:
   - toc
 ---
 <!-- 
-# 路漫漫其修远兮，吾将上下而求索
+# 渺小得像一颗沙粒
 ![top_img](./assets/mood.jpeg) -->
