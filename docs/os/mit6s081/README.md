@@ -1,11 +1,12 @@
 # MIT-6.S081
 
-https://pdos.csail.mit.edu/6.1810/2023/schedule.html
-
-https://zhuanlan.zhihu.com/p/632281381
-
-https://mit-public-courses-cn-translatio.gitbook.io/mit6-s081/
-
+- 课程表：https://pdos.csail.mit.edu/6.1810/2023/schedule.html
+- 课程视频：https://www.youtube.com/watch?v=L6YqHxYHa7A
+- 翻译课程文档：https://mit-public-courses-cn-translatio.gitbook.io/mit6-s081/
+- 其他参考信息：
+    - https://zhuanlan.zhihu.com/p/632281381
+    - https://csdiy.wiki/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/MIT6.S081/#_1
+    - https://tarplkpqsm.feishu.cn/docs/doccnBFsXFMsAr1oXEVsaT9E3Jg#
 
 ## Lecture & Preparation
 

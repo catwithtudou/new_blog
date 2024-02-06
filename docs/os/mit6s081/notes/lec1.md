@@ -103,4 +103,94 @@ unlink("/tmp/xyz");
     - Multics, a predecessor of Unix, abstracted file storage in a way that made it look like memory, producing a very different flavor of interface. The complexity of the Multics design had a direct influence on the designers of Unix, who aimed to build something simpler.
 - Any operating system must multiplex processes onto the underlying hardware, isolate processes from each other, and provide mechanisms for controlled inter-process communication.
 
-## Lecture 1
+## 2. Lecture 1
+
+> https://pdos.csail.mit.edu/6.1810/2023/lec/l-overview.txt
+
+### 2.1 operating system introduction
+
+- What's an operating system?
+    - [user/kernel diagram]
+    - h/w: CPU, RAM, disk, net, &c
+    - user applications: sh, cc, DB, &c
+    - kernel services: FS, processes, memory, network, &c
+    - system calls
+
+- What is the purpose of an O/S?
+    - Multiplex the hardware among many applications
+    - Isolate applications for security and to contain bugs
+    - Allow sharing among cooperating applications
+    - Abstract the hardware for portability
+    - Provide useful services
+
+- Design tensions make O/S design interesting
+    - efficient vs abstract/portable/general-purpose
+    - powerful vs simple interfaces
+    - flexible vs secure
+    - compatible vs new hardware and interfaces
+
+### 2.2 UNIX system calls
+
+#### 2.2.1 example: ex1.c, copy input to output
+
+```c
+// ex1.c: copy input to output.
+#include "kernel/types.h"
+#include "user/user.h"
+
+int main()
+{
+  char buf[64];
+  while(1){
+    int n = read(0, buf, sizeof(buf));
+    if(n <= 0)
+      break;
+    write(1, buf, n);
+  }
+  exit(0);
+}
+```
+
+- read() and write() are system calls
+    - they look like function calls, but actually jump into the kernel.
+- first read()/write() argument is a "file descriptor" (FD)
+    - passed to kernel to tell it which "open file" to read/write 
+    - must previously have been opened 
+    - an FD connects to a file/pipe/socket/&c 
+    - a process can open many files, have many FDs
+- **UNIX convention: fd 0 is "standard input", 1 is "standard output"**
+    - programs don't have to know where input comes from, or output goes 
+    - they can just read/write FDs 0 and 1
+- second read() argument is a pointer to some memory into which to read
+- third argument is the number of bytes to read
+    - read() may read less, but not more
+- return value: number of bytes actually read, or -1 for error
+- note: ex1.c does not care about the format of the data 
+    - UNIX I/O is 8-bit bytes 
+    - interpretation is application-specific, e.g. database records, C source, &c
+
+> where do file descriptors come from?
+> 
+> answer:
+> 
+> File descriptors are integer values that are used to identify and access files or other input/output resources within a computer operating system. In Unix-like operating systems, including Linux, file descriptors are typically obtained through the process of opening files, pipes, sockets, and other resources. 
+> 
+> The steps and thought process for obtaining file descriptors are as follows:
+> 
+> 1. **Open System Call**: File descriptors are typically obtained through the use of system calls such as `open()` for files, `socket()` for network sockets, or `pipe()` for inter-process communication pipes. When a file or resource is opened, the operating system returns a file descriptor that can be used to reference that resource in subsequent read or write operations.
+> 2. **Assignment**: Once obtained from the system call, the file descriptor is typically assigned to a variable in the program for later use. For example, after opening a file, the returned file descriptor might be stored in an integer variable for easy reference.
+> 3. **Use in I/O Operations**: The obtained file descriptor is then used in read and write operations to perform input and output on the associated resource. For example, the file descriptor might be passed as an argument to the `read()` or `write()` system calls to read from or write to the associated file, pipe, or socket.
+> 4. **Closing**: After the file descriptor is no longer needed, it should be closed using the `close()` system call. This releases the associated resources and frees up the file descriptor for reuse. 
+>
+> In summary, file descriptors are obtained through system calls when opening files or other resources, and they serve as references to those resources for performing input/output operations within a program.
+
+#### 2.2.2 example: ex2.c, create a file
+#### 2.2.3 example: ex3.c, create a new process
+#### 2.2.4 example: ex4.c, replace calling process with an executable file
+#### 2.2.5 example: ex5.c, fork() a new process, exec() a program
+#### 2.2.6 example: ex6.c, redirect the output of a command
+#### 2.2.7 example: ex7.c, communicate through a pipe
+#### 2.2.8 example: ex8.c, communicate between processes
+#### 2.2.9 example: ex9.c, list files in a directory
+
+

@@ -2086,15 +2086,25 @@
 </div>
 <p>若采取暴力解法，则是通过两层循环不断寻找符合条件的子序列，下面重点说明滑动窗口解法。</p>
 <h3 id="31-算法滑动窗口">3.1 算法——滑动窗口<a class="headerlink" href="#31-算法滑动窗口" title="Permanent link">&para;</a></h3>
-<p>滑动窗口的主要思想：
-- <strong>不断的调节子序列的起始位置和终止位置，从而得出预期结果</strong></p>
-<p>滑动窗口的实现通常需要确认如下三点：
-- 窗口内是什么？ 
-    - 满足其和≥s的长度最小的连续子数组   <br />
-- 如何移动窗口的起始位置？ 
-    - 若当前窗口的值大于s则窗口需要向前移动了
-- 如何移动窗口的结束位置？
-    - 窗口的结束位置就是遍历数组的指针</p>
+<p>滑动窗口的主要思想：</p>
+<ul>
+<li><strong>不断的调节子序列的起始位置和终止位置，从而得出预期结果</strong></li>
+</ul>
+<p>滑动窗口的实现通常需要确认如下三点：</p>
+<ul>
+<li>窗口内是什么？ <ul>
+<li>满足其和≥s的长度最小的连续子数组     </li>
+</ul>
+</li>
+<li>如何移动窗口的起始位置？ <ul>
+<li>若当前窗口的值大于s则窗口需要向前移动了</li>
+</ul>
+</li>
+<li>如何移动窗口的结束位置？<ul>
+<li>窗口的结束位置就是遍历数组的指针</li>
+</ul>
+</li>
+</ul>
 <p>具体实现代码如下： 时间复杂度：<span class="arithmatex">\(O(n)\)</span> ，空间复杂度：<span class="arithmatex">\(O(1)\)</span></p>
 <div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">func</span><span class="w"> </span><span class="nx">minSubArrayLen</span><span class="p">(</span><span class="nx">target</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">nums</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nx">start</span><span class="p">,</span><span class="w"> </span><span class="nx">end</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span>
