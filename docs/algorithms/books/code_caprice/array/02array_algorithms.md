@@ -11,7 +11,7 @@
 
 - 区间范围决定了边界（包含起始位置）的值，可通过构造简单的有序数组来演算进行理解
 
-### 1.1 代码模版
+### 1.1 算法:二分法
 
 1. 左闭右闭 [left, right]
 
@@ -72,7 +72,7 @@ func search(nums []int, target int) int {
 
 若采取暴力解法，则类似于冒泡排序进行两层遍历，下面重点说明双指针法。
 
-### 2.1 算法—双指针法
+### 2.1 算法:双指针法
 
 双指针法（快慢指针法）： 
 
@@ -148,7 +148,7 @@ func removeElement(nums []int, val int) int {
 
 若采取暴力解法，则是通过两层循环不断寻找符合条件的子序列，下面重点说明滑动窗口解法。
 
-### 3.1 算法——滑动窗口
+### 3.1 算法:滑动窗口
 
 滑动窗口的主要思想：
 
@@ -190,3 +190,122 @@ func minSubArrayLen(target int, nums []int) int {
 - [x] 209.长度最小的子数组
 - [x] 904.水果成篮
 - [ ] 76.最小覆盖子串
+
+## 4. 螺旋矩阵II
+
+对应 LeetCode 题目：
+
+![](https://img.zhengyua.cn/blog/202402062017531.png)
+
+
+!!! note 核心思路
+    此题重要的不是算法，而是考察模拟的过程
+
+### 4.1 算法:模拟过程
+
+在上面提到二分法的时候就提到，如果要写出正确的二分法一定要坚持**循环不变量原则**。
+
+而求解此题依然是要坚持循环不变量原则，模拟顺时针画矩阵的过程:
+
+- 填充上行从左到右 
+- 填充右列从上到下 
+- 填充下行从右到左 
+- 填充左列从下到上
+
+这里我们就需要保持循环不变量，**保持每条边左闭右开的原则**，具体代码如下：
+
+时间复杂度：$O(n^2)$，空间复杂度：$O(1)$
+
+```go
+func generateMatrix(n int) [][]int {
+	result := make([][]int, n)
+	for i, _ := range result {
+		result[i] = make([]int, n)
+	}
+	startX, startY := 0, 0
+	mid := n / 2
+	count, offset := 1, 1
+	for loop := n / 2; loop > 0; loop-- {
+		i, j := startX, startY
+
+		for j = startY; j < n-offset; j++ {
+			result[startX][j] = count
+			count++
+		}
+		for i = startX; i < n-offset; i++ {
+			result[i][j] = count
+			count++
+		}
+		for ; j > startY; j-- {
+			result[i][j] = count
+			count++
+		}
+		for ; i > startX; i-- {
+			result[i][j] = count
+			count++
+		}
+
+		startX++
+		startY++
+		offset++
+	}
+
+	if n%2 > 0 {
+		result[mid][mid] = count
+	}
+	return result
+}
+```
+
+```rust
+impl Solution {
+    pub fn generate_matrix(n: i32) -> Vec<Vec<i32>> {
+        let mut result = vec![vec![0; n as usize]; n as usize];
+        let (mut start_x, mut start_y) = (0, 0);
+        let mid = (n / 2) as usize;
+        let (mut offset, mut count) = (1, 1);
+        for _ in (0..(n / 2)).rev() {
+            let (mut i, mut j) = (start_x, start_y);
+
+            for _ in start_y..(n as usize - offset) {
+                result[start_x][j] = count;
+                count += 1;
+                j += 1;
+            }
+
+            for _ in start_x..(n as usize - offset) {
+                result[i][j] = count;
+                count += 1;
+                i += 1;
+            }
+
+            for _ in 0..(j - start_y) {
+                result[i][j] = count;
+                count += 1;
+                j -= 1;
+            }
+
+            for _ in 0..(i - start_x) {
+                result[i][j] = count;
+                count += 1;
+                i -= 1;
+            }
+
+            start_x += 1;
+            start_y += 1;
+            offset += 1;
+        }
+
+        if n % 2 > 0 {
+            result[mid][mid] = count;
+        }
+        result
+    }
+}
+```
+
+### 4.2 相关题目
+
+- [ ] 54.螺旋矩阵
+- [x] 59.螺旋矩阵II
+- [ ] 剑指Offer29.顺时针打印矩阵
