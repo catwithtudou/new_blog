@@ -85,7 +85,10 @@ func search(nums []int, target int) int {
 
 > 此思路不仅应用在数组中，在其他如链表、字符串等都有相应应用。
 
-下面两个解法均可满足题意，后者的优点在于确保移动的最小次数：
+下面两个解法均可满足题意，后者的优点在于确保移动的最小次数
+
+- 时间复杂度：$O(n)$
+- 空间复杂度：$O(1)$
 
 ```go
 func removeElement(nums []int, val int) int {
@@ -133,3 +136,55 @@ func removeElement(nums []int, val int) int {
 - [ ] 283.移动零
 - [ ] 844.比较含退格的字符串
 - [x] 977.有序数组的平方
+
+## 3.长度最小的子数组
+
+对应 LeetCode 题目：
+
+![](https://img.zhengyua.cn/blog/202402060814468.png)
+
+!!! note 核心思路
+    涉及到连续子数组的处理，可考虑使用滑动窗口的算法思想来解决
+
+若采取暴力解法，则是通过两层循环不断寻找符合条件的子序列，下面重点说明滑动窗口解法。
+
+### 3.1 算法——滑动窗口
+
+滑动窗口的主要思想：
+- **不断的调节子序列的起始位置和终止位置，从而得出预期结果**
+
+滑动窗口的实现通常需要确认如下三点：
+- 窗口内是什么？ 
+    - 满足其和≥s的长度最小的连续子数组     
+- 如何移动窗口的起始位置？ 
+    - 若当前窗口的值大于s则窗口需要向前移动了
+- 如何移动窗口的结束位置？
+    - 窗口的结束位置就是遍历数组的指针
+
+具体实现代码如下： 时间复杂度：$O(n)$ ，空间复杂度：$O(1)$
+
+```go
+func minSubArrayLen(target int, nums []int) int {
+	start, end := 0, 0
+	result := len(nums) + 1
+	cur := 0
+	for ; end < len(nums); end++ {
+		cur += nums[end]
+		for ; cur >= target; start++ {
+			result = min(result, end-start+1)
+			cur -= nums[start]
+		}
+	}
+
+	if result == len(nums)+1 {
+		return 0
+	}
+	return result
+}
+```
+
+### 3.2 相关题目
+
+- [x] 209.长度最小的子数组
+- [x] 904.水果成篮
+- [ ] 76.最小覆盖子串
