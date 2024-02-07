@@ -158,9 +158,11 @@ int main()
     - must previously have been opened 
     - an FD connects to a file/pipe/socket/&c 
     - a process can open many files, have many FDs
-- **UNIX convention: fd 0 is "standard input", 1 is "standard output"**
+
+!!! note "**UNIX convention: fd 0 is "standard input", 1 is "standard output"**"
     - programs don't have to know where input comes from, or output goes 
     - they can just read/write FDs 0 and 1
+
 - second read() argument is a pointer to some memory into which to read
 - third argument is the number of bytes to read
     - read() may read less, but not more
@@ -185,12 +187,281 @@ int main()
 > In summary, file descriptors are obtained through system calls when opening files or other resources, and they serve as references to those resources for performing input/output operations within a program.
 
 #### 2.2.2 example: ex2.c, create a file
+
+```c
+// ex2.c: create a file, write to it.
+
+#include "kernel/types.h"
+#include "user/user.h"
+#include "kernel/fcntl.h"
+
+int main()
+{
+  int fd = open("out", O_WRONLY | O_CREATE | O_TRUNC);
+
+  printf("open returned fd %d\n", fd);
+
+  write(fd, "ooo\n", 4);
+
+  exit(0);
+}
+```
+
+- open() creates (or opens) a file, returns a file descriptor (or -1 for error)
+- FD is a small integer 
+- FD indexes into a per-process table maintained by kernel
+- different processes have different FD name-spaces 
+    - e.g. FD 3 usually means different things to different processes
+
+!!! note "**what happens when a program calls a system call like open()?**"
+    - CPU saves some user registers
+    - CPU increases privilege level
+    - CPU jumps to a known "entry point" in the kernel
+    - now running C code in the kernel
+    - kernel calls system call implementation
+        - sys_open() looks up name in file system 
+        - it might wait for the disk 
+        - it updates kernel data structures (file block cache, FD table)
+    - restore user registers
+    - reduce privilege level
+    - jump back to calling point in the program, which resumes
+
+- typing to UNIX's command-line interface, the shell
+    - the shell is an ordinary user program, not part of the kernel
+    - the shell lets you run UNIX command-line utilities
+    - **time-sharing via the shell was the original focus of UNIX**
+
+
 #### 2.2.3 example: ex3.c, create a new process
+
+```c
+// ex3.c: create a new process with fork()
+#include "kernel/types.h"
+#include "user/user.h"
+int main()
+{
+  int pid;
+  pid = fork();
+  printf("fork() returned %d\n", pid);
+  if(pid == 0){
+    printf("child\n");
+  } else {
+    printf("parent\n");
+  }
+  exit(0);
+}
+```
+
+- a separate process helps prevent them from interfering, e.g. if buggy 
+- the fork() system call creates a new process 
+- the kernel makes a copy of the calling process
+    - instructions, data, registers, file descriptors, current directory
+    - "parent" and "child" processes
+- child and parent are initially identical!
+    - except: fork() returns a pid in parent, 0 in child
+- a pid (process ID) is an integer; kernel gives each process a different pid
+
 #### 2.2.4 example: ex4.c, replace calling process with an executable file
+
+```c
+// ex4.c: replace a process with an executable file
+
+#include "kernel/types.h"
+#include "user/user.h"
+int main()
+{
+  char *argv[] = { "echo", "this", "is", "echo", 0 };
+  exec("echo", argv);
+  printf("exec failed!\n");
+  exit(0);
+}
+```
+
+> how does the shell run a program, e.g. $ echo a b c
+
+- a program is stored in a file: instructions and initial memory
+    - created by the compiler and linker
+- so there's a file called echo, containing instructions
+    - on your own computer: ls -l /bin/echo
+- exec() replaces current process with an executable file 
+    - discards old instruction and data memory 
+    - loads instructions and initial memory from the file 
+    - preserves file descriptors
+
 #### 2.2.5 example: ex5.c, fork() a new process, exec() a program
+
+```c
+#include "kernel/types.h"
+#include "user/user.h"
+// ex5.c: fork then exec
+int main()
+{
+  int pid, status;
+  pid = fork();
+  if(pid == 0){
+    char *argv[] = { "echo", "THIS", "IS", "ECHO", 0 };
+    exec("echo", argv);
+    printf("exec failed!\n");
+    exit(1);
+  } else {
+    printf("parent waiting\n");
+    wait(&status);
+    printf("the child exited with status %d\n", status);
+  }
+
+  exit(0);
+}
+```
+
+-  the shell can't simply call exec()!
+    - since it wouldn't be running any more 
+    - wouldn't be able to accept more than one command
+- **ex5.c shows how the shell deals with this:**
+    - fork() a child process 
+    - child calls exec()
+    - parent wait()s for child to finish
+- the shell does this fork/exec/wait for every command you type 
+    - after wait(), the shell prints the next prompt
+- **exit(status) -> wait(&status)**
+    - status allows children to send back 32 bits of info to parent 
+    - status convention: 0 = success, 1 = command encountered an error
+- **note: the fork() copies, but exec() discards the copied memory**
+    - this may seem wasteful, you'll transparently eliminate the copy in the "copy-on-write" lab
+
 #### 2.2.6 example: ex6.c, redirect the output of a command
+
+```c
+
+#include "kernel/types.h"
+#include "user/user.h"
+#include "kernel/fcntl.h"
+// ex6.c: run a command with output redirected
+int main()
+{
+  int pid;
+  pid = fork();
+  if(pid == 0){
+    close(1);
+    open("out", O_WRONLY | O_CREATE | O_TRUNC);
+
+    char *argv[] = { "echo", "this", "is", "redirected", "echo", 0 };
+    exec("echo", argv);
+    printf("exec failed!\n");
+    exit(1);
+  } else {
+    wait((int *) 0);
+  }
+
+  exit(0);
+}
+```
+
+-  what does the shell do for this? 
+  - $ echo hello > out 
+  - answer: fork, child changes FD 1, child exec's echo
+- note: open() always chooses lowest unused FD; 1 due to close(1). 
+- note: exec preserves FDs 
+- fork, FDs, and exec interact nicely to implement I/O redirection 
+    - separate fork-then-exec gives child a chance to change FDs 
+    - before exec() gives up control 
+    - and without disturbing parent's FDs
+- FDs provide indirection 
+    - commands just use FDs 0 and 1, don't have to know where they go
+
+
 #### 2.2.7 example: ex7.c, communicate through a pipe
+
+```c
+// ex7.c: communication over a pipe
+#include "kernel/types.h"
+#include "user/user.h"
+int main()
+{
+  int fds[2];
+  char buf[100];
+  int n;
+
+  // create a pipe, with two FDs in fds[0], fds[1].
+  pipe(fds);
+  
+  // write to the pipe
+  write(fds[1], "xyz\n", 4);
+
+  // read from the pipe
+  n = read(fds[0], buf, sizeof(buf));
+
+  // display the results on the terminal
+  write(1, buf, n);
+
+  exit(0);
+}
+```
+
+- an FD can refer to a "pipe", rather than a file 
+- **the pipe() system call creates two FDs** 
+    - read from the first FD 
+    - write to the second FD
+- the kernel maintains a buffer for each pipe
+    - write() appends to the buffer 
+    - read() waits until there is data
+
 #### 2.2.8 example: ex8.c, communicate between processes
+
+```c
+#include "kernel/types.h"
+#include "user/user.h"
+// ex8.c: communication between two processes
+int main()
+{
+  int n, pid;
+  int fds[2];
+  char buf[100];
+  
+  // create a pipe, with two FDs in fds[0], fds[1].
+  pipe(fds);
+
+  pid = fork();
+  if (pid == 0) {
+    // child
+    write(fds[1], "this is ex8\n", 12);
+  } else {
+    // parent
+    n = read(fds[0], buf, sizeof(buf));
+    write(1, buf, n);
+  }
+
+  exit(0);
+}
+```
+
+- the shell builds pipelines by forking twice and calling exec()
+- pipes are a separate abstraction, but combine well w/ fork()
+
+
 #### 2.2.9 example: ex9.c, list files in a directory
 
+```c
+#include "kernel/types.h"
+#include "user/user.h"
 
+// ex9.c: list file names in the current directory
+
+struct dirent {
+  ushort inum;
+  char name[14];
+};
+
+int main()
+{
+  int fd;
+  struct dirent e;
+
+  fd = open(".", 0);
+  while(read(fd, &e, sizeof(e)) == sizeof(e)){
+    if(e.name[0] != '\0'){
+      printf("%s\n", e.name);
+    }
+  }
+  exit(0);
+}
+```

@@ -1,6 +1,6 @@
 # MIT-6.S081
 
-- 课程表：https://pdos.csail.mit.edu/6.1810/2023/schedule.html
+- 课程表：https://pdos.csail.mit.edu/6.1810/2020/schedule.html
 - 课程视频：https://www.youtube.com/watch?v=L6YqHxYHa7A
 - 翻译课程文档：https://mit-public-courses-cn-translatio.gitbook.io/mit6-s081/
 - 其他参考信息：
@@ -10,7 +10,7 @@
 
 ## Lecture & Preparation
 
-- [ ] Lecture 01 
+- [x] Lecture 01 
 - [ ] Lecture 02
 - [ ] Lecture 03
 - [ ] Lecture 04
@@ -36,7 +36,6 @@
 
 ## Lab
 
-- [ ] Lab00
 - [ ] Lab01
 - [ ] Lab02
 - [ ] Lab03
