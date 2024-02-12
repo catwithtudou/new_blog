@@ -196,6 +196,7 @@ nav:
       - project/index.md
   - Common:
       - common/index.md
+      - common/100_tips.md
   - Romance:
       - blog/index.md
       - blog/tags.md
