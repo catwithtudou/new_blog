@@ -419,4 +419,101 @@ impl Solution {
 ```
 
 
+## 4. 两两交换链表中的节点
 
+对应 LeetCode 题目：
+
+![](https://img.zhengyua.cn/blog/202402172150069.png)
+
+此题正常模拟，主要考查链表的操作，可使用画图来清晰表示。
+
+### 4.1 思路:虚拟头节点或递归
+
+交换的步骤如下图示：
+
+![](https://img.zhengyua.cn/blog/202402172155216.png)
+
+虚拟头节点和递归的解法按照上面步骤，具体代码如下：
+
+- 时间复杂度：$O(n)$ ，空间复杂度：$O(1)$
+
+```go
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func swapPairs(head *ListNode) *ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	dummyHead := &ListNode{0, nil}
+	dummyHead.Next = head
+	cur := dummyHead
+	for cur.Next != nil && cur.Next.Next != nil {
+		tmp := cur.Next
+		tmp1 := cur.Next.Next.Next
+
+		cur.Next = cur.Next.Next
+		cur.Next.Next = tmp
+		cur.Next.Next.Next = tmp1
+
+		cur = cur.Next.Next
+	}
+	return dummyHead.Next
+}
+
+func swapPairsOther(head *ListNode) *ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	next := head.Next
+	head.Next = swapPairsOther(next.Next)
+	next.Next = head
+	return next
+}
+
+```
+
+```rust
+// Definition for singly-linked list.
+#[derive(PartialEq, Eq, Clone, Debug)]
+pub struct ListNode {
+    pub val: i32,
+    pub next: Option<Box<ListNode>>,
+}
+
+impl ListNode {
+    #[inline]
+    fn new(val: i32) -> Self {
+        ListNode {
+            next: None,
+            val,
+        }
+    }
+}
+
+pub struct Solution;
+
+impl Solution {
+    pub fn swap_pairs(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+        let mut dummy_head = Box::new(ListNode::new(0));
+        dummy_head.next = head;
+        let mut cur = dummy_head.as_mut();
+        while let Some(mut node) = cur.next.take() {
+            if let Some(mut next) = node.next.take() {
+                node.next = next.next.take();
+                next.next = Some(node);
+                cur.next = Some(next);
+                cur = cur.next.as_mut().unwrap().next.as_mut().unwrap();
+            } else {
+                cur.next = Some(node);
+                cur = cur.next.as_mut().unwrap();
+            }
+        }
+        dummy_head.next
+    }
+}
+```
