@@ -300,3 +300,123 @@ impl MyLinkedList {
  * obj.delete_at_index(index);
  */
 ```
+
+## 3. 翻转链表
+
+对应 LeetCode 题目：
+
+![](https://img.zhengyua.cn/blog/202402172105167.png)
+
+首先我们想到的最简单的解法就是，再定义一个新的链表来实现反转，此解法存在对内存空间浪费，最好可以原地。
+
+### 3.1 思路:双指针或递归
+
+1. 双指针
+
+分别定义 pre 和 cur 两个指针，每次移动 cur 时将 cur->next 指向 pre，最后返回 pre 指针即反转后的头节点。
+
+注意在移动 cur 时，需要使用一个中间指针来暂存 cur 的当前位置，具体代码如下：
+
+- 时间复杂度：$O(n)$ ，空间复杂度：$O(1)$
+
+```go
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func reverseList(head *ListNode) *ListNode {
+	var cur, pre, tmp *ListNode
+	cur = head
+	for cur != nil {
+		tmp = cur.Next
+		cur.Next = pre
+		pre = cur
+		cur = tmp
+	}
+	return pre
+}
+```
+
+```rust
+// Definition for singly-linked list.
+#[derive(PartialEq, Eq, Clone, Debug)]
+pub struct ListNode {
+    pub val: i32,
+    pub next: Option<Box<ListNode>>,
+}
+
+impl ListNode {
+    #[inline]
+    fn new(val: i32) -> Self {
+        ListNode {
+            next: None,
+            val,
+        }
+    }
+}
+
+pub struct Solution;
+
+
+impl Solution {
+    pub fn reverse_list(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+        let mut pre = None;
+        let mut cur = head;
+        while let Some(mut node) = cur.take() {
+            cur = node.next;
+            node.next = pre;
+            pre = Some(node);
+        }
+        pre
+    }
+}
+```
+
+2. 递归法
+
+递归虽然会抽象一些，但实际上逻辑与双指针一致，核心都是不断移动 cur 后指向 pre，最后在 cur 为空的时候结束。
+
+需要注意的是递归法所需要的空间为 n，具体代码如下：
+
+- 时间复杂度：$O(n)$ ，空间复杂度：$O(n)$
+
+> 也存在相反的递归思路，即从后往前翻转指针指向。
+
+```go
+func reverseListOther(head *ListNode) *ListNode {
+	var reverse func(*ListNode, *ListNode) *ListNode
+	reverse = func(pre *ListNode, cur *ListNode) *ListNode {
+		if cur == nil {
+			return pre
+		}
+		temp := cur.Next
+		cur.Next = pre
+		return reverse(cur, temp)
+	}
+
+	return reverse(nil, head)
+}
+```
+
+```rust
+impl Solution {
+    pub fn reverse_list_other(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+        fn reverse(mut cur: Option<Box<ListNode>>, mut pre: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+            if let Some(mut node) = cur.take() {
+                cur = node.next;
+                node.next = pre;
+                pre = Some(node);
+                return reverse(cur, pre);
+            }
+            pre
+        }
+        reverse(head, None)
+    }
+}
+```
+
+
+
