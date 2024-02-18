@@ -184,7 +184,13 @@ int main(){
 
 ![](https://img.zhengyua.cn/blog/202402181132102.png)
 
-根据上述思路，通过 pipe 和 fork 进行实现，具体代码如下：
+根据上述思路，通过 pipe 和 fork 进行实现，其中还需要特别注意：
+
+- 为了保证进程生命周期链的正确性，需要等待所有子进程都结束，则需要将 fork 出来的子进程进行 wait 
+- 为了避免超过 xv6 系统的 fd 上限，需要及时关闭不再使用的文件描述符，这样也能减少进程被卡住的概率
+
+
+具体代码如下：
 
 ```C
 #include "kernel/types.h"
@@ -248,6 +254,255 @@ int main(int argc, char *argv[]) {
     }
     close(pipes[1]);
     deliver_process(pipes[0]);
+    exit(0);
+}
+```
+
+## 5. find(moderate)
+
+![](https://img.zhengyua.cn/blog/202402181835482.png)
+
+此系统命令的功能为：
+
+- 输入:一个初始路径和一个目标文件名
+- 输出:递归扫描该初始路径下的所有目录，匹配与文件名相同的文件并输出
+
+根据提示中提到的 `user/ls.c`，来了解读取目录信息的实现，这里给出关键代码的注释：
+
+```C
+void
+ls(char *path)
+{
+  char buf[512], *p;
+  int fd;
+  struct dirent de;
+  struct stat st;
+
+  // 通过 open 函数获取特定路径的文件描述符
+  if((fd = open(path, O_RDONLY)) < 0){
+    fprintf(2, "ls: cannot open %s\n", path);
+    return;
+  }
+
+  // 通过 fstat 函数获取该文件描述符的详细信息
+  if(fstat(fd, &st) < 0){
+    fprintf(2, "ls: cannot stat %s\n", path);
+    close(fd);
+    return;
+  }
+
+  // 通过 st.type 来识别当前文件描述符的类型信息（设备、文件、目录）
+  // 这里主要关注目录的处理
+  switch(st.type){
+  case T_DEVICE:
+  case T_FILE:
+    printf("%s %d %d %l\n", fmtname(path), st.type, st.ino, st.size);
+    break;
+
+  case T_DIR:
+    // 目录的长度避免超过 xv6 设置的缓冲区上限
+    // DIRSIZ 被用于计算路径名的长度，以确保不会超出缓冲区的大小
+    if(strlen(path) + 1 + DIRSIZ + 1 > sizeof buf){
+      printf("ls: path too long\n");
+      break;
+    }
+    // 将 path 字符串复制到 buf 中
+    strcpy(buf, path);
+    
+    // 遍历当前目录信息的关键代码
+    
+    // 变量 p 即表示路径的字符串指针  
+    p = buf+strlen(buf);
+    *p++ = '/';
+    while(read(fd, &de, sizeof(de)) == sizeof(de)){
+      if(de.inum == 0)
+        continue;
+      // memmove 函数即表示从源内存区域复制 n 个字节到目标内存区域
+      // 每次遍历需要赋值其文件名称的完整路径（即 path+file）
+      memmove(p, de.name, DIRSIZ);
+      p[DIRSIZ] = 0;
+      if(stat(buf, &st) < 0){
+        printf("ls: cannot stat %s\n", buf);
+        continue;
+      }
+      printf("%s %d %d %d\n", fmtname(buf), st.type, st.ino, st.size);
+    }
+    break;
+  }
+  // 最后使用完后需要关闭文件描述符
+  close(fd);
+}
+```
+
+在上面处理的基础上，我们还需要在过程中不断递归子目录，直至匹配到文件名相同的文件后进行输出，其中还需要注意：
+
+- 不要递归 `.` 和 `..`
+- 在匹配文件名称的字符串时，需要使用 strcmp 函数
+
+具体代码如下：
+
+```C
+#include "kernel/types.h"
+#include "kernel/stat.h"
+#include "user/user.h"
+#include "kernel/fs.h"
+#include "kernel/fcntl.h"
+
+// get the filename from the whole path
+char* get_filename(char *path){
+    char *p;
+
+    // Find first character after last slash.
+    for(p=path+strlen(path);p>=path&&*p!='/';p--)
+        ;
+    p++;
+    return p;
+}
+
+void find(char *path,char *target){
+
+    char buf[512],*p;
+    int fd;
+    struct dirent de;
+    struct stat st;
+
+    if((fd = open(path, O_RDONLY)) < 0){
+        fprintf(2, "find: cannot open %s\n", path);
+        return;
+    }
+
+    if(fstat(fd,&st)<0){
+        fprintf(2, "find: cannot stat %s\n", path);
+        close(fd);
+        return;
+    }
+
+    switch(st.type){
+        case T_DEVICE:
+        case T_FILE:
+            // 检查是否匹配目标文件名称
+            char *f_name= get_filename(path);
+            // printf("filename:%s,target:%s\n",f_name,target);
+            if (strlen(f_name) != 0 && strcmp(f_name,target) == 0){
+                printf("%s\n",path);
+            }
+            close(fd);
+            break;
+        case T_DIR:
+            if(strlen(path) + 1 + DIRSIZ + 1 > sizeof buf){
+                printf("find: path too long\n");
+                break;
+            }
+            strcpy(buf, path);
+            p = buf+strlen(buf);
+            *p++ = '/';
+            while(read(fd,&de,sizeof(de)) == sizeof(de)){
+                 if(de.inum==0||strcmp(de.name,".")==0||strcmp(de.name,"..")==0){
+                     continue;
+                 }
+                memmove(p, de.name, DIRSIZ);
+                p[DIRSIZ] = 0;
+                if(stat(buf, &st) < 0){
+                    printf("find: cannot stat %s\n", buf);
+                    continue;
+                }
+                // printf("p:%s,buf:%s\n",p,buf);
+                find(buf, target);
+            }
+            close(fd);
+            break;
+    }
+}
+
+
+
+int main(int argc, char *argv[]){
+    if(argc != 3){
+        fprintf(2,"find usage: find [dir] [filename]\n");
+        exit(1);
+    }
+    find(argv[1],argv[2]);
+    exit(0);
+}
+```
+
+## 6. xargs(moderate)
+
+![](https://img.zhengyua.cn/blog/202402182136921.png)
+
+这里需要实现的功能为：
+
+- 参数描述要运行的命令，它从标准输入读取行，并为每一行运行命令，并将该行附加到命令的参数中
+
+结合提示信息，该命令实现的核心处理有以下几点：
+
+- 通过读取文件描述符的值为 0 来判断输入结束
+- 使用`fork`和`exec`在每行输入上调用命令，且注意在父级中使用`wait`等待子级完成命令
+- 若想要读取单行输入，则可遍历读取单个字符，直至出现换行符即 `\n`，在实际实现过程中还需要通过 buf 来截取处理
+
+具体代码如下：
+
+```C
+#include "kernel/param.h"
+#include "kernel/types.h"
+#include "user/user.h"
+
+
+#define buf_size 512
+
+
+int main(int argc, char *argv[]) {
+    char buf[buf_size+1] = {0};
+    char *xargv[MAXARG] = {0};
+    int used_size = 0;
+    int stdin_end = 0;
+
+    for (int i = 1; i < argc; i++) {
+        xargv[i - 1] = argv[i];
+    }
+
+    while (!stdin_end || used_size != 0) {
+        if (!stdin_end) {
+            int read_bytes = read(0, buf + used_size, buf_size - used_size);
+            if (read_bytes < 0) {
+                fprintf(2, "xargs: read returns -1 error\n");
+                exit(1);
+            }
+
+            if (read_bytes == 0) {
+                close(0);
+                stdin_end = 1;
+            }
+            used_size += read_bytes;
+        }
+
+        char *line_end = strchr(buf, '\n');
+
+        while (line_end) {
+            char xbuf[buf_size + 1] = {0};
+            memcpy(xbuf, buf, line_end - buf);
+            xargv[argc - 1] = xbuf;
+
+            int pid = fork();
+            if (pid == 0) { // child
+                if (!stdin_end) {
+                    close(0);
+                }
+                if (exec(argv[1], xargv) < 0) {
+                    fprintf(2, "xargs: exec fails with -1\n");
+                    exit(1);
+                }
+            } else { // parent
+                int remain_line = line_end - buf;
+                memmove(buf, line_end + 1, used_size - remain_line - 1);
+                used_size -= remain_line + 1;
+                memset(buf + used_size, 0, buf_size - used_size);
+                wait(0);
+            }
+
+            line_end = strchr(buf, '\n');
+        }
+    }
     exit(0);
 }
 ```

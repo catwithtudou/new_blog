@@ -36,7 +36,7 @@
 
 ## Lab
 
-- [ ] Lab01
+- [x] Lab01
 - [ ] Lab02
 - [ ] Lab03
 - [ ] Lab04
