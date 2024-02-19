@@ -161,8 +161,14 @@ nav:
       - language/index.md
       - Golang:
           - language/golang/README.md
+          - 开发实践:
+              - language/golang/code_prac/go_best_practice.md
       - Rust:
           - language/rust/README.md
+          - 开发实践:
+              - language/rust/code_prac/list.md
+          - 书籍笔记:
+              - language/rust/book/rust_course.md
   - Algorithms:
       - algorithms/index.md
       - Books:
