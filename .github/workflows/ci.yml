@@ -26,4 +26,6 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install mkdocs-material
+      - run: pip install mkdocs-git-revision-date-localized-plugin
+      - run: pip install mkdocs-include-dir-to-nav
       - run: mkdocs gh-deploy --force
