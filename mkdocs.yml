@@ -181,8 +181,8 @@ extra_javascript:
 nav:
   - 🌦️Home: index.md
   - 📌MainPage:
-      - blog/me.md
       - blog/index.md
+      - blog/me.md
       - blog/tags.md
   - Language: language
   - Algorithms: algorithms
