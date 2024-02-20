@@ -1,0 +1,2152 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Life">
+      
+      
+        <meta name="author" content="catwithtudou️">
+      
+      
+        <link rel="canonical" href="https://zhengyua.cn/new_blog/os/2401mit6s081/Labs/lab1/">
+      
+      
+        <link rel="prev" href="../../">
+      
+      
+        <link rel="next" href="../../Notes/lec1/">
+      
+      
+      <link rel="icon" href="../../../../assets/logo.jpeg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.10">
+    
+    
+      
+        <title>Lab: Xv6 and Unix utilities - catwithtudou️🌦️</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e359304.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab-xv6-and-unix-utilities" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="catwithtudou️🌦️" class="md-header__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+      
+  <img src="../../../../assets/logo.jpeg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            catwithtudou️🌦️
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab: Xv6 and Unix utilities
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/catwithtudou" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    catwithtudou
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+    
+  
+  🌦️Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../blog/me/" class="md-tabs__link">
+          
+  
+    
+  
+  📌MainPage
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../language/" class="md-tabs__link">
+          
+  
+    
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../algorithms/" class="md-tabs__link">
+          
+  
+    
+  
+  Algorithms
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+    
+  
+  OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../network/" class="md-tabs__link">
+          
+  
+    
+  
+  Network
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../ds/" class="md-tabs__link">
+          
+  
+    
+  
+  DS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../architecture/" class="md-tabs__link">
+          
+  
+    
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../middleware/" class="md-tabs__link">
+          
+  
+    
+  
+  Middleware
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../project/" class="md-tabs__link">
+          
+  
+    
+  
+  Project
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../common/100_tips/" class="md-tabs__link">
+          
+  
+    
+  
+  Common
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="catwithtudou️🌦️" class="md-nav__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+      
+  <img src="../../../../assets/logo.jpeg" alt="logo">
+
+    </a>
+    catwithtudou️🌦️
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/catwithtudou" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    catwithtudou
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    🌦️Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../blog/me/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📌MainPage
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../language/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Language
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../algorithms/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Algorithms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    OS
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            OS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    2401mit6s081
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            2401mit6s081
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_2" id="__nav_5_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Labs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Lab: Xv6 and Unix utilities
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Lab: Xv6 and Unix utilities
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-macos-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      0. MacOs Environments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-boot-xv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Boot xv6
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-sleepeasy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. sleep(easy)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-pingpongeasy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. pingpong(easy)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-primesmoderatehard" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. primes(moderate/hard)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-findmoderate" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. find(moderate)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-xargsmoderate" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. xargs(moderate)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../Notes/lec1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Notes
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../network/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Network
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../ds/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    DS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../architecture/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../middleware/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Middleware
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../project/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../common/100_tips/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Common
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-macos-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      0. MacOs Environments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-boot-xv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Boot xv6
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-sleepeasy" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. sleep(easy)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-pingpongeasy" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. pingpong(easy)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-primesmoderatehard" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. primes(moderate/hard)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-findmoderate" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. find(moderate)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-xargsmoderate" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. xargs(moderate)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="lab-xv6-and-unix-utilities">Lab: Xv6 and Unix utilities<a class="headerlink" href="#lab-xv6-and-unix-utilities" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>https://pdos.csail.mit.edu/6.1810/2023/labs/util.html</p>
+</blockquote>
+<h2 id="0-macos-environments">0. MacOs Environments<a class="headerlink" href="#0-macos-environments" title="Permanent link">&para;</a></h2>
+<p>For this class we'll need the RISC-V versions of a couple different tools: QEMU 5.1+, GDB 8.3+, GCC, and Binutils.</p>
+<blockquote>
+<p>Previously installed corresponding programs can be omitted by yourself.</p>
+</blockquote>
+<ul>
+<li>First, install developer tools:</li>
+</ul>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a>xcode-select<span class="w"> </span>--install
+</code></pre></div>
+<ul>
+<li>Next, install Homebrew, a package manager for macOS:</li>
+</ul>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a>$<span class="w"> </span>/bin/bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+<ul>
+<li>Next, install the RISC-V compiler toolchain:</li>
+</ul>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a>$<span class="w"> </span>brew<span class="w"> </span>tap<span class="w"> </span>riscv/riscv
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>riscv-tools
+</code></pre></div>
+<ul>
+<li>The brew formula may not link into /usr/local. You will need to update your shell's rc file (e.g. ~/.bashrc) to add the appropriate directory to $PATH.</li>
+</ul>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/usr/local/opt/riscv-gnu-toolchain/bin
+</code></pre></div>
+<ul>
+<li>Finally, install QEMU:</li>
+</ul>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a>brew<span class="w"> </span>install<span class="w"> </span>qemu
+</code></pre></div>
+<ul>
+<li>Testing your Installation:</li>
+</ul>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a>$<span class="w"> </span>qemu-system-riscv64<span class="w"> </span>--version
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos="2 "></span></a>QEMU<span class="w"> </span>emulator<span class="w"> </span>version<span class="w"> </span><span class="m">5</span>.1.0
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><a href="#__codelineno-5-3"><span class="linenos" data-linenos="3 "></span></a>$<span class="w"> </span>riscv64-unknown-elf-gcc<span class="w"> </span>--version
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><a href="#__codelineno-5-4"><span class="linenos" data-linenos="4 "></span></a>riscv64-unknown-elf-gcc<span class="w"> </span><span class="o">(</span>GCC<span class="o">)</span><span class="w"> </span><span class="m">10</span>.1.0
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><a href="#__codelineno-5-5"><span class="linenos" data-linenos="5 "></span></a>...
+</code></pre></div>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202402061057442.png" /></p>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202402061058245.png" /></p>
+<h2 id="1-boot-xv6">1. Boot xv6<a class="headerlink" href="#1-boot-xv6" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Fetch the git repository for the xv6 source for the lab:</li>
+</ul>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos="1 "></span></a>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>git://g.csail.mit.edu/xv6-labs-2023
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><a href="#__codelineno-6-2"><span class="linenos" data-linenos="2 "></span></a>Cloning<span class="w"> </span>into<span class="w"> </span><span class="s1">&#39;xv6-labs-2023&#39;</span>...
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><a href="#__codelineno-6-3"><span class="linenos" data-linenos="3 "></span></a>...
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><a href="#__codelineno-6-4"><span class="linenos" data-linenos="4 "></span></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>xv6-labs-2023
+</code></pre></div>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202402061112613.png" /></p>
+<ul>
+<li>Build and run xv6:</li>
+</ul>
+<div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos=" 1 "></span></a>$<span class="w"> </span>make<span class="w"> </span>qemu
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos=" 2 "></span></a>riscv64-unknown-elf-gcc<span class="w">    </span>-c<span class="w"> </span>-o<span class="w"> </span>kernel/entry.o<span class="w"> </span>kernel/entry.S
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><a href="#__codelineno-7-3"><span class="linenos" data-linenos=" 3 "></span></a>riscv64-unknown-elf-gcc<span class="w"> </span>-Wall<span class="w"> </span>-Werror<span class="w"> </span>-O<span class="w"> </span>-fno-omit-frame-pointer<span class="w"> </span>-ggdb<span class="w"> </span>-DSOL_UTIL<span class="w"> </span>-MD<span class="w"> </span>-mcmodel<span class="o">=</span>medany<span class="w"> </span>-ffreestanding<span class="w"> </span>-fno-common<span class="w"> </span>-nostdlib<span class="w"> </span>-mno-relax<span class="w"> </span>-I.<span class="w"> </span>-fno-stack-protector<span class="w"> </span>-fno-pie<span class="w"> </span>-no-pie<span class="w">   </span>-c<span class="w"> </span>-o<span class="w"> </span>kernel/start.o<span class="w"> </span>kernel/start.c
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><a href="#__codelineno-7-4"><span class="linenos" data-linenos=" 4 "></span></a>...
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><a href="#__codelineno-7-5"><span class="linenos" data-linenos=" 5 "></span></a>riscv64-unknown-elf-ld<span class="w"> </span>-z<span class="w"> </span>max-page-size<span class="o">=</span><span class="m">4096</span><span class="w"> </span>-N<span class="w"> </span>-e<span class="w"> </span>main<span class="w"> </span>-Ttext<span class="w"> </span><span class="m">0</span><span class="w"> </span>-o<span class="w"> </span>user/_zombie<span class="w"> </span>user/zombie.o<span class="w"> </span>user/ulib.o<span class="w"> </span>user/usys.o<span class="w"> </span>user/printf.o<span class="w"> </span>user/umalloc.o
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><a href="#__codelineno-7-6"><span class="linenos" data-linenos=" 6 "></span></a>riscv64-unknown-elf-objdump<span class="w"> </span>-S<span class="w"> </span>user/_zombie<span class="w"> </span>&gt;<span class="w"> </span>user/zombie.asm
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><a href="#__codelineno-7-7"><span class="linenos" data-linenos=" 7 "></span></a>riscv64-unknown-elf-objdump<span class="w"> </span>-t<span class="w"> </span>user/_zombie<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;1,/SYMBOL TABLE/d; s/ .* / /; /^$/d&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>user/zombie.sym
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a><a href="#__codelineno-7-8"><span class="linenos" data-linenos=" 8 "></span></a>mkfs/mkfs<span class="w"> </span>fs.img<span class="w"> </span>README<span class="w">  </span>user/xargstest.sh<span class="w"> </span>user/_cat<span class="w"> </span>user/_echo<span class="w"> </span>user/_forktest<span class="w"> </span>user/_grep<span class="w"> </span>user/_init<span class="w"> </span>user/_kill<span class="w"> </span>user/_ln<span class="w"> </span>user/_ls<span class="w"> </span>user/_mkdir<span class="w"> </span>user/_rm<span class="w"> </span>user/_sh<span class="w"> </span>user/_stressfs<span class="w"> </span>user/_usertests<span class="w"> </span>user/_grind<span class="w"> </span>user/_wc<span class="w"> </span>user/_zombie
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><a href="#__codelineno-7-9"><span class="linenos" data-linenos=" 9 "></span></a>nmeta<span class="w"> </span><span class="m">46</span><span class="w"> </span><span class="o">(</span>boot,<span class="w"> </span>super,<span class="w"> </span>log<span class="w"> </span>blocks<span class="w"> </span><span class="m">30</span><span class="w"> </span>inode<span class="w"> </span>blocks<span class="w"> </span><span class="m">13</span>,<span class="w"> </span>bitmap<span class="w"> </span>blocks<span class="w"> </span><span class="m">1</span><span class="o">)</span><span class="w"> </span>blocks<span class="w"> </span><span class="m">954</span><span class="w"> </span>total<span class="w"> </span><span class="m">1000</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a><a href="#__codelineno-7-10"><span class="linenos" data-linenos="10 "></span></a>balloc:<span class="w"> </span>first<span class="w"> </span><span class="m">591</span><span class="w"> </span>blocks<span class="w"> </span>have<span class="w"> </span>been<span class="w"> </span>allocated
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a><a href="#__codelineno-7-11"><span class="linenos" data-linenos="11 "></span></a>balloc:<span class="w"> </span>write<span class="w"> </span>bitmap<span class="w"> </span>block<span class="w"> </span>at<span class="w"> </span>sector<span class="w"> </span><span class="m">45</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a><a href="#__codelineno-7-12"><span class="linenos" data-linenos="12 "></span></a>qemu-system-riscv64<span class="w"> </span>-machine<span class="w"> </span>virt<span class="w"> </span>-bios<span class="w"> </span>none<span class="w"> </span>-kernel<span class="w"> </span>kernel/kernel<span class="w"> </span>-m<span class="w"> </span>128M<span class="w"> </span>-smp<span class="w"> </span><span class="m">3</span><span class="w"> </span>-nographic<span class="w"> </span>-drive<span class="w"> </span><span class="nv">file</span><span class="o">=</span>fs.img,if<span class="o">=</span>none,format<span class="o">=</span>raw,id<span class="o">=</span>x0<span class="w"> </span>-device<span class="w"> </span>virtio-blk-device,drive<span class="o">=</span>x0,bus<span class="o">=</span>virtio-mmio-bus.0
+<a id="__codelineno-7-13" name="__codelineno-7-13"></a><a href="#__codelineno-7-13"><span class="linenos" data-linenos="13 "></span></a>
+<a id="__codelineno-7-14" name="__codelineno-7-14"></a><a href="#__codelineno-7-14"><span class="linenos" data-linenos="14 "></span></a>xv6<span class="w"> </span>kernel<span class="w"> </span>is<span class="w"> </span>booting
+<a id="__codelineno-7-15" name="__codelineno-7-15"></a><a href="#__codelineno-7-15"><span class="linenos" data-linenos="15 "></span></a>
+<a id="__codelineno-7-16" name="__codelineno-7-16"></a><a href="#__codelineno-7-16"><span class="linenos" data-linenos="16 "></span></a>hart<span class="w"> </span><span class="m">2</span><span class="w"> </span>starting
+<a id="__codelineno-7-17" name="__codelineno-7-17"></a><a href="#__codelineno-7-17"><span class="linenos" data-linenos="17 "></span></a>hart<span class="w"> </span><span class="m">1</span><span class="w"> </span>starting
+<a id="__codelineno-7-18" name="__codelineno-7-18"></a><a href="#__codelineno-7-18"><span class="linenos" data-linenos="18 "></span></a>init:<span class="w"> </span>starting<span class="w"> </span>sh
+</code></pre></div>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202402061113732.png" /></p>
+<ul>
+<li>xv6 has no ps command, but, if you type <code>Ctrl-p</code>, the kernel will print information about each process.<ul>
+<li>If you try it now, you'll see two lines: one for init, and one for <code>sh</code>. </li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202402061115427.png" /></p>
+<ul>
+<li>To quit qemu type: <code>Ctrl-a x</code> (press <code>Ctrl</code> and <code>a</code> at the same time, followed by x).</li>
+</ul>
+<h2 id="2-sleepeasy">2. sleep(easy)<a class="headerlink" href="#2-sleepeasy" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Implement a user-level sleep program for xv6, along the lines of the UNIX sleep command. Your sleep should pause for a user-specified number of ticks. A tick is a notion of time defined by the xv6 kernel, namely the time between two interrupts from the timer chip. Your solution should be in the file user/sleep.c.</p>
+</blockquote>
+<p>即实现系统函数 sleep 的功能，根据提示进行实现，其中关键点就是：</p>
+<ul>
+<li>当用户参数缺失时，需要提示错误信息</li>
+<li>系统函数 sleep 的入参是整型，而在终端获取的值是字符，此时可使用 atoi 函数</li>
+</ul>
+<p>具体代码如下：</p>
+<div class="language-c highlight"><span class="filename">C</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;kernel/types.h&quot;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><a href="#__codelineno-8-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;user/user.h&quot;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><a href="#__codelineno-8-3"><span class="linenos" data-linenos=" 3 "></span></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><a href="#__codelineno-8-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><a href="#__codelineno-8-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">argc</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a><a href="#__codelineno-8-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;usage: sleep [ticks num]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><a href="#__codelineno-8-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a><a href="#__codelineno-8-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a><a href="#__codelineno-8-9"><span class="linenos" data-linenos=" 9 "></span></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a><a href="#__codelineno-8-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">ticks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a><a href="#__codelineno-8-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sleep</span><span class="p">(</span><span class="n">ticks</span><span class="p">);</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a><a href="#__codelineno-8-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">  </span><span class="n">exit</span><span class="p">(</span><span class="n">ret</span><span class="p">);</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a><a href="#__codelineno-8-13"><span class="linenos" data-linenos="13 "></span></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="3-pingpongeasy">3. pingpong(easy)<a class="headerlink" href="#3-pingpongeasy" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202402180945534.png" /></p>
+<p>该题主要考查 pipe、fork 的使用和文件描述符的读写应用。根据提示和参考示例8进行实现，其中较为关键的是：</p>
+<ul>
+<li>父子进程是双向通信，ping 和 pong 需要两个 pipe</li>
+<li>为了避免资源泄漏和阻塞，可通过 close 关闭不再需要的 pipe 端口</li>
+<li>在 read pipe 时是进程阻塞的，直到有数据 write pipe 后才会继续向下执行</li>
+</ul>
+<p>具体代码如下：</p>
+<div class="language-c highlight"><span class="filename">C</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><a href="#__codelineno-9-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;kernel/types.h&quot;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><a href="#__codelineno-9-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;user/user.h&quot;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><a href="#__codelineno-9-3"><span class="linenos" data-linenos=" 3 "></span></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><a href="#__codelineno-9-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(){</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a><a href="#__codelineno-9-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">pid</span><span class="p">,</span><span class="n">fork_pid</span><span class="p">;</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a><a href="#__codelineno-9-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">child_pipe</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">parent_pipe</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a><a href="#__codelineno-9-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="sc">&#39;a&#39;</span><span class="p">};</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a><a href="#__codelineno-9-8"><span class="linenos" data-linenos=" 8 "></span></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a><a href="#__codelineno-9-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">  </span><span class="n">pipe</span><span class="p">(</span><span class="n">child_pipe</span><span class="p">);</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a><a href="#__codelineno-9-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">  </span><span class="n">pipe</span><span class="p">(</span><span class="n">parent_pipe</span><span class="p">);</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a><a href="#__codelineno-9-11"><span class="linenos" data-linenos="11 "></span></a>
+<a id="__codelineno-9-12" name="__codelineno-9-12"></a><a href="#__codelineno-9-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">  </span><span class="n">fork_pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13"></a><a href="#__codelineno-9-13"><span class="linenos" data-linenos="13 "></span></a>
+<a id="__codelineno-9-14" name="__codelineno-9-14"></a><a href="#__codelineno-9-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fork_pid</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// child</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15"></a><a href="#__codelineno-9-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">    </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getpid</span><span class="p">();</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16"></a><a href="#__codelineno-9-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">    </span><span class="c1">// step2: read a byte from the parent, and print</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17"></a><a href="#__codelineno-9-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">    </span><span class="n">close</span><span class="p">(</span><span class="n">parent_pipe</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18"></a><a href="#__codelineno-9-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">    </span><span class="n">read</span><span class="p">(</span><span class="n">parent_pipe</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">buf</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19"></a><a href="#__codelineno-9-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d: received ping</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">pid</span><span class="p">);</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20"></a><a href="#__codelineno-9-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">    </span><span class="c1">// step3: write a byte to the parent</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21"></a><a href="#__codelineno-9-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">    </span><span class="n">close</span><span class="p">(</span><span class="n">child_pipe</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22"></a><a href="#__codelineno-9-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">    </span><span class="n">write</span><span class="p">(</span><span class="n">child_pipe</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">buf</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23"></a><a href="#__codelineno-9-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// parent</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24"></a><a href="#__codelineno-9-24"><span class="linenos" data-linenos="24 "></span></a><span class="w">    </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getpid</span><span class="p">();</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25"></a><a href="#__codelineno-9-25"><span class="linenos" data-linenos="25 "></span></a><span class="w">    </span><span class="c1">// step1: send a byte to the child</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26"></a><a href="#__codelineno-9-26"><span class="linenos" data-linenos="26 "></span></a><span class="w">    </span><span class="n">close</span><span class="p">(</span><span class="n">parent_pipe</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27"></a><a href="#__codelineno-9-27"><span class="linenos" data-linenos="27 "></span></a><span class="w">    </span><span class="n">write</span><span class="p">(</span><span class="n">parent_pipe</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">buf</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28"></a><a href="#__codelineno-9-28"><span class="linenos" data-linenos="28 "></span></a><span class="w">    </span><span class="c1">// step4: read a byte from the child, and print</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29"></a><a href="#__codelineno-9-29"><span class="linenos" data-linenos="29 "></span></a><span class="w">    </span><span class="n">close</span><span class="p">(</span><span class="n">child_pipe</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30"></a><a href="#__codelineno-9-30"><span class="linenos" data-linenos="30 "></span></a><span class="w">    </span><span class="n">read</span><span class="p">(</span><span class="n">child_pipe</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">buf</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-9-31" name="__codelineno-9-31"></a><a href="#__codelineno-9-31"><span class="linenos" data-linenos="31 "></span></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d: received pong</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">pid</span><span class="p">);</span>
+<a id="__codelineno-9-32" name="__codelineno-9-32"></a><a href="#__codelineno-9-32"><span class="linenos" data-linenos="32 "></span></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-9-33" name="__codelineno-9-33"></a><a href="#__codelineno-9-33"><span class="linenos" data-linenos="33 "></span></a>
+<a id="__codelineno-9-34" name="__codelineno-9-34"></a><a href="#__codelineno-9-34"><span class="linenos" data-linenos="34 "></span></a><span class="w">  </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-9-35" name="__codelineno-9-35"></a><a href="#__codelineno-9-35"><span class="linenos" data-linenos="35 "></span></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="4-primesmoderatehard">4. primes(moderate/hard)<a class="headerlink" href="#4-primesmoderatehard" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202402181004931.png" /></p>
+<p>即实现Sieve质数算法，在 https://swtch.com/~rsc/thread/ 中实际上提示了关键思路：</p>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202402181132102.png" /></p>
+<p>根据上述思路，通过 pipe 和 fork 进行实现，其中还需要特别注意：</p>
+<ul>
+<li>为了保证进程生命周期链的正确性，需要等待所有子进程都结束，则需要将 fork 出来的子进程进行 wait </li>
+<li>为了避免超过 xv6 系统的 fd 上限，需要及时关闭不再使用的文件描述符，这样也能减少进程被卡住的概率</li>
+</ul>
+<p>具体代码如下：</p>
+<div class="language-C highlight"><span class="filename">C</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><a href="#__codelineno-10-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;kernel/types.h&quot;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><a href="#__codelineno-10-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;user/user.h&quot;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><a href="#__codelineno-10-3"><span class="linenos" data-linenos=" 3 "></span></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><a href="#__codelineno-10-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="n">__attribute__</span><span class="p">((</span><span class="k">noreturn</span><span class="p">))</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><a href="#__codelineno-10-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="kt">void</span><span class="w"> </span><span class="n">deliver_process</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">read_fd</span><span class="p">){</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a><a href="#__codelineno-10-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">cur_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a><a href="#__codelineno-10-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">is_fork</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a><a href="#__codelineno-10-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">pass_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a><a href="#__codelineno-10-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">pipes</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10"></a><a href="#__codelineno-10-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11"></a><a href="#__codelineno-10-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">       </span><span class="c1">// get a number from the left neighbor</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12"></a><a href="#__codelineno-10-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">       </span><span class="kt">int</span><span class="w"> </span><span class="n">read_len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read</span><span class="p">(</span><span class="n">read_fd</span><span class="p">,</span><span class="o">&amp;</span><span class="n">pass_num</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13"></a><a href="#__codelineno-10-13"><span class="linenos" data-linenos="13 "></span></a>
+<a id="__codelineno-10-14" name="__codelineno-10-14"></a><a href="#__codelineno-10-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">       </span><span class="c1">// the left neighbor empty or close</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15"></a><a href="#__codelineno-10-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">read_len</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">){</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16"></a><a href="#__codelineno-10-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">           </span><span class="n">close</span><span class="p">(</span><span class="n">read_fd</span><span class="p">);</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17"></a><a href="#__codelineno-10-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">           </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_fork</span><span class="p">){</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18"></a><a href="#__codelineno-10-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">               </span><span class="n">close</span><span class="p">(</span><span class="n">pipes</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19"></a><a href="#__codelineno-10-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">               </span><span class="n">close</span><span class="p">(</span><span class="n">pipes</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20"></a><a href="#__codelineno-10-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">               </span><span class="n">wait</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21"></a><a href="#__codelineno-10-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">           </span><span class="p">}</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22"></a><a href="#__codelineno-10-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">           </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23"></a><a href="#__codelineno-10-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">       </span><span class="p">}</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24"></a><a href="#__codelineno-10-24"><span class="linenos" data-linenos="24 "></span></a>
+<a id="__codelineno-10-25" name="__codelineno-10-25"></a><a href="#__codelineno-10-25"><span class="linenos" data-linenos="25 "></span></a><span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cur_num</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+<a id="__codelineno-10-26" name="__codelineno-10-26"></a><a href="#__codelineno-10-26"><span class="linenos" data-linenos="26 "></span></a><span class="w">           </span><span class="n">cur_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pass_num</span><span class="p">;</span>
+<a id="__codelineno-10-27" name="__codelineno-10-27"></a><a href="#__codelineno-10-27"><span class="linenos" data-linenos="27 "></span></a><span class="w">           </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;prime %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">cur_num</span><span class="p">);</span>
+<a id="__codelineno-10-28" name="__codelineno-10-28"></a><a href="#__codelineno-10-28"><span class="linenos" data-linenos="28 "></span></a><span class="w">       </span><span class="p">}</span>
+<a id="__codelineno-10-29" name="__codelineno-10-29"></a><a href="#__codelineno-10-29"><span class="linenos" data-linenos="29 "></span></a>
+<a id="__codelineno-10-30" name="__codelineno-10-30"></a><a href="#__codelineno-10-30"><span class="linenos" data-linenos="30 "></span></a><span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pass_num</span><span class="o">%</span><span class="n">cur_num</span><span class="o">!=</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-31" name="__codelineno-10-31"></a><a href="#__codelineno-10-31"><span class="linenos" data-linenos="31 "></span></a><span class="w">           </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">is_fork</span><span class="p">){</span>
+<a id="__codelineno-10-32" name="__codelineno-10-32"></a><a href="#__codelineno-10-32"><span class="linenos" data-linenos="32 "></span></a><span class="w">               </span><span class="c1">// create new process and pipe</span>
+<a id="__codelineno-10-33" name="__codelineno-10-33"></a><a href="#__codelineno-10-33"><span class="linenos" data-linenos="33 "></span></a><span class="w">               </span><span class="n">pipe</span><span class="p">(</span><span class="n">pipes</span><span class="p">);</span>
+<a id="__codelineno-10-34" name="__codelineno-10-34"></a><a href="#__codelineno-10-34"><span class="linenos" data-linenos="34 "></span></a><span class="w">               </span><span class="n">is_fork</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-10-35" name="__codelineno-10-35"></a><a href="#__codelineno-10-35"><span class="linenos" data-linenos="35 "></span></a><span class="w">               </span><span class="kt">int</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
+<a id="__codelineno-10-36" name="__codelineno-10-36"></a><a href="#__codelineno-10-36"><span class="linenos" data-linenos="36 "></span></a><span class="w">               </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span><span class="w"> </span><span class="c1">// child</span>
+<a id="__codelineno-10-37" name="__codelineno-10-37"></a><a href="#__codelineno-10-37"><span class="linenos" data-linenos="37 "></span></a><span class="w">                   </span><span class="c1">// next process handle</span>
+<a id="__codelineno-10-38" name="__codelineno-10-38"></a><a href="#__codelineno-10-38"><span class="linenos" data-linenos="38 "></span></a><span class="w">                   </span><span class="c1">// deliver to the next process pipes for writing</span>
+<a id="__codelineno-10-39" name="__codelineno-10-39"></a><a href="#__codelineno-10-39"><span class="linenos" data-linenos="39 "></span></a><span class="w">                   </span><span class="n">close</span><span class="p">(</span><span class="n">pipes</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<a id="__codelineno-10-40" name="__codelineno-10-40"></a><a href="#__codelineno-10-40"><span class="linenos" data-linenos="40 "></span></a><span class="w">                   </span><span class="n">close</span><span class="p">(</span><span class="n">read_fd</span><span class="p">);</span>
+<a id="__codelineno-10-41" name="__codelineno-10-41"></a><a href="#__codelineno-10-41"><span class="linenos" data-linenos="41 "></span></a><span class="w">                   </span><span class="n">deliver_process</span><span class="p">(</span><span class="n">pipes</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<a id="__codelineno-10-42" name="__codelineno-10-42"></a><a href="#__codelineno-10-42"><span class="linenos" data-linenos="42 "></span></a><span class="w">               </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="p">{</span><span class="w"> </span><span class="c1">// parent</span>
+<a id="__codelineno-10-43" name="__codelineno-10-43"></a><a href="#__codelineno-10-43"><span class="linenos" data-linenos="43 "></span></a><span class="w">                   </span><span class="n">close</span><span class="p">(</span><span class="n">pipes</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<a id="__codelineno-10-44" name="__codelineno-10-44"></a><a href="#__codelineno-10-44"><span class="linenos" data-linenos="44 "></span></a><span class="w">               </span><span class="p">}</span>
+<a id="__codelineno-10-45" name="__codelineno-10-45"></a><a href="#__codelineno-10-45"><span class="linenos" data-linenos="45 "></span></a><span class="w">           </span><span class="p">}</span>
+<a id="__codelineno-10-46" name="__codelineno-10-46"></a><a href="#__codelineno-10-46"><span class="linenos" data-linenos="46 "></span></a>
+<a id="__codelineno-10-47" name="__codelineno-10-47"></a><a href="#__codelineno-10-47"><span class="linenos" data-linenos="47 "></span></a><span class="w">           </span><span class="c1">// send n to the right neighbor</span>
+<a id="__codelineno-10-48" name="__codelineno-10-48"></a><a href="#__codelineno-10-48"><span class="linenos" data-linenos="48 "></span></a><span class="w">           </span><span class="n">write</span><span class="p">(</span><span class="n">pipes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="o">&amp;</span><span class="n">pass_num</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+<a id="__codelineno-10-49" name="__codelineno-10-49"></a><a href="#__codelineno-10-49"><span class="linenos" data-linenos="49 "></span></a><span class="w">       </span><span class="p">}</span>
+<a id="__codelineno-10-50" name="__codelineno-10-50"></a><a href="#__codelineno-10-50"><span class="linenos" data-linenos="50 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-10-51" name="__codelineno-10-51"></a><a href="#__codelineno-10-51"><span class="linenos" data-linenos="51 "></span></a><span class="p">}</span>
+<a id="__codelineno-10-52" name="__codelineno-10-52"></a><a href="#__codelineno-10-52"><span class="linenos" data-linenos="52 "></span></a>
+<a id="__codelineno-10-53" name="__codelineno-10-53"></a><a href="#__codelineno-10-53"><span class="linenos" data-linenos="53 "></span></a>
+<a id="__codelineno-10-54" name="__codelineno-10-54"></a><a href="#__codelineno-10-54"><span class="linenos" data-linenos="54 "></span></a><span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-55" name="__codelineno-10-55"></a><a href="#__codelineno-10-55"><span class="linenos" data-linenos="55 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">pipes</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<a id="__codelineno-10-56" name="__codelineno-10-56"></a><a href="#__codelineno-10-56"><span class="linenos" data-linenos="56 "></span></a><span class="w">    </span><span class="n">pipe</span><span class="p">(</span><span class="n">pipes</span><span class="p">);</span>
+<a id="__codelineno-10-57" name="__codelineno-10-57"></a><a href="#__codelineno-10-57"><span class="linenos" data-linenos="57 "></span></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;=</span><span class="mi">35</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-58" name="__codelineno-10-58"></a><a href="#__codelineno-10-58"><span class="linenos" data-linenos="58 "></span></a><span class="w">        </span><span class="n">write</span><span class="p">(</span><span class="n">pipes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="o">&amp;</span><span class="n">i</span><span class="p">,</span><span class="mi">4</span><span class="p">);</span>
+<a id="__codelineno-10-59" name="__codelineno-10-59"></a><a href="#__codelineno-10-59"><span class="linenos" data-linenos="59 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-10-60" name="__codelineno-10-60"></a><a href="#__codelineno-10-60"><span class="linenos" data-linenos="60 "></span></a><span class="w">    </span><span class="n">close</span><span class="p">(</span><span class="n">pipes</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<a id="__codelineno-10-61" name="__codelineno-10-61"></a><a href="#__codelineno-10-61"><span class="linenos" data-linenos="61 "></span></a><span class="w">    </span><span class="n">deliver_process</span><span class="p">(</span><span class="n">pipes</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<a id="__codelineno-10-62" name="__codelineno-10-62"></a><a href="#__codelineno-10-62"><span class="linenos" data-linenos="62 "></span></a><span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-10-63" name="__codelineno-10-63"></a><a href="#__codelineno-10-63"><span class="linenos" data-linenos="63 "></span></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="5-findmoderate">5. find(moderate)<a class="headerlink" href="#5-findmoderate" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202402181835482.png" /></p>
+<p>此系统命令的功能为：</p>
+<ul>
+<li>输入:一个初始路径和一个目标文件名</li>
+<li>输出:递归扫描该初始路径下的所有目录，匹配与文件名相同的文件并输出</li>
+</ul>
+<p>根据提示中提到的 <code>user/ls.c</code>，来了解读取目录信息的实现，这里给出关键代码的注释：</p>
+<div class="language-C highlight"><span class="filename">C</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><a href="#__codelineno-11-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kt">void</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><a href="#__codelineno-11-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="nf">ls</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">path</span><span class="p">)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><a href="#__codelineno-11-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="p">{</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><a href="#__codelineno-11-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">  </span><span class="kt">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="mi">512</span><span class="p">],</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><a href="#__codelineno-11-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">;</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><a href="#__codelineno-11-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">dirent</span><span class="w"> </span><span class="n">de</span><span class="p">;</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><a href="#__codelineno-11-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">stat</span><span class="w"> </span><span class="n">st</span><span class="p">;</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a><a href="#__codelineno-11-8"><span class="linenos" data-linenos=" 8 "></span></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><a href="#__codelineno-11-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">  </span><span class="c1">// 通过 open 函数获取特定路径的文件描述符</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a><a href="#__codelineno-11-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">  </span><span class="k">if</span><span class="p">((</span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">O_RDONLY</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a><a href="#__codelineno-11-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ls: cannot open %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">);</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a><a href="#__codelineno-11-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a><a href="#__codelineno-11-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14"></a><a href="#__codelineno-11-14"><span class="linenos" data-linenos="14 "></span></a>
+<a id="__codelineno-11-15" name="__codelineno-11-15"></a><a href="#__codelineno-11-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">  </span><span class="c1">// 通过 fstat 函数获取该文件描述符的详细信息</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16"></a><a href="#__codelineno-11-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">fstat</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">st</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17"></a><a href="#__codelineno-11-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">    </span><span class="n">fprintf</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ls: cannot stat %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">);</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18"></a><a href="#__codelineno-11-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">    </span><span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19"></a><a href="#__codelineno-11-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20"></a><a href="#__codelineno-11-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21"></a><a href="#__codelineno-11-21"><span class="linenos" data-linenos="21 "></span></a>
+<a id="__codelineno-11-22" name="__codelineno-11-22"></a><a href="#__codelineno-11-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">  </span><span class="c1">// 通过 st.type 来识别当前文件描述符的类型信息（设备、文件、目录）</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23"></a><a href="#__codelineno-11-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">  </span><span class="c1">// 这里主要关注目录的处理</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24"></a><a href="#__codelineno-11-24"><span class="linenos" data-linenos="24 "></span></a><span class="w">  </span><span class="k">switch</span><span class="p">(</span><span class="n">st</span><span class="p">.</span><span class="n">type</span><span class="p">){</span>
+<a id="__codelineno-11-25" name="__codelineno-11-25"></a><a href="#__codelineno-11-25"><span class="linenos" data-linenos="25 "></span></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="no">T_DEVICE</span><span class="p">:</span>
+<a id="__codelineno-11-26" name="__codelineno-11-26"></a><a href="#__codelineno-11-26"><span class="linenos" data-linenos="26 "></span></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="no">T_FILE</span><span class="p">:</span>
+<a id="__codelineno-11-27" name="__codelineno-11-27"></a><a href="#__codelineno-11-27"><span class="linenos" data-linenos="27 "></span></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s %d %d %l</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fmtname</span><span class="p">(</span><span class="n">path</span><span class="p">),</span><span class="w"> </span><span class="n">st</span><span class="p">.</span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">st</span><span class="p">.</span><span class="n">ino</span><span class="p">,</span><span class="w"> </span><span class="n">st</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28"></a><a href="#__codelineno-11-28"><span class="linenos" data-linenos="28 "></span></a><span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-11-29" name="__codelineno-11-29"></a><a href="#__codelineno-11-29"><span class="linenos" data-linenos="29 "></span></a>
+<a id="__codelineno-11-30" name="__codelineno-11-30"></a><a href="#__codelineno-11-30"><span class="linenos" data-linenos="30 "></span></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="no">T_DIR</span><span class="p">:</span>
+<a id="__codelineno-11-31" name="__codelineno-11-31"></a><a href="#__codelineno-11-31"><span class="linenos" data-linenos="31 "></span></a><span class="w">    </span><span class="c1">// 目录的长度避免超过 xv6 设置的缓冲区上限</span>
+<a id="__codelineno-11-32" name="__codelineno-11-32"></a><a href="#__codelineno-11-32"><span class="linenos" data-linenos="32 "></span></a><span class="w">    </span><span class="c1">// DIRSIZ 被用于计算路径名的长度，以确保不会超出缓冲区的大小</span>
+<a id="__codelineno-11-33" name="__codelineno-11-33"></a><a href="#__codelineno-11-33"><span class="linenos" data-linenos="33 "></span></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">strlen</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">DIRSIZ</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="n">buf</span><span class="p">){</span>
+<a id="__codelineno-11-34" name="__codelineno-11-34"></a><a href="#__codelineno-11-34"><span class="linenos" data-linenos="34 "></span></a><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ls: path too long</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<a id="__codelineno-11-35" name="__codelineno-11-35"></a><a href="#__codelineno-11-35"><span class="linenos" data-linenos="35 "></span></a><span class="w">      </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-11-36" name="__codelineno-11-36"></a><a href="#__codelineno-11-36"><span class="linenos" data-linenos="36 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-37" name="__codelineno-11-37"></a><a href="#__codelineno-11-37"><span class="linenos" data-linenos="37 "></span></a><span class="w">    </span><span class="c1">// 将 path 字符串复制到 buf 中</span>
+<a id="__codelineno-11-38" name="__codelineno-11-38"></a><a href="#__codelineno-11-38"><span class="linenos" data-linenos="38 "></span></a><span class="w">    </span><span class="n">strcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">);</span>
+<a id="__codelineno-11-39" name="__codelineno-11-39"></a><a href="#__codelineno-11-39"><span class="linenos" data-linenos="39 "></span></a>
+<a id="__codelineno-11-40" name="__codelineno-11-40"></a><a href="#__codelineno-11-40"><span class="linenos" data-linenos="40 "></span></a><span class="w">    </span><span class="c1">// 遍历当前目录信息的关键代码</span>
+<a id="__codelineno-11-41" name="__codelineno-11-41"></a><a href="#__codelineno-11-41"><span class="linenos" data-linenos="41 "></span></a>
+<a id="__codelineno-11-42" name="__codelineno-11-42"></a><a href="#__codelineno-11-42"><span class="linenos" data-linenos="42 "></span></a><span class="w">    </span><span class="c1">// 变量 p 即表示路径的字符串指针  </span>
+<a id="__codelineno-11-43" name="__codelineno-11-43"></a><a href="#__codelineno-11-43"><span class="linenos" data-linenos="43 "></span></a><span class="w">    </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buf</span><span class="o">+</span><span class="n">strlen</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span>
+<a id="__codelineno-11-44" name="__codelineno-11-44"></a><a href="#__codelineno-11-44"><span class="linenos" data-linenos="44 "></span></a><span class="w">    </span><span class="o">*</span><span class="n">p</span><span class="o">++</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;/&#39;</span><span class="p">;</span>
+<a id="__codelineno-11-45" name="__codelineno-11-45"></a><a href="#__codelineno-11-45"><span class="linenos" data-linenos="45 "></span></a><span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">read</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">de</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">de</span><span class="p">))</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">de</span><span class="p">)){</span>
+<a id="__codelineno-11-46" name="__codelineno-11-46"></a><a href="#__codelineno-11-46"><span class="linenos" data-linenos="46 "></span></a><span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">de</span><span class="p">.</span><span class="n">inum</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-11-47" name="__codelineno-11-47"></a><a href="#__codelineno-11-47"><span class="linenos" data-linenos="47 "></span></a><span class="w">        </span><span class="k">continue</span><span class="p">;</span>
+<a id="__codelineno-11-48" name="__codelineno-11-48"></a><a href="#__codelineno-11-48"><span class="linenos" data-linenos="48 "></span></a><span class="w">      </span><span class="c1">// memmove 函数即表示从源内存区域复制 n 个字节到目标内存区域</span>
+<a id="__codelineno-11-49" name="__codelineno-11-49"></a><a href="#__codelineno-11-49"><span class="linenos" data-linenos="49 "></span></a><span class="w">      </span><span class="c1">// 每次遍历需要赋值其文件名称的完整路径（即 path+file）</span>
+<a id="__codelineno-11-50" name="__codelineno-11-50"></a><a href="#__codelineno-11-50"><span class="linenos" data-linenos="50 "></span></a><span class="w">      </span><span class="n">memmove</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">de</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">DIRSIZ</span><span class="p">);</span>
+<a id="__codelineno-11-51" name="__codelineno-11-51"></a><a href="#__codelineno-11-51"><span class="linenos" data-linenos="51 "></span></a><span class="w">      </span><span class="n">p</span><span class="p">[</span><span class="n">DIRSIZ</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-11-52" name="__codelineno-11-52"></a><a href="#__codelineno-11-52"><span class="linenos" data-linenos="52 "></span></a><span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">stat</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">st</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<a id="__codelineno-11-53" name="__codelineno-11-53"></a><a href="#__codelineno-11-53"><span class="linenos" data-linenos="53 "></span></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;ls: cannot stat %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">);</span>
+<a id="__codelineno-11-54" name="__codelineno-11-54"></a><a href="#__codelineno-11-54"><span class="linenos" data-linenos="54 "></span></a><span class="w">        </span><span class="k">continue</span><span class="p">;</span>
+<a id="__codelineno-11-55" name="__codelineno-11-55"></a><a href="#__codelineno-11-55"><span class="linenos" data-linenos="55 "></span></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-11-56" name="__codelineno-11-56"></a><a href="#__codelineno-11-56"><span class="linenos" data-linenos="56 "></span></a><span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s %d %d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fmtname</span><span class="p">(</span><span class="n">buf</span><span class="p">),</span><span class="w"> </span><span class="n">st</span><span class="p">.</span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">st</span><span class="p">.</span><span class="n">ino</span><span class="p">,</span><span class="w"> </span><span class="n">st</span><span class="p">.</span><span class="n">size</span><span class="p">);</span>
+<a id="__codelineno-11-57" name="__codelineno-11-57"></a><a href="#__codelineno-11-57"><span class="linenos" data-linenos="57 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-58" name="__codelineno-11-58"></a><a href="#__codelineno-11-58"><span class="linenos" data-linenos="58 "></span></a><span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-11-59" name="__codelineno-11-59"></a><a href="#__codelineno-11-59"><span class="linenos" data-linenos="59 "></span></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-11-60" name="__codelineno-11-60"></a><a href="#__codelineno-11-60"><span class="linenos" data-linenos="60 "></span></a><span class="w">  </span><span class="c1">// 最后使用完后需要关闭文件描述符</span>
+<a id="__codelineno-11-61" name="__codelineno-11-61"></a><a href="#__codelineno-11-61"><span class="linenos" data-linenos="61 "></span></a><span class="w">  </span><span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+<a id="__codelineno-11-62" name="__codelineno-11-62"></a><a href="#__codelineno-11-62"><span class="linenos" data-linenos="62 "></span></a><span class="p">}</span>
+</code></pre></div>
+<p>在上面处理的基础上，我们还需要在过程中不断递归子目录，直至匹配到文件名相同的文件后进行输出，其中还需要注意：</p>
+<ul>
+<li>不要递归 <code>.</code> 和 <code>..</code></li>
+<li>在匹配文件名称的字符串时，需要使用 strcmp 函数</li>
+</ul>
+<p>具体代码如下：</p>
+<div class="language-C highlight"><span class="filename">C</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><a href="#__codelineno-12-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;kernel/types.h&quot;</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><a href="#__codelineno-12-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;kernel/stat.h&quot;</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><a href="#__codelineno-12-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;user/user.h&quot;</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><a href="#__codelineno-12-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;kernel/fs.h&quot;</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><a href="#__codelineno-12-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;kernel/fcntl.h&quot;</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a><a href="#__codelineno-12-6"><span class="linenos" data-linenos=" 6 "></span></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><a href="#__codelineno-12-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="c1">// get the filename from the whole path</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a><a href="#__codelineno-12-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="nf">get_filename</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">path</span><span class="p">){</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a><a href="#__codelineno-12-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a><a href="#__codelineno-12-10"><span class="linenos" data-linenos="10 "></span></a>
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a><a href="#__codelineno-12-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">    </span><span class="c1">// Find first character after last slash.</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a><a href="#__codelineno-12-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">path</span><span class="o">+</span><span class="n">strlen</span><span class="p">(</span><span class="n">path</span><span class="p">);</span><span class="n">p</span><span class="o">&gt;=</span><span class="n">path</span><span class="o">&amp;&amp;*</span><span class="n">p</span><span class="o">!=</span><span class="sc">&#39;/&#39;</span><span class="p">;</span><span class="n">p</span><span class="o">--</span><span class="p">)</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13"></a><a href="#__codelineno-12-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">        </span><span class="p">;</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14"></a><a href="#__codelineno-12-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">    </span><span class="n">p</span><span class="o">++</span><span class="p">;</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15"></a><a href="#__codelineno-12-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16"></a><a href="#__codelineno-12-16"><span class="linenos" data-linenos="16 "></span></a><span class="p">}</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17"></a><a href="#__codelineno-12-17"><span class="linenos" data-linenos="17 "></span></a>
+<a id="__codelineno-12-18" name="__codelineno-12-18"></a><a href="#__codelineno-12-18"><span class="linenos" data-linenos="18 "></span></a><span class="kt">void</span><span class="w"> </span><span class="nf">find</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">path</span><span class="p">,</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">target</span><span class="p">){</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19"></a><a href="#__codelineno-12-19"><span class="linenos" data-linenos="19 "></span></a>
+<a id="__codelineno-12-20" name="__codelineno-12-20"></a><a href="#__codelineno-12-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="mi">512</span><span class="p">],</span><span class="o">*</span><span class="n">p</span><span class="p">;</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21"></a><a href="#__codelineno-12-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="p">;</span>
+<a id="__codelineno-12-22" name="__codelineno-12-22"></a><a href="#__codelineno-12-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">dirent</span><span class="w"> </span><span class="n">de</span><span class="p">;</span>
+<a id="__codelineno-12-23" name="__codelineno-12-23"></a><a href="#__codelineno-12-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">stat</span><span class="w"> </span><span class="n">st</span><span class="p">;</span>
+<a id="__codelineno-12-24" name="__codelineno-12-24"></a><a href="#__codelineno-12-24"><span class="linenos" data-linenos="24 "></span></a>
+<a id="__codelineno-12-25" name="__codelineno-12-25"></a><a href="#__codelineno-12-25"><span class="linenos" data-linenos="25 "></span></a><span class="w">    </span><span class="k">if</span><span class="p">((</span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="w"> </span><span class="n">O_RDONLY</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<a id="__codelineno-12-26" name="__codelineno-12-26"></a><a href="#__codelineno-12-26"><span class="linenos" data-linenos="26 "></span></a><span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;find: cannot open %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">);</span>
+<a id="__codelineno-12-27" name="__codelineno-12-27"></a><a href="#__codelineno-12-27"><span class="linenos" data-linenos="27 "></span></a><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-12-28" name="__codelineno-12-28"></a><a href="#__codelineno-12-28"><span class="linenos" data-linenos="28 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-12-29" name="__codelineno-12-29"></a><a href="#__codelineno-12-29"><span class="linenos" data-linenos="29 "></span></a>
+<a id="__codelineno-12-30" name="__codelineno-12-30"></a><a href="#__codelineno-12-30"><span class="linenos" data-linenos="30 "></span></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">fstat</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="o">&amp;</span><span class="n">st</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">){</span>
+<a id="__codelineno-12-31" name="__codelineno-12-31"></a><a href="#__codelineno-12-31"><span class="linenos" data-linenos="31 "></span></a><span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;find: cannot stat %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">);</span>
+<a id="__codelineno-12-32" name="__codelineno-12-32"></a><a href="#__codelineno-12-32"><span class="linenos" data-linenos="32 "></span></a><span class="w">        </span><span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+<a id="__codelineno-12-33" name="__codelineno-12-33"></a><a href="#__codelineno-12-33"><span class="linenos" data-linenos="33 "></span></a><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-12-34" name="__codelineno-12-34"></a><a href="#__codelineno-12-34"><span class="linenos" data-linenos="34 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-12-35" name="__codelineno-12-35"></a><a href="#__codelineno-12-35"><span class="linenos" data-linenos="35 "></span></a>
+<a id="__codelineno-12-36" name="__codelineno-12-36"></a><a href="#__codelineno-12-36"><span class="linenos" data-linenos="36 "></span></a><span class="w">    </span><span class="k">switch</span><span class="p">(</span><span class="n">st</span><span class="p">.</span><span class="n">type</span><span class="p">){</span>
+<a id="__codelineno-12-37" name="__codelineno-12-37"></a><a href="#__codelineno-12-37"><span class="linenos" data-linenos="37 "></span></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">T_DEVICE</span><span class="p">:</span>
+<a id="__codelineno-12-38" name="__codelineno-12-38"></a><a href="#__codelineno-12-38"><span class="linenos" data-linenos="38 "></span></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">T_FILE</span><span class="p">:</span>
+<a id="__codelineno-12-39" name="__codelineno-12-39"></a><a href="#__codelineno-12-39"><span class="linenos" data-linenos="39 "></span></a><span class="w">            </span><span class="c1">// 检查是否匹配目标文件名称</span>
+<a id="__codelineno-12-40" name="__codelineno-12-40"></a><a href="#__codelineno-12-40"><span class="linenos" data-linenos="40 "></span></a><span class="w">            </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">f_name</span><span class="o">=</span><span class="w"> </span><span class="n">get_filename</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+<a id="__codelineno-12-41" name="__codelineno-12-41"></a><a href="#__codelineno-12-41"><span class="linenos" data-linenos="41 "></span></a><span class="w">            </span><span class="c1">// printf(&quot;filename:%s,target:%s\n&quot;,f_name,target);</span>
+<a id="__codelineno-12-42" name="__codelineno-12-42"></a><a href="#__codelineno-12-42"><span class="linenos" data-linenos="42 "></span></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">strlen</span><span class="p">(</span><span class="n">f_name</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">strcmp</span><span class="p">(</span><span class="n">f_name</span><span class="p">,</span><span class="n">target</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<a id="__codelineno-12-43" name="__codelineno-12-43"></a><a href="#__codelineno-12-43"><span class="linenos" data-linenos="43 "></span></a><span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">path</span><span class="p">);</span>
+<a id="__codelineno-12-44" name="__codelineno-12-44"></a><a href="#__codelineno-12-44"><span class="linenos" data-linenos="44 "></span></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-12-45" name="__codelineno-12-45"></a><a href="#__codelineno-12-45"><span class="linenos" data-linenos="45 "></span></a><span class="w">            </span><span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+<a id="__codelineno-12-46" name="__codelineno-12-46"></a><a href="#__codelineno-12-46"><span class="linenos" data-linenos="46 "></span></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-12-47" name="__codelineno-12-47"></a><a href="#__codelineno-12-47"><span class="linenos" data-linenos="47 "></span></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">T_DIR</span><span class="p">:</span>
+<a id="__codelineno-12-48" name="__codelineno-12-48"></a><a href="#__codelineno-12-48"><span class="linenos" data-linenos="48 "></span></a><span class="w">            </span><span class="k">if</span><span class="p">(</span><span class="n">strlen</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">DIRSIZ</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="k">sizeof</span><span class="w"> </span><span class="n">buf</span><span class="p">){</span>
+<a id="__codelineno-12-49" name="__codelineno-12-49"></a><a href="#__codelineno-12-49"><span class="linenos" data-linenos="49 "></span></a><span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;find: path too long</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-50" name="__codelineno-12-50"></a><a href="#__codelineno-12-50"><span class="linenos" data-linenos="50 "></span></a><span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-12-51" name="__codelineno-12-51"></a><a href="#__codelineno-12-51"><span class="linenos" data-linenos="51 "></span></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-12-52" name="__codelineno-12-52"></a><a href="#__codelineno-12-52"><span class="linenos" data-linenos="52 "></span></a><span class="w">            </span><span class="n">strcpy</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">path</span><span class="p">);</span>
+<a id="__codelineno-12-53" name="__codelineno-12-53"></a><a href="#__codelineno-12-53"><span class="linenos" data-linenos="53 "></span></a><span class="w">            </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buf</span><span class="o">+</span><span class="n">strlen</span><span class="p">(</span><span class="n">buf</span><span class="p">);</span>
+<a id="__codelineno-12-54" name="__codelineno-12-54"></a><a href="#__codelineno-12-54"><span class="linenos" data-linenos="54 "></span></a><span class="w">            </span><span class="o">*</span><span class="n">p</span><span class="o">++</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;/&#39;</span><span class="p">;</span>
+<a id="__codelineno-12-55" name="__codelineno-12-55"></a><a href="#__codelineno-12-55"><span class="linenos" data-linenos="55 "></span></a><span class="w">            </span><span class="k">while</span><span class="p">(</span><span class="n">read</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="o">&amp;</span><span class="n">de</span><span class="p">,</span><span class="k">sizeof</span><span class="p">(</span><span class="n">de</span><span class="p">))</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">de</span><span class="p">)){</span>
+<a id="__codelineno-12-56" name="__codelineno-12-56"></a><a href="#__codelineno-12-56"><span class="linenos" data-linenos="56 "></span></a><span class="w">                 </span><span class="k">if</span><span class="p">(</span><span class="n">de</span><span class="p">.</span><span class="n">inum</span><span class="o">==</span><span class="mi">0</span><span class="o">||</span><span class="n">strcmp</span><span class="p">(</span><span class="n">de</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="s">&quot;.&quot;</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="o">||</span><span class="n">strcmp</span><span class="p">(</span><span class="n">de</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="s">&quot;..&quot;</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+<a id="__codelineno-12-57" name="__codelineno-12-57"></a><a href="#__codelineno-12-57"><span class="linenos" data-linenos="57 "></span></a><span class="w">                     </span><span class="k">continue</span><span class="p">;</span>
+<a id="__codelineno-12-58" name="__codelineno-12-58"></a><a href="#__codelineno-12-58"><span class="linenos" data-linenos="58 "></span></a><span class="w">                 </span><span class="p">}</span>
+<a id="__codelineno-12-59" name="__codelineno-12-59"></a><a href="#__codelineno-12-59"><span class="linenos" data-linenos="59 "></span></a><span class="w">                </span><span class="n">memmove</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">de</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">DIRSIZ</span><span class="p">);</span>
+<a id="__codelineno-12-60" name="__codelineno-12-60"></a><a href="#__codelineno-12-60"><span class="linenos" data-linenos="60 "></span></a><span class="w">                </span><span class="n">p</span><span class="p">[</span><span class="n">DIRSIZ</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-12-61" name="__codelineno-12-61"></a><a href="#__codelineno-12-61"><span class="linenos" data-linenos="61 "></span></a><span class="w">                </span><span class="k">if</span><span class="p">(</span><span class="n">stat</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">st</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">){</span>
+<a id="__codelineno-12-62" name="__codelineno-12-62"></a><a href="#__codelineno-12-62"><span class="linenos" data-linenos="62 "></span></a><span class="w">                    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;find: cannot stat %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">);</span>
+<a id="__codelineno-12-63" name="__codelineno-12-63"></a><a href="#__codelineno-12-63"><span class="linenos" data-linenos="63 "></span></a><span class="w">                    </span><span class="k">continue</span><span class="p">;</span>
+<a id="__codelineno-12-64" name="__codelineno-12-64"></a><a href="#__codelineno-12-64"><span class="linenos" data-linenos="64 "></span></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-12-65" name="__codelineno-12-65"></a><a href="#__codelineno-12-65"><span class="linenos" data-linenos="65 "></span></a><span class="w">                </span><span class="c1">// printf(&quot;p:%s,buf:%s\n&quot;,p,buf);</span>
+<a id="__codelineno-12-66" name="__codelineno-12-66"></a><a href="#__codelineno-12-66"><span class="linenos" data-linenos="66 "></span></a><span class="w">                </span><span class="n">find</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">target</span><span class="p">);</span>
+<a id="__codelineno-12-67" name="__codelineno-12-67"></a><a href="#__codelineno-12-67"><span class="linenos" data-linenos="67 "></span></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-12-68" name="__codelineno-12-68"></a><a href="#__codelineno-12-68"><span class="linenos" data-linenos="68 "></span></a><span class="w">            </span><span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+<a id="__codelineno-12-69" name="__codelineno-12-69"></a><a href="#__codelineno-12-69"><span class="linenos" data-linenos="69 "></span></a><span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<a id="__codelineno-12-70" name="__codelineno-12-70"></a><a href="#__codelineno-12-70"><span class="linenos" data-linenos="70 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-12-71" name="__codelineno-12-71"></a><a href="#__codelineno-12-71"><span class="linenos" data-linenos="71 "></span></a><span class="p">}</span>
+<a id="__codelineno-12-72" name="__codelineno-12-72"></a><a href="#__codelineno-12-72"><span class="linenos" data-linenos="72 "></span></a>
+<a id="__codelineno-12-73" name="__codelineno-12-73"></a><a href="#__codelineno-12-73"><span class="linenos" data-linenos="73 "></span></a>
+<a id="__codelineno-12-74" name="__codelineno-12-74"></a><a href="#__codelineno-12-74"><span class="linenos" data-linenos="74 "></span></a>
+<a id="__codelineno-12-75" name="__codelineno-12-75"></a><a href="#__codelineno-12-75"><span class="linenos" data-linenos="75 "></span></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[]){</span>
+<a id="__codelineno-12-76" name="__codelineno-12-76"></a><a href="#__codelineno-12-76"><span class="linenos" data-linenos="76 "></span></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">argc</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">3</span><span class="p">){</span>
+<a id="__codelineno-12-77" name="__codelineno-12-77"></a><a href="#__codelineno-12-77"><span class="linenos" data-linenos="77 "></span></a><span class="w">        </span><span class="n">fprintf</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s">&quot;find usage: find [dir] [filename]</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-78" name="__codelineno-12-78"></a><a href="#__codelineno-12-78"><span class="linenos" data-linenos="78 "></span></a><span class="w">        </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-12-79" name="__codelineno-12-79"></a><a href="#__codelineno-12-79"><span class="linenos" data-linenos="79 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-12-80" name="__codelineno-12-80"></a><a href="#__codelineno-12-80"><span class="linenos" data-linenos="80 "></span></a><span class="w">    </span><span class="n">find</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<a id="__codelineno-12-81" name="__codelineno-12-81"></a><a href="#__codelineno-12-81"><span class="linenos" data-linenos="81 "></span></a><span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-12-82" name="__codelineno-12-82"></a><a href="#__codelineno-12-82"><span class="linenos" data-linenos="82 "></span></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="6-xargsmoderate">6. xargs(moderate)<a class="headerlink" href="#6-xargsmoderate" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202402182136921.png" /></p>
+<p>这里需要实现的功能为：</p>
+<ul>
+<li>参数描述要运行的命令，它从标准输入读取行，并为每一行运行命令，并将该行附加到命令的参数中</li>
+</ul>
+<p>结合提示信息，该命令实现的核心处理有以下几点：</p>
+<ul>
+<li>通过读取文件描述符的值为 0 来判断输入结束</li>
+<li>使用<code>fork</code>和<code>exec</code>在每行输入上调用命令，且注意在父级中使用<code>wait</code>等待子级完成命令</li>
+<li>若想要读取单行输入，则可遍历读取单个字符，直至出现换行符即 <code>\n</code>，在实际实现过程中还需要通过 buf 来截取处理</li>
+</ul>
+<p>具体代码如下：</p>
+<div class="language-C highlight"><span class="filename">C</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><a href="#__codelineno-13-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;kernel/param.h&quot;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><a href="#__codelineno-13-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;kernel/types.h&quot;</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><a href="#__codelineno-13-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;user/user.h&quot;</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a><a href="#__codelineno-13-4"><span class="linenos" data-linenos=" 4 "></span></a>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a><a href="#__codelineno-13-5"><span class="linenos" data-linenos=" 5 "></span></a>
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a><a href="#__codelineno-13-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="cp">#define buf_size 512</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a><a href="#__codelineno-13-7"><span class="linenos" data-linenos=" 7 "></span></a>
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a><a href="#__codelineno-13-8"><span class="linenos" data-linenos=" 8 "></span></a>
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a><a href="#__codelineno-13-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10"></a><a href="#__codelineno-13-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="n">buf_size</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11"></a><a href="#__codelineno-13-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">xargv</span><span class="p">[</span><span class="n">MAXARG</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12"></a><a href="#__codelineno-13-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">used_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13"></a><a href="#__codelineno-13-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">stdin_end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14"></a><a href="#__codelineno-13-14"><span class="linenos" data-linenos="14 "></span></a>
+<a id="__codelineno-13-15" name="__codelineno-13-15"></a><a href="#__codelineno-13-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">argc</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16"></a><a href="#__codelineno-13-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">        </span><span class="n">xargv</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17"></a><a href="#__codelineno-13-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18"></a><a href="#__codelineno-13-18"><span class="linenos" data-linenos="18 "></span></a>
+<a id="__codelineno-13-19" name="__codelineno-13-19"></a><a href="#__codelineno-13-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">stdin_end</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">used_size</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-20" name="__codelineno-13-20"></a><a href="#__codelineno-13-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">stdin_end</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-21" name="__codelineno-13-21"></a><a href="#__codelineno-13-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">read_bytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">used_size</span><span class="p">,</span><span class="w"> </span><span class="n">buf_size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">used_size</span><span class="p">);</span>
+<a id="__codelineno-13-22" name="__codelineno-13-22"></a><a href="#__codelineno-13-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">read_bytes</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-23" name="__codelineno-13-23"></a><a href="#__codelineno-13-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">                </span><span class="n">fprintf</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;xargs: read returns -1 error</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<a id="__codelineno-13-24" name="__codelineno-13-24"></a><a href="#__codelineno-13-24"><span class="linenos" data-linenos="24 "></span></a><span class="w">                </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-13-25" name="__codelineno-13-25"></a><a href="#__codelineno-13-25"><span class="linenos" data-linenos="25 "></span></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-13-26" name="__codelineno-13-26"></a><a href="#__codelineno-13-26"><span class="linenos" data-linenos="26 "></span></a>
+<a id="__codelineno-13-27" name="__codelineno-13-27"></a><a href="#__codelineno-13-27"><span class="linenos" data-linenos="27 "></span></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">read_bytes</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-28" name="__codelineno-13-28"></a><a href="#__codelineno-13-28"><span class="linenos" data-linenos="28 "></span></a><span class="w">                </span><span class="n">close</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-13-29" name="__codelineno-13-29"></a><a href="#__codelineno-13-29"><span class="linenos" data-linenos="29 "></span></a><span class="w">                </span><span class="n">stdin_end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-13-30" name="__codelineno-13-30"></a><a href="#__codelineno-13-30"><span class="linenos" data-linenos="30 "></span></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-13-31" name="__codelineno-13-31"></a><a href="#__codelineno-13-31"><span class="linenos" data-linenos="31 "></span></a><span class="w">            </span><span class="n">used_size</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">read_bytes</span><span class="p">;</span>
+<a id="__codelineno-13-32" name="__codelineno-13-32"></a><a href="#__codelineno-13-32"><span class="linenos" data-linenos="32 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-13-33" name="__codelineno-13-33"></a><a href="#__codelineno-13-33"><span class="linenos" data-linenos="33 "></span></a>
+<a id="__codelineno-13-34" name="__codelineno-13-34"></a><a href="#__codelineno-13-34"><span class="linenos" data-linenos="34 "></span></a><span class="w">        </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">line_end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strchr</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
+<a id="__codelineno-13-35" name="__codelineno-13-35"></a><a href="#__codelineno-13-35"><span class="linenos" data-linenos="35 "></span></a>
+<a id="__codelineno-13-36" name="__codelineno-13-36"></a><a href="#__codelineno-13-36"><span class="linenos" data-linenos="36 "></span></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">line_end</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-37" name="__codelineno-13-37"></a><a href="#__codelineno-13-37"><span class="linenos" data-linenos="37 "></span></a><span class="w">            </span><span class="kt">char</span><span class="w"> </span><span class="n">xbuf</span><span class="p">[</span><span class="n">buf_size</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<a id="__codelineno-13-38" name="__codelineno-13-38"></a><a href="#__codelineno-13-38"><span class="linenos" data-linenos="38 "></span></a><span class="w">            </span><span class="n">memcpy</span><span class="p">(</span><span class="n">xbuf</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">line_end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">buf</span><span class="p">);</span>
+<a id="__codelineno-13-39" name="__codelineno-13-39"></a><a href="#__codelineno-13-39"><span class="linenos" data-linenos="39 "></span></a><span class="w">            </span><span class="n">xargv</span><span class="p">[</span><span class="n">argc</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xbuf</span><span class="p">;</span>
+<a id="__codelineno-13-40" name="__codelineno-13-40"></a><a href="#__codelineno-13-40"><span class="linenos" data-linenos="40 "></span></a>
+<a id="__codelineno-13-41" name="__codelineno-13-41"></a><a href="#__codelineno-13-41"><span class="linenos" data-linenos="41 "></span></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">pid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fork</span><span class="p">();</span>
+<a id="__codelineno-13-42" name="__codelineno-13-42"></a><a href="#__codelineno-13-42"><span class="linenos" data-linenos="42 "></span></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pid</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// child</span>
+<a id="__codelineno-13-43" name="__codelineno-13-43"></a><a href="#__codelineno-13-43"><span class="linenos" data-linenos="43 "></span></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">stdin_end</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-44" name="__codelineno-13-44"></a><a href="#__codelineno-13-44"><span class="linenos" data-linenos="44 "></span></a><span class="w">                    </span><span class="n">close</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-13-45" name="__codelineno-13-45"></a><a href="#__codelineno-13-45"><span class="linenos" data-linenos="45 "></span></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-13-46" name="__codelineno-13-46"></a><a href="#__codelineno-13-46"><span class="linenos" data-linenos="46 "></span></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">exec</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">xargv</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-47" name="__codelineno-13-47"></a><a href="#__codelineno-13-47"><span class="linenos" data-linenos="47 "></span></a><span class="w">                    </span><span class="n">fprintf</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;xargs: exec fails with -1</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<a id="__codelineno-13-48" name="__codelineno-13-48"></a><a href="#__codelineno-13-48"><span class="linenos" data-linenos="48 "></span></a><span class="w">                    </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-13-49" name="__codelineno-13-49"></a><a href="#__codelineno-13-49"><span class="linenos" data-linenos="49 "></span></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-13-50" name="__codelineno-13-50"></a><a href="#__codelineno-13-50"><span class="linenos" data-linenos="50 "></span></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// parent</span>
+<a id="__codelineno-13-51" name="__codelineno-13-51"></a><a href="#__codelineno-13-51"><span class="linenos" data-linenos="51 "></span></a><span class="w">                </span><span class="kt">int</span><span class="w"> </span><span class="n">remain_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line_end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">buf</span><span class="p">;</span>
+<a id="__codelineno-13-52" name="__codelineno-13-52"></a><a href="#__codelineno-13-52"><span class="linenos" data-linenos="52 "></span></a><span class="w">                </span><span class="n">memmove</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="n">line_end</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">used_size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">remain_line</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-13-53" name="__codelineno-13-53"></a><a href="#__codelineno-13-53"><span class="linenos" data-linenos="53 "></span></a><span class="w">                </span><span class="n">used_size</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">remain_line</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-13-54" name="__codelineno-13-54"></a><a href="#__codelineno-13-54"><span class="linenos" data-linenos="54 "></span></a><span class="w">                </span><span class="n">memset</span><span class="p">(</span><span class="n">buf</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">used_size</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">buf_size</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">used_size</span><span class="p">);</span>
+<a id="__codelineno-13-55" name="__codelineno-13-55"></a><a href="#__codelineno-13-55"><span class="linenos" data-linenos="55 "></span></a><span class="w">                </span><span class="n">wait</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-13-56" name="__codelineno-13-56"></a><a href="#__codelineno-13-56"><span class="linenos" data-linenos="56 "></span></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-13-57" name="__codelineno-13-57"></a><a href="#__codelineno-13-57"><span class="linenos" data-linenos="57 "></span></a>
+<a id="__codelineno-13-58" name="__codelineno-13-58"></a><a href="#__codelineno-13-58"><span class="linenos" data-linenos="58 "></span></a><span class="w">            </span><span class="n">line_end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">strchr</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">);</span>
+<a id="__codelineno-13-59" name="__codelineno-13-59"></a><a href="#__codelineno-13-59"><span class="linenos" data-linenos="59 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-13-60" name="__codelineno-13-60"></a><a href="#__codelineno-13-60"><span class="linenos" data-linenos="60 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-61" name="__codelineno-13-61"></a><a href="#__codelineno-13-61"><span class="linenos" data-linenos="61 "></span></a><span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-13-62" name="__codelineno-13-62"></a><a href="#__codelineno-13-62"><span class="linenos" data-linenos="62 "></span></a><span class="p">}</span>
+</code></pre></div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">February 20, 2024 14:50:25</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">February 20, 2024 14:50:25</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Previous: MIT-6.S081">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                MIT-6.S081
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../Notes/lec1/" class="md-footer__link md-footer__link--next" aria-label="Next: Lec1">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Lec1
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 catwithtudou
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/catwithtudou" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/catwithtudou" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9L389.2 48zm-24.8 373.8h39.1L151.1 88h-42l255.3 333.8z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+    
+  
+
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="github" checked>
+          <span class="task-list-indicator"></span>
+          GitHub
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotation", "content.code.copy", "header.autohide"], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
