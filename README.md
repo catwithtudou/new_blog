@@ -5,6 +5,10 @@
 
 Expansion Todo:
 
-- [ ] Implement automatic mapping blog directory tree configuration about repo directory
-- [ ] code abbreviation
-- [ ] directory folding
+- [x] Implement automatic mapping blog directory tree configuration about repo directory
+- [x] code abbreviation
+- [x] directory folding
+- [x] Code Content Tab
+- [x] the connection between blogs and topics
+- [ ] Migration of old blog posts
+- [ ] site analysis (like baidu, google)

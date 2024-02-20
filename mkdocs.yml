@@ -1,5 +1,5 @@
 # Site information =====================================================
-site_name: catwithtudou️
+site_name: catwithtudou️🌦️
 site_url: https://zhengyua.cn/new_blog/
 site_author: catwithtudou️
 site_description: >-
@@ -18,10 +18,11 @@ theme:
   name: material
   custom_dir: overrides
   # site logo
-  logo: assets/logo.png
+  logo: assets/logo.jpeg
   # page tab logo
-  favicon: assets/logo.png
+  favicon: assets/logo.jpeg
   features:
+    - navigation.tracking  #锚点跟踪
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.sections
@@ -75,7 +76,14 @@ plugins:
       post_date_format: full
       post_url_date_format: yyyy/MM/dd
       archive_toc: true
+      archive_url_format: "archive/{date}"
       categories_toc: true
+      categories_url_format: "category/{slug}"
+      post_excerpt: required
+      archive_name:  📁Archive
+      categories_name:  🗂️Categories
+      pagination_per_page: 15
+      pagination_format: "$link_first $link_previous ~2~ $link_next $link_last"
   - tags:
       enabled: true
       tags_file: blog/tags.md
@@ -84,6 +92,16 @@ plugins:
       lang:
         - en
         - zh
+  - include_dir_to_nav:
+      sort_file: true
+      sort_directory: true
+      file_name_as_title: true
+  - git-revision-date-localized:
+      type: datetime
+      #fallback_to_build_date: true
+      enable_creation_date: true
+      timezone: Asia/Shanghai
+
 
 
 
@@ -94,6 +112,11 @@ markdown_extensions:
       anchor_linenums: true
       auto_title: true
       pygments_lang_class: true
+      use_pygments: true
+      linenums: true
+      linenums_style: pymdownx-inline
+  - pymdownx.tabbed: #内容选项卡
+      alternate_style: true  #启用内容选项卡替代样式，必须开启
   - pymdownx.inlinehilite
   - pymdownx.superfences
   - pymdownx.betterem
@@ -156,54 +179,17 @@ extra_javascript:
 
 # Page tree
 nav:
-  - Home: index.md
-  - Language:
-      - language/index.md
-      - Golang:
-          - language/golang/README.md
-          - 开发实践:
-              - language/golang/code_prac/go_best_practice.md
-      - Rust:
-          - language/rust/README.md
-          - 开发实践:
-              - language/rust/code_prac/list.md
-          - 书籍笔记:
-              - language/rust/book/rust_course.md
-  - Algorithms:
-      - algorithms/index.md
-      - Books:
-          - algorithms/books/README.md
-          - 代码随想录:
-              - algorithms/books/code_caprice/README.md
-              - 数组:
-                  - algorithms/books/code_caprice/array/01basic.md
-                  - algorithms/books/code_caprice/array/02array_algorithms.md
-              - 链表:
-                  - algorithms/books/code_caprice/linked_list/01basic.md
-                  - algorithms/books/code_caprice/linked_list/02list_algorithms.md
-  - OS:
-      - os/index.md
-      - MIT6.S081:
-          - os/mit6s081/README.md
-          - Notes:
-              - os/mit6s081/notes/lec1.md
-              - os/mit6s081/notes/lec2.md
-          - Labs:
-              - os/mit6s081/labs/lab1.md
-  - Network:
-      - network/index.md
-  - DS:
-      - ds/index.md
-  - Architecture:
-      - architecture/index.md
-  - Middleware:
-      - middleware/index.md
-  - Project:
-      - project/index.md
-  - Common:
-      - common/index.md
-      - common/100_tips.md
-  - Romance:
+  - 🌦️Home: index.md
+  - 📌MainPage:
+      - blog/me.md
       - blog/index.md
       - blog/tags.md
-
+  - Language: language
+  - Algorithms: algorithms
+  - OS: os
+  - Network: network
+  - DS: ds
+  - Architecture: architecture
+  - Middleware: middleware
+  - Project: project
+  - Common: common
