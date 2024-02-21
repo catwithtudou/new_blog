@@ -11,7 +11,7 @@
 ## Lecture & Preparation
 
 - [x] Lecture 01 
-- [ ] Lecture 02
+- [x] Lecture 02
 - [ ] Lecture 03
 - [ ] Lecture 04
 - [ ] Lecture 05
