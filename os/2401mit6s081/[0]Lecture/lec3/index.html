@@ -1039,6 +1039,57 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2. Lecture 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Isolation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-defensive" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Defensive
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-hardware-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Hardware support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-userkernel-mode-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 User/Kernel mode change
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-monolithic-kernel-vs-micro-kernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 Monolithic Kernel vs Micro Kernel
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1548,6 +1599,57 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2. Lecture 3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 Isolation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-defensive" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 Defensive
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-hardware-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 Hardware support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-userkernel-mode-change" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 User/Kernel mode change
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-monolithic-kernel-vs-micro-kernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5 Monolithic Kernel vs Micro Kernel
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1665,6 +1767,215 @@
 <li>Modern operating systems, however, support several threads within a process, to allow a single process to exploit multiple CPUs.</li>
 </ul>
 <h2 id="2-lecture-3">2. Lecture 3<a class="headerlink" href="#2-lecture-3" title="Permanent link">&para;</a></h2>
+<p><strong>1. Lecture Topic:</strong></p>
+<ul>
+<li>OS design <ul>
+<li>system calls </li>
+<li>micro/monolithic kernel </li>
+</ul>
+</li>
+<li>First system call in xv6</li>
+</ul>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202402230942514.png" /></p>
+<p><strong>2. Goal of OS</strong> </p>
+<ul>
+<li>run multiple applications </li>
+<li>isolate them </li>
+<li>multiplex them </li>
+<li>share</li>
+</ul>
+<h3 id="21-isolation">2.1 Isolation<a class="headerlink" href="#21-isolation" title="Permanent link">&para;</a></h3>
+<p><strong>1. Strawman design: No OS</strong> </p>
+<ul>
+<li>Application directly interacts with hardware <ul>
+<li>CPU cores &amp; registers </li>
+<li>DRAM chips </li>
+<li>Disk blocks </li>
+<li>...</li>
+</ul>
+</li>
+<li>OS library perhaps abstracts some of it </li>
+</ul>
+<p><strong>2. Strawman design: not conducive to multiplexing</strong> </p>
+<ul>
+<li>each app periodically must give up hardware </li>
+<li>BUT, weak isolation <ul>
+<li>app forgets to give up, no other app runs </li>
+<li>apps has end-less loop, no other app runs </li>
+<li>you cannot even kill the badly app from another app</li>
+</ul>
+</li>
+<li>but used by real-time OSes<ul>
+<li>"cooperative scheduling" </li>
+</ul>
+</li>
+</ul>
+<p><strong>3. Strawman design: not conducive to memory isolation</strong> </p>
+<ul>
+<li>all apps share physical memory </li>
+<li>one app can overwrites another apps memory </li>
+<li>one app can overwrite OS library</li>
+</ul>
+<p><strong>4. Unix interface conducive to OS goals</strong> </p>
+<ul>
+<li>abstracts the hardware in way that achieves goals </li>
+<li>processes (instead of cores): fork<ul>
+<li>OS transparently allocates cores to processes <ul>
+<li>Saves and restore registers </li>
+</ul>
+</li>
+<li>Enforces that processes give them up <ul>
+<li>Periodically re-allocates cores     </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>memory (instead of physical memory): exec <ul>
+<li>Each process has its "own" memory </li>
+<li>OS can decide where to place app in memory </li>
+<li>OS can enforce isolation between memory of different apps </li>
+<li>OS allows storing image in file system</li>
+</ul>
+</li>
+<li>files (instead of disk blocks)<ul>
+<li>OS can provide convenient names </li>
+<li>OS can allow sharing of files between processes/users </li>
+<li>pipes (instead of shared physical mem)</li>
+<li>OS can stop sender/receiver</li>
+</ul>
+</li>
+</ul>
+<h3 id="22-defensive">2.2 Defensive<a class="headerlink" href="#22-defensive" title="Permanent link">&para;</a></h3>
+<p><strong>OS must be defensive</strong> </p>
+<ul>
+<li>an application shouldn't be able to crash OS </li>
+<li>an application shouldn't be able to break out of its isolation <ul>
+<li>=&gt; need strong isolation between apps and OS</li>
+</ul>
+</li>
+<li>approach: hardware support<ul>
+<li>user/kernel mode</li>
+<li>virtual memory</li>
+</ul>
+</li>
+</ul>
+<h3 id="23-hardware-support">2.3 Hardware support<a class="headerlink" href="#23-hardware-support" title="Permanent link">&para;</a></h3>
+<p><strong>1. Processors provide user/kernel mode</strong></p>
+<ul>
+<li>kernel mode: can execute "privileged" instructions <ul>
+<li>e.g., setting kernel/user bit </li>
+<li>e.g., reprogramming timer chip</li>
+</ul>
+</li>
+<li>user mode: cannot execute privileged instructions <ul>
+<li>Run OS in kernel mode, applications in user mode</li>
+<li>RISC-V has also an M mode, which we mostly ignore</li>
+</ul>
+</li>
+</ul>
+<p><strong>2. Processors provide virtual memory</strong></p>
+<ul>
+<li>Hardware provides page tables that translate virtual address to physical </li>
+<li>Define what physical memory an application can access </li>
+<li>OS sets up page tables so that each application can access only its memory</li>
+</ul>
+<h3 id="24-userkernel-mode-change">2.4 User/Kernel mode change<a class="headerlink" href="#24-userkernel-mode-change" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202402231024402.png" /></p>
+<p><strong>1. Apps must be able to communicate with kernel</strong> </p>
+<ul>
+<li>Write to storage device, which is shared =&gt; must be protected =&gt; in kernel </li>
+<li>Exit app </li>
+<li>...</li>
+</ul>
+<p><strong>2. Solution: add instruction to change mode in controlled way</strong></p>
+<ul>
+<li>ecall</li>
+<li>enters kernel mode at a pre-agreed entry point</li>
+</ul>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202402231028158.png" /></p>
+<ul>
+<li>user / kernel (redline)</li>
+<li>app -&gt; printf() -&gt; write() -&gt; SYSTEM CALL -&gt; sys_write() -&gt; ... <ul>
+<li>user-level libraries are app's private business </li>
+</ul>
+</li>
+<li>kernel internal functions are not callable by user</li>
+<li>other way of drawing picture:<ul>
+<li>syscall 1  -&gt; system call stub -&gt; kernel entry -&gt; syscall -&gt; fs </li>
+<li>syscall 2                                                 -&gt; proc</li>
+</ul>
+</li>
+<li>system call stub executes special instruction to enter kernel <ul>
+<li>hardware switches to kernel mode </li>
+<li>but only at an entry point specified by the kernel</li>
+</ul>
+</li>
+<li>syscall need some way to get at arguments of syscall</li>
+</ul>
+<h3 id="25-monolithic-kernel-vs-micro-kernel">2.5 Monolithic Kernel vs Micro Kernel<a class="headerlink" href="#25-monolithic-kernel-vs-micro-kernel" title="Permanent link">&para;</a></h3>
+<p><strong>1. Kernel is the Trusted Computing Base (TCB)</strong></p>
+<ul>
+<li>Kernel must be "correct"<ul>
+<li>Bugs in kernel could allow user apps to circumvent kernel/user</li>
+</ul>
+</li>
+<li>Kernel must treat user apps as suspect <ul>
+<li>User app may trick kernel to do the wrong thing </li>
+<li>Kernel must check arguments carefully </li>
+<li>Setup user/kernel correctly</li>
+</ul>
+</li>
+<li>Kernel in charge of separating applications too <ul>
+<li>One app may try to read/write another app's memory </li>
+<li>=&gt; Requires a security mindset </li>
+<li>Any bug in kernel may be a security exploit</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Aside: can one have process isolation WITHOUT h/w-supported </p>
+<ul>
+<li>kernel/user mode and virtual memory? </li>
+<li>yes! use a strongly-typed programming language <ul>
+<li>For example, see Singularity O/S </li>
+</ul>
+</li>
+<li>the compiler is then the trust computing base (TCB)</li>
+<li>but h/w user/kernel mode is the most popular plan</li>
+</ul>
+</blockquote>
+<p><strong>2. Monolothic kernel</strong></p>
+<ul>
+<li>OS runs in kernel space </li>
+<li>Xv6 does this.  Linux etc. too. </li>
+<li>kernel interface == system call interface </li>
+<li>one big program with file system, drivers, &amp;c</li>
+<li>good: easy for subsystems to cooperate <ul>
+<li>one cache shared by file system and virtual memory</li>
+</ul>
+</li>
+<li>bad: interactions are complex <ul>
+<li>leads to bugs</li>
+<li>no isolation within</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. Microkernel design</strong></p>
+<ul>
+<li>many OS services run as ordinary user programs <ul>
+<li>file system in a file server </li>
+</ul>
+</li>
+<li>kernel implements minimal mechanism to run services in user space <ul>
+<li>processes with memory </li>
+<li>inter-process communication (IPC)</li>
+<li>kernel interface != system call interface</li>
+</ul>
+</li>
+<li>good: more isolation</li>
+<li>bad: may be hard to get good performance </li>
+<li>both monolithic and microkernel designs widely used</li>
+</ul>
 
 
 
@@ -1687,7 +1998,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">February 22, 2024 10:59:17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">February 23, 2024 13:55:11</span>
   </span>
 
     
