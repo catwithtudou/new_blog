@@ -95,3 +95,172 @@
 - Modern operating systems, however, support several threads within a process, to allow a single process to exploit multiple CPUs.
 
 ## 2. Lecture 3
+
+**1. Lecture Topic:**
+
+- OS design 
+    - system calls 
+    - micro/monolithic kernel 
+- First system call in xv6
+
+![](https://img.zhengyua.cn/blog/202402230942514.png)
+
+**2. Goal of OS** 
+
+- run multiple applications 
+- isolate them 
+- multiplex them 
+- share
+
+### 2.1 Isolation
+
+**1. Strawman design: No OS** 
+
+- Application directly interacts with hardware 
+    - CPU cores & registers 
+    - DRAM chips 
+    - Disk blocks 
+    - ...
+- OS library perhaps abstracts some of it 
+
+
+**2. Strawman design: not conducive to multiplexing** 
+
+- each app periodically must give up hardware 
+- BUT, weak isolation 
+    - app forgets to give up, no other app runs 
+    - apps has end-less loop, no other app runs 
+    - you cannot even kill the badly app from another app
+- but used by real-time OSes
+    - "cooperative scheduling" 
+
+**3. Strawman design: not conducive to memory isolation** 
+
+- all apps share physical memory 
+- one app can overwrites another apps memory 
+- one app can overwrite OS library
+
+**4. Unix interface conducive to OS goals** 
+
+- abstracts the hardware in way that achieves goals 
+- processes (instead of cores): fork
+    - OS transparently allocates cores to processes 
+        - Saves and restore registers 
+    - Enforces that processes give them up 
+        - Periodically re-allocates cores     
+- memory (instead of physical memory): exec 
+    - Each process has its "own" memory 
+    - OS can decide where to place app in memory 
+    - OS can enforce isolation between memory of different apps 
+    - OS allows storing image in file system
+- files (instead of disk blocks)
+    - OS can provide convenient names 
+    - OS can allow sharing of files between processes/users 
+    - pipes (instead of shared physical mem)
+    - OS can stop sender/receiver
+
+### 2.2 Defensive
+
+**OS must be defensive** 
+
+- an application shouldn't be able to crash OS 
+- an application shouldn't be able to break out of its isolation 
+    - => need strong isolation between apps and OS
+-  approach: hardware support
+    - user/kernel mode
+    - virtual memory
+
+
+### 2.3 Hardware support 
+
+**1. Processors provide user/kernel mode**
+
+- kernel mode: can execute "privileged" instructions 
+    - e.g., setting kernel/user bit 
+    - e.g., reprogramming timer chip
+- user mode: cannot execute privileged instructions 
+    - Run OS in kernel mode, applications in user mode
+    - RISC-V has also an M mode, which we mostly ignore
+
+**2. Processors provide virtual memory**
+
+- Hardware provides page tables that translate virtual address to physical 
+- Define what physical memory an application can access 
+- OS sets up page tables so that each application can access only its memory
+
+### 2.4 User/Kernel mode change
+
+![](https://img.zhengyua.cn/blog/202402231024402.png)
+
+**1. Apps must be able to communicate with kernel** 
+
+- Write to storage device, which is shared => must be protected => in kernel 
+- Exit app 
+- ...
+
+**2. Solution: add instruction to change mode in controlled way**
+
+- ecall
+- enters kernel mode at a pre-agreed entry point
+
+![](https://img.zhengyua.cn/blog/202402231028158.png)
+
+
+- user / kernel (redline)
+- app -> printf() -> write() -> SYSTEM CALL -> sys_write() -> ... 
+    - user-level libraries are app's private business 
+- kernel internal functions are not callable by user
+- other way of drawing picture:
+    - syscall 1  -> system call stub -> kernel entry -> syscall -> fs 
+    - syscall 2                                                 -> proc
+- system call stub executes special instruction to enter kernel 
+    - hardware switches to kernel mode 
+    - but only at an entry point specified by the kernel
+- syscall need some way to get at arguments of syscall
+
+### 2.5 Monolithic Kernel vs Micro Kernel
+
+**1. Kernel is the Trusted Computing Base (TCB)**
+
+- Kernel must be "correct"
+    - Bugs in kernel could allow user apps to circumvent kernel/user
+- Kernel must treat user apps as suspect 
+    - User app may trick kernel to do the wrong thing 
+    - Kernel must check arguments carefully 
+    - Setup user/kernel correctly
+- Kernel in charge of separating applications too 
+    - One app may try to read/write another app's memory 
+    - => Requires a security mindset 
+    - Any bug in kernel may be a security exploit
+
+> Aside: can one have process isolation WITHOUT h/w-supported 
+> 
+> - kernel/user mode and virtual memory? 
+> - yes! use a strongly-typed programming language 
+>       - For example, see Singularity O/S 
+> - the compiler is then the trust computing base (TCB)
+> - but h/w user/kernel mode is the most popular plan
+
+**2. Monolothic kernel**
+
+- OS runs in kernel space 
+- Xv6 does this.  Linux etc. too. 
+- kernel interface == system call interface 
+- one big program with file system, drivers, &c
+- good: easy for subsystems to cooperate 
+    - one cache shared by file system and virtual memory
+- bad: interactions are complex 
+    - leads to bugs
+    - no isolation within
+
+**3. Microkernel design**
+
+- many OS services run as ordinary user programs 
+    - file system in a file server 
+- kernel implements minimal mechanism to run services in user space 
+    - processes with memory 
+    - inter-process communication (IPC)
+    - kernel interface != system call interface
+- good: more isolation
+- bad: may be hard to get good performance 
+- both monolithic and microkernel designs widely used
