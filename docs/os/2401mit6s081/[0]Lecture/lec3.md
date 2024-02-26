@@ -241,6 +241,8 @@
 > - the compiler is then the trust computing base (TCB)
 > - but h/w user/kernel mode is the most popular plan
 
+![](https://img.zhengyua.cn/blog/202402260925820.png)
+
 **2. Monolothic kernel**
 
 - OS runs in kernel space 
@@ -253,6 +255,9 @@
     - leads to bugs
     - no isolation within
 
+![](https://img.zhengyua.cn/blog/202402260926457.png)
+
+
 **3. Microkernel design**
 
 - many OS services run as ordinary user programs 
@@ -264,3 +269,100 @@
 - good: more isolation
 - bad: may be hard to get good performance 
 - both monolithic and microkernel designs widely used
+
+**4. Xv6 case study**
+   
+- Monolithic kernel 
+    - Unix system calls == kernel interface
+- Source code reflects OS organization (by convention)
+    - user/    apps in user mode
+    - kernel/  code in kernel mode
+- Kernel has several parts 
+    - kernel/defs.h(proc, fs, ...)
+- Goal: read source code and understand it (without consulting book)
+
+### 2.6 Building kernel
+
+**1. Using xv6**
+
+- Makefile builds 
+    - kernel program 
+    - user programs 
+    - mkfs
+- $ make qemu 
+    - runs xv6 on qemu
+    - emulates a RISC-V computer
+
+**2. Building kernel**
+
+![](https://img.zhengyua.cn/blog/202402260938296.png)
+
+.c -> gcc -> .s -> .o  \
+....                     ld -> a.out
+.c -> gcc -> .s -> .o  /
+
+- makefile keeps .asm file around for binary 
+    - see for example, kernel/kernel.asm
+
+
+### 2.7 RISC-V computer
+
+**1. The RISC-V computer**
+
+![](https://img.zhengyua.cn/blog/202402260948246.png)
+
+- RISC-V processor with 4 cores
+- RAM (128 MB)
+- support for interrupts (PLIC, CLINT)
+- support for UART 
+    - allows xv6 to talk to console 
+    - allows xv6 to read from keyboard
+- support for e1000 network card (through PCIe)
+
+
+
+**2. Development using Qemu**
+
+- More convenient than using the real hardware 
+- Qemu emulates several RISC-V computers
+    - we use the "virt" one(https://github.com/riscv/riscv-qemu/wiki)
+    - close to the SiFive board (https://www.sifive.com/boards), but with virtio for disk
+
+**3. What is "to emulate"?**
+
+![](https://img.zhengyua.cn/blog/202402260950342.png)
+
+- Qemu is a C program that faithfully implements a RISC-V processor
+
+```C
+for (;;) {
+    read next instructions
+    decode instruction
+    execute instruction (updating processor state)
+}
+```
+
+!!! note "software = hardware"
+
+
+### 2.8 Boot xv6
+
+- $ make CPUS=1 qemu-gdb 
+    - runs xv6 under gdb (with 1 core)
+- Qemu starts xv6 in kernel/entry.S (see kernel/kernel.ld)
+    - set breakpoint at _entry 
+        - look at instruction 
+        - info reg
+    - set breakpoint at main 
+        - Walk through main 
+    - single step into userinit 
+        - Walk through userinit 
+        - show proc.h 
+        - show allocproc()
+        - show initcode.S/initcode.asm 
+    - break forkret()
+        - walk to userret 
+    - break syscall 
+        - print num 
+        - syscalls[num]
+        - exec "/init"

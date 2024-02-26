@@ -17,7 +17,7 @@
 
 - [x] Lecture 01 (24.02)
 - [x] Lecture 02 (24.02.21)
-- [ ] Lecture 03
+- [x] Lecture 03 (24.02.26)
 - [ ] Lecture 04
 - [ ] Lecture 05
 - [ ] Lecture 06
