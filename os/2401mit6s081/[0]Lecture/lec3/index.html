@@ -1087,6 +1087,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#26-building-kernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 Building kernel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-risc-v-computer" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7 RISC-V computer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-boot-xv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.8 Boot xv6
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1117,6 +1144,8 @@
   
     
     
+      
+        
       
         
       
@@ -1647,6 +1676,33 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#26-building-kernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6 Building kernel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#27-risc-v-computer" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7 RISC-V computer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#28-boot-xv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.8 Boot xv6
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1944,6 +2000,7 @@
 <li>but h/w user/kernel mode is the most popular plan</li>
 </ul>
 </blockquote>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202402260925820.png" /></p>
 <p><strong>2. Monolothic kernel</strong></p>
 <ul>
 <li>OS runs in kernel space </li>
@@ -1960,6 +2017,7 @@
 </ul>
 </li>
 </ul>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202402260926457.png" /></p>
 <p><strong>3. Microkernel design</strong></p>
 <ul>
 <li>many OS services run as ordinary user programs <ul>
@@ -1975,6 +2033,122 @@
 <li>good: more isolation</li>
 <li>bad: may be hard to get good performance </li>
 <li>both monolithic and microkernel designs widely used</li>
+</ul>
+<p><strong>4. Xv6 case study</strong></p>
+<ul>
+<li>Monolithic kernel <ul>
+<li>Unix system calls == kernel interface</li>
+</ul>
+</li>
+<li>Source code reflects OS organization (by convention)<ul>
+<li>user/    apps in user mode</li>
+<li>kernel/  code in kernel mode</li>
+</ul>
+</li>
+<li>Kernel has several parts <ul>
+<li>kernel/defs.h(proc, fs, ...)</li>
+</ul>
+</li>
+<li>Goal: read source code and understand it (without consulting book)</li>
+</ul>
+<h3 id="26-building-kernel">2.6 Building kernel<a class="headerlink" href="#26-building-kernel" title="Permanent link">&para;</a></h3>
+<p><strong>1. Using xv6</strong></p>
+<ul>
+<li>Makefile builds <ul>
+<li>kernel program </li>
+<li>user programs </li>
+<li>mkfs</li>
+</ul>
+</li>
+<li>$ make qemu <ul>
+<li>runs xv6 on qemu</li>
+<li>emulates a RISC-V computer</li>
+</ul>
+</li>
+</ul>
+<p><strong>2. Building kernel</strong></p>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202402260938296.png" /></p>
+<p>.c -&gt; gcc -&gt; .s -&gt; .o  \
+....                     ld -&gt; a.out
+.c -&gt; gcc -&gt; .s -&gt; .o  /</p>
+<ul>
+<li>makefile keeps .asm file around for binary <ul>
+<li>see for example, kernel/kernel.asm</li>
+</ul>
+</li>
+</ul>
+<h3 id="27-risc-v-computer">2.7 RISC-V computer<a class="headerlink" href="#27-risc-v-computer" title="Permanent link">&para;</a></h3>
+<p><strong>1. The RISC-V computer</strong></p>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202402260948246.png" /></p>
+<ul>
+<li>RISC-V processor with 4 cores</li>
+<li>RAM (128 MB)</li>
+<li>support for interrupts (PLIC, CLINT)</li>
+<li>support for UART <ul>
+<li>allows xv6 to talk to console </li>
+<li>allows xv6 to read from keyboard</li>
+</ul>
+</li>
+<li>support for e1000 network card (through PCIe)</li>
+</ul>
+<p><strong>2. Development using Qemu</strong></p>
+<ul>
+<li>More convenient than using the real hardware </li>
+<li>Qemu emulates several RISC-V computers<ul>
+<li>we use the "virt" one(https://github.com/riscv/riscv-qemu/wiki)</li>
+<li>close to the SiFive board (https://www.sifive.com/boards), but with virtio for disk</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. What is "to emulate"?</strong></p>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202402260950342.png" /></p>
+<ul>
+<li>Qemu is a C program that faithfully implements a RISC-V processor</li>
+</ul>
+<div class="language-C highlight"><span class="filename">C</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">    </span><span class="n">read</span><span class="w"> </span><span class="n">next</span><span class="w"> </span><span class="n">instructions</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">    </span><span class="n">decode</span><span class="w"> </span><span class="n">instruction</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">    </span><span class="n">execute</span><span class="w"> </span><span class="n">instruction</span><span class="w"> </span><span class="p">(</span><span class="n">updating</span><span class="w"> </span><span class="n">processor</span><span class="w"> </span><span class="n">state</span><span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a><span class="p">}</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">software = hardware</p>
+</div>
+<h3 id="28-boot-xv6">2.8 Boot xv6<a class="headerlink" href="#28-boot-xv6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>$ make CPUS=1 qemu-gdb <ul>
+<li>runs xv6 under gdb (with 1 core)</li>
+</ul>
+</li>
+<li>Qemu starts xv6 in kernel/entry.S (see kernel/kernel.ld)<ul>
+<li>set breakpoint at _entry <ul>
+<li>look at instruction </li>
+<li>info reg</li>
+</ul>
+</li>
+<li>set breakpoint at main <ul>
+<li>Walk through main </li>
+</ul>
+</li>
+<li>single step into userinit <ul>
+<li>Walk through userinit </li>
+<li>show proc.h </li>
+<li>show allocproc()</li>
+<li>show initcode.S/initcode.asm </li>
+</ul>
+</li>
+<li>break forkret()<ul>
+<li>walk to userret </li>
+</ul>
+</li>
+<li>break syscall <ul>
+<li>print num </li>
+<li>syscalls[num]</li>
+<li>exec "/init"</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
 
@@ -1998,7 +2172,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">February 23, 2024 13:55:11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">February 26, 2024 11:00:41</span>
   </span>
 
     
