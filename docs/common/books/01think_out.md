@@ -1,4 +1,4 @@
-# 《思考如何超越思考》阅读
+# 24.02《思考如何超越思考》阅读
 
 > - [豆瓣链接](https://www.google.com.hk/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjyvPjjocmEAxWhUGwGHQhaAtYQFnoECBUQAQ&url=https%3A%2F%2Fm.douban.com%2Fbook%2Fsubject%2F36511595%2F&usg=AOvVaw2PD3HAG2Su7bst4CGEm7p0&opi=89978449)
 > - 原作名: The Extended Mind: The Power of Thinking Outside the Brain

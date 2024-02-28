@@ -91,7 +91,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://zhengyua.cn/new_blog/common/books/think_out/</loc>
+         <loc>https://zhengyua.cn/new_blog/common/books/01think_out/</loc>
+         <lastmod>2024-02-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://zhengyua.cn/new_blog/common/books/02good_advice/</loc>
          <lastmod>2024-02-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
