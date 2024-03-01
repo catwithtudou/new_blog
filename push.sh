@@ -31,5 +31,9 @@ git commit -m "$msg"
 
 read -p "Press Enter to continue"
 
+mkdocs build
+
+read -p "Press Enter to continue"
+
 git push origin "$branch"
 
