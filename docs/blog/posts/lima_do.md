@@ -1,8 +1,20 @@
+---
+date: 2024-02-29
+categories:
+  - os
+tags:
+  - os
+  - docker
+---
+
+
 # Mac搭建Docker+Ubuntu环境支持GDB
 
 ## 1. 背景
 
 最近在准备通过 gdb 来调试 c 语言程序时，发现目前 gdb 是没有支持 mac m1 的，如下图：
+
+<!-- more -->
 
 ![](https://img.zhengyua.cn/blog/202402282108182.png)
 
