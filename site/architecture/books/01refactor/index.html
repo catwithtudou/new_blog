@@ -3094,13 +3094,158 @@
 <details class="note">
 <summary>具体重构步骤</summary>
 <ol>
-<li>创造一个新函数，根据这个函数的意图来对它命名(以它“做什么”来命名，而 不是以它“怎样做”命名)。
-.....</li>
+<li>创造一个新函数，根据这个函数的意图来对它命名(以它“做什么”来命名，而 不是以它“怎样做”命名)。</li>
 </ol>
+<blockquote>
+<p>如果想要提炼的代码非常简单，例如只是一个函数调用，只要新函数的名称能够以更好的方式昭示代码意图，我还是会提炼它；但如果想不出一个更有意义的名称，这就是一个信号，可能我不应该提炼这块代码。不过不一定非得马上想出最好的名字，有时在提炼的过程中好的名字才会出现。有时我会提炼一个函数，尝试使用它，然后发现不太合适，再把它内联回去，这完全没问题。只要在这个过程中学到了东西，时间就没有白费。如果编程语言支持嵌套函数，就把新函数嵌套在源函数里，这能减少后面需要处理的超出作用域的变量个数。可稍后再使用搬移函数把它从源函数中搬移出去。</p>
+</blockquote>
+<ol start="2">
+<li>
+<p>将待提炼的代码从源函数复制到新建的目标函数中</p>
+</li>
+<li>
+<p>仔细检查提炼出的代码，看看其中是否引用了作用域限于源函数、在提炼出的新函数中访问不到的变量。若是，以参数的形式将它们传递给新函数</p>
+</li>
+</ol>
+<blockquote>
+<p>如果提炼出的新函数嵌套在源函数内部，就不存在变量作用域的问题了。</p>
+<p>这些“作用域限于源函数”的变量通常是局部变量或者源函数的参数。最通用的做法是将它们都作为参数传递给新函数。只要没在提炼部分对这些变量赋值，处理起来就没什么难度。</p>
+<p>如果某个变量是在提炼部分之外声明但只在提炼部分被使用，就把变量声明也搬移到提炼部分代码中去。</p>
+<p>如果变量按值传递给提炼部分又在提炼部分被赋值，就必须多加小心。如果只有一个这样的变量，我会尝试将提炼出的新函数变成一个查询 (query)，用其返回值给该变量赋值。</p>
+<p>但有时在提炼部分被赋值的局部变量太多，这时最好是先放弃提炼。这种情况下，我会考虑先使用别的重构手法，例如拆分变量或者以查询取 代临时变量，来简化变量的使用情况，然后再考虑提炼函数。</p>
+</blockquote>
+<ol start="4">
+<li>所有变量都处理完之后，编译</li>
+</ol>
+<blockquote>
+<p>如果编程语言支持编译期检查的话，在处理完所有变量之后做一次编译是很有用的，编译器经常会帮你找到没有被恰当处理的变量。</p>
+</blockquote>
+<ol start="5">
+<li>
+<p>在源函数中，将被提炼代码段替换为对目标函数的调用</p>
+</li>
+<li>
+<p>测试</p>
+</li>
+<li>
+<p>查看其他代码是否有与被提炼的代码段相同或相似之处。如果有，考虑使用以函数调用取代内联代码令其调用提炼出的新函数</p>
+</li>
+</ol>
+<blockquote>
+<p>有些重构工具直接支持这一步。如果工具不支持，可以快速搜索一下，看看别处是否还有重复代码。</p>
+</blockquote>
 </details>
 <h3 id="62-内联函数inline-function">6.2 内联函数（Inline Function）<a class="headerlink" href="#62-内联函数inline-function" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202403222323161.png" /></p>
+<ul>
+<li><strong>非必要的间接性</strong></li>
+</ul>
+<p>间接性可能带来帮助，但非必要的间接性总是让人不舒服。</p>
+<ul>
+<li><strong>先内联再提炼</strong></li>
+</ul>
+<p>有一群组织不甚合理的函数。可以将它们都内联到一个大型函数中，再以喜欢的方式重新提炼出小函数。</p>
+<ul>
+<li><strong>简单委托的间接层</strong></li>
+</ul>
+<p>如果代码中有太多间接层，使得系统中的所有函数都似乎只是对另一个函数的简单委托，造成在这些委托动作之间晕头转向，那么通常都会使用内联函数。</p>
+<ul>
+<li><strong>无用的间接层</strong></li>
+</ul>
+<p>间接层有其价值，但不是所有间接层都有价值。通过内联手法，可以找出那些有用的间接层，同时将无用的间接层去除。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>
+<p>检查函数，确定它不具多态性</p>
+</li>
+<li>
+<p>找出这个函数的所有调用点</p>
+</li>
+<li>
+<p>将这个函数的所有调用点都替换为函数本体</p>
+</li>
+<li>
+<p>每次替换之后，执行测试</p>
+</li>
+</ol>
+<blockquote>
+<p>不必一次完成整个内联操作。如果某些调用点比较难以内联，可以等到时机成熟后再来处理。</p>
+</blockquote>
+<ol start="5">
+<li>删除该函数的定义</li>
+</ol>
+</details>
 <h3 id="63-提炼变量extract-variable">6.3 提炼变量（Extract Variable）<a class="headerlink" href="#63-提炼变量extract-variable" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202403222330007.png" /></p>
+<ul>
+<li><strong>局部变量</strong></li>
+</ul>
+<p>表达式有可能非常复杂而难以阅读。这种情况下，局部变量可帮助将表达式分解为比较容易管理的形式。</p>
+<p>在面对一块复杂逻辑时，局部变量使能给其中的一部分命名，这样能更好地理解这部分逻辑是要干什么。</p>
+<ul>
+<li><strong>表达式命名</strong></li>
+</ul>
+<p>一旦考虑使用提炼变量，则需要对表达式命名，而这样需要考虑这个名字所处的上下文。</p>
+<p>如果这个名字只在当前的函数中有意义，那么提炼变量是不错的选择，但如果这个变量名在更宽的上下文中也有意义，可考虑将其暴露出来，通常以函数的形式。</p>
+<ul>
+<li><strong>将新名字暴露得更宽</strong></li>
+</ul>
+<p>如果工作量很大，可先不考虑将新名字暴露，可后续使用以查询取代临时变量来处理它。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>
+<p>确认要提炼的表达式没有副作用</p>
+</li>
+<li>
+<p>声明一个不可修改的变量，把你想要提炼的表达式复制一份，以该表达式的结果值给这个变量赋值</p>
+</li>
+<li>
+<p>用这个新变量取代原来的表达式</p>
+</li>
+<li>
+<p>测试</p>
+</li>
+</ol>
+</details>
 <h3 id="64-内联变量inline-variable">6.4 内联变量（Inline Variable）<a class="headerlink" href="#64-内联变量inline-variable" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202403222336567.png" /></p>
+<ul>
+<li><strong>妨碍重构的命名</strong></li>
+</ul>
+<p>若变量名并不比表达式本身更具表现力，或会妨碍重构附近的代码，则应该通过内联的手法消除变量。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>
+<p>检查确认变量赋值语句的右侧表达式没有副作用</p>
+</li>
+<li>
+<p>如果变量没有被声明为不可修改，先将其变为不可修改，并执行测试</p>
+</li>
+</ol>
+<blockquote>
+<p>这是为了确保该变量只被赋值一次。</p>
+</blockquote>
+<ol start="3">
+<li>
+<p>找到第一处使用该变量的地方，将其替换为直接使用赋值语句的右侧表达式</p>
+</li>
+<li>
+<p>测试</p>
+</li>
+<li>
+<p>重复前面两步，逐一替换其他所有使用该变量的地方</p>
+</li>
+<li>
+<p>删除该变量的声明点和赋值语句</p>
+</li>
+<li>
+<p>测试</p>
+</li>
+</ol>
+</details>
 <h3 id="65-改变函数声明change-function-declaration">6.5 改变函数声明（Change Function Declaration）<a class="headerlink" href="#65-改变函数声明change-function-declaration" title="Permanent link">&para;</a></h3>
 <h3 id="66-封装变量encapsulate-variable">6.6 封装变量（Encapsulate Variable）<a class="headerlink" href="#66-封装变量encapsulate-variable" title="Permanent link">&para;</a></h3>
 <h3 id="67-变量改名rename-variable">6.7 变量改名（Rename Variable）<a class="headerlink" href="#67-变量改名rename-variable" title="Permanent link">&para;</a></h3>
@@ -3130,7 +3275,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 22, 2024 10:55:06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 22, 2024 23:43:42</span>
   </span>
 
     
