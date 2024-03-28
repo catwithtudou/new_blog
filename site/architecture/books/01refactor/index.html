@@ -3036,24 +3036,161 @@
 <p>全局数据印证了帕拉塞尔斯的格言:良药与毒药的区别在于剂量。</p>
 </blockquote>
 <p><strong>6. 可变数据（Mutable Data）</strong></p>
+<div class="admonition note">
+<p class="admonition-title">常用重构</p>
+<p><strong>封装变量|拆分变量|移动语句|提炼函数|以查询取代派生变量|函数组合成类|函数组合成变换|将引用对象改为值对象</strong></p>
+</div>
+<ul>
+<li>有一整个软件开发流派——函数式编程——完全建立在“数据永不改变”的概念基础上:如果要更新一个数据结构，就返回一份新的数据副本，旧的数据仍保持不变</li>
+<li>如果可变数据的值能在其他地方计算出来，这就是一个特别刺鼻的坏味道。它不仅会造成困扰、bug和加班，而且毫无必要</li>
+<li>如果一个变量在其内部结构中包含了数据，通常最好不要直接修改其中的数据，而是用将引用对象改为值对象令其直接替换整个数据结构</li>
+</ul>
 <p><strong>7. 发散式变化（Divergent Change）</strong></p>
+<div class="admonition note">
+<p class="admonition-title">常用重构</p>
+<p><strong>拆分阶段|搬移函数|提炼函数|提炼类</strong></p>
+</div>
+<ul>
+<li>“每次只关心一个上下文”这一点一直很重要，在如今这个信息爆炸、脑容量不够用的年代就愈发紧要</li>
+<li>如果两个方向之间有更多的来回调用，就应该先创建适当的模块，然后用搬移函数把处理逻辑分开</li>
+<li>如果函数内部混合了两类处理逻辑，应该先用提炼函数将其分开，然后再做搬移</li>
+<li>如果模块是以类的形式定义的，就可以用提炼类来做拆分</li>
+</ul>
 <p><strong>8. 霰弹式修改（Shotgun Surgery）</strong></p>
+<div class="admonition note">
+<p class="admonition-title">常用重构</p>
+<p><strong>搬移函数|搬移字段|函数组合成类|函数组合成变换|拆分阶段|内联函数|内联类</strong></p>
+</div>
+<p>面对霰弹式修改，一个常用的策略就是<strong>使用与内联(inline)相关</strong>的重构——如内联函数或是内联类——把本不该分散的逻辑拽回一处。</p>
 <p><strong>9. 依恋情结（Feature Envy）</strong></p>
+<div class="admonition note">
+<p class="admonition-title">常用重构</p>
+<p><strong>搬移函数|提炼函数</strong></p>
+</div>
+<ul>
+<li>所谓模块化，就是力求将代码分出区域，最大化区域内部的交互、最小化跨区域的交互。但有时你会发现，一个函数跟另一个模块中的函数或者数据交流格外频繁，远胜于在自己所处模块内部的交流，这就是依恋情结的典型情况</li>
+<li>我们的原则是:判断哪个模块拥有的此函数使用的数据最多，然后就把这个函数和那些数据摆在一起。如果先以提炼函数将这个函数分解为数个较小的函数并分别置放于不同地点，上述步骤也就比较容易完成了</li>
+<li>使用这些模式是为了对抗发散式变化这一坏味道。最根本的原则是:将总是一起变化的东西放在一块儿。数据和引用这些数据的行为总是一起变化的，但也有例外<ul>
+<li>如果例外出现，我们就搬移那些行为，保持变化只在一地发生</li>
+<li>策略模式和和访问者模式使你得以轻松修改函数的行为，因为它们将少量需被覆写的行为隔离开来——当然也付出了“多一层间接性”的代价</li>
+</ul>
+</li>
+</ul>
 <p><strong>10. 数据泥团（Data Clumps）</strong></p>
+<div class="admonition note">
+<p class="admonition-title">常用重构</p>
+<p><strong>引入参数对象|提炼类|保持对象完整</strong></p>
+</div>
+<p>我们在这里提倡新建一个类，而不是简单的记录结构，因为一旦拥有新的类，你就有机会让程序散发出一种芳香。得到新的类以后，你就可以着手寻找“依恋情结”，这可以帮你指出能够移至新类中的种种行为。这是一种强大的动力:有用的类被创建出来，大量的重复被消除，后续开发得以加速，原来的数据泥团终于在它们的小社会中充分发挥价值。</p>
 <p><strong>11. 基本类型偏执（Primitive Obsession）</strong></p>
+<div class="admonition note">
+<p class="admonition-title">常用重构</p>
+<p><strong>以对象取代基本类型|以子类取代类型码|以多态取代条件表达式|提炼类|引入参数对象</strong></p>
+</div>
+<ul>
+<li>字符串是这种坏味道的最佳培养皿。一个体面的类型，至少能包含一致的显示逻辑，在用户界面上需要显示时可以使用<ul>
+<li>“用字符串来代表类似这样的数据”是如此常见的臭味，以至于人们给这类变量专门起了一个名字，叫它们“类字符串类型”(stringly typed)变量</li>
+</ul>
+</li>
+<li>如果你有一组总是同时出现的基本类型数据，这就是数据泥团的征兆，应该运用提炼类和引入参数对象来处理</li>
+</ul>
 <p><strong>12. 重复的（switch Repeated Switch）</strong></p>
+<div class="admonition note">
+<p class="admonition-title">常用重构</p>
+<p><strong>以多态取代条件表达式</strong></p>
+</div>
+<p>我们现在更关注重复的switch:在不同的地方反复使用同样的switch逻辑(可能是以switch/case语句的形式，也可能是以连续的if/else语句的形式)。</p>
 <p><strong>13. 循环语句（Loops）</strong></p>
+<div class="admonition note">
+<p class="admonition-title">常用重构</p>
+<p><strong>以管道取代循环</strong></p>
+</div>
+<ul>
+<li>如今函数作为一等公民已经得到了广泛的支持，因此我们可以使用以管道取代循环来让这些老古董退休 </li>
+<li>管道操作(如filter和map)可以帮助我们更快地看清被处理的元素以及处理它们的动作</li>
+</ul>
 <p><strong>14. 冗赘的元素（Lazy Element）</strong></p>
+<div class="admonition note">
+<p class="admonition-title">常用重构</p>
+<p><strong>内联函数|内联类|折叠继承体系</strong></p>
+</div>
+<p>可能有这样一个函数，它的名字就跟实现代码看起来一模一样;也可能有这样一个类，根本就是一个简单的函数。</p>
 <p><strong>15. 夸夸其谈通用性（Speculative Generality）</strong></p>
+<div class="admonition note">
+<p class="admonition-title">常用重构</p>
+<p><strong>折叠继承体系|内联类|内联函数|改变函数声明|移除死代码</strong></p>
+</div>
+<p>如果所有装置都会被用到，就值得那么做;如果用不到，就不值得。用不上的装置只会挡你的路，所以，把它搬开吧。</p>
 <p><strong>16. 临时字段（Temporary Field）</strong></p>
+<div class="admonition note">
+<p class="admonition-title">常用重构</p>
+<p><strong>提炼类|搬移函数|引入特例</strong></p>
+</div>
+<p>也许你还可以使用引入特例在“变量不合法”的情况下创建一个替代对象，从而避免写出条件式代码。</p>
 <p><strong>17. 过长的消息链（Message Chains）</strong></p>
+<div class="admonition note">
+<p class="admonition-title">常用重构</p>
+<p><strong>隐藏委托关系|提炼函数|搬移函数</strong></p>
+</div>
+<p>通常更好的选择是:先观察消息链最终得到的对象是用来干什么的，看看能否以提炼函数把使用该对象的代码提炼到一个独立的函数中，再运用搬移函数把这个函数推入消息链。如果还有许多客户端代码需要访问链上的其他对象，同样添加一个函数来完成此事。</p>
 <p><strong>18. 中间人（Middle Man）</strong></p>
+<div class="admonition note">
+<p class="admonition-title">常用重构</p>
+<p><strong>移除中间人|内联函数|以委托取代超类|以委托取代子类</strong></p>
+</div>
+<ul>
+<li>封装往往伴随着委托</li>
+<li>但是人们可能过度运用委托。你也许会看到某个类的接口有一半的函数都委托给其他类，这样就是过度运用</li>
+</ul>
 <p><strong>19. 内幕交易（Insider Trading）</strong></p>
+<div class="admonition note">
+<p class="admonition-title">常用重构</p>
+<p><strong>搬移函数|搬移字段|隐藏委托关系|以委托取代子类|以委托取代超类</strong></p>
+</div>
+<ul>
+<li>在实际情况里，一定的数据交换不可避免，但我们必须尽量减少这种情况，并把这种交换都放到明面上来</li>
+<li>继承常会造成密谋，因为子类对超类的了解总是超过后者的主观愿望</li>
+</ul>
 <p><strong>20. 过大的类（Large Class）</strong></p>
+<div class="admonition note">
+<p class="admonition-title">常用重构</p>
+<p><strong>提炼类|提炼超类|以子类取代类型码|提炼类|提炼超类|以子类取代类型码</strong></p>
+</div>
+<p>观察一个大类的使用者，经常能找到如何拆分类的线索。看看使用者是否只用到了这个类所有功能的一个子集，每个这样的子集都可能拆分成一个独立的类。</p>
 <p><strong>21. 异曲同工的类（Alternative Classes with Different Interfaces）</strong></p>
+<div class="admonition note">
+<p class="admonition-title">常用重构</p>
+<p><strong>改变函数声明|搬移函数|提炼超类</strong></p>
+</div>
+<p>使用类的好处之一就在于可以替换:今天用这个类，未来可以换成用另一个类。但只有当两个类的接口一致时，才能做这种替换。</p>
 <p><strong>22. 纯数据类（Data Class）</strong></p>
+<div class="admonition note">
+<p class="admonition-title">常用重构</p>
+<p><strong>封装记录|移除设值函数|搬移函数|提炼函数|拆分阶段</strong></p>
+</div>
+<p>这种结果数据对象有一个关键的特征:它是不可修改的(至少在拆分阶段的实际操作中是这样)。不可修改的字段无须封装，使用者可以直接通过字段取得数据，无须通过取值函数。</p>
 <p><strong>23. 被拒绝的遗赠（Refused Bequest）</strong></p>
+<div class="admonition note">
+<p class="admonition-title">常用重构</p>
+<p><strong>函数下移|字段下移|以委托取代子类|以委托取代超类</strong></p>
+</div>
+<ul>
+<li>按传统说法，这就意味着继承体系设计错误。你需要为这个子类新建一个兄弟类，再运用函数下移和字段下移把所有用不到的函数下推给那个兄弟</li>
+<li>如果子类复用了超类的行为(实现)，却又不愿意支持超类的接口，“被拒绝的遗赠”的坏味道就会变得很浓烈</li>
+<li>拒绝继承超类的实现，这一点我们不介意;但如果拒绝支持超类的接口，这就难以接受了。既然不愿意支持超类的接口，就不要虚情假意地糊弄继承体系，应该运用以委托取代子类或者以委托取代超类彻底划清界限</li>
+</ul>
 <p><strong>24. 注释（Comments）</strong></p>
+<div class="admonition note">
+<p class="admonition-title">常用重构</p>
+<p><strong>提炼函数|改变函数声明|引入断言</strong></p>
+</div>
+<ul>
+<li>我们之所以要在这里提到注释，是因为人们常把它当作“除臭剂”来使用</li>
+<li>常常会有这样的情况:你看到一段代码有着长长的注释，然后发现，这些注释之所以存在乃是因为代码很糟糕。这种情况的发生次数之多，实在令人吃惊</li>
+</ul>
+<blockquote>
+<p>当你感觉需要撰写注释时，请先尝试重构，试着让所有注释都变得多余。</p>
+</blockquote>
 <h2 id="4-构筑测试体系">4. 构筑测试体系<a class="headerlink" href="#4-构筑测试体系" title="Permanent link">&para;</a></h2>
 <p><strong>1. 自测试代码的价值</strong></p>
 <p>一套测试就是一个强大的bug侦测器，能够大大缩减查找bug所需的时间。</p>
@@ -3275,7 +3412,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 22, 2024 23:43:42</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 27, 2024 23:55:14</span>
   </span>
 
     
