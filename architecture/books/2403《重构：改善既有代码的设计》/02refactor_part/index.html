@@ -12,28 +12,28 @@
         <meta name="author" content="catwithtudou️">
       
       
-        <link rel="canonical" href="https://zhengyua.cn/new_blog/os/2401mit6s081/">
+        <link rel="canonical" href="https://zhengyua.cn/new_blog/architecture/books/2403%E3%80%8A%E9%87%8D%E6%9E%84%EF%BC%9A%E6%94%B9%E5%96%84%E6%97%A2%E6%9C%89%E4%BB%A3%E7%A0%81%E7%9A%84%E8%AE%BE%E8%AE%A1%E3%80%8B/02refactor_part/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../01refactor/">
       
       
-        <link rel="next" href="%5B0%5DLecture/lec1/">
+        <link rel="next" href="../../../../middleware/">
       
       
-      <link rel="icon" href="../../assets/logo.jpeg">
+      <link rel="icon" href="../../../../assets/logo.jpeg">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
     
     
       
-        <title>MIT-6.S081 - catwithtudou️🌦️</title>
+        <title>07-12 - catwithtudou️🌦️</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.6543a935.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,7 +52,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mit-6s081" class="md-skip">
+        <a href="#07-12" class="md-skip">
           Skip to content
         </a>
       
@@ -104,9 +104,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="catwithtudou️🌦️" class="md-header__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+    <a href="../../../.." title="catwithtudou️🌦️" class="md-header__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
       
-  <img src="../../assets/logo.jpeg" alt="logo">
+  <img src="../../../../assets/logo.jpeg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              MIT-6.S081
+              07-12
             
           </span>
         </div>
@@ -231,7 +231,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
     
@@ -250,7 +250,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../blog/" class="md-tabs__link">
+        <a href="../../../../blog/" class="md-tabs__link">
           
   
     
@@ -270,7 +270,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../language/" class="md-tabs__link">
+        <a href="../../../../language/" class="md-tabs__link">
           
   
     
@@ -290,7 +290,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../algorithms/" class="md-tabs__link">
+        <a href="../../../../algorithms/" class="md-tabs__link">
           
   
     
@@ -306,13 +306,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../../os/" class="md-tabs__link">
           
   
     
@@ -332,7 +330,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../network/" class="md-tabs__link">
+        <a href="../../../../network/" class="md-tabs__link">
           
   
     
@@ -352,7 +350,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../ds/" class="md-tabs__link">
+        <a href="../../../../ds/" class="md-tabs__link">
           
   
     
@@ -368,11 +366,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../architecture/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
           
   
     
@@ -392,7 +392,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../middleware/" class="md-tabs__link">
+        <a href="../../../../middleware/" class="md-tabs__link">
           
   
     
@@ -412,7 +412,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../project/" class="md-tabs__link">
+        <a href="../../../../project/" class="md-tabs__link">
           
   
     
@@ -432,7 +432,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../common/01-100_tips/" class="md-tabs__link">
+        <a href="../../../../common/01-100_tips/" class="md-tabs__link">
           
   
     
@@ -473,9 +473,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="catwithtudou️🌦️" class="md-nav__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+    <a href="../../../.." title="catwithtudou️🌦️" class="md-nav__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
       
-  <img src="../../assets/logo.jpeg" alt="logo">
+  <img src="../../../../assets/logo.jpeg" alt="logo">
 
     </a>
     catwithtudou️🌦️
@@ -502,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -554,7 +554,7 @@
         
   
   
-    <a href="../../blog/" class="md-nav__link">
+    <a href="../../../../blog/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -608,7 +608,7 @@
         
   
   
-    <a href="../../language/" class="md-nav__link">
+    <a href="../../../../language/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -660,7 +660,7 @@
         
   
   
-    <a href="../../algorithms/" class="md-nav__link">
+    <a href="../../../../algorithms/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -683,8 +683,6 @@
       
   
   
-    
-  
   
   
     
@@ -701,159 +699,29 @@
     
     
       
-        
-        
-      
       
         
       
     
     
       
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
+  
+  
+    <a href="../../../../os/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     OS
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
-            <span class="md-nav__icon md-icon"></span>
-            OS
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
-              
-  
-  <span class="md-ellipsis">
-    2401mit6s081
-  </span>
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link md-nav__link--active" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_2">
-            <span class="md-nav__icon md-icon"></span>
-            2401mit6s081
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="%5B0%5DLecture/lec1/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    [0]Lecture
-  </span>
-  
-
       
         <span class="md-nav__icon md-icon"></span>
       
@@ -864,137 +732,6 @@
     </li>
   
 
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="%5B1%5DLabs/lab1/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    [1]Labs
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../common/" class="md-nav__link ">
-              
-  
-  <span class="md-ellipsis">
-    common
-  </span>
-  
-
-            </a>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_3">
-            <span class="md-nav__icon md-icon"></span>
-            common
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
     
       
       
@@ -1027,7 +764,7 @@
         
   
   
-    <a href="../../network/" class="md-nav__link">
+    <a href="../../../../network/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1077,7 +814,7 @@
         
   
   
-    <a href="../../ds/" class="md-nav__link">
+    <a href="../../../../ds/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1100,6 +837,73 @@
       
   
   
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
   
   
     
@@ -1116,33 +920,342 @@
       
       
         
-      
-    
-    
-      
-        
+          
+          
         
       
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
-  
-  
-    <a href="../../architecture/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
-    Architecture
+    books
   </span>
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_2" id="__nav_8_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            books
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
       
-        <span class="md-nav__icon md-icon"></span>
+        
       
-    </a>
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8_2_2" id="__nav_8_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2403《重构：改善既有代码的设计》
+  </span>
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            2403《重构：改善既有代码的设计》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01refactor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01-06
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    07-12
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    07-12
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#7-封装" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 封装
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 封装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-封装记录encapsulate-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 封装记录（Encapsulate Record）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-封装集合encapsulate-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 封装集合（Encapsulate Collection）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-以对象取代基本类型replace-primitive-with-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 以对象取代基本类型（Replace Primitive with Object）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-以查询取代临时变量replace-templ-with-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.4 以查询取代临时变量（Replace Templ with Query）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-提炼类extract-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.5 提炼类（Extract Class）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-内联类inline-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.6 内联类（Inline Class）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#77-隐藏委托关系hide-delegate" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.7 隐藏委托关系（Hide Delegate）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#78-移除中间人remove-middle-man" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.8 移除中间人（Remove Middle Man）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#79-替换算法substitute-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.9 替换算法（Substitute Algorithm）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-搬移特性" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. 搬移特性
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-重新组织数据" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. 重新组织数据
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-简化条件逻辑" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. 简化条件逻辑
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-重构-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. 重构 API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-处理继承关系" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. 处理继承关系
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1179,7 +1292,7 @@
         
   
   
-    <a href="../../middleware/" class="md-nav__link">
+    <a href="../../../../middleware/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1229,7 +1342,7 @@
         
   
   
-    <a href="../../project/" class="md-nav__link">
+    <a href="../../../../project/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1287,7 +1400,7 @@
         
   
   
-    <a href="../../common/01-100_tips/" class="md-nav__link">
+    <a href="../../../../common/01-100_tips/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1335,18 +1448,141 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lecture--preparation" class="md-nav__link">
+  <a href="#7-封装" class="md-nav__link">
     <span class="md-ellipsis">
-      Lecture &amp; Preparation
+      7. 封装
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 封装">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-封装记录encapsulate-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 封装记录（Encapsulate Record）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-封装集合encapsulate-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 封装集合（Encapsulate Collection）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-以对象取代基本类型replace-primitive-with-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 以对象取代基本类型（Replace Primitive with Object）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-以查询取代临时变量replace-templ-with-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.4 以查询取代临时变量（Replace Templ with Query）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-提炼类extract-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.5 提炼类（Extract Class）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-内联类inline-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.6 内联类（Inline Class）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#77-隐藏委托关系hide-delegate" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.7 隐藏委托关系（Hide Delegate）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#78-移除中间人remove-middle-man" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.8 移除中间人（Remove Middle Man）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#79-替换算法substitute-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.9 替换算法（Substitute Algorithm）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-搬移特性" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. 搬移特性
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#lab" class="md-nav__link">
+  <a href="#9-重新组织数据" class="md-nav__link">
     <span class="md-ellipsis">
-      Lab
+      9. 重新组织数据
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-简化条件逻辑" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. 简化条件逻辑
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-重构-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. 重构 API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-处理继承关系" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. 处理继承关系
     </span>
   </a>
   
@@ -1370,61 +1606,268 @@
   
 
 
-<h1 id="mit-6s081">MIT-6.S081<a class="headerlink" href="#mit-6s081" title="Permanent link">&para;</a></h1>
-<div class="admonition tip">
-<p class="admonition-title">Start on 2024.02</p>
-</div>
+<h1 id="07-12">07-12<a class="headerlink" href="#07-12" title="Permanent link">&para;</a></h1>
+<h2 id="7-封装">7. 封装<a class="headerlink" href="#7-封装" title="Permanent link">&para;</a></h2>
+<h3 id="71-封装记录encapsulate-record">7.1 封装记录（Encapsulate Record）<a class="headerlink" href="#71-封装记录encapsulate-record" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406040913894.png" /></p>
 <ul>
-<li>课程表：https://pdos.csail.mit.edu/6.1810/2020/schedule.html</li>
-<li>课程视频：https://www.youtube.com/watch?v=L6YqHxYHa7A</li>
-<li>翻译课程文档：https://mit-public-courses-cn-translatio.gitbook.io/mit6-s081/</li>
-<li>其他参考信息：<ul>
-<li>https://zhuanlan.zhihu.com/p/632281381</li>
-<li>https://csdiy.wiki/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/MIT6.S081/#_1</li>
-<li>https://tarplkpqsm.feishu.cn/docs/doccnBFsXFMsAr1oXEVsaT9E3Jg#</li>
+<li><strong>有意义的单元传递</strong></li>
 </ul>
+<p>记录型结构是多数编程语言提供的一种常见特性。它们能直观地组织起存在关联的数据，让我可以将数据作为有意义的单元传递，而不仅是一堆数据的拼凑。</p>
+<ul>
+<li><strong>对象可隐藏结构细节和帮助字段改名</strong></li>
+</ul>
+<p>对象可以隐藏其内部结构细节，隐藏结构的细节。该对象的用户不必追究存储的细节和计算的过程。同时这种封装还有助于字段的改名：可重新命名字段，但同时提供新老字段名的访问方法，这样可以渐进地修改调用方，直到替换全部完成。</p>
+<ul>
+<li><strong>数据结构直观</strong></li>
+</ul>
+<p>若这种记录只在程序的一个小范围里使用，那问题还不大，但若其使用范围变宽，“数据结构不直观”这个问题就会造成更多困扰。可以重构它，使其变得更直观——但如果真需要这样做，那还不如使用类来得直接。</p>
+<ul>
+<li><strong>嵌套结构也值得封装</strong></li>
+</ul>
+<p>程序中间常常需要互相传递嵌套的列表或散列映射结构，这些数据结构后续经常需要被序列化成JSON或XML。这样的嵌套结构同样值得封装，这样如果后续其结构需要变更或者需要修改记录内的值，封装能够帮更好地应对变化。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>对持有记录的变量使用封装变量，将其封装到一个函数中；</li>
+</ol>
+<blockquote>
+<p>记得为这个函数取一个容易搜索的名字。</p>
+</blockquote>
+<ol start="2">
+<li>
+<p>创建一个类，将记录包装起来，并将记录变量的值替换为该类的一个实例。然后在类上定义一个访问函数，用于返回原始的记录。修改封装变量的函数，令其使用这个访问函数；</p>
 </li>
+<li>
+<p>测试;</p>
+</li>
+<li>
+<p>新建一个函数，让它返回该类的对象，而非那条原始的记录；</p>
+</li>
+<li>
+<p>对于该记录的每处使用点，将原先返回记录的函数调用替换为那个返回实例对象的函数调用。使用对象上的访问函数来获取数据的字段，如果该字段的访问函数还不存在，那就创建一个。每次更改之后运行测试；</p>
+</li>
+</ol>
+<blockquote>
+<p>如果该记录比较复杂，例如是个嵌套解构，那么先重点关注客户端对数据的更新操作，对于读取操作可以考虑返回一个数据副本或只读的数据代理。</p>
+</blockquote>
+<ol start="6">
+<li>
+<p>移除类对原始记录的访问函数，那个容易搜索的返回原始数据的函数也要一并删除；</p>
+</li>
+<li>
+<p>测试；</p>
+</li>
+<li>
+<p>如果记录中的字段本身也是复杂结构，考虑对其再次应用封装记录或封装集合手法；</p>
+</li>
+</ol>
+</details>
+<h3 id="72-封装集合encapsulate-collection">7.2 封装集合（Encapsulate Collection）<a class="headerlink" href="#72-封装集合encapsulate-collection" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406040919805.png" /></p>
+<ul>
+<li><strong>清晰观测数据修改</strong></li>
 </ul>
-<h2 id="lecture--preparation">Lecture &amp; Preparation<a class="headerlink" href="#lecture--preparation" title="Permanent link">&para;</a></h2>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Lecture 01 (24.02)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Lecture 02 (24.02.21)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Lecture 03 (24.02.26)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 04</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 05</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 06</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 07</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 08</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 09</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 10</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 11</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 12</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 13</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 14</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 15</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 16</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 17</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 18</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 19</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 20</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 21</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 22</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lecture 23</li>
+<p>封装程序中的所有可变数据可以让我们容易看清楚数据被修改的地点和修改方式，这样需要更改数据结构时就非常方便。</p>
+<ul>
+<li><strong>只对集合变量访问封装的问题</strong></li>
 </ul>
-<h2 id="lab">Lab<a class="headerlink" href="#lab" title="Permanent link">&para;</a></h2>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Lab01 (24.02)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lab02</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lab03</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lab04</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lab05</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lab06</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lab07</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lab08</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lab09</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lab10</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Lab11</li>
+<p>封装集合时人们常常犯一个错误即只对集合变量的访问进行了封装，但依然让取值函数返回集合本身。这使得集合的成员变量可以直接被修改，而封装它的类则全然不知，无法介入。</p>
+<ul>
+<li><strong>注意集合取值函数返回</strong></li>
 </ul>
+<p>更好的做法是，不要让集合的取值函数返回原始集合，这就避免了客户端的意外修改。</p>
+<ul>
+<li><strong>直接返回集合值的问题</strong></li>
+</ul>
+<p>一种避免直接修改集合的方法是，永远不直接返回集合的值。这种方法提倡，不要直接使用集合的字段，而是通过定义类上的方法来代替。</p>
+<p>增加使用特殊的类方法来处理这些场景，会增加许多额外代码，使集合操作容易组合的特性大打折扣。</p>
+<ul>
+<li><strong>限制集合的访问权</strong></li>
+</ul>
+<p>以某种形式限制集合的访问权，只允许对集合进行读操作。</p>
+<ul>
+<li><strong>提供取值函数</strong></li>
+</ul>
+<p>最常见的做法是，为集合提供一个取值函数，但令其返回一个集合的副本。这样即使有人修改了副本，被封装的集合也不会受到影响。</p>
+<ul>
+<li><strong>保持一致</strong></li>
+</ul>
+<p>采用哪种方法并无定式，最重要的是在同个代码库中做法要保持一致。建议只用一种方案，这样每个人都能很快习惯它，并在每次调用集合的访问函数时期望相同的行为。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>
+<p>如果集合的引用尚未被封装起来，先用封装变量封装它；</p>
+</li>
+<li>
+<p>在类上添加用于“添加集合元素”和“移除集合元素”的函数；</p>
+</li>
+</ol>
+<blockquote>
+<p>如果存在对该集合的设值函数，尽可能先用移除设值函数移除它。如果不能移除该设值函数，至少让它返回集合的一份副本。</p>
+</blockquote>
+<ol start="3">
+<li>
+<p>执行静态检查；</p>
+</li>
+<li>
+<p>查找集合的引用点。如果有调用者直接修改集合，令该处调用使用新的添加/移除元素的函数。每次修改后执行测试；</p>
+</li>
+<li>
+<p>修改集合的取值函数，使其返回一份只读的数据，可以使用只读代理或数据副本；</p>
+</li>
+<li>
+<p>测试；</p>
+</li>
+</ol>
+</details>
+<h3 id="73-以对象取代基本类型replace-primitive-with-object">7.3 以对象取代基本类型（Replace Primitive with Object）<a class="headerlink" href="#73-以对象取代基本类型replace-primitive-with-object" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406040936656.png" /></p>
+<ul>
+<li><strong>数据操作拓展</strong></li>
+</ul>
+<p>一旦发现对某个数据的操作不仅仅局限于打印时，我就会为它创建一个新类。一开始这个类也许只是简单包装一下简单类型的数据，不过只要类有了，日后添加的业务逻辑就有地可去了。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>
+<p>如果变量尚未被封装起来，先使用封装变量封装它；</p>
+</li>
+<li>
+<p>为这个数据值创建一个简单的类。类的构造函数应该保存这个数据值，并为它提供一个取值函数；</p>
+</li>
+<li>
+<p>执行静态检查；</p>
+</li>
+<li>
+<p>修改第一步得到的设值函数，令其创建一个新类的对象并将其存入字段，如果有必要的话，同时修改字段的类型声明；</p>
+</li>
+<li>
+<p>修改取值函数，令其调用新类的取值函数，并返回结果；</p>
+</li>
+<li>
+<p>测试；</p>
+</li>
+<li>
+<p>考虑对第一步得到的访问函数使用函数改名，以便更好反映其用途；</p>
+</li>
+<li>
+<p>考虑应用将引用对象改为值对象或将值对象改为引用对象，明确指出新对象的角色是值对象还是引用对象；</p>
+</li>
+</ol>
+</details>
+<h3 id="74-以查询取代临时变量replace-templ-with-query">7.4 以查询取代临时变量（Replace Templ with Query）<a class="headerlink" href="#74-以查询取代临时变量replace-templ-with-query" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406040940191.png" /></p>
+<ul>
+<li><strong>设立清晰的边界</strong></li>
+</ul>
+<p>如果正在分解一个冗长的函数，那么将变量抽取到函数里能使函数的分解过程更简单，因为这样就不再需要将变量作为参数传递给提炼出来的小函数。</p>
+<p>将变量的计算逻辑放到函数中，也有助于在提炼得到的函数与原函数之间设立清晰的边界，这能帮助发现并避免难缠的依赖及副作用。</p>
+<ul>
+<li><strong>避免重复编写计算逻辑</strong></li>
+</ul>
+<p>改用函数还可以避免了在多个函数中重复编写计算逻辑。每当在不同的地方看见同一段变量的计算逻辑，可以尝试将它们挪到同一个函数里。</p>
+<ul>
+<li><strong>快照用途的临时变量</strong></li>
+</ul>
+<p>最简单的情况是，这个临时变量只被赋值一次，但在更复杂的代码片段里，变量也可能被多次赋值——此时应该将这些计算代码一并提炼到查询函数中。并且，待提炼的逻辑多次计算同样的变量时，应该能得到相同的结果。因此，对于那些做快照用途的临时变量（从变量名往往可见端倪）就不能使用本手法。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>
+<p>检查变量在使用前是否已经完全计算完毕，检查计算它的那段代码是否每次都能得到一样的值；</p>
+</li>
+<li>
+<p>如果变量目前不是只读的，但是可以改造成只读变量，那就先改造它；</p>
+</li>
+<li>
+<p>测试；</p>
+</li>
+<li>
+<p>将为变量赋值的代码段提炼成函数；</p>
+</li>
+</ol>
+<blockquote>
+<p>如果变量和函数不能使用同样的名字，那么先为函数取个临时的名字。确保待提炼函数没有副作用。若有先应用将查询函数和修改函数分离手法隔离副作用。</p>
+</blockquote>
+<ol start="5">
+<li>
+<p>测试；</p>
+</li>
+<li>
+<p>应用内联变量手法移除临时变量；</p>
+</li>
+</ol>
+</details>
+<h3 id="75-提炼类extract-class">7.5 提炼类（Extract Class）<a class="headerlink" href="#75-提炼类extract-class" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406040950654.png" /></p>
+<ul>
+<li><strong>类不断成长扩展</strong></li>
+</ul>
+<p>在实际工作中，类会不断成长扩展。随着责任不断增加，这个类会变得过分复杂。</p>
+<ul>
+<li><strong>大类的维护</strong></li>
+</ul>
+<p>维护大量函数和数据的的类往往因为太大而不易理解。此时需要考虑哪些部分可以分离出去，并将它们分离到一个独立的类中。</p>
+<p>如果某些数据和某些函数总是一起出现，某些数据经常同时变化甚至彼此相依，这就表示你应该将它们分离出去。</p>
+<ul>
+<li><strong>类的子类化</strong></li>
+</ul>
+<p>如果发现子类化只影响类的部分特性，或发现某些特性需要以一种方式来子类化，某些特性则需要以另一种方式子类化，这就意味着需要分解原来的类。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>
+<p>决定如何分解类所负的责任；</p>
+</li>
+<li>
+<p>创建一个新的类，用以表现从旧类中分离出来的责任；</p>
+</li>
+</ol>
+<blockquote>
+<p>如果旧类剩下的责任与旧类的名称不符，为旧类改名。</p>
+</blockquote>
+<ol start="3">
+<li>
+<p>构造旧类时创建一个新类的实例，建立“从旧类访问新类”的连接关系；</p>
+</li>
+<li>
+<p>对于你想搬移的每一个字段，运用搬移字段搬移之。每次更改后运行测试；</p>
+</li>
+<li>
+<p>使用搬移函数将必要函数搬移到新类。先搬移较低层函数。每次更改后运行测试；</p>
+</li>
+<li>
+<p>检查两个类的接口，去掉不再需要的函数，必要时为函数重新取一个适合新环境的名字；</p>
+</li>
+<li>
+<p>决定是否公开新的类。如果确实需要，考虑对新类应用将引用对象改为值对象使其成为一个值对象；</p>
+</li>
+</ol>
+</details>
+<h3 id="76-内联类inline-class">7.6 内联类（Inline Class）<a class="headerlink" href="#76-内联类inline-class" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406040955411.png" /></p>
+<details class="note">
+<summary>具体重构步骤</summary>
+</details>
+<h3 id="77-隐藏委托关系hide-delegate">7.7 隐藏委托关系（Hide Delegate）<a class="headerlink" href="#77-隐藏委托关系hide-delegate" title="Permanent link">&para;</a></h3>
+<details class="note">
+<summary>具体重构步骤</summary>
+</details>
+<h3 id="78-移除中间人remove-middle-man">7.8 移除中间人（Remove Middle Man）<a class="headerlink" href="#78-移除中间人remove-middle-man" title="Permanent link">&para;</a></h3>
+<details class="note">
+<summary>具体重构步骤</summary>
+</details>
+<h3 id="79-替换算法substitute-algorithm">7.9 替换算法（Substitute Algorithm）<a class="headerlink" href="#79-替换算法substitute-algorithm" title="Permanent link">&para;</a></h3>
+<details class="note">
+<summary>具体重构步骤</summary>
+</details>
+<h2 id="8-搬移特性">8. 搬移特性<a class="headerlink" href="#8-搬移特性" title="Permanent link">&para;</a></h2>
+<h2 id="9-重新组织数据">9. 重新组织数据<a class="headerlink" href="#9-重新组织数据" title="Permanent link">&para;</a></h2>
+<h2 id="10-简化条件逻辑">10. 简化条件逻辑<a class="headerlink" href="#10-简化条件逻辑" title="Permanent link">&para;</a></h2>
+<h2 id="11-重构-api">11. 重构 API<a class="headerlink" href="#11-重构-api" title="Permanent link">&para;</a></h2>
+<h2 id="12-处理继承关系">12. 处理继承关系<a class="headerlink" href="#12-处理继承关系" title="Permanent link">&para;</a></h2>
 
 
 
@@ -1447,7 +1890,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">February 26, 2024 11:00:41</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 4, 2024 09:57:00</span>
   </span>
 
     
@@ -1457,7 +1900,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">February 5, 2024 10:56:29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 4, 2024 09:57:00</span>
   </span>
 
     
@@ -1496,7 +1939,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Operating System">
+          <a href="../01refactor/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 01-06">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -1506,20 +1949,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Operating System
+                01-06
               </div>
             </div>
           </a>
         
         
           
-          <a href="%5B0%5DLecture/lec1/" class="md-footer__link md-footer__link--next" aria-label="Next: Lec1">
+          <a href="../../../../middleware/" class="md-footer__link md-footer__link--next" aria-label="Next: Middleware">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Lec1
+                Middleware
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1652,12 +2095,12 @@
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotation", "content.code.copy", "header.autohide"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotation", "content.code.copy", "header.autohide"], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.081f42fc.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.081f42fc.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../../../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
