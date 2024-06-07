@@ -2662,11 +2662,92 @@
 </ol>
 </details>
 <h3 id="93-以查询取代派生变量replace-derived-variable-with-query">9.3 以查询取代派生变量（Replace Derived Variable with Query）<a class="headerlink" href="#93-以查询取代派生变量replace-derived-variable-with-query" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406070819469.png" /></p>
+<ul>
+<li><strong>错误源头之可变数据</strong></li>
+</ul>
+<p>可变数据是软件中最大的错误源头之一。对数据的修改常常导致代码的各个部分以丑陋的形式互相耦合：在一处修改数据，却在另一处造成难以发现的破坏。</p>
+<p>很多时候，完全去掉可变数据并不现实，但还是强烈建议:尽量把可变数据的作用域限制在最小范围。</p>
+<ul>
+<li><strong>可计算出的变量</strong></li>
+</ul>
+<p>有些变量其实可以很容易地随时计算出来。若能去掉这些变量，也会有助于消除可变性。</p>
+<p>计算常能更清晰地表达数据的含义，而且也避免了“源数据修改时忘了更新派生变量”的错误。</p>
+<ul>
+<li><strong>两种不同的编程风格</strong></li>
+</ul>
+<p>“根据源数据生成新数据结构”的变换操作可以保持不变，即便可以将其替换为计算操作。</p>
+<p>实际上，这是两种不同的编程风格：一种是对象风格，把一系列计算得出的属性包装在数据结构中；另一种是函数风格，将一个数据结构变换为另一个数据结构。</p>
+<p>如果源数据会被修改，而必须负责管理派生数据结构的整个生命周期，那么对象风格显然更好。但如果源数据不可变，或者派生数据用过即弃，那么两种风格都可行。</p>
 <details class="note">
 <summary>具体重构步骤</summary>
+<ol>
+<li>识别出所有对变量做更新的地方。如有必要，用拆分变量分割各个更新点；</li>
+<li>新建一个函数，用于计算该变量的值；</li>
+<li>用引入断言断言该变量和计算函数始终给出同样的值；</li>
+</ol>
+<blockquote>
+<p>如有必要，用封装变量将这个断言封装起来。</p>
+</blockquote>
+<ol start="4">
+<li>测试；</li>
+<li>修改读取该变量的代码，令其调用新建的函数；</li>
+<li>测试；</li>
+<li>用移除死代码去掉变量的声明和赋值。</li>
+</ol>
 </details>
 <h3 id="94-将引用对象改为值对象change-reference-to-value">9.4 将引用对象改为值对象（Change Reference to Value）<a class="headerlink" href="#94-将引用对象改为值对象change-reference-to-value" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406070824778.png" /></p>
+<ul>
+<li><strong>引用对象与值对象的差异</strong></li>
+</ul>
+<p>在把一个对象（或数据结构）嵌入另一个对象时，位于内部的这个对象可以被视为引用对象，也可以被视为值对象。</p>
+<p>两者最明显的差异在于如何更新内部对象的属性：如果将内部对象视为引用对象，在更新其属性时，我会保留原对象不动，更新内部对象的属性；如果将其视为值对象，我就会替换整个内部对象，新换上的对象会有我想要的属性值。</p>
+<ul>
+<li><strong>更容易理解的值对象不可变</strong></li>
+</ul>
+<p>值对象通常更容易理解，主要因为它们是不可变的。</p>
+<p>一般说来，不可变的数据结构处理起来更容易。可放心地把不可变的数据值传给程序的其他部分，而不必担心对象中包装的数据被偷偷修改。可在程序各处复制值对象，而不必操心维护内存链接。</p>
+<p>值对象在分布式系统和并发系统中尤为有用。</p>
+<ul>
+<li><strong>共享对象的修改</strong></li>
+</ul>
+<p>在几个对象之间共享一个对象，以便几个对象都能看见对共享对象的修改，那么这个共享的对象就应该是引用。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>检查重构目标是否为不可变对象，或者是否可修改为不可变对象；</li>
+<li>用移除设值函数逐一去掉所有设值函数；</li>
+<li>提供一个基于值的相等性判断函数，在其中使用值对象的字段；</li>
+</ol>
+<blockquote>
+<p>大多数编程语言都提供了可覆写的相等性判断函数。通常你还必须同时覆写生成散列码的函数。</p>
+</blockquote>
+</details>
 <h3 id="95-将值对象改为引用对象change-value-to-reference">9.5 将值对象改为引用对象（Change Value to Reference）<a class="headerlink" href="#95-将值对象改为引用对象change-value-to-reference" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406070827980.png" /></p>
+<ul>
+<li><strong>复制多次带来的内存问题</strong></li>
+</ul>
+<p>过多的数据复制有可能会造成内存占用的问题，但就跟所有性能问题一样，这种情况并不常见。</p>
+<ul>
+<li><strong>复制多份的局限</strong></li>
+</ul>
+<p>如果共享的数据需要更新，将其复制多份的做法就会遇到巨大的困难。</p>
+<p>此时必须找到所有的副本，更新所有对象。只要漏掉一个副本没有更新，就会遭遇麻烦的数据不一致。</p>
+<ul>
+<li><strong>某种形式的仓库</strong></li>
+</ul>
+<p>把值对象改为引用对象会带来一个结果：对于一个客观实体，只有一个代表它的对象。</p>
+<p>这通常意味着我会需要某种形式的仓库，在仓库中可以找到所有这些实体对象。只为每个实体创建一次对象，以后始终从仓库中获取该对象。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>为相关对象创建一个仓库(如果还没有这样一个仓库的话)；</li>
+<li>确保构造函数有办法找到关联对象的正确实例；</li>
+<li>修改宿主对象的构造函数，令其从仓库中获取关联对象。每次修改后执行测试。</li>
+</ol>
+</details>
 <h2 id="10-简化条件逻辑">10. 简化条件逻辑<a class="headerlink" href="#10-简化条件逻辑" title="Permanent link">&para;</a></h2>
 <h2 id="11-重构-api">11. 重构 API<a class="headerlink" href="#11-重构-api" title="Permanent link">&para;</a></h2>
 <h2 id="12-处理继承关系">12. 处理继承关系<a class="headerlink" href="#12-处理继承关系" title="Permanent link">&para;</a></h2>
@@ -2692,7 +2773,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 6, 2024 09:17:16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 7, 2024 08:30:47</span>
   </span>
 
     
