@@ -1,32 +1,70 @@
 # 组件工具梳理
 
-## 构建
+## 构建部署
 
 ### air
 
 > repo:https://github.com/air-verse/air
 
-- 简介：热重载 Go 应用的工具
+- 简介：Live reload for Go apps
 
-- Features：
-	- 彩色的日志输出
-	- 自定义构建或必要的命令
-	- 支持外部子目录
-	- 在 Air 启动之后，允许监听新创建的路径
-	- 更棒的构建过程
+- Features:
+	- Colorful log output
+	- Customize build or any command
+	- Support excluding subdirectories
+	- Allow watching new directories after Air started
+	- Better building process
 
+### superbase
+
+> repo:https://github.com/supabase/supabase
+
+- 简介：Supabase is an open source Firebase alternative. We're building the features of Firebase using enterprise-grade open source tools
 
 ## 前端
 
 ### tailwindcss
 
+> repo:https://github.com/tailwindlabs/tailwindcss
+
+- 简介：只需书写 HTML 代码，无需书写 CSS，即可快速构建美观的网站
+
 ### daisyui
+
+> repo:https://github.com/saadeghi/daisyui
+
+- 简介：The most popular component library for Tailwind CSS
 
 ## 服务端
 
 ### templ
 
+> repo:https://github.com/a-h/templ
+
+- 简介：A language for writing HTML user interfaces in Go
+
+- Features:
+	- Server-side rendering: Deploy as a serverless function, Docker container, or standard Go program.
+	- Static rendering: Create static HTML files to deploy however you choose.
+	- Compiled code: Components are compiled into performant Go code.
+	- Use Go: Call any Go code, and use standard if, switch, and for statements.
+	- No JavaScript: Does not require any client or server-side JavaScript.
+	- Great developer experience: Ships with IDE autocompletion.
+
 ### chi
 
+> repo:URL_ADDRESS
 
-.....
+- 简介：lightweight, idiomatic and composable router for building Go HTTP services
+
+- Features:
+	- Lightweight - cloc'd in ~1000 LOC for the chi router
+	- Fast - yes, see benchmarks
+	- 100% compatible with net/http - use any http or middleware pkg in the ecosystem that is also compatible with
+	  net/http
+	- Designed for modular/composable APIs - middlewares, inline middlewares, route groups and sub-router mounting
+	- Context control - built on new context package, providing value chaining, cancellations and timeouts
+	- Robust - in production at Pressly, Cloudflare, Heroku, 99Designs, and many others (see discussion)
+	- Doc generation - docgen auto-generates routing documentation from your source to JSON or Markdown
+	- Go.mod support - as of v5, go.mod support (see CHANGELOG)
+	- No external dependencies - plain ol' Go stdlib + net/http
