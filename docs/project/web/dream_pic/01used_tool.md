@@ -19,7 +19,8 @@
 
 > repo:https://github.com/supabase/supabase
 
-- 简介：Supabase is an open source Firebase alternative. We're building the features of Firebase using enterprise-grade open source tools
+- 简介：Supabase is an open source Firebase alternative. We're building the features of Firebase using enterprise-grade
+  open source tools
 
 ## 前端
 
@@ -55,9 +56,8 @@
 
 > repo:https://github.com/bigskysoftware/htmx
 
-- 简介：htmx gives you access to AJAX, CSS Transitions, WebSockets and Server Sent Events directly in HTML, using attributes, so you can build modern user interfaces with the simplicity and power of hypertext
-
-
+- 简介：htmx gives you access to AJAX, CSS Transitions, WebSockets and Server Sent Events directly in HTML, using
+  attributes, so you can build modern user interfaces with the simplicity and power of hypertext
 
 ### chi
 
@@ -76,3 +76,19 @@
 	- Doc generation - docgen auto-generates routing documentation from your source to JSON or Markdown
 	- Go.mod support - as of v5, go.mod support (see CHANGELOG)
 	- No external dependencies - plain ol' Go stdlib + net/http
+
+### gorilla/sessions
+
+> repo:github.com/gorilla/sessions
+
+- 简介：Package gorilla/sessions provides cookie and filesystem sessions and infrastructure for custom session backends
+
+- Features:
+	- Simple API: use it as an easy way to set signed (and optionally encrypted) cookies
+	- Built-in backends to store sessions in cookies or the filesystem
+	- Flash messages: session values that last until read
+	- Convenient way to switch session persistency (aka "remember me") and set other attributes
+	- Mechanism to rotate authentication and encryption keys
+	- Multiple sessions per request, even using different backends
+	- Interfaces and infrastructure for custom session backends: sessions from different stores can be retrieved and
+	  batch-saved using a common API
