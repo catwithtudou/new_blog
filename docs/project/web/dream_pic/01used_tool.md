@@ -79,7 +79,7 @@
 
 ### gorilla/sessions
 
-> repo:github.com/gorilla/sessions
+> repo:https://github.com/gorilla/sessions
 
 - 简介：Package gorilla/sessions provides cookie and filesystem sessions and infrastructure for custom session backends
 
@@ -92,3 +92,14 @@
 	- Multiple sessions per request, even using different backends
 	- Interfaces and infrastructure for custom session backends: sessions from different stores can be retrieved and
 	  batch-saved using a common API
+
+### golang-migrate/migrate
+
+> repo:https://github.com/golang-migrate/migrate
+
+- 简介：Database migrations written in Go. Use as CLI or import as library
+
+- Features:
+   - Migrate reads migrations from sources and applies them in correct order to a database.
+   - Drivers are "dumb", migrate glues everything together and makes sure the logic is bulletproof. (Keeps the drivers lightweight, too.)
+   - Database drivers don't assume things or try to correct user input. When in doubt, fail.
