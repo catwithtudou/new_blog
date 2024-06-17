@@ -103,3 +103,26 @@
    - Migrate reads migrations from sources and applies them in correct order to a database.
    - Drivers are "dumb", migrate glues everything together and makes sure the logic is bulletproof. (Keeps the drivers lightweight, too.)
    - Database drivers don't assume things or try to correct user input. When in doubt, fail.
+
+### uptrace/bun
+
+> repo:https://github.com/uptrace/bun
+
+- 简介：SQL-first Golang ORM for PostgreSQL, MySQL, MSSQL, and SQLite
+
+- Features:
+	- Works with PostgreSQL, MySQL (including MariaDB), MSSQL, SQLite
+	- ORM-like experience using good old SQL. Bun supports structs, map, scalars, and slices of map/structs/scalars
+	- Bulk inserts
+	- Bulk updates using common table expressions
+	- Bulk deletes
+	- Fixtures
+	- Migrations
+	- Soft deletes
+
+### godotenv
+
+> repo:https://github.com/joho/godotenv
+
+- 简介：A Go port of Ruby's dotenv library (Loads environment variables from .env files)
+
