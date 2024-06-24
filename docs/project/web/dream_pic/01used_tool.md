@@ -126,3 +126,9 @@
 
 - 简介：A Go port of Ruby's dotenv library (Loads environment variables from .env files)
 
+### replicate-go
+
+
+> repo:https://github.com/replicate/replicate-go
+
+- 简介：A Go client for Replicate. It lets you run models from your Go code, and everything else you can do with Replicate's HTTP API
