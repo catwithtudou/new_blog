@@ -132,3 +132,18 @@
 > repo:https://github.com/replicate/replicate-go
 
 - 简介：A Go client for Replicate. It lets you run models from your Go code, and everything else you can do with Replicate's HTTP API
+
+## 三方平台
+
+### webhook
+
+> repo:https://github.com/webhooksite/webhook.site
+> url:https://webhook.site
+
+- 简介：Easily test HTTP webhooks with this handy tool that displays requests instantly
+
+### replicate
+
+> url:https://replicate.com/
+
+- 简介：Replicate makes it easy to run machine learning models in the cloud from your own code
