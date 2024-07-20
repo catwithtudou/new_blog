@@ -126,6 +126,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://zhengyua.cn/new_blog/common/04-nvim_use/</loc>
+         <lastmod>2024-07-20</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://zhengyua.cn/new_blog/common/05-effective_effor_train/</loc>
          <lastmod>2024-07-20</lastmod>
          <changefreq>daily</changefreq>
@@ -142,11 +147,6 @@
     </url>
     <url>
          <loc>https://zhengyua.cn/new_blog/common/books/02good_advice/</loc>
-         <lastmod>2024-07-20</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://zhengyua.cn/new_blog/common/books/04-nvim_use/</loc>
          <lastmod>2024-07-20</lastmod>
          <changefreq>daily</changefreq>
     </url>
