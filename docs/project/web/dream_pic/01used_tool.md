@@ -133,6 +133,13 @@
 
 - 简介：A Go client for Replicate. It lets you run models from your Go code, and everything else you can do with Replicate's HTTP API
 
+### Go Stripe
+
+> repo:https://github.com/stripe/stripe-go
+
+- 简介：The official Stripe Go client library
+
+
 ## 三方平台
 
 ### webhook
