@@ -1,0 +1,4213 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Life">
+      
+      
+        <meta name="author" content="catwithtudou️">
+      
+      
+        <link rel="canonical" href="https://zhengyua.cn/new_blog/architecture/books/2403%E3%80%8A%E9%87%8D%E6%9E%84%EF%BC%9A%E6%94%B9%E5%96%84%E6%97%A2%E6%9C%89%E4%BB%A3%E7%A0%81%E7%9A%84%E8%AE%BE%E8%AE%A1%E3%80%8B/04refractor_part_last_last/">
+      
+      
+        <link rel="prev" href="../03refractor_part_last/">
+      
+      
+        <link rel="next" href="../../2406%E3%80%8A%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93%E3%80%8B/01init/">
+      
+      
+      <link rel="icon" href="../../../../assets/logo.jpeg">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+    
+    
+      
+        <title>11-12 - catwithtudou️🌦️</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-WZVK8HDP5T"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-WZVK8HDP5T",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-WZVK8HDP5T",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>var consent;"undefined"==typeof __md_analytics||(consent=__md_get("__consent"))&&consent.analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#11-12" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="catwithtudou️🌦️" class="md-header__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+      
+  <img src="../../../../assets/logo.jpeg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            catwithtudou️🌦️
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              11-12
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/catwithtudou" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    catwithtudou
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+    
+  
+  🌦️Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../blog/" class="md-tabs__link">
+          
+  
+    
+  
+  📌MainPage
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../language/" class="md-tabs__link">
+          
+  
+    
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../algorithms/" class="md-tabs__link">
+          
+  
+    
+  
+  Algorithms
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../os/" class="md-tabs__link">
+          
+  
+    
+  
+  OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../network/" class="md-tabs__link">
+          
+  
+    
+  
+  Network
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../ds/" class="md-tabs__link">
+          
+  
+    
+  
+  DS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+    
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../middleware/" class="md-tabs__link">
+          
+  
+    
+  
+  Middleware
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../project/" class="md-tabs__link">
+          
+  
+    
+  
+  Project
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../common/01-100_tips/" class="md-tabs__link">
+          
+  
+    
+  
+  Common
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="catwithtudou️🌦️" class="md-nav__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+      
+  <img src="../../../../assets/logo.jpeg" alt="logo">
+
+    </a>
+    catwithtudou️🌦️
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/catwithtudou" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    catwithtudou
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    🌦️Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../blog/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    📌MainPage
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            📌MainPage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/me/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    🌦️Me
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/tags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    🔗Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    📁Archive
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            📁Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/archive/2024/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    🗂️Categories
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            🗂️Categories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/monthly-review/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    monthly review
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../blog/category/os/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    os
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../language/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Language
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Language
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../language/golang/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    golang
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            golang
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../language/golang/%5B0%5D%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/go_best_practice/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    [0]开发实践
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../language/rust/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    rust
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            rust
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../language/rust/%5B0%5D%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/list/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    [0]开发实践
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../language/rust/%5B1%5D%E4%B9%A6%E7%B1%8D%E9%98%85%E8%AF%BB/rust_course/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    [1]书籍阅读
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../algorithms/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Algorithms
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Algorithms
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../algorithms/books/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    books
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            books
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../algorithms/books/2401%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2401代码随想录
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../os/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    OS
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            OS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../os/2401mit6s081/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    2401mit6s081
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            2401mit6s081
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../os/2401mit6s081/%5B0%5DLecture/lec1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    [0]Lecture
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../os/2401mit6s081/%5B1%5DLabs/lab1/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    [1]Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../os/common/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    common
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            common
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../network/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Network
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../ds/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    DS
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            DS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    books
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_2" id="__nav_8_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            books
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8_2_2" id="__nav_8_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2403《重构：改善既有代码的设计》
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            2403《重构：改善既有代码的设计》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01refactor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01-06
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02refactor_part/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07-08
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03refractor_part_last/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09-10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    11-12
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    11-12
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-重构-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. 重构 API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. 重构 API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-将查询函数和修改函数分离separate-query-from-modifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.1 将查询函数和修改函数分离（Separate Query from Modifier）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-函数参数化parameterize-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.2 函数参数化（Parameterize Function）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-移除标记参数remove-flag-argument" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.3 移除标记参数（Remove Flag Argument）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-保持对象完整preserve-whole-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.4 保持对象完整（Preserve Whole Object）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#115-以查询取代参数replace-parameter-with-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.5 以查询取代参数（Replace Parameter with Query）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#116-以参数取代查询replace-query-with-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.6 以参数取代查询（Replace Query with Parameter）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#117-移除设置函数remove-settings-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.7 移除设置函数（Remove Settings Method）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#118-以工厂函数取代构造函数replace-constructor-with-factory-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.8 以工厂函数取代构造函数（Replace Constructor with Factory Function）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#119-以命令取代函数replace-function-with-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.9 以命令取代函数（Replace Function with Command）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1110-以函数取代命令replace-command-with-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.10 以函数取代命令（Replace Command with Function）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-处理继承关系" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. 处理继承关系
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. 处理继承关系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-函数上移pull-up-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.1 函数上移（Pull Up Method）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-字段上移pull-up-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.2 字段上移（Pull Up Field）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-构造函数本体上移pull-up-constructor-body" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.3 构造函数本体上移（Pull Up Constructor Body）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-函数下移push-down-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.4 函数下移（Push Down Method）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#125-字段下移push-down-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.5 字段下移（Push Down Field）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#126-以子类取代类型码replace-type-code-with-subclasses" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.6 以子类取代类型码（Replace Type Code with Subclasses）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#127-移除子类remove-subclass" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.7 移除子类（Remove Subclass）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#128-提炼超类extract-superclass" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.8 提炼超类（Extract Superclass）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#129-折叠继承体系collapse-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.9 折叠继承体系（Collapse Hierarchy）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1210-以委托取代子类replace-subclass-with-delegate" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.10 以委托取代子类（Replace Subclass with Delegate）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1211-以委托取代超类replace-superclass-with-delegate" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.11 以委托取代超类（Replace Superclass with Delegate）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../2406%E3%80%8A%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93%E3%80%8B/01init/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2406《代码整洁之道》
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../2410%E3%80%8A%E4%BA%BF%E7%BA%A7%E6%B5%81%E9%87%8F%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E8%B7%B5%E3%80%8B/01init/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2410《亿级流量系统架构设计与实践》
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../middleware/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Middleware
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Middleware
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../project/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Project
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Project
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../project/mini_program/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    mini_program
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10_2" id="__nav_10_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_2">
+            <span class="md-nav__icon md-icon"></span>
+            mini_program
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../project/mini_program/0305begin/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    0305begin
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../project/web/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    web
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10_3" id="__nav_10_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_3">
+            <span class="md-nav__icon md-icon"></span>
+            web
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../project/web/dream_pic/01used_tool/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    dream_pic
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../common/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Common
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Common
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../common/01-100_tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    100 Tips from The Pragmatic Programmers Book
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../common/02-solve_procrastination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    😪拖延应对基础训练营
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../common/03-symbol_train/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Symbol 第二曲线
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../common/04-jetbrains_key_short/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    jetbrains 快捷键
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../common/04-nvim_use/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NVIM 备忘录
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../common/05-effective_effor_train/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    😠有效努力训练
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../common/books/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    books
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11_8" id="__nav_11_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11_8">
+            <span class="md-nav__icon md-icon"></span>
+            books
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../common/books/01think_out/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24.02《思考如何超越思考》阅读
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../common/books/02good_advice/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24.02《宝贵的人生建议》阅读
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../common/books/0510xthan2x/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24.07《10x easier than 2x》阅读
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../common/books/06-lack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24.08《稀缺》阅读
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../common/books/2407antifragile/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24.07 《反脆弱：从不确定性中获益》阅读
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../common/books/2410user_growth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24.10 《我在一线做用户增长:存量时代的用户运营之道》 阅读
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-重构-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. 重构 API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. 重构 API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#111-将查询函数和修改函数分离separate-query-from-modifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.1 将查询函数和修改函数分离（Separate Query from Modifier）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#112-函数参数化parameterize-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.2 函数参数化（Parameterize Function）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#113-移除标记参数remove-flag-argument" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.3 移除标记参数（Remove Flag Argument）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#114-保持对象完整preserve-whole-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.4 保持对象完整（Preserve Whole Object）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#115-以查询取代参数replace-parameter-with-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.5 以查询取代参数（Replace Parameter with Query）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#116-以参数取代查询replace-query-with-parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.6 以参数取代查询（Replace Query with Parameter）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#117-移除设置函数remove-settings-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.7 移除设置函数（Remove Settings Method）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#118-以工厂函数取代构造函数replace-constructor-with-factory-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.8 以工厂函数取代构造函数（Replace Constructor with Factory Function）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#119-以命令取代函数replace-function-with-command" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.9 以命令取代函数（Replace Function with Command）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1110-以函数取代命令replace-command-with-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      11.10 以函数取代命令（Replace Command with Function）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-处理继承关系" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. 处理继承关系
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. 处理继承关系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-函数上移pull-up-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.1 函数上移（Pull Up Method）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-字段上移pull-up-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.2 字段上移（Pull Up Field）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#123-构造函数本体上移pull-up-constructor-body" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.3 构造函数本体上移（Pull Up Constructor Body）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#124-函数下移push-down-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.4 函数下移（Push Down Method）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#125-字段下移push-down-field" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.5 字段下移（Push Down Field）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#126-以子类取代类型码replace-type-code-with-subclasses" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.6 以子类取代类型码（Replace Type Code with Subclasses）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#127-移除子类remove-subclass" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.7 移除子类（Remove Subclass）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#128-提炼超类extract-superclass" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.8 提炼超类（Extract Superclass）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#129-折叠继承体系collapse-hierarchy" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.9 折叠继承体系（Collapse Hierarchy）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1210-以委托取代子类replace-subclass-with-delegate" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.10 以委托取代子类（Replace Subclass with Delegate）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1211-以委托取代超类replace-superclass-with-delegate" class="md-nav__link">
+    <span class="md-ellipsis">
+      12.11 以委托取代超类（Replace Superclass with Delegate）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="11-12">11-12<a class="headerlink" href="#11-12" title="Permanent link">&para;</a></h1>
+<h2 id="11-重构-api">11. 重构 API<a class="headerlink" href="#11-重构-api" title="Permanent link">&para;</a></h2>
+<h3 id="111-将查询函数和修改函数分离separate-query-from-modifier">11.1 将查询函数和修改函数分离（Separate Query from Modifier）<a class="headerlink" href="#111-将查询函数和修改函数分离separate-query-from-modifier" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091443022.png" /></p>
+<ul>
+<li><strong>没有副作用的函数</strong></li>
+</ul>
+<p>如果某个函数只是提供一个值，没有任何看得到的副作用，那么这是一个很有价值的东西。我可以任意调用这个函数，也可以把调用动作搬到调用函数的其他地方。</p>
+<ul>
+<li><strong>命令与查询分离</strong></li>
+</ul>
+<p>任何有返回值的函数，都不应该有看得到的副作用——命令与查询分离（Command-Query Separation）。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>复制整个函数，将其作为一个查询来命名；</li>
+</ol>
+<blockquote>
+<p>如果想不出好名字，可以看看函数返回的是什么。查询的结果会被填入一个变量，这个变量的名字应该能对函数如何命名有所启发。</p>
+</blockquote>
+<ol start="2">
+<li>从新建的查询函数中去掉所有造成副作用的语句；</li>
+<li>执行静态检查；</li>
+<li>查找所有调用原函数的地方。如果调用处用到了该函数的返回值，就将其改为调用新建的查询函数，并在下面马上再调用一次原函数。每次修改之后都要测试；</li>
+<li>从原函数中去掉返回值；</li>
+<li>测试；</li>
+</ol>
+<blockquote>
+<p>完成重构之后，查询函数与原函数之间常会有重复代码，可以做必要的清理。</p>
+</blockquote>
+</details>
+<h3 id="112-函数参数化parameterize-function">11.2 函数参数化（Parameterize Function）<a class="headerlink" href="#112-函数参数化parameterize-function" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091446449.png" /></p>
+<ul>
+<li><strong>合并函数消除重复</strong></li>
+</ul>
+<p>若发现两个函数逻辑非常相似，只有一些字面量值不同，可以将其合并成一个函数，以参数的形式传入不同的值，从而消除重复。</p>
+<p>这个重构可以使函数更有用，因为重构后的函数还可以用于处理其他的值。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>从一组相似的函数中选择一个；</li>
+<li>运用改变函数声明。把需要作为参数传入的字面量添加到参数列表中；</li>
+<li>修改该函数所有的调用处，使其在调用时传入该字面量值；</li>
+<li>测试；</li>
+<li>修改函数体，令其使用新传入的参数。每使用一个新参数都要测试；</li>
+<li>对于其他与之相似的函数，逐一将其调用处改为调用已经参数化的函数。每次修改后都要测试；</li>
+</ol>
+<blockquote>
+<p>如果第一个函数经过参数化以后不能直接替代另一个与之相似的函数，先对参数化之后的函数做必要的调整，再做替换。</p>
+</blockquote>
+</details>
+<h3 id="113-移除标记参数remove-flag-argument">11.3 移除标记参数（Remove Flag Argument）<a class="headerlink" href="#113-移除标记参数remove-flag-argument" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091449336.png" /></p>
+<ul>
+<li><strong>标记参数</strong></li>
+</ul>
+<p>“标记参数”是这样的一种参数：调用者用它来指示被调函数应该执行哪一部分逻辑。</p>
+<ul>
+<li><strong>隐藏差异性</strong></li>
+</ul>
+<p>标记参数让人难以理解到底有哪些函数可以调用、应该怎么调用。拿到一份API以后，首先看到的是一系列可供调用的函数，但标记参数却隐藏了函数调用中存在的差异性。</p>
+<ul>
+<li><strong>直接传入字面值</strong></li>
+</ul>
+<p>并非所有类似这样的参数都是标记参数。如果调用者传入的是程序中流动的数据，这样的参数不算标记参数；只有调用者直接传入字面量值，这才是标记参数。</p>
+<ul>
+<li><strong>使代码更整洁</strong></li>
+</ul>
+<p>移除标记参数不仅使代码更整洁，并且能帮助开发工具更好地发挥作用。去掉标记参数后，代码分析工具能更容易地体现出“高级”和“普通”两种预订逻辑在使用时的区别。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>针对参数的每一种可能值，新建一个明确函数；</li>
+</ol>
+<blockquote>
+<p>如果主函数有清晰的条件分发逻辑，可以用分解条件表达式(260)创建 明确函数;否则，可以在原函数之上创建包装函数。</p>
+</blockquote>
+<ol start="2">
+<li>对于“用字面量值作为参数”的函数调用者，将其改为调用新建的明确函数；</li>
+</ol>
+</details>
+<h3 id="114-保持对象完整preserve-whole-object">11.4 保持对象完整（Preserve Whole Object）<a class="headerlink" href="#114-保持对象完整preserve-whole-object" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091453111.png" /></p>
+<ul>
+<li><strong>传递整个记录</strong></li>
+</ul>
+<p>“传递整个记录”的方式能更好地应对变化：如果将来被调的函数需要从记录中导出更多的数据，就不用为此修改参数列表。并且传递整个记录也能缩短参数列表，让函数调用更容易看懂。</p>
+<ul>
+<li><strong>依恋情结</strong></li>
+</ul>
+<p>从一个对象中抽取出几个值，单独对这几个值做某些逻辑操作，这是一种代码坏味道（依恋情结），通常标志着这段逻辑应该被搬移到对象中。</p>
+<ul>
+<li><strong>提炼类的时机</strong></li>
+</ul>
+<p>如果几处代码都在使用对象的一部分功能，可能意味着应该用提炼类把这一部分功能单独提炼出来。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>新建一个空函数，给它以期望中的参数列表（即传入完整对象作为参数）；</li>
+</ol>
+<blockquote>
+<p>给这个函数起一个容易搜索的名字，这样到重构结束时方便替换。</p>
+</blockquote>
+<ol start="2">
+<li>在新函数体内调用旧函数，并把新的参数（即完整对象）映射到旧的参数列表（即来源于完整对象的各项数据）；</li>
+<li>执行静态检查；</li>
+<li>逐一修改旧函数的调用者，令其使用新函数，每次修改之后执行测试；</li>
+</ol>
+<blockquote>
+<p>修改之后，调用处用于“从完整对象中导出参数值”的代码可能就没用了，可以用移除死代码去掉。</p>
+</blockquote>
+<ol start="5">
+<li>所有调用处都修改过来之后，使用内联函数把旧函数内联到新函数体内；</li>
+<li>给新函数改名，从重构开始时的容易搜索的临时名字，改为使用旧函数的名字，同时修改所有调用处；</li>
+</ol>
+</details>
+<h3 id="115-以查询取代参数replace-parameter-with-query">11.5 以查询取代参数（Replace Parameter with Query）<a class="headerlink" href="#115-以查询取代参数replace-parameter-with-query" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091457527.png" /></p>
+<ul>
+<li><strong>总结函数可变性的参数列表</strong></li>
+</ul>
+<p>函数的参数列表应该总结该函数的可变性，标示出函数可能体现出行为差异的主要方式。和任何代码中的语句一样，参数列表应该尽量避免重复，并且参数列表越短就越容易理解。</p>
+<ul>
+<li><strong>不必要的参数会增加调用者的难度</strong></li>
+</ul>
+<p>如果调用函数时传入了一个值，而这个值由函数自己来获得也是同样容易，这就是重复。这个本不必要的参数会增加调用者的难度，因为它不得不找出正确的参数值，其实原本调用者是不需要费这个力气的。</p>
+<ul>
+<li><strong>获得正确参数值的责任</strong></li>
+</ul>
+<p>去除参数也就意味着“获得正确的参数值”的责任被转移：有参数传入时，调用者需要负责获得正确的参数值；参数去除后，责任就被转移给了函数本身。</p>
+<ul>
+<li><strong>移除参数带来的依赖关系</strong></li>
+</ul>
+<p>不使用以查询取代参数最常见的原因是，移除参数可能会给函数体增加不必要的依赖关系——迫使函数访问某个程序元素，而我原本不想让函数了解这个元素的存在。</p>
+<ul>
+<li><strong>查询取代参数的安全场景</strong></li>
+</ul>
+<p>如果想要去除的参数值只需要向另一个参数查询就能得到，这是使用以查询取代参数最安全的场景。如果可以从一个参数推导出另一个参数，那么几乎没有任何理由要同时传递这两个参数。</p>
+<ul>
+<li><strong>处理函数具有引用透明性</strong></li>
+</ul>
+<p>如果在处理的函数具有引用透明性（referential transparency，即不论任何时候，只要传入相同的参数值，该函数的行为永远一致），这样的函数既容易理解又容易测试。通常不会去掉它的参数，让它去访问一个可变的全局变量。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>如果有必要，使用提炼函数将参数的计算过程提炼到一个独立的函数中；</li>
+<li>将函数体内引用该参数的地方改为调用新建的函数。每次修改后执行测试；</li>
+<li>全部替换完成后，使用改变函数声明将该参数去掉；</li>
+</ol>
+</details>
+<h3 id="116-以参数取代查询replace-query-with-parameter">11.6 以参数取代查询（Replace Query with Parameter）<a class="headerlink" href="#116-以参数取代查询replace-query-with-parameter" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091503170.png" /></p>
+<ul>
+<li><strong>权衡改变代码依赖关系</strong></li>
+</ul>
+<p>需要使用本重构的情况大多源于我想要改变代码的依赖关系——为了让目标函数不再依赖于某个元素，即把这个元素的值以参数形式传递给该函数。</p>
+<p>这里需要注意权衡：如果把所有依赖关系都变成参数，会导致参数列表冗长重复；如果作用域之间的共享太多，又会导致函数间依赖过度。</p>
+<ul>
+<li><strong>引用透明性带来的益处</strong></li>
+</ul>
+<p>如果一个函数使用了另一个元素，而后者不具引用透明性，那么包含该元素的函数也就失去了引用透明性。只要把“不具引用透明性的元素”变成参数传入，函数就能重获引用透明性。 </p>
+<p>虽然这样就把责任转移给了函数的调用者，但是具有引用透明性的模块能带来很多益处。</p>
+<ul>
+<li><strong>常见的设计模式</strong></li>
+</ul>
+<p>在负责逻辑处理的模块中只有纯函数，其外再包裹处理 I/O 和其他可变元素的逻辑代码。借助以参数取代查询，可提纯程序的某些组成部分，使其更容易测试、更容易理解。</p>
+<ul>
+<li><strong>增加函数调用者的复杂度</strong></li>
+</ul>
+<p>把查询变成参数以后，就迫使调用者必须弄清如何提供正确的参数值，这会增加函数调用者的复杂度，而在设计接口时通常更愿意让接口的消费者更容易使用。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>对执行查询操作的代码使用提炼变量，将其从函数体中分离出来；</li>
+<li>现在函数体代码已经不再执行查询操作（而是使用前一步提炼出的变量），对这部分代码使用提炼函数；</li>
+</ol>
+<blockquote>
+<p>给提炼出的新函数起一个容易搜索的名字，以便稍后改名。</p>
+</blockquote>
+<ol start="3">
+<li>使用内联变量，消除刚才提炼出来的变量；</li>
+<li>对原来的函数使用内联函数；</li>
+<li>对新函数改名，改回原来函数的名字；</li>
+</ol>
+</details>
+<h3 id="117-移除设置函数remove-settings-method">11.7 移除设置函数（Remove Settings Method）<a class="headerlink" href="#117-移除设置函数remove-settings-method" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091510913.png" /></p>
+<ul>
+<li><strong>排除被修改的可能性</strong></li>
+</ul>
+<p>该字段就只能在构造函数中赋值，我“不想让它被修改”的意图会更加清晰，并且可以排除其值被修改的可能性——这种可能性往往是非常大的。</p>
+<ul>
+<li><strong>清晰地表达意图</strong></li>
+</ul>
+<p>去除设值函数，清晰地表达“构造之后不应该再更新字段值”的意图。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>如果构造函数尚无法得到想要设入字段的值，就使用改变函数声明将这个值以参数的形式传入构造函数。在构造函数中调用设值函数，对字段设值；</li>
+</ol>
+<blockquote>
+<p>如果想移除多个设值函数，可以一次性把它们的值都传入构造函数，这能简化后续步骤。</p>
+</blockquote>
+<ol start="2">
+<li>移除所有在构造函数之外对设值函数的调用，改为使用新的构造函数。每次修改之后都要测试；</li>
+</ol>
+<blockquote>
+<p>如果不能把“调用设值函数”替换为“创建一个新对象”（例如需要更新一个多处共享引用的对象），请放弃本重构。</p>
+</blockquote>
+<ol start="3">
+<li>使用内联函数消去设值函数。如果可能的话，把字段声明为不可变；</li>
+<li>测试；</li>
+</ol>
+</details>
+<h3 id="118-以工厂函数取代构造函数replace-constructor-with-factory-function">11.8 以工厂函数取代构造函数（Replace Constructor with Factory Function）<a class="headerlink" href="#118-以工厂函数取代构造函数replace-constructor-with-factory-function" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091513565.png" /></p>
+<ul>
+<li><strong>构造函数的局限性</strong></li>
+</ul>
+<p>但与一般的函数相比，构造函数又常 有一些丑陋的局限性。例如，Java的构造函数只能返回当前所调用类的实例，即无法根据环境或参数信息返回子类实例或代理对象；构造函数的名字是固定的，因此无法使用比默认名字更清晰的函数名；构造函数需要通过特殊的操作符来调用（在很多语言中是new关键字），所以在要求普通函数的场合就难以使用。</p>
+<ul>
+<li><strong>工厂函数不受限制</strong></li>
+</ul>
+<p>工厂函数就不受这些限制。工厂函数的实现内部可以调用构造函数，但也可以换成别的方式实现。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>新建一个工厂函数，让它调用现有的构造函数；</li>
+<li>将调用构造函数的代码改为调用工厂函数；</li>
+<li>每修改一处，就执行测试；</li>
+<li>尽量缩小构造函数的可见范围；</li>
+</ol>
+</details>
+<h3 id="119-以命令取代函数replace-function-with-command">11.9 以命令取代函数（Replace Function with Command）<a class="headerlink" href="#119-以命令取代函数replace-function-with-command" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091515346.png" /></p>
+<ul>
+<li><strong>命令对象</strong></li>
+</ul>
+<p>函数，不管是独立函数，还是以方法形式附着在对象上的函数， 是程序设计的基本构造块。</p>
+<p>不过，将函数封装成自己的对象有时也是一种有用的办法。这样的对象称之为“命令对象”（command object），或简称“命令”（command）。这种对象大多只服务于单一函数，获得对该函数的请求，执行该函数，就是这种对象存在的意义。</p>
+<ul>
+<li><strong>命令对象带来的好处</strong></li>
+</ul>
+<p>与普通的函数相比，命令对象提供了更大的控制灵活性和更强的表达能力。除了函数调用本身，命令对象还可以支持附加的操作，例如撤销操作。</p>
+<p>可通过命令对象提供的方法来设值命令的参数值，从而支持更丰富的生命周期管理能力。</p>
+<p>可借助继承和钩子对函数行为加以定制。如果我所使用的编程语言支持对象但不支持函数作为一等公民，通过命令对象就可以给函数提供大部分相当于一等公民的能力。</p>
+<p>同样，即便编程语言本身并不支持嵌套函数，也可借助命令对象的方法和字段把复杂的函数拆解开，而且在测试和调试过程中可以直接调用这些方法。</p>
+<ul>
+<li><strong>命令对象带来的复杂性取舍</strong></li>
+</ul>
+<p>如果要在作为一等公民的函数和命令对象之间做个选择，通常都会选函数。只有特别需要命令对象提供的某种能力而普通的函数无法提供这种能力时，才会考虑使用命令对象。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>为想要包装的函数创建一个空的类，根据该函数的名字为其命名；</li>
+<li>使用搬移函数把函数移到空的类里；</li>
+</ol>
+<blockquote>
+<p>保持原来的函数作为转发函数，至少保留到重构结束之前才删除。</p>
+</blockquote>
+<ol start="3">
+<li>遵循编程语言的命名规范来给命令对象起名。如果没有合适的命名规范，就给命令对象中负责实际执行命令的函数起一个通用的名字；</li>
+<li>可考虑给每个参数创建一个字段，并在构造函数中添加对应的参数；</li>
+</ol>
+</details>
+<h3 id="1110-以函数取代命令replace-command-with-function">11.10 以函数取代命令（Replace Command with Function）<a class="headerlink" href="#1110-以函数取代命令replace-command-with-function" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091520389.png" /></p>
+<ul>
+<li><strong>命令对象提供的强大机制</strong></li>
+</ul>
+<p>命令对象为处理复杂计算提供了强大的机制。借助命令对象，可以轻松地将原本复杂的函数拆解为多个方法，彼此之间通过字段共享状态；拆解后的方法可以分别调用；开始调用之前的数据状态也可以逐步构建。</p>
+<ul>
+<li><strong>不复杂使用的场景</strong></li>
+</ul>
+<p>大多数时候只是想调用一个函数，让它完成自己的工作就好。若这个函数不是太复杂，那么命令对象可能显得费而不惠，那么就应该考虑将其变回普通的函数。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>运用提炼函数，把“创建并执行命令对象”的代码单独提炼到一个函数中；</li>
+</ol>
+<blockquote>
+<p>这一步会新建一个函数，最终这个函数会取代现在的命令对象。 </p>
+</blockquote>
+<ol start="2">
+<li>对命令对象在执行阶段用到的函数，逐一使用内联函数；</li>
+</ol>
+<blockquote>
+<p>如果被调用的函数有返回值，请先对调用处使用提炼变量，然后再使用内联函数。</p>
+</blockquote>
+<ol start="3">
+<li>使用改变函数声明，把构造函数的参数转移到执行函数；</li>
+<li>对于所有的字段，在执行函数中找到引用它们的地方，并改为使用参数。每次修改后都要测试；</li>
+<li>把“调用构造函数”和“调用执行函数”两步都内联到调用方（也就是最终要替换命令对象的那个函数）；</li>
+<li>测试；</li>
+<li>用移除死代码把命令类消去；</li>
+</ol>
+</details>
+<h2 id="12-处理继承关系">12. 处理继承关系<a class="headerlink" href="#12-处理继承关系" title="Permanent link">&para;</a></h2>
+<h3 id="121-函数上移pull-up-method">12.1 函数上移（Pull Up Method）<a class="headerlink" href="#121-函数上移pull-up-method" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091543359.png" /></p>
+<ul>
+<li><strong>避免重复代码</strong></li>
+</ul>
+<p>避免重复代码是很重要的。重复的两个函数现在也许能够正常工作，但假以时日却只会成为滋生bug的温床。</p>
+<p>无论何时，只要系统内出现重复，你就会面临“修改其中一个却未能修改另一个”的风险。通常找出重复也有一定的难度。</p>
+<ul>
+<li><strong>函数上移的适用场合</strong></li>
+</ul>
+<p>如果某个函数在各个子类中的函数体都相同，这就是最显而易见的函数上移适用场合。当然，情况并不总是如此明显。</p>
+<ul>
+<li><strong>引用只出现子类而不出现超类的特性</strong></li>
+</ul>
+<p>函数上移过程中最麻烦的一点就是，被提升的函数可能会引用只出现于子类而不出现于超类的特性。此时就得用字段上移和函数上移先将这些特性（类或者函数）提升到超类。</p>
+<ul>
+<li><strong>借助塑造模版函数</strong></li>
+</ul>
+<p>如果两个函数工作流程大体相似，但实现细节略有差异，那么会考虑先借助塑造模板函数（Form Template Method）构造出相同的函数，然后再提升它们。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>检查待提升函数，确定它们是完全一致的；</li>
+</ol>
+<blockquote>
+<p>如果它们做了相同的事情，但函数体并不完全一致，那就先对它们进行重构，直到其函数体完全一致。</p>
+</blockquote>
+<ol start="2">
+<li>检查函数体内引用的所有函数调用和字段都能从超类中调用到；</li>
+<li>如果待提升函数的签名不同，使用改变函数声明将那些签名都修改为你想要在超类中使用的签名；</li>
+<li>在超类中新建一个函数，将某一个待提升函数的代码复制到其中；</li>
+<li>执行静态检查；</li>
+<li>移除一个待提升的子类函数；</li>
+<li>测试；</li>
+<li>逐一移除待提升的子类函数，直到只剩下超类中的函数为止；</li>
+</ol>
+</details>
+<h3 id="122-字段上移pull-up-field">12.2 字段上移（Pull Up Field）<a class="headerlink" href="#122-字段上移pull-up-field" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091755186.png" /></p>
+<ul>
+<li><strong>重复字段</strong></li>
+</ul>
+<p>如果各子类是分别开发的，或者是在重构过程中组合起来的，你常会发现它们拥有重复特性，特别是字段更容易重复。这样的字段有时拥有近似的名字，但也并非绝对如此。</p>
+<p>判断若干字段是否重复，唯一的办法就是观察函数如何使用它们。如果它们被使用的方式很相似，就可将它们提升到超类中去。</p>
+<ul>
+<li><strong>减少重复</strong></li>
+</ul>
+<p>本项重构可从两方面减少重复：首先它去除了重复的数据声明；其次它使可将使用该字段的行为从子类移至超类，从而去除重复的行为。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>针对待提升之字段，检查它们的所有使用点，确认它们以同样的方式被使用；</li>
+<li>如果这些字段的名称不同，先使用变量改名为它们取个相同的名字；</li>
+<li>在超类中新建一个字段；</li>
+</ol>
+<blockquote>
+<p>新字段需要对所有子类可见（在大多数语言中 protected 权限便已足够）。</p>
+</blockquote>
+<ol start="4">
+<li>移除子类中的字段；</li>
+<li>测试；</li>
+</ol>
+</details>
+<h3 id="123-构造函数本体上移pull-up-constructor-body">12.3 构造函数本体上移（Pull Up Constructor Body）<a class="headerlink" href="#123-构造函数本体上移pull-up-constructor-body" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091757735.png" /></p>
+<ul>
+<li><strong>构造函数的特殊</strong></li>
+</ul>
+<p>它们不是普通函数，使用它们比使用普通函数受到更多的限制。附加了特殊的规则，对一些做法与函数的调用次序有所限制。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>如果超类还不存在构造函数，首先为其定义一个。确保让子类调用超类的构造函数；</li>
+<li>使用移动语句将子类中构造函数中的公共语句移动到超类的构造函数调用语句之后；</li>
+<li>逐一移除子类间的公共代码，将其提升至超类构造函数中。对于公共代码中引用到的变量，将其作为参数传递给超类的构造函数；</li>
+<li>测试；</li>
+<li>如果存在无法简单提升至超类的公共代码，先应用提炼函数，再利用函数上移提升之；</li>
+</ol>
+</details>
+<h3 id="124-函数下移push-down-method">12.4 函数下移（Push Down Method）<a class="headerlink" href="#124-函数下移push-down-method" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091759926.png" /></p>
+<ul>
+<li><strong>超类真正关心的子类</strong></li>
+</ul>
+<p>如果超类中的某个函数只与一个（或少数几个）子类有关，那么最好将其从超类中挪走，放到真正关心它的子类中去。</p>
+<ul>
+<li><strong>函数下移的适用场景</strong></li>
+</ul>
+<p>这项重构手法只有在超类明确知道哪些子类需要这个函数时适用。如果超类不知晓这个信息，那就得用以多态取代条件表达式，只留些共用的行为在超类。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>将超类中的函数本体复制到每一个需要此函数的子类中；</li>
+<li>删除超类中的函数；</li>
+<li>测试；</li>
+<li>将该函数从所有不需要它的那些子类中删除；</li>
+<li>测试；</li>
+</ol>
+</details>
+<h3 id="125-字段下移push-down-field">12.5 字段下移（Push Down Field）<a class="headerlink" href="#125-字段下移push-down-field" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091801830.png" /></p>
+<p>如果某个字段只被一个子类（或者一小部分子类）用到，就将其搬移到需要该字段的子类中。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>在所有需要该字段的子类中声明该字段；</li>
+<li>将该字段从超类中移除；</li>
+<li>测试；</li>
+<li>将该字段从所有不需要它的那些子类中删掉；</li>
+<li>测试；</li>
+</ol>
+</details>
+<h3 id="126-以子类取代类型码replace-type-code-with-subclasses">12.6 以子类取代类型码（Replace Type Code with Subclasses）<a class="headerlink" href="#126-以子类取代类型码replace-type-code-with-subclasses" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091802227.png" /></p>
+<ul>
+<li><strong>继承的诱人之处</strong></li>
+</ul>
+<p>继承有两个诱人之处：首先可用多态来处理条件逻辑。如果有几个函数都在根据类型码的取值采取不同的行为，多态就显得特别有用。引入子类之后，就可用以多态取代条件表达式来处理这些函数。</p>
+<ul>
+<li><strong>对特定类型码取值的意义</strong></li>
+</ul>
+<p>有些字段或函数只对特定的类型码取值才有意义，例如“销售目标”只对“销售”这类员工才有意义。此时可创建子类，然后用字段下移把这样的字段放到合适的子类中去。</p>
+<p>当然也可加入验证逻辑，确保只有当类型码取值正确时才使用该字段，不过子类的形式能更明确地表达数据与类型之间的关系。</p>
+<ul>
+<li><strong>子类取代类型码需要考虑的</strong></li>
+</ul>
+<p>在使用以子类取代类型码时，需要考虑一个问题：应该直接处理携带类型码的这个类，还是应该处理类型码本身呢?</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>自封装类型码字段；</li>
+<li>任选一个类型码取值，为其创建一个子类。覆写类型码类的取值函数，令其返回该类型码的字面量值；</li>
+<li>创建一个选择器逻辑，把类型码参数映射到新的子类；</li>
+</ol>
+<blockquote>
+<p>如果选择直接继承的方案，就用以工厂函数取代构造函数包装构造函数，把选择器逻辑放在工厂函数里；</p>
+<p>如果选择间接继承的方案，选择器逻辑可以保留在构造函数里。</p>
+</blockquote>
+<ol start="4">
+<li>测试；</li>
+<li>针对每个类型码取值，重复上述“创建子类、添加选择器逻辑”的过程。每次修改后执行测试；</li>
+<li>去除类型码字段；</li>
+<li>测试；</li>
+<li>使用函数下移和以多态取代条件表达式处理原本访问了类型码的函数。全部处理完后，就可以移除类型码的访问函数；</li>
+</ol>
+</details>
+<h3 id="127-移除子类remove-subclass">12.7 移除子类（Remove Subclass）<a class="headerlink" href="#127-移除子类remove-subclass" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091807255.png" /></p>
+<ul>
+<li><strong>子类失去价值</strong></li>
+</ul>
+<p>但随着软件的演化，子类所支持的变化可能会被搬移到别处，甚至完全去除，这时子类就失去了价值。</p>
+<p>有时添加子类是为了应对未来的功能，结果构想中的功能压根没被构造出来，或者用了另一种方式构造，使该子类不再被需要了。</p>
+<ul>
+<li><strong>子类存在的成本</strong></li>
+</ul>
+<p>子类存在着就有成本，阅读者要花心思去理解它的用意，所以如果子类的用处太少，就不值得存在了。此时，最好的选择就是移除子类，将其替换为超类中的一个字段。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>使用以工厂函数取代构造函数，把子类的构造函数包装到超类的工厂函数中；</li>
+</ol>
+<blockquote>
+<p>如果构造函数的客户端用一个数组字段来决定实例化哪个子类，可以把这个判断逻辑放到超类的工厂函数中。</p>
+</blockquote>
+<ol start="2">
+<li>如果有任何代码检查子类的类型，先用提炼函数把类型检查逻辑包装起来，然后用搬移函数将其搬到超类。每次修改后执行测试；</li>
+<li>新建一个字段，用于代表子类的类型；</li>
+<li>将原本针对子类的类型做判断的函数改为使用新建的类型字段；</li>
+<li>删除子类；</li>
+<li>测试；</li>
+</ol>
+<blockquote>
+<p>本重构手法常用于一次移除多个子类，此时需要先把这些子类都封装起来（添加工厂函数、搬移类型检查），然后再逐个将它们折叠到超类中。</p>
+</blockquote>
+</details>
+<h3 id="128-提炼超类extract-superclass">12.8 提炼超类（Extract Superclass）<a class="headerlink" href="#128-提炼超类extract-superclass" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091809284.png" /></p>
+<ul>
+<li><strong>继承关系的出现</strong></li>
+</ul>
+<p>真实世界的分类结构可以作为设计继承关系的提示，但还有很多时候，合理的继承关系是在程序演化的过程中才浮现出来的：发现了一些共同元素，希望把它们抽取到一处，于是就有了继承关系。</p>
+<ul>
+<li><strong>继承和委托的选择</strong></li>
+</ul>
+<p>另一种选择就是提炼类。这两种方案之间的选择，其实就是继承和委托之间的选择，总之目的都是把重复的行为收拢一处。</p>
+<p>提炼超类通常是比较简单的做法，所以会首选这个方案。即便选错了，也总有以委托取代超类这瓶后悔药可吃。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>为原本的类新建一个空白的超类；</li>
+</ol>
+<blockquote>
+<p>如果需要的话，用改变函数声明调整构造函数的签名。</p>
+</blockquote>
+<ol start="2">
+<li>测试；</li>
+<li>使用构造函数本体上移、函数上移和字段上移手法，逐一将子类的共同元素上移到超类；</li>
+<li>检查留在子类中的函数，看它们是否还有共同的成分。如果有可以先用提炼函数将其提炼出来，再用函数上移搬到超类；</li>
+<li>检查所有使用原本的类的客户端代码，考虑将其调整为使用超类的接口；</li>
+</ol>
+</details>
+<h3 id="129-折叠继承体系collapse-hierarchy">12.9 折叠继承体系（Collapse Hierarchy）<a class="headerlink" href="#129-折叠继承体系collapse-hierarchy" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091812718.png" /></p>
+<p>随着继承体系的演化，有时会发现一个类与其超类已经没多大差别，不值得再作为独立的类存在。此时可选择把超类和子类合并起来。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>选择想移除的类：是超类还是子类？</li>
+</ol>
+<blockquote>
+<p>选择的依据是看哪个类的名字放在未来更有意义。如果两个名字都不够好，我就随便挑一个。</p>
+</blockquote>
+<ol start="2">
+<li>使用字段上移、字段下移、函数上移和函数下移，把所有元素都移到同一个类中；</li>
+<li>调整即将被移除的那个类的所有引用点，令它们改而引用合并后留下的类；</li>
+<li>移除我们的目标；此时它应该已经成为一个空类；</li>
+<li>测试。</li>
+</ol>
+</details>
+<h3 id="1210-以委托取代子类replace-subclass-with-delegate">12.10 以委托取代子类（Replace Subclass with Delegate）<a class="headerlink" href="#1210-以委托取代子类replace-subclass-with-delegate" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091813857.png" /></p>
+<ul>
+<li><strong>继承的短板</strong></li>
+</ul>
+<p>但继承也有其短板。最明显的是，继承这张牌只能打一次。导致行为不同的原因可能有多种，但继承只能用于处理一个方向上的变化。</p>
+<p>更大的问题在于，继承给类之间引入了非常紧密的关系。在超类上做任何修改，都很可能破坏子类，所以必须非常小心，并且充分理解子类如何从超类派生。如果两个类的逻辑分处不同的模块、由不同的团队负责，问题就会更麻烦。</p>
+<ul>
+<li><strong>委托解决继承的问题</strong></li>
+</ul>
+<p>对于不同的变化原因，可委托给不同的类。委托是对象之间常规的关系。与继承关系相比，使用委托关系时接口更清晰、耦合更少。因此，继承关系遇到问题时运用以委托取代子类是常见的情况。</p>
+<ul>
+<li><strong>组合优于继承的原则</strong></li>
+</ul>
+<p>这条原则之所以强调“组合优于继承”，其实是对彼时继承常被滥用的回应。</p>
+<ul>
+<li><strong>状态模式或策略模式</strong></li>
+</ul>
+<p>就是用状态（State）模式或者策略（Strategy）模式取代子类。</p>
+<p>这两个模式在结构上是相同的，都是由宿主对象把责任委托给另一个继承体系。 以委托取代子类并非总会需 要建立一个继承体系来接受委托，不过建立一个状态或策略的继承体系经常都是有用的。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>如果构造函数有多个调用者，首先用以工厂函数取代构造函数把构造函数包装起来；</li>
+<li>创建一个空的委托类，这个类的构造函数应该接受所有子类特有的数据项，并且经常以参数的形式接受一个指回超类的引用；</li>
+<li>在超类中添加一个字段，用于安放委托对象；</li>
+<li>修改子类的创建逻辑，使其初始化上述委托字段，放入一个委托对象的实例；</li>
+</ol>
+<blockquote>
+<p>这一步可以在工厂函数中完成，也可以在构造函数中完成（如果构造函数有足够的信息以创建正确的委托对象的话）。</p>
+</blockquote>
+<ol start="5">
+<li>选择一个子类中的函数，将其移入委托类；</li>
+<li>使用搬移函数手法搬移上述函数，不要删除源类中的委托代码；</li>
+</ol>
+<blockquote>
+<p>如果这个方法用到的其他元素也应该被移入委托对象，就把它们一并搬移。如果它用到的元素应该留在超类中，就在委托对象中添加一个字段，令其指向超类的实例。</p>
+</blockquote>
+<ol start="7">
+<li>如果被搬移的源函数还在子类之外被调用了，就把留在源类中的委托代码从子类移到超类，并在委托代码之前加上卫语句，检查委托对象存在。如果子类之外已经没有其他调用者，就用移除死代码去掉已经没人使用的委托代码；</li>
+</ol>
+<blockquote>
+<p>如果有多个委托类，并且其中的代码出现了重复，就使用提炼超类手法消除重复。此时如果默认行为已经被移入了委托类的超类，源超类的委托函数就不再需要卫语句了。</p>
+</blockquote>
+<ol start="8">
+<li>测试;</li>
+<li>重复上述过程，直到子类中所有函数都搬到委托类;</li>
+<li>找到所有调用子类构造函数的地方，逐一将其改为使用超类的构造函数;</li>
+<li>测试；</li>
+<li>运用移除死代码去掉子类；</li>
+</ol>
+</details>
+<h3 id="1211-以委托取代超类replace-superclass-with-delegate">12.11 以委托取代超类（Replace Superclass with Delegate）<a class="headerlink" href="#1211-以委托取代超类replace-superclass-with-delegate" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202406091818086.png" /></p>
+<ul>
+<li><strong>继承造成的困扰</strong></li>
+</ul>
+<p>若只要继承一个已有的类，覆写一些功能，再添加一些功能，就能达成目的。但继承也有可能造成困扰和混乱。</p>
+<ul>
+<li><strong>合理的继承关系特征</strong></li>
+</ul>
+<p>除了“子类用得上超类的所有函数”之外，合理的继承关系还有一个重要特征：子类的所有实例都应该是超类的实例，通过超类的接口来使用子类的实例应该完全不出问题。</p>
+<ul>
+<li><strong>使用委托解决继承的问题</strong></li>
+</ul>
+<p>在这两个例子中，有问题的继承招致了混乱和错误——如果把继承关系改为将部分职能委托给另一个对象，这些混乱和错误本是可以轻松避免的。</p>
+<p>使用委托关系能更清晰地表达“这是另一个东西，我只是需要用到其中携带的一些功能”这层意思。</p>
+<ul>
+<li><strong>使用委托取代超类</strong></li>
+</ul>
+<p>即便在子类继承是合理的建模方式的情况下，如果子类与超类之间的耦合过强，超类的变化很容易破坏子类的功能，还是选择使用以委托取代超类。</p>
+<p>这样做的缺点就是，对于宿主类（也就是原来的子类）和委托类（也就是原来的超类）中原本一样的函数，现在我必须在宿主类中挨个编写转发函数。不过还好，这种转发函数虽然写起来乏味，但它们都非常简单，几乎不可能出错。</p>
+<ul>
+<li><strong>继承和委托的选择</strong></li>
+</ul>
+<p>如果符合继承关系的语义条件（超类的所有方法都适用于子类，子类的所有实例都是超类的实例），那么继承是一种简洁又高效的复用机制。</p>
+<p>如果情况发生变化，继承不再是最好的选择，也可比较容易地运用以委托取代超类。所以建议是首先（尽量）使用继承，如果发现继承有问题，再使用以委托取代超类。</p>
+<details class="note">
+<summary>具体重构步骤</summary>
+<ol>
+<li>在子类中新建一个字段，使其引用超类的一个对象，并将这个委托引用初始化为超类的新实例；</li>
+<li>针对超类的每个函数，在子类中创建一个转发函数，将调用请求转发给委托引用。每转发一块完整逻辑，都要执行测试；</li>
+</ol>
+<blockquote>
+<p>大多数时候，每转发一个函数就可以测试，但一对设值/取值必须同时转移，然后才能测试。</p>
+</blockquote>
+<ol start="3">
+<li>当所有超类函数都被转发函数覆写后，就可以去掉继承关系；</li>
+</ol>
+</details>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 9, 2024 18:23:28</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 7, 2024 09:34:15</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../03refractor_part_last/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 09-10">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                09-10
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../2406%E3%80%8A%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93%E3%80%8B/01init/" class="md-footer__link md-footer__link--next" aria-label="Next: 01-06">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                01-06
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 catwithtudou
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/catwithtudou" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/catwithtudou" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9L389.2 48zm-24.8 373.8h39.1L151.1 88h-42l255.3 333.8z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+  
+    
+  
+
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="github" checked>
+          <span class="task-list-indicator"></span>
+          GitHub
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotation", "content.code.copy", "header.autohide"], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
