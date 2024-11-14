@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../../../assets/logo.jpeg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
     
     
       
@@ -1581,6 +1581,96 @@
 <p>还记得那个关于小提琴家在去表演的路上迷路的老笑话吗？他在街角拦住一位长者，问他怎么才能去卡耐基音乐厅（Carnegie Hall）。长者看了看小提琴家，又看了看他手中的琴，说道：“你还得练，孩子，还得练！</p>
 </details>
 <h2 id="2-有意义的命名">2. 有意义的命名<a class="headerlink" href="#2-有意义的命名" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p><strong>“既然有这么多命名要做，不妨做好它。”</strong></p>
+</div>
+<p><strong>1. 名副其实</strong></p>
+<ul>
+<li><strong>选个好名字要花时间，但省下来的时间比花掉的多。</strong>注意命名，而且一旦发现有更好的名称，就换掉旧的。这么做，读你代码的人（包括你自己）都会更开心。</li>
+<li>如果名称需要注释来补充，那就不算是名副其实。</li>
+<li>选择体现本意的名称能让人更容易理解和修改代码。</li>
+<li>问题不在于代码的简洁度，而是在于代码的模糊度：<strong>即上下文在代码中未被明确体现的程度。</strong></li>
+</ul>
+<p><strong>2. 避免误导</strong></p>
+<ul>
+<li>程序员必须避免留下掩藏代码本意的错误线索。<strong>应当避免使用与本意相悖的词。</strong></li>
+<li>提防使用不同之处较小的名称。</li>
+<li>以同样的方式拼写出同样的概念才是信息。<strong>拼写前后不一致就是误导。</strong></li>
+</ul>
+<p><strong>3. 做有意义的区分</strong></p>
+<ul>
+<li>如果程序员只是为满足编译器或解释器的需要而写代码，<strong>就会制造麻烦。</strong></li>
+<li>废话是另一种没意义的区分。</li>
+<li>注意，只要体现出有意义的区分，使用 a 和 the 这样的前缀就没错。</li>
+<li>废话都是冗余。</li>
+<li>要区分名称，就要以读者能鉴别不同之处的方式来区分。</li>
+</ul>
+<p><strong>4. 使用读得出来的名称</strong></p>
+<ul>
+<li>这不是小事，因为<strong>编程本就是一种社会活动。</strong></li>
+</ul>
+<p><strong>5. 使用可搜索的名称</strong></p>
+<ul>
+<li>长名称胜于短名称，搜得到的名称胜于用自造编码代写就的名称。</li>
+<li>若变量或常量可能在代码中多处使用，则应赋其以便于搜索的名称。</li>
+</ul>
+<p><strong>6. 避免使用编码</strong></p>
+<ul>
+<li>把类型或作用域编进名称里面，<strong>徒然增加了解码的负担。</strong></li>
+<li>如今HN和其他类型编码形式都纯属多余。</li>
+<li>也不必用 m_前缀来标明成员变量。应当把类和函数做得足够小，消除对成员前缀的需要。</li>
+<li>前缀变作了不入法眼的废料，变作了旧代码的标志物。</li>
+<li>如果接口和实现必须选一个来编码的话，我宁肯选择实现。ShapeFactoryImp，甚至是丑陋的CShapeFactory，<strong>都比对接口名称编码来得好。</strong></li>
+</ul>
+<p><strong>7. 避免思维映射</strong></p>
+<ul>
+<li>不应当让读者在脑中把你的名称翻译为他们熟知的名称。这种问题经常出现在选择是使用问题领域术语还是解决方案领域术语时。</li>
+<li>程序员通常都是聪明人。聪明人有时会借脑筋急转弯炫耀其聪明。</li>
+<li>聪明程序员和专业程序员之间的区别在于，<strong>专业程序员了解，明确是王道。</strong>专业程序员善用其能，编写其他人能理解的代码。</li>
+</ul>
+<p><strong>8. 类名&amp;方法名</strong></p>
+<ul>
+<li>类名和对象名应该是名词或名词短语。</li>
+<li>方法名应当是动词或动词短语。</li>
+<li>重载构造器时，使用描述了参数的静态工厂方法名。</li>
+</ul>
+<p><strong>9. 别抖机灵</strong></p>
+<ul>
+<li>如果名称太耍宝，那就只有同作者一般有幽默感的人才能记得住，而且还是在他们记得那个笑话的时候才行。</li>
+<li>言到意到。意到言到。</li>
+</ul>
+<p><strong>10. 每个概念对应一个词</strong></p>
+<ul>
+<li>给每个抽象概念选一个词，<strong>并且一以贯之。</strong></li>
+<li>函数名称应当独一无二，而且要保持一致，这样你才能不借助多余的浏览就找到正确的方法。</li>
+</ul>
+<p><strong>11. 别用双关语</strong></p>
+<ul>
+<li>避免将<strong>同一单词用于不同目的。</strong></li>
+<li>代码作者应尽力写出易于理解的代码。我们想把代码写得让别人能一目尽览，而不必殚精竭虑地研究。我们想要那种大众化的作者尽责写清楚的平装书模式；我们不想要那种学者挖地三尺才能明白个中意义的学院派模式。</li>
+</ul>
+<p><strong>12. 使用解决方案领域名称</strong></p>
+<ul>
+<li>记住，<strong>只有程序员才会读你的代码。</strong></li>
+<li>程序员要做太多技术性工作。给这些事取个技术性的名称，通常是最靠谱的做法。</li>
+</ul>
+<p><strong>13. 使用源自所涉问题领域的名称</strong></p>
+<ul>
+<li>如果不能用程序员熟悉的术语来给手头的工作命名，就采用从所涉问题领域而来的名称吧。</li>
+<li><strong>与所涉问题领域更为贴近的代码</strong>，应当采用源自问题领域的名称。</li>
+</ul>
+<p><strong>14. 添加有意义的语境&amp;不要添加没用的语境</strong></p>
+<ul>
+<li>很少有名称是能自我说明的——多数都不能。反之，你需要用有良好命名的类、函数或名称空间来放置名称，<strong>给读者提供语境</strong>。如果没这么做，给名称添加前缀就是最后一招了。</li>
+<li>语境的增强也让算法能够通过分解为更小的函数而变得更为干净利落。</li>
+<li>只要短名称足够清楚，就要比长名称好。<strong>别给名称添加不必要的语境。</strong></li>
+<li>精确正是命名的要点。</li>
+</ul>
+<details class="最后的话">
+<summary>最后的话</summary>
+<p>取好名字最难的地方在于需要良好的描述技巧和共有文化背景。与其说这是一种技术、商业或管理问题，还不如说是一种教学问题。其结果是，这个领域内的许多人都没能学会做得很好。</p>
+</details>
 <h2 id="3-函数">3. 函数<a class="headerlink" href="#3-函数" title="Permanent link">&para;</a></h2>
 <h2 id="4-注释">4. 注释<a class="headerlink" href="#4-注释" title="Permanent link">&para;</a></h2>
 <h2 id="5-格式">5. 格式<a class="headerlink" href="#5-格式" title="Permanent link">&para;</a></h2>
@@ -1607,7 +1697,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 22, 2024 19:00:25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 14, 2024 10:55:54</span>
   </span>
 
     
