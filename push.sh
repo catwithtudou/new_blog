@@ -33,6 +33,10 @@ read -p "Press Enter to continue"
 
 mkdocs build
 
+git add .
+
+git commit -m "$msg(update the mkdocs build)"
+
 read -p "Press Enter to continue"
 
 git push origin "$branch"
