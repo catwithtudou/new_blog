@@ -2193,6 +2193,57 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="5. 格式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-格式的目的" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 格式的目的
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-垂直格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 垂直格式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-横向格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 横向格式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-团队规则" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4 团队规则
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-鲍勃大叔的格式规则" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.5 鲍勃大叔的格式规则
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3269,6 +3320,57 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="5. 格式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-格式的目的" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 格式的目的
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-垂直格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 垂直格式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-横向格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 横向格式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-团队规则" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4 团队规则
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-鲍勃大叔的格式规则" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.5 鲍勃大叔的格式规则
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3710,6 +3812,83 @@
 </ul>
 <p><strong>19. 范例</strong></p>
 <h2 id="5-格式">5. 格式<a class="headerlink" href="#5-格式" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>当有人查看底层代码实现时，我们希望他们为其整洁、一致及所感知到的对细节的关注而震惊。我们希望他们高高扬起眉毛，一路看下去。</p>
+</blockquote>
+<h3 id="51-格式的目的">5.1 格式的目的<a class="headerlink" href="#51-格式的目的" title="Permanent link">&para;</a></h3>
+<ul>
+<li>先明确一下代码格式很重要。代码格式不可忽略，必须严肃对待。<strong>代码格式关乎沟通，而沟通是专业开发者的头等大事。</strong></li>
+<li>你今天编写的功能，极有可能在下一版本中被修改，但代码的可读性却会对以后可能发生的修改行为产生深远影响。原始代码修改之后很久，其代码风格和可读性仍会影响到可维护性和扩展性。<strong>即便代码已不复存在，你的风格和律条仍存活下来。</strong></li>
+</ul>
+<h3 id="52-垂直格式">5.2 垂直格式<a class="headerlink" href="#52-垂直格式" title="Permanent link">&para;</a></h3>
+<ul>
+<li>对我们来说，意味着有可能用大多数为200行、最长500行的单个文件构造出色的系统。尽管这并非不可违背的原则，也应该乐于接受。<strong>短文件通常比长文件易于理解。</strong></li>
+</ul>
+<p><strong>1. 向报纸学习</strong> </p>
+<ul>
+<li>源文件也要像报纸文章那样。名称应当简单且一目了然。名称本身应该足够告诉我们是否在正确的模块中。源文件最顶部应该给出高层次概念和算法。<strong>细节应该往下渐次展开，直至找到源文件中最底层的函数和细节。</strong></li>
+</ul>
+<p><strong>2. 概念间垂直方向上的区隔</strong> </p>
+<ul>
+<li>几乎所有的代码都是<strong>从上往下读，从左往右读。</strong> 每行展现一个表达式或一个子句，每组代码行展示一条完整的思路。这些思路用空白行区隔开来。</li>
+<li>在封包声明、导入声明和每个函数之间，都有空白行隔开。这条极其简单的规则极大地影响到代码的视觉外观。<strong>每个空白行都是一条线索，标识出新的独立概念。</strong></li>
+</ul>
+<p><strong>3. 垂直方向上的靠近</strong> </p>
+<ul>
+<li>如果说空白行隔开了概念，靠近的代码行则暗示了它们之间的紧密关系。所以<strong>紧密相关的代码应该互相靠近。</strong></li>
+</ul>
+<p><strong>4. 垂直距离</strong> </p>
+<ul>
+<li>因为你想要理解系统做什么，但<strong>却花时间和精力在找到和记住那些代码碎片在哪里。</strong></li>
+<li><strong>除非有很好的理由，否则就不要把关系密切的概念放到不同的文件中。</strong> 实际上，这也是避免使用protected变量的理由之一。</li>
+<li>对于那些关系密切、放置于同一源文件中的概念，它们之间的区隔应该成为<strong>对相互的易懂度有多重要的衡量标准</strong>。应避免迫使读者在源文件和类中跳来跳去。</li>
+<li>变量声明：<strong>变量声明应尽可能靠近其使用位置。</strong></li>
+<li>实体变量：<strong>实体变量应该在类的顶部声明。</strong> 这应该不会增加变量的垂直距离，因为在设计良好的类中它们如果不是被该类的所有方法也是被大多数方法所用。</li>
+<li>相关函数：若某个函数调用了另外一个，<strong>就应该把它们放到一起，而且调用者应该尽可能放在被调用者上面</strong>。这样程序就有个自然的顺序。注意顶部的函数是如何调用其下的函数，而这些被调用的函数又是如何调用更下面的函数的。<strong>这样就能轻易找到被调用的函数，极大地增强了整个模块的可读性。</strong></li>
+<li>概念相关：<strong>概念相关的代码应该放到一起</strong>。相关性越强，彼此之间的距离就该越短。相关性应建立在直接依赖的基础上，如函数间调用， 或函数使用某个变量。但也有其他相关性的可能。相关性可能来自于执行相似操作的一组函数。</li>
+<li>这些函数有着极强的概念相关性，因为他们拥有共同的命名模式，执行同一基础任务的不同变种。互相调用是第二位的。即便没有互相调用，也应该放在一起。</li>
+</ul>
+<p><strong>5. 垂直顺序</strong></p>
+<ul>
+<li>一般而言，我们想自上向下展示函数调用依赖顺序。也就是说被调用的函数应该放在执行调用的函数下面。这样就建立了一种<strong>自顶向下贯穿源代码模块的良好信息流</strong>。</li>
+<li>这样，我们就能扫过源代码文件自最前面的几个函数获知要旨，而不至于沉溺到细节中。</li>
+</ul>
+<h3 id="53-横向格式">5.3 横向格式<a class="headerlink" href="#53-横向格式" title="Permanent link">&para;</a></h3>
+<ul>
+<li>程序员们显然更喜爱短代码行。</li>
+<li>我一向遵循<strong>无需拖动滚动条到右边的原则。</strong></li>
+</ul>
+<p><strong>1. 水平方向上的区隔与靠近</strong> </p>
+<ul>
+<li>我们使用<strong>空格字符将彼此紧密相关的事物连接</strong>到一起，也用空格字符把相关性较弱的事物分隔开。</li>
+<li>我在<strong>赋值操作符周围加上空格字符，以此达到强调目的</strong>。赋值语句有两个确定而重要的要素：左边和右边。空格字符加强了分隔效果。另一方面，我不在函数名和左圆括号之间加空格。这是因为函数与其参数密切相关，如果隔开就会显得互无关系。我把函数调用括号中的参数一一隔开，强调逗号，表示参数是互相分离的。</li>
+<li>空格字符的另一种用法是<strong>强调其前面的运算符。</strong></li>
+</ul>
+<p><strong>2. 水平对齐</strong> </p>
+<ul>
+<li>我发现这种对齐方式没什么用。对齐，像是在强调不重要的东西，<strong>把我的目光从真正的意义上拉开。</strong></li>
+<li>如果有较长的列表需要做对齐处理，那问题就是<strong>在列表的长度上而不是对齐上</strong>。</li>
+</ul>
+<p><strong>3. 缩进</strong> </p>
+<ul>
+<li><strong>源文件是一种继承结构，而不是一种大纲结构</strong>。其中的信息涉及整个文件、文件中每个类、类中的方法、方法中的代码块，也涉及代码块中的代码块。</li>
+<li>要让这种范围式继承结构可见，我们依源代码行在<strong>继承结构中的位置对源代码行做缩进处理</strong>。</li>
+<li>程序员相当依赖这种缩进模式。他们从代码行左边查看自己在什么范围中工作。这让他们能<strong>快速跳过与当前关注的情形无关的范围</strong>。</li>
+<li><strong>违反缩进规则</strong>。有时，会忍不住想要在短小的 if 语句、while 循环或小函数中违反缩进规则。一旦这么做了我多数时候还是会回头加上缩进。这样就避免了出现以下这种范围层级坍塌到一行的情况。</li>
+</ul>
+<p><strong>4. 空范围</strong></p>
+<ul>
+<li>有时，while或for语句的语句体为空。我不喜欢这种结构，尽量不使用。<strong>如果无法避免，就确保空范围体的缩进，用括号包围起来</strong>。</li>
+</ul>
+<h3 id="54-团队规则">5.4 团队规则<a class="headerlink" href="#54-团队规则" title="Permanent link">&para;</a></h3>
+<ul>
+<li>每个程序员都有自己喜欢的格式规则，但如果在一个团队中工作，就是团队说了算。</li>
+<li>记住，好的软件系统是由一系列读起来不错的代码文件组成的。它们需要拥有一致和顺畅的风格。读者要能确信，他们在一个源文件中看到的格式风格在其他文件中也是同样的用法。<strong>绝对不要用各种不同的风格来编写源代码，这样会增加其复杂度。</strong></li>
+</ul>
+<h3 id="55-鲍勃大叔的格式规则">5.5 鲍勃大叔的格式规则<a class="headerlink" href="#55-鲍勃大叔的格式规则" title="Permanent link">&para;</a></h3>
+<ul>
+<li>我个人使用的规则相当简单，如代码清单5-6所示。可以把这段代码看作是展示如何把代码写成<strong>最好的编码标准文档的范例</strong>。</li>
+</ul>
 <h2 id="6-对象和数据结构">6. 对象和数据结构<a class="headerlink" href="#6-对象和数据结构" title="Permanent link">&para;</a></h2>
 
 
@@ -3733,7 +3912,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 17, 2024 19:22:55</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 17, 2024 20:12:21</span>
   </span>
 
     
