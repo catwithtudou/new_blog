@@ -1281,6 +1281,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="4. 注释">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-注释不能美化糟糕的代码" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 注释不能美化糟糕的代码
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-用代码来阐述" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 用代码来阐述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-好注释" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 好注释
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-坏注释" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 坏注释
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1735,6 +1777,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="4. 注释">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-注释不能美化糟糕的代码" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 注释不能美化糟糕的代码
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-用代码来阐述" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 用代码来阐述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-好注释" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 好注释
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-坏注释" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 坏注释
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2048,6 +2132,142 @@
 <li>本章所讲述的是有关编写良好函数的机制。如果你遵循这些规则，函数就会短小，有个好名字，而且被很好地归置。不过永远别忘记，真正的目标在于讲述系统的故事，而<strong>你编写的函数必须干净利落地拼装到一起，形成一种精确而清晰的语言，帮助你讲故事。</strong></li>
 </ul>
 <h2 id="4-注释">4. 注释<a class="headerlink" href="#4-注释" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>什么也比不上放置良好的注释来得有用。什么也不会比乱七八糟的注释更有本事搞乱一个模块。什么也不会比陈旧、提供错误信息的注释更有破坏性。</strong></li>
+<li>注释并不像辛德勒的名单。它们并不“纯然地好”。实际上注释最多也就是一种必须的恶。</li>
+<li>注释的恰当用法是弥补我们在用<strong>代码表达意图时遭遇的失败。</strong> 注意，我用了“失败”一词。我是说真的。注释总是一种失败。我们总无法找到不用注释就能表达自我的方法，所以总要有注释，这并不值得庆贺。</li>
+<li>注释存在的时间越久，就离其所 描述的代码越远，越来越变得全然错误。原因很简单：<strong>程序员不能坚持维护注释。</strong></li>
+<li>程序员应当负责将注释保持在可维护、有关联、精确的高度。我 同意这种说法。但我更主张把<strong>力气用在写清楚代码上，直接保证无须编写注释。</strong> 不准确的注释要比没注释坏得多。</li>
+<li><strong>真实只在一处地方有:代码。</strong> 只有代码能忠实地告诉你它做的事。那是唯一真正准确的信息来源。所以，尽管有时也需要注释，我们也该多花心思尽量减少注释量。</li>
+</ul>
+<h3 id="41-注释不能美化糟糕的代码">4.1 注释不能美化糟糕的代码<a class="headerlink" href="#41-注释不能美化糟糕的代码" title="Permanent link">&para;</a></h3>
+<ul>
+<li>写注释的常见动机之一是糟糕的代码的存在。</li>
+<li>带有少量注释的整洁而有表达力的代码，要比带有大量注释的零碎而复杂的代码像样得多。</li>
+</ul>
+<h3 id="42-用代码来阐述">4.2 用代码来阐述<a class="headerlink" href="#42-用代码来阐述" title="Permanent link">&para;</a></h3>
+<ul>
+<li>有时代码本身不足以解释其行为。不幸的是许多程序员据此 以为代码很少——如果有的话——能做好解释工作。这种观点纯属错误。</li>
+</ul>
+<h3 id="43-好注释">4.3 好注释<a class="headerlink" href="#43-好注释" title="Permanent link">&para;</a></h3>
+<ul>
+<li>有些注释是<strong>必须的，也是有利的。</strong> 来看看一些我认为值得写的注释。不过要记住唯一真正好的注释是你想办法不去写的注释。</li>
+</ul>
+<p><strong>1. 法律信息</strong></p>
+<ul>
+<li>有时，公司代码规范要求编写与法律有关的注释。这类注释不应是合同或法典。<strong>只要有可能就指向一份标准许可或其他外部文档，</strong> 而不要把所有条款放到注释中。</li>
+</ul>
+<p><strong>2. 提供信息的注释</strong></p>
+<ul>
+<li>有时，用注释来提供基本信息也有其用处。这类注释有时管用，但更好的方式是尽量利用函数名称传达信息。</li>
+</ul>
+<p><strong>3. 对意图的解释</strong></p>
+<ul>
+<li>有时，注释不仅提供了有关实现的有用信息，而且<strong>还提供了某个决定后面的意图。</strong></li>
+</ul>
+<p><strong>4. 阐释</strong></p>
+<ul>
+<li>有时，注释把某些<strong>晦涩难明的参数或返回值的意义翻译为某种可读形式</strong>，也会是有用的。通常更好的方法是尽量让参数或返回值自身就足够清楚；但如果参数或返回值是某个标准库的一部分，或是你不能修改的代码帮助阐释其含义的代码就会有用。</li>
+<li>这一方面说明了阐释有多必要，<strong>另外也说明了它有风险。</strong> 所以在写这类注释之前，考虑一下是否还有更好的办法，然后再加倍小心地确认注释正确性。</li>
+</ul>
+<p><strong>5. 警示</strong></p>
+<ul>
+<li>有时，用于警告其他程序员会出现某种后果的注释也是有用的。</li>
+</ul>
+<p><strong>6. TODO 注释</strong></p>
+<ul>
+<li>有时，有理由用//TODO 形式在源代码中放置要做的工作列表。</li>
+</ul>
+<p><strong>7. 放大</strong></p>
+<ul>
+<li>注释可以用来放大某种看来不合理之物的重要性。</li>
+</ul>
+<p><strong>8. 公共 API 中的 Javadoc</strong></p>
+<ul>
+<li>没有什么比<strong>被良好描述的公共API</strong>更有用和令人满意的了。</li>
+</ul>
+<h3 id="44-坏注释">4.4 坏注释<a class="headerlink" href="#44-坏注释" title="Permanent link">&para;</a></h3>
+<ul>
+<li>通常，坏注释都是糟糕的代码的支撑或借口，或者对错误决策的修正，<strong>基本上等于程序员自说自话。</strong></li>
+</ul>
+<p><strong>1. 喃喃自语</strong></p>
+<ul>
+<li>如果只是因为你觉得应该或者因为过程需要就添加注释，那就是无谓之举。如果你决定写注释，就要花必要的时间确保写出最好的注释。</li>
+</ul>
+<p><strong>2. 多余的注释</strong></p>
+<ul>
+<li>其头部位置的注释全属多余。读这段注释花的时间没准比读代码花的时间还要长。</li>
+</ul>
+<p><strong>3. 误导性注释</strong></p>
+<ul>
+<li>有时，尽管初衷可嘉，程序员还是会写出不够精确的注释。</li>
+</ul>
+<p><strong>4. 循规式注释</strong></p>
+<ul>
+<li>所谓每个函数都要有 Javadoc 或每个变量都要有注释的规矩全然是愚蠢可笑的。这类注释徒然让代码变得散乱，满口胡言令人迷惑不解。</li>
+</ul>
+<p><strong>5. 日志式注释</strong></p>
+<ul>
+<li>很久以前，在模块开始处创建并维护这些记录还算有道理。那时，我们还没有<strong>源代码控制系统可用</strong>。如今这种冗长的记录只会让模块变得凌乱不堪，应当全部删除。</li>
+</ul>
+<p><strong>6. 废话注释</strong></p>
+<ul>
+<li>这类注释废话连篇，我们都学会了视而不见。读代码时眼光不会停留在它们上面。最终，当代码修改之后这类注释就变作了谎言一堆。</li>
+<li>与其纠缠于毫无价值的废话注释，程序员应该意识到，他的挫败感可以由<strong>改进代码结构而消除。</strong></li>
+</ul>
+<p><strong>7. 可怕的废话</strong></p>
+<ul>
+<li>Javadoc也可能是废话。下例 Javadoc 的目的是什么？答案:无。它们只是源自某种提供文档的不当愿望的废话注释。</li>
+</ul>
+<blockquote>
+<p>如果作者在 写(或粘贴)注释时都没花心思，怎么能指望读者从中获益呢？</p>
+</blockquote>
+<p><strong>8. 能用函数或变量时就别用注释</strong></p>
+<ul>
+<li>作者应该重构代码，如我所做的那样从而删掉注释。</li>
+</ul>
+<p><strong>9. 位置标记</strong></p>
+<ul>
+<li>把<strong>特定函数趸放在这种标记栏下面</strong>，多数时候实属无理。鸡零狗碎，理当删除——特别是尾部那一长串无用的斜杠。</li>
+<li>尽量少用标记栏，<strong>只在特别有价值的时候用</strong>。如果滥用标记栏，就会沉没在背景噪音中被忽略掉。</li>
+</ul>
+<p><strong>10. 括号后面的注释</strong></p>
+<ul>
+<li>有时，程序员会在括号后面放置特殊的注释。尽管这对于含有深度嵌套结构的长函数可能有意义，但只会给我们更愿意编写的短小、封装的函数带来混乱。如果你发现自己<strong>想标记右括号，其实应该做的是缩短函数。</strong></li>
+</ul>
+<p><strong>11. 归属与署名</strong></p>
+<ul>
+<li>源代码控制系统非常善于记住是谁在何时添加了什么。<strong>没必要用那些小小的签名搞脏代码。</strong></li>
+</ul>
+<p><strong>12. 注释掉的代码</strong></p>
+<ul>
+<li>其他人不敢删除注释掉的代码。他们会想代码依然放在那儿，一定有其原因，而且这段代码很重要，不能删除。<strong>注释掉的代码堆积在一起，就像破酒瓶底的渣滓一般。</strong></li>
+</ul>
+<p><strong>13. HTML注释</strong></p>
+<ul>
+<li>如果注释将由某种工具抽取出来，呈现到网页，那么该是工具<strong>而非程序员来负责给注释加上合适的HTML标签。</strong></li>
+</ul>
+<p><strong>14. 非本地信息</strong></p>
+<ul>
+<li>假如你一定要写注释，<strong>请确保它描述了离它最近的代码。</strong> 别在本地注释的上下文环境中给出系统级的信息。</li>
+</ul>
+<p><strong>15. 信息过多</strong></p>
+<ul>
+<li>别在注释中添加有趣的历史性话题或者无关的细节描述。</li>
+</ul>
+<p><strong>16. 不明显的联系</strong></p>
+<ul>
+<li>注释及其描述的代码之间的联系应该显而易见。如果你不嫌麻烦要写注释，至少让读者能看着注释和代码，并且理解注释所谈何物。</li>
+</ul>
+<p><strong>17. 函数头</strong></p>
+<ul>
+<li><strong>短函数不需要太多描述。</strong> 为只做一件事的短函数选个好名字，通常要比写函数头注释要好。</li>
+</ul>
+<p><strong>18. 非公共代码中的 Javadoc</strong></p>
+<ul>
+<li>虽然 Javadoc 对于公共 API 非常有用，但对于<strong>不打算作公共用途的代码就令人厌恶了。</strong></li>
+</ul>
+<p><strong>19. 范例</strong></p>
 <h2 id="5-格式">5. 格式<a class="headerlink" href="#5-格式" title="Permanent link">&para;</a></h2>
 <h2 id="6-对象和数据结构">6. 对象和数据结构<a class="headerlink" href="#6-对象和数据结构" title="Permanent link">&para;</a></h2>
 
@@ -2072,7 +2292,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 15, 2024 10:27:14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 17, 2024 19:22:55</span>
   </span>
 
     
