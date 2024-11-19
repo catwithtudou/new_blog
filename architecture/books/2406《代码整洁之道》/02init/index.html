@@ -1154,6 +1154,93 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="7 错误处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-使用异常而非返回码" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 使用异常而非返回码
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-先写-try-catch-finally语句" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 先写 Try-Catch-Finally语句
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-使用不可控异常" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 使用不可控异常
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-给出异常发生的环境说明" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.4 给出异常发生的环境说明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-依调用者需要定义异常类" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.5 依调用者需要定义异常类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-定义常规流程" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.6 定义常规流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#77-别返回null-值" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.7 别返回null 值
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#78-别传递null值" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.8 别传递null值
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#79-小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.9 小结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1485,6 +1572,93 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="7 错误处理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-使用异常而非返回码" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 使用异常而非返回码
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-先写-try-catch-finally语句" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 先写 Try-Catch-Finally语句
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-使用不可控异常" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 使用不可控异常
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-给出异常发生的环境说明" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.4 给出异常发生的环境说明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-依调用者需要定义异常类" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.5 依调用者需要定义异常类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-定义常规流程" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.6 定义常规流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#77-别返回null-值" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.7 别返回null 值
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#78-别传递null值" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.8 别传递null值
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#79-小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.9 小结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1552,6 +1726,57 @@
 
 <h1 id="07-12">07-12<a class="headerlink" href="#07-12" title="Permanent link">&para;</a></h1>
 <h2 id="7-错误处理">7 错误处理<a class="headerlink" href="#7-错误处理" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>错误处理只不过是编程时必须要做的事之一。输入可能出现异常，设备可能失效。简言之可能会出错，当错误发生时，程序员就有责任确保代码照常工作。 </p>
+<p>错误处理很重要，但如果它搞乱了代码逻辑，就是错误的做法。</p>
+</blockquote>
+<h3 id="71-使用异常而非返回码">7.1 使用异常而非返回码<a class="headerlink" href="#71-使用异常而非返回码" title="Permanent link">&para;</a></h3>
+<ul>
+<li>在很久以前，许多语言都不支持异常。这些语言处理和汇报错误的手段都有限。你要么设置一个错误标识，要么返回给调用者检查的错误码。 </li>
+<li><strong>遇到错误时，最好抛出一个异常</strong>。调用代码很整洁，其逻辑不会被错误处理搞乱。</li>
+</ul>
+<h3 id="72-先写-try-catch-finally语句">7.2 先写 Try-Catch-Finally语句<a class="headerlink" href="#72-先写-try-catch-finally语句" title="Permanent link">&para;</a></h3>
+<ul>
+<li>异常的妙处之一是，它们在<strong>程序中定义了一个范围</strong>。执行try-catch-finally语句中try部分的代码时，你是在表明可随时取消执行，并在catch语句中接续。 </li>
+<li>在编写可能抛出异常的代码时，最好先写出try-catch-finally语句。这能<strong>帮你定义代码的用户应该期待什么</strong>，无论try代码块中执行的代码出什么错都一样。</li>
+<li>用try-catch结构定义了一个范围，可以继续用<strong>测试驱动(TDD)方法构建剩余的代码逻辑</strong>。</li>
+</ul>
+<h3 id="73-使用不可控异常">7.3 使用不可控异常<a class="headerlink" href="#73-使用不可控异常" title="Permanent link">&para;</a></h3>
+<ul>
+<li>可控异常的代价就是<strong>违反开放/闭合原则</strong>。如果在方法中抛出可控异常，而catch语句在三个层级之上，就得在catch语句和抛出异常处之间的每个方法签名中声明该异常。这意味着对<strong>软件中较低层级的修改，都将波及较高层级的签名</strong>。修改好的模块必须重新构建和发布，即便它们自身所关注的任何东西都没改动过。 </li>
+<li>最终得到的就是一个从<strong>软件最底端贯穿到最高端的修改链</strong>！封装被打破了，因为在抛出路径中的每个函数都要去了解下一层级的异常细节。既然异常旨在让你能在较远处处理错误，<strong>可控异常以这种方式破坏封装简直就是一种耻辱</strong>。 </li>
+<li>如果你在编写一套关键代码库，则可控异常有时也会有用：你<strong>必须捕获异常</strong>。但对于一般的应用开发，<strong>其依赖成本要高于收益</strong>。</li>
+</ul>
+<h3 id="74-给出异常发生的环境说明">7.4 给出异常发生的环境说明<a class="headerlink" href="#74-给出异常发生的环境说明" title="Permanent link">&para;</a></h3>
+<ul>
+<li>你抛出的每个异常，都应当提供<strong>足够的环境说明，以便判断错误的来源和处所</strong>。 </li>
+<li><strong>应创建信息充分的错误消息</strong>，并和异常一起传递出去。在消息中，包括失败的操作和失败类型。</li>
+</ul>
+<h3 id="75-依调用者需要定义异常类">7.5 依调用者需要定义异常类<a class="headerlink" href="#75-依调用者需要定义异常类" title="Permanent link">&para;</a></h3>
+<ul>
+<li>对错误分类有很多方式。不过当我们在应用程序中定义异常类时，<strong>最重要的考虑应该是它们如何被捕获</strong>。</li>
+<li>就可以通过打包调用API、确保它返回通用异常类型，从而简化代码。</li>
+<li>实际上<strong>将第三方API打包是个良好的实践手段</strong>。当你打包一个第三方API，就降低了对它的依赖：未来你可以不太痛苦地改用其他代码库。在你测试自己的代码时，打包也有助于模拟第三方调用。</li>
+<li>对于代码的某个特定区域，<strong>单一异常类通常可行</strong>。伴随异常发送出来的信息能够区分不同错误。如果你想要<strong>捕获某个异常并且放过其他异常</strong>，就使用不同的异常类。</li>
+</ul>
+<h3 id="76-定义常规流程">7.6 定义常规流程<a class="headerlink" href="#76-定义常规流程" title="Permanent link">&para;</a></h3>
+<ul>
+<li>这样做却把<strong>错误检测推到了程序的边缘地带</strong>。你打包了外部API以抛出自己的异常，你在代码的顶端定义了一个处理器来应付任何失败了的运算。</li>
+<li>这种手法叫做<strong>特例模式（SPECIAL CASE PATTERN）</strong>。 创建一个类或配置一个对象，用来处理特例。你来处理特例，客户代码就不用应付异常行为了。异常行为被封装到特例对象中。</li>
+</ul>
+<h3 id="77-别返回null-值">7.7 别返回null 值<a class="headerlink" href="#77-别返回null-值" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>返回null值，基本上是在给自己增加工作量，也是在给调用者添乱</strong>。只要有一处没检查null值，应用程序就会失控。</li>
+<li>如果你打算在方法中返回null值，<strong>不如抛出异常，或是返回特例对象</strong>。如果你在调用某个第三方API中可能返回null值的方法，可以考虑用<strong>新方法打包这个方法</strong>，在新方法中抛出异常或返回特例对象。</li>
+</ul>
+<h3 id="78-别传递null值">7.8 别传递null值<a class="headerlink" href="#78-别传递null值" title="Permanent link">&para;</a></h3>
+<ul>
+<li>在方法中<strong>返回null值是糟糕的做法，但将null值传递给其他方法就更糟糕了</strong>。除非API要求你向它传递null值，否则就要尽可能避免传递null值。</li>
+<li>还有替代方案。可以使用一组断言。</li>
+<li>在大多数编程语言中，没有良好的方法能对付由调用者意外传入的null值。事已如此，<strong>恰当的做法就是禁止传入null值</strong>。这样你在编码的时候，就会时时记住参数列表中的null值意味着出问题了，从而大量避免这种无心之失。</li>
+</ul>
+<h3 id="79-小结">7.9 小结<a class="headerlink" href="#79-小结" title="Permanent link">&para;</a></h3>
+<p>整洁代码是可读的，但也要强固。<strong>可读与强固并不冲突</strong>。如果将错误处理隔离看待，独立于主要逻辑之外，就能写出强固而整洁的代码。做到这一步，我们就能单独处理它，也极大地提升了代码的可维护性。</p>
 <h2 id="8-边界">8 边界<a class="headerlink" href="#8-边界" title="Permanent link">&para;</a></h2>
 <h2 id="9-单元测试">9 单元测试<a class="headerlink" href="#9-单元测试" title="Permanent link">&para;</a></h2>
 <h2 id="10-类">10  类<a class="headerlink" href="#10-类" title="Permanent link">&para;</a></h2>
@@ -1579,7 +1804,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 18, 2024 10:37:02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 19, 2024 10:26:22</span>
   </span>
 
     
