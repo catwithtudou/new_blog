@@ -2113,13 +2113,95 @@
 <h2 id="16-重构serialdate">16. 重构SerialDate<a class="headerlink" href="#16-重构serialdate" title="Permanent link">&para;</a></h2>
 <h2 id="17-味道与启发">17. 味道与启发<a class="headerlink" href="#17-味道与启发" title="Permanent link">&para;</a></h2>
 <h3 id="171-注释">17.1 注释<a class="headerlink" href="#171-注释" title="Permanent link">&para;</a></h3>
+<ul>
+<li>C1:不恰当的信息 </li>
+<li>C2:废弃的注释</li>
+<li>C3:冗余注释</li>
+<li>C4:糟糕的注释</li>
+<li>C5:注释掉的代码</li>
+</ul>
 <h3 id="172-环境">17.2 环境<a class="headerlink" href="#172-环境" title="Permanent link">&para;</a></h3>
+<ul>
+<li>E1:需要多步才能实现的构建</li>
+<li>E2:需要多步才能做到的测试</li>
+</ul>
 <h3 id="173-函数">17.3 函数<a class="headerlink" href="#173-函数" title="Permanent link">&para;</a></h3>
+<ul>
+<li>F1:过多的参数</li>
+<li>F2:输出参数</li>
+<li>F3:标识参数</li>
+<li>F4:死函数</li>
+</ul>
 <h3 id="174-一般性问题">17.4 一般性问题<a class="headerlink" href="#174-一般性问题" title="Permanent link">&para;</a></h3>
+<ul>
+<li>G1:一个源文件中存在多种语言</li>
+<li>G2:明显的行为未被实现</li>
+<li>G3:不正确的边界行为</li>
+<li>G4:忽视安全</li>
+<li>G5:重复</li>
+<li>G6:在错误的抽象层级上的代码</li>
+<li>G7:基类依赖于派生类</li>
+<li>G8:信息过多</li>
+<li>G9:死代码</li>
+<li>G10:垂直分隔</li>
+<li>G11:前后不一致</li>
+<li>G12:混淆视听</li>
+<li>G13:人为耦合</li>
+<li>G14:特性依恋</li>
+<li>G15:选择算子参数</li>
+<li>G16:晦涩的意图</li>
+<li>G17:位置错误的权责</li>
+<li>G18:不恰当的静态方法</li>
+<li>G19:使用解释性变量</li>
+<li>G20:函数名称应该表达其行为</li>
+<li>G21:理解算法</li>
+<li>G22:把逻辑依赖改为物理依赖</li>
+<li>G23:用多态替代 If/Else 或 Switch/Case</li>
+<li>G24:遵循标准约定</li>
+<li>G25:用命名常量替代魔术数</li>
+<li>G26:准确</li>
+<li>G27:结构甚于约定</li>
+<li>G28:封装条件</li>
+<li>G29:避免否定性条件</li>
+<li>G30:函数只该做一件事</li>
+<li>G31:掩蔽时序耦合</li>
+<li>G32:别随意</li>
+<li>G33:封装边界条件</li>
+<li>G34:函数应该只在一个抽象层级上</li>
+<li>G35:在较高层级放置可配置数据</li>
+<li>G36:避免传递浏览</li>
+</ul>
 <h3 id="175-java">17.5  Java<a class="headerlink" href="#175-java" title="Permanent link">&para;</a></h3>
+<ul>
+<li>J1:通过使用通配符避免过长的导入清单</li>
+<li>J2:不要继承常量</li>
+<li>J3:常量 vs.枚举</li>
+</ul>
 <h3 id="176-名称">17.6 名称<a class="headerlink" href="#176-名称" title="Permanent link">&para;</a></h3>
+<ul>
+<li>N1:采用描述性名称</li>
+<li>N2:名称应与抽象层级相符</li>
+<li>N3:尽可能使用标准命名法</li>
+<li>N4:无歧义的名称</li>
+<li>N5:为较大作用范围选用较长名称</li>
+<li>N6:避免编码</li>
+<li>N7:名称应该说明副作用</li>
+</ul>
 <h3 id="177-测试">17.7 测试<a class="headerlink" href="#177-测试" title="Permanent link">&para;</a></h3>
+<ul>
+<li>T1:测试不足</li>
+<li>T2:使用覆盖率工具</li>
+<li>T3:别略过小测试</li>
+<li>T4:被忽略的测试就是对不确定事物的疑问</li>
+<li>T5:测试边界条件</li>
+<li>T6:全面测试相近的缺陷</li>
+<li>T7:测试失败的模式有启发性</li>
+<li>T8:测试覆盖率的模式有启发性</li>
+<li>T9:测试应该快速</li>
+</ul>
 <h3 id="178-小结">17.8 小结<a class="headerlink" href="#178-小结" title="Permanent link">&para;</a></h3>
+<p>这份启发与味道的清单很难说已完备无缺。我不能确定这样一份清单会不会完备无缺。<strong>但或许完整性不该是目标，因为该清单确实给出了一套价值体系</strong>。</p>
+<p>那套价值体系才该是目标，也是本书的主题所在。<strong>整洁代码并非遵循一套规则写就</strong>。学习一系列启发并不足以让你成为软件匠人。专业性和技艺来自于驱动规程的价值观。</p>
 
 
 
@@ -2142,7 +2224,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 27, 2024 10:28:31</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 27, 2024 10:42:04</span>
   </span>
 
     
