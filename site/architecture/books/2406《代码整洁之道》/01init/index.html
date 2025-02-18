@@ -1,0 +1,2890 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Life">
+      
+      
+        <meta name="author" content="catwithtudou️">
+      
+      
+        <link rel="canonical" href="https://zhengyua.cn/new_blog/architecture/books/2406%E3%80%8A%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93%E3%80%8B/01init/">
+      
+      
+        <link rel="prev" href="../../2403%E3%80%8A%E9%87%8D%E6%9E%84%EF%BC%9A%E6%94%B9%E5%96%84%E6%97%A2%E6%9C%89%E4%BB%A3%E7%A0%81%E7%9A%84%E8%AE%BE%E8%AE%A1%E3%80%8B/04refractor_part_last_last/">
+      
+      
+        <link rel="next" href="../02init/">
+      
+      
+      <link rel="icon" href="../../../../assets/logo.jpeg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>01-06 - catwithtudou️🌦️</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WZVK8HDP5T"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WZVK8HDP5T",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WZVK8HDP5T",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#01-06" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="catwithtudou️🌦️" class="md-header__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+      
+  <img src="../../../../assets/logo.jpeg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            catwithtudou️🌦️
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              01-06
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/catwithtudou" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    catwithtudou
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+    
+  
+  🌦️Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../blog/" class="md-tabs__link">
+          
+  
+    
+  
+  📌MainPage
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../language/" class="md-tabs__link">
+          
+  
+    
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../algorithms/" class="md-tabs__link">
+          
+  
+    
+  
+  Algorithms
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../os/" class="md-tabs__link">
+          
+  
+    
+  
+  OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../network/" class="md-tabs__link">
+          
+  
+    
+  
+  Network
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../ds/" class="md-tabs__link">
+          
+  
+    
+  
+  DS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+    
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../middleware/" class="md-tabs__link">
+          
+  
+    
+  
+  Middleware
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../project/" class="md-tabs__link">
+          
+  
+    
+  
+  Project
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../common/01-100_tips/" class="md-tabs__link">
+          
+  
+    
+  
+  Common
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="catwithtudou️🌦️" class="md-nav__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+      
+  <img src="../../../../assets/logo.jpeg" alt="logo">
+
+    </a>
+    catwithtudou️🌦️
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/catwithtudou" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    catwithtudou
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    🌦️Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../blog/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📌MainPage
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../language/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Language
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../algorithms/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Algorithms
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../os/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../network/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Network
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../ds/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    DS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    books
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8_2" id="__nav_8_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            books
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../2403%E3%80%8A%E9%87%8D%E6%9E%84%EF%BC%9A%E6%94%B9%E5%96%84%E6%97%A2%E6%9C%89%E4%BB%A3%E7%A0%81%E7%9A%84%E8%AE%BE%E8%AE%A1%E3%80%8B/01refactor/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2403《重构：改善既有代码的设计》
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8_2_3" id="__nav_8_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    2406《代码整洁之道》
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            2406《代码整洁之道》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    01-06
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    01-06
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-整洁代码" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 整洁代码
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-有意义的命名" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 有意义的命名
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 函数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-短小" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 短小
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-只做一件事" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 只做一件事
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-每个函数一个抽象层级" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 每个函数一个抽象层级
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-switch语句" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 switch语句
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-使用描述性的名称" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 使用描述性的名称
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-函数参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6 函数参数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-无副作用" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.7 无副作用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38-分隔指令与询问" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.8 分隔指令与询问
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39-使用异常替代返回错误码" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.9 使用异常替代返回错误码
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#310-别重复自己" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.10 别重复自己
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#311-结构化编程" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.11 结构化编程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-如何写出这样的函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.12 如何写出这样的函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313-小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.13 小结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-注释" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 注释
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 注释">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-注释不能美化糟糕的代码" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 注释不能美化糟糕的代码
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-用代码来阐述" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 用代码来阐述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-好注释" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 好注释
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-坏注释" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 坏注释
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 格式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 格式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-格式的目的" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 格式的目的
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-垂直格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 垂直格式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-横向格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 横向格式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-团队规则" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4 团队规则
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-鲍勃大叔的格式规则" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.5 鲍勃大叔的格式规则
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-对象和数据结构" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 对象和数据结构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 对象和数据结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-数据抽象" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 数据抽象
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-数据对象的反对称性" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 数据、对象的反对称性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-得墨忒耳律" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 得墨忒耳律
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-数据传送对象" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4 数据传送对象
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5 小结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02init/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07-12
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03init/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13-17
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../2410%E3%80%8A%E4%BA%BF%E7%BA%A7%E6%B5%81%E9%87%8F%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E8%B7%B5%E3%80%8B/01init/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2410《亿级流量系统架构设计与实践》
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../middleware/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Middleware
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../project/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../../common/01-100_tips/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Common
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-整洁代码" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 整洁代码
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-有意义的命名" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 有意义的命名
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 函数
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-短小" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 短小
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-只做一件事" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 只做一件事
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-每个函数一个抽象层级" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 每个函数一个抽象层级
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-switch语句" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 switch语句
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-使用描述性的名称" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 使用描述性的名称
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-函数参数" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6 函数参数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-无副作用" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.7 无副作用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38-分隔指令与询问" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.8 分隔指令与询问
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#39-使用异常替代返回错误码" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.9 使用异常替代返回错误码
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#310-别重复自己" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.10 别重复自己
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#311-结构化编程" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.11 结构化编程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-如何写出这样的函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.12 如何写出这样的函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313-小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.13 小结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-注释" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 注释
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 注释">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-注释不能美化糟糕的代码" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 注释不能美化糟糕的代码
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-用代码来阐述" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 用代码来阐述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-好注释" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 好注释
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-坏注释" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 坏注释
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 格式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 格式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-格式的目的" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 格式的目的
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-垂直格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 垂直格式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-横向格式" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 横向格式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-团队规则" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4 团队规则
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-鲍勃大叔的格式规则" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.5 鲍勃大叔的格式规则
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-对象和数据结构" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 对象和数据结构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 对象和数据结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-数据抽象" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 数据抽象
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-数据对象的反对称性" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 数据、对象的反对称性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-得墨忒耳律" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 得墨忒耳律
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-数据传送对象" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4 数据传送对象
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5 小结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="01-06">01-06<a class="headerlink" href="#01-06" title="Permanent link">&para;</a></h1>
+<h2 id="1-整洁代码">1. 整洁代码<a class="headerlink" href="#1-整洁代码" title="Permanent link">&para;</a></h2>
+<ul>
+<li>记住，代码确然是我们最终用来表达需求的那种语言。我们可以创造各种与需求接近的语言。我们可以创造帮助把需求解析和汇整为正式结构的各种工具。然而，<strong>我们永远无法抛弃必要的精确性——所以代码永存</strong></li>
+<li>我们都曾经瞟一眼自己亲手造成的混乱，决定弃之而不顾，走向新一天。我们都曾经看到自己的烂程序居然能运行，然后断言能运行的烂程序总比什么都没有强。我们都曾经说过有朝一日再回头清理。当然，在那些日子里，我们都没听过勒布朗（LeBlanc）法则：<strong>稍后等于永不（Later equals never）</strong></li>
+<li>随着混乱的增加，团队生产力也持续下降，趋向于零。当生产力下降时，管理层就只有一件事可做了：增加更多人手到项目中，期望提升生产力。可是新人并不熟悉系统的设计。他们搞不清楚什么样的修改符合设计意图，什么样的修改违背设计意图。而且，他们以及团队中的其他人都背负着提升生产力的可怕压力。于是，<strong>他们制造更多的混乱，驱动生产力向零那端不断下降</strong></li>
+</ul>
+<p><img alt="生产力" src="https://img.zhengyua.cn/blog/202406221833948.png" /></p>
+<ul>
+<li>花时间保持代码整洁不但有关效率，<strong>还有关生存</strong></li>
+<li><strong>我们与项目的规划脱不了干系，对失败负有极大的责任</strong>；特别是当失败与糟糕的代码有关时尤为如此！</li>
+<li>多数经理想要知道实情，即便他们看起来不喜欢实情。多数经理想要好代码，即便他们总是痴缠于进度。他们会奋力卫护进度和需求；那是他们该干的。<strong>你则当以同等的热情卫护代码。程序员遵从不了解混乱风险的经理的意愿，也是不专业的做法</strong></li>
+<li>混乱只会立刻拖慢你，叫你错过期限。赶上期限的唯一方法——做得快的唯一方法——就是<strong>始终尽可能保持代码整洁</strong></li>
+<li>写整洁代码，需要遵循大量的小技巧，<strong>贯彻刻苦习得的“整洁感”。这种“代码感”就是关键所在。</strong>有些人生而有之。有些人费点劲才能得到。它不仅让我们看到代码的优劣，还予我们以借戒规之力化劣为优的攻略</li>
+</ul>
+<details class="note">
+<summary>什么是整洁的代码</summary>
+<p>Bjarne Stroustrup:</p>
+<p>“我喜欢优雅和高效的代码。代码逻辑应当直截了当，叫缺陷难以隐藏；尽量减少依赖关系，使之便于维护；依据某种分层战略完善错误处理代码；性能调至最优，省得引诱别人做没规矩的优化，搞出一堆混乱来。整洁的代码只做好一件事。”</p>
+<p>Grady Booch:</p>
+<p>“整洁的代码简单直接。整洁的代码如同优美的散文。整洁的代码从不隐藏设计者的意图，充满了干净利落的抽象和直截了当的控制语句。”</p>
+<p>Dave Thomas:</p>
+<p>“整洁的代码应可由作者之外的开发者阅读和增补。它应当有单元测试和验收测试。它使用有意义的命名。它只提供一种而非多种做一件事的途径。它只有尽量少的依赖关系，而且要明确地定义和提供清晰、尽量少的API。代码应通过其字面表达含义，因为不同的语言导致并非所有必需信息均可通过代码自身清晰表达。”</p>
+<p>Michael Feathers:</p>
+<p>“我可以列出我留意到的整洁代码的所有特点，但其中有一条是根本性的。整洁的代码总是看起来像是某位特别在意它的人写的。几乎没有改进的余地。代码作者什么都想到了，如果你企图改进它，总会回到原点，赞叹某人留给你的代码——全心投入的某人留下的代码。”</p>
+<p>Ron Jeffries:</p>
+<p>“近年来，我开始研究贝克的简单代码规则，差不多也都琢磨透了。简单代码，依其重要顺序：</p>
+<ul>
+<li>能通过所有测试；</li>
+<li>没有重复代码；</li>
+<li>体现系统中的全部设计理念；</li>
+<li>包括尽量少的实体，比如类、方法、函数等。</li>
+</ul>
+<p>在以上诸项中，我最在意代码重复。如果同一段代码反复出现，就表示某种想法未在代码中得到良好的体现。我尽力去找出到底那是什么，然后再尽力更清晰地表达出来。</p>
+<p>在我看来，有意义的命名是体现表达力的一种方式，我往往会修改好几次才会定下名字来。借助Eclipse这样的现代编码工具，重命名代价极低，所以我无所顾忌。然而，表达力还不只体现在命名上。我也会检查对象或方法是否想做的事太多。如果对象功能太多，最好是切分为两个或多个对象。如果方法功能太多，我总是使用抽取手段（Extract Method）重构之，从而得到一个能较为清晰地说明自身功能的方法，以及另外数个说明如何实现这些功能的方法。</p>
+<p>消除重复和提高表达力让我在整洁代码方面获益良多，只要铭记这两点，改进脏代码时就会大有不同。不过，我时常关注的另一规则就不太好解释了。</p>
+<p>这么多年下来，我发现所有程序都由极为相似的元素构成。例如“在集合中查找某物”。不管是雇员记录数据库还是名-值对哈希表，或者某类条目的数组，我们都会发现自己想要从集合中找到某一特定条目。一旦出现这种情况，我通常会把实现手段封装到更抽象的方法或类中。这样做好处多多。</p>
+<p>可以先用某种简单的手段，比如哈希表来实现这一功能，由于对搜索功能的引用指向了我那个小小的抽象，就能随需应变，修改实现手段。这样就既能快速前进，又能为未来的修改预留余地。</p>
+<p>另外，该集合抽象常常提醒我留意“真正”在发生的事，避免随意实现集合行为，因为我真正需要的不过是某种简单的查找手段。</p>
+<p>减少重复代码，提高表达力，提早构建简单抽象。这就是我写整洁代码的方法。”</p>
+<p>Ward Cunningham:</p>
+<p>“如果每个例程都让你感到深合己意，那就是整洁代码。如果代码让编程语言看起来像是专为解决那个问题而存在，就可以称之为漂亮的代码。”</p>
+</details>
+<ul>
+<li>你该明白了。读与写花费时间的比例超过10:1。<strong>写新代码时，我们一直在读旧代码。</strong>编写代码的难度，取决于读周边代码的难度。要想干得快，要想早点做完，<strong>要想轻松写代码，先让代码易读吧</strong></li>
+<li>光把代码写好可不够。<strong>必须时时保持代码整洁。</strong>我们都见过代码随时间流逝而腐坏。我们应当更积极地阻止腐坏的发生。</li>
+</ul>
+<details class="小结">
+<summary>小结</summary>
+<p>艺术书并不保证你读过之后能成为艺术家，只能告诉你其他艺术家用过的工具、技术和思维过程。本书同样也不担保让你成为好程序员。它不担保能给你代码感”。它所能做的，只是展示好程序员的思维过程，还有他们使用的技巧、技术和工具。</p>
+<p>和艺术书一样，本书也充满了细节。代码会很多。你会看到好代码，也会看到糟糕的代码。你会看到糟糕的代码如何转化为好代码。你会看到启发、规条和技巧的列表。你会看到一个又一个例子。但最终结果取决于你自己。</p>
+<p>还记得那个关于小提琴家在去表演的路上迷路的老笑话吗？他在街角拦住一位长者，问他怎么才能去卡耐基音乐厅（Carnegie Hall）。长者看了看小提琴家，又看了看他手中的琴，说道：“你还得练，孩子，还得练！</p>
+</details>
+<h2 id="2-有意义的命名">2. 有意义的命名<a class="headerlink" href="#2-有意义的命名" title="Permanent link">&para;</a></h2>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p><strong>“既然有这么多命名要做，不妨做好它。”</strong></p>
+</div>
+<p><strong>1. 名副其实</strong></p>
+<ul>
+<li><strong>选个好名字要花时间，但省下来的时间比花掉的多。</strong>注意命名，而且一旦发现有更好的名称，就换掉旧的。这么做，读你代码的人（包括你自己）都会更开心。</li>
+<li>如果名称需要注释来补充，那就不算是名副其实。</li>
+<li>选择体现本意的名称能让人更容易理解和修改代码。</li>
+<li>问题不在于代码的简洁度，而是在于代码的模糊度：<strong>即上下文在代码中未被明确体现的程度。</strong></li>
+</ul>
+<p><strong>2. 避免误导</strong></p>
+<ul>
+<li>程序员必须避免留下掩藏代码本意的错误线索。<strong>应当避免使用与本意相悖的词。</strong></li>
+<li>提防使用不同之处较小的名称。</li>
+<li>以同样的方式拼写出同样的概念才是信息。<strong>拼写前后不一致就是误导。</strong></li>
+</ul>
+<p><strong>3. 做有意义的区分</strong></p>
+<ul>
+<li>如果程序员只是为满足编译器或解释器的需要而写代码，<strong>就会制造麻烦。</strong></li>
+<li>废话是另一种没意义的区分。</li>
+<li>注意，只要体现出有意义的区分，使用 a 和 the 这样的前缀就没错。</li>
+<li>废话都是冗余。</li>
+<li>要区分名称，就要以读者能鉴别不同之处的方式来区分。</li>
+</ul>
+<p><strong>4. 使用读得出来的名称</strong></p>
+<ul>
+<li>这不是小事，因为<strong>编程本就是一种社会活动。</strong></li>
+</ul>
+<p><strong>5. 使用可搜索的名称</strong></p>
+<ul>
+<li>长名称胜于短名称，搜得到的名称胜于用自造编码代写就的名称。</li>
+<li>若变量或常量可能在代码中多处使用，则应赋其以便于搜索的名称。</li>
+</ul>
+<p><strong>6. 避免使用编码</strong></p>
+<ul>
+<li>把类型或作用域编进名称里面，<strong>徒然增加了解码的负担。</strong></li>
+<li>如今HN和其他类型编码形式都纯属多余。</li>
+<li>也不必用 m_前缀来标明成员变量。应当把类和函数做得足够小，消除对成员前缀的需要。</li>
+<li>前缀变作了不入法眼的废料，变作了旧代码的标志物。</li>
+<li>如果接口和实现必须选一个来编码的话，我宁肯选择实现。ShapeFactoryImp，甚至是丑陋的CShapeFactory，<strong>都比对接口名称编码来得好。</strong></li>
+</ul>
+<p><strong>7. 避免思维映射</strong></p>
+<ul>
+<li>不应当让读者在脑中把你的名称翻译为他们熟知的名称。这种问题经常出现在选择是使用问题领域术语还是解决方案领域术语时。</li>
+<li>程序员通常都是聪明人。聪明人有时会借脑筋急转弯炫耀其聪明。</li>
+<li>聪明程序员和专业程序员之间的区别在于，<strong>专业程序员了解，明确是王道。</strong>专业程序员善用其能，编写其他人能理解的代码。</li>
+</ul>
+<p><strong>8. 类名&amp;方法名</strong></p>
+<ul>
+<li>类名和对象名应该是名词或名词短语。</li>
+<li>方法名应当是动词或动词短语。</li>
+<li>重载构造器时，使用描述了参数的静态工厂方法名。</li>
+</ul>
+<p><strong>9. 别抖机灵</strong></p>
+<ul>
+<li>如果名称太耍宝，那就只有同作者一般有幽默感的人才能记得住，而且还是在他们记得那个笑话的时候才行。</li>
+<li>言到意到。意到言到。</li>
+</ul>
+<p><strong>10. 每个概念对应一个词</strong></p>
+<ul>
+<li>给每个抽象概念选一个词，<strong>并且一以贯之。</strong></li>
+<li>函数名称应当独一无二，而且要保持一致，这样你才能不借助多余的浏览就找到正确的方法。</li>
+</ul>
+<p><strong>11. 别用双关语</strong></p>
+<ul>
+<li>避免将<strong>同一单词用于不同目的。</strong></li>
+<li>代码作者应尽力写出易于理解的代码。我们想把代码写得让别人能一目尽览，而不必殚精竭虑地研究。我们想要那种大众化的作者尽责写清楚的平装书模式；我们不想要那种学者挖地三尺才能明白个中意义的学院派模式。</li>
+</ul>
+<p><strong>12. 使用解决方案领域名称</strong></p>
+<ul>
+<li>记住，<strong>只有程序员才会读你的代码。</strong></li>
+<li>程序员要做太多技术性工作。给这些事取个技术性的名称，通常是最靠谱的做法。</li>
+</ul>
+<p><strong>13. 使用源自所涉问题领域的名称</strong></p>
+<ul>
+<li>如果不能用程序员熟悉的术语来给手头的工作命名，就采用从所涉问题领域而来的名称吧。</li>
+<li><strong>与所涉问题领域更为贴近的代码</strong>，应当采用源自问题领域的名称。</li>
+</ul>
+<p><strong>14. 添加有意义的语境&amp;不要添加没用的语境</strong></p>
+<ul>
+<li>很少有名称是能自我说明的——多数都不能。反之，你需要用有良好命名的类、函数或名称空间来放置名称，<strong>给读者提供语境</strong>。如果没这么做，给名称添加前缀就是最后一招了。</li>
+<li>语境的增强也让算法能够通过分解为更小的函数而变得更为干净利落。</li>
+<li>只要短名称足够清楚，就要比长名称好。<strong>别给名称添加不必要的语境。</strong></li>
+<li>精确正是命名的要点。</li>
+</ul>
+<details class="最后的话">
+<summary>最后的话</summary>
+<p>取好名字最难的地方在于需要良好的描述技巧和共有文化背景。与其说这是一种技术、商业或管理问题，还不如说是一种教学问题。其结果是，这个领域内的许多人都没能学会做得很好。</p>
+</details>
+<h2 id="3-函数">3. 函数<a class="headerlink" href="#3-函数" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>函数是所有程序中的第一组代码。</p>
+</blockquote>
+<h3 id="31-短小">3.1 短小<a class="headerlink" href="#31-短小" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>函数的第一规则是要短小。第二条规则是还要更短小。</strong> 经过漫长的试错，经验告诉我们，函数就该小。</li>
+<li>每个函数都一目了然。每个函数都只说一件事。而且每个函数都依序把你带到下一个函数，这就是函数应该达到的短小程度。</li>
+<li>if语句、else语句、while语句等，其中的代码块应该只有一行。 <strong>该行大抵应该是一个函数调用语句。</strong> 这样不但能保持函数短小，而且因为块内调用的函数拥有较具说明性的名称，从而增加了文档上的价值。</li>
+</ul>
+<h3 id="32-只做一件事">3.2 只做一件事<a class="headerlink" href="#32-只做一件事" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>函数应该做一件事。做好这件事。只做这一件事。</strong></li>
+<li><strong>如果函数只是做了该函数名下同一抽象层上的步骤，则函数还是只做了一件事。</strong> 编写函数毕竟是为了把大一些的概念（换言之，函数的名称）拆分为另一抽象层上的一系列步骤。</li>
+<li>所以，要判断函数是否不止做了一件事还有一个方法，<strong>就是看是否能再拆出一个函数，</strong> 该函数不仅只是单纯地重新诠释其实现。</li>
+<li><strong>只做一件事的函数无法被合理地切分为多个区段。</strong> 这就是函数做事太多的明显征兆。</li>
+</ul>
+<h3 id="33-每个函数一个抽象层级">3.3 每个函数一个抽象层级<a class="headerlink" href="#33-每个函数一个抽象层级" title="Permanent link">&para;</a></h3>
+<ul>
+<li>要确保函数只做一件事，<strong>函数中的语句都要在同一抽象层级上。</strong></li>
+<li><strong>函数中混杂不同抽象层级，往往让人迷惑。</strong> 读者可能无法判断某个表达式是基础概念还是细节。更恶劣的是，一旦细节与基础概念混杂，更多的细节就会在函数中纠结起来。</li>
+<li>我们想要让<strong>代码拥有自顶向下的阅读顺序</strong>。我们想要让每个函数后面都跟着位于下一抽象层级的函数，这样一来，在查看函数列表时，就能偱抽象层级向下阅读了。即叫做做向下规则。</li>
+<li>让代码读起来像是<strong>一系列自顶向下的To起头段落是</strong>保持抽象层级协调一致的有效技巧。</li>
+</ul>
+<h3 id="34-switch语句">3.4 switch语句<a class="headerlink" href="#34-switch语句" title="Permanent link">&para;</a></h3>
+<ul>
+<li>写出短小的switch语句很难。即便是只有两种条件的switch语句也要比想要的单个代码块或函数大得多。写出只做一件事的switch语句也很难。Switch天生要做N件事。不幸我们总无法避开switch语句，不过<strong>还是能够确保每个switch都埋藏在较低的抽象层级，而且永远不重复</strong>。当然可利用多态来实现这一点。</li>
+<li>对于switch语句，我的规矩是如果<strong>只出现一次，用于创建多态对象，而且隐藏在某个继承关系中，在系统其他部分看不到</strong>，就还能容忍。</li>
+</ul>
+<h3 id="35-使用描述性的名称">3.5 使用描述性的名称<a class="headerlink" href="#35-使用描述性的名称" title="Permanent link">&para;</a></h3>
+<ul>
+<li>记住沃德原则：<strong>“如果每个例程都让你感到深合己意，那就是整洁代码。”</strong> 要遵循这一原则，泰半工作都在于为只做一件事的小函数取个好名字。函数越短小、功能越集中，就越便于取个好名字。</li>
+<li><strong>别害怕长名称。长而具有描述性的名称，要比短而令人费解的名称好。</strong> 长而具有描述性的名称，要比描述性的长注释好。使用某种命名约定，让函数名称中的多个单词容易阅读，然后使用这些单词给函数取个能说清其功用的名称。</li>
+<li>别害怕花时间取名字。你当尝试不同的名称，实测其阅读效果。</li>
+<li>选择描述性的名称能理清你关于模块的设计思路，并帮你改进之。<strong>追索好名称，往往导致对代码的改善重构。</strong></li>
+<li><strong>命名方式要保持一致。</strong> 使用与模块名一脉相承的短语、名词和动词给函数命名。</li>
+</ul>
+<h3 id="36-函数参数">3.6 函数参数<a class="headerlink" href="#36-函数参数" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>最理想的参数数量是零（零参数函数）</strong>，其次是1（单参数函数)，再次是2（双参数函数），应尽量避免3（三参数函数）。有足够特殊的理由才能用3个以上参数（多参数函数）——所以无论如何也不要这么做。</li>
+<li><strong>参数不易对付。它们带有太多概念性。</strong> 参数与函数名处在不同的抽象层级，它要求你了解目前并不特别重要的细节。</li>
+<li>从测试的角度看，参数甚至更叫人为难。</li>
+<li>输出参数比输入参数还要难以理解。</li>
+<li>相较于没有参数，只有一个输入参数算是第二好的做法。</li>
+</ul>
+<p><strong>1. 单参数函数的普遍形式</strong></p>
+<ul>
+<li>你应当选用较能区别这两种理由的名称，而且<strong>总在一致的上下文中使用这两种形式。</strong></li>
+<li>还有虽不那么普遍但仍极有用的单参数函数形式，那就是事件（event）。在这种形式中，有输入参数而无输出参数。小心使用这种形式。应该让读者很清楚地了解它是个事件。谨慎地选用名称和上下文语境。</li>
+<li>尽量避免编写不遵循这些形式的一元函数。</li>
+</ul>
+<p><strong>2. 标识参数</strong></p>
+<ul>
+<li><strong>标识参数丑陋不堪。</strong> 向函数传入布尔值简直就是骇人听闻的做法。这样做，方法签名立刻变得复杂起来，大声宣布本函数不止做一件事。</li>
+</ul>
+<p><strong>3. 双参数函数</strong></p>
+<ul>
+<li><strong>有两个参数的函数要比一元函数难懂。</strong> 尽管两种情况下意义都很清楚，但第一个只要扫一眼就明白，更好地表达了其意义。第二个就得暂停一下才能明白，除非我们学会忽略第一个参数。而且最终那也会导致问题，因为我们根本就不该忽略任何代码。忽略掉的部分就是缺陷藏身之地。当然，有些时候两个参数正好。</li>
+<li>二元函数不算恶劣，而且你当然也会编写二元函数。<strong>不过你得小心使用二元函数要付出代价。</strong> 你应该尽量利用一些机制将其转换成一元函数。</li>
+</ul>
+<p><strong>4. 三参数函数</strong></p>
+<ul>
+<li><strong>有三个参数的函数要比二元函数难懂得多。</strong> 排序、琢磨、忽略的问题都会加倍体现。建议你在写三元函数前一定要想清楚。</li>
+</ul>
+<p><strong>5. 参数对象</strong></p>
+<ul>
+<li>如果函数看来需要两个、三个或三个以上参数，就说明其中<strong>一些参数应该封装为类了。</strong></li>
+<li>从参数创建对象，从而减少参数数量，看起来像是在作弊，但实则并非如此。</li>
+</ul>
+<p><strong>6. 参数列表</strong></p>
+<ul>
+<li>有时我们想要向函数传入数量可变的参数。如果可变参数像上例中那样被同等对待，就和类型为List的单个参数没什么两样。</li>
+<li>有可变参数的函数可能是一元、二元甚至三元。<strong>超过这个数量就可能要犯错了。</strong></li>
+</ul>
+<p><strong>7. 动词与关键词</strong></p>
+<ul>
+<li><strong>给函数取个好名字，能较好地解释函数的意图，以及参数的顺序和意图。</strong> 对于一元函数，函数和参数应当形成一种非常良好的动词/名词对形式。</li>
+<li>最后那个例子展示了<strong>函数名称的关键字（keyword）形式。</strong> 使用这种形式，我们把参数的名称编码成了函数名。</li>
+</ul>
+<h3 id="37-无副作用">3.7 无副作用<a class="headerlink" href="#37-无副作用" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>副作用是一种谎言。函数承诺只做一件事，但还是会做其他被藏起来的事。</strong> 有时它会对自己类中的变量做出未能预期的改动。有时，它会把变量搞成向函数传递的参数或是系统全局变量。<strong>无论哪种情况，都是具有破坏性的，会导致古怪的时序性耦合及顺序依赖。</strong></li>
+<li>这一副作用造出了一次时序性耦合。如果一定要时序性耦合，就应该在函数名称中说明。</li>
+<li><strong>参数多数会被自然而然地看作是函数的输入。</strong> 如果你编过好些年程序，我担保你一定被用作输出而非输入的参数迷惑过。</li>
+<li>事情清楚了但付出了检查函数声明的代价。你被迫检查函数签名，就得花上一点时间。<strong>应该避免这种中断思路的事。</strong></li>
+<li><strong>普遍而言应避免使用输出参数。</strong> 如果函数必须要修改某种状态，就修改所属对象的状态吧。</li>
+</ul>
+<h3 id="38-分隔指令与询问">3.8 分隔指令与询问<a class="headerlink" href="#38-分隔指令与询问" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>函数要么做什么事，要么回答什么事，但二者不可得兼。</strong> 函数应该修改某对象的状态，或是返回该对象的有关信息。两样都干常会导致混乱。</li>
+<li>真正的解决方案是把<strong>指令与询问分隔开来，防止混淆的发生。</strong></li>
+</ul>
+<h3 id="39-使用异常替代返回错误码">3.9 使用异常替代返回错误码<a class="headerlink" href="#39-使用异常替代返回错误码" title="Permanent link">&para;</a></h3>
+<ul>
+<li>从<strong>指令式函数返回错误码轻微违反了指令与询问分隔的规则。</strong> 它鼓励了在if语句判断中把指令当作表达式使用。</li>
+<li>这不会引起动词/形容词混淆，但却导致更深层次的嵌套结构。<strong>当返回错误码时，就是在要求调用者立刻处理错误。</strong></li>
+<li><strong>如果使用异常替代返回错误码，</strong> 错误处理代码就能从主路径代码中分离出来，得到简化。</li>
+</ul>
+<p><strong>1. 抽离 try/catch 代码块</strong></p>
+<ul>
+<li>Try/catch代码块丑陋不堪。它们搞乱了代码结构，把错误处理与正常流程混为一谈。<strong>最好把try和catch代码块的主体部分抽离出来，另外形成函数。</strong></li>
+</ul>
+<p><strong>2. 错误处理就是一件事</strong></p>
+<ul>
+<li>函数应该只做一件事。错误处理就是一件事。因此，<strong>处理错误的函数不该做其他事。</strong></li>
+</ul>
+<p><strong>3. Error.java 依赖磁铁</strong></p>
+<ul>
+<li>这样的类就是一块依赖磁铁（dependency magnet）；其他许多类都得导入和使用它。</li>
+<li><strong>使用异常替代错误码，新异常就可以从异常类派生出来，</strong> 无需重新编译或重新部署。</li>
+</ul>
+<h3 id="310-别重复自己">3.10 别重复自己<a class="headerlink" href="#310-别重复自己" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>这样的重复还是会导致问题，因为代码因此而臃肿，</strong> 且当算法改变时需要修改4处地方。而且也会增加4次放过错误的可能性。</li>
+<li>整个模块的可读性因为<strong>重复的消除而得到了提升。</strong> 重复可能是软件中一切邪恶的根源。许多原则与实践规则都是为控制与消除重复而创建。</li>
+</ul>
+<h3 id="311-结构化编程">3.11 结构化编程<a class="headerlink" href="#311-结构化编程" title="Permanent link">&para;</a></h3>
+<ul>
+<li>有些程序员遵循 <strong>Edsger Dijkstra 的结构化编程规则</strong>。Dijkstra 认为，每个函数、函数中的每个代码块都应该有一个入口、一个出口。遵循这些规则，意味着在每个函数中只该有一个 return 语句，循环中不能有 break 或 continue 语句，而且永永远远不能有任何 goto 语句。</li>
+<li>我们赞成结构化编程的目标和规范，<strong>但对于小函数，这些规则助益不大。</strong> 只有在大函数中，这些规则才会有明显的好处。 所以只要函数保持短小，偶尔出现的 return、break 或 continue 语句没有坏处，甚至还比单入单出原则更具有表达力。另外一方面，goto 只在大函数中才有道理，所以应该尽量避免使用。</li>
+</ul>
+<h3 id="312-如何写出这样的函数">3.12 如何写出这样的函数<a class="headerlink" href="#312-如何写出这样的函数" title="Permanent link">&para;</a></h3>
+<ul>
+<li>写代码和写别的东西很像。在写论文或文章时，你先想什么就写什么，然后再打磨它。初稿也许粗陋无序，你就斟酌推敲，直至达到你心目中的样子。</li>
+</ul>
+<h3 id="313-小结">3.13 小结<a class="headerlink" href="#313-小结" title="Permanent link">&para;</a></h3>
+<ul>
+<li>每个系统都是使用某种领域特定语言搭建，而这种语言是程序员设计来描述那个系统的。函数是语言的动词，类是名词。这并非是退回到那种认为需求文档中的名词和动词就是系统中类和函数的最初设想的可怕的旧观念。<strong>其实这是个历史更久的真理。编程艺术是且一直就是语言设计的艺术。</strong></li>
+<li>本章所讲述的是有关编写良好函数的机制。如果你遵循这些规则，函数就会短小，有个好名字，而且被很好地归置。不过永远别忘记，真正的目标在于讲述系统的故事，而<strong>你编写的函数必须干净利落地拼装到一起，形成一种精确而清晰的语言，帮助你讲故事。</strong></li>
+</ul>
+<h2 id="4-注释">4. 注释<a class="headerlink" href="#4-注释" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>什么也比不上放置良好的注释来得有用。什么也不会比乱七八糟的注释更有本事搞乱一个模块。什么也不会比陈旧、提供错误信息的注释更有破坏性。</strong></li>
+<li>注释并不像辛德勒的名单。它们并不“纯然地好”。实际上注释最多也就是一种必须的恶。</li>
+<li>注释的恰当用法是弥补我们在用<strong>代码表达意图时遭遇的失败。</strong> 注意，我用了“失败”一词。我是说真的。注释总是一种失败。我们总无法找到不用注释就能表达自我的方法，所以总要有注释，这并不值得庆贺。</li>
+<li>注释存在的时间越久，就离其所 描述的代码越远，越来越变得全然错误。原因很简单：<strong>程序员不能坚持维护注释。</strong></li>
+<li>程序员应当负责将注释保持在可维护、有关联、精确的高度。我 同意这种说法。但我更主张把<strong>力气用在写清楚代码上，直接保证无须编写注释。</strong> 不准确的注释要比没注释坏得多。</li>
+<li><strong>真实只在一处地方有:代码。</strong> 只有代码能忠实地告诉你它做的事。那是唯一真正准确的信息来源。所以，尽管有时也需要注释，我们也该多花心思尽量减少注释量。</li>
+</ul>
+<h3 id="41-注释不能美化糟糕的代码">4.1 注释不能美化糟糕的代码<a class="headerlink" href="#41-注释不能美化糟糕的代码" title="Permanent link">&para;</a></h3>
+<ul>
+<li>写注释的常见动机之一是糟糕的代码的存在。</li>
+<li>带有少量注释的整洁而有表达力的代码，要比带有大量注释的零碎而复杂的代码像样得多。</li>
+</ul>
+<h3 id="42-用代码来阐述">4.2 用代码来阐述<a class="headerlink" href="#42-用代码来阐述" title="Permanent link">&para;</a></h3>
+<ul>
+<li>有时代码本身不足以解释其行为。不幸的是许多程序员据此 以为代码很少——如果有的话——能做好解释工作。这种观点纯属错误。</li>
+</ul>
+<h3 id="43-好注释">4.3 好注释<a class="headerlink" href="#43-好注释" title="Permanent link">&para;</a></h3>
+<ul>
+<li>有些注释是<strong>必须的，也是有利的。</strong> 来看看一些我认为值得写的注释。不过要记住唯一真正好的注释是你想办法不去写的注释。</li>
+</ul>
+<p><strong>1. 法律信息</strong></p>
+<ul>
+<li>有时，公司代码规范要求编写与法律有关的注释。这类注释不应是合同或法典。<strong>只要有可能就指向一份标准许可或其他外部文档，</strong> 而不要把所有条款放到注释中。</li>
+</ul>
+<p><strong>2. 提供信息的注释</strong></p>
+<ul>
+<li>有时，用注释来提供基本信息也有其用处。这类注释有时管用，但更好的方式是尽量利用函数名称传达信息。</li>
+</ul>
+<p><strong>3. 对意图的解释</strong></p>
+<ul>
+<li>有时，注释不仅提供了有关实现的有用信息，而且<strong>还提供了某个决定后面的意图。</strong></li>
+</ul>
+<p><strong>4. 阐释</strong></p>
+<ul>
+<li>有时，注释把某些<strong>晦涩难明的参数或返回值的意义翻译为某种可读形式</strong>，也会是有用的。通常更好的方法是尽量让参数或返回值自身就足够清楚；但如果参数或返回值是某个标准库的一部分，或是你不能修改的代码帮助阐释其含义的代码就会有用。</li>
+<li>这一方面说明了阐释有多必要，<strong>另外也说明了它有风险。</strong> 所以在写这类注释之前，考虑一下是否还有更好的办法，然后再加倍小心地确认注释正确性。</li>
+</ul>
+<p><strong>5. 警示</strong></p>
+<ul>
+<li>有时，用于警告其他程序员会出现某种后果的注释也是有用的。</li>
+</ul>
+<p><strong>6. TODO 注释</strong></p>
+<ul>
+<li>有时，有理由用//TODO 形式在源代码中放置要做的工作列表。</li>
+</ul>
+<p><strong>7. 放大</strong></p>
+<ul>
+<li>注释可以用来放大某种看来不合理之物的重要性。</li>
+</ul>
+<p><strong>8. 公共 API 中的 Javadoc</strong></p>
+<ul>
+<li>没有什么比<strong>被良好描述的公共API</strong>更有用和令人满意的了。</li>
+</ul>
+<h3 id="44-坏注释">4.4 坏注释<a class="headerlink" href="#44-坏注释" title="Permanent link">&para;</a></h3>
+<ul>
+<li>通常，坏注释都是糟糕的代码的支撑或借口，或者对错误决策的修正，<strong>基本上等于程序员自说自话。</strong></li>
+</ul>
+<p><strong>1. 喃喃自语</strong></p>
+<ul>
+<li>如果只是因为你觉得应该或者因为过程需要就添加注释，那就是无谓之举。如果你决定写注释，就要花必要的时间确保写出最好的注释。</li>
+</ul>
+<p><strong>2. 多余的注释</strong></p>
+<ul>
+<li>其头部位置的注释全属多余。读这段注释花的时间没准比读代码花的时间还要长。</li>
+</ul>
+<p><strong>3. 误导性注释</strong></p>
+<ul>
+<li>有时，尽管初衷可嘉，程序员还是会写出不够精确的注释。</li>
+</ul>
+<p><strong>4. 循规式注释</strong></p>
+<ul>
+<li>所谓每个函数都要有 Javadoc 或每个变量都要有注释的规矩全然是愚蠢可笑的。这类注释徒然让代码变得散乱，满口胡言令人迷惑不解。</li>
+</ul>
+<p><strong>5. 日志式注释</strong></p>
+<ul>
+<li>很久以前，在模块开始处创建并维护这些记录还算有道理。那时，我们还没有<strong>源代码控制系统可用</strong>。如今这种冗长的记录只会让模块变得凌乱不堪，应当全部删除。</li>
+</ul>
+<p><strong>6. 废话注释</strong></p>
+<ul>
+<li>这类注释废话连篇，我们都学会了视而不见。读代码时眼光不会停留在它们上面。最终，当代码修改之后这类注释就变作了谎言一堆。</li>
+<li>与其纠缠于毫无价值的废话注释，程序员应该意识到，他的挫败感可以由<strong>改进代码结构而消除。</strong></li>
+</ul>
+<p><strong>7. 可怕的废话</strong></p>
+<ul>
+<li>Javadoc也可能是废话。下例 Javadoc 的目的是什么？答案:无。它们只是源自某种提供文档的不当愿望的废话注释。</li>
+</ul>
+<blockquote>
+<p>如果作者在 写(或粘贴)注释时都没花心思，怎么能指望读者从中获益呢？</p>
+</blockquote>
+<p><strong>8. 能用函数或变量时就别用注释</strong></p>
+<ul>
+<li>作者应该重构代码，如我所做的那样从而删掉注释。</li>
+</ul>
+<p><strong>9. 位置标记</strong></p>
+<ul>
+<li>把<strong>特定函数趸放在这种标记栏下面</strong>，多数时候实属无理。鸡零狗碎，理当删除——特别是尾部那一长串无用的斜杠。</li>
+<li>尽量少用标记栏，<strong>只在特别有价值的时候用</strong>。如果滥用标记栏，就会沉没在背景噪音中被忽略掉。</li>
+</ul>
+<p><strong>10. 括号后面的注释</strong></p>
+<ul>
+<li>有时，程序员会在括号后面放置特殊的注释。尽管这对于含有深度嵌套结构的长函数可能有意义，但只会给我们更愿意编写的短小、封装的函数带来混乱。如果你发现自己<strong>想标记右括号，其实应该做的是缩短函数。</strong></li>
+</ul>
+<p><strong>11. 归属与署名</strong></p>
+<ul>
+<li>源代码控制系统非常善于记住是谁在何时添加了什么。<strong>没必要用那些小小的签名搞脏代码。</strong></li>
+</ul>
+<p><strong>12. 注释掉的代码</strong></p>
+<ul>
+<li>其他人不敢删除注释掉的代码。他们会想代码依然放在那儿，一定有其原因，而且这段代码很重要，不能删除。<strong>注释掉的代码堆积在一起，就像破酒瓶底的渣滓一般。</strong></li>
+</ul>
+<p><strong>13. HTML注释</strong></p>
+<ul>
+<li>如果注释将由某种工具抽取出来，呈现到网页，那么该是工具<strong>而非程序员来负责给注释加上合适的HTML标签。</strong></li>
+</ul>
+<p><strong>14. 非本地信息</strong></p>
+<ul>
+<li>假如你一定要写注释，<strong>请确保它描述了离它最近的代码。</strong> 别在本地注释的上下文环境中给出系统级的信息。</li>
+</ul>
+<p><strong>15. 信息过多</strong></p>
+<ul>
+<li>别在注释中添加有趣的历史性话题或者无关的细节描述。</li>
+</ul>
+<p><strong>16. 不明显的联系</strong></p>
+<ul>
+<li>注释及其描述的代码之间的联系应该显而易见。如果你不嫌麻烦要写注释，至少让读者能看着注释和代码，并且理解注释所谈何物。</li>
+</ul>
+<p><strong>17. 函数头</strong></p>
+<ul>
+<li><strong>短函数不需要太多描述。</strong> 为只做一件事的短函数选个好名字，通常要比写函数头注释要好。</li>
+</ul>
+<p><strong>18. 非公共代码中的 Javadoc</strong></p>
+<ul>
+<li>虽然 Javadoc 对于公共 API 非常有用，但对于<strong>不打算作公共用途的代码就令人厌恶了。</strong></li>
+</ul>
+<p><strong>19. 范例</strong></p>
+<h2 id="5-格式">5. 格式<a class="headerlink" href="#5-格式" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>当有人查看底层代码实现时，我们希望他们为其整洁、一致及所感知到的对细节的关注而震惊。我们希望他们高高扬起眉毛，一路看下去。</p>
+</blockquote>
+<h3 id="51-格式的目的">5.1 格式的目的<a class="headerlink" href="#51-格式的目的" title="Permanent link">&para;</a></h3>
+<ul>
+<li>先明确一下代码格式很重要。代码格式不可忽略，必须严肃对待。<strong>代码格式关乎沟通，而沟通是专业开发者的头等大事。</strong></li>
+<li>你今天编写的功能，极有可能在下一版本中被修改，但代码的可读性却会对以后可能发生的修改行为产生深远影响。原始代码修改之后很久，其代码风格和可读性仍会影响到可维护性和扩展性。<strong>即便代码已不复存在，你的风格和律条仍存活下来。</strong></li>
+</ul>
+<h3 id="52-垂直格式">5.2 垂直格式<a class="headerlink" href="#52-垂直格式" title="Permanent link">&para;</a></h3>
+<ul>
+<li>对我们来说，意味着有可能用大多数为200行、最长500行的单个文件构造出色的系统。尽管这并非不可违背的原则，也应该乐于接受。<strong>短文件通常比长文件易于理解。</strong></li>
+</ul>
+<p><strong>1. 向报纸学习</strong></p>
+<ul>
+<li>源文件也要像报纸文章那样。名称应当简单且一目了然。名称本身应该足够告诉我们是否在正确的模块中。源文件最顶部应该给出高层次概念和算法。<strong>细节应该往下渐次展开，直至找到源文件中最底层的函数和细节。</strong></li>
+</ul>
+<p><strong>2. 概念间垂直方向上的区隔</strong></p>
+<ul>
+<li>几乎所有的代码都是<strong>从上往下读，从左往右读。</strong> 每行展现一个表达式或一个子句，每组代码行展示一条完整的思路。这些思路用空白行区隔开来。</li>
+<li>在封包声明、导入声明和每个函数之间，都有空白行隔开。这条极其简单的规则极大地影响到代码的视觉外观。<strong>每个空白行都是一条线索，标识出新的独立概念。</strong></li>
+</ul>
+<p><strong>3. 垂直方向上的靠近</strong></p>
+<ul>
+<li>如果说空白行隔开了概念，靠近的代码行则暗示了它们之间的紧密关系。所以<strong>紧密相关的代码应该互相靠近。</strong></li>
+</ul>
+<p><strong>4. 垂直距离</strong></p>
+<ul>
+<li>因为你想要理解系统做什么，但<strong>却花时间和精力在找到和记住那些代码碎片在哪里。</strong></li>
+<li><strong>除非有很好的理由，否则就不要把关系密切的概念放到不同的文件中。</strong> 实际上，这也是避免使用protected变量的理由之一。</li>
+<li>对于那些关系密切、放置于同一源文件中的概念，它们之间的区隔应该成为<strong>对相互的易懂度有多重要的衡量标准</strong>。应避免迫使读者在源文件和类中跳来跳去。</li>
+<li>变量声明：<strong>变量声明应尽可能靠近其使用位置。</strong></li>
+<li>实体变量：<strong>实体变量应该在类的顶部声明。</strong> 这应该不会增加变量的垂直距离，因为在设计良好的类中它们如果不是被该类的所有方法也是被大多数方法所用。</li>
+<li>相关函数：若某个函数调用了另外一个，<strong>就应该把它们放到一起，而且调用者应该尽可能放在被调用者上面</strong>。这样程序就有个自然的顺序。注意顶部的函数是如何调用其下的函数，而这些被调用的函数又是如何调用更下面的函数的。<strong>这样就能轻易找到被调用的函数，极大地增强了整个模块的可读性。</strong></li>
+<li>概念相关：<strong>概念相关的代码应该放到一起</strong>。相关性越强，彼此之间的距离就该越短。相关性应建立在直接依赖的基础上，如函数间调用， 或函数使用某个变量。但也有其他相关性的可能。相关性可能来自于执行相似操作的一组函数。</li>
+<li>这些函数有着极强的概念相关性，因为他们拥有共同的命名模式，执行同一基础任务的不同变种。互相调用是第二位的。即便没有互相调用，也应该放在一起。</li>
+</ul>
+<p><strong>5. 垂直顺序</strong></p>
+<ul>
+<li>一般而言，我们想自上向下展示函数调用依赖顺序。也就是说被调用的函数应该放在执行调用的函数下面。这样就建立了一种<strong>自顶向下贯穿源代码模块的良好信息流</strong>。</li>
+<li>这样，我们就能扫过源代码文件自最前面的几个函数获知要旨，而不至于沉溺到细节中。</li>
+</ul>
+<h3 id="53-横向格式">5.3 横向格式<a class="headerlink" href="#53-横向格式" title="Permanent link">&para;</a></h3>
+<ul>
+<li>程序员们显然更喜爱短代码行。</li>
+<li>我一向遵循<strong>无需拖动滚动条到右边的原则。</strong></li>
+</ul>
+<p><strong>1. 水平方向上的区隔与靠近</strong></p>
+<ul>
+<li>我们使用<strong>空格字符将彼此紧密相关的事物连接</strong>到一起，也用空格字符把相关性较弱的事物分隔开。</li>
+<li>我在<strong>赋值操作符周围加上空格字符，以此达到强调目的</strong>。赋值语句有两个确定而重要的要素：左边和右边。空格字符加强了分隔效果。另一方面，我不在函数名和左圆括号之间加空格。这是因为函数与其参数密切相关，如果隔开就会显得互无关系。我把函数调用括号中的参数一一隔开，强调逗号，表示参数是互相分离的。</li>
+<li>空格字符的另一种用法是<strong>强调其前面的运算符。</strong></li>
+</ul>
+<p><strong>2. 水平对齐</strong></p>
+<ul>
+<li>我发现这种对齐方式没什么用。对齐，像是在强调不重要的东西，<strong>把我的目光从真正的意义上拉开。</strong></li>
+<li>如果有较长的列表需要做对齐处理，那问题就是<strong>在列表的长度上而不是对齐上</strong>。</li>
+</ul>
+<p><strong>3. 缩进</strong></p>
+<ul>
+<li><strong>源文件是一种继承结构，而不是一种大纲结构</strong>。其中的信息涉及整个文件、文件中每个类、类中的方法、方法中的代码块，也涉及代码块中的代码块。</li>
+<li>要让这种范围式继承结构可见，我们依源代码行在<strong>继承结构中的位置对源代码行做缩进处理</strong>。</li>
+<li>程序员相当依赖这种缩进模式。他们从代码行左边查看自己在什么范围中工作。这让他们能<strong>快速跳过与当前关注的情形无关的范围</strong>。</li>
+<li><strong>违反缩进规则</strong>。有时，会忍不住想要在短小的 if 语句、while 循环或小函数中违反缩进规则。一旦这么做了我多数时候还是会回头加上缩进。这样就避免了出现以下这种范围层级坍塌到一行的情况。</li>
+</ul>
+<p><strong>4. 空范围</strong></p>
+<ul>
+<li>有时，while或for语句的语句体为空。我不喜欢这种结构，尽量不使用。<strong>如果无法避免，就确保空范围体的缩进，用括号包围起来</strong>。</li>
+</ul>
+<h3 id="54-团队规则">5.4 团队规则<a class="headerlink" href="#54-团队规则" title="Permanent link">&para;</a></h3>
+<ul>
+<li>每个程序员都有自己喜欢的格式规则，但如果在一个团队中工作，就是团队说了算。</li>
+<li>记住，好的软件系统是由一系列读起来不错的代码文件组成的。它们需要拥有一致和顺畅的风格。读者要能确信，他们在一个源文件中看到的格式风格在其他文件中也是同样的用法。<strong>绝对不要用各种不同的风格来编写源代码，这样会增加其复杂度。</strong></li>
+</ul>
+<h3 id="55-鲍勃大叔的格式规则">5.5 鲍勃大叔的格式规则<a class="headerlink" href="#55-鲍勃大叔的格式规则" title="Permanent link">&para;</a></h3>
+<ul>
+<li>我个人使用的规则相当简单，如代码清单5-6所示。可以把这段代码看作是展示如何把代码写成<strong>最好的编码标准文档的范例</strong>。</li>
+</ul>
+<h2 id="6-对象和数据结构">6. 对象和数据结构<a class="headerlink" href="#6-对象和数据结构" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>将变量设置为私有（private）有一个理由：我们不想其他人依赖这些变量。我们还想在心血来潮时能自由修改其类型或实现。那么，为什么还是有那么多程序员给对象自动添加赋值器和取值器，将私有变量公之于众、如同它们根本就是公共变量一般呢?</p>
+</blockquote>
+<h3 id="61-数据抽象">6.1 数据抽象<a class="headerlink" href="#61-数据抽象" title="Permanent link">&para;</a></h3>
+<ul>
+<li>隐藏实现并非只是在变量之间放上一个函数层那么简单。<strong>隐藏实现关乎抽象！</strong> 类并不简单地用取值器和赋值器将其变量推向外间，而是曝露抽象接口，以便用户无需了解数据的实现就能操作数据本体。</li>
+<li>我们<strong>不愿曝露数据细节，更愿意以抽象形态表述数据</strong>。这并不只是用接口和/或赋值器、取值器就万事大吉。要以最好的方式呈现某个对象包含的数据，需要做严肃的思考。傻乐着乱加取值器和赋值器，是最坏的选择。</li>
+</ul>
+<h3 id="62-数据对象的反对称性">6.2 数据、对象的反对称性<a class="headerlink" href="#62-数据对象的反对称性" title="Permanent link">&para;</a></h3>
+<ul>
+<li>对象把数据隐藏于抽象之后，曝露操作数据的函数。数据结构曝露其数据，没有提供有意义的函数。回过头再读一遍。留意这两种定义的本质。它们是对立的。<strong>这种差异貌似微小，但却有深远的含义</strong>。</li>
+<li>对象与数据结构之间的<strong>二分原理</strong>：<ul>
+<li>过程式代码（使用数据结构的代码）便于在<strong>不改动既有数据结构的前提下添加新函数</strong>。面向对象代码便于在<strong>不改动既有函数的前提下添加新类</strong>。</li>
+<li>反过来也能说通：过程式代码难以添加新数据结构，因为必须修改所有函数。面向对象代码难以添加新函数，因为必须修改所有类。</li>
+</ul>
+</li>
+</ul>
+<h3 id="63-得墨忒耳律">6.3 得墨忒耳律<a class="headerlink" href="#63-得墨忒耳律" title="Permanent link">&para;</a></h3>
+<ul>
+<li>著名的得墨忒耳律（The Law of Demeter）认为：<strong>模块不应了解它所操作对象的内部情形</strong>。如前面所说，对象隐藏数据，曝露操作。这意味着<strong>对象不应通过存取器曝露其内部结构，因为这样更像是曝露而非隐藏其内部结构</strong>。</li>
+</ul>
+<p><strong>1. 火车失事</strong></p>
+<ul>
+<li>这类代码常被称作火车失事，因为它看起来就像是一列火车。这类<strong>连串的调用</strong>通常被认为是肮脏的风格应该避免。</li>
+<li><strong>属性访问器函数的使用把问题搞复杂</strong>了。如果像下面这样写代码，我们大概就不会提及对得墨忒耳律的违反。</li>
+<li>如果数据结构只简单地拥有公共变量，没有函数而对象则拥有私有变量和公共函数，这个问题就不那么混淆。然而有些框架和标准甚至要求<strong>最简单的数据结构都要有访问器和改值器</strong>。</li>
+</ul>
+<p><strong>2. 混杂</strong></p>
+<ul>
+<li>此类混杂增加了<strong>添加新函数的难度，也增加了添加新数据结构的难度</strong>，两面不讨好。应避免创造这种结构。它们的出现，展示了一种乱七八糟的设计，其作者不确定——或者更糟糕，完全无视——他们是否需要函数或类型的保护。</li>
+</ul>
+<p><strong>3. 隐藏结构</strong></p>
+<ul>
+<li>ctxt 隐藏了其内部结构，防止<strong>当前函数因浏览它不该知道的对象</strong>而违反得墨忒耳律。</li>
+</ul>
+<h3 id="64-数据传送对象">6.4 数据传送对象<a class="headerlink" href="#64-数据传送对象" title="Permanent link">&para;</a></h3>
+<ul>
+<li>最为精练的数据结构是<strong>一个只有公共变量、没有函数的类</strong>。这种数据结构有时被称为数据传送对象，或 DTO（Data Transfer Objects）。</li>
+<li>Active Record 是一种特殊的 DTO 形式。它们是<strong>拥有公共（或可“bean”访问的）变量的数据结构</strong>，但通常也会拥有类似 save 和 find 这样的可浏览方法。<ul>
+<li>不幸经常发现开发者往这类数据结构中塞进业务规则方法，把这类数据结构当成对象来用。这是不智的行为，因为它<strong>导致了数据结构和对象的混杂体</strong>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="65-小结">6.5 小结<a class="headerlink" href="#65-小结" title="Permanent link">&para;</a></h3>
+<ul>
+<li>对象曝露行为，隐藏数据。便于添加新对象类型而无需修改既有行为，同时也难以在既有对象中添加新行为。数据结构曝露数据，没有明显的行为。便于向既有数据结构添加新行为，同时也难以向既有函数添加新数据结构。</li>
+<li>在任何系统中，我们有时会希望能够灵活地添加新数据类型，所以更喜欢在这部分使用对象。另外一些时候，我们希望能灵活地添加新行为，这时我们更喜欢使用数据类型和过程。<strong>优秀的软件开发者不带成见地了解这种情形，并依据手边工作的性质选择其中一种手段</strong>。</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">November 25, 2024 10:19:49</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 14, 2024 10:25:09</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../2403%E3%80%8A%E9%87%8D%E6%9E%84%EF%BC%9A%E6%94%B9%E5%96%84%E6%97%A2%E6%9C%89%E4%BB%A3%E7%A0%81%E7%9A%84%E8%AE%BE%E8%AE%A1%E3%80%8B/04refractor_part_last_last/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 11-12">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                11-12
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../02init/" class="md-footer__link md-footer__link--next" aria-label="Next: 07-12">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                07-12
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 catwithtudou
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/catwithtudou" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/catwithtudou" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9zm-24.8 373.8h39.1L151.1 88h-42z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+  
+    
+  
+
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="github" checked>
+          <span class="task-list-indicator"></span>
+          GitHub
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotation", "content.code.copy", "header.autohide"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
