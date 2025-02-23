@@ -1,4 +1,4 @@
-# 《Rust 语言圣经》阅读笔记
+# 202402《Rust 语言圣经》阅读笔记
 
 [基础部分](https://jih9axn4gg.feishu.cn/wiki/OZxywz3Rfi7C7kkIeUPcHIVUnLg?from=from_copylink)
 

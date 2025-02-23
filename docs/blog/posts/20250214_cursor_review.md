@@ -1,10 +1,10 @@
 ﻿---
 date: 2025-02-14
 categories:
-  - AIGC
+  - aigc
 tags:
-  - LLM
-  - AIGC
+  - llm
+  - aigc
 ---
 
 # 探索 Cursor—AI 编程的“版本答案”之一
