@@ -1,4 +1,4 @@
 
 # DreamPic
 
-github:https://github.com/catwithtudou/dream_pic
+**[github repo:https://github.com/catwithtudou/dream_pic](https://github.com/catwithtudou/dream_pic)**
