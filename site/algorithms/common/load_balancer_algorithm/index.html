@@ -1,0 +1,3439 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Life">
+      
+      
+        <meta name="author" content="catwithtudou️">
+      
+      
+        <link rel="canonical" href="https://zhengyua.cn/new_blog/algorithms/common/load_balancer_algorithm/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../../os/">
+      
+      
+      <link rel="icon" href="../../../assets/logo.jpeg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>深入理解四种经典负载均衡算法 - catwithtudou️🌦️</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WZVK8HDP5T"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WZVK8HDP5T",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WZVK8HDP5T",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#深入理解四种经典负载均衡算法" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="catwithtudou️🌦️" class="md-header__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+      
+  <img src="../../../assets/logo.jpeg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            catwithtudou️🌦️
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              深入理解四种经典负载均衡算法
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/catwithtudou" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    catwithtudou
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  🌦️Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../blog/" class="md-tabs__link">
+          
+  
+    
+  
+  📌MainPage
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../language/" class="md-tabs__link">
+          
+  
+    
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  Algorithms
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../os/" class="md-tabs__link">
+          
+  
+    
+  
+  OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../network/" class="md-tabs__link">
+          
+  
+    
+  
+  Network
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ds/" class="md-tabs__link">
+          
+  
+    
+  
+  DS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../architecture/" class="md-tabs__link">
+          
+  
+    
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../middleware/" class="md-tabs__link">
+          
+  
+    
+  
+  Middleware
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../project/" class="md-tabs__link">
+          
+  
+    
+  
+  Project
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../common/01-100_tips/" class="md-tabs__link">
+          
+  
+    
+  
+  Common
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="catwithtudou️🌦️" class="md-nav__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+      
+  <img src="../../../assets/logo.jpeg" alt="logo">
+
+    </a>
+    catwithtudou️🌦️
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/catwithtudou" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    catwithtudou
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    🌦️Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../blog/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📌MainPage
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../language/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Language
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Algorithms
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Algorithms
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../LLM/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    LLM
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            LLM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../LLM/inbox/2412_prompt_begin/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    inbox
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../books/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    books
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            books
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../books/2401%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2401代码随想录
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    common
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            common
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    深入理解四种经典负载均衡算法
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    深入理解四种经典负载均衡算法
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-背景介绍" class="md-nav__link">
+    <span class="md-ellipsis">
+      0. 背景介绍
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0. 背景介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#什么是负载均衡" class="md-nav__link">
+    <span class="md-ellipsis">
+      什么是负载均衡
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#负载均衡在分布式系统中的重要性" class="md-nav__link">
+    <span class="md-ellipsis">
+      负载均衡在分布式系统中的重要性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#算法实现的基础结构" class="md-nav__link">
+    <span class="md-ellipsis">
+      算法实现的基础结构
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-随机选择算法-" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 随机选择算法 🎲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 随机选择算法 🎲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#算法原理" class="md-nav__link">
+    <span class="md-ellipsis">
+      算法原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#对应的经典问题与类比" class="md-nav__link">
+    <span class="md-ellipsis">
+      对应的经典问题与类比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#核心实现" class="md-nav__link">
+    <span class="md-ellipsis">
+      核心实现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#优缺点分析" class="md-nav__link">
+    <span class="md-ellipsis">
+      优缺点分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-轮询算法-" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 轮询算法 🔄
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 轮询算法 🔄">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#算法原理_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      算法原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#对应的经典问题与类比_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      对应的经典问题与类比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#核心实现_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      核心实现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#平滑加权轮询详解" class="md-nav__link">
+    <span class="md-ellipsis">
+      平滑加权轮询详解
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#优缺点分析_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      优缺点分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-最小连接算法-" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 最小连接算法 🔌
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 最小连接算法 🔌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#算法原理_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      算法原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#对应的经典问题与类比_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      对应的经典问题与类比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#核心实现_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      核心实现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#优缺点分析_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      优缺点分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-maglev-一致性哈希算法-" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Maglev 一致性哈希算法 🧲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Maglev 一致性哈希算法 🧲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#算法原理_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      算法原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#对应的经典问题与类比_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      对应的经典问题与类比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#核心实现_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      核心实现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#优缺点分析_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      优缺点分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-算法对比与实践建议-" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 算法对比与实践建议 📊
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 算法对比与实践建议 📊">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#四种算法对比-" class="md-nav__link">
+    <span class="md-ellipsis">
+      四种算法对比 🔍
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#实践建议-" class="md-nav__link">
+    <span class="md-ellipsis">
+      实践建议 🛠️
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#真实世界应用案例-" class="md-nav__link">
+    <span class="md-ellipsis">
+      真实世界应用案例 🌐
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="真实世界应用案例 🌐">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#案例1cdn边缘节点调度" class="md-nav__link">
+    <span class="md-ellipsis">
+      案例1：CDN边缘节点调度
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#案例2api网关" class="md-nav__link">
+    <span class="md-ellipsis">
+      案例2：API网关
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#案例3数据库读写分离" class="md-nav__link">
+    <span class="md-ellipsis">
+      案例3：数据库读写分离
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#案例4分布式缓存集群" class="md-nav__link">
+    <span class="md-ellipsis">
+      案例4：分布式缓存集群
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-负载均衡的理论基础与未来发展-" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 负载均衡的理论基础与未来发展 🧮
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 负载均衡的理论基础与未来发展 🧮">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#负载均衡的理论基础" class="md-nav__link">
+    <span class="md-ellipsis">
+      负载均衡的理论基础
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#负载均衡技术的新趋势" class="md-nav__link">
+    <span class="md-ellipsis">
+      负载均衡技术的新趋势
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#跨领域启示" class="md-nav__link">
+    <span class="md-ellipsis">
+      跨领域启示
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-总结-" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 总结 📝
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-参考" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. 参考
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../os/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    OS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../network/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Network
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../ds/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    DS
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../architecture/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../middleware/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Middleware
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../project/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../common/01-100_tips/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Common
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#0-背景介绍" class="md-nav__link">
+    <span class="md-ellipsis">
+      0. 背景介绍
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0. 背景介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#什么是负载均衡" class="md-nav__link">
+    <span class="md-ellipsis">
+      什么是负载均衡
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#负载均衡在分布式系统中的重要性" class="md-nav__link">
+    <span class="md-ellipsis">
+      负载均衡在分布式系统中的重要性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#算法实现的基础结构" class="md-nav__link">
+    <span class="md-ellipsis">
+      算法实现的基础结构
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-随机选择算法-" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 随机选择算法 🎲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 随机选择算法 🎲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#算法原理" class="md-nav__link">
+    <span class="md-ellipsis">
+      算法原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#对应的经典问题与类比" class="md-nav__link">
+    <span class="md-ellipsis">
+      对应的经典问题与类比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#核心实现" class="md-nav__link">
+    <span class="md-ellipsis">
+      核心实现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#优缺点分析" class="md-nav__link">
+    <span class="md-ellipsis">
+      优缺点分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-轮询算法-" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 轮询算法 🔄
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 轮询算法 🔄">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#算法原理_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      算法原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#对应的经典问题与类比_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      对应的经典问题与类比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#核心实现_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      核心实现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#平滑加权轮询详解" class="md-nav__link">
+    <span class="md-ellipsis">
+      平滑加权轮询详解
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#优缺点分析_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      优缺点分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-最小连接算法-" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 最小连接算法 🔌
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 最小连接算法 🔌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#算法原理_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      算法原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#对应的经典问题与类比_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      对应的经典问题与类比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#核心实现_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      核心实现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#优缺点分析_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      优缺点分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-maglev-一致性哈希算法-" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Maglev 一致性哈希算法 🧲
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Maglev 一致性哈希算法 🧲">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#算法原理_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      算法原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#对应的经典问题与类比_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      对应的经典问题与类比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#核心实现_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      核心实现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#优缺点分析_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      优缺点分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-算法对比与实践建议-" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 算法对比与实践建议 📊
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 算法对比与实践建议 📊">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#四种算法对比-" class="md-nav__link">
+    <span class="md-ellipsis">
+      四种算法对比 🔍
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#实践建议-" class="md-nav__link">
+    <span class="md-ellipsis">
+      实践建议 🛠️
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#真实世界应用案例-" class="md-nav__link">
+    <span class="md-ellipsis">
+      真实世界应用案例 🌐
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="真实世界应用案例 🌐">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#案例1cdn边缘节点调度" class="md-nav__link">
+    <span class="md-ellipsis">
+      案例1：CDN边缘节点调度
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#案例2api网关" class="md-nav__link">
+    <span class="md-ellipsis">
+      案例2：API网关
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#案例3数据库读写分离" class="md-nav__link">
+    <span class="md-ellipsis">
+      案例3：数据库读写分离
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#案例4分布式缓存集群" class="md-nav__link">
+    <span class="md-ellipsis">
+      案例4：分布式缓存集群
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-负载均衡的理论基础与未来发展-" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 负载均衡的理论基础与未来发展 🧮
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 负载均衡的理论基础与未来发展 🧮">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#负载均衡的理论基础" class="md-nav__link">
+    <span class="md-ellipsis">
+      负载均衡的理论基础
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#负载均衡技术的新趋势" class="md-nav__link">
+    <span class="md-ellipsis">
+      负载均衡技术的新趋势
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#跨领域启示" class="md-nav__link">
+    <span class="md-ellipsis">
+      跨领域启示
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-总结-" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 总结 📝
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-参考" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. 参考
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="深入理解四种经典负载均衡算法">深入理解四种经典负载均衡算法<a class="headerlink" href="#深入理解四种经典负载均衡算法" title="Permanent link">&para;</a></h1>
+<h2 id="0-背景介绍">0. 背景介绍<a class="headerlink" href="#0-背景介绍" title="Permanent link">&para;</a></h2>
+<h3 id="什么是负载均衡">什么是负载均衡<a class="headerlink" href="#什么是负载均衡" title="Permanent link">&para;</a></h3>
+<p>负载均衡（Load Balancing）是一种计算机网络技术，用于在多个计算机、网络连接、CPU、磁盘驱动器或其他资源中分配负载，优化资源使用，最大化吞吐量，最小化响应时间，避免过载。使用多个组件进行负载分担，相比使用单个组件，可以通过冗余提高可靠性和可用性。</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos=" 1 "></span></a>                    ┌─────────────┐
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos=" 2 "></span></a>                    │ 负载均衡器  │
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos=" 3 "></span></a>                    └─────────────┘
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos=" 4 "></span></a>                           │
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos=" 5 "></span></a>                           ▼
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos=" 6 "></span></a>          ┌─────────────────────────────┐
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos=" 7 "></span></a>          │                             │
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><a href="#__codelineno-0-8"><span class="linenos" data-linenos=" 8 "></span></a>    ┌─────┴─────┐             ┌─────────┴─────┐
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="#__codelineno-0-9"><span class="linenos" data-linenos=" 9 "></span></a>    │           │             │               │
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><a href="#__codelineno-0-10"><span class="linenos" data-linenos="10 "></span></a>┌───▼───┐   ┌───▼───┐     ┌───▼───┐       ┌───▼───┐
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><a href="#__codelineno-0-11"><span class="linenos" data-linenos="11 "></span></a>│服务器1 │   │服务器2 │     │服务器3 │       │服务器4 │
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><a href="#__codelineno-0-12"><span class="linenos" data-linenos="12 "></span></a>└───────┘   └───────┘     └───────┘       └───────┘
+</code></pre></div>
+<h3 id="负载均衡在分布式系统中的重要性">负载均衡在分布式系统中的重要性<a class="headerlink" href="#负载均衡在分布式系统中的重要性" title="Permanent link">&para;</a></h3>
+<p>在现代分布式系统设计中，负载均衡扮演着至关重要的角色：</p>
+<ol>
+<li><strong>提高系统可用性</strong> 🔄 - 当单个服务器发生故障时，请求可以自动路由到其他健康的服务器</li>
+<li><strong>提升系统扩展性</strong> 🔝 - 随着流量增加，可以通过添加新的服务器节点来水平扩展系统</li>
+<li><strong>优化资源利用率</strong> 💯 - 确保各个服务器的负载相对均衡，避免部分服务器过载而其他服务器闲置</li>
+<li><strong>提供灾难恢复能力</strong> 🛟 - 在区域性故障时可以将流量转移到不同地区的服务器</li>
+<li><strong>便于系统维护</strong> 🔧 - 允许在不影响用户体验的情况下对单个服务器进行维护或升级</li>
+</ol>
+<p>在大型互联网系统中，负载均衡通常以多级方式实现，包括DNS负载均衡、网络层(L4)负载均衡和应用层(L7)负载均衡。而在这些负载均衡解决方案的核心，都需要一个高效、适合具体场景的负载均衡算法。</p>
+<h3 id="算法实现的基础结构">算法实现的基础结构<a class="headerlink" href="#算法实现的基础结构" title="Permanent link">&para;</a></h3>
+<p>在深入各个算法前，我们先了解一下这些算法的共同基础结构：</p>
+<div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1">// Server 表示一个后端服务器</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kd">type</span><span class="w"> </span><span class="nx">Server</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="nx">Address</span><span class="w"> </span><span class="kt">string</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="nx">Weight</span><span class="w">  </span><span class="kt">int</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span><span class="c1">// 用于最小连接算法的当前连接数</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="nx">CurrentConnections</span><span class="w"> </span><span class="kt">int32</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><a href="#__codelineno-1-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span><span class="c1">// 用于轮询算法的当前权重</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><a href="#__codelineno-1-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="nx">CurrentWeight</span><span class="w"> </span><span class="kt">int</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><a href="#__codelineno-1-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="c1">// 用于轮询算法的有效权重</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><a href="#__codelineno-1-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">    </span><span class="nx">EffectiveWeight</span><span class="w"> </span><span class="kt">int</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><a href="#__codelineno-1-11"><span class="linenos" data-linenos="11 "></span></a><span class="p">}</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><a href="#__codelineno-1-12"><span class="linenos" data-linenos="12 "></span></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><a href="#__codelineno-1-13"><span class="linenos" data-linenos="13 "></span></a><span class="c1">// LoadBalancer 定义负载均衡器接口</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><a href="#__codelineno-1-14"><span class="linenos" data-linenos="14 "></span></a><span class="kd">type</span><span class="w"> </span><span class="nx">LoadBalancer</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><a href="#__codelineno-1-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">    </span><span class="c1">// AddServer 添加服务器</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><a href="#__codelineno-1-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">    </span><span class="nx">AddServer</span><span class="p">(</span><span class="nx">server</span><span class="w"> </span><span class="o">*</span><span class="nx">Server</span><span class="p">)</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><a href="#__codelineno-1-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">    </span><span class="c1">// RemoveServer 移除服务器</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><a href="#__codelineno-1-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">    </span><span class="nx">RemoveServer</span><span class="p">(</span><span class="nx">address</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><a href="#__codelineno-1-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">    </span><span class="c1">// GetServer 获取下一个服务器</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a><a href="#__codelineno-1-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">    </span><span class="nx">GetServer</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Server</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a><a href="#__codelineno-1-21"><span class="linenos" data-linenos="21 "></span></a><span class="p">}</span>
+</code></pre></div>
+<p>所有的负载均衡算法都实现了这个接口，这使得我们可以用统一的方式调用不同的负载均衡策略。通过这种设计，我们可以轻松切换不同的负载均衡策略，而无需修改调用代码。</p>
+<h2 id="1-随机选择算法-">1. 随机选择算法 🎲<a class="headerlink" href="#1-随机选择算法-" title="Permanent link">&para;</a></h2>
+<h3 id="算法原理">算法原理<a class="headerlink" href="#算法原理" title="Permanent link">&para;</a></h3>
+<p>随机选择是最简单的负载均衡策略，它<strong>随机</strong>从可用服务器池中选择一个服务器处理请求。</p>
+<ul>
+<li><strong>普通随机</strong>：每个服务器被选中的概率相等</li>
+<li><strong>加权随机</strong>：权重大的服务器被选中的概率更高</li>
+</ul>
+<p><strong>随机算法流程图</strong>：</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos=" 1 "></span></a>开始
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos=" 2 "></span></a>  ↓
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos=" 3 "></span></a>过滤出权重&gt;0的可用服务器
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos=" 4 "></span></a>  ↓
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos=" 5 "></span></a>计算所有可用服务器的总权重
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><a href="#__codelineno-2-6"><span class="linenos" data-linenos=" 6 "></span></a>  ↓
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><a href="#__codelineno-2-7"><span class="linenos" data-linenos=" 7 "></span></a>在[0,总权重)范围内随机选择一个值
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><a href="#__codelineno-2-8"><span class="linenos" data-linenos=" 8 "></span></a>  ↓
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><a href="#__codelineno-2-9"><span class="linenos" data-linenos=" 9 "></span></a>遍历服务器列表，当累计权重超过随机值时选中该服务器
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><a href="#__codelineno-2-10"><span class="linenos" data-linenos="10 "></span></a>  ↓
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><a href="#__codelineno-2-11"><span class="linenos" data-linenos="11 "></span></a>返回被选中的服务器
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><a href="#__codelineno-2-12"><span class="linenos" data-linenos="12 "></span></a>  ↓
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><a href="#__codelineno-2-13"><span class="linenos" data-linenos="13 "></span></a>结束
+</code></pre></div>
+<h3 id="对应的经典问题与类比">对应的经典问题与类比<a class="headerlink" href="#对应的经典问题与类比" title="Permanent link">&para;</a></h3>
+<p>随机选择算法本质上是<strong>加权随机抽样问题</strong>的一个实际应用。这类问题在多个领域都有广泛应用：</p>
+<ol>
+<li><strong>轮盘赌选择(Roulette Wheel Selection)</strong>：在遗传算法中，用于按适应度比例选择个体进行繁殖</li>
+<li><strong>带权重的随机数生成器</strong>：根据不同概率生成随机数</li>
+<li><strong>蒙特卡洛模拟(Monte Carlo Simulation)</strong>：通过随机抽样估计概率分布</li>
+</ol>
+<p><strong>类比思路</strong>：假设您有一个轮盘，每个服务器在轮盘上占据一定角度（与其权重成正比）。转动轮盘，小球落在哪个区域，就选择哪个服务器。权重越大的服务器，在轮盘上占据的区域越大，被选中的概率也就越高。</p>
+<p><strong>优化思路</strong>：标准的轮盘赌选择算法需要O(n)的时间复杂度，可以通过以下方式优化：
+- <strong>二分搜索(Binary Search)</strong>：将累积权重数组排序后，使用二分搜索找到随机值对应的服务器，将复杂度降至O(log n)
+- <strong>别名方法(Alias Method)</strong>：以O(n)的预处理时间和O(1)的查询时间实现加权随机选择
+- <strong>蓄水池抽样(Reservoir Sampling)</strong>：当服务器列表动态变化时特别有用</p>
+<h3 id="核心实现">核心实现<a class="headerlink" href="#核心实现" title="Permanent link">&para;</a></h3>
+<p>随机算法的实现相对简单：</p>
+<div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1">// GetServer 随机选择一个服务器</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">RandomLoadBalancer</span><span class="p">)</span><span class="w"> </span><span class="nx">GetServer</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Server</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="nx">r</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">RLock</span><span class="p">()</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><a href="#__codelineno-3-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">RUnlock</span><span class="p">()</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><a href="#__codelineno-3-5"><span class="linenos" data-linenos=" 5 "></span></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><a href="#__codelineno-3-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="c1">// 过滤出可用的服务器</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><a href="#__codelineno-3-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span><span class="nx">availableServers</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="o">*</span><span class="nx">Server</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><a href="#__codelineno-3-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">Servers</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><a href="#__codelineno-3-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">Weight</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><a href="#__codelineno-3-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">            </span><span class="nx">availableServers</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">availableServers</span><span class="p">,</span><span class="w"> </span><span class="nx">server</span><span class="p">)</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><a href="#__codelineno-3-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><a href="#__codelineno-3-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><a href="#__codelineno-3-13"><span class="linenos" data-linenos="13 "></span></a>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><a href="#__codelineno-3-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">availableServers</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><a href="#__codelineno-3-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a><a href="#__codelineno-3-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><a href="#__codelineno-3-17"><span class="linenos" data-linenos="17 "></span></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a><a href="#__codelineno-3-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">    </span><span class="c1">// 计算总权重</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19"></a><a href="#__codelineno-3-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">    </span><span class="nx">totalWeight</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20"></a><a href="#__codelineno-3-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">availableServers</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21"></a><a href="#__codelineno-3-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">        </span><span class="nx">totalWeight</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">Weight</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22"></a><a href="#__codelineno-3-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a><a href="#__codelineno-3-23"><span class="linenos" data-linenos="23 "></span></a>
+<a id="__codelineno-3-24" name="__codelineno-3-24"></a><a href="#__codelineno-3-24"><span class="linenos" data-linenos="24 "></span></a><span class="w">    </span><span class="c1">// 随机选择一个服务器（考虑权重）</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25"></a><a href="#__codelineno-3-25"><span class="linenos" data-linenos="25 "></span></a><span class="w">    </span><span class="nx">randomWeight</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">rng</span><span class="p">.</span><span class="nx">Intn</span><span class="p">(</span><span class="nx">totalWeight</span><span class="p">)</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26"></a><a href="#__codelineno-3-26"><span class="linenos" data-linenos="26 "></span></a><span class="w">    </span><span class="nx">currentWeight</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27"></a><a href="#__codelineno-3-27"><span class="linenos" data-linenos="27 "></span></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">availableServers</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28"></a><a href="#__codelineno-3-28"><span class="linenos" data-linenos="28 "></span></a><span class="w">        </span><span class="nx">currentWeight</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">Weight</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29"></a><a href="#__codelineno-3-29"><span class="linenos" data-linenos="29 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">randomWeight</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nx">currentWeight</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30"></a><a href="#__codelineno-3-30"><span class="linenos" data-linenos="30 "></span></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">server</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31"></a><a href="#__codelineno-3-31"><span class="linenos" data-linenos="31 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32"></a><a href="#__codelineno-3-32"><span class="linenos" data-linenos="32 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33"></a><a href="#__codelineno-3-33"><span class="linenos" data-linenos="33 "></span></a>
+<a id="__codelineno-3-34" name="__codelineno-3-34"></a><a href="#__codelineno-3-34"><span class="linenos" data-linenos="34 "></span></a><span class="w">    </span><span class="c1">// 如果因为浮点数精度问题没有选中任何服务器，返回最后一个</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35"></a><a href="#__codelineno-3-35"><span class="linenos" data-linenos="35 "></span></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">availableServers</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="nx">availableServers</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36"></a><a href="#__codelineno-3-36"><span class="linenos" data-linenos="36 "></span></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="优缺点分析">优缺点分析<a class="headerlink" href="#优缺点分析" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅ 实现最简单，计算开销小（标准实现为O(n)，可优化至O(log n)或O(1)）</td>
+<td>❌ 不考虑服务器实时负载情况</td>
+</tr>
+<tr>
+<td>✅ 适合服务器性能相近的场景</td>
+<td>❌ 可能导致请求分布不均</td>
+</tr>
+<tr>
+<td>✅ 无需维护全局状态</td>
+<td>❌ 对于长连接场景可能造成某些服务器负载过高</td>
+</tr>
+<tr>
+<td>✅ 代码量少，易于维护</td>
+<td>❌ 无法保证会话一致性</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-轮询算法-">2. 轮询算法 🔄<a class="headerlink" href="#2-轮询算法-" title="Permanent link">&para;</a></h2>
+<h3 id="算法原理_1">算法原理<a class="headerlink" href="#算法原理_1" title="Permanent link">&para;</a></h3>
+<p>轮询（Round Robin）按照预定义的顺序依次选择服务器，实现请求的平均分配。</p>
+<ul>
+<li><strong>普通轮询</strong>：依次选择服务器，实现请求均匀分配</li>
+<li><strong>加权轮询</strong>：权重大的服务器处理更多请求，采用平滑加权轮询算法确保均匀性</li>
+</ul>
+<p><strong>普通轮询流程图</strong>：</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos=" 1 "></span></a>开始
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos=" 2 "></span></a>  ↓
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><a href="#__codelineno-4-3"><span class="linenos" data-linenos=" 3 "></span></a>初始化计数器 index = 0
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><a href="#__codelineno-4-4"><span class="linenos" data-linenos=" 4 "></span></a>  ↓
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><a href="#__codelineno-4-5"><span class="linenos" data-linenos=" 5 "></span></a>收到新请求
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><a href="#__codelineno-4-6"><span class="linenos" data-linenos=" 6 "></span></a>  ↓
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><a href="#__codelineno-4-7"><span class="linenos" data-linenos=" 7 "></span></a>index = (index + 1) % 服务器总数
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><a href="#__codelineno-4-8"><span class="linenos" data-linenos=" 8 "></span></a>  ↓
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><a href="#__codelineno-4-9"><span class="linenos" data-linenos=" 9 "></span></a>返回 servers[index] 服务器
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><a href="#__codelineno-4-10"><span class="linenos" data-linenos="10 "></span></a>  ↓
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><a href="#__codelineno-4-11"><span class="linenos" data-linenos="11 "></span></a>结束
+</code></pre></div>
+<p><strong>平滑加权轮询流程图</strong>：</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos=" 1 "></span></a>开始
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos=" 2 "></span></a>  ↓
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><a href="#__codelineno-5-3"><span class="linenos" data-linenos=" 3 "></span></a>初始化所有服务器的CurrentWeight=0
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><a href="#__codelineno-5-4"><span class="linenos" data-linenos=" 4 "></span></a>  ↓
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><a href="#__codelineno-5-5"><span class="linenos" data-linenos=" 5 "></span></a>初始化所有服务器的EffectiveWeight=Weight
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><a href="#__codelineno-5-6"><span class="linenos" data-linenos=" 6 "></span></a>  ↓
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><a href="#__codelineno-5-7"><span class="linenos" data-linenos=" 7 "></span></a>循环处理请求
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><a href="#__codelineno-5-8"><span class="linenos" data-linenos=" 8 "></span></a>  ↓
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><a href="#__codelineno-5-9"><span class="linenos" data-linenos=" 9 "></span></a>  ├─→ 为每个服务器的CurrentWeight增加其EffectiveWeight
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><a href="#__codelineno-5-10"><span class="linenos" data-linenos="10 "></span></a>  │   ↓
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><a href="#__codelineno-5-11"><span class="linenos" data-linenos="11 "></span></a>  │   选择CurrentWeight最大的服务器
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a><a href="#__codelineno-5-12"><span class="linenos" data-linenos="12 "></span></a>  │   ↓
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><a href="#__codelineno-5-13"><span class="linenos" data-linenos="13 "></span></a>  │   被选中服务器的CurrentWeight减去所有服务器的EffectiveWeight之和
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a><a href="#__codelineno-5-14"><span class="linenos" data-linenos="14 "></span></a>  │   ↓
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a><a href="#__codelineno-5-15"><span class="linenos" data-linenos="15 "></span></a>  │   返回被选中的服务器
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a><a href="#__codelineno-5-16"><span class="linenos" data-linenos="16 "></span></a>  └─←─
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a><a href="#__codelineno-5-17"><span class="linenos" data-linenos="17 "></span></a>  ↓
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a><a href="#__codelineno-5-18"><span class="linenos" data-linenos="18 "></span></a>结束
+</code></pre></div>
+<h3 id="对应的经典问题与类比_1">对应的经典问题与类比<a class="headerlink" href="#对应的经典问题与类比_1" title="Permanent link">&para;</a></h3>
+<p>轮询算法对应几个经典的计算机科学问题：</p>
+<ol>
+<li><strong>CPU调度中的时间片轮转(Round-Robin Scheduling)</strong>：操作系统中最基本的CPU调度算法，给每个进程分配固定的时间片，轮流执行</li>
+<li><strong>令牌桶(Token Bucket)与漏桶(Leaky Bucket)算法</strong>：网络流量整形和限流算法中的基本概念</li>
+<li><strong>公平队列(Fair Queuing)</strong>：网络数据包调度中保证各流量获得公平服务的算法</li>
+</ol>
+<p><strong>类比思路</strong>：平滑加权轮询算法可以类比为一个"债务系统"。每个服务器根据其权重从系统"借取"请求，被选中后需要"偿还"欠款。具体来说：</p>
+<ul>
+<li>每轮选择前，每个服务器增加等于其权重的"信用"(CurrentWeight += EffectiveWeight)</li>
+<li>选择"信用"最高的服务器处理请求</li>
+<li>被选中的服务器需要"偿还"总权重的"债务"(CurrentWeight -= TotalWeight)</li>
+</ul>
+<p>这种"债务系统"确保了长期运行中，服务器被选中的次数与其权重成正比，同时分配过程更加平滑。</p>
+<p><strong>扩展应用</strong>：平滑加权轮询算法最初由Nginx开发者Igor Sysoev提出，用于HTTP请求的负载均衡。这个算法已被证明在以下方面非常有效：</p>
+<ul>
+<li>在长期运行中保持精确的权重比例</li>
+<li>避免了普通加权轮询中可能出现的请求聚集问题</li>
+<li>服务请求的分布更加均匀，没有明显的周期性模式</li>
+</ul>
+<p>平滑加权轮询的思想也可以扩展应用到其他资源分配问题，如数据包调度、CPU时间分配等场景。</p>
+<h3 id="核心实现_1">核心实现<a class="headerlink" href="#核心实现_1" title="Permanent link">&para;</a></h3>
+<div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1">// GetServer 获取下一个服务器</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><a href="#__codelineno-6-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">lb</span><span class="w"> </span><span class="o">*</span><span class="nx">RoundRobinLoadBalancer</span><span class="p">)</span><span class="w"> </span><span class="nx">GetServer</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Server</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><a href="#__codelineno-6-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="nx">lb</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><a href="#__codelineno-6-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><a href="#__codelineno-6-5"><span class="linenos" data-linenos=" 5 "></span></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><a href="#__codelineno-6-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">lb</span><span class="p">.</span><span class="nx">Servers</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><a href="#__codelineno-6-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a><a href="#__codelineno-6-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a><a href="#__codelineno-6-9"><span class="linenos" data-linenos=" 9 "></span></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a><a href="#__codelineno-6-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">!</span><span class="nx">lb</span><span class="p">.</span><span class="nx">weighted</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a><a href="#__codelineno-6-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">        </span><span class="c1">// 非加权轮询</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a><a href="#__codelineno-6-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">        </span><span class="nx">index</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">atomic</span><span class="p">.</span><span class="nx">AddInt64</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lb</span><span class="p">.</span><span class="nx">currentIndex</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nb">int64</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">lb</span><span class="p">.</span><span class="nx">Servers</span><span class="p">))</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a><a href="#__codelineno-6-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">Servers</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a><a href="#__codelineno-6-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a><a href="#__codelineno-6-15"><span class="linenos" data-linenos="15 "></span></a>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a><a href="#__codelineno-6-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">    </span><span class="c1">// 实现平滑加权轮询（Smooth Weighted Round-Robin）</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17"></a><a href="#__codelineno-6-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">    </span><span class="nx">totalWeight</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18"></a><a href="#__codelineno-6-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">bestServer</span><span class="w"> </span><span class="o">*</span><span class="nx">Server</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19"></a><a href="#__codelineno-6-19"><span class="linenos" data-linenos="19 "></span></a>
+<a id="__codelineno-6-20" name="__codelineno-6-20"></a><a href="#__codelineno-6-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">    </span><span class="c1">// 计算总有效权重，并为每个服务器增加当前权重</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21"></a><a href="#__codelineno-6-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">Servers</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22"></a><a href="#__codelineno-6-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">        </span><span class="c1">// 确保有效权重被初始化</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23"></a><a href="#__codelineno-6-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">EffectiveWeight</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24"></a><a href="#__codelineno-6-24"><span class="linenos" data-linenos="24 "></span></a><span class="w">            </span><span class="nx">server</span><span class="p">.</span><span class="nx">EffectiveWeight</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">Weight</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25"></a><a href="#__codelineno-6-25"><span class="linenos" data-linenos="25 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26"></a><a href="#__codelineno-6-26"><span class="linenos" data-linenos="26 "></span></a><span class="w">        </span><span class="c1">// 当前权重增加有效权重</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27"></a><a href="#__codelineno-6-27"><span class="linenos" data-linenos="27 "></span></a><span class="w">        </span><span class="nx">server</span><span class="p">.</span><span class="nx">CurrentWeight</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">EffectiveWeight</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28"></a><a href="#__codelineno-6-28"><span class="linenos" data-linenos="28 "></span></a><span class="w">        </span><span class="nx">totalWeight</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">EffectiveWeight</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29"></a><a href="#__codelineno-6-29"><span class="linenos" data-linenos="29 "></span></a>
+<a id="__codelineno-6-30" name="__codelineno-6-30"></a><a href="#__codelineno-6-30"><span class="linenos" data-linenos="30 "></span></a><span class="w">        </span><span class="c1">// 选择当前权重最大的服务器</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31"></a><a href="#__codelineno-6-31"><span class="linenos" data-linenos="31 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">bestServer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">CurrentWeight</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="nx">bestServer</span><span class="p">.</span><span class="nx">CurrentWeight</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32"></a><a href="#__codelineno-6-32"><span class="linenos" data-linenos="32 "></span></a><span class="w">            </span><span class="nx">bestServer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">server</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33"></a><a href="#__codelineno-6-33"><span class="linenos" data-linenos="33 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-6-34" name="__codelineno-6-34"></a><a href="#__codelineno-6-34"><span class="linenos" data-linenos="34 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-35" name="__codelineno-6-35"></a><a href="#__codelineno-6-35"><span class="linenos" data-linenos="35 "></span></a>
+<a id="__codelineno-6-36" name="__codelineno-6-36"></a><a href="#__codelineno-6-36"><span class="linenos" data-linenos="36 "></span></a><span class="w">    </span><span class="c1">// 如果找到了最佳服务器，减少其当前权重</span>
+<a id="__codelineno-6-37" name="__codelineno-6-37"></a><a href="#__codelineno-6-37"><span class="linenos" data-linenos="37 "></span></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">bestServer</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-38" name="__codelineno-6-38"></a><a href="#__codelineno-6-38"><span class="linenos" data-linenos="38 "></span></a><span class="w">        </span><span class="nx">bestServer</span><span class="p">.</span><span class="nx">CurrentWeight</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="nx">totalWeight</span>
+<a id="__codelineno-6-39" name="__codelineno-6-39"></a><a href="#__codelineno-6-39"><span class="linenos" data-linenos="39 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-40" name="__codelineno-6-40"></a><a href="#__codelineno-6-40"><span class="linenos" data-linenos="40 "></span></a>
+<a id="__codelineno-6-41" name="__codelineno-6-41"></a><a href="#__codelineno-6-41"><span class="linenos" data-linenos="41 "></span></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">bestServer</span>
+<a id="__codelineno-6-42" name="__codelineno-6-42"></a><a href="#__codelineno-6-42"><span class="linenos" data-linenos="42 "></span></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="平滑加权轮询详解">平滑加权轮询详解<a class="headerlink" href="#平滑加权轮询详解" title="Permanent link">&para;</a></h3>
+<p>平滑加权轮询（Smooth Weighted Round-Robin）是一种特殊的加权轮询算法，可以使得权重分配更加均匀平滑。算法过程可以分为以下几步：</p>
+<ol>
+<li>初始化每个服务器的当前权重（CurrentWeight）为0</li>
+<li>每次选择服务器时，将每个服务器的当前权重增加其有效权重（EffectiveWeight）</li>
+<li>选择当前权重最大的服务器</li>
+<li>被选中的服务器的当前权重减去所有服务器的有效权重之和</li>
+</ol>
+<p>下面用一个具体例子来说明平滑加权轮询的工作过程：</p>
+<p>假设有3台服务器，权重分别为：A=5, B=1, C=1</p>
+<table>
+<thead>
+<tr>
+<th>轮次</th>
+<th>操作前权重(A,B,C)</th>
+<th>选中服务器</th>
+<th>操作后权重(A,B,C)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>(5,1,1)</td>
+<td>A</td>
+<td>(-2,1,1)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>(3,2,2)</td>
+<td>A</td>
+<td>(-4,2,2)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>(1,3,3)</td>
+<td>B/C</td>
+<td>(1,-4,3)或(1,3,-4)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>(6,-3,4)或(6,4,-3)</td>
+<td>A</td>
+<td>(-1,-3,4)或(-1,4,-3)</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p>这种方式可以避免普通加权轮询中可能出现的不平滑分配问题。</p>
+<h3 id="优缺点分析_1">优缺点分析<a class="headerlink" href="#优缺点分析_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅ 实现简单，计算开销小</td>
+<td>❌ 不考虑服务器的实时负载情况</td>
+</tr>
+<tr>
+<td>✅ 服务器请求分配非常均匀</td>
+<td>❌ 请求处理时间不一致时会导致负载不均</td>
+</tr>
+<tr>
+<td>✅ 支持服务器动态权重调整</td>
+<td>❌ 需要维护全局计数器，在分布式环境中实现复杂</td>
+</tr>
+<tr>
+<td>✅ 无需额外的随机数生成器</td>
+<td>❌ 在服务器数量频繁变化时需要重新计算</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-最小连接算法-">3. 最小连接算法 🔌<a class="headerlink" href="#3-最小连接算法-" title="Permanent link">&para;</a></h2>
+<h3 id="算法原理_2">算法原理<a class="headerlink" href="#算法原理_2" title="Permanent link">&para;</a></h3>
+<p>最小连接（Least Connections）根据服务器当前的连接数动态分配请求，优先将请求发送到连接数最少的服务器。</p>
+<ul>
+<li><strong>普通最小连接</strong>：选择当前连接数最少的服务器</li>
+<li><strong>加权最小连接</strong>：综合考虑服务器权重和当前连接数的比值</li>
+</ul>
+<p><strong>最小连接算法流程图</strong>：</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos=" 1 "></span></a>开始
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos=" 2 "></span></a>  ↓
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><a href="#__codelineno-7-3"><span class="linenos" data-linenos=" 3 "></span></a>过滤出权重&gt;0的可用服务器
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><a href="#__codelineno-7-4"><span class="linenos" data-linenos=" 4 "></span></a>  ↓
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><a href="#__codelineno-7-5"><span class="linenos" data-linenos=" 5 "></span></a>对于每个服务器计算连接评分
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><a href="#__codelineno-7-6"><span class="linenos" data-linenos=" 6 "></span></a>  ├─→ 普通模式：评分 = 当前连接数
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><a href="#__codelineno-7-7"><span class="linenos" data-linenos=" 7 "></span></a>  └─→ 加权模式：评分 = 当前连接数/权重
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a><a href="#__codelineno-7-8"><span class="linenos" data-linenos=" 8 "></span></a>  ↓
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><a href="#__codelineno-7-9"><span class="linenos" data-linenos=" 9 "></span></a>选择评分最低的服务器
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a><a href="#__codelineno-7-10"><span class="linenos" data-linenos="10 "></span></a>  ↓
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a><a href="#__codelineno-7-11"><span class="linenos" data-linenos="11 "></span></a>增加被选中服务器的连接计数
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a><a href="#__codelineno-7-12"><span class="linenos" data-linenos="12 "></span></a>  ↓
+<a id="__codelineno-7-13" name="__codelineno-7-13"></a><a href="#__codelineno-7-13"><span class="linenos" data-linenos="13 "></span></a>返回被选中的服务器
+<a id="__codelineno-7-14" name="__codelineno-7-14"></a><a href="#__codelineno-7-14"><span class="linenos" data-linenos="14 "></span></a>  ↓
+<a id="__codelineno-7-15" name="__codelineno-7-15"></a><a href="#__codelineno-7-15"><span class="linenos" data-linenos="15 "></span></a>请求处理完成后
+<a id="__codelineno-7-16" name="__codelineno-7-16"></a><a href="#__codelineno-7-16"><span class="linenos" data-linenos="16 "></span></a>  ↓
+<a id="__codelineno-7-17" name="__codelineno-7-17"></a><a href="#__codelineno-7-17"><span class="linenos" data-linenos="17 "></span></a>减少对应服务器的连接计数
+<a id="__codelineno-7-18" name="__codelineno-7-18"></a><a href="#__codelineno-7-18"><span class="linenos" data-linenos="18 "></span></a>  ↓
+<a id="__codelineno-7-19" name="__codelineno-7-19"></a><a href="#__codelineno-7-19"><span class="linenos" data-linenos="19 "></span></a>结束
+</code></pre></div>
+<h3 id="对应的经典问题与类比_2">对应的经典问题与类比<a class="headerlink" href="#对应的经典问题与类比_2" title="Permanent link">&para;</a></h3>
+<p>最小连接算法对应着多个经典的资源分配与优化问题：</p>
+<ol>
+<li><strong>多队列系统中的最短队列优先(Join Shortest Queue)</strong>：在排队论中，当顾客到达时选择最短的队列加入，以最小化等待时间</li>
+<li><strong>最少剩余处理时间调度(Shortest Remaining Processing Time)</strong>：在作业调度中，优先处理剩余工作量最小的任务</li>
+<li><strong>负载感知的资源分配(Load-Aware Resource Allocation)</strong>：在分布式系统中根据当前负载状态动态调整资源分配策略</li>
+</ol>
+<p><strong>类比思路</strong>：最小连接算法可以类比为超市购物中选择最短队列结账的场景：</p>
+<ul>
+<li>顾客（请求）到达超市准备结账</li>
+<li>顾客观察所有开放的收银台（服务器），查看每个队列的长度（连接数）</li>
+<li>顾客选择排队人数最少的收银台（连接数最少的服务器）</li>
+<li>在加权版本中，可以类比为同时考虑队列长度和收银员效率（权重）的情况——有些收银员虽然队伍较长，但处理速度很快，可能整体等待时间更短</li>
+</ul>
+<p><strong>动态行为与反馈系统</strong>：最小连接算法本质上是一个具有反馈机制的动态系统：</p>
+<ul>
+<li><strong>负反馈控制</strong>：当服务器连接数增加时，被选中的概率降低，反之亦然</li>
+<li><strong>自稳定性</strong>：系统自动平衡各服务器的负载，趋向于均衡状态</li>
+<li><strong>适应性</strong>：能够自动适应不同服务器的处理能力差异和请求处理时间变化</li>
+</ul>
+<p><strong>扩展应用</strong>：最小连接算法的思想可以扩展到多种资源调度场景：</p>
+<ul>
+<li><strong>分布式数据库的查询路由</strong>：将查询发送到负载较轻的数据库节点</li>
+<li><strong>虚拟机/容器调度</strong>：在云计算环境中选择负载较低的主机部署新的虚拟机或容器</li>
+<li><strong>网络流量工程</strong>：选择拥塞程度较低的路径转发数据包</li>
+</ul>
+<h3 id="核心实现_2">核心实现<a class="headerlink" href="#核心实现_2" title="Permanent link">&para;</a></h3>
+<div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1">// GetServer 获取连接数最少的服务器</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><a href="#__codelineno-8-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">lb</span><span class="w"> </span><span class="o">*</span><span class="nx">LeastConnectionsLoadBalancer</span><span class="p">)</span><span class="w"> </span><span class="nx">GetServer</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Server</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><a href="#__codelineno-8-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="nx">lb</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><a href="#__codelineno-8-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><a href="#__codelineno-8-5"><span class="linenos" data-linenos=" 5 "></span></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a><a href="#__codelineno-8-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="c1">// 过滤出可用的服务器</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><a href="#__codelineno-8-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span><span class="nx">availableServers</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="o">*</span><span class="nx">Server</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a><a href="#__codelineno-8-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">Servers</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a><a href="#__codelineno-8-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">Weight</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a><a href="#__codelineno-8-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">            </span><span class="nx">availableServers</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">availableServers</span><span class="p">,</span><span class="w"> </span><span class="nx">server</span><span class="p">)</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a><a href="#__codelineno-8-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a><a href="#__codelineno-8-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a><a href="#__codelineno-8-13"><span class="linenos" data-linenos="13 "></span></a>
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a><a href="#__codelineno-8-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">availableServers</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a><a href="#__codelineno-8-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a><a href="#__codelineno-8-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17"></a><a href="#__codelineno-8-17"><span class="linenos" data-linenos="17 "></span></a>
+<a id="__codelineno-8-18" name="__codelineno-8-18"></a><a href="#__codelineno-8-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">    </span><span class="c1">// 找到连接数最少的服务器</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19"></a><a href="#__codelineno-8-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">selectedServer</span><span class="w"> </span><span class="o">*</span><span class="nx">Server</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20"></a><a href="#__codelineno-8-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">    </span><span class="nx">minValue</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">63</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21"></a><a href="#__codelineno-8-21"><span class="linenos" data-linenos="21 "></span></a>
+<a id="__codelineno-8-22" name="__codelineno-8-22"></a><a href="#__codelineno-8-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">availableServers</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23"></a><a href="#__codelineno-8-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">        </span><span class="nx">connPtr</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">connections</span><span class="p">[</span><span class="nx">server</span><span class="p">]</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24"></a><a href="#__codelineno-8-24"><span class="linenos" data-linenos="24 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">connPtr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25"></a><a href="#__codelineno-8-25"><span class="linenos" data-linenos="25 "></span></a><span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="nx">conn</span><span class="w"> </span><span class="kt">int64</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26"></a><a href="#__codelineno-8-26"><span class="linenos" data-linenos="26 "></span></a><span class="w">            </span><span class="nx">connPtr</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">conn</span>
+<a id="__codelineno-8-27" name="__codelineno-8-27"></a><a href="#__codelineno-8-27"><span class="linenos" data-linenos="27 "></span></a><span class="w">            </span><span class="nx">lb</span><span class="p">.</span><span class="nx">connections</span><span class="p">[</span><span class="nx">server</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">connPtr</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28"></a><a href="#__codelineno-8-28"><span class="linenos" data-linenos="28 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-8-29" name="__codelineno-8-29"></a><a href="#__codelineno-8-29"><span class="linenos" data-linenos="29 "></span></a><span class="w">        </span><span class="nx">connections</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">atomic</span><span class="p">.</span><span class="nx">LoadInt64</span><span class="p">(</span><span class="nx">connPtr</span><span class="p">)</span>
+<a id="__codelineno-8-30" name="__codelineno-8-30"></a><a href="#__codelineno-8-30"><span class="linenos" data-linenos="30 "></span></a>
+<a id="__codelineno-8-31" name="__codelineno-8-31"></a><a href="#__codelineno-8-31"><span class="linenos" data-linenos="31 "></span></a><span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">currentValue</span><span class="w"> </span><span class="kt">float64</span>
+<a id="__codelineno-8-32" name="__codelineno-8-32"></a><a href="#__codelineno-8-32"><span class="linenos" data-linenos="32 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">weighted</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-33" name="__codelineno-8-33"></a><a href="#__codelineno-8-33"><span class="linenos" data-linenos="33 "></span></a><span class="w">            </span><span class="c1">// 加权最小连接：考虑权重因素</span>
+<a id="__codelineno-8-34" name="__codelineno-8-34"></a><a href="#__codelineno-8-34"><span class="linenos" data-linenos="34 "></span></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">Weight</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-35" name="__codelineno-8-35"></a><a href="#__codelineno-8-35"><span class="linenos" data-linenos="35 "></span></a><span class="w">                </span><span class="c1">// 权重越大，加权值越小，越容易被选中</span>
+<a id="__codelineno-8-36" name="__codelineno-8-36"></a><a href="#__codelineno-8-36"><span class="linenos" data-linenos="36 "></span></a><span class="w">                </span><span class="nx">currentValue</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="nx">connections</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="nx">server</span><span class="p">.</span><span class="nx">Weight</span><span class="p">)</span>
+<a id="__codelineno-8-37" name="__codelineno-8-37"></a><a href="#__codelineno-8-37"><span class="linenos" data-linenos="37 "></span></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-38" name="__codelineno-8-38"></a><a href="#__codelineno-8-38"><span class="linenos" data-linenos="38 "></span></a><span class="w">                </span><span class="c1">// 如果权重为0，则使用最大值，确保不会被选中</span>
+<a id="__codelineno-8-39" name="__codelineno-8-39"></a><a href="#__codelineno-8-39"><span class="linenos" data-linenos="39 "></span></a><span class="w">                </span><span class="nx">currentValue</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="mi">1</span><span class="o">&lt;&lt;</span><span class="mi">63</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-8-40" name="__codelineno-8-40"></a><a href="#__codelineno-8-40"><span class="linenos" data-linenos="40 "></span></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-8-41" name="__codelineno-8-41"></a><a href="#__codelineno-8-41"><span class="linenos" data-linenos="41 "></span></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-42" name="__codelineno-8-42"></a><a href="#__codelineno-8-42"><span class="linenos" data-linenos="42 "></span></a><span class="w">            </span><span class="c1">// 非加权最小连接</span>
+<a id="__codelineno-8-43" name="__codelineno-8-43"></a><a href="#__codelineno-8-43"><span class="linenos" data-linenos="43 "></span></a><span class="w">            </span><span class="nx">currentValue</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">float64</span><span class="p">(</span><span class="nx">connections</span><span class="p">)</span>
+<a id="__codelineno-8-44" name="__codelineno-8-44"></a><a href="#__codelineno-8-44"><span class="linenos" data-linenos="44 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-8-45" name="__codelineno-8-45"></a><a href="#__codelineno-8-45"><span class="linenos" data-linenos="45 "></span></a>
+<a id="__codelineno-8-46" name="__codelineno-8-46"></a><a href="#__codelineno-8-46"><span class="linenos" data-linenos="46 "></span></a><span class="w">        </span><span class="c1">// 如果当前值小于最小值，选择此服务器</span>
+<a id="__codelineno-8-47" name="__codelineno-8-47"></a><a href="#__codelineno-8-47"><span class="linenos" data-linenos="47 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">currentValue</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nx">minValue</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-48" name="__codelineno-8-48"></a><a href="#__codelineno-8-48"><span class="linenos" data-linenos="48 "></span></a><span class="w">            </span><span class="nx">minValue</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">currentValue</span>
+<a id="__codelineno-8-49" name="__codelineno-8-49"></a><a href="#__codelineno-8-49"><span class="linenos" data-linenos="49 "></span></a><span class="w">            </span><span class="nx">selectedServer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">server</span>
+<a id="__codelineno-8-50" name="__codelineno-8-50"></a><a href="#__codelineno-8-50"><span class="linenos" data-linenos="50 "></span></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">currentValue</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">minValue</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">selectedServer</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-51" name="__codelineno-8-51"></a><a href="#__codelineno-8-51"><span class="linenos" data-linenos="51 "></span></a><span class="w">            </span><span class="c1">// 如果加权值相同，优先选择权重更高的服务器</span>
+<a id="__codelineno-8-52" name="__codelineno-8-52"></a><a href="#__codelineno-8-52"><span class="linenos" data-linenos="52 "></span></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">Weight</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="nx">selectedServer</span><span class="p">.</span><span class="nx">Weight</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-53" name="__codelineno-8-53"></a><a href="#__codelineno-8-53"><span class="linenos" data-linenos="53 "></span></a><span class="w">                </span><span class="nx">selectedServer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">server</span>
+<a id="__codelineno-8-54" name="__codelineno-8-54"></a><a href="#__codelineno-8-54"><span class="linenos" data-linenos="54 "></span></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-8-55" name="__codelineno-8-55"></a><a href="#__codelineno-8-55"><span class="linenos" data-linenos="55 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-8-56" name="__codelineno-8-56"></a><a href="#__codelineno-8-56"><span class="linenos" data-linenos="56 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-57" name="__codelineno-8-57"></a><a href="#__codelineno-8-57"><span class="linenos" data-linenos="57 "></span></a>
+<a id="__codelineno-8-58" name="__codelineno-8-58"></a><a href="#__codelineno-8-58"><span class="linenos" data-linenos="58 "></span></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">selectedServer</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-59" name="__codelineno-8-59"></a><a href="#__codelineno-8-59"><span class="linenos" data-linenos="59 "></span></a><span class="w">        </span><span class="c1">// 增加选中服务器的连接数</span>
+<a id="__codelineno-8-60" name="__codelineno-8-60"></a><a href="#__codelineno-8-60"><span class="linenos" data-linenos="60 "></span></a><span class="w">        </span><span class="nx">atomic</span><span class="p">.</span><span class="nx">AddInt64</span><span class="p">(</span><span class="nx">lb</span><span class="p">.</span><span class="nx">connections</span><span class="p">[</span><span class="nx">selectedServer</span><span class="p">],</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-8-61" name="__codelineno-8-61"></a><a href="#__codelineno-8-61"><span class="linenos" data-linenos="61 "></span></a><span class="w">        </span><span class="c1">// 同时更新Server结构体中的CurrentConnections字段，方便外部查看</span>
+<a id="__codelineno-8-62" name="__codelineno-8-62"></a><a href="#__codelineno-8-62"><span class="linenos" data-linenos="62 "></span></a><span class="w">        </span><span class="nx">atomic</span><span class="p">.</span><span class="nx">AddInt32</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">selectedServer</span><span class="p">.</span><span class="nx">CurrentConnections</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-8-63" name="__codelineno-8-63"></a><a href="#__codelineno-8-63"><span class="linenos" data-linenos="63 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-64" name="__codelineno-8-64"></a><a href="#__codelineno-8-64"><span class="linenos" data-linenos="64 "></span></a>
+<a id="__codelineno-8-65" name="__codelineno-8-65"></a><a href="#__codelineno-8-65"><span class="linenos" data-linenos="65 "></span></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">selectedServer</span>
+<a id="__codelineno-8-66" name="__codelineno-8-66"></a><a href="#__codelineno-8-66"><span class="linenos" data-linenos="66 "></span></a><span class="p">}</span>
+<a id="__codelineno-8-67" name="__codelineno-8-67"></a><a href="#__codelineno-8-67"><span class="linenos" data-linenos="67 "></span></a>
+<a id="__codelineno-8-68" name="__codelineno-8-68"></a><a href="#__codelineno-8-68"><span class="linenos" data-linenos="68 "></span></a><span class="c1">// ReleaseConnection 释放连接</span>
+<a id="__codelineno-8-69" name="__codelineno-8-69"></a><a href="#__codelineno-8-69"><span class="linenos" data-linenos="69 "></span></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">lb</span><span class="w"> </span><span class="o">*</span><span class="nx">LeastConnectionsLoadBalancer</span><span class="p">)</span><span class="w"> </span><span class="nx">ReleaseConnection</span><span class="p">(</span><span class="nx">server</span><span class="w"> </span><span class="o">*</span><span class="nx">Server</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-70" name="__codelineno-8-70"></a><a href="#__codelineno-8-70"><span class="linenos" data-linenos="70 "></span></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-71" name="__codelineno-8-71"></a><a href="#__codelineno-8-71"><span class="linenos" data-linenos="71 "></span></a><span class="w">        </span><span class="k">return</span>
+<a id="__codelineno-8-72" name="__codelineno-8-72"></a><a href="#__codelineno-8-72"><span class="linenos" data-linenos="72 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-73" name="__codelineno-8-73"></a><a href="#__codelineno-8-73"><span class="linenos" data-linenos="73 "></span></a>
+<a id="__codelineno-8-74" name="__codelineno-8-74"></a><a href="#__codelineno-8-74"><span class="linenos" data-linenos="74 "></span></a><span class="w">    </span><span class="nx">lb</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Lock</span><span class="p">()</span>
+<a id="__codelineno-8-75" name="__codelineno-8-75"></a><a href="#__codelineno-8-75"><span class="linenos" data-linenos="75 "></span></a><span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">Unlock</span><span class="p">()</span>
+<a id="__codelineno-8-76" name="__codelineno-8-76"></a><a href="#__codelineno-8-76"><span class="linenos" data-linenos="76 "></span></a>
+<a id="__codelineno-8-77" name="__codelineno-8-77"></a><a href="#__codelineno-8-77"><span class="linenos" data-linenos="77 "></span></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">connPtr</span><span class="p">,</span><span class="w"> </span><span class="nx">exists</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">connections</span><span class="p">[</span><span class="nx">server</span><span class="p">];</span><span class="w"> </span><span class="nx">exists</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">atomic</span><span class="p">.</span><span class="nx">LoadInt64</span><span class="p">(</span><span class="nx">connPtr</span><span class="p">)</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-78" name="__codelineno-8-78"></a><a href="#__codelineno-8-78"><span class="linenos" data-linenos="78 "></span></a><span class="w">        </span><span class="nx">atomic</span><span class="p">.</span><span class="nx">AddInt64</span><span class="p">(</span><span class="nx">connPtr</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-8-79" name="__codelineno-8-79"></a><a href="#__codelineno-8-79"><span class="linenos" data-linenos="79 "></span></a><span class="w">        </span><span class="c1">// 同时更新Server结构体中的CurrentConnections字段</span>
+<a id="__codelineno-8-80" name="__codelineno-8-80"></a><a href="#__codelineno-8-80"><span class="linenos" data-linenos="80 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">CurrentConnections</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-81" name="__codelineno-8-81"></a><a href="#__codelineno-8-81"><span class="linenos" data-linenos="81 "></span></a><span class="w">            </span><span class="nx">atomic</span><span class="p">.</span><span class="nx">AddInt32</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">server</span><span class="p">.</span><span class="nx">CurrentConnections</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-8-82" name="__codelineno-8-82"></a><a href="#__codelineno-8-82"><span class="linenos" data-linenos="82 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-8-83" name="__codelineno-8-83"></a><a href="#__codelineno-8-83"><span class="linenos" data-linenos="83 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-84" name="__codelineno-8-84"></a><a href="#__codelineno-8-84"><span class="linenos" data-linenos="84 "></span></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="优缺点分析_2">优缺点分析<a class="headerlink" href="#优缺点分析_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅ 能够根据服务器实时负载自动调整分配</td>
+<td>❌ 需要跟踪和更新连接计数，有一定开销</td>
+</tr>
+<tr>
+<td>✅ 处理时间不均的请求时效果显著</td>
+<td>❌ 实现略复杂，需要额外的连接释放机制</td>
+</tr>
+<tr>
+<td>✅ 配合权重系统更精准控制负载分配</td>
+<td>❌ 在高并发场景可能需要精细的锁控制</td>
+</tr>
+<tr>
+<td>✅ 适合长连接和计算密集型应用</td>
+<td>❌ 需要应用层主动调用连接释放方法</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-maglev-一致性哈希算法-">4. Maglev 一致性哈希算法 🧲<a class="headerlink" href="#4-maglev-一致性哈希算法-" title="Permanent link">&para;</a></h2>
+<h3 id="算法原理_3">算法原理<a class="headerlink" href="#算法原理_3" title="Permanent link">&para;</a></h3>
+<p>Maglev 一致性哈希是 Google 设计的高效一致性哈希算法，用于大规模分布式系统。其核心思想是保证当服务器节点变更时，尽可能少的请求被重新映射到不同的服务器。</p>
+<ul>
+<li><strong>一致性哈希基本原理</strong>：将请求和服务器映射到同一个哈希环上</li>
+<li><strong>Maglev 改进</strong>：使用查找表替代传统哈希环，提高查找效率和分布均匀性</li>
+<li><strong>一致性保证</strong>：通过精心设计的哈希策略，确保在服务器列表变化时，最小化键的重新映射比例</li>
+</ul>
+<p><strong>Maglev 查找表构建流程</strong>：</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><a href="#__codelineno-9-1"><span class="linenos" data-linenos=" 1 "></span></a>开始
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><a href="#__codelineno-9-2"><span class="linenos" data-linenos=" 2 "></span></a>  ↓
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><a href="#__codelineno-9-3"><span class="linenos" data-linenos=" 3 "></span></a>为每个服务器生成唯一的排列数组
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><a href="#__codelineno-9-4"><span class="linenos" data-linenos=" 4 "></span></a>  ├─→ 使用服务器标识生成哈希种子
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a><a href="#__codelineno-9-5"><span class="linenos" data-linenos=" 5 "></span></a>  └─→ 使用两个独立哈希函数计算排列位置
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a><a href="#__codelineno-9-6"><span class="linenos" data-linenos=" 6 "></span></a>  ↓
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a><a href="#__codelineno-9-7"><span class="linenos" data-linenos=" 7 "></span></a>初始化查找表(所有位置标记为空)
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a><a href="#__codelineno-9-8"><span class="linenos" data-linenos=" 8 "></span></a>  ↓
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a><a href="#__codelineno-9-9"><span class="linenos" data-linenos=" 9 "></span></a>填充查找表
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a><a href="#__codelineno-9-10"><span class="linenos" data-linenos="10 "></span></a>  ├─→ 遍历每个服务器的排列位置
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a><a href="#__codelineno-9-11"><span class="linenos" data-linenos="11 "></span></a>  └─→ 优先考虑权重高的服务器占据位置
+<a id="__codelineno-9-12" name="__codelineno-9-12"></a><a href="#__codelineno-9-12"><span class="linenos" data-linenos="12 "></span></a>  ↓
+<a id="__codelineno-9-13" name="__codelineno-9-13"></a><a href="#__codelineno-9-13"><span class="linenos" data-linenos="13 "></span></a>查找过程
+<a id="__codelineno-9-14" name="__codelineno-9-14"></a><a href="#__codelineno-9-14"><span class="linenos" data-linenos="14 "></span></a>  ↓
+<a id="__codelineno-9-15" name="__codelineno-9-15"></a><a href="#__codelineno-9-15"><span class="linenos" data-linenos="15 "></span></a>计算请求key的哈希值
+<a id="__codelineno-9-16" name="__codelineno-9-16"></a><a href="#__codelineno-9-16"><span class="linenos" data-linenos="16 "></span></a>  ↓
+<a id="__codelineno-9-17" name="__codelineno-9-17"></a><a href="#__codelineno-9-17"><span class="linenos" data-linenos="17 "></span></a>使用哈希值直接索引查找表获取服务器
+<a id="__codelineno-9-18" name="__codelineno-9-18"></a><a href="#__codelineno-9-18"><span class="linenos" data-linenos="18 "></span></a>  ↓
+<a id="__codelineno-9-19" name="__codelineno-9-19"></a><a href="#__codelineno-9-19"><span class="linenos" data-linenos="19 "></span></a>如果位置为空或服务器不可用，则尝试临近位置
+<a id="__codelineno-9-20" name="__codelineno-9-20"></a><a href="#__codelineno-9-20"><span class="linenos" data-linenos="20 "></span></a>  ↓
+<a id="__codelineno-9-21" name="__codelineno-9-21"></a><a href="#__codelineno-9-21"><span class="linenos" data-linenos="21 "></span></a>结束
+</code></pre></div>
+<h3 id="对应的经典问题与类比_3">对应的经典问题与类比<a class="headerlink" href="#对应的经典问题与类比_3" title="Permanent link">&para;</a></h3>
+<p>Maglev一致性哈希算法解决的是经典的<strong>动态分布式系统中的资源映射问题</strong>，与多个计算机科学领域有深刻联系：</p>
+<ol>
+<li><strong>分布式哈希表(DHT)</strong>：P2P网络中用于分布式数据存储和查询的核心技术</li>
+<li><strong>最小化重哈希(Minimal Rehashing)</strong>：哈希表动态扩展时减少键重分配的问题</li>
+<li><strong>分片与分区管理(Sharding and Partitioning)</strong>：数据库系统中将数据分布到多个节点的策略</li>
+</ol>
+<p><strong>类比思路</strong>：一致性哈希算法可以类比为圆形城市中的邮政服务：</p>
+<ul>
+<li>圆形城市周围均匀分布着邮局（服务器节点）</li>
+<li>城市中的居民（请求）根据自己的地址（哈希值）被分配到最近的邮局</li>
+<li>当某个邮局关闭（节点移除），只有原本由该邮局服务的居民需要重新分配到其他邮局</li>
+<li>当新邮局开设（节点添加），它只会接管附近一部分居民，而不影响远处居民与其原邮局的关系</li>
+</ul>
+<p><strong>Maglev的创新</strong>：传统一致性哈希存在分布不均的问题，Maglev通过查找表解决了这一问题：</p>
+<ul>
+<li><strong>传统一致性哈希</strong>：类似于在圆周上随机放置邮局，可能导致某些区域邮局密集，某些区域邮局稀疏</li>
+<li><strong>虚拟节点</strong>：传统解决方案是每个真实邮局设立多个"分局"，提高均匀性，但增加了内存开销</li>
+<li><strong>Maglev改进</strong>：提前计算好所有可能地址的最佳邮局（查找表），实现常数时间查找和更均匀的分布</li>
+</ul>
+<p><strong>数学本质</strong>：从数学角度看，一致性哈希算法是在解决动态集合上的分配问题，目标是在集合变化时最小化重分配的数量。Maglev通过精心设计的排列算法和填充策略，在保持一致性的同时提高了分布的均匀性。</p>
+<p><strong>扩展应用</strong>：Maglev一致性哈希的思想已被应用于多个领域：</p>
+<ul>
+<li><strong>内容分发网络(CDN)</strong>：将用户请求路由到最近的缓存服务器</li>
+<li><strong>分布式存储系统</strong>：确定数据应该存储在哪个节点</li>
+<li><strong>微服务架构</strong>：实现服务发现和请求路由</li>
+<li><strong>大规模分布式缓存</strong>：如Memcached和Redis集群</li>
+</ul>
+<h3 id="核心实现_3">核心实现<a class="headerlink" href="#核心实现_3" title="Permanent link">&para;</a></h3>
+<p>Maglev 一致性哈希的核心是构建和查询查找表：</p>
+<div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><a href="#__codelineno-10-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1">// GetServer 根据key获取服务器</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><a href="#__codelineno-10-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">lb</span><span class="w"> </span><span class="o">*</span><span class="nx">MaglevHashLoadBalancer</span><span class="p">)</span><span class="w"> </span><span class="nx">GetServer</span><span class="p">(</span><span class="nx">key</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Server</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><a href="#__codelineno-10-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="nx">lb</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">RLock</span><span class="p">()</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><a href="#__codelineno-10-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="k">defer</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">mu</span><span class="p">.</span><span class="nx">RUnlock</span><span class="p">()</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><a href="#__codelineno-10-5"><span class="linenos" data-linenos=" 5 "></span></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a><a href="#__codelineno-10-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">lb</span><span class="p">.</span><span class="nx">Servers</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a><a href="#__codelineno-10-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a><a href="#__codelineno-10-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a><a href="#__codelineno-10-9"><span class="linenos" data-linenos=" 9 "></span></a>
+<a id="__codelineno-10-10" name="__codelineno-10-10"></a><a href="#__codelineno-10-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">    </span><span class="c1">// 使用key计算哈希值</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11"></a><a href="#__codelineno-10-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">    </span><span class="nx">hash</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">murmur3</span><span class="p">.</span><span class="nx">Sum64</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">key</span><span class="p">))</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12"></a><a href="#__codelineno-10-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="nx">index</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="nx">hash</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nb">uint64</span><span class="p">(</span><span class="nx">lb</span><span class="p">.</span><span class="nx">tableSize</span><span class="p">))</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13"></a><a href="#__codelineno-10-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">    </span><span class="nx">serverIndex</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">lookupTable</span><span class="p">[</span><span class="nx">index</span><span class="p">]</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14"></a><a href="#__codelineno-10-14"><span class="linenos" data-linenos="14 "></span></a>
+<a id="__codelineno-10-15" name="__codelineno-10-15"></a><a href="#__codelineno-10-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">serverIndex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">serverIndex</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">lb</span><span class="p">.</span><span class="nx">Servers</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">Servers</span><span class="p">[</span><span class="nx">serverIndex</span><span class="p">].</span><span class="nx">Weight</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16"></a><a href="#__codelineno-10-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">        </span><span class="c1">// 如果查找表中没有对应的服务器，或者服务器不可用，</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17"></a><a href="#__codelineno-10-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">        </span><span class="c1">// 尝试查找表中的其他位置</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18"></a><a href="#__codelineno-10-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nx">offset</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="nx">offset</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="nx">offset</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19"></a><a href="#__codelineno-10-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">            </span><span class="nx">newIndex</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nx">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">offset</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">tableSize</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20"></a><a href="#__codelineno-10-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">            </span><span class="nx">serverIndex</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">lookupTable</span><span class="p">[</span><span class="nx">newIndex</span><span class="p">]</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21"></a><a href="#__codelineno-10-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">serverIndex</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">serverIndex</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">lb</span><span class="p">.</span><span class="nx">Servers</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">Servers</span><span class="p">[</span><span class="nx">serverIndex</span><span class="p">].</span><span class="nx">Weight</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22"></a><a href="#__codelineno-10-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">Servers</span><span class="p">[</span><span class="nx">serverIndex</span><span class="p">]</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23"></a><a href="#__codelineno-10-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24"></a><a href="#__codelineno-10-24"><span class="linenos" data-linenos="24 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-10-25" name="__codelineno-10-25"></a><a href="#__codelineno-10-25"><span class="linenos" data-linenos="25 "></span></a>
+<a id="__codelineno-10-26" name="__codelineno-10-26"></a><a href="#__codelineno-10-26"><span class="linenos" data-linenos="26 "></span></a><span class="w">        </span><span class="c1">// 如果仍未找到，回退到简单哈希</span>
+<a id="__codelineno-10-27" name="__codelineno-10-27"></a><a href="#__codelineno-10-27"><span class="linenos" data-linenos="27 "></span></a><span class="w">        </span><span class="nx">availableServers</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="o">*</span><span class="nx">Server</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-10-28" name="__codelineno-10-28"></a><a href="#__codelineno-10-28"><span class="linenos" data-linenos="28 "></span></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">Servers</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-29" name="__codelineno-10-29"></a><a href="#__codelineno-10-29"><span class="linenos" data-linenos="29 "></span></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">Weight</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-30" name="__codelineno-10-30"></a><a href="#__codelineno-10-30"><span class="linenos" data-linenos="30 "></span></a><span class="w">                </span><span class="nx">availableServers</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">availableServers</span><span class="p">,</span><span class="w"> </span><span class="nx">server</span><span class="p">)</span>
+<a id="__codelineno-10-31" name="__codelineno-10-31"></a><a href="#__codelineno-10-31"><span class="linenos" data-linenos="31 "></span></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-10-32" name="__codelineno-10-32"></a><a href="#__codelineno-10-32"><span class="linenos" data-linenos="32 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-10-33" name="__codelineno-10-33"></a><a href="#__codelineno-10-33"><span class="linenos" data-linenos="33 "></span></a>
+<a id="__codelineno-10-34" name="__codelineno-10-34"></a><a href="#__codelineno-10-34"><span class="linenos" data-linenos="34 "></span></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="nx">availableServers</span><span class="p">)</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-10-35" name="__codelineno-10-35"></a><a href="#__codelineno-10-35"><span class="linenos" data-linenos="35 "></span></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nx">availableServers</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nx">hash</span><span class="o">%</span><span class="nb">uint64</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nx">availableServers</span><span class="p">)))]</span>
+<a id="__codelineno-10-36" name="__codelineno-10-36"></a><a href="#__codelineno-10-36"><span class="linenos" data-linenos="36 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-10-37" name="__codelineno-10-37"></a><a href="#__codelineno-10-37"><span class="linenos" data-linenos="37 "></span></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<a id="__codelineno-10-38" name="__codelineno-10-38"></a><a href="#__codelineno-10-38"><span class="linenos" data-linenos="38 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-10-39" name="__codelineno-10-39"></a><a href="#__codelineno-10-39"><span class="linenos" data-linenos="39 "></span></a>
+<a id="__codelineno-10-40" name="__codelineno-10-40"></a><a href="#__codelineno-10-40"><span class="linenos" data-linenos="40 "></span></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">Servers</span><span class="p">[</span><span class="nx">serverIndex</span><span class="p">]</span>
+<a id="__codelineno-10-41" name="__codelineno-10-41"></a><a href="#__codelineno-10-41"><span class="linenos" data-linenos="41 "></span></a><span class="p">}</span>
+</code></pre></div>
+<p>构建查找表是 Maglev 算法最关键的部分，它通过复杂的排列算法确保节点变化时最小化重新映射：</p>
+<div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><a href="#__codelineno-11-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1">// permutation 计算服务器在查找表中的位置</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><a href="#__codelineno-11-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">lb</span><span class="w"> </span><span class="o">*</span><span class="nx">MaglevHashLoadBalancer</span><span class="p">)</span><span class="w"> </span><span class="nx">permutation</span><span class="p">(</span><span class="nx">serverIndex</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="p">[]</span><span class="kt">int</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><a href="#__codelineno-11-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="c1">// 使用服务器地址和索引结合计算哈希值，增加多样性</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><a href="#__codelineno-11-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="nx">server</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">Servers</span><span class="p">[</span><span class="nx">serverIndex</span><span class="p">]</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><a href="#__codelineno-11-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span><span class="nx">uniqueKey</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">Address</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">string</span><span class="p">(</span><span class="nb">rune</span><span class="p">(</span><span class="nx">serverIndex</span><span class="p">))</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><a href="#__codelineno-11-6"><span class="linenos" data-linenos=" 6 "></span></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><a href="#__codelineno-11-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span><span class="c1">// 优化哈希种子计算</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a><a href="#__codelineno-11-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="nx">offset</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">murmur3</span><span class="p">.</span><span class="nx">Sum64</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">uniqueKey</span><span class="p">))</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nb">uint64</span><span class="p">(</span><span class="nx">lb</span><span class="p">.</span><span class="nx">tableSize</span><span class="p">)</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><a href="#__codelineno-11-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="nx">skip</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">xxh3</span><span class="p">.</span><span class="nx">Hash</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">uniqueKey</span><span class="p">))</span><span class="o">%</span><span class="nb">uint64</span><span class="p">(</span><span class="nx">lb</span><span class="p">.</span><span class="nx">tableSize</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a><a href="#__codelineno-11-10"><span class="linenos" data-linenos="10 "></span></a>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a><a href="#__codelineno-11-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">    </span><span class="nx">weight</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">Weight</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a><a href="#__codelineno-11-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">weight</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a><a href="#__codelineno-11-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">        </span><span class="nx">weight</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c1">// 确保至少有权重1，避免除零错误</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14"></a><a href="#__codelineno-11-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15"></a><a href="#__codelineno-11-15"><span class="linenos" data-linenos="15 "></span></a>
+<a id="__codelineno-11-16" name="__codelineno-11-16"></a><a href="#__codelineno-11-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">    </span><span class="c1">// 考虑权重因素，影响排列的生成</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17"></a><a href="#__codelineno-11-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">    </span><span class="nx">perm</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">([]</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">tableSize</span><span class="p">)</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18"></a><a href="#__codelineno-11-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="nx">lb</span><span class="p">.</span><span class="nx">tableSize</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19"></a><a href="#__codelineno-11-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">        </span><span class="c1">// 根据权重调整偏移量，权重大的服务器有更多机会被选中</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20"></a><a href="#__codelineno-11-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">        </span><span class="nx">adjustedOffset</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="nx">offset</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">uint64</span><span class="p">(</span><span class="nx">i</span><span class="o">*</span><span class="nx">weight</span><span class="p">))</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nb">uint64</span><span class="p">(</span><span class="nx">lb</span><span class="p">.</span><span class="nx">tableSize</span><span class="p">)</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21"></a><a href="#__codelineno-11-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">        </span><span class="nx">perm</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">int</span><span class="p">((</span><span class="nx">adjustedOffset</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">uint64</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span><span class="o">*</span><span class="nx">skip</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="nb">uint64</span><span class="p">(</span><span class="nx">lb</span><span class="p">.</span><span class="nx">tableSize</span><span class="p">))</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22"></a><a href="#__codelineno-11-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23"></a><a href="#__codelineno-11-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">perm</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24"></a><a href="#__codelineno-11-24"><span class="linenos" data-linenos="24 "></span></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="优缺点分析_3">优缺点分析<a class="headerlink" href="#优缺点分析_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅ 服务器变化时最小化请求重新映射</td>
+<td>❌ 实现复杂度高</td>
+</tr>
+<tr>
+<td>✅ 查找性能高，O(1)时间复杂度</td>
+<td>❌ 内存占用较大，需要维护查找表</td>
+</tr>
+<tr>
+<td>✅ 适合需要会话粘性的场景</td>
+<td>❌ 初始化和更新查找表开销较大</td>
+</tr>
+<tr>
+<td>✅ 支持服务器动态增减</td>
+<td>❌ 需要使用高质量的哈希函数</td>
+</tr>
+<tr>
+<td>✅ 分布均匀性好于传统一致性哈希</td>
+<td>❌ 参数调优较为复杂</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-算法对比与实践建议-">5. 算法对比与实践建议 📊<a class="headerlink" href="#5-算法对比与实践建议-" title="Permanent link">&para;</a></h2>
+<h3 id="四种算法对比-">四种算法对比 🔍<a class="headerlink" href="#四种算法对比-" title="Permanent link">&para;</a></h3>
+<p>下表全面对比了四种负载均衡算法的主要特性：</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>随机选择</th>
+<th>轮询</th>
+<th>最小连接</th>
+<th>Maglev一致性哈希</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>时间复杂度</strong></td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td><strong>空间复杂度</strong></td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>O(n)</td>
+<td>O(m)</td>
+</tr>
+<tr>
+<td><strong>均衡性</strong></td>
+<td>中</td>
+<td>高</td>
+<td>高</td>
+<td>中</td>
+</tr>
+<tr>
+<td><strong>一致性</strong></td>
+<td>低</td>
+<td>低</td>
+<td>中</td>
+<td>高</td>
+</tr>
+<tr>
+<td><strong>状态维护</strong></td>
+<td>无</td>
+<td>轻量</td>
+<td>重</td>
+<td>重</td>
+</tr>
+<tr>
+<td><strong>实现复杂度</strong></td>
+<td>⭐</td>
+<td>⭐⭐</td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td><strong>对服务器变化敏感度</strong></td>
+<td>低</td>
+<td>中</td>
+<td>低</td>
+<td>高</td>
+</tr>
+<tr>
+<td><strong>适合请求类型</strong></td>
+<td>短连接</td>
+<td>短连接</td>
+<td>长连接</td>
+<td>所有类型</td>
+</tr>
+<tr>
+<td><strong>内存占用</strong></td>
+<td>低</td>
+<td>低</td>
+<td>中</td>
+<td>高</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>简单系统<br>服务器性能一致</td>
+<td>服务器负载均衡<br>性能接近</td>
+<td>长连接<br>处理时间不均</td>
+<td>会话粘性<br>缓存一致性</td>
+</tr>
+</tbody>
+</table>
+<p>（其中 n 为服务器数量，m 为查找表大小）</p>
+<h3 id="实践建议-">实践建议 🛠️<a class="headerlink" href="#实践建议-" title="Permanent link">&para;</a></h3>
+<p>基于以上对比，我们可以针对不同场景给出以下建议：</p>
+<ol>
+<li>
+<p><strong>短连接、服务器均质场景</strong>：随机或轮询算法足够
+   - 例如：静态资源服务器、简单的API网关</p>
+</li>
+<li>
+<p><strong>长连接、处理时间不均</strong>：最小连接算法效果较好
+   - 例如：数据库连接池、WebSocket服务</p>
+</li>
+<li>
+<p><strong>需要会话一致性</strong>：使用Maglev一致性哈希
+   - 例如：有状态服务、分布式缓存、用户会话管理</p>
+</li>
+<li>
+<p><strong>混合策略</strong>：可以组合多种策略
+   - 例如：先一致性哈希分组，再用最小连接选择
+   - 二级负载均衡：区域级使用一致性哈希，区域内使用最小连接</p>
+</li>
+</ol>
+<h3 id="真实世界应用案例-">真实世界应用案例 🌐<a class="headerlink" href="#真实世界应用案例-" title="Permanent link">&para;</a></h3>
+<p>以下是一些真实世界中的应用案例，展示了不同负载均衡算法的实际应用：</p>
+<h4 id="案例1cdn边缘节点调度">案例1：CDN边缘节点调度<a class="headerlink" href="#案例1cdn边缘节点调度" title="Permanent link">&para;</a></h4>
+<p><strong>场景</strong>：全球性内容分发网络(CDN)需要将用户请求分发到最近的边缘节点</p>
+<p><strong>选择算法</strong>：一致性哈希 + 地理位置感知</p>
+<p><strong>原因</strong>：
+- 相同用户的请求应该路由到相同的边缘节点，提高缓存命中率
+- 当某个节点失效时，只有该节点的请求需要重新映射
+- 结合地理位置信息可以优先选择物理距离近的节点</p>
+<h4 id="案例2api网关">案例2：API网关<a class="headerlink" href="#案例2api网关" title="Permanent link">&para;</a></h4>
+<p><strong>场景</strong>：企业级微服务架构的API网关需要分发大量短连接请求到后端服务</p>
+<p><strong>选择算法</strong>：加权轮询</p>
+<p><strong>原因</strong>：
+- 请求处理时间相对一致
+- 服务器性能可能不同（需要权重支持）
+- 实现简单，计算开销小
+- 分布均匀可预测</p>
+<h4 id="案例3数据库读写分离">案例3：数据库读写分离<a class="headerlink" href="#案例3数据库读写分离" title="Permanent link">&para;</a></h4>
+<p><strong>场景</strong>：主从架构的数据库集群，需要将读请求分散到多个从库</p>
+<p><strong>选择算法</strong>：最小连接</p>
+<p><strong>原因</strong>：
+- 查询复杂度差异大，执行时间不一
+- 需要动态适应负载情况
+- 避免单个从库过载</p>
+<h4 id="案例4分布式缓存集群">案例4：分布式缓存集群<a class="headerlink" href="#案例4分布式缓存集群" title="Permanent link">&para;</a></h4>
+<p><strong>场景</strong>：大规模分布式缓存系统（如Redis集群）</p>
+<p><strong>选择算法</strong>：一致性哈希</p>
+<p><strong>原因</strong>：
+- 相同的键需要始终映射到相同的节点
+- 集群扩缩容时最小化缓存失效
+- 支持虚拟节点平衡负载</p>
+<h2 id="6-负载均衡的理论基础与未来发展-">6. 负载均衡的理论基础与未来发展 🧮<a class="headerlink" href="#6-负载均衡的理论基础与未来发展-" title="Permanent link">&para;</a></h2>
+<h3 id="负载均衡的理论基础">负载均衡的理论基础<a class="headerlink" href="#负载均衡的理论基础" title="Permanent link">&para;</a></h3>
+<p>负载均衡算法不仅仅是实用技术，它们也是多个计算机科学理论领域研究的焦点：</p>
+<ol>
+<li>
+<p><strong>排队论(Queueing Theory)</strong>：负载均衡本质上是解决多服务器排队系统的最优服务分配问题。排队论提供了分析系统性能指标（如平均等待时间、系统吞吐量）的数学工具。</p>
+</li>
+<li>
+<p><strong>博弈论(Game Theory)</strong>：当系统中存在多个独立决策者（如分布式负载均衡）时，可以应用博弈论分析系统的均衡状态和稳定性。</p>
+</li>
+<li>
+<p><strong>控制论(Control Theory)</strong>：最小连接算法实际上是一个负反馈控制系统，通过动态调整请求分配来平衡服务器负载。</p>
+</li>
+<li>
+<p><strong>随机过程(Stochastic Processes)</strong>：随机负载均衡算法可以通过马尔可夫过程、泊松过程等随机过程理论来分析其长期行为。</p>
+</li>
+<li>
+<p><strong>分布式系统理论(Distributed Systems Theory)</strong>：一致性哈希等算法解决了分布式系统中的数据分区和请求路由问题，与CAP定理、最终一致性等概念密切相关。</p>
+</li>
+</ol>
+<h3 id="负载均衡技术的新趋势">负载均衡技术的新趋势<a class="headerlink" href="#负载均衡技术的新趋势" title="Permanent link">&para;</a></h3>
+<p>随着技术的发展，负载均衡算法也在不断演进：</p>
+<ol>
+<li>
+<p><strong>机器学习辅助负载均衡</strong>：利用预测模型动态调整负载均衡策略，基于历史性能数据和当前系统状态做出更智能的路由决策。</p>
+</li>
+<li>
+<p><strong>应用感知负载均衡(Application-Aware Load Balancing)</strong>：深入理解应用层负载特征，考虑请求类型、资源需求等因素进行更精细化的负载分配。</p>
+</li>
+<li>
+<p><strong>边缘计算负载均衡</strong>：在靠近用户的边缘节点进行负载均衡决策，减少延迟，提升用户体验。</p>
+</li>
+<li>
+<p><strong>多目标优化</strong>：同时考虑延迟、吞吐量、能耗等多个目标的负载均衡算法，使用帕累托最优解在多个目标之间寻求平衡。</p>
+</li>
+<li>
+<p><strong>自适应负载均衡</strong>：能够根据环境变化自动调整参数和策略的负载均衡系统，无需人工干预。</p>
+</li>
+</ol>
+<h3 id="跨领域启示">跨领域启示<a class="headerlink" href="#跨领域启示" title="Permanent link">&para;</a></h3>
+<p>负载均衡的思想已经超越了计算机网络领域，影响了多个相关学科：</p>
+<ul>
+<li><strong>交通流量控制</strong>：城市交通管理中借鉴了负载均衡思想，通过动态路由引导车辆分散到不同道路</li>
+<li><strong>电力网络调度</strong>：智能电网利用类似负载均衡的策略平衡发电和用电需求</li>
+<li><strong>供应链管理</strong>：在多仓库、多物流渠道间优化配送路线和资源分配</li>
+<li><strong>云计算资源管理</strong>：虚拟机迁移和任务调度算法与负载均衡有着共同的理论基础</li>
+</ul>
+<p>通过将负载均衡置于更广泛的理论框架中，我们不仅能够更深入地理解现有算法，还能够探索全新的解决方案，推动负载均衡技术的不断发展。</p>
+<h2 id="7-总结-">7. 总结 📝<a class="headerlink" href="#7-总结-" title="Permanent link">&para;</a></h2>
+<p>负载均衡是分布式系统的核心组件之一，不同的负载均衡算法适用于不同的场景。本文分析的四种算法各有特点：</p>
+<ul>
+<li>随机算法最简单高效但均衡性一般</li>
+<li>轮询算法分配最均匀但不考虑实时负载</li>
+<li>最小连接最能反映实时负载但维护成本高</li>
+<li>Maglev一致性哈希提供最佳一致性保证但实现复杂</li>
+</ul>
+<p><strong>实际应用选择指南</strong>：
+- 如果系统中请求处理时间相近，服务器性能一致，选择<strong>随机</strong>或<strong>轮询</strong>算法
+- 如果请求处理时间差异大，选择<strong>最小连接</strong>算法
+- 如果需要保持会话一致性或缓存一致性，选择<strong>一致性哈希</strong>算法
+- 如果系统规模较大且对性能要求极高，考虑<strong>Maglev</strong>算法</p>
+<p>在实际应用中，需要根据业务特点、系统规模和性能要求选择合适的负载均衡算法，甚至可能需要自定义或组合使用多种算法来满足特定需求。Go 语言的并发特性和性能优势使其成为实现高效负载均衡器的理想选择。</p>
+<p>最后，无论选择哪种算法，都应该结合健康检查、故障转移、监控告警等机制，构建一个完整的负载均衡解决方案，以确保系统的高可用性和可靠性。</p>
+<hr />
+<p>通过本文，希望读者能够深入理解这几种负载均衡算法的原理和实现，在架构设计中做出更明智的选择！🚀</p>
+<h2 id="8-参考">8. 参考<a class="headerlink" href="#8-参考" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><a href="https://github.com/catwithtudou/load-balancer-algorithm">Go 负载均衡算法实现</a> - 本文算法的Go语言实现源码</p>
+</li>
+<li>
+<p><a href="https://www.manjusaka.blog/posts/2025/03/23/a-simple-introduction-about-load-balance-algorithm/">A Simple Introduction About Load Balance Algorithm</a> - 相关算法介绍</p>
+</li>
+<li>
+<p><a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/44824.pdf">Google Maglev Paper</a> - Google Maglev负载均衡器论文</p>
+</li>
+<li>
+<p><a href="https://nginx.org/en/docs/http/ngx_http_upstream_module.html#weight">Nginx Weighted Round Robin</a> - Nginx平滑加权轮询算法解释</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 24, 2025 11:24:09</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 24, 2025 11:24:09</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: common">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                common
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../os/" class="md-footer__link md-footer__link--next" aria-label="Next: Operating System">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Operating System
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 catwithtudou
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/catwithtudou" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/catwithtudou" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9zm-24.8 373.8h39.1L151.1 88h-42z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+  
+    
+  
+
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="github" checked>
+          <span class="task-list-indicator"></span>
+          GitHub
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotation", "content.code.copy", "header.autohide"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

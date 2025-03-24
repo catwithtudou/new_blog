@@ -740,6 +740,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#深入理解四种经典负载均衡算法" class="md-nav__link">
+    <span class="md-ellipsis">
+      深入理解四种经典负载均衡算法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#从0到1带你了解和使用-mcpai应用拓展绕不开的协议" class="md-nav__link">
     <span class="md-ellipsis">
       🔌从0到1带你了解和使用 MCP—AI应用拓展绕不开的协议
@@ -1069,6 +1078,8 @@
       
         
           
+        
+      
         
       
         
@@ -1517,6 +1528,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#深入理解四种经典负载均衡算法" class="md-nav__link">
+    <span class="md-ellipsis">
+      深入理解四种经典负载均衡算法
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#从0到1带你了解和使用-mcpai应用拓展绕不开的协议" class="md-nav__link">
     <span class="md-ellipsis">
       🔌从0到1带你了解和使用 MCP—AI应用拓展绕不开的协议
@@ -1593,6 +1613,60 @@
       <header class="md-typeset">
         <h1 id="2025">2025<a class="headerlink" href="#2025" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-03-24 00:00:00+00:00">Monday, March 24, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/server/" class="md-meta__link">server</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              6 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="深入理解四种经典负载均衡算法"><a class="toclink" href="../../2025/03/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%9B%9B%E7%A7%8D%E7%BB%8F%E5%85%B8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95/">深入理解四种经典负载均衡算法</a></h2>
+<h3 id="0-背景介绍"><a class="toclink" href="../../2025/03/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%9B%9B%E7%A7%8D%E7%BB%8F%E5%85%B8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95/#0-背景介绍">0. 背景介绍</a></h3>
+<h4 id="什么是负载均衡"><a class="toclink" href="../../2025/03/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%9B%9B%E7%A7%8D%E7%BB%8F%E5%85%B8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95/#什么是负载均衡">什么是负载均衡</a></h4>
+<p>负载均衡（Load Balancing）是一种计算机网络技术，用于在多个计算机、网络连接、CPU、磁盘驱动器或其他资源中分配负载，优化资源使用，最大化吞吐量，最小化响应时间，避免过载。使用多个组件进行负载分担，相比使用单个组件，可以通过冗余提高可靠性和可用性。</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><a href="#__codelineno-12-1"><span class="linenos" data-linenos=" 1 "></span></a>                    ┌─────────────┐
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><a href="#__codelineno-12-2"><span class="linenos" data-linenos=" 2 "></span></a>                    │ 负载均衡器  │
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><a href="#__codelineno-12-3"><span class="linenos" data-linenos=" 3 "></span></a>                    └─────────────┘
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><a href="#__codelineno-12-4"><span class="linenos" data-linenos=" 4 "></span></a>                           │
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><a href="#__codelineno-12-5"><span class="linenos" data-linenos=" 5 "></span></a>                           ▼
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a><a href="#__codelineno-12-6"><span class="linenos" data-linenos=" 6 "></span></a>          ┌─────────────────────────────┐
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><a href="#__codelineno-12-7"><span class="linenos" data-linenos=" 7 "></span></a>          │                             │
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a><a href="#__codelineno-12-8"><span class="linenos" data-linenos=" 8 "></span></a>    ┌─────┴─────┐             ┌─────────┴─────┐
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a><a href="#__codelineno-12-9"><span class="linenos" data-linenos=" 9 "></span></a>    │           │             │               │
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a><a href="#__codelineno-12-10"><span class="linenos" data-linenos="10 "></span></a>┌───▼───┐   ┌───▼───┐     ┌───▼───┐       ┌───▼───┐
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a><a href="#__codelineno-12-11"><span class="linenos" data-linenos="11 "></span></a>│服务器1 │   │服务器2 │     │服务器3 │       │服务器4 │
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a><a href="#__codelineno-12-12"><span class="linenos" data-linenos="12 "></span></a>└───────┘   └───────┘     └───────┘       └───────┘
+</code></pre></div>
+
+    
+      <nav class="md-post__action">
+        <a href="../../2025/03/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%9B%9B%E7%A7%8D%E7%BB%8F%E5%85%B8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95/">
+          Continue reading
+        </a>
+      </nav>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
