@@ -1995,10 +1995,12 @@
 <li><strong>蒙特卡洛模拟(Monte Carlo Simulation)</strong>：通过随机抽样估计概率分布</li>
 </ol>
 <p><strong>类比思路</strong>：假设您有一个轮盘，每个服务器在轮盘上占据一定角度（与其权重成正比）。转动轮盘，小球落在哪个区域，就选择哪个服务器。权重越大的服务器，在轮盘上占据的区域越大，被选中的概率也就越高。</p>
-<p><strong>优化思路</strong>：标准的轮盘赌选择算法需要O(n)的时间复杂度，可以通过以下方式优化：
-- <strong>二分搜索(Binary Search)</strong>：将累积权重数组排序后，使用二分搜索找到随机值对应的服务器，将复杂度降至O(log n)
-- <strong>别名方法(Alias Method)</strong>：以O(n)的预处理时间和O(1)的查询时间实现加权随机选择
-- <strong>蓄水池抽样(Reservoir Sampling)</strong>：当服务器列表动态变化时特别有用</p>
+<p><strong>优化思路</strong>：标准的轮盘赌选择算法需要O(n)的时间复杂度，可以通过以下方式优化：</p>
+<ul>
+<li><strong>二分搜索(Binary Search)</strong>：将累积权重数组排序后，使用二分搜索找到随机值对应的服务器，将复杂度降至O(log n)</li>
+<li><strong>别名方法(Alias Method)</strong>：以O(n)的预处理时间和O(1)的查询时间实现加权随机选择</li>
+<li><strong>蓄水池抽样(Reservoir Sampling)</strong>：当服务器列表动态变化时特别有用</li>
+</ul>
 <h3 id="核心实现">核心实现<a class="headerlink" href="#核心实现" title="Permanent link">&para;</a></h3>
 <p>随机算法的实现相对简单：</p>
 <div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1">// GetServer 随机选择一个服务器</span>
@@ -2668,21 +2670,29 @@
 <p>基于以上对比，我们可以针对不同场景给出以下建议：</p>
 <ol>
 <li>
-<p><strong>短连接、服务器均质场景</strong>：随机或轮询算法足够
-   - 例如：静态资源服务器、简单的API网关</p>
+<p><strong>短连接、服务器均质场景</strong>：随机或轮询算法足够</p>
+<ul>
+<li>例如：静态资源服务器、简单的API网关</li>
+</ul>
 </li>
 <li>
-<p><strong>长连接、处理时间不均</strong>：最小连接算法效果较好
-   - 例如：数据库连接池、WebSocket服务</p>
+<p><strong>长连接、处理时间不均</strong>：最小连接算法效果较好</p>
+<ul>
+<li>例如：数据库连接池、WebSocket服务</li>
+</ul>
 </li>
 <li>
-<p><strong>需要会话一致性</strong>：使用Maglev一致性哈希
-   - 例如：有状态服务、分布式缓存、用户会话管理</p>
+<p><strong>需要会话一致性</strong>：使用Maglev一致性哈希</p>
+<ul>
+<li>例如：有状态服务、分布式缓存、用户会话管理</li>
+</ul>
 </li>
 <li>
-<p><strong>混合策略</strong>：可以组合多种策略
-   - 例如：先一致性哈希分组，再用最小连接选择
-   - 二级负载均衡：区域级使用一致性哈希，区域内使用最小连接</p>
+<p><strong>混合策略</strong>：可以组合多种策略</p>
+<ul>
+<li>例如：先一致性哈希分组，再用最小连接选择</li>
+<li>二级负载均衡：区域级使用一致性哈希，区域内使用最小连接</li>
+</ul>
 </li>
 </ol>
 <h3 id="真实世界应用案例-">真实世界应用案例 🌐<a class="headerlink" href="#真实世界应用案例-" title="Permanent link">&para;</a></h3>
@@ -2690,10 +2700,12 @@
 <h4 id="案例1cdn边缘节点调度">案例1：CDN边缘节点调度<a class="headerlink" href="#案例1cdn边缘节点调度" title="Permanent link">&para;</a></h4>
 <p><strong>场景</strong>：全球性内容分发网络(CDN)需要将用户请求分发到最近的边缘节点</p>
 <p><strong>选择算法</strong>：一致性哈希 + 地理位置感知</p>
-<p><strong>原因</strong>：
-- 相同用户的请求应该路由到相同的边缘节点，提高缓存命中率
-- 当某个节点失效时，只有该节点的请求需要重新映射
-- 结合地理位置信息可以优先选择物理距离近的节点</p>
+<p><strong>原因</strong>：</p>
+<ul>
+<li>相同用户的请求应该路由到相同的边缘节点，提高缓存命中率</li>
+<li>当某个节点失效时，只有该节点的请求需要重新映射</li>
+<li>结合地理位置信息可以优先选择物理距离近的节点</li>
+</ul>
 <h4 id="案例2api网关">案例2：API网关<a class="headerlink" href="#案例2api网关" title="Permanent link">&para;</a></h4>
 <p><strong>场景</strong>：企业级微服务架构的API网关需要分发大量短连接请求到后端服务</p>
 <p><strong>选择算法</strong>：加权轮询</p>
@@ -2705,17 +2717,21 @@
 <h4 id="案例3数据库读写分离">案例3：数据库读写分离<a class="headerlink" href="#案例3数据库读写分离" title="Permanent link">&para;</a></h4>
 <p><strong>场景</strong>：主从架构的数据库集群，需要将读请求分散到多个从库</p>
 <p><strong>选择算法</strong>：最小连接</p>
-<p><strong>原因</strong>：
-- 查询复杂度差异大，执行时间不一
-- 需要动态适应负载情况
-- 避免单个从库过载</p>
+<p><strong>原因</strong>：</p>
+<ul>
+<li>查询复杂度差异大，执行时间不一</li>
+<li>需要动态适应负载情况</li>
+<li>避免单个从库过载</li>
+</ul>
 <h4 id="案例4分布式缓存集群">案例4：分布式缓存集群<a class="headerlink" href="#案例4分布式缓存集群" title="Permanent link">&para;</a></h4>
 <p><strong>场景</strong>：大规模分布式缓存系统（如Redis集群）</p>
 <p><strong>选择算法</strong>：一致性哈希</p>
-<p><strong>原因</strong>：
-- 相同的键需要始终映射到相同的节点
-- 集群扩缩容时最小化缓存失效
-- 支持虚拟节点平衡负载</p>
+<p><strong>原因</strong>：</p>
+<ul>
+<li>相同的键需要始终映射到相同的节点</li>
+<li>集群扩缩容时最小化缓存失效</li>
+<li>支持虚拟节点平衡负载</li>
+</ul>
 <h2 id="6-负载均衡的理论基础与未来发展-">6. 负载均衡的理论基础与未来发展 🧮<a class="headerlink" href="#6-负载均衡的理论基础与未来发展-" title="Permanent link">&para;</a></h2>
 <h3 id="负载均衡的理论基础">负载均衡的理论基础<a class="headerlink" href="#负载均衡的理论基础" title="Permanent link">&para;</a></h3>
 <p>负载均衡算法不仅仅是实用技术，它们也是多个计算机科学理论领域研究的焦点：</p>
@@ -2772,11 +2788,13 @@
 <li>最小连接最能反映实时负载但维护成本高</li>
 <li>Maglev一致性哈希提供最佳一致性保证但实现复杂</li>
 </ul>
-<p><strong>实际应用选择指南</strong>：
-- 如果系统中请求处理时间相近，服务器性能一致，选择<strong>随机</strong>或<strong>轮询</strong>算法
-- 如果请求处理时间差异大，选择<strong>最小连接</strong>算法
-- 如果需要保持会话一致性或缓存一致性，选择<strong>一致性哈希</strong>算法
-- 如果系统规模较大且对性能要求极高，考虑<strong>Maglev</strong>算法</p>
+<p><strong>实际应用选择指南</strong>：</p>
+<ul>
+<li>如果系统中请求处理时间相近，服务器性能一致，选择<strong>随机</strong>或<strong>轮询</strong>算法</li>
+<li>如果请求处理时间差异大，选择<strong>最小连接</strong>算法</li>
+<li>如果需要保持会话一致性或缓存一致性，选择<strong>一致性哈希</strong>算法</li>
+<li>如果系统规模较大且对性能要求极高，考虑<strong>Maglev</strong>算法</li>
+</ul>
 <p>在实际应用中，需要根据业务特点、系统规模和性能要求选择合适的负载均衡算法，甚至可能需要自定义或组合使用多种算法来满足特定需求。Go 语言的并发特性和性能优势使其成为实现高效负载均衡器的理想选择。</p>
 <p>最后，无论选择哪种算法，都应该结合健康检查、故障转移、监控告警等机制，构建一个完整的负载均衡解决方案，以确保系统的高可用性和可靠性。</p>
 <hr />
@@ -2818,7 +2836,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 24, 2025 11:24:09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 24, 2025 11:33:07</span>
   </span>
 
     
