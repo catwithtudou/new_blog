@@ -39,6 +39,7 @@ theme:
     - content.tabs.link
     - content.code.annotation
     - content.code.copy
+    - content.code.select
     - header.autohide
   # language
   language: en
