@@ -30,7 +30,7 @@ theme:
     - navigation.prune
     - navigation.indexes
     - navigation.top
-    # - toc.integrate
+    - toc.integrate
     - navigation.footer
     - toc.follow
     - search.suggest
