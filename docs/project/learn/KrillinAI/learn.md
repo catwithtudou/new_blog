@@ -2,17 +2,365 @@
 
 ## 1. 日志处理
 
+- 整体使用 zap 作为日志库
+
+```go
+	// 初始化日志系统，使用zap作为日志库
+	log.InitLogger()
+	defer log.GetLogger().Sync() // 确保日志被正确写入
+```
+
+```go
+package log
+
+import (
+	"os" // 导入操作系统功能，用于文件操作
+
+	"go.uber.org/zap"         // 导入Uber开源的高性能日志库zap
+	"go.uber.org/zap/zapcore" // 导入zap的核心组件，用于自定义日志配置
+)
+
+// Logger 全局日志对象，提供给整个应用程序使用
+var Logger *zap.Logger
+
+// InitLogger 初始化日志系统
+// 配置了两个输出目标：
+// 1. JSON格式输出到app.log文件（调试级别）
+// 2. 控制台格式输出到终端（信息级别）
+func InitLogger() {
+	// 创建或打开日志文件，使用追加模式
+	file, err := os.OpenFile("app.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	if err != nil {
+		panic("无法打开日志文件: " + err.Error()) // 如果无法创建日志文件则终止程序
+	}
+
+	// 创建文件输出同步器
+	fileSyncer := zapcore.AddSync(file)
+	// 创建控制台输出同步器
+	consoleSyncer := zapcore.AddSync(os.Stdout)
+
+	// 使用生产环境的编码器配置
+	encoderConfig := zap.NewProductionEncoderConfig()
+	// 自定义时间格式为ISO8601标准格式（YYYY-MM-DDThh:mm:ss±hh:mm）
+	encoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder
+
+	// 创建多输出的日志核心
+	// 使用zapcore.NewTee可以将日志同时输出到多个目标
+	core := zapcore.NewTee(
+		zapcore.NewCore(zapcore.NewJSONEncoder(encoderConfig), fileSyncer, zap.DebugLevel),      // 写入文件（JSON 格式），记录Debug及以上级别
+		zapcore.NewCore(zapcore.NewConsoleEncoder(encoderConfig), consoleSyncer, zap.InfoLevel), // 输出到终端，记录Info及以上级别
+	)
+
+	// 创建Logger实例，并添加调用者信息（文件名和行号）
+	Logger = zap.New(core, zap.AddCaller())
+}
+
+// GetLogger 获取全局日志对象的方法
+// 返回已初始化的zap.Logger实例，供应用程序各部分使用
+func GetLogger() *zap.Logger {
+	return Logger
+}
+```
+
 
 ## 2. 加载配置处理
+
+- 配置处理的顺序可按照：配置文件 -> 环境变量 -> 默认值
+
+```go
+// LoadConfig 加载配置的主函数
+// 按照优先级依次尝试：配置文件 -> 环境变量 -> 默认值
+func LoadConfig() error {
+	var err error
+	configPath := "./config/config.toml"
+
+	// 检查配置文件是否存在
+	if _, err = os.Stat(configPath); os.IsNotExist(err) {
+		// 配置文件不存在，从环境变量加载
+		log.GetLogger().Info("未找到配置文件，从环境变量中加载配置")
+		loadFromEnv()
+	} else {
+		// 配置文件存在，优先从配置文件加载
+		log.GetLogger().Info("已找到配置文件，从配置文件中加载配置")
+		_, err = toml.DecodeFile(configPath, &Conf)
+	}
+
+	// 解析代理地址（如果设置了代理）
+	Conf.App.ParsedProxy, err = url.Parse(Conf.App.Proxy)
+	if err != nil {
+		return err
+	}
+
+	// 本地模型不并发
+	if Conf.App.TranscribeProvider == "fasterwhisper" || Conf.App.TranscribeProvider == "whisperkit" {
+		Conf.App.TranslateParallelNum = 1
+	}
+
+	// 验证配置是否完整有效
+	return validateConfig()
+}
+```
+
 
 
 ## 3. 检查并准备运行环境依赖
 
+- 检查并准备项目运行所需的所有依赖，包括：ffmpeg、ffprobe、yt-dlp等工具以及相关模型
 
-### 检查依赖的应用和模型
+- 这里按 ffmpeg 的程序依赖检查并下载来进行说明
+
+```go
+// checkAndDownloadFfmpeg 检测并安装ffmpeg
+// 如果系统中已经安装了ffmpeg，则直接使用
+// 否则会自动下载适合当前操作系统的版本并解压到./bin目录
+func checkAndDownloadFfmpeg() error {
+	// 检查系统环境变量中是否已经有ffmpeg
+	_, err := exec.LookPath("ffmpeg")
+	if err == nil {
+		// 设置全局变量，供其他模块使用
+		storage.FfmpegPath = "ffmpeg"
+		return nil
+	}
+
+	// 构建本地bin目录中ffmpeg的路径
+	ffmpegBinFilePath := "./bin/ffmpeg"
+	if runtime.GOOS == "windows" {
+		ffmpegBinFilePath += ".exe"
+	}
+	// 检查之前是否已经下载过ffmpeg
+	if _, err = os.Stat(ffmpegBinFilePath); err == nil {
+		storage.FfmpegPath = ffmpegBinFilePath
+		return nil
+	}
+
+	// 确保./bin目录存在
+	err = os.MkdirAll("./bin", 0755)
+	if err != nil {
+		return err
+	}
+
+	// 根据不同操作系统选择对应的下载链接
+	var ffmpegURL string
+	if runtime.GOOS == "linux" {
+		ffmpegURL = "https://modelscope.cn/models/Maranello/KrillinAI_dependency_cn/resolve/master/ffmpeg-6.1-linux-64.zip"
+	} else if runtime.GOOS == "darwin" {
+		ffmpegURL = "https://modelscope.cn/models/Maranello/KrillinAI_dependency_cn/resolve/master/ffmpeg-6.1-macos-64.zip"
+	} else if runtime.GOOS == "windows" {
+		ffmpegURL = "https://modelscope.cn/models/Maranello/KrillinAI_dependency_cn/resolve/master/ffmpeg-6.1-win-64.zip"
+	} else {
+		log.GetLogger().Error("不支持你当前的操作系统", zap.String("当前系统", runtime.GOOS))
+		return fmt.Errorf("unsupported OS: %s", runtime.GOOS)
+	}
+
+	// 下载ffmpeg压缩包
+	ffmpegDownloadPath := "./bin/ffmpeg.zip"
+	err = util.DownloadFile(ffmpegURL, ffmpegDownloadPath, config.Conf.App.Proxy)
+	if err != nil {
+		return err
+	}
+	// 解压下载的ffmpeg
+	err = util.Unzip(ffmpegDownloadPath, "./bin")
+	if err != nil {
+		return err
+	}
+	log.GetLogger().Info("ffmpeg解压成功")
+
+	// 对于非Windows系统，需要设置可执行权限
+	if runtime.GOOS != "windows" {
+		err = os.Chmod(ffmpegBinFilePath, 0755)
+		if err != nil {
+			return err
+		}
+	}
+
+	// 记录ffmpeg路径供程序后续使用
+	storage.FfmpegPath = ffmpegBinFilePath
+	return nil
+}
+```
+
+### 下载及其进度条的处理
+
+- 对于想要实现带有进度条的下载处理，核心可使用 `io.TeeReader` 以及自定义实现 `io.Writer` 的处理
+
+```go
+// DownloadFile 下载文件并保存到指定路径，支持代理设置
+// 提供实时的下载进度显示，适用于大文件下载
+// @param urlStr 要下载的文件URL
+// @param filepath 保存文件的本地路径
+// @param proxyAddr 代理服务器地址，如为空则直接连接
+// @return 可能的错误信息
+func DownloadFile(urlStr, filepath, proxyAddr string) error {
+	log.GetLogger().Info("开始下载文件", zap.String("url", urlStr))
+
+	// 创建HTTP客户端
+	client := &http.Client{}
+
+	// 如果配置了代理，则设置HTTP传输使用代理
+	if proxyAddr != "" {
+		client.Transport = &http.Transport{
+			Proxy: http.ProxyURL(config.Conf.App.ParsedProxy),
+		}
+	}
+
+	// 发起HTTP GET请求
+	resp, err := client.Get(urlStr)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+
+	// 获取文件大小并显示
+	size := resp.ContentLength
+	fmt.Printf("文件大小: %.2f MB\n", float64(size)/1024/1024)
+
+	// 创建目标文件
+	out, err := os.Create(filepath)
+	if err != nil {
+		return err
+	}
+	defer out.Close()
+
+	// 创建带有进度显示的Writer
+	progress := &progressWriter{
+		Total: uint64(size),
+	}
+	// 创建TeeReader，将下载内容同时写入文件和进度显示器
+	reader := io.TeeReader(resp.Body, progress)
+
+	// 执行实际的文件拷贝（下载）操作
+	_, err = io.Copy(out, reader)
+	if err != nil {
+		return err
+	}
+	fmt.Printf("\n") // 下载完成后换行，避免后续日志显示在同一行
+
+	return nil
+}
+
+// progressWriter 是一个自定义的io.Writer实现
+// 用于实时显示文件下载进度、速度和已下载大小
+// 通过嵌入到io.TeeReader中实现边下载边显示进度
+type progressWriter struct {
+	Total      uint64    // 文件总大小（字节）
+	Downloaded uint64    // 已下载的大小（字节）
+	StartTime  time.Time // 下载开始时间，用于计算下载速度
+}
+
+// Write 实现io.Writer接口的方法
+// 在每次写入数据时更新下载统计并实时打印进度信息
+// @param p 需要写入的字节切片
+// @return 写入的字节数和可能的错误
+func (pw *progressWriter) Write(p []byte) (int, error) {
+	n := len(p)
+	pw.Downloaded += uint64(n)
+
+	// 初始化开始时间（仅在第一次写入时设置）
+	if pw.StartTime.IsZero() {
+		pw.StartTime = time.Now()
+	}
+
+	// 计算下载百分比、已用时间和下载速度
+	percent := float64(pw.Downloaded) / float64(pw.Total) * 100
+	elapsed := time.Since(pw.StartTime).Seconds()
+	speed := float64(pw.Downloaded) / 1024 / 1024 / elapsed
+
+	// 实时更新显示下载进度信息（不换行，在同一行刷新）
+	fmt.Printf("\r下载进度: %.2f%% (%.2f MB / %.2f MB) | 速度: %.2f MB/s",
+		percent,
+		float64(pw.Downloaded)/1024/1024,
+		float64(pw.Total)/1024/1024,
+		speed)
+
+	return n, nil
+}
+```
+
+### 解压文件的处理
+
+- 利用 `archive/zip` 来获取到 ZIP 的文件句柄进行解压
 
 
-### 下载（进度条）和解压依赖应用
+```go
+
+// Unzip 解压缩ZIP文件到指定目录
+//
+// 功能说明：
+// 1. 打开并读取ZIP文件
+// 2. 创建目标目录
+// 3. 遍历ZIP文件中的所有文件
+// 4. 保持原始文件权限
+// 5. 支持目录结构解压
+//
+// 参数：
+//   - zipFile: ZIP文件的完整路径
+//   - destDir: 解压目标目录的完整路径
+//
+// 返回：
+//   - error: 解压过程中的错误信息，如果成功则返回nil
+//
+// 错误处理：
+//   - 打开ZIP文件失败
+//   - 创建目标目录失败
+//   - 创建解压文件失败
+//   - 读取ZIP内容失败
+//   - 复制文件内容失败
+func Unzip(zipFile, destDir string) error {
+	// 打开ZIP文件
+	zipReader, err := zip.OpenReader(zipFile)
+	if err != nil {
+		return fmt.Errorf("打开zip文件失败: %v", err)
+	}
+	// 确保ZIP文件句柄被正确关闭
+	defer zipReader.Close()
+
+	// 创建目标目录，如果目录已存在则保持不变
+	err = os.MkdirAll(destDir, 0755)
+	if err != nil {
+		return fmt.Errorf("创建目标目录失败: %v", err)
+	}
+
+	// 遍历ZIP文件中的所有文件
+	for _, file := range zipReader.File {
+		// 构建目标文件的完整路径
+		filePath := filepath.Join(destDir, file.Name)
+
+		// 处理目录
+		if file.FileInfo().IsDir() {
+			// 创建目录，保持原始权限
+			err := os.MkdirAll(filePath, file.Mode())
+			if err != nil {
+				return fmt.Errorf("创建目录失败: %v", err)
+			}
+			continue
+		}
+
+		// 创建目标文件
+		destFile, err := os.Create(filePath)
+		if err != nil {
+			return fmt.Errorf("创建文件失败: %v", err)
+		}
+		// 确保文件句柄被正确关闭
+		defer destFile.Close()
+
+		// 打开ZIP文件中的文件内容
+		zipFileReader, err := file.Open()
+		if err != nil {
+			return fmt.Errorf("打开zip文件内容失败: %v", err)
+		}
+		// 确保ZIP文件内容读取器被正确关闭
+		defer zipFileReader.Close()
+
+		// 复制文件内容到目标文件
+		_, err = io.Copy(destFile, zipFileReader)
+		if err != nil {
+			return fmt.Errorf("复制文件内容失败: %v", err)
+		}
+	}
+
+	return nil
+}
+```
 
 
 ## 4. 项目层级架构依赖

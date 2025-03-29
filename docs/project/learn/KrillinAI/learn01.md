@@ -505,7 +505,7 @@ func (c *TtsClient) receiveMessages(conn *websocket.Conn, onTextMessage func(str
 }
 ```
 
-### 静音帧的处理
+### 静音帧和合并音频文件的处理
 
 - 在视频中，字幕通常不是从视频一开始就出现的，可能会有一段时间的空白
 - 所以为了让生成的语音与原视频的时间轴完全匹配，需要在开头添加一段相应长度的静音
@@ -563,5 +563,526 @@ func newGenerateSilence(outputAudio string, duration float64) error {
 }
 ```
 
+- 这部分也包含在后续调整音频时长的时候，如果音频时长的时间小于字幕文件的时间，也需要为原有的音频时长增加一段静音音频来对齐时间轴
+- 这里也包含使用 FFmpeg 的 Concat 方式合并多个音频文件成一个音频文件
+
+```go
+// 计算需要补充的静音时长
+// subtitleDuration: 字幕要求的时长
+// audioDuration: 实际生成的语音时长
+// silenceDuration: 需要补充的静音时长
+silenceDuration := subtitleDuration - audioDuration
+
+// 生成静音文件的完整路径
+silenceFile := filepath.Join(taskBasePath, "silence.wav")
+
+// 调用newGenerateSilence生成指定时长的静音WAV文件
+// 使用FFmpeg的anullsrc滤镜生成静音音频
+err := newGenerateSilence(silenceFile, silenceDuration)
+if err != nil {
+    return fmt.Errorf("error generating silence: %v", err)
+}
+
+// 获取生成的静音文件的实际时长，用于日志记录和验证
+silenceAudioDuration, _ := util.GetAudioDuration(silenceFile)
+
+// 创建FFmpeg拼接配置文件
+// 这个文件用于告诉FFmpeg如何拼接音频文件
+concatFile := filepath.Join(taskBasePath, "concat.txt")
+f, err := os.Create(concatFile)
+if err != nil {
+    return fmt.Errorf("adjustAudioDuration create concat file error: %w", err)
+}
+// 确保临时文件在使用后被删除
+defer os.Remove(concatFile)
+
+// 写入FFmpeg拼接配置
+// 格式要求：
+// 1. 每行必须以'file'开头
+// 2. 文件路径需要用单引号包裹
+// 3. 每个文件占一行
+// 4. 文件按顺序拼接，先播放第一个文件，再播放第二个文件
+_, err = f.WriteString(fmt.Sprintf("file '%s'\nfile '%s'\n",
+    filepath.Base(inputFile),  // 原始语音文件
+    filepath.Base(silenceFile))) // 静音文件
+if err != nil {
+    return fmt.Errorf("adjustAudioDuration write to concat file error: %v", err)
+}
+// 关闭文件，确保内容被写入
+f.Close()
+
+// 执行FFmpeg拼接命令
+// 参数说明：
+// -y: 覆盖已存在的输出文件
+// -f concat: 使用concat格式进行拼接
+// -safe 0: 允许使用绝对路径
+// -i concatFile: 指定拼接配置文件
+// -c copy: 直接复制音频流，不重新编码，保持原始质量
+cmd := exec.Command(storage.FfmpegPath, "-y", "-f", "concat", "-safe", "0", "-i", concatFile, "-c", "copy", outputFile)
+
+
+// 将FFmpeg的错误输出重定向到标准错误
+cmd.Stderr = os.Stderr
+
+// 执行FFmpeg命令
+err = cmd.Run()
+if err != nil {
+    return fmt.Errorf("adjustAudioDuration concat audio and silence error: %v", err)
+}
+
+// 获取拼接后文件的时长，用于验证
+concatFileDuration, _ := util.GetAudioDuration(outputFile)
+return nil
+```
 
 ## 13. 嵌入字幕到视频的核心处理
+
+对字幕嵌入处理的主要理解如下：
+
+**1. 字幕嵌入主流程**
+
+- 支持横屏、竖屏或同时处理两种格式
+- 根据原始视频的分辨率判断是横屏还是竖屏
+- 横屏可以生成竖屏版本，但竖屏不能生成横屏版本
+
+**2. 字幕文本处理**
+
+- 针对不同语言（东亚语言和西方语言）采用不同的分割逻辑
+- 长文本会智能拆分为多行，保证视觉平衡
+- 双语字幕处理，支持原语言和目标语言同时显示
+
+**3. 格式转换**
+
+- 将SRT格式转换为功能更强大的ASS格式
+- ASS格式支持更丰富的样式和位置控制
+- 横竖屏模式使用不同的ASS模板
+
+**4. 视频处理**
+
+- 使用FFmpeg进行视频处理和字幕嵌入
+- 横屏转竖屏时调整视频布局并添加标题
+- 根据不同操作系统选择适合的字体
+
+
+```go
+// embedSubtitles 处理字幕嵌入到视频的主函数
+// 根据指定的类型（横屏、竖屏或两者都有）将字幕嵌入到视频中
+// ctx: 上下文信息
+// stepParam: 字幕任务参数，包含输入视频路径、字幕文件路径等信息
+func (s Service) embedSubtitles(ctx context.Context, stepParam *types.SubtitleTaskStepParam) error {
+	// 用于记录处理过程中的错误
+	var err error
+	// 根据指定的嵌入类型进行处理（横屏、竖屏或全部）
+	if stepParam.EmbedSubtitleVideoType == "horizontal" || stepParam.EmbedSubtitleVideoType == "vertical" || stepParam.EmbedSubtitleVideoType == "all" {
+		// 获取输入视频的分辨率信息
+		var width, height int
+		width, height, err = getResolution(stepParam.InputVideoPath)
+		// 横屏可以合成竖屏的，但竖屏暂时不支持合成横屏的
+		if stepParam.EmbedSubtitleVideoType == "horizontal" || stepParam.EmbedSubtitleVideoType == "all" {
+			// 检查输入视频是否为横屏（宽>高）
+			if width < height {
+				log.GetLogger().Info("检测到输入视频是竖屏，无法合成横屏视频，跳过")
+				return nil
+			}
+			log.GetLogger().Info("合成字幕嵌入视频：横屏")
+			// 调用embedSubtitles函数处理横屏视频（参数true表示横屏模式）
+			err = embedSubtitles(stepParam, true)
+			if err != nil {
+				return fmt.Errorf("embedSubtitles embedSubtitles error: %w", err)
+			}
+		}
+		if stepParam.EmbedSubtitleVideoType == "vertical" || stepParam.EmbedSubtitleVideoType == "all" {
+			if width > height {
+				// 如果原视频是横屏，需要先转换为竖屏视频
+				// 定义转换后的竖屏视频存储路径
+				transferredVerticalVideoPath := filepath.Join(stepParam.TaskBasePath, types.SubtitleTaskTransferredVerticalVideoFileName)
+				// 调用convertToVertical函数将横屏视频转换为竖屏格式
+				// 该函数会处理视频的布局调整，并添加主标题和副标题
+				err = convertToVertical(stepParam.InputVideoPath, transferredVerticalVideoPath, stepParam.VerticalVideoMajorTitle, stepParam.VerticalVideoMinorTitle)
+				if err != nil {
+					return fmt.Errorf("embedSubtitles convertToVertical error: %w", err)
+				}
+				// 更新输入视频路径为转换后的竖屏视频
+				stepParam.InputVideoPath = transferredVerticalVideoPath
+			}
+			log.GetLogger().Info("合成字幕嵌入视频：竖屏")
+			// 调用embedSubtitles函数处理竖屏视频（参数false表示竖屏模式）
+			err = embedSubtitles(stepParam, false)
+			if err != nil {
+				return fmt.Errorf("embedSubtitles embedSubtitles error: %w", err)
+			}
+		}
+		log.GetLogger().Info("字幕嵌入视频成功")
+		return nil
+	}
+	// 如果不是以上三种模式，则不进行字幕嵌入处理
+	return nil
+}
+```
+
+### 获取视频分辨率
+
+- 利用 FFprobe 工具解析视频文件，提取宽度和高度信息
+
+```go
+// getResolution 获取视频的分辨率
+// 使用FFprobe工具解析视频文件，提取宽度和高度信息
+// 返回视频的宽度、高度和可能的错误
+func getResolution(inputVideo string) (int, int, error) {
+	// 获取视频信息
+	cmdArgs := []string{
+		"-v", "error",
+		"-select_streams", "v:0",
+		"-show_entries", "stream=width,height",
+		"-of", "csv=s=x:p=0",
+		inputVideo,
+	}
+	cmd := exec.Command(storage.FfprobePath, cmdArgs...)
+	var out bytes.Buffer
+	cmd.Stdout = &out
+	cmd.Stderr = &out
+
+	if err := cmd.Run(); err != nil {
+		return 0, 0, err
+	}
+
+	output := strings.TrimSpace(out.String())
+	dimensions := strings.Split(output, "x")
+	if len(dimensions) != 2 {
+		return 0, 0, fmt.Errorf("invalid resolution format: %s", output)
+	}
+
+	width, _ := strconv.Atoi(dimensions[0])
+	height, _ := strconv.Atoi(dimensions[1])
+	return width, height, nil
+}
+```
+
+
+###  将字幕嵌入到视频的主要流程
+
+- 处理SRT字幕文件转换为ASS格式，并使用 FFmpeg 将字幕嵌入到视频中
+- 根据横竖屏模式不同，生成不同的输出文件名和使用不同的字幕样式
+
+```go
+// embedSubtitles 将字幕嵌入到视频中的核心函数
+//
+// 参数:
+//   - stepParam: 字幕任务参数，包含输入视频路径、字幕文件路径等信息
+//   - isHorizontal: 是否为横屏模式，决定生成文件名和字幕样式
+//
+// 处理流程:
+//  1. 根据是否横屏确定输出文件名（横屏或竖屏）
+//  2. 调用srtToAss函数将SRT字幕转换为ASS字幕
+//  3. 使用FFmpeg将ASS字幕嵌入视频，保留原始音频
+//  4. 输出处理后的视频文件到指定路径
+//
+// 注意:
+//   - 使用'-vf ass'参数让FFmpeg直接支持ASS字幕
+//   - 路径中的反斜杠需要替换为正斜杠，以兼容不同操作系统
+func embedSubtitles(stepParam *types.SubtitleTaskStepParam, isHorizontal bool) error {
+	outputFileName := types.SubtitleTaskVerticalEmbedVideoFileName
+	if isHorizontal {
+		outputFileName = types.SubtitleTaskHorizontalEmbedVideoFileName
+	}
+	assPath := filepath.Join(stepParam.TaskBasePath, "formatted_subtitles.ass")
+
+	if err := srtToAss(stepParam.BilingualSrtFilePath, assPath, isHorizontal, stepParam); err != nil {
+		return fmt.Errorf("embedSubtitles srtToAss error: %w", err)
+	}
+
+	cmd := exec.Command(storage.FfmpegPath, "-y", "-i", stepParam.InputVideoPath, "-vf", fmt.Sprintf("ass=%s", strings.ReplaceAll(assPath, "\\", "/")), "-c:a", "aac", "-b:a", "192k", filepath.Join(stepParam.TaskBasePath, fmt.Sprintf("/output/%s", outputFileName)))
+	output, err := cmd.CombinedOutput()
+	if err != nil {
+		return fmt.Errorf("embedSubtitles embed subtitle into video ffmpeg error: %w", err)
+	}
+	return nil
+}
+```
+
+#### ASS 字幕
+
+ASS (Advanced SubStation Alpha) 字幕是一种高级字幕格式，与 SRT (SubRip Text) 相比具有以下优势：
+
+1. **更丰富的样式控制**：
+   - ASS 支持自定义字体、大小、颜色、描边、阴影等样式
+   - 可以精确控制字幕的位置和显示区域
+   - 支持动画效果和渐变
+
+2. **布局灵活性**：
+   - 可以同时在屏幕不同位置显示多行字幕
+   - 适合处理双语字幕的上下布局
+   - 可以调整字幕相对于视频的位置（顶部、底部、居中等）
+
+3. **与 FFmpeg 良好兼容**：
+   - FFmpeg 通过 `-vf ass` 参数可以直接渲染 ASS 字幕
+   - 渲染质量更高，效果更好
+
+4. **字幕特效支持**：
+   - 支持卡拉OK效果
+   - 支持文字动画和转场效果
+   - 可以添加样式模板
+
+在代码中，转换流程是：
+
+1. 首先将原始的 SRT 格式字幕（通常只包含文本和时间信息）转换为 ASS 格式
+2. 在转换过程中，可以根据横屏或竖屏模式应用不同的样式模板（types.AssHeaderHorizontal 或 types.AssHeaderVertical）
+3. 对于横屏，将主要文本和次要文本分别格式化
+4. 对于竖屏，会对长文本进行特殊处理，如中文按字符数分割
+5. 最后使用 FFmpeg 通过 `-vf ass` 参数将字幕永久嵌入到视频中
+
+这种转换是必要的，因为 SRT 格式过于简单，无法满足复杂的字幕布局需求，特别是在处理双语字幕和适应不同屏幕方向时，ASS 格式提供了更好的控制能力。
+
+
+#### SRT转换ASS的处理
+
+- 项目中支持了横屏和竖屏模式下的转换处理，这里按横屏的代码来举例说明
+
+```go
+
+// srtToAss 将SRT格式的字幕文件转换为ASS格式
+// ASS格式支持更丰富的样式和位置控制，便于嵌入到视频中
+// 参数:
+//   - inputSRT: 输入的SRT格式字幕文件路径
+//   - outputASS: 输出的ASS格式字幕文件路径
+//   - isHorizontal: 是否为横屏模式，影响字幕的布局和样式
+//   - stepParam: 包含字幕处理的相关参数
+//
+// 横屏模式下:
+//   - 使用专门的横屏ASS模板
+//   - 主要文本会根据语言特性进行智能分割
+//   - 设置双语字幕，上方为主要语言，下方为次要语言
+//
+// 竖屏模式下:
+//   - 使用专门的竖屏ASS模板
+//   - 中文字幕会进行按字符数分割处理，确保每行不超过限定字符数
+//   - 英文字幕保持原样显示
+//   - 根据字幕内容计算时间比例，确保长字幕有足够的显示时间
+func srtToAss(inputSRT, outputASS string, isHorizontal bool, stepParam *types.SubtitleTaskStepParam) error {
+	// 打开SRT文件进行读取
+	file, err := os.Open(inputSRT)
+	if err != nil {
+		return fmt.Errorf("srtToAss Open input srt error: %w", err)
+	}
+	defer file.Close()
+
+	// 创建ASS文件准备写入
+	assFile, err := os.Create(outputASS)
+	if err != nil {
+		return fmt.Errorf("srtToAss Create output ass error: %w", err)
+	}
+	defer assFile.Close()
+	scanner := bufio.NewScanner(file)
+
+	// 横屏模式处理逻辑
+	if isHorizontal {
+		// 写入横屏ASS头部模板，包含样式定义、字体设置等
+		_, _ = assFile.WriteString(types.AssHeaderHorizontal)
+
+		// 逐行扫描SRT文件
+		for scanner.Scan() {
+			line := scanner.Text()
+			if line == "" {
+				continue // 跳过空行
+			}
+
+			// 读取时间戳行（如：00:01:23,456 --> 00:01:25,789）
+			if !scanner.Scan() {
+				break // 文件结束
+			}
+			timestampLine := scanner.Text()
+			parts := strings.Split(timestampLine, " --> ")
+			if len(parts) != 2 {
+				continue // 无效时间戳格式，跳过此字幕块
+			}
+
+			// 解析起始和结束时间
+			startTimeStr := strings.TrimSpace(parts[0])
+			endTimeStr := strings.TrimSpace(parts[1])
+			startTime, err := parseSrtTime(startTimeStr)
+			if err != nil {
+				return fmt.Errorf("srtToAss parseSrtTime error: %w", err)
+			}
+			endTime, err := parseSrtTime(endTimeStr)
+			if err != nil {
+				return fmt.Errorf("srtToAss parseSrtTime error: %w", err)
+			}
+
+			// 读取字幕文本内容（可能有多行）
+			var subtitleLines []string
+			for scanner.Scan() {
+				textLine := scanner.Text()
+				if textLine == "" {
+					break // 空行表示当前字幕块结束
+				}
+				subtitleLines = append(subtitleLines, textLine)
+			}
+
+			// 确保至少有两行文本（双语字幕需要）
+			if len(subtitleLines) < 2 {
+				continue // 如果不足两行，跳过此字幕
+			}
+
+			// 根据字幕类型确定主要语言
+			var majorTextLanguage types.StandardLanguageName
+			if stepParam.SubtitleResultType == types.SubtitleResultTypeBilingualTranslationOnTop {
+				// 若翻译在上方模式，则目标语言为主要语言
+				majorTextLanguage = stepParam.TargetLanguage
+			} else {
+				// 否则原始语言为主要语言
+				majorTextLanguage = stepParam.OriginLanguage
+			}
+
+			// 处理主要文本行：根据语言特性分割文本，并用\N连接（ASS中的换行符）
+			// 同时在分段之间添加空格以美化显示
+			majorLine := strings.Join(splitMajorTextInHorizontal(subtitleLines[0], majorTextLanguage, stepParam.MaxWordOneLine), "      \\N")
+			// 处理次要文本行：清理标点符号
+			minorLine := util.CleanPunction(subtitleLines[1])
+
+			// 格式化时间戳为ASS格式
+			startFormatted := formatTimestamp(startTime)
+			endFormatted := formatTimestamp(endTime)
+
+			// 构建ASS对话行
+			// \an2表示居中对齐，\rMajor和\rMinor引用预定义的样式
+			combinedText := fmt.Sprintf("{\\an2}{\\rMajor}%s\\N{\\rMinor}%s", majorLine, minorLine)
+			// 写入ASS文件，格式为：Dialogue: Layer,Start,End,Style,Name,MarginL,MarginR,MarginV,Effect,Text
+			_, _ = assFile.WriteString(fmt.Sprintf("Dialogue: 0,%s,%s,Major,,0,0,0,,%s\n", startFormatted, endFormatted, combinedText))
+		}
+	} else {
+		// 竖屏模式处理逻辑......
+	}
+	return nil
+}
+```
+
+
+### 将横屏视频转换为竖屏格式
+
+
+- 横屏视频转换为竖屏格式，适合在移动设备上播放
+- 调整视频尺寸，添加黑色边框，并在上方添加主标题和副标题
+
+```go
+// convertToVertical 将横屏视频转换为竖屏格式
+// 参数:
+//   - inputVideo: 输入视频路径
+//   - outputVideo: 输出视频路径
+//   - majorTitle: 主标题文本
+//   - minorTitle: 副标题文本
+//
+// 处理流程:
+//  1. 检查输出视频是否已存在，存在则跳过处理
+//  2. 根据当前操作系统获取适合的字体路径
+//  3. 使用FFmpeg进行以下处理:
+//     - 将视频缩放至720x1280，保持原始宽高比
+//     - 在视频顶部添加黑色区域用于放置标题
+//     - 在顶部绘制主标题（使用粗体字体）和副标题（使用常规字体）
+//     - 设置视频比特率、帧率等参数
+//  4. 输出处理后的竖屏视频
+//
+// 视频处理参数说明:
+//   - scale=720:1280:force_original_aspect_ratio=decrease: 缩放视频同时保持原始比例
+//   - pad=720:1280:(ow-iw)/2:(oh-ih)*2/5: 对视频进行填充，确保视频在竖屏中居中显示
+//   - drawbox: 绘制黑色背景区域用于放置标题
+//   - drawtext: 绘制标题文本，设置位置、字体大小、颜色等
+func convertToVertical(inputVideo, outputVideo, majorTitle, minorTitle string) error {
+	if _, err := os.Stat(outputVideo); err == nil {
+		log.GetLogger().Info("竖屏视频已存在", zap.String("outputVideo", outputVideo))
+		return nil
+	}
+
+	fontBold, fontRegular, err := getFontPaths()
+	if err != nil {
+		log.GetLogger().Error("获取字体路径失败", zap.Error(err))
+		return err
+	}
+
+	cmdArgs := []string{
+		"-i", inputVideo,
+		"-vf", fmt.Sprintf("scale=720:1280:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)*2/5,drawbox=y=0:h=100:c=black@1:t=fill,drawtext=text='%s':x=(w-text_w)/2:y=210:fontsize=55:fontcolor=yellow:box=1:boxcolor=black@0.5:fontfile='%s',drawtext=text='%s':x=(w-text_w)/2:y=280:fontsize=40:fontcolor=yellow:box=1:boxcolor=black@0.5:fontfile='%s'",
+			majorTitle, fontBold, minorTitle, fontRegular),
+		"-r", "30",
+		"-b:v", "7587k",
+		"-c:a", "aac",
+		"-b:a", "192k",
+		"-c:v", "libx264",
+		"-preset", "fast",
+		"-y",
+		outputVideo,
+	}
+	cmd := exec.Command(storage.FfmpegPath, cmdArgs...)
+	var output []byte
+	output, err = cmd.CombinedOutput()
+	if err != nil {
+		log.GetLogger().Error("视频转竖屏失败", zap.String("output", string(output)), zap.Error(err))
+		return err
+	}
+
+	fmt.Printf("竖屏视频已保存到: %s\n", outputVideo)
+	return nil
+}
+```
+
+## 14. 字幕上传的核心处理
+
+- 字幕文件的上传实际上就是与本服务中的静态文件接口，下载链接的格式是 /api/file/ + 文件路径
+- 这种设计允许服务控制文件访问权限，可以防止直接访问服务器文件系统
+
+
+```go
+
+// uploadSubtitles 处理字幕上传的核心函数
+// 该函数负责：
+// 1. 处理字幕文件的替换操作（如果需要）
+// 2. 生成字幕下载链接
+// 3. 更新字幕任务状态
+// 4. 处理配音文件的下载链接
+//
+// 参数：
+//   - ctx: 上下文信息
+//   - stepParam: 字幕任务步骤参数，包含任务ID、字幕信息、替换词映射等
+//
+// 返回：
+//   - error: 处理过程中的错误信息
+func (s Service) uploadSubtitles(ctx context.Context, stepParam *types.SubtitleTaskStepParam) error {
+	// 初始化字幕信息切片
+	subtitleInfos := make([]types.SubtitleInfo, 0)
+	var err error
+
+	// 遍历所有字幕信息进行处理
+	for _, info := range stepParam.SubtitleInfos {
+		resultPath := info.Path
+		// 检查是否需要替换字幕内容
+		if len(stepParam.ReplaceWordsMap) > 0 {
+			// 生成替换后的文件路径
+			replacedSrcFile := util.AddSuffixToFileName(resultPath, "_replaced")
+			// 执行文件内容替换
+			err = util.ReplaceFileContent(resultPath, replacedSrcFile, stepParam.ReplaceWordsMap)
+			if err != nil {
+				return fmt.Errorf("uploadSubtitles ReplaceFileContent err: %w", err)
+			}
+			// 更新结果文件路径为替换后的文件
+			resultPath = replacedSrcFile
+		}
+
+		// 构建字幕信息并添加到结果列表
+		subtitleInfos = append(subtitleInfos, types.SubtitleInfo{
+			TaskId:      stepParam.TaskId,
+			Name:        info.Name,
+			DownloadUrl: "/api/file/" + resultPath,
+		})
+	}
+
+	// 更新字幕任务状态信息
+	storage.SubtitleTasks[stepParam.TaskId].SubtitleInfos = subtitleInfos
+	storage.SubtitleTasks[stepParam.TaskId].Status = types.SubtitleTaskStatusSuccess
+	storage.SubtitleTasks[stepParam.TaskId].ProcessPct = 100
+
+	// 如果存在配音文件，更新配音文件的下载链接
+	if stepParam.TtsResultFilePath != "" {
+		storage.SubtitleTasks[stepParam.TaskId].SpeechDownloadUrl = "/api/file/" + stepParam.TtsResultFilePath
+	}
+	return nil
+}
+```
