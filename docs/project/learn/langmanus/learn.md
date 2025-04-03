@@ -152,3 +152,275 @@ def some_function():
 ```
 
 
+## 3. LangGraph 的使用
+
+LangGraph 是由 LangChain 团队开发的一个开源框架，专门用于构建基于 LLM（大语言模型）的多智能体系统。它的主要目标是**简化多智能体系统的开发过程，提供一个声明式的方式来定义智能体之间的交互和协作**。特别适合构建：
+
+- 多智能体协作系统
+- 复杂的工作流自动化
+- 智能对话系统
+- 任务分解和执行系统
+
+**#1. 核心概念**
+
+```python
+from langgraph.graph import StateGraph, START
+```
+
+- **状态图（StateGraph）**
+
+      - 用于定义智能体之间的协作关系
+      - 基于状态传递的工作流引擎
+      - 通过节点和边构建工作流图
+
+- **状态管理**
+
+```python
+class State(MessagesState):
+    """智能体系统的状态类"""
+    # 常量配置
+    TEAM_MEMBERS: list[str]  # 团队成员列表
+
+    # 运行时变量
+    next: str           # 下一个执行节点
+    full_plan: str      # 执行计划
+    deep_thinking_mode: bool  # 思考模式
+    search_before_planning: bool  # 预搜索模式
+```
+
+**#2. 工作流构建的最佳实践**
+
+关键点：
+
+- 使用 `StateGraph` 创建工作流构建器
+- 通过 `add_edge` 定义节点间的连接
+- 通过 `add_node` 添加节点及其处理函数
+- 最后调用 `compile()` 生成可执行的工作流图
+
+```python
+def build_graph():
+    """构建工作流图"""
+    # 1. 创建图构建器
+    builder = StateGraph(State)
+
+    # 2. 定义起点
+    builder.add_edge(START, "coordinator")
+
+    # 3. 添加节点
+    builder.add_node("coordinator", coordinator_node)
+    builder.add_node("planner", planner_node)
+    builder.add_node("supervisor", supervisor_node)
+    # ... 添加其他节点
+
+    # 4. 编译并返回
+    return builder.compile()
+```
+
+**#3. 节点函数的实现模式**
+
+节点函数的特点：
+
+- 接收状态对象作为参数
+- 返回 `Command` 对象，指定下一个节点和状态更新
+- 可以访问和修改状态
+- 可以调用外部工具和服务
+
+```python
+def coordinator_node(state: State) -> Command[Literal["planner", "__end__"]]:
+    """协调员节点处理函数"""
+    # 1. 处理当前状态
+    messages = apply_prompt_template("coordinator", state)
+
+    # 2. 调用 LLM
+    response = get_llm_by_type(AGENT_LLM_MAP["coordinator"]).invoke(messages)
+
+    # 3. 决定下一步
+    goto = "planner" if "handoff_to_planner" in response.content else "__end__"
+
+    # 4. 返回命令（包含状态更新和下一个节点）
+    return Command(goto=goto)
+```
+
+
+
+**#4. 工作流执行**
+
+执行特点：
+
+- 通过 `graph.invoke()` 启动工作流
+- 传入初始状态字典
+- 自动按照图结构执行节点
+- 返回最终状态
+
+
+```python
+def run_agent_workflow(user_input: str, debug: bool = False):
+    """运行智能体工作流"""
+    # 1. 准备初始状态
+    initial_state = {
+        "TEAM_MEMBERS": TEAM_MEMBERS,
+        "messages": [{"role": "user", "content": user_input}],
+        "deep_thinking_mode": True,
+        "search_before_planning": True,
+    }
+
+    # 2. 执行工作流
+    result = graph.invoke(initial_state)
+
+    return result
+```
+
+
+**#5. LangGraph 的优势**
+
+- **声明式工作流**
+
+     - 清晰地定义智能体之间的关系
+     - 容易理解和维护
+     - 可视化支持（Mermaid 图表）
+
+- **状态管理**
+
+     - 统一的状态传递机制
+     - 类型安全的状态定义
+     - 方便的状态访问和更新
+
+- **灵活性**
+
+     - 可以动态决定下一个节点
+     - 支持条件分支和循环
+     - 易于扩展新的节点和功能
+
+
+## 4. prompt 工程实践
+
+```python
+import os
+import re
+from datetime import datetime
+
+from langchain_core.prompts import PromptTemplate
+from langgraph.prebuilt.chat_agent_executor import AgentState
+
+
+def get_prompt_template(prompt_name: str) -> str:
+    """
+    获取指定名称的提示模板内容。
+
+    该函数从文件系统中读取提示模板文件，并对模板内容进行处理：
+    1. 读取与提示名称对应的.md文件
+    2. 转义所有花括号，防止与后续的格式化冲突
+    3. 将特殊格式的占位符 <<VAR>> 转换为标准的 {VAR} 格式
+
+    参数:
+        prompt_name: 提示模板的名称，对应于.md文件名
+
+    返回:
+        处理后的提示模板字符串
+    """
+    template = open(os.path.join(os.path.dirname(__file__), f"{prompt_name}.md")).read()
+    # Escape curly braces using backslash
+    template = template.replace("{", "{{").replace("}", "}}")
+    # Replace `<<VAR>>` with `{VAR}`
+    template = re.sub(r"<<([^>>]+)>>", r"{\1}", template)
+    return template
+
+
+def apply_prompt_template(prompt_name: str, state: AgentState) -> list:
+    """
+    应用提示模板，生成格式化的提示消息列表。
+
+    该函数将指定的提示模板与当前状态相结合：
+    1. 使用get_prompt_template获取原始模板
+    2. 创建PromptTemplate对象并填充变量，包括当前时间和状态中的数据
+    3. 返回一个包含系统提示和状态消息的完整消息列表
+
+    这种设计使得提示可以动态适应当前的对话上下文和状态信息。
+
+    参数:
+        prompt_name: 提示模板的名称
+        state: 当前代理状态对象，包含消息历史和其他上下文信息
+
+    返回:
+        一个消息列表，包含格式化的系统提示和状态中的消息历史
+    """
+    system_prompt = PromptTemplate(
+        input_variables=["CURRENT_TIME"],
+        template=get_prompt_template(prompt_name),
+    ).format(CURRENT_TIME=datetime.now().strftime("%a %b %d %Y %H:%M:%S %z"), **state)
+    return [{"role": "system", "content": system_prompt}] + state["messages"]
+```
+
+
+1. **模块化设计**：每个代理（研究者、编码者、浏览器等）都有独立的提示模板文件（.md格式），便于维护和更新。
+
+2. **灵活的模板系统**：
+
+    - 使用了标准的Markdown文件存储提示模板
+    - 采用自定义的占位符语法（`<<VAR>>`），让非技术人员也能轻松编辑
+    - 通过代码自动转换为标准格式（`{VAR}`）用于后续处理
+
+3. **状态管理与上下文集成**：
+
+      - 将当前时间等环境信息注入到提示中
+      - 将代理状态（包括消息历史）无缝集成到提示模板中
+      - 使得提示可以根据对话上下文动态调整
+
+4. **清晰的角色定义**：
+
+      - 每个代理都有明确定义的职责和能力范围
+      - 这种设计使得多代理协作更加有效和可靠
+
+5. **统一的处理流程**：
+
+      - 通过`apply_prompt_template`函数标准化了提示的应用方式
+      - 确保所有代理使用一致的格式与LLM交互
+
+
+## 5. 模型实例的缓存机制
+
+该仓库实现了一个简单的LLM缓存机制非常值得学习和参考
+
+```python
+# 用于缓存LLM实例的字典
+_llm_cache: dict[LLMType, ChatOpenAI | ChatDeepSeek] = {}
+
+def get_llm_by_type(llm_type: LLMType) -> ChatOpenAI | ChatDeepSeek:
+    """根据类型获取LLM实例。如果缓存中已有该类型的实例，则返回缓存的实例。"""
+    if llm_type in _llm_cache:
+        return _llm_cache[llm_type]
+
+    # 创建新实例的逻辑...
+
+    _llm_cache[llm_type] = llm
+    return llm
+```
+
+1. **单例模式的简化实现**
+
+      - 使用字典作为缓存容器，以LLM类型为键
+      - 不需要复杂的单例类设计，就能确保每种类型的LLM只创建一次
+
+2. **懒加载策略**
+
+      - 模型实例只在首次请求时才被创建，而不是在程序启动时就全部初始化
+      - 对于可能不会使用到的模型，避免了不必要的资源消耗
+
+3. **对资源消耗的优化**
+
+      - LLM实例通常消耗较多内存和计算资源
+      - 缓存避免了重复创建相同类型的实例，减少了内存占用
+      - 特别是对于大型模型（如GPT-4、Claude等），这种优化更为重要
+
+4. **降低API初始化开销**
+
+      - 创建LLM客户端实例可能涉及网络请求、验证等操作
+      - 缓存机制减少了这些初始化开销，提高了系统响应速度
+
+5. **简化使用方式**
+
+      - 调用者不需要关心实例是否已经存在，只需通过`get_llm_by_type`函数获取
+      - 减少了代码重复，提高了可维护性
+
+
+
