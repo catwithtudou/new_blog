@@ -1528,6 +1528,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#3-langgraph-的使用" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. LangGraph 的使用
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-prompt-工程实践" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. prompt 工程实践
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-模型实例的缓存机制" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 模型实例的缓存机制
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1985,6 +2012,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#3-langgraph-的使用" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. LangGraph 的使用
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-prompt-工程实践" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. prompt 工程实践
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-模型实例的缓存机制" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 模型实例的缓存机制
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2143,6 +2197,282 @@
 <a id="__codelineno-5-7" name="__codelineno-5-7"></a><a href="#__codelineno-5-7"><span class="linenos" data-linenos="7 "></span></a>    <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;调试信息&quot;</span><span class="p">)</span>
 <a id="__codelineno-5-8" name="__codelineno-5-8"></a><a href="#__codelineno-5-8"><span class="linenos" data-linenos="8 "></span></a>    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;信息消息&quot;</span><span class="p">)</span>
 </code></pre></div>
+<h2 id="3-langgraph-的使用">3. LangGraph 的使用<a class="headerlink" href="#3-langgraph-的使用" title="Permanent link">&para;</a></h2>
+<p>LangGraph 是由 LangChain 团队开发的一个开源框架，专门用于构建基于 LLM（大语言模型）的多智能体系统。它的主要目标是<strong>简化多智能体系统的开发过程，提供一个声明式的方式来定义智能体之间的交互和协作</strong>。特别适合构建：</p>
+<ul>
+<li>多智能体协作系统</li>
+<li>复杂的工作流自动化</li>
+<li>智能对话系统</li>
+<li>任务分解和执行系统</li>
+</ul>
+<p><strong>#1. 核心概念</strong></p>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos="1 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">StateGraph</span><span class="p">,</span> <span class="n">START</span>
+</code></pre></div>
+<ul>
+<li>
+<p><strong>状态图（StateGraph）</strong></p>
+<ul>
+<li>用于定义智能体之间的协作关系</li>
+<li>基于状态传递的工作流引擎</li>
+<li>通过节点和边构建工作流图</li>
+</ul>
+</li>
+<li>
+<p><strong>状态管理</strong></p>
+</li>
+</ul>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">State</span><span class="p">(</span><span class="n">MessagesState</span><span class="p">):</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;智能体系统的状态类&quot;&quot;&quot;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><a href="#__codelineno-7-3"><span class="linenos" data-linenos=" 3 "></span></a>    <span class="c1"># 常量配置</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><a href="#__codelineno-7-4"><span class="linenos" data-linenos=" 4 "></span></a>    <span class="n">TEAM_MEMBERS</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>  <span class="c1"># 团队成员列表</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><a href="#__codelineno-7-5"><span class="linenos" data-linenos=" 5 "></span></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><a href="#__codelineno-7-6"><span class="linenos" data-linenos=" 6 "></span></a>    <span class="c1"># 运行时变量</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><a href="#__codelineno-7-7"><span class="linenos" data-linenos=" 7 "></span></a>    <span class="nb">next</span><span class="p">:</span> <span class="nb">str</span>           <span class="c1"># 下一个执行节点</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a><a href="#__codelineno-7-8"><span class="linenos" data-linenos=" 8 "></span></a>    <span class="n">full_plan</span><span class="p">:</span> <span class="nb">str</span>      <span class="c1"># 执行计划</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><a href="#__codelineno-7-9"><span class="linenos" data-linenos=" 9 "></span></a>    <span class="n">deep_thinking_mode</span><span class="p">:</span> <span class="nb">bool</span>  <span class="c1"># 思考模式</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a><a href="#__codelineno-7-10"><span class="linenos" data-linenos="10 "></span></a>    <span class="n">search_before_planning</span><span class="p">:</span> <span class="nb">bool</span>  <span class="c1"># 预搜索模式</span>
+</code></pre></div>
+<p><strong>#2. 工作流构建的最佳实践</strong></p>
+<p>关键点：</p>
+<ul>
+<li>使用 <code>StateGraph</code> 创建工作流构建器</li>
+<li>通过 <code>add_edge</code> 定义节点间的连接</li>
+<li>通过 <code>add_node</code> 添加节点及其处理函数</li>
+<li>最后调用 <code>compile()</code> 生成可执行的工作流图</li>
+</ul>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">build_graph</span><span class="p">():</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><a href="#__codelineno-8-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;构建工作流图&quot;&quot;&quot;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><a href="#__codelineno-8-3"><span class="linenos" data-linenos=" 3 "></span></a>    <span class="c1"># 1. 创建图构建器</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><a href="#__codelineno-8-4"><span class="linenos" data-linenos=" 4 "></span></a>    <span class="n">builder</span> <span class="o">=</span> <span class="n">StateGraph</span><span class="p">(</span><span class="n">State</span><span class="p">)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><a href="#__codelineno-8-5"><span class="linenos" data-linenos=" 5 "></span></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a><a href="#__codelineno-8-6"><span class="linenos" data-linenos=" 6 "></span></a>    <span class="c1"># 2. 定义起点</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><a href="#__codelineno-8-7"><span class="linenos" data-linenos=" 7 "></span></a>    <span class="n">builder</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">START</span><span class="p">,</span> <span class="s2">&quot;coordinator&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a><a href="#__codelineno-8-8"><span class="linenos" data-linenos=" 8 "></span></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a><a href="#__codelineno-8-9"><span class="linenos" data-linenos=" 9 "></span></a>    <span class="c1"># 3. 添加节点</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a><a href="#__codelineno-8-10"><span class="linenos" data-linenos="10 "></span></a>    <span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;coordinator&quot;</span><span class="p">,</span> <span class="n">coordinator_node</span><span class="p">)</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a><a href="#__codelineno-8-11"><span class="linenos" data-linenos="11 "></span></a>    <span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;planner&quot;</span><span class="p">,</span> <span class="n">planner_node</span><span class="p">)</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a><a href="#__codelineno-8-12"><span class="linenos" data-linenos="12 "></span></a>    <span class="n">builder</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;supervisor&quot;</span><span class="p">,</span> <span class="n">supervisor_node</span><span class="p">)</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a><a href="#__codelineno-8-13"><span class="linenos" data-linenos="13 "></span></a>    <span class="c1"># ... 添加其他节点</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a><a href="#__codelineno-8-14"><span class="linenos" data-linenos="14 "></span></a>
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a><a href="#__codelineno-8-15"><span class="linenos" data-linenos="15 "></span></a>    <span class="c1"># 4. 编译并返回</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a><a href="#__codelineno-8-16"><span class="linenos" data-linenos="16 "></span></a>    <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>#3. 节点函数的实现模式</strong></p>
+<p>节点函数的特点：</p>
+<ul>
+<li>接收状态对象作为参数</li>
+<li>返回 <code>Command</code> 对象，指定下一个节点和状态更新</li>
+<li>可以访问和修改状态</li>
+<li>可以调用外部工具和服务</li>
+</ul>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><a href="#__codelineno-9-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">coordinator_node</span><span class="p">(</span><span class="n">state</span><span class="p">:</span> <span class="n">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Command</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;planner&quot;</span><span class="p">,</span> <span class="s2">&quot;__end__&quot;</span><span class="p">]]:</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><a href="#__codelineno-9-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;协调员节点处理函数&quot;&quot;&quot;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><a href="#__codelineno-9-3"><span class="linenos" data-linenos=" 3 "></span></a>    <span class="c1"># 1. 处理当前状态</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><a href="#__codelineno-9-4"><span class="linenos" data-linenos=" 4 "></span></a>    <span class="n">messages</span> <span class="o">=</span> <span class="n">apply_prompt_template</span><span class="p">(</span><span class="s2">&quot;coordinator&quot;</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a><a href="#__codelineno-9-5"><span class="linenos" data-linenos=" 5 "></span></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a><a href="#__codelineno-9-6"><span class="linenos" data-linenos=" 6 "></span></a>    <span class="c1"># 2. 调用 LLM</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a><a href="#__codelineno-9-7"><span class="linenos" data-linenos=" 7 "></span></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">get_llm_by_type</span><span class="p">(</span><span class="n">AGENT_LLM_MAP</span><span class="p">[</span><span class="s2">&quot;coordinator&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a><a href="#__codelineno-9-8"><span class="linenos" data-linenos=" 8 "></span></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a><a href="#__codelineno-9-9"><span class="linenos" data-linenos=" 9 "></span></a>    <span class="c1"># 3. 决定下一步</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a><a href="#__codelineno-9-10"><span class="linenos" data-linenos="10 "></span></a>    <span class="n">goto</span> <span class="o">=</span> <span class="s2">&quot;planner&quot;</span> <span class="k">if</span> <span class="s2">&quot;handoff_to_planner&quot;</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span> <span class="k">else</span> <span class="s2">&quot;__end__&quot;</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a><a href="#__codelineno-9-11"><span class="linenos" data-linenos="11 "></span></a>
+<a id="__codelineno-9-12" name="__codelineno-9-12"></a><a href="#__codelineno-9-12"><span class="linenos" data-linenos="12 "></span></a>    <span class="c1"># 4. 返回命令（包含状态更新和下一个节点）</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13"></a><a href="#__codelineno-9-13"><span class="linenos" data-linenos="13 "></span></a>    <span class="k">return</span> <span class="n">Command</span><span class="p">(</span><span class="n">goto</span><span class="o">=</span><span class="n">goto</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>#4. 工作流执行</strong></p>
+<p>执行特点：</p>
+<ul>
+<li>通过 <code>graph.invoke()</code> 启动工作流</li>
+<li>传入初始状态字典</li>
+<li>自动按照图结构执行节点</li>
+<li>返回最终状态</li>
+</ul>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><a href="#__codelineno-10-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">run_agent_workflow</span><span class="p">(</span><span class="n">user_input</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">debug</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><a href="#__codelineno-10-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;运行智能体工作流&quot;&quot;&quot;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><a href="#__codelineno-10-3"><span class="linenos" data-linenos=" 3 "></span></a>    <span class="c1"># 1. 准备初始状态</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><a href="#__codelineno-10-4"><span class="linenos" data-linenos=" 4 "></span></a>    <span class="n">initial_state</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><a href="#__codelineno-10-5"><span class="linenos" data-linenos=" 5 "></span></a>        <span class="s2">&quot;TEAM_MEMBERS&quot;</span><span class="p">:</span> <span class="n">TEAM_MEMBERS</span><span class="p">,</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a><a href="#__codelineno-10-6"><span class="linenos" data-linenos=" 6 "></span></a>        <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">user_input</span><span class="p">}],</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a><a href="#__codelineno-10-7"><span class="linenos" data-linenos=" 7 "></span></a>        <span class="s2">&quot;deep_thinking_mode&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a><a href="#__codelineno-10-8"><span class="linenos" data-linenos=" 8 "></span></a>        <span class="s2">&quot;search_before_planning&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a><a href="#__codelineno-10-9"><span class="linenos" data-linenos=" 9 "></span></a>    <span class="p">}</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10"></a><a href="#__codelineno-10-10"><span class="linenos" data-linenos="10 "></span></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11"></a><a href="#__codelineno-10-11"><span class="linenos" data-linenos="11 "></span></a>    <span class="c1"># 2. 执行工作流</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12"></a><a href="#__codelineno-10-12"><span class="linenos" data-linenos="12 "></span></a>    <span class="n">result</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">invoke</span><span class="p">(</span><span class="n">initial_state</span><span class="p">)</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13"></a><a href="#__codelineno-10-13"><span class="linenos" data-linenos="13 "></span></a>
+<a id="__codelineno-10-14" name="__codelineno-10-14"></a><a href="#__codelineno-10-14"><span class="linenos" data-linenos="14 "></span></a>    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<p><strong>#5. LangGraph 的优势</strong></p>
+<ul>
+<li>
+<p><strong>声明式工作流</strong></p>
+<ul>
+<li>清晰地定义智能体之间的关系</li>
+<li>容易理解和维护</li>
+<li>可视化支持（Mermaid 图表）</li>
+</ul>
+</li>
+<li>
+<p><strong>状态管理</strong></p>
+<ul>
+<li>统一的状态传递机制</li>
+<li>类型安全的状态定义</li>
+<li>方便的状态访问和更新</li>
+</ul>
+</li>
+<li>
+<p><strong>灵活性</strong></p>
+<ul>
+<li>可以动态决定下一个节点</li>
+<li>支持条件分支和循环</li>
+<li>易于扩展新的节点和功能</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-prompt-工程实践">4. prompt 工程实践<a class="headerlink" href="#4-prompt-工程实践" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><a href="#__codelineno-11-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><a href="#__codelineno-11-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><a href="#__codelineno-11-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><a href="#__codelineno-11-4"><span class="linenos" data-linenos=" 4 "></span></a>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><a href="#__codelineno-11-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.prompts</span><span class="w"> </span><span class="kn">import</span> <span class="n">PromptTemplate</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><a href="#__codelineno-11-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.prebuilt.chat_agent_executor</span><span class="w"> </span><span class="kn">import</span> <span class="n">AgentState</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><a href="#__codelineno-11-7"><span class="linenos" data-linenos=" 7 "></span></a>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a><a href="#__codelineno-11-8"><span class="linenos" data-linenos=" 8 "></span></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><a href="#__codelineno-11-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_prompt_template</span><span class="p">(</span><span class="n">prompt_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a><a href="#__codelineno-11-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a><a href="#__codelineno-11-11"><span class="linenos" data-linenos="11 "></span></a><span class="sd">    获取指定名称的提示模板内容。</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a><a href="#__codelineno-11-12"><span class="linenos" data-linenos="12 "></span></a>
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a><a href="#__codelineno-11-13"><span class="linenos" data-linenos="13 "></span></a><span class="sd">    该函数从文件系统中读取提示模板文件，并对模板内容进行处理：</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14"></a><a href="#__codelineno-11-14"><span class="linenos" data-linenos="14 "></span></a><span class="sd">    1. 读取与提示名称对应的.md文件</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15"></a><a href="#__codelineno-11-15"><span class="linenos" data-linenos="15 "></span></a><span class="sd">    2. 转义所有花括号，防止与后续的格式化冲突</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16"></a><a href="#__codelineno-11-16"><span class="linenos" data-linenos="16 "></span></a><span class="sd">    3. 将特殊格式的占位符 &lt;&lt;VAR&gt;&gt; 转换为标准的 {VAR} 格式</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17"></a><a href="#__codelineno-11-17"><span class="linenos" data-linenos="17 "></span></a>
+<a id="__codelineno-11-18" name="__codelineno-11-18"></a><a href="#__codelineno-11-18"><span class="linenos" data-linenos="18 "></span></a><span class="sd">    参数:</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19"></a><a href="#__codelineno-11-19"><span class="linenos" data-linenos="19 "></span></a><span class="sd">        prompt_name: 提示模板的名称，对应于.md文件名</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20"></a><a href="#__codelineno-11-20"><span class="linenos" data-linenos="20 "></span></a>
+<a id="__codelineno-11-21" name="__codelineno-11-21"></a><a href="#__codelineno-11-21"><span class="linenos" data-linenos="21 "></span></a><span class="sd">    返回:</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22"></a><a href="#__codelineno-11-22"><span class="linenos" data-linenos="22 "></span></a><span class="sd">        处理后的提示模板字符串</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23"></a><a href="#__codelineno-11-23"><span class="linenos" data-linenos="23 "></span></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24"></a><a href="#__codelineno-11-24"><span class="linenos" data-linenos="24 "></span></a>    <span class="n">template</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prompt_name</span><span class="si">}</span><span class="s2">.md&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<a id="__codelineno-11-25" name="__codelineno-11-25"></a><a href="#__codelineno-11-25"><span class="linenos" data-linenos="25 "></span></a>    <span class="c1"># Escape curly braces using backslash</span>
+<a id="__codelineno-11-26" name="__codelineno-11-26"></a><a href="#__codelineno-11-26"><span class="linenos" data-linenos="26 "></span></a>    <span class="n">template</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;{&quot;</span><span class="p">,</span> <span class="s2">&quot;{{&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;}&quot;</span><span class="p">,</span> <span class="s2">&quot;}}&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-27" name="__codelineno-11-27"></a><a href="#__codelineno-11-27"><span class="linenos" data-linenos="27 "></span></a>    <span class="c1"># Replace `&lt;&lt;VAR&gt;&gt;` with `{VAR}`</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28"></a><a href="#__codelineno-11-28"><span class="linenos" data-linenos="28 "></span></a>    <span class="n">template</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;&lt;&lt;([^&gt;&gt;]+)&gt;&gt;&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;{\1}&quot;</span><span class="p">,</span> <span class="n">template</span><span class="p">)</span>
+<a id="__codelineno-11-29" name="__codelineno-11-29"></a><a href="#__codelineno-11-29"><span class="linenos" data-linenos="29 "></span></a>    <span class="k">return</span> <span class="n">template</span>
+<a id="__codelineno-11-30" name="__codelineno-11-30"></a><a href="#__codelineno-11-30"><span class="linenos" data-linenos="30 "></span></a>
+<a id="__codelineno-11-31" name="__codelineno-11-31"></a><a href="#__codelineno-11-31"><span class="linenos" data-linenos="31 "></span></a>
+<a id="__codelineno-11-32" name="__codelineno-11-32"></a><a href="#__codelineno-11-32"><span class="linenos" data-linenos="32 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">apply_prompt_template</span><span class="p">(</span><span class="n">prompt_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">state</span><span class="p">:</span> <span class="n">AgentState</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<a id="__codelineno-11-33" name="__codelineno-11-33"></a><a href="#__codelineno-11-33"><span class="linenos" data-linenos="33 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-11-34" name="__codelineno-11-34"></a><a href="#__codelineno-11-34"><span class="linenos" data-linenos="34 "></span></a><span class="sd">    应用提示模板，生成格式化的提示消息列表。</span>
+<a id="__codelineno-11-35" name="__codelineno-11-35"></a><a href="#__codelineno-11-35"><span class="linenos" data-linenos="35 "></span></a>
+<a id="__codelineno-11-36" name="__codelineno-11-36"></a><a href="#__codelineno-11-36"><span class="linenos" data-linenos="36 "></span></a><span class="sd">    该函数将指定的提示模板与当前状态相结合：</span>
+<a id="__codelineno-11-37" name="__codelineno-11-37"></a><a href="#__codelineno-11-37"><span class="linenos" data-linenos="37 "></span></a><span class="sd">    1. 使用get_prompt_template获取原始模板</span>
+<a id="__codelineno-11-38" name="__codelineno-11-38"></a><a href="#__codelineno-11-38"><span class="linenos" data-linenos="38 "></span></a><span class="sd">    2. 创建PromptTemplate对象并填充变量，包括当前时间和状态中的数据</span>
+<a id="__codelineno-11-39" name="__codelineno-11-39"></a><a href="#__codelineno-11-39"><span class="linenos" data-linenos="39 "></span></a><span class="sd">    3. 返回一个包含系统提示和状态消息的完整消息列表</span>
+<a id="__codelineno-11-40" name="__codelineno-11-40"></a><a href="#__codelineno-11-40"><span class="linenos" data-linenos="40 "></span></a>
+<a id="__codelineno-11-41" name="__codelineno-11-41"></a><a href="#__codelineno-11-41"><span class="linenos" data-linenos="41 "></span></a><span class="sd">    这种设计使得提示可以动态适应当前的对话上下文和状态信息。</span>
+<a id="__codelineno-11-42" name="__codelineno-11-42"></a><a href="#__codelineno-11-42"><span class="linenos" data-linenos="42 "></span></a>
+<a id="__codelineno-11-43" name="__codelineno-11-43"></a><a href="#__codelineno-11-43"><span class="linenos" data-linenos="43 "></span></a><span class="sd">    参数:</span>
+<a id="__codelineno-11-44" name="__codelineno-11-44"></a><a href="#__codelineno-11-44"><span class="linenos" data-linenos="44 "></span></a><span class="sd">        prompt_name: 提示模板的名称</span>
+<a id="__codelineno-11-45" name="__codelineno-11-45"></a><a href="#__codelineno-11-45"><span class="linenos" data-linenos="45 "></span></a><span class="sd">        state: 当前代理状态对象，包含消息历史和其他上下文信息</span>
+<a id="__codelineno-11-46" name="__codelineno-11-46"></a><a href="#__codelineno-11-46"><span class="linenos" data-linenos="46 "></span></a>
+<a id="__codelineno-11-47" name="__codelineno-11-47"></a><a href="#__codelineno-11-47"><span class="linenos" data-linenos="47 "></span></a><span class="sd">    返回:</span>
+<a id="__codelineno-11-48" name="__codelineno-11-48"></a><a href="#__codelineno-11-48"><span class="linenos" data-linenos="48 "></span></a><span class="sd">        一个消息列表，包含格式化的系统提示和状态中的消息历史</span>
+<a id="__codelineno-11-49" name="__codelineno-11-49"></a><a href="#__codelineno-11-49"><span class="linenos" data-linenos="49 "></span></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-11-50" name="__codelineno-11-50"></a><a href="#__codelineno-11-50"><span class="linenos" data-linenos="50 "></span></a>    <span class="n">system_prompt</span> <span class="o">=</span> <span class="n">PromptTemplate</span><span class="p">(</span>
+<a id="__codelineno-11-51" name="__codelineno-11-51"></a><a href="#__codelineno-11-51"><span class="linenos" data-linenos="51 "></span></a>        <span class="n">input_variables</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;CURRENT_TIME&quot;</span><span class="p">],</span>
+<a id="__codelineno-11-52" name="__codelineno-11-52"></a><a href="#__codelineno-11-52"><span class="linenos" data-linenos="52 "></span></a>        <span class="n">template</span><span class="o">=</span><span class="n">get_prompt_template</span><span class="p">(</span><span class="n">prompt_name</span><span class="p">),</span>
+<a id="__codelineno-11-53" name="__codelineno-11-53"></a><a href="#__codelineno-11-53"><span class="linenos" data-linenos="53 "></span></a>    <span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">CURRENT_TIME</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%a</span><span class="s2"> %b </span><span class="si">%d</span><span class="s2"> %Y %H:%M:%S %z&quot;</span><span class="p">),</span> <span class="o">**</span><span class="n">state</span><span class="p">)</span>
+<a id="__codelineno-11-54" name="__codelineno-11-54"></a><a href="#__codelineno-11-54"><span class="linenos" data-linenos="54 "></span></a>    <span class="k">return</span> <span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">system_prompt</span><span class="p">}]</span> <span class="o">+</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;messages&quot;</span><span class="p">]</span>
+</code></pre></div>
+<ol>
+<li>
+<p><strong>模块化设计</strong>：每个代理（研究者、编码者、浏览器等）都有独立的提示模板文件（.md格式），便于维护和更新。</p>
+</li>
+<li>
+<p><strong>灵活的模板系统</strong>：</p>
+<ul>
+<li>使用了标准的Markdown文件存储提示模板</li>
+<li>采用自定义的占位符语法（<code>&lt;&lt;VAR&gt;&gt;</code>），让非技术人员也能轻松编辑</li>
+<li>通过代码自动转换为标准格式（<code>{VAR}</code>）用于后续处理</li>
+</ul>
+</li>
+<li>
+<p><strong>状态管理与上下文集成</strong>：</p>
+<ul>
+<li>将当前时间等环境信息注入到提示中</li>
+<li>将代理状态（包括消息历史）无缝集成到提示模板中</li>
+<li>使得提示可以根据对话上下文动态调整</li>
+</ul>
+</li>
+<li>
+<p><strong>清晰的角色定义</strong>：</p>
+<ul>
+<li>每个代理都有明确定义的职责和能力范围</li>
+<li>这种设计使得多代理协作更加有效和可靠</li>
+</ul>
+</li>
+<li>
+<p><strong>统一的处理流程</strong>：</p>
+<ul>
+<li>通过<code>apply_prompt_template</code>函数标准化了提示的应用方式</li>
+<li>确保所有代理使用一致的格式与LLM交互</li>
+</ul>
+</li>
+</ol>
+<h2 id="5-模型实例的缓存机制">5. 模型实例的缓存机制<a class="headerlink" href="#5-模型实例的缓存机制" title="Permanent link">&para;</a></h2>
+<p>该仓库实现了一个简单的LLM缓存机制非常值得学习和参考</p>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><a href="#__codelineno-12-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1"># 用于缓存LLM实例的字典</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><a href="#__codelineno-12-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="n">_llm_cache</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">LLMType</span><span class="p">,</span> <span class="n">ChatOpenAI</span> <span class="o">|</span> <span class="n">ChatDeepSeek</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><a href="#__codelineno-12-3"><span class="linenos" data-linenos=" 3 "></span></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><a href="#__codelineno-12-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">get_llm_by_type</span><span class="p">(</span><span class="n">llm_type</span><span class="p">:</span> <span class="n">LLMType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ChatOpenAI</span> <span class="o">|</span> <span class="n">ChatDeepSeek</span><span class="p">:</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><a href="#__codelineno-12-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;根据类型获取LLM实例。如果缓存中已有该类型的实例，则返回缓存的实例。&quot;&quot;&quot;</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a><a href="#__codelineno-12-6"><span class="linenos" data-linenos=" 6 "></span></a>    <span class="k">if</span> <span class="n">llm_type</span> <span class="ow">in</span> <span class="n">_llm_cache</span><span class="p">:</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><a href="#__codelineno-12-7"><span class="linenos" data-linenos=" 7 "></span></a>        <span class="k">return</span> <span class="n">_llm_cache</span><span class="p">[</span><span class="n">llm_type</span><span class="p">]</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a><a href="#__codelineno-12-8"><span class="linenos" data-linenos=" 8 "></span></a>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a><a href="#__codelineno-12-9"><span class="linenos" data-linenos=" 9 "></span></a>    <span class="c1"># 创建新实例的逻辑...</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a><a href="#__codelineno-12-10"><span class="linenos" data-linenos="10 "></span></a>
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a><a href="#__codelineno-12-11"><span class="linenos" data-linenos="11 "></span></a>    <span class="n">_llm_cache</span><span class="p">[</span><span class="n">llm_type</span><span class="p">]</span> <span class="o">=</span> <span class="n">llm</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a><a href="#__codelineno-12-12"><span class="linenos" data-linenos="12 "></span></a>    <span class="k">return</span> <span class="n">llm</span>
+</code></pre></div>
+<ol>
+<li>
+<p><strong>单例模式的简化实现</strong></p>
+<ul>
+<li>使用字典作为缓存容器，以LLM类型为键</li>
+<li>不需要复杂的单例类设计，就能确保每种类型的LLM只创建一次</li>
+</ul>
+</li>
+<li>
+<p><strong>懒加载策略</strong></p>
+<ul>
+<li>模型实例只在首次请求时才被创建，而不是在程序启动时就全部初始化</li>
+<li>对于可能不会使用到的模型，避免了不必要的资源消耗</li>
+</ul>
+</li>
+<li>
+<p><strong>对资源消耗的优化</strong></p>
+<ul>
+<li>LLM实例通常消耗较多内存和计算资源</li>
+<li>缓存避免了重复创建相同类型的实例，减少了内存占用</li>
+<li>特别是对于大型模型（如GPT-4、Claude等），这种优化更为重要</li>
+</ul>
+</li>
+<li>
+<p><strong>降低API初始化开销</strong></p>
+<ul>
+<li>创建LLM客户端实例可能涉及网络请求、验证等操作</li>
+<li>缓存机制减少了这些初始化开销，提高了系统响应速度</li>
+</ul>
+</li>
+<li>
+<p><strong>简化使用方式</strong></p>
+<ul>
+<li>调用者不需要关心实例是否已经存在，只需通过<code>get_llm_by_type</code>函数获取</li>
+<li>减少了代码重复，提高了可维护性</li>
+</ul>
+</li>
+</ol>
 
 
 
@@ -2165,7 +2495,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="April 2, 2025 10:46:50">April 2, 2025 10:46:50</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="April 3, 2025 10:58:21">April 3, 2025 10:58:21</span>
   </span>
 
     
