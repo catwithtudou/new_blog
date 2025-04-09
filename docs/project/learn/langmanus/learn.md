@@ -611,6 +611,79 @@ class Crawler:
         return article
 ```
 
+而其中关于 ReadabilityExtractor 来从 html 提取结构化文章内容的处理，主要是依赖了 [readabilipy 库](https://github.com/alan-turing-institute/ReadabiliPy)，其具体代码如下：
+
+```python
+from readabilipy import simple_json_from_html_string  # 导入readabilipy库中的HTML解析函数
+
+from .article import Article  # 导入自定义的Article类，用于存储提取后的文章内容
+
+
+class ReadabilityExtractor:
+    """
+    网页可读性提取器
+    用于从HTML内容中提取文章的核心内容（标题和正文），
+    通过readabilipy库实现，该库底层使用Mozilla的Readability算法。
+
+    该类的主要作用是将复杂的HTML页面简化，仅保留对用户有价值的文章内容部分，
+    去除导航栏、侧边栏、广告等干扰元素。
+
+    技术背景:
+    - readabilipy是一个Python库，是Mozilla的Readability.js算法的Python封装
+    - Readability算法最初由Arc90实验室开发，后被Mozilla收购并用于Firefox的阅读模式
+    - 该算法通过分析DOM结构、文本密度和HTML标签特征来识别页面的主要内容
+    - 常用于内容抽取、RSS生成、文章归档等场景
+
+    设计考虑:
+    - 采用单一职责原则，该类只负责内容提取，不涉及HTML获取和后续处理
+    - 将提取结果封装为Article对象，便于后续处理（如转换为Markdown、存储等）
+    - 未对extractor做缓存或池化处理，每次调用都会重新执行提取算法
+
+    潜在优化:
+    - 可添加提取配置参数，允许自定义提取行为（如是否保留图片、表格等）
+    - 可实现错误处理机制，处理解析失败的情况
+    - 可增加预处理步骤，如处理特定网站的自定义结构
+    - 可添加后处理逻辑，如清理多余空白、规范化图片路径等
+    """
+
+    def extract_article(self, html: str) -> Article:
+        """
+        从HTML字符串中提取文章内容
+
+        Args:
+            html: 包含文章内容的HTML字符串
+
+        Returns:
+            Article: 包含提取出的标题和HTML内容的Article对象
+
+        处理流程:
+            1. 使用readabilipy库的simple_json_from_html_string函数解析HTML
+            2. 从解析结果中提取标题和内容
+            3. 将提取的信息封装到Article对象中返回
+
+        注意:
+            - 设置use_readability=True参数表示使用Mozilla的Readability算法进行内容提取
+            - 如果原始HTML不包含有效的文章内容，可能返回空标题或内容
+            - simple_json_from_html_string返回的字典还包含其他信息，如byline(作者)、
+              excerpt(摘要)等，可根据需要扩展Article类来存储这些信息
+
+        性能考虑:
+            - 内容提取是CPU密集型操作，处理大型HTML文档可能较慢
+            - 对于高并发场景，考虑使用异步处理或工作队列
+            - HTML解析和DOM操作是主要的性能瓶颈
+        """
+        # 使用readabilipy解析HTML，返回包含文章信息的字典
+        article = simple_json_from_html_string(html, use_readability=True)
+
+        # 创建并返回Article实例，将提取出的标题和内容传入
+        return Article(
+            title=article.get("title"),  # 提取文章标题，使用get避免键不存在时出错
+            html_content=article.get("content"),  # 提取文章HTML内容
+        )
+```
+
+
+
 
 ## 7. Python 中的装饰器
 
@@ -1089,6 +1162,593 @@ if __name__ == "__main__":
     # 当脚本直接运行时，执行示例命令
     print(bash_tool.invoke("ls -all"))
 ```
+
+
+
+
+## 10. python Web框架 FastAPI
+
+FastAPI 是一个现代化、高性能、易于学习的 Python Web 框架，专为构建 API 而设计。其 FastAPI 的主要特点：
+
+1. **高性能**：基于 Starlette 和 Pydantic 构建，它是目前可用的最快的 Python 框架之一，仅次于其内部使用的 Starlette 和 Uvicorn。
+
+2. **易于学习和使用**：采用直观的语法，利用标准的 Python 类型注解来定义 API，无需学习新的语法或特定库的方法。
+
+3. **自动文档生成**：内置支持 Swagger UI 和 ReDoc，自动生成交互式 API 文档，大大减少了文档维护的工作量。
+
+4. **数据验证**：集成 Pydantic 进行数据验证和序列化，能够自动验证请求数据，并将其转换为 Python 对象。
+
+5. **异步支持**：全面支持异步编程，适合构建高并发应用。
+
+**基本使用示例如下**：
+
+```python
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+# 创建应用实例
+app = FastAPI()
+
+# 定义数据模型
+class Item(BaseModel):
+    name: str
+    price: float
+    is_offer: bool = None
+
+# 定义路由和处理函数
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int, q: str = None):
+    return {"item_id": item_id, "q": q}
+```
+
+其中在 LangManus 项目中使用 FastAPI 来构建了一个支持流式响应的聊天 API。这里利用了 FastAPI 的异步能力和事件流功能，**实现了 Server-Sent Events (SSE) 机制，这是实时 AI 聊天应用的常见架构模式**。
+
+## 11. 流式聊天 API 接口
+
+项目中实现了方便流式聊天的 API 接口，具体注释代码如下：
+
+```python
+"""
+FastAPI application for LangManus.
+LangManus 的 FastAPI 应用程序。
+"""
+
+import json
+import logging
+from typing import Dict, List, Any, Optional, Union
+
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel, Field
+from sse_starlette.sse import EventSourceResponse
+import asyncio
+from typing import AsyncGenerator, Dict, List, Any
+
+from src.graph import build_graph
+from src.config import TEAM_MEMBERS
+from src.service.workflow_service import run_agent_workflow
+
+# 配置日志
+logger = logging.getLogger(__name__)
+
+# 创建 FastAPI 应用实例
+app = FastAPI(
+    title="LangManus API",
+    description="API for LangManus LangGraph-based agent workflow",
+    version="0.1.0",
+)
+
+# 添加 CORS 中间件，允许跨域请求
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # 允许所有来源的请求
+    allow_credentials=True,
+    allow_methods=["*"],  # 允许所有 HTTP 方法
+    allow_headers=["*"],  # 允许所有 HTTP 头
+)
+
+# 创建 LangGraph 工作流图
+graph = build_graph()
+
+
+class ContentItem(BaseModel):
+    """
+    内容项模型，用于表示不同类型的消息内容（文本、图像等）
+    """
+    type: str = Field(..., description="The type of content (text, image, etc.)")
+    text: Optional[str] = Field(None, description="The text content if type is 'text'")
+    image_url: Optional[str] = Field(
+        None, description="The image URL if type is 'image'"
+    )
+
+
+class ChatMessage(BaseModel):
+    """
+    聊天消息模型，表示单条对话消息
+    """
+    role: str = Field(
+        ..., description="The role of the message sender (user or assistant)"
+    )
+    content: Union[str, List[ContentItem]] = Field(
+        ...,
+        description="The content of the message, either a string or a list of content items",
+    )
+
+
+class ChatRequest(BaseModel):
+    """
+    聊天请求模型，包含完整的对话历史和配置选项
+    """
+    messages: List[ChatMessage] = Field(..., description="The conversation history")
+    debug: Optional[bool] = Field(False, description="Whether to enable debug logging")
+    deep_thinking_mode: Optional[bool] = Field(
+        False, description="Whether to enable deep thinking mode"
+    )
+    search_before_planning: Optional[bool] = Field(
+        False, description="Whether to search before planning"
+    )
+
+
+@app.post("/api/chat/stream")
+async def chat_endpoint(request: ChatRequest, req: Request):
+    """
+    聊天流式响应端点，通过 LangGraph 调用代理工作流
+
+    Args:
+        request: 聊天请求对象，包含消息历史和配置选项
+        req: FastAPI 请求对象，用于检查连接状态
+
+    Returns:
+        使用 Server-Sent Events 的流式响应
+    """
+    try:
+        # 将 Pydantic 模型转换为字典并规范化内容格式
+        messages = []
+        for msg in request.messages:
+            message_dict = {"role": msg.role}
+
+            # 处理两种不同格式的内容：字符串或内容项列表
+            if isinstance(msg.content, str):
+                message_dict["content"] = msg.content
+            else:
+                # 对于列表类型的内容，转换为工作流期望的格式
+                content_items = []
+                for item in msg.content:
+                    if item.type == "text" and item.text:
+                        content_items.append({"type": "text", "text": item.text})
+                    elif item.type == "image" and item.image_url:
+                        content_items.append(
+                            {"type": "image", "image_url": item.image_url}
+                        )
+
+                message_dict["content"] = content_items
+
+            messages.append(message_dict)
+
+        async def event_generator():
+            """
+            事件生成器，用于创建 SSE 流
+            从代理工作流中异步获取事件并转发给客户端
+            """
+            try:
+                async for event in run_agent_workflow(
+                    messages,
+                    request.debug,
+                    request.deep_thinking_mode,
+                    request.search_before_planning,
+                ):
+                    # 检查客户端是否仍然连接
+                    if await req.is_disconnected():
+                        logger.info("Client disconnected, stopping workflow")
+                        break
+                    yield {
+                        "event": event["event"],  # 事件类型
+                        "data": json.dumps(event["data"], ensure_ascii=False),  # 事件数据，确保正确处理中文
+                    }
+            except asyncio.CancelledError:
+                logger.info("Stream processing cancelled")
+                raise
+
+        # 返回 SSE 响应
+        return EventSourceResponse(
+            event_generator(),
+            media_type="text/event-stream",
+            sep="\n",
+        )
+    except Exception as e:
+        # 捕获并记录所有异常，返回 500 错误响应
+        logger.error(f"Error in chat endpoint: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+```
+
+
+### SSE (Server-Sent Events)
+
+在项目中所使用的 `EventSourceResponse` 是 FastAPI 生态系统中实现 SSE (Server-Sent Events) 机制的组件。**SSE 是一种服务器向客户端推送数据的 Web 技术**，需要与 WebSocket 进行区分，有较大的不同。
+
+**虽然 SSE 和 WebSocket 都是实时通信技术**，但有关键区别：
+
+**SSE (Server-Sent Events)**
+
+1. **单向通信**：服务器向客户端推送数据，客户端不能通过同一连接向服务器发送数据
+2. **基于 HTTP**：使用标准 HTTP 协议，无需特殊协议升级
+3. **自动重连**：客户端自动处理连接断开和重新连接
+4. **简单实现**：相比 WebSocket 更加轻量级和简单
+5. **仅文本传输**：主要用于发送文本数据，通常是 JSON 格式
+6. **HTTP 特性**：可以利用现有的 HTTP 功能（如头部压缩、缓存等）
+
+**WebSocket**
+
+1. **双向通信**：客户端和服务器可以随时互相发送数据
+2. **协议升级**：从 HTTP 协议升级到 WebSocket 协议
+3. **持久连接**：一旦建立连接，保持开放直到一方关闭
+4. **二进制支持**：可以发送文本和二进制数据
+5. **较复杂**：实现和管理相对复杂
+6. **实时性**：更低的延迟，适合需要即时响应的应用
+
+**SSE 的工作原理如下**：
+
+1. **连接建立**：客户端通过 JavaScript 的 `EventSource` API 向服务器发起标准 HTTP 请求
+2. **保持连接**：服务器不关闭连接，而是保持打开状态
+3. **数据推送**：服务器持续向客户端发送事件数据，格式为：
+   ```
+   event: eventname
+   data: {"key": "value"}
+
+   ```
+4. **客户端接收**：客户端通过事件监听器接收和处理这些事件
+
+具体在上述 API 中 SSE 被用于流式传输 AI 代理工作流的输出：
+
+1. **事件生成**：`event_generator()` 函数异步生成事件数据
+2. **事件格式化**：每个事件都有 `event` 类型和 `data` 负载
+3. **流式响应**：`EventSourceResponse` 将生成器产生的事件转换为符合 SSE 规范的响应流
+4. **断开检测**：检查客户端是否断开连接，以停止不必要的处理
+
+**SSE 适用场景**：
+
+1. **实时流式 AI 响应**：逐步向用户呈现 AI 生成的文本，而不是等待完整响应
+2. **通知系统**：向用户推送实时通知或警报
+3. **实时数据更新**：股票价格、新闻更新、社交媒体 feed 等
+4. **日志流**：将服务器日志实时推送到管理界面
+5. **进度更新**：显示长时间运行任务的进度
+
+### 异步处理
+
+
+项目中也使用到了 FastAPI 中常用的异步处理模式，这也是 Python 3.5+ 引入的 `async/await` 语法的应用。其中异步函数、异步迭代器和异步等待的说明如下：
+
+**异步函数定义 `async def`**
+
+```python
+async def event_generator():
+```
+
+`async def` 用于定义一个**协程函数**：
+
+1. **协程(Coroutine)**：是一种可以在执行过程中暂停并稍后恢复的函数。
+2. **非阻塞执行**：当一个异步函数在等待 I/O 操作（如网络请求）时，Python 可以切换去执行其他任务，而不是让整个线程处于等待状态。
+3. **返回协程对象**：调用异步函数不会立即执行其内容，而是返回一个协程对象，需要通过事件循环运行。
+
+**异步迭代 `async for`**
+
+```python
+async for event in run_agent_workflow(...):
+```
+
+`async for` 用于从**异步迭代器**中获取数据：
+
+1. **异步迭代器**：是支持异步迭代的对象，它的 `__anext__` 方法返回一个协程。
+2. **非阻塞式迭代**：允许在每次迭代之间让出控制权，使事件循环可以处理其他任务。
+3. **适用场景**：特别适合处理流式数据，如你的代码中的 Agent 工作流生成的事件流。
+
+**异步等待 `await`**
+
+```python
+if await req.is_disconnected():
+```
+
+`await` 用于等待协程执行完毕并获取其结果：
+
+1. **暂停执行**：当执行到 `await` 时，当前协程会暂停执行，控制权返回给事件循环。
+2. **等待完成**：事件循环会运行其他任务，直到被等待的协程完成。
+3. **获取结果**：协程完成后，`await` 表达式的值就是协程的返回值。
+
+
+### workflow 事件处理和传递
+
+在 API 中用户输入信息以及后续整体的 workflow 也是整体使用异步处理的方式来执行，其中也涉及到了对图引擎的执行过程，具体代码如下：
+
+
+```python
+import logging
+
+from src.config import TEAM_MEMBERS
+from src.graph import build_graph
+from langchain_community.adapters.openai import convert_message_to_dict
+import uuid
+
+# 配置日志
+logging.basicConfig(
+    level=logging.INFO,  # 默认日志级别为INFO
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+)
+
+
+def enable_debug_logging():
+    """启用调试级别的日志记录，以获取更详细的执行信息。"""
+    logging.getLogger("src").setLevel(logging.DEBUG)
+
+
+logger = logging.getLogger(__name__)
+
+# 创建工作流图
+graph = build_graph()
+
+# 协调器消息的缓存
+coordinator_cache = []
+MAX_CACHE_SIZE = 2  # 缓存的最大大小
+
+
+async def run_agent_workflow(
+    user_input_messages: list,
+    debug: bool = False,
+    deep_thinking_mode: bool = False,
+    search_before_planning: bool = False,
+):
+    """运行代理工作流处理用户输入。
+
+    这是工作流服务的主要入口点，它协调多个代理的工作流程，处理用户请求并生成响应。
+    整个过程采用事件流的方式，通过异步迭代器返回各个阶段的事件。
+
+    Args:
+        user_input_messages: 用户请求消息列表
+        debug: 如果为True，则启用调试级别的日志记录
+        deep_thinking_mode: 如果为True，启用深度思考模式
+        search_before_planning: 如果为True，在规划前执行搜索
+
+    Returns:
+        工作流完成后的最终状态
+
+    Yields:
+        工作流执行过程中的各种事件
+    """
+    if not user_input_messages:
+        raise ValueError("Input could not be empty")
+
+    if debug:
+        enable_debug_logging()
+
+    logger.info(f"Starting workflow with user input: {user_input_messages}")
+
+    # 生成唯一的工作流ID
+    workflow_id = str(uuid.uuid4())
+
+    # 需要流式处理的LLM代理列表
+    streaming_llm_agents = [*TEAM_MEMBERS, "planner", "coordinator"]
+
+    # 在每个工作流开始时重置协调器缓存
+    global coordinator_cache
+    coordinator_cache = []
+    global is_handoff_case
+    is_handoff_case = False
+
+    # 从图中异步流式获取事件
+    # TODO: extract message content from object, specifically for on_chat_model_stream
+    async for event in graph.astream_events(
+        {
+            # 常量
+            "TEAM_MEMBERS": TEAM_MEMBERS,
+            # 运行时变量
+            "messages": user_input_messages,
+            "deep_thinking_mode": deep_thinking_mode,
+            "search_before_planning": search_before_planning,
+        },
+        version="v2",
+    ):
+        # 解析事件数据
+        kind = event.get("event")  # 事件类型
+        data = event.get("data")   # 事件数据
+        name = event.get("name")   # 事件名称
+        metadata = event.get("metadata")  # 元数据
+
+        # 获取节点名称（代理名称）
+        node = (
+            ""
+            if (metadata.get("checkpoint_ns") is None)
+            else metadata.get("checkpoint_ns").split(":")[0]
+        )
+
+        # 获取LangGraph步骤信息
+        langgraph_step = (
+            ""
+            if (metadata.get("langgraph_step") is None)
+            else str(metadata["langgraph_step"])
+        )
+
+        # 获取运行ID
+        run_id = "" if (event.get("run_id") is None) else str(event["run_id"])
+
+        # 处理代理启动事件
+        if kind == "on_chain_start" and name in streaming_llm_agents:
+            if name == "planner":
+                # 当规划器启动时，标志着整个工作流的开始
+                yield {
+                    "event": "start_of_workflow",
+                    "data": {"workflow_id": workflow_id, "input": user_input_messages},
+                }
+            ydata = {
+                "event": "start_of_agent",
+                "data": {
+                    "agent_name": name,
+                    "agent_id": f"{workflow_id}_{name}_{langgraph_step}",
+                },
+            }
+        # 处理代理结束事件
+        elif kind == "on_chain_end" and name in streaming_llm_agents:
+            ydata = {
+                "event": "end_of_agent",
+                "data": {
+                    "agent_name": name,
+                    "agent_id": f"{workflow_id}_{name}_{langgraph_step}",
+                },
+            }
+        # 处理LLM开始生成事件
+        elif kind == "on_chat_model_start" and node in streaming_llm_agents:
+            ydata = {
+                "event": "start_of_llm",
+                "data": {"agent_name": node},
+            }
+        # 处理LLM结束生成事件
+        elif kind == "on_chat_model_end" and node in streaming_llm_agents:
+            ydata = {
+                "event": "end_of_llm",
+                "data": {"agent_name": node},
+            }
+        # 处理LLM流式输出事件 - 这是最关键的部分，处理模型生成的内容
+        elif kind == "on_chat_model_stream" and node in streaming_llm_agents:
+            content = data["chunk"].content
+            if content is None or content == "":
+                # 处理空内容消息
+                if not data["chunk"].additional_kwargs.get("reasoning_content"):
+                    # 跳过完全为空的消息
+                    continue
+                # 处理推理内容
+                ydata = {
+                    "event": "message",
+                    "data": {
+                        "message_id": data["chunk"].id,
+                        "delta": {
+                            "reasoning_content": (
+                                data["chunk"].additional_kwargs["reasoning_content"]
+                            )
+                        },
+                    },
+                }
+            else:
+                # 检查消息是否来自协调器(coordinator)
+                if node == "coordinator":
+                    # 协调器消息需要特殊处理 - 使用缓存来决定是否传递
+                    if len(coordinator_cache) < MAX_CACHE_SIZE:
+                        coordinator_cache.append(content)
+                        cached_content = "".join(coordinator_cache)
+                        if cached_content.startswith("handoff"):
+                            # 如果是切换处理的情况，标记并跳过
+                            is_handoff_case = True
+                            continue
+                        if len(coordinator_cache) < MAX_CACHE_SIZE:
+                            # 缓存尚未满，继续收集内容
+                            continue
+                        # 发送缓存的消息
+                        ydata = {
+                            "event": "message",
+                            "data": {
+                                "message_id": data["chunk"].id,
+                                "delta": {"content": cached_content},
+                            },
+                        }
+                    elif not is_handoff_case:
+                        # 非切换处理情况，直接发送消息
+                        ydata = {
+                            "event": "message",
+                            "data": {
+                                "message_id": data["chunk"].id,
+                                "delta": {"content": content},
+                            },
+                        }
+                else:
+                    # 其他代理的消息直接发送
+                    ydata = {
+                        "event": "message",
+                        "data": {
+                            "message_id": data["chunk"].id,
+                            "delta": {"content": content},
+                        },
+                    }
+        # 处理工具调用开始事件
+        elif kind == "on_tool_start" and node in TEAM_MEMBERS:
+            ydata = {
+                "event": "tool_call",
+                "data": {
+                    "tool_call_id": f"{workflow_id}_{node}_{name}_{run_id}",
+                    "tool_name": name,
+                    "tool_input": data.get("input"),
+                },
+            }
+        # 处理工具调用结束事件
+        elif kind == "on_tool_end" and node in TEAM_MEMBERS:
+            ydata = {
+                "event": "tool_call_result",
+                "data": {
+                    "tool_call_id": f"{workflow_id}_{node}_{name}_{run_id}",
+                    "tool_name": name,
+                    "tool_result": data["output"].content if data.get("output") else "",
+                },
+            }
+        else:
+            # 跳过其他类型的事件
+            continue
+        # 产生事件
+        yield ydata
+
+    # 处理最终的切换情况
+    if is_handoff_case:
+        yield {
+            "event": "end_of_workflow",
+            "data": {
+                "workflow_id": workflow_id,
+                "messages": [
+                    convert_message_to_dict(msg)
+                    for msg in data["output"].get("messages", [])
+                ],
+            },
+        }
+
+```
+
+
+其中需要注意的是 `yield` 作为异步生成器的输出机制，它让函数能够在长时间运行的工作流中实时返回中间结果。图的执行是在调用 `graph.astream_events()` 时就已经开始的，而不是由 `yield` 触发的。这种设计使得系统能够实时响应，为用户提供流畅的交互体验。
+
+ `run_agent_workflow` 函数中，`yield` 的具体作用是：
+
+1. **事件发送**：将生成的事件数据发送给函数的调用者
+2. **异步迭代**：使函数成为一个异步生成器（async generator），能够逐个产生多个值
+3. **非阻塞返回**：允许在长时间运行的过程中立即返回中间结果
+
+**执行流程的准确理解**，实际的执行流程是这样的：
+
+
+1. **工作流启动前**：
+
+      - 调用者（如API服务）调用 `run_agent_workflow` 函数并传入用户输入
+      - 函数初始化工作流并准备参数
+
+2. **图执行启动**：
+
+    - 调用 `graph.astream_events()` 启动图的执行
+    - 此时，图已经开始执行，而不是等待后续步骤
+
+3. **事件处理和转发**：
+
+      - 当图执行过程中产生事件（如 planner 代理启动）
+      - 这些事件被 `async for event in ...` 循环捕获
+      - 函数处理事件并通过 `yield` 转发给调用者
+
+4. **具体到示例代码**：
+
+    ```python
+    if name == "planner":
+        yield {
+            "event": "start_of_workflow",
+            "data": {"workflow_id": workflow_id, "input": user_input_messages},
+        }
+    ```
+
+    这段代码的意思是：当检测到 planner 代理启动时，生成一个"工作流开始"的事件并返回给调用者。
 
 
 
