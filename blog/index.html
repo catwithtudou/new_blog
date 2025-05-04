@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../assets/logo.jpeg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -1497,6 +1497,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#llm-agents-架构设计实践指南" class="md-nav__link">
+    <span class="md-ellipsis">
+      LLM Agents 架构设计实践指南
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#面对重蹈覆辙-253月-总结" class="md-nav__link">
     <span class="md-ellipsis">
       面对重蹈覆辙 25.3月 总结
@@ -1636,6 +1645,66 @@
       <header class="md-typeset">
         <h1 id="all-blog">All Blog<a class="headerlink" href="#all-blog" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2025-05-04 00:00:00+00:00">Sunday, May 4, 2025</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="category/aigc/" class="md-meta__link">aigc</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              4 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="llm-agents-架构设计实践指南"><a class="toclink" href="2025/05/04/llm-agents-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/">LLM Agents 架构设计实践指南</a></h2>
+<h3 id="1-前置了解"><a class="toclink" href="2025/05/04/llm-agents-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/#1-前置了解">1. 前置了解</a></h3>
+<h4 id="what-is-an-agent智能代理"><a class="toclink" href="2025/05/04/llm-agents-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/#what-is-an-agent智能代理">What is an agent（智能代理）</a></h4>
+<ul>
+<li>
+<p><strong>定义</strong>：一种基于 LLM 的系统，能够独立执行复杂任务，代替用户完成工作流程。</p>
+</li>
+<li>
+<p><strong>特点</strong>：</p>
+<ul>
+<li><strong>决策与执行</strong>：利用 LLM 管理工作流，自动完成任务或在失败时将控制权交还用户；</li>
+<li><strong>多工具支持</strong>：通过调用外部系统工具（API、数据库等）获取信息或采取操作；</li>
+<li><strong>安全性保障</strong>：在明确的规则下运行，确保行为可控、安全</li>
+</ul>
+</li>
+<li>
+<p><strong>区别</strong>：</p>
+<ul>
+<li><strong>与普通 LLM 应用相比：</strong>：普通的 LLM 应用（如单轮对话、情感分析）不属于 agent，因为它们不能自主管理复杂工作流与</li>
+<li><strong>Workflows（工作流）相比：</strong>：Workflows是系统通过预定义的代码路径编排 LLM 和工具，而 Agents 是系统中 LLM 动态指导自身的流程和工具使用，维持对任务完成方式的控制权</li>
+</ul>
+</li>
+</ul>
+
+    
+      <nav class="md-post__action">
+        <a href="2025/05/04/llm-agents-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/">
+          Continue reading
+        </a>
+      </nav>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">

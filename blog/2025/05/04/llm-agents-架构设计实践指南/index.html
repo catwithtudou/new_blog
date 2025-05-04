@@ -12,13 +12,11 @@
         <meta name="author" content="catwithtudou️">
       
       
-        <link rel="canonical" href="https://zhengyua.cn/new_blog/blog/2024/12/14/%E7%AD%94%E5%8D%B7-2410-11%E6%9C%88-%E6%80%BB%E7%BB%93/">
+        <link rel="canonical" href="https://zhengyua.cn/new_blog/blog/2025/05/04/llm-agents-%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/">
       
       
-        <link rel="prev" href="../../../10/23/%E5%B7%AE%E8%B7%9D%E5%92%8C%E4%B8%93%E6%B3%A8-248-9%E6%9C%88-%E6%80%BB%E7%BB%93/">
+        <link rel="prev" href="../../../04/06/%E9%9D%A2%E5%AF%B9%E9%87%8D%E8%B9%88%E8%A6%86%E8%BE%99-253%E6%9C%88-%E6%80%BB%E7%BB%93/">
       
-      
-        <link rel="next" href="../../../../2025/01/14/%E6%97%A5%E5%B8%B8-2412%E6%9C%88-%E6%80%BB%E7%BB%93/">
       
       
       <link rel="icon" href="../../../../../assets/logo.jpeg">
@@ -26,7 +24,7 @@
     
     
       
-        <title>答卷 24.10-11月 总结 - catwithtudou️🌦️</title>
+        <title>LLM Agents 架构设计实践指南 - catwithtudou️🌦️</title>
       
     
     
@@ -88,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#答卷-2410-11月-总结" class="md-skip">
+        <a href="#llm-agents-架构设计实践指南" class="md-skip">
           Skip to content
         </a>
       
@@ -123,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              答卷 24.10-11月 总结
+              LLM Agents 架构设计实践指南
             
           </span>
         </div>
@@ -1501,37 +1499,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#0-前言" class="md-nav__link">
+  <a href="#1-前置了解" class="md-nav__link">
     <span class="md-ellipsis">
-      0. 前言
+      1. 前置了解
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-经历了什么" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. 经历了什么
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. 经历了什么">
+    <nav class="md-nav" aria-label="1. 前置了解">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#11-工作上" class="md-nav__link">
+  <a href="#what-is-an-agent智能代理" class="md-nav__link">
     <span class="md-ellipsis">
-      1.1 工作上
+      What is an agent（智能代理）
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-生活上" class="md-nav__link">
+  <a href="#when-should-you-build-an-agent" class="md-nav__link">
     <span class="md-ellipsis">
-      1.2 生活上
+      When should you build an agent
     </span>
   </a>
   
@@ -1543,18 +1532,216 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-有什么感悟" class="md-nav__link">
+  <a href="#2-设计基础及实践指导" class="md-nav__link">
     <span class="md-ellipsis">
-      2. 有什么感悟
+      2. 设计基础及实践指导
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 设计基础及实践指导">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-模型" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model 模型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tools-工具" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tools 工具
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instructions-指令" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructions 指令
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-架构模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 架构模式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 架构模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-agent-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Single-agent Systems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Single-agent Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-tools--guardrails--hooks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Tools → Guardrails / Hooks？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-agent-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-agent Systems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-agent Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manager-pattern经理-专家模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manager Pattern（经理-专家模式）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decentralized-pattern去中心化模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decentralized Pattern（去中心化模式）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Decentralized Pattern（去中心化模式）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#如何理解-handoff" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何理解 handoff
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#如何实现-handoff" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何实现 handoff
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pattern-对比" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pattern 对比
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-架构模式对比" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 架构模式对比
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-接下来的展望" class="md-nav__link">
+  <a href="#5-架构设计实践建议" class="md-nav__link">
     <span class="md-ellipsis">
-      3. 接下来的展望
+      5. 架构设计实践建议
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 架构设计实践建议">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#架构选型建议" class="md-nav__link">
+    <span class="md-ellipsis">
+      架构选型建议
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#拆分多-agent-的实践触发点" class="md-nav__link">
+    <span class="md-ellipsis">
+      拆分多 Agent 的实践触发点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guardrails安全与合规护栏" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guardrails（安全与合规护栏）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-总结" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 总结
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#参考" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
     </span>
   </a>
   
@@ -1597,7 +1784,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
-                        <time datetime="2024-12-14 00:00:00+00:00" class="md-ellipsis">Saturday, December 14, 2024</time>
+                        <time datetime="2025-05-04 00:00:00+00:00" class="md-ellipsis">Sunday, May 4, 2025</time>
                       </div>
                     </li>
                     
@@ -1608,7 +1795,7 @@
                           <span class="md-ellipsis">
                             in
                             
-                              <a href="../../../../category/monthly-review/">monthly review</a></span>
+                              <a href="../../../../category/aigc/">aigc</a></span>
                         </div>
                       </li>
                     
@@ -1619,7 +1806,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
                           <span class="md-ellipsis">
                             
-                              1 min read
+                              4 min read
                             
                           </span>
                         </div>
@@ -1641,57 +1828,379 @@
   
 
 
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="../../../../tags/#tag:aigc" class="md-tag">aigc</a>
+      
+    
+      
+      
+      
+        <a href="../../../../tags/#tag:llm" class="md-tag">llm</a>
+      
+    
+      
+      
+      
+        <a href="../../../../tags/#tag:server" class="md-tag">server</a>
+      
+    
+  </nav>
+
 
   
   
 
 
-<h1 id="答卷-2410-11月-总结">答卷 24.10-11月 总结<a class="headerlink" href="#答卷-2410-11月-总结" title="Permanent link">&para;</a></h1>
-<blockquote>
-<p>好吧可能越来越水了，只不过还是先发出来更重要一些</p>
-</blockquote>
-<h2 id="0-前言">0. 前言<a class="headerlink" href="#0-前言" title="Permanent link">&para;</a></h2>
-<p>像一个尽职的木偶，日复一日地配合着那些提线表演，无数事情编织成了网将我包裹其中。</p>
-<p>也像一片或重或轻的叶子，重到可以随风坠落下来，轻到掉进水里随波逐流被推着走。</p>
-<p>对我来说工作和生活就像严格的考官，为我出着不同的试卷，不耐烦地等待着我的作答和妥协。</p>
-<p>直到某一天，我疲惫地走出考场，夕阳的光照着我感到些许温暖，此时心里有一个声音开始告诉我：</p>
-<p>或许我这一生所要交付的答卷，不是最终的成绩，也不是那些存在的答案，而是自己，一直都是。</p>
+<h1 id="llm-agents-架构设计实践指南">LLM Agents 架构设计实践指南<a class="headerlink" href="#llm-agents-架构设计实践指南" title="Permanent link">&para;</a></h1>
+<h2 id="1-前置了解">1. 前置了解<a class="headerlink" href="#1-前置了解" title="Permanent link">&para;</a></h2>
+<h3 id="what-is-an-agent智能代理">What is an agent（智能代理）<a class="headerlink" href="#what-is-an-agent智能代理" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>定义</strong>：一种基于 LLM 的系统，能够独立执行复杂任务，代替用户完成工作流程。</p>
+</li>
+<li>
+<p><strong>特点</strong>：</p>
+<ul>
+<li><strong>决策与执行</strong>：利用 LLM 管理工作流，自动完成任务或在失败时将控制权交还用户；</li>
+<li><strong>多工具支持</strong>：通过调用外部系统工具（API、数据库等）获取信息或采取操作；</li>
+<li><strong>安全性保障</strong>：在明确的规则下运行，确保行为可控、安全</li>
+</ul>
+</li>
+<li>
+<p><strong>区别</strong>：</p>
+<ul>
+<li><strong>与普通 LLM 应用相比：</strong>：普通的 LLM 应用（如单轮对话、情感分析）不属于 agent，因为它们不能自主管理复杂工作流与</li>
+<li><strong>Workflows（工作流）相比：</strong>：Workflows是系统通过预定义的代码路径编排 LLM 和工具，而 Agents 是系统中 LLM 动态指导自身的流程和工具使用，维持对任务完成方式的控制权</li>
+</ul>
+</li>
+</ul>
 <!-- more -->
 
-<h2 id="1-经历了什么">1. 经历了什么<a class="headerlink" href="#1-经历了什么" title="Permanent link">&para;</a></h2>
-<h3 id="11-工作上">1.1 工作上<a class="headerlink" href="#11-工作上" title="Permanent link">&para;</a></h3>
-<p>这两个月的重点工作主要就是两件事情，一个是系统重构治理的的技术需求，一个是重点春节的业务需求。</p>
-<p>这两件事情之前实际在该方向也经历过类似的，但由于环境和人员变动，所以也发生了比较多不一样的地方。</p>
-<p>首先是技术需求，我所感受到的区别有以下几点：</p>
+<h3 id="when-should-you-build-an-agent">When should you  build an agent<a class="headerlink" href="#when-should-you-build-an-agent" title="Permanent link">&para;</a></h3>
+<p>Agent 适用于传统自动化方法无法有效解决的问题，包括：</p>
 <ul>
-<li>“方法论”变多了，但实际上到后面，依然还是“非方法”居多</li>
-<li>合作的人变多了，很难对齐细节和开发习惯，导致沟通成本更高</li>
-<li>不一样的开发思路和新的开发体系，导致理解和适应成本变高</li>
+<li><strong>复杂决策场景</strong>：如客户服务中涉及判断和例外处理的任务（例如退款审批）</li>
+<li><strong>难以维护的规则系统</strong>：如高度复杂的规则集（例如供应商安全审查）</li>
+<li><strong>依赖非</strong><strong>结构化数据</strong>：如需要解析自然语言、文档或与用户互动的任务（例如保险理赔处理）</li>
 </ul>
-<p>整体过程体验下来，最大的两个感受就是：
-1. “方法论”也是需要维护的，否则反而会降低效率
-2. 当合作的人变多的时候，需慎重引入新的体系和不一样的共识，否则会增加更多的成本</p>
-<p>然后是业务需求，这次的区别更多是在角色和合作范围的转变，简单概括来说都比以前要更“狭窄“一些，我所能做的，也只有做好当下的事情，保持owner意识，确保每一件事都能保质保量地完成，同时在基础上若还有时间，就可以再看下有什么可以做得更好的事情，或者学习其他同学所做的事情来积累经验。</p>
-<h3 id="12-生活上">1.2 生活上<a class="headerlink" href="#12-生活上" title="Permanent link">&para;</a></h3>
-<p>这两个月生活上所做的事情主要概括起来就是，应试和阅读吧，整体身心也变成了一种低能量的状态。</p>
-<p>应试也让我意识到，首先在工作过程中抽出时间去做需要有规律性的应试事项，是非常困难的，特别是对于我这种工作变动和工作内容都比较频繁和饱和的人来说；然后是不要奢求能从应试项目上学习到较多有用的知识，更多是死板地背模版和掌握比较基础且难以实践的要点；最后应试更多是心智上的考验，你需要有耐心地度过这段时间。当然最终地结果还是非常可惜的，因为就差了一点，但是这次已经尽力了，吸取教训，继续加油吧。</p>
-<p>身心的低能量让我干什么事情都很容易疲惫，让我觉得没有意思和什么意义，而且这也是像是一个恶性循环的过程，只会越来越糟糕。只不过
-我也在努力好转吧，虽然我也知道我为什么会这样，但更重要地还是自己是否敢于去寻找改变吧。</p>
-<h2 id="2-有什么感悟">2. 有什么感悟<a class="headerlink" href="#2-有什么感悟" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>考虑支付欺诈分析的例子🌰：</p>
 <ul>
-<li>与不同人之间的沟通，需要有不同的模式</li>
-<li>寻找改变较好地方式之一，批判性思维，如第三视角、第三选择、向机器人提问</li>
-<li>提问对我来说，更有安全感，反而没有问题和不知道问什么让我更加不适和迷茫</li>
-<li>减少一些抱怨，要学会调整自己的预期和追寻的结果</li>
-<li>不要给自己太多的压力和无形的要求，考不到“100分”也没有关系，人生还很长</li>
-<li>每个人都有自己的成长过程和每个阶段会面临的事情，无需妄自菲薄，也无需盲目攀比</li>
+<li>传统规则引擎就像一个清单，根据预设标准标记交易</li>
+<li>agent 更像一位经验丰富的调查员，评估上下文，考虑可疑模式，即使在未违反明确规则的情况下也能识别</li>
 </ul>
-<h2 id="3-接下来的展望">3. 接下来的展望<a class="headerlink" href="#3-接下来的展望" title="Permanent link">&para;</a></h2>
+<p>这种细微的推理能力正是使代理能够有效管理复杂、模糊情况的原因。</p>
+</blockquote>
+<p>而我们在判断何时适合构建 agent 的时候应用遵循<strong>简单优先原则</strong>：</p>
 <ul>
-<li>继续做好当下的事情，保持耐心</li>
-<li>继续积累沉淀，然后寻找“突破”</li>
-<li>我想，我还是需要多走出去看看，还需要做一些不一样的事情</li>
+<li>寻找最简单的可能解决方案，只在必要时增加复杂性</li>
+<li>agent 通常以牺牲延迟和成本为代价获得更好的任务性能</li>
+<li>对于许多应用，优化单个 LLM 调用（配合检索 rag 和上下文 examples）通常就足够了</li>
 </ul>
+<p>所以在构建 Agent 前应<strong>明确工作流的复杂性和传统方法的局限性，若规则系统足够简单</strong>，可优先考虑传统方法。</p>
+<h2 id="2-设计基础及实践指导">2. 设计基础及实践指导<a class="headerlink" href="#2-设计基础及实践指导" title="Permanent link">&para;</a></h2>
+<p>在构建 Agent 前需要了解其常见的核心组件。</p>
+<h3 id="model-模型">Model 模型<a class="headerlink" href="#model-模型" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>作用说明</strong>：负责推理与决策的 LLM 模型</li>
+</ul>
+<p><strong>模型选择</strong>：</p>
+<ul>
+<li>根据任务复杂性、延迟和成本选择模型</li>
+<li>建议先使用最强的模型建立基准性能<ul>
+<li>然后尝试替换为更小的模型以优化成本</li>
+</ul>
+</li>
+<li>原则：<strong>先保证准确性，再优化性能与成本</strong></li>
+</ul>
+<h3 id="tools-工具">Tools 工具<a class="headerlink" href="#tools-工具" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>作用说明</strong>：外部系统/函数接口，Agent 用以执行任务或获取信息</li>
+</ul>
+<p><strong>工具类型</strong></p>
+<ul>
+<li><strong>Data 数据工具</strong>：允许 agent 检索执行工作流所需的上下文和信息<ul>
+<li>如查询数据库、读取文档、搜索 We</li>
+</ul>
+</li>
+<li><strong>Action 操作工具</strong>：使 agent 能够与系统交互以执行操作<ul>
+<li>如更新数据库、发送消息、提交工单等</li>
+</ul>
+</li>
+<li><strong>Orchestration 编排工具</strong>：其他 Agent 可以作为工具被调用，实现协作<ul>
+<li>如 Refund agent、Research agent</li>
+</ul>
+</li>
+</ul>
+<p><strong>最佳实践——工具格式</strong></p>
+<ul>
+<li><strong>给模型足够的</strong><strong>token</strong><strong>进行"思考"</strong>，避免其陷入困境</li>
+<li><strong>保持格式接近模型在互联网文本中自然出现的内容</strong></li>
+<li><strong>确保没有格式"开销"</strong>，如需要保持准确计数成千上万行代码，或对其写的代码进行字符串转义</li>
+</ul>
+<p><strong>最佳实践——ACI（代理-计算机接口）</strong></p>
+<p>经验法则：考虑 HCI（人机界面）投入多少精力，并计划在创建 ACI 上投入同样多的精力：</p>
+<ul>
+<li><strong>站在模型的角度思考</strong>：根据描述和参数，使用这个工具是否明显，或者您需要仔细思考？<ul>
+<li>如果是那么模型可能也一样</li>
+<li>良好的工具定义通常包括使用示例、边缘情况、输入格式要求和与其他工具的清晰界限</li>
+</ul>
+</li>
+<li><strong>如何更改参数名称或描述使事情更明显？</strong> 将此视为为团队中初级开发人员编写出色的文档字符串</li>
+<li><strong>测试模型如何使用您的工具</strong>：在工作台中运行许多示例输入查看模型犯什么错误，并进行迭代</li>
+<li><strong>防错设计您的工具</strong>：更改参数使其更难出错</li>
+</ul>
+<h3 id="instructions-指令">Instructions 指令<a class="headerlink" href="#instructions-指令" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>作用说明</strong>：明确行为准则与流程规范，指导 Agent 如何执行任务</li>
+</ul>
+<p><strong>指令配置</strong></p>
+<ul>
+<li>高质量的指令是 Agent 成功的关键</li>
+<li>要求清晰、具体，减少歧义，并考虑边界情况<ul>
+<li>如用户提供信息不完整时的处理逻辑</li>
+</ul>
+</li>
+</ul>
+<p><strong>最佳实践</strong>：</p>
+<ul>
+<li><strong>利用现有文档</strong>：使用现有操作程序、支持脚本或文档创建 LLM 友好的例程</li>
+</ul>
+<blockquote>
+<p>例程即预先定义步骤序列或指导方针，告诉 agent在特定情境下应该如何行动。</p>
+</blockquote>
+<ul>
+<li><strong>引导代理分解任务</strong>：提供从密集资源中提取的更小、更清晰的步骤有助于最小化歧义，帮助模型更好地遵循指示</li>
+<li><strong>定义明确的操作</strong>：确保例程中的每一步都对应一个特定操作或输出。明确操作（甚至面向用户的消息措辞）可减少解释错误的空间</li>
+<li><strong>捕获边界情况</strong>：现实交互经常创造决策点，如用户提供不完整信息或提出意外问题时如何继续。强健的例程应预见常见变化，并包括条件步骤或分支的处理指示，如缺少所需信息时的替代步骤</li>
+</ul>
+<h2 id="3-架构模式">3. 架构模式<a class="headerlink" href="#3-架构模式" title="Permanent link">&para;</a></h2>
+<h3 id="single-agent-systems">Single-agent Systems<a class="headerlink" href="#single-agent-systems" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202505041647004.png" /></p>
+<p><strong>架构特点</strong>：</p>
+<ul>
+<li>单一Agent，具备所有必需工具与指令，循环处理任务直至达到终态</li>
+<li>简单易维护，适合大多数业务自动化场景</li>
+</ul>
+<p><strong>工作流示意</strong>：</p>
+<ol>
+<li>用户输入Agent</li>
+<li>依据 Instructions 及工具链进行推理和操作</li>
+<li>达到终止条件后输出结果 |</li>
+</ol>
+<ul>
+<li><strong>适用场景</strong>：任务流程不复杂，工具数量有限业务逻辑变更较少</li>
+<li><strong>优点</strong>：结构简单，易于测试与维护架构扩展性强，可逐步增加工具</li>
+<li><strong>缺点</strong>：工具/逻辑过多时复杂度上升，Prompt难以维护</li>
+</ul>
+<h4 id="why-tools--guardrails--hooks">Why  Tools → Guardrails / Hooks？<a class="headerlink" href="#why-tools--guardrails--hooks" title="Permanent link">&para;</a></h4>
+<p>代表 agent 在调用外部工具时，流程会自动经过安全（Guardrails）和扩展处理（Hooks）两道“关卡”，既保证操作安全合规，也方便业务自定义流程与监控。</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos=" 1 "></span></a>          ┌─────────┐
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos=" 2 "></span></a>Input → Agent → Tools
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos=" 3 "></span></a>                  │
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos=" 4 "></span></a>        ┌─────────┴────────┐
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos=" 5 "></span></a>        │                  │
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos=" 6 "></span></a>   Guardrails           Hooks
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos=" 7 "></span></a>        │                  │
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><a href="#__codelineno-0-8"><span class="linenos" data-linenos=" 8 "></span></a>        └─────────┬────────┘
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="#__codelineno-0-9"><span class="linenos" data-linenos=" 9 "></span></a>                  │
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><a href="#__codelineno-0-10"><span class="linenos" data-linenos="10 "></span></a>               Output
+</code></pre></div>
+<p><strong>术语解释</strong>：</p>
+<ul>
+<li><strong>Tools（工具）</strong>指的是 agent 能调用的外部函数/接口/API，比如数据库查询、发送邮件、调用第三方服务等</li>
+<li><strong>Guardrails（护栏）</strong>是对 agent 行为和输入/输出的安全规则、限制（如过滤敏感词、检测越权、数据脱敏等）。Guardrails 可以在工具调用前后，对参数、结果进行检查，防止 agent 执行不安全或违规操作</li>
+<li><strong>Hooks（钩子）</strong>是一种编程“插槽”，允许你在 agent 执行某个环节前后插入自定义逻辑。例如：在工具调用后做日志记录、埋点统计、异常捕捉、流程追踪，或者二次处理 agent 的中间结果 |</li>
+</ul>
+<p><strong>执行链说明</strong>：</p>
+<ol>
+<li>Agent 接收输入，产生决策，决定调用某个 Tool；</li>
+<li>调用 Tool 前/后，会经过 Guardrails 检查（比如参数是否合法、是否涉及高风险操作）；- Guardrails 可能阻止、修改或记录此次调用；</li>
+<li>Hooks 允许你 在工具调用前后插入自定义处理逻辑，比如记录一次 API 调用日志、统计耗时、捕捉异常等；</li>
+<li>最后返回输出；</li>
+</ol>
+<p><strong>示例场景</strong>：Agent 需要调用“发放退款”Tool</p>
+<ul>
+<li>Guardrail 检查金额是否超限、用户是否有权限</li>
+<li>Hook 记录一次退款尝试日志，如果失败自动通知人工介入</li>
+</ul>
+<h3 id="multi-agent-systems">Multi-agent Systems<a class="headerlink" href="#multi-agent-systems" title="Permanent link">&para;</a></h3>
+<p>该架构有如下特点：</p>
+<ul>
+<li><strong>多个专职 Agent 协同处理复杂流程</strong></li>
+<li>支持两种主流模式：<strong>Manager Pattern 和 Decentralized Pattern</strong></li>
+</ul>
+<h4 id="manager-pattern经理-专家模式">Manager Pattern（经理-专家模式）<a class="headerlink" href="#manager-pattern经理-专家模式" title="Permanent link">&para;</a></h4>
+<ul>
+<li>中央“经理”Agent 负责任务分解与分发，调用各专职Agent工具</li>
+<li>适合需要统一出口、上下文管理的多步骤流程</li>
+</ul>
+<blockquote>
+<p>流程：用户请求 &gt; Manager Agent &gt; 调用各专职Agent &gt; 汇总结果</p>
+</blockquote>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202505041647535.png" /></p>
+<h4 id="decentralized-pattern去中心化模式">Decentralized Pattern（去中心化模式）<a class="headerlink" href="#decentralized-pattern去中心化模式" title="Permanent link">&para;</a></h4>
+<ul>
+<li>多个 Agent 间可相互“handoff”任务，无固定主控<ul>
+<li><strong>handoff</strong>（任务交接/转交）指的是：  <strong>一个 Agent 在处理任务过程中，根据任务内容或自身职责，将当前任务主动转交给另一个更合适的 Agent，让其继续处理</strong>。这类似于现实中客服转接、部门间分工协作。例如，你打客服电话时，初步筛查后发现你的问题属于技术故障，就会把你转接到技术支持专员</li>
+</ul>
+</li>
+<li>适合对话分流、任务分派等场景</li>
+</ul>
+<blockquote>
+<p>流程：初始Agent接收请求，判断后 handoff 给对应专职 Agent，必要时可回传</p>
+</blockquote>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202505041647187.png" /></p>
+<h5 id="如何理解-handoff">如何理解 handoff<a class="headerlink" href="#如何理解-handoff" title="Permanent link">&para;</a></h5>
+<p>简单来说可概括为：</p>
+<ul>
+<li><strong>handoff</strong> = Agent 之间的任务自动转交</li>
+<li>让系统变得像“分布式团队”一样，各司其职，高效协作</li>
+<li>提升了复杂多领域场景下的灵活性与可维护性 |</li>
+</ul>
+<p><strong>业务流程举例说明</strong>：</p>
+<p>假设有如下 Agent 分工：</p>
+<ul>
+<li>triage_agent：初步分流</li>
+<li>technical_support_agent：技术支持</li>
+<li>sales_assistant_agent：销售咨询</li>
+<li>order_management_agent：订单相关</li>
+</ul>
+<p><strong>用户进入：“我的订单什么时候发货？”</strong></p>
+<ol>
+<li>triage_agent 接收到输入，判断属于“订单相关”；</li>
+<li>triage_agent 调用 handoff，将任务转交给order_management_agent</li>
+<li>order_management_agent 继续与用户沟通并解决订单问题 |</li>
+</ol>
+<p><strong>handoff 的意义</strong>：</p>
+<ul>
+<li><strong>解耦</strong>：每个 Agent 只需专注本职领域，降低系统复杂度</li>
+<li><strong>灵活分流</strong>：可动态、自动将任务转给最合适的 Agent，提升自动化和用户体验</li>
+<li><strong>支持多轮、多场景协作</strong>：任务可以在多个 Agent 之间多次流转，适应复杂业务流程</li>
+</ul>
+<h5 id="如何实现-handoff">如何实现 handoff<a class="headerlink" href="#如何实现-handoff" title="Permanent link">&para;</a></h5>
+<p>而在 Decentralized Pattern 中通常实现 handoff 的处理：</p>
+<ul>
+<li><strong>多个 Agent 平级</strong>，每个 Agent 负责不同领域（如：销售、客服、技术支持等）</li>
+<li>当某个 Agent 识别到当前任务属于另一个 Agent 更擅长的领域时，就会<strong>调用 handoff</strong>，把对话和上下文转交给目标 Agent</li>
+<li>转交后，由新 Agent 继续和用户互动，原 Agent 不再介入</li>
+</ul>
+<p>具体地，我们可以通过在 OpenAI Agents SDK 里的体现来帮助理解</p>
+<ul>
+<li>handoff 通常实现为一种特殊的“工具”或“函数”</li>
+<li>当 Agent 判断需要转交时，调用该 handoff 函数，系统自动将当前对话上下文传递给目标 Agent 并切换处理权</li>
+</ul>
+<div class="language-Python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># triage_agent 识别到用户咨询订单，调用 handoff</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a><span class="n">triage_agent</span><span class="o">.</span><span class="n">handoff</span><span class="p">(</span><span class="n">order_management_agent</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos="3 "></span></a><span class="c1"># order_management_agent 接管后续对话</span>
+</code></pre></div>
+<h4 id="pattern-对比">Pattern 对比<a class="headerlink" href="#pattern-对比" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>模式</strong></th>
+<th><strong>handoff 机制</strong></th>
+<th><strong>控制权</strong></th>
+<th><strong>典型场景</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Manager Pattern</td>
+<td>Manager 统一调度</td>
+<td>集中在 Manager</td>
+<td>统一输出/上下文</td>
+</tr>
+<tr>
+<td>Decentralized</td>
+<td>Agent 间互交</td>
+<td>分散在各 Agent</td>
+<td>分流/多领域协同</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-架构模式对比">4. 架构模式对比<a class="headerlink" href="#4-架构模式对比" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th><strong>模式</strong></th>
+<th><strong>控制权</strong></th>
+<th><strong>协作方式</strong></th>
+<th><strong>适用场景</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single-agent</td>
+<td>单一 Agent</td>
+<td>循环执行</td>
+<td>简单流程</td>
+</tr>
+<tr>
+<td>Manager Pattern</td>
+<td>经理 Agent</td>
+<td>调用子 Agent</td>
+<td>需统一上下文/输出</td>
+</tr>
+<tr>
+<td>Decentralized</td>
+<td>无中心</td>
+<td>Agent 间 handoff</td>
+<td>多分支、灵活分流</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-架构设计实践建议">5. 架构设计实践建议<a class="headerlink" href="#5-架构设计实践建议" title="Permanent link">&para;</a></h2>
+<h3 id="架构选型建议">架构选型建议<a class="headerlink" href="#架构选型建议" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>选型情景</strong></th>
+<th><strong>推荐模式</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>任务简单/流程单一</td>
+<td>Single-agent</td>
+</tr>
+<tr>
+<td>工具/逻辑复杂、分工明确</td>
+<td>Multi-agent</td>
+</tr>
+<tr>
+<td>需统一上下文与输出</td>
+<td>Manager Pattern</td>
+</tr>
+<tr>
+<td>需灵活分流/分派</td>
+<td>Decentralized</td>
+</tr>
+</tbody>
+</table>
+<h3 id="拆分多-agent-的实践触发点">拆分多 Agent 的实践触发点<a class="headerlink" href="#拆分多-agent-的实践触发点" title="Permanent link">&para;</a></h3>
+<ul>
+<li>逻辑分支复杂（多if-then-else）</li>
+<li>工具数量多且功能重叠，Prompt难维护</li>
+<li>各子流程可独立运行、复用</li>
+</ul>
+<h3 id="guardrails安全与合规护栏">Guardrails（安全与合规护栏）<a class="headerlink" href="#guardrails安全与合规护栏" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>类型示例：</strong> 相关性判别、安全检测、PII过滤、输出校验、工具风险评级</li>
+<li><strong>建议：</strong> 采用多层护栏组合，结合人类兜底机制</li>
+</ul>
+<h2 id="6-总结">6. 总结<a class="headerlink" href="#6-总结" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Agent 架构是提升复杂业务自动化的关键</li>
+<li>推荐从单 Agent 起步，逐步演进到多Agent协作</li>
+<li>明确工具、指令和护栏，持续优化，保证安全与效果</li>
+</ul>
+<h2 id="参考">参考<a class="headerlink" href="#参考" title="Permanent link">&para;</a></h2>
+<p>https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf</p>
 
 
 
@@ -1714,7 +2223,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="March 8, 2025 14:44:34">March 8, 2025 14:44:34</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="May 4, 2025 18:30:47">May 4, 2025 18:30:47</span>
   </span>
 
     
@@ -1724,7 +2233,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="December 14, 2024 21:50:26">December 14, 2024 21:50:26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="May 4, 2025 18:30:47">May 4, 2025 18:30:47</span>
   </span>
 
     
@@ -1767,7 +2276,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../../10/23/%E5%B7%AE%E8%B7%9D%E5%92%8C%E4%B8%93%E6%B3%A8-248-9%E6%9C%88-%E6%80%BB%E7%BB%93/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 差距和专注 24.8-9月 总结">
+          <a href="../../../04/06/%E9%9D%A2%E5%AF%B9%E9%87%8D%E8%B9%88%E8%A6%86%E8%BE%99-253%E6%9C%88-%E6%80%BB%E7%BB%93/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 面对重蹈覆辙 25.3月 总结">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1777,27 +2286,11 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                差距和专注 24.8-9月 总结
+                面对重蹈覆辙 25.3月 总结
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../../../../2025/01/14/%E6%97%A5%E5%B8%B8-2412%E6%9C%88-%E6%80%BB%E7%BB%93/" class="md-footer__link md-footer__link--next" aria-label="Next: 日常 24.12月 总结">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                日常 24.12月 总结
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
