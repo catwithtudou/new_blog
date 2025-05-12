@@ -12,28 +12,28 @@
         <meta name="author" content="catwithtudou️">
       
       
-        <link rel="canonical" href="https://zhengyua.cn/new_blog/algorithms/LLM/huggingface/">
+        <link rel="canonical" href="https://zhengyua.cn/new_blog/algorithms/LLM/huggingface/AIAgentCourse/BONUSUNIT10/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../../">
       
       
-        <link rel="next" href="AIAgentCourse/BONUSUNIT10/">
+        <link rel="next" href="../BONUSUNIT20/">
       
       
-      <link rel="icon" href="../../../assets/logo.jpeg">
+      <link rel="icon" href="../../../../../assets/logo.jpeg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.13">
     
     
       
-        <title>Huggingface - catwithtudou️🌦️</title>
+        <title>Bonus Unit 1. Fine-tuning an LLM for Function-calling - catwithtudou️🌦️</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,7 +52,7 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#huggingface" class="md-skip">
+        <a href="#bonus-unit-1-fine-tuning-an-llm-for-function-calling" class="md-skip">
           Skip to content
         </a>
       
@@ -104,9 +104,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="catwithtudou️🌦️" class="md-header__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+    <a href="../../../../.." title="catwithtudou️🌦️" class="md-header__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
       
-  <img src="../../../assets/logo.jpeg" alt="logo">
+  <img src="../../../../../assets/logo.jpeg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Huggingface
+              Bonus Unit 1. Fine-tuning an LLM for Function-calling
             
           </span>
         </div>
@@ -235,7 +235,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../../../../.." class="md-tabs__link">
         
   
   
@@ -256,7 +256,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../blog/" class="md-tabs__link">
+        <a href="../../../../../blog/" class="md-tabs__link">
           
   
   
@@ -278,7 +278,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../language/" class="md-tabs__link">
+        <a href="../../../../../language/" class="md-tabs__link">
           
   
   
@@ -302,7 +302,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+        <a href="../../../../" class="md-tabs__link">
           
   
   
@@ -324,7 +324,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../os/" class="md-tabs__link">
+        <a href="../../../../../os/" class="md-tabs__link">
           
   
   
@@ -346,7 +346,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../network/" class="md-tabs__link">
+        <a href="../../../../../network/" class="md-tabs__link">
           
   
   
@@ -368,7 +368,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../ds/" class="md-tabs__link">
+        <a href="../../../../../ds/" class="md-tabs__link">
           
   
   
@@ -390,7 +390,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../architecture/" class="md-tabs__link">
+        <a href="../../../../../architecture/" class="md-tabs__link">
           
   
   
@@ -412,7 +412,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../middleware/" class="md-tabs__link">
+        <a href="../../../../../middleware/" class="md-tabs__link">
           
   
   
@@ -434,7 +434,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../project/" class="md-tabs__link">
+        <a href="../../../../../project/" class="md-tabs__link">
           
   
   
@@ -456,7 +456,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../common/01-100_tips/" class="md-tabs__link">
+        <a href="../../../../../common/01-100_tips/" class="md-tabs__link">
           
   
   
@@ -498,9 +498,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="catwithtudou️🌦️" class="md-nav__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+    <a href="../../../../.." title="catwithtudou️🌦️" class="md-nav__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
       
-  <img src="../../../assets/logo.jpeg" alt="logo">
+  <img src="../../../../../assets/logo.jpeg" alt="logo">
 
     </a>
     catwithtudou️🌦️
@@ -527,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../../.." class="md-nav__link">
         
   
   
@@ -583,7 +583,7 @@
   
   
   
-    <a href="../../../blog/" class="md-nav__link">
+    <a href="../../../../../blog/" class="md-nav__link">
       
   
   
@@ -641,7 +641,7 @@
   
   
   
-    <a href="../../../language/" class="md-nav__link">
+    <a href="../../../../../language/" class="md-nav__link">
       
   
   
@@ -705,7 +705,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../../../" class="md-nav__link ">
               
   
   
@@ -774,7 +774,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../../" class="md-nav__link ">
               
   
   
@@ -838,7 +838,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -851,7 +851,7 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -869,6 +869,8 @@
               
                 
   
+  
+    
   
   
   
@@ -907,18 +909,17 @@
     
     
       
-        
-        
-      
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
-  
-  
-  
-    <a href="AIAgentCourse/BONUSUNIT10/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   
   <span class="md-ellipsis">
@@ -927,12 +928,313 @@
   </span>
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2_2_2" id="__nav_4_2_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_2_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            AIAgentCourse
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
       
-        <span class="md-nav__icon md-icon"></span>
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
-    </a>
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Bonus Unit 1. Fine-tuning an LLM for Function-calling
+    
+  </span>
   
 
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bonus Unit 1. Fine-tuning an LLM for Function-calling
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#function-calling-简介" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function-calling 简介
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fine-tuning-过程" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fine-tuning 过程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#函数调用模型评估与应用" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数调用模型评估与应用
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#总结" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BONUSUNIT20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bonus Unit 2. Agent Observability and Evaluation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../BONUSUNIT30/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bonus Unit 3. Agents in Games with Pokemon
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UNIT1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UNIT1. INTRODUCTION TO AGENTS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UNIT20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UNIT2 FRAMEWORKS FOR AI AGENTS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UNIT21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UNIT2.1 Smolagents Frameworks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UNIT22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UNIT2.2 LlamaIndex Frameworks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UNIT23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UNIT2.3 LangGraph Frameworks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UNIT30/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UNIT3 Use Case for Agentic RAG
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -986,7 +1288,7 @@
   
   
   
-    <a href="../inbox/2412_prompt_begin/" class="md-nav__link">
+    <a href="../../../inbox/2412_prompt_begin/" class="md-nav__link">
       
   
   
@@ -1053,7 +1355,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../books/" class="md-nav__link ">
+            <a href="../../../../books/" class="md-nav__link ">
               
   
   
@@ -1118,7 +1420,7 @@
   
   
   
-    <a href="../../books/2401%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/" class="md-nav__link">
+    <a href="../../../../books/2401%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/" class="md-nav__link">
       
   
   
@@ -1185,7 +1487,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../common/" class="md-nav__link ">
+            <a href="../../../../common/" class="md-nav__link ">
               
   
   
@@ -1220,7 +1522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../common/load_balancer_algorithm/" class="md-nav__link">
+      <a href="../../../../common/load_balancer_algorithm/" class="md-nav__link">
         
   
   
@@ -1288,7 +1590,7 @@
   
   
   
-    <a href="../../../os/" class="md-nav__link">
+    <a href="../../../../../os/" class="md-nav__link">
       
   
   
@@ -1342,7 +1644,7 @@
   
   
   
-    <a href="../../../network/" class="md-nav__link">
+    <a href="../../../../../network/" class="md-nav__link">
       
   
   
@@ -1396,7 +1698,7 @@
   
   
   
-    <a href="../../../ds/" class="md-nav__link">
+    <a href="../../../../../ds/" class="md-nav__link">
       
   
   
@@ -1452,7 +1754,7 @@
   
   
   
-    <a href="../../../architecture/" class="md-nav__link">
+    <a href="../../../../../architecture/" class="md-nav__link">
       
   
   
@@ -1506,7 +1808,7 @@
   
   
   
-    <a href="../../../middleware/" class="md-nav__link">
+    <a href="../../../../../middleware/" class="md-nav__link">
       
   
   
@@ -1568,7 +1870,7 @@
   
   
   
-    <a href="../../../project/" class="md-nav__link">
+    <a href="../../../../../project/" class="md-nav__link">
       
   
   
@@ -1634,7 +1936,7 @@
   
   
   
-    <a href="../../../common/01-100_tips/" class="md-nav__link">
+    <a href="../../../../../common/01-100_tips/" class="md-nav__link">
       
   
   
@@ -1677,6 +1979,50 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#function-calling-简介" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function-calling 简介
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fine-tuning-过程" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fine-tuning 过程
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#函数调用模型评估与应用" class="md-nav__link">
+    <span class="md-ellipsis">
+      函数调用模型评估与应用
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#总结" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1694,7 +2040,231 @@
   
 
 
-<h1 id="huggingface">Huggingface<a class="headerlink" href="#huggingface" title="Permanent link">&para;</a></h1>
+<h1 id="bonus-unit-1-fine-tuning-an-llm-for-function-calling">Bonus Unit 1. Fine-tuning an LLM for Function-calling<a class="headerlink" href="#bonus-unit-1-fine-tuning-an-llm-for-function-calling" title="Permanent link">&para;</a></h1>
+<h2 id="function-calling-简介">Function-calling 简介<a class="headerlink" href="#function-calling-简介" title="Permanent link">&para;</a></h2>
+<p><strong>1. 什么是 Function-calling ？</strong></p>
+<p>函数调用(Function Calling)是一种使大型语言模型(LLM)能够与环境交互的技术，最初由GPT-4引入，后被其他模型采纳。与传统智能体工具不同，函数调用能力是模型<strong>通过训练习得的</strong>，而非仅依赖提示工程。</p>
+<p>函数调用的核心特点：</p>
+<ul>
+<li>允许模型主动执行环境操作</li>
+<li>通过微调而非提示获得能力</li>
+<li>减少对复杂提示工程的依赖</li>
+</ul>
+<p><strong>2. 函数调用的工作流程</strong></p>
+<p>函数调用遵循"思考-行动-观察"的循环：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>思考</strong></td>
+<td>模型分析需要采取哪些行动来实现目标</td>
+</tr>
+<tr>
+<td><strong>行动</strong></td>
+<td>以正确格式调用函数并停止生成</td>
+</tr>
+<tr>
+<td><strong>观察</strong></td>
+<td>接收函数执行结果并继续思考</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3. 对话角色的扩展</strong></p>
+<p>函数调用为标准对话流程引入了新角色：</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a>传统对话角色：
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a>- user（用户）
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a>- assistant（助手）
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a>函数调用新增角色：
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos="6 "></span></a>- function_call（行动）
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos="7 "></span></a>- tool（观察）
+</code></pre></div>
+<p>示例对话结构：
+<div class="language-json highlight"><span class="filename">JSON</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="p">[</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="w">  </span><span class="p">{</span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;我的交易T1001状态如何？&quot;</span><span class="p">},</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="w">    </span><span class="nt">&quot;function_call&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><a href="#__codelineno-1-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;retrieve_payment_status&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><a href="#__codelineno-1-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">      </span><span class="nt">&quot;arguments&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;transaction_id\&quot;: \&quot;T1001\&quot;}&quot;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><a href="#__codelineno-1-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><a href="#__codelineno-1-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><a href="#__codelineno-1-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><a href="#__codelineno-1-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tool&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><a href="#__codelineno-1-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;retrieve_payment_status&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><a href="#__codelineno-1-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">    </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;status\&quot;: \&quot;已支付\&quot;}&quot;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><a href="#__codelineno-1-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><a href="#__codelineno-1-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><a href="#__codelineno-1-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">    </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><a href="#__codelineno-1-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">    </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;您的交易T1001已成功支付。&quot;</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><a href="#__codelineno-1-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a><a href="#__codelineno-1-20"><span class="linenos" data-linenos="20 "></span></a><span class="p">]</span>
+</code></pre></div></p>
+<p><strong>4. 特殊标记(Special Tokens)</strong></p>
+<p>为支持函数调用，模型需要理解特定的标记：</p>
+<table>
+<thead>
+<tr>
+<th>特殊标记</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[AVAILABLE_TOOLS]</code></td>
+<td>标记可用工具列表开始</td>
+</tr>
+<tr>
+<td><code>[/AVAILABLE_TOOLS]</code></td>
+<td>标记可用工具列表结束</td>
+</tr>
+<tr>
+<td><code>[TOOL_CALLS]</code></td>
+<td>标记工具调用开始（执行"行动"）</td>
+</tr>
+<tr>
+<td><code>[TOOL_RESULTS]</code></td>
+<td>标记工具调用结果（"观察"）</td>
+</tr>
+<tr>
+<td><code>[/TOOL_RESULTS]</code></td>
+<td>标记观察结束（模型可继续生成）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fine-tuning-过程">Fine-tuning 过程<a class="headerlink" href="#fine-tuning-过程" title="Permanent link">&para;</a></h2>
+<p><strong>1. 模型训练的三步骤</strong></p>
+<p>模型训练通常分为三个阶段：</p>
+<ol>
+<li><strong>预训练</strong>：模型在大量数据上学习基础语言能力，产出如<code>google/gemma-2-2b</code>的基础模型</li>
+<li><strong>微调</strong>：模型学习遵循指令，可由模型创建者或社区完成，如<code>google/gemma-2-2b-it</code></li>
+<li><strong>对齐</strong>：模型适应特定偏好，如客服机器人永不对客户无礼</li>
+</ol>
+<p>在本教程中，我们基于已经过指令微调的<code>google/gemma-2-2b-it</code>构建函数调用模型，这可以减少模型需要学习的信息量。</p>
+<p><strong>2. LoRA 微调技术</strong></p>
+<p>LoRA（低秩适应）是一种轻量级训练技术，显著减少可训练参数数量：</p>
+<table>
+<thead>
+<tr>
+<th>LoRA特点</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>工作原理</strong></td>
+<td>在模型中插入少量新权重作为适配器</td>
+</tr>
+<tr>
+<td><strong>训练效率</strong></td>
+<td>更快、更节省内存、产生更小的权重文件</td>
+</tr>
+<tr>
+<td><strong>技术细节</strong></td>
+<td>向Transformer层添加秩分解矩阵对，同时"冻结"模型其他部分</td>
+</tr>
+<tr>
+<td><strong>推理优势</strong></td>
+<td>可将适配器权重与基础模型合并，无额外延迟</td>
+</tr>
+</tbody>
+</table>
+<p>LoRA 特别适合以有限资源将大型语言模型适应特定任务或领域，显著降低训练所需内存。</p>
+<p><strong>3. 微调数据集准备</strong></p>
+<p>为函数调用微调模型需要特殊格式的数据集，包含以下元素：</p>
+<ul>
+<li>用户查询</li>
+<li>模型的思考过程</li>
+<li>函数调用（包括函数名和参数）</li>
+<li>函数执行结果</li>
+<li>最终回复</li>
+</ul>
+<p>每个训练样本应包含完整的交互循环，从用户查询到最终回复。</p>
+<p><strong>4. 微调过程</strong></p>
+<p>微调过程的关键步骤：</p>
+<ol>
+<li><strong>准备基础模型</strong>：加载预训练模型（如<code>google/gemma-2-2b-it</code>）</li>
+<li><strong>添加特殊标记</strong>：为模型添加函数调用相关的特殊标记</li>
+<li><strong>准备LoRA配置</strong>：设置适配器结构和训练参数</li>
+<li><strong>数据处理</strong>：将训练数据转换为模型可理解的格式</li>
+<li><strong>训练执行</strong>：使用<code>SFTTrainer</code>进行监督微调</li>
+<li><strong>模型推送</strong>：将微调后的模型上传至 Hugging Face Hub</li>
+</ol>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1"># 示例代码：添加特殊标记</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoTokenizer</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos=" 3 "></span></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;google/gemma-2-2b-it&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="c1"># 添加函数调用所需的特殊标记</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><a href="#__codelineno-2-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="n">tokenizer</span><span class="o">.</span><span class="n">add_special_tokens</span><span class="p">({</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><a href="#__codelineno-2-7"><span class="linenos" data-linenos=" 7 "></span></a>    <span class="s2">&quot;additional_special_tokens&quot;</span><span class="p">:</span> <span class="p">[</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><a href="#__codelineno-2-8"><span class="linenos" data-linenos=" 8 "></span></a>        <span class="s2">&quot;[AVAILABLE_TOOLS]&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><a href="#__codelineno-2-9"><span class="linenos" data-linenos=" 9 "></span></a>        <span class="s2">&quot;[/AVAILABLE_TOOLS]&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><a href="#__codelineno-2-10"><span class="linenos" data-linenos="10 "></span></a>        <span class="s2">&quot;[TOOL_CALLS]&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><a href="#__codelineno-2-11"><span class="linenos" data-linenos="11 "></span></a>        <span class="s2">&quot;[TOOL_RESULTS]&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><a href="#__codelineno-2-12"><span class="linenos" data-linenos="12 "></span></a>        <span class="s2">&quot;[/TOOL_RESULTS]&quot;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><a href="#__codelineno-2-13"><span class="linenos" data-linenos="13 "></span></a>    <span class="p">]</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><a href="#__codelineno-2-14"><span class="linenos" data-linenos="14 "></span></a><span class="p">})</span>
+</code></pre></div>
+<h2 id="函数调用模型评估与应用">函数调用模型评估与应用<a class="headerlink" href="#函数调用模型评估与应用" title="Permanent link">&para;</a></h2>
+<p><strong>1. 模型评估</strong></p>
+<p>评估微调后的函数调用模型应关注以下方面：</p>
+<ul>
+<li><strong>函数选择准确性</strong>：模型是否正确选择适合任务的函数</li>
+<li><strong>参数传递准确性</strong>：模型是否提供正确参数格式</li>
+<li><strong>结果解释能力</strong>：模型是否正确理解并解释函数执行结果</li>
+<li><strong>多轮对话能力</strong>：模型是否能维持多轮函数调用交互</li>
+</ul>
+<p><strong>2. 实际应用场景</strong></p>
+<p>函数调用模型适用于多种场景：</p>
+<table>
+<thead>
+<tr>
+<th>应用场景</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>个人助手</strong></td>
+<td>执行日程安排、提醒设置、信息检索</td>
+</tr>
+<tr>
+<td><strong>客户服务</strong></td>
+<td>查询订单状态、处理退款请求、解答产品问题</td>
+</tr>
+<tr>
+<td><strong>智能家居</strong></td>
+<td>控制智能设备、调整环境设置、创建自动化流程</td>
+</tr>
+<tr>
+<td><strong>数据分析</strong></td>
+<td>执行数据查询、生成报表、执行简单分析</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3. 模型限制</strong></p>
+<p>函数调用模型仍存在一些限制：</p>
+<ul>
+<li><strong>依赖预定义函数</strong>：仅能使用明确定义的功能</li>
+<li><strong>工具使用能力</strong>：虽经过训练，但可能仍有错误或不一致</li>
+<li><strong>复杂推理</strong>：复杂场景下可能需要多个函数调用才能完成任务</li>
+</ul>
+<h2 id="总结">总结<a class="headerlink" href="#总结" title="Permanent link">&para;</a></h2>
+<p>为函数调用微调大型语言模型是一项强大技术，使模型能够有效地与外部工具交互。通过LoRA等轻量级训练技术，您可以高效地为模型添加函数调用能力，而无需昂贵的完整模型重训练。</p>
+<p>关键收获：</p>
+<ol>
+<li><strong>函数调用原理</strong>：理解"思考-行动-观察"循环及特殊标记的作用</li>
+<li><strong>LoRA 技术</strong>：掌握轻量级、高效的模型适应方法</li>
+<li><strong>微调流程</strong>：学习从数据准备到模型部署的完整过程</li>
+<li><strong>应用扩展</strong>：能够将函数调用模型应用于各种实际场景</li>
+</ol>
+<p>通过本单元学习，您已具备为不同模型添加函数调用能力的知识和技能，能够创建更具交互性和实用性的AI智能体。</p>
 
 
 
@@ -1717,7 +2287,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="March 29, 2025 16:01:45">March 29, 2025 16:01:45</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="May 12, 2025 11:01:36">May 12, 2025 11:01:36</span>
   </span>
 
     
@@ -1727,7 +2297,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="March 29, 2025 16:01:45">March 29, 2025 16:01:45</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="May 12, 2025 11:01:36">May 12, 2025 11:01:36</span>
   </span>
 
     
@@ -1766,7 +2336,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: LLM">
+          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Huggingface">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1776,20 +2346,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                LLM
+                Huggingface
               </div>
             </div>
           </a>
         
         
           
-          <a href="AIAgentCourse/BONUSUNIT10/" class="md-footer__link md-footer__link--next" aria-label="Next: Bonus Unit 1. Fine-tuning an LLM for Function-calling">
+          <a href="../BONUSUNIT20/" class="md-footer__link md-footer__link--next" aria-label="Next: Bonus Unit 2. Agent Observability and Evaluation">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Bonus Unit 1. Fine-tuning an LLM for Function-calling
+                Bonus Unit 2. Agent Observability and Evaluation
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1925,12 +2495,12 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotation", "content.code.copy", "content.code.select", "header.autohide"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotation", "content.code.copy", "content.code.select", "header.autohide"], "search": "../../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
-        <script src="../../../javascripts/mathjax.js"></script>
+        <script src="../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
