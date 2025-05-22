@@ -12,10 +12,10 @@
         <meta name="author" content="catwithtudou️">
       
       
-        <link rel="canonical" href="https://zhengyua.cn/new_blog/project/learn/KrillinAI/better/">
+        <link rel="canonical" href="https://zhengyua.cn/new_blog/project/learn/hollywood/game/">
       
       
-        <link rel="prev" href="../../">
+        <link rel="prev" href="../actor_model_other/">
       
       
         <link rel="next" href="../">
@@ -26,7 +26,7 @@
     
     
       
-        <title>可优化的地方 - catwithtudou️🌦️</title>
+        <title>Hollywood 在游戏服务端的落地范式 - catwithtudou️🌦️</title>
       
     
     
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#可优化的地方" class="md-skip">
+        <a href="#hollywood-在游戏服务端的落地范式" class="md-skip">
           Skip to content
         </a>
       
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              可优化的地方
+              Hollywood 在游戏服务端的落地范式
             
           </span>
         </div>
@@ -1333,8 +1333,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1348,6 +1346,69 @@
       
         
       
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../KrillinAI/better/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    KrillinAI
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+          
         
       
     
@@ -1365,7 +1426,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_3_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_3_3" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -1374,7 +1435,7 @@
   
   
   <span class="md-ellipsis">
-    KrillinAI
+    hollywood
     
   </span>
   
@@ -1382,18 +1443,64 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_10_3_2" id="__nav_10_3_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_10_3_3" id="__nav_10_3_3_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_10_3_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_10_3_2">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_10_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10_3_3">
             <span class="md-nav__icon md-icon"></span>
-            KrillinAI
+            hollywood
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../actor_model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    理解 Actor Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../actor_model_other/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Actor Model ≠ 分布式事务 —— 如何在一致性与并发之间做取舍？
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1416,7 +1523,7 @@
   
   
   <span class="md-ellipsis">
-    可优化的地方
+    Hollywood 在游戏服务端的落地范式
     
   </span>
   
@@ -1429,7 +1536,7 @@
   
   
   <span class="md-ellipsis">
-    可优化的地方
+    Hollywood 在游戏服务端的落地范式
     
   </span>
   
@@ -1454,36 +1561,114 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-storagesubtitletasks-全局-map-带来的并发安全问题" class="md-nav__link">
+  <a href="#1-典型游戏后端的职责" class="md-nav__link">
     <span class="md-ellipsis">
-      1. storage.SubtitleTasks 全局 map 带来的并发安全问题
+      1. 典型游戏后端的职责
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-任务状态管理考虑持久化处理避免重启导致任务状态丢失" class="md-nav__link">
+  <a href="#2-actor-划分示例" class="md-nav__link">
     <span class="md-ellipsis">
-      2. 任务状态管理考虑持久化处理避免重启导致任务状态丢失
+      2. Actor 划分示例
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-多个任务的并发控制" class="md-nav__link">
+  <a href="#3-集群拓扑示意" class="md-nav__link">
     <span class="md-ellipsis">
-      3. 多个任务的并发控制
+      3. 集群拓扑示意
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-可考虑的架构演进" class="md-nav__link">
+  <a href="#4-核心能力与游戏需求的契合点" class="md-nav__link">
     <span class="md-ellipsis">
-      4. 可考虑的架构演进
+      4. 核心能力与游戏需求的契合点
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-关键实现片段" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 关键实现片段
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 关键实现片段">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-playeractor" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 PlayerActor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-roomactor--帧同步" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 RoomActor – 帧同步
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-cluster-激活" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 Cluster 激活
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-运维与监控" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 运维与监控
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-性能实测示例" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 性能实测（示例）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-limitations--best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Limitations &amp; Best Practices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-为什么说-hollywood-特别适合游戏后端" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. 为什么说 Hollywood 特别适合游戏后端？
     </span>
   </a>
   
@@ -1500,115 +1685,8 @@
             
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../learn/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    可学习和参考的地方（1-11）
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../learn01/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    可学习参考的地方（12-14）
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-          
-        
-      
-    
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../hollywood/actor_model/" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    hollywood
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
       
     </li>
   
@@ -2097,36 +2175,114 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-storagesubtitletasks-全局-map-带来的并发安全问题" class="md-nav__link">
+  <a href="#1-典型游戏后端的职责" class="md-nav__link">
     <span class="md-ellipsis">
-      1. storage.SubtitleTasks 全局 map 带来的并发安全问题
+      1. 典型游戏后端的职责
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-任务状态管理考虑持久化处理避免重启导致任务状态丢失" class="md-nav__link">
+  <a href="#2-actor-划分示例" class="md-nav__link">
     <span class="md-ellipsis">
-      2. 任务状态管理考虑持久化处理避免重启导致任务状态丢失
+      2. Actor 划分示例
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-多个任务的并发控制" class="md-nav__link">
+  <a href="#3-集群拓扑示意" class="md-nav__link">
     <span class="md-ellipsis">
-      3. 多个任务的并发控制
+      3. 集群拓扑示意
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-可考虑的架构演进" class="md-nav__link">
+  <a href="#4-核心能力与游戏需求的契合点" class="md-nav__link">
     <span class="md-ellipsis">
-      4. 可考虑的架构演进
+      4. 核心能力与游戏需求的契合点
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-关键实现片段" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 关键实现片段
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 关键实现片段">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-playeractor" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 PlayerActor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-roomactor--帧同步" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 RoomActor – 帧同步
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-cluster-激活" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 Cluster 激活
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-运维与监控" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 运维与监控
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-性能实测示例" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 性能实测（示例）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-limitations--best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Limitations &amp; Best Practices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-为什么说-hollywood-特别适合游戏后端" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. 为什么说 Hollywood 特别适合游戏后端？
     </span>
   </a>
   
@@ -2151,82 +2307,278 @@
   
 
 
-<h1 id="可优化的地方">可优化的地方<a class="headerlink" href="#可优化的地方" title="Permanent link">&para;</a></h1>
-<h2 id="1-storagesubtitletasks-全局-map-带来的并发安全问题">1. storage.SubtitleTasks 全局 map 带来的并发安全问题<a class="headerlink" href="#1-storagesubtitletasks-全局-map-带来的并发安全问题" title="Permanent link">&para;</a></h2>
-<ul>
-<li>
-<p>在 subtitle_service.go 实现中 storage.SubtitleTasks 变量是一个全局 map</p>
-</li>
-<li>
-<p>该逻辑里面也有异步 goroutine 中修改全局 map 的处理，虽然每个任务有唯一的taskId，但是map的并发访问和修改是不安全的</p>
-</li>
-<li>
-<p>项目中主流程和goroutine之间也确实可能会出现并发访问，虽然每个任务的处理是顺序的，但不同任务之间可能并发</p>
-</li>
-<li>
-<p><strong>可以考虑使用类似 sync.Map 的处理来进行避免</strong></p>
-</li>
-</ul>
-<h2 id="2-任务状态管理考虑持久化处理避免重启导致任务状态丢失">2. 任务状态管理考虑持久化处理避免重启导致任务状态丢失<a class="headerlink" href="#2-任务状态管理考虑持久化处理避免重启导致任务状态丢失" title="Permanent link">&para;</a></h2>
-<div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="nx">storage</span><span class="p">.</span><span class="nx">SubtitleTasks</span><span class="p">[</span><span class="nx">taskId</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">types</span><span class="p">.</span><span class="nx">SubtitleTask</span><span class="p">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">    </span><span class="nx">TaskId</span><span class="p">:</span><span class="w">   </span><span class="nx">taskId</span><span class="p">,</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">    </span><span class="nx">VideoSrc</span><span class="p">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">Url</span><span class="p">,</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">    </span><span class="nx">Status</span><span class="p">:</span><span class="w">   </span><span class="nx">types</span><span class="p">.</span><span class="nx">SubtitleTaskStatusProcessing</span><span class="p">,</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a><span class="p">}</span>
-</code></pre></div>
-<ul>
-<li>当前使用的是内存存储（map），建议改用 Redis 或数据库存储</li>
-<li>需要考虑任务状态的持久化，避免服务重启导致任务状态丢失</li>
-<li>可以添加任务过期清理机制</li>
-</ul>
-<h2 id="3-多个任务的并发控制">3. 多个任务的并发控制<a class="headerlink" href="#3-多个任务的并发控制" title="Permanent link">&para;</a></h2>
-<ul>
-<li>建议添加任务队列，控制并发处理的任务数量</li>
-<li>可以使用信号量或工作池模式限制同时处理的任务数</li>
-</ul>
-<div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1">// 建议添加类似这样的任务队列控制</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kd">type</span><span class="w"> </span><span class="nx">TaskQueue</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="nx">semaphore</span><span class="w"> </span><span class="kd">chan</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="nx">tasks</span><span class="w">     </span><span class="kd">chan</span><span class="w"> </span><span class="o">*</span><span class="nx">types</span><span class="p">.</span><span class="nx">SubtitleTask</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="p">}</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos=" 6 "></span></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7"></a><a href="#__codelineno-1-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="kd">func</span><span class="w"> </span><span class="nx">NewTaskQueue</span><span class="p">(</span><span class="nx">maxConcurrent</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">TaskQueue</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a><a href="#__codelineno-1-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">TaskQueue</span><span class="p">{</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a><a href="#__codelineno-1-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">        </span><span class="nx">semaphore</span><span class="p">:</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kd">struct</span><span class="p">{},</span><span class="w"> </span><span class="nx">maxConcurrent</span><span class="p">),</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a><a href="#__codelineno-1-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">        </span><span class="nx">tasks</span><span class="p">:</span><span class="w">     </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="o">*</span><span class="nx">types</span><span class="p">.</span><span class="nx">SubtitleTask</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">),</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11"></a><a href="#__codelineno-1-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12"></a><a href="#__codelineno-1-12"><span class="linenos" data-linenos="12 "></span></a><span class="p">}</span>
-</code></pre></div>
-<h2 id="4-可考虑的架构演进">4. 可考虑的架构演进<a class="headerlink" href="#4-可考虑的架构演进" title="Permanent link">&para;</a></h2>
+<h1 id="hollywood-在游戏服务端的落地范式">Hollywood 在游戏服务端的落地范式<a class="headerlink" href="#hollywood-在游戏服务端的落地范式" title="Permanent link">&para;</a></h1>
+<h2 id="1-典型游戏后端的职责">1. 典型游戏后端的职责<a class="headerlink" href="#1-典型游戏后端的职责" title="Permanent link">&para;</a></h2>
 <ol>
-<li>消息队列改造</li>
+<li>连接层（网关）：长连接 / WebSocket / UDP</li>
+<li>会话层：玩家登录、心跳、认证</li>
+<li>场景/房间：状态同步、逻辑帧、AOI</li>
+<li>世界服务：全局排行榜、聊天、邮件</li>
+<li>匹配/排队：Matchmaking、分配房间</li>
+<li>经济系统：道具、货币、商城</li>
+<li>后台运维：监控、热更新、GM 指令</li>
 </ol>
-<div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1">// 使用消息队列解耦任务处理</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kd">type</span><span class="w"> </span><span class="nx">TaskProcessor</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="nx">mqClient</span><span class="w">    </span><span class="nx">mq</span><span class="p">.</span><span class="nx">Client</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="nx">taskQueue</span><span class="w">   </span><span class="kt">string</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span><span class="nx">resultQueue</span><span class="w"> </span><span class="kt">string</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><a href="#__codelineno-2-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="p">}</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a><a href="#__codelineno-2-7"><span class="linenos" data-linenos=" 7 "></span></a>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><a href="#__codelineno-2-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="o">*</span><span class="nx">TaskProcessor</span><span class="p">)</span><span class="w"> </span><span class="nx">PublishTask</span><span class="p">(</span><span class="nx">task</span><span class="w"> </span><span class="o">*</span><span class="nx">types</span><span class="p">.</span><span class="nx">SubtitleTask</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a><a href="#__codelineno-2-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">p</span><span class="p">.</span><span class="nx">mqClient</span><span class="p">.</span><span class="nx">Publish</span><span class="p">(</span><span class="nx">p</span><span class="p">.</span><span class="nx">taskQueue</span><span class="p">,</span><span class="w"> </span><span class="nx">task</span><span class="p">)</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a><a href="#__codelineno-2-10"><span class="linenos" data-linenos="10 "></span></a><span class="p">}</span>
+<p>这些组件本质都是“并发状态载体”，天然符合 <strong>Actor = 状态 + 消息</strong> 的建模思路。</p>
+<hr />
+<h2 id="2-actor-划分示例">2. Actor 划分示例<a class="headerlink" href="#2-actor-划分示例" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>领域对象</th>
+<th>推荐 Actor 粒度</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>玩家</td>
+<td>PlayerActor</td>
+<td>登录、属性、背包、RPC 转发</td>
+</tr>
+<tr>
+<td>房间/副本</td>
+<td>RoomActor</td>
+<td>帧同步 / 邀请 / 结算</td>
+</tr>
+<tr>
+<td>地图格子</td>
+<td>CellActor</td>
+<td>AOI 广播、怪物刷新</td>
+</tr>
+<tr>
+<td>排位匹配</td>
+<td>MatchActor</td>
+<td>维护一个匹配池</td>
+</tr>
+<tr>
+<td>全服聊天</td>
+<td>ChatActor</td>
+<td>频道管理、发言节流</td>
+</tr>
+<tr>
+<td>经济系统</td>
+<td>BankActor</td>
+<td>转账、扣费、事务化</td>
+</tr>
+<tr>
+<td>GM 命令</td>
+<td>GmActor</td>
+<td>高权限指令</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>一句话原则：<strong>能独立序列化、可单线程处理、需要持久状态</strong>的对象，都适合建成一个 Actor。</p>
+</blockquote>
+<hr />
+<h2 id="3-集群拓扑示意">3. 集群拓扑示意<a class="headerlink" href="#3-集群拓扑示意" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos=" 1 "></span></a>                 ┌──────────┐
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos=" 2 "></span></a> WebSocket/UDP   │  Gateway │  纯 I/O，按 playerID 路由到 Cluster
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos=" 3 "></span></a>──────────────►  └──────────┘
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos=" 4 "></span></a>                       │ Remote(dRPC)
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos=" 5 "></span></a>┌──────────────────────────────────────────────────────────────┐
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos=" 6 "></span></a>│ Hollywood Cluster (N 节点)                                  │
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos=" 7 "></span></a>│  ┌────────────┐   ┌──────────┐   ┌────────────┐            │
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><a href="#__codelineno-0-8"><span class="linenos" data-linenos=" 8 "></span></a>│  │PlayerActor │…  │RoomActor │…  │MatchActor  │ …          │
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="#__codelineno-0-9"><span class="linenos" data-linenos=" 9 "></span></a>│  └────────────┘   └──────────┘   └────────────┘            │
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><a href="#__codelineno-0-10"><span class="linenos" data-linenos="10 "></span></a>│           ▲                  ▲                             │
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><a href="#__codelineno-0-11"><span class="linenos" data-linenos="11 "></span></a>│           │Eventstream       │Crash/DeadLetter             │
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><a href="#__codelineno-0-12"><span class="linenos" data-linenos="12 "></span></a>│  Prometheus╱            Grafana Dashboard                  │
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><a href="#__codelineno-0-13"><span class="linenos" data-linenos="13 "></span></a>└──────────────────────────────────────────────────────────────┘
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><a href="#__codelineno-0-14"><span class="linenos" data-linenos="14 "></span></a>           ▲
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><a href="#__codelineno-0-15"><span class="linenos" data-linenos="15 "></span></a>           │ gRPC / REST
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><a href="#__codelineno-0-16"><span class="linenos" data-linenos="16 "></span></a>   Backoffice / GM / Ops
 </code></pre></div>
-<ol start="2">
-<li>分布式任务处理</li>
-</ol>
 <ul>
-<li>将任务处理服务独立部署</li>
-<li>使用分布式任务调度系统（如 Asynq）</li>
-<li>支持横向扩展的任务处理集群</li>
+<li>使用 <strong>Hollywood Cluster</strong> 全局定位 Actor——<code>player-123</code> 无论在哪台机器都可 <code>Send()</code></li>
+<li><strong>Gateway</strong> 只做无状态转发，解决“长连接负载”与“业务逻辑”解耦</li>
+<li>监控层订阅 Eventstream，实时观测 Crash、DeadLetter、匹配池大小等指标</li>
 </ul>
-<ol start="3">
-<li>WebSocket 实时进度</li>
+<hr />
+<h2 id="4-核心能力与游戏需求的契合点">4. 核心能力与游戏需求的契合点<a class="headerlink" href="#4-核心能力与游戏需求的契合点" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>游戏痛点</th>
+<th>Hollywood 对应特性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>毫秒级帧同步 / 动作响应</td>
+<td>无锁 RingBuffer，单 Actor 内顺序执行</td>
+</tr>
+<tr>
+<td>玩家/房间崩溃自动恢复</td>
+<td>Crash Buffer + Supervision 重启</td>
+</tr>
+<tr>
+<td>动态水平扩容（节假日流量激增）</td>
+<td>Cluster Sharding，Actor 按 ID 分片到新节点</td>
+</tr>
+<tr>
+<td>网关与逻辑分离、消息可靠送达</td>
+<td>Remote dRPC + 至少一次投递</td>
+</tr>
+<tr>
+<td>热更新/滚动升级最小停服</td>
+<td>节点逐台下线，Shard 自动迁移</td>
+</tr>
+<tr>
+<td>防止并发写导致资产竞态</td>
+<td>Actor 内单线程，天然强一致</td>
+</tr>
+<tr>
+<td>低成本监控与告警</td>
+<td>Eventstream + Middleware + Prom</td>
+</tr>
+<tr>
+<td>即时战场 &amp; 离线挂机共存</td>
+<td>Idle TTL → RoomActor 自动钝化 / Passivate</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-关键实现片段">5. 关键实现片段<a class="headerlink" href="#5-关键实现片段" title="Permanent link">&para;</a></h2>
+<h3 id="51-playeractor">5.1 PlayerActor<a class="headerlink" href="#51-playeractor" title="Permanent link">&para;</a></h3>
+<div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kd">type</span><span class="w"> </span><span class="nx">PlayerMsg</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="w">    </span><span class="nx">Move</span><span class="w"> </span><span class="nx">vec3</span><span class="w"> </span><span class="c1">// 走位</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="nx">Cast</span><span class="w"> </span><span class="kt">int</span><span class="w">  </span><span class="c1">// 技能ID</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="p">}</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos=" 5 "></span></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos=" 6 "></span></a><span class="kd">type</span><span class="w"> </span><span class="nx">PlayerActor</span><span class="w"> </span><span class="kd">struct</span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><a href="#__codelineno-1-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="w">    </span><span class="nx">uid</span><span class="w">   </span><span class="kt">string</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><a href="#__codelineno-1-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="nx">state</span><span class="w"> </span><span class="o">*</span><span class="nx">pb</span><span class="p">.</span><span class="nx">PlayerState</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><a href="#__codelineno-1-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="p">}</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><a href="#__codelineno-1-10"><span class="linenos" data-linenos="10 "></span></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><a href="#__codelineno-1-11"><span class="linenos" data-linenos="11 "></span></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">p</span><span class="w"> </span><span class="o">*</span><span class="nx">PlayerActor</span><span class="p">)</span><span class="w"> </span><span class="nx">Receive</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">actor</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><a href="#__codelineno-1-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Message</span><span class="p">().(</span><span class="kd">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><a href="#__codelineno-1-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">actor</span><span class="p">.</span><span class="nx">Started</span><span class="p">:</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><a href="#__codelineno-1-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">        </span><span class="c1">// 读取 Redis / DB</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><a href="#__codelineno-1-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="o">*</span><span class="nx">PlayerMsg</span><span class="p">:</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><a href="#__codelineno-1-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">        </span><span class="nx">p</span><span class="p">.</span><span class="nx">handleInput</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><a href="#__codelineno-1-17"><span class="linenos" data-linenos="17 "></span></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="o">*</span><span class="nx">gm</span><span class="p">.</span><span class="nx">Kick</span><span class="p">:</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><a href="#__codelineno-1-18"><span class="linenos" data-linenos="18 "></span></a><span class="w">        </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Engine</span><span class="p">().</span><span class="nx">Poison</span><span class="p">(</span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Self</span><span class="p">())</span><span class="w"> </span><span class="c1">// 踢下线</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><a href="#__codelineno-1-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a><a href="#__codelineno-1-20"><span class="linenos" data-linenos="20 "></span></a><span class="p">}</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a><a href="#__codelineno-1-21"><span class="linenos" data-linenos="21 "></span></a>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a><a href="#__codelineno-1-22"><span class="linenos" data-linenos="22 "></span></a><span class="kd">func</span><span class="w"> </span><span class="nx">newPlayer</span><span class="p">(</span><span class="nx">uid</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="nx">actor</span><span class="p">.</span><span class="nx">Producer</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a><a href="#__codelineno-1-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="nx">actor</span><span class="p">.</span><span class="nx">Receiver</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">PlayerActor</span><span class="p">{</span><span class="nx">uid</span><span class="p">:</span><span class="w"> </span><span class="nx">uid</span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a><a href="#__codelineno-1-24"><span class="linenos" data-linenos="24 "></span></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="52-roomactor--帧同步">5.2 RoomActor – 帧同步<a class="headerlink" href="#52-roomactor--帧同步" title="Permanent link">&para;</a></h3>
+<div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kd">type</span><span class="w"> </span><span class="nx">RoomActor</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="w">    </span><span class="nx">id</span><span class="w">      </span><span class="kt">string</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="nx">players</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="o">*</span><span class="nx">actor</span><span class="p">.</span><span class="nx">PID</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="nx">tick</span><span class="w">    </span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Ticker</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="p">}</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><a href="#__codelineno-2-6"><span class="linenos" data-linenos=" 6 "></span></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><a href="#__codelineno-2-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">RoomActor</span><span class="p">)</span><span class="w"> </span><span class="nx">Receive</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">actor</span><span class="p">.</span><span class="nx">Context</span><span class="p">){</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><a href="#__codelineno-2-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Message</span><span class="p">().(</span><span class="kd">type</span><span class="p">){</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><a href="#__codelineno-2-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">actor</span><span class="p">.</span><span class="nx">Started</span><span class="p">:</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><a href="#__codelineno-2-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">        </span><span class="nx">r</span><span class="p">.</span><span class="nx">tick</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">NewTicker</span><span class="p">(</span><span class="mi">33</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span><span class="w"> </span><span class="c1">// 30 FPS</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><a href="#__codelineno-2-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">        </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">SpawnFunc</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">loop</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;room-loop&quot;</span><span class="p">)</span><span class="w">             </span><span class="c1">// 内部协程</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><a href="#__codelineno-2-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="o">*</span><span class="nx">Enter</span><span class="p">:</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><a href="#__codelineno-2-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">        </span><span class="nx">r</span><span class="p">.</span><span class="nx">players</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">players</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">Player</span><span class="p">)</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><a href="#__codelineno-2-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="o">*</span><span class="nx">Leave</span><span class="p">:</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><a href="#__codelineno-2-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">        </span><span class="c1">// …</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><a href="#__codelineno-2-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><a href="#__codelineno-2-17"><span class="linenos" data-linenos="17 "></span></a><span class="p">}</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><a href="#__codelineno-2-18"><span class="linenos" data-linenos="18 "></span></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><a href="#__codelineno-2-19"><span class="linenos" data-linenos="19 "></span></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">RoomActor</span><span class="p">)</span><span class="w"> </span><span class="nx">loop</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">actor</span><span class="p">.</span><span class="nx">Context</span><span class="p">){</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a><a href="#__codelineno-2-20"><span class="linenos" data-linenos="20 "></span></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">tick</span><span class="p">.</span><span class="nx">C</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a><a href="#__codelineno-2-21"><span class="linenos" data-linenos="21 "></span></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="nx">_</span><span class="p">,</span><span class="w"> </span><span class="nx">pid</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">players</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a><a href="#__codelineno-2-22"><span class="linenos" data-linenos="22 "></span></a><span class="w">            </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">pid</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Frame</span><span class="p">{</span><span class="nx">Snap</span><span class="p">:</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">snapshot</span><span class="p">()})</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><a href="#__codelineno-2-23"><span class="linenos" data-linenos="23 "></span></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a><a href="#__codelineno-2-24"><span class="linenos" data-linenos="24 "></span></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25"></a><a href="#__codelineno-2-25"><span class="linenos" data-linenos="25 "></span></a><span class="p">}</span>
+</code></pre></div>
+<h3 id="53-cluster-激活">5.3 Cluster 激活<a class="headerlink" href="#53-cluster-激活" title="Permanent link">&para;</a></h3>
+<div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a><span class="nx">pid</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">engine</span><span class="p">.</span><span class="nx">Spawn</span><span class="p">(</span><span class="nx">newPlayer</span><span class="p">(</span><span class="nx">uid</span><span class="p">),</span><span class="w"> </span><span class="nx">uid</span><span class="p">,</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">        </span><span class="nx">actor</span><span class="p">.</span><span class="nx">WithInboxSize</span><span class="p">(</span><span class="mi">1024</span><span class="p">),</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">        </span><span class="nx">actor</span><span class="p">.</span><span class="nx">WithMaxRestarts</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><a href="#__codelineno-3-4"><span class="linenos" data-linenos="4 "></span></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><a href="#__codelineno-3-5"><span class="linenos" data-linenos="5 "></span></a><span class="c1">// 另一节点照样 Send，无需关心 pid.node</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><a href="#__codelineno-3-6"><span class="linenos" data-linenos="6 "></span></a><span class="nx">engine</span><span class="p">.</span><span class="nx">Send</span><span class="p">(</span><span class="nx">pid</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">PlayerMsg</span><span class="p">{</span><span class="nx">Move</span><span class="p">:</span><span class="w"> </span><span class="nx">pos</span><span class="p">})</span>
+</code></pre></div>
+<p>Hollywood 会把 <code>uid</code> MurmurHash 到某个 Shard，若目标不在本节点就远程激活。</p>
+<hr />
+<h2 id="6-运维与监控">6. 运维与监控<a class="headerlink" href="#6-运维与监控" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Eventstream 订阅器</strong>
+   <div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a><span class="nx">engine</span><span class="p">.</span><span class="nx">Eventstream</span><span class="p">().</span><span class="nx">Subscribe</span><span class="p">(</span><span class="nx">pidMonitor</span><span class="p">,</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">     </span><span class="o">&amp;</span><span class="nx">actor</span><span class="p">.</span><span class="nx">ActorRestartedEvent</span><span class="p">{},</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><a href="#__codelineno-4-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">     </span><span class="o">&amp;</span><span class="nx">actor</span><span class="p">.</span><span class="nx">DeadLetterEvent</span><span class="p">{})</span>
+</code></pre></div></li>
+<li><strong>Prometheus Middleware</strong>
+   <div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a><span class="nx">e</span><span class="p">.</span><span class="nx">UseMiddleware</span><span class="p">(</span><span class="nx">metrics</span><span class="p">.</span><span class="nx">LatencyMW</span><span class="p">,</span><span class="w"> </span><span class="nx">metrics</span><span class="p">.</span><span class="nx">InboxGaugeMW</span><span class="p">)</span>
+</code></pre></div></li>
+<li><strong>热迁移</strong>
+   - 节点下线前调用 <code>cluster.MemberLeave()</code>
+   - Sharding 层将 RoomActor/PlayerActor 迁至其他节点，无感知切换。</li>
 </ol>
-<ul>
-<li>除了轮询接口外，可以提供 WebSocket 接口推送任务进度</li>
-<li>减少客户端轮询压力</li>
-</ul>
+<hr />
+<h2 id="7-性能实测示例">7. 性能实测（示例）<a class="headerlink" href="#7-性能实测示例" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>Online 玩家</th>
+<th>节点数</th>
+<th>Avg RTT</th>
+<th>p99</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>房间服 30 FPS</td>
+<td>50 K</td>
+<td>4</td>
+<td>6 ms</td>
+<td>12 ms</td>
+</tr>
+<tr>
+<td>匹配池 3K req/s</td>
+<td>–</td>
+<td>2</td>
+<td>3 ms</td>
+<td>9 ms</td>
+</tr>
+<tr>
+<td>世界聊天广播 500 msg/s</td>
+<td>全服</td>
+<td>4</td>
+<td>4 ms</td>
+<td>10 ms</td>
+</tr>
+</tbody>
+</table>
+<p>硬件：AMD 7713P *2, 128GB, Go 1.22, Hollywood master</p>
+<hr />
+<h2 id="8-limitations--best-practices">8. Limitations &amp; Best Practices<a class="headerlink" href="#8-limitations--best-practices" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>大房间 (&gt;200 人)</strong>
+   - 单 RoomActor 可能 CPU 饱和；可拆分 AOI CellActor 或分布式帧合并。</li>
+<li><strong>超大消息包</strong>
+   - 语音/录像数据应使用独立流服务，Actor 只存索引。</li>
+<li><strong>一致性需求</strong>
+   - 跨玩家经济结算需 Saga 或集中 BankActor，避免分布式事务。</li>
+<li><strong>Inbox 爆炸</strong>
+   - PvP DDoS 可把 InboxSize 设小并对外做节流。</li>
+</ol>
+<hr />
+<h2 id="9-为什么说-hollywood-特别适合游戏后端">9. 为什么说 Hollywood 特别适合游戏后端？<a class="headerlink" href="#9-为什么说-hollywood-特别适合游戏后端" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>低延迟</strong>：无锁 RingBuffer + 单线程 Actor，tail-latency 几十微秒级。</li>
+<li><strong>“天然房间”</strong>：Room/Scene/Match 正是最好粒度的 Actor。</li>
+<li><strong>强一致域</strong>：玩家资产、房间状态在单 Actor 内线性一致，告别 mutex。</li>
+<li><strong>可扩集群</strong>：长尾玩家或世界频道可水平扩容，无需中心路由。</li>
+<li><strong>容错</strong>：单房崩溃自动重启且消息重放，玩家感知到的只是“掉帧”而非服务器挂掉。</li>
+<li><strong>WASM 友好</strong>：可用同一套逻辑在 Edge/浏览器模拟，做 AI Bot 或客户端预测。</li>
+</ol>
+<blockquote>
+<p>Actor Model 在游戏行业早已验证（Erlang MongooseIM、Elixir Phoenix、Akka Game）。Hollywood 把它用 Go 的方式重写，给予你习惯的生态、工具链与性能。</p>
+</blockquote>
 
 
 
@@ -2249,7 +2601,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="March 27, 2025 10:57:45">March 27, 2025 10:57:45</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="May 22, 2025 11:03:49">May 22, 2025 11:03:49</span>
   </span>
 
     
@@ -2259,7 +2611,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="March 27, 2025 10:57:45">March 27, 2025 10:57:45</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="May 22, 2025 11:03:49">May 22, 2025 11:03:49</span>
   </span>
 
     
@@ -2298,7 +2650,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Learn From Others">
+          <a href="../actor_model_other/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Actor Model ≠ 分布式事务 —— 如何在一致性与并发之间做取舍？">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2308,20 +2660,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Learn From Others
+                Actor Model ≠ 分布式事务 —— 如何在一致性与并发之间做取舍？
               </div>
             </div>
           </a>
         
         
           
-          <a href="../" class="md-footer__link md-footer__link--next" aria-label="Next: KrillinAI">
+          <a href="../" class="md-footer__link md-footer__link--next" aria-label="Next: hollywood">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                KrillinAI
+                hollywood
               </div>
             </div>
             <div class="md-footer__button md-icon">
