@@ -12,28 +12,28 @@
         <meta name="author" content="catwithtudou️">
       
       
-        <link rel="canonical" href="https://zhengyua.cn/new_blog/project/apple/AppleCalDuration/">
+        <link rel="canonical" href="https://zhengyua.cn/new_blog/project/learn/hollywood/actor_model_other/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../actor_model/">
       
       
-        <link rel="next" href="../CopyTxMate/">
+        <link rel="next" href="../game/">
       
       
-      <link rel="icon" href="../../../assets/logo.jpeg">
+      <link rel="icon" href="../../../../assets/logo.jpeg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
-        <title>AppleCalDuration - catwithtudou️🌦️</title>
+        <title>Actor Model ≠ 分布式事务 —— 如何在一致性与并发之间做取舍？ - catwithtudou️🌦️</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.6f8fc17f.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,7 +52,7 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#applecalduration" class="md-skip">
+        <a href="#actor-model--分布式事务--如何在一致性与并发之间做取舍" class="md-skip">
           Skip to content
         </a>
       
@@ -104,9 +104,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="catwithtudou️🌦️" class="md-header__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+    <a href="../../../.." title="catwithtudou️🌦️" class="md-header__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
       
-  <img src="../../../assets/logo.jpeg" alt="logo">
+  <img src="../../../../assets/logo.jpeg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              AppleCalDuration
+              Actor Model ≠ 分布式事务 —— 如何在一致性与并发之间做取舍？
             
           </span>
         </div>
@@ -231,7 +231,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../../../.." class="md-tabs__link">
         
   
     
@@ -250,7 +250,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../blog/" class="md-tabs__link">
+        <a href="../../../../blog/" class="md-tabs__link">
           
   
     
@@ -270,7 +270,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../language/" class="md-tabs__link">
+        <a href="../../../../language/" class="md-tabs__link">
           
   
     
@@ -290,7 +290,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../algorithms/" class="md-tabs__link">
+        <a href="../../../../algorithms/" class="md-tabs__link">
           
   
     
@@ -310,7 +310,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../os/" class="md-tabs__link">
+        <a href="../../../../os/" class="md-tabs__link">
           
   
     
@@ -330,7 +330,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../network/" class="md-tabs__link">
+        <a href="../../../../network/" class="md-tabs__link">
           
   
     
@@ -350,7 +350,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../ds/" class="md-tabs__link">
+        <a href="../../../../ds/" class="md-tabs__link">
           
   
     
@@ -370,7 +370,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../architecture/" class="md-tabs__link">
+        <a href="../../../../architecture/" class="md-tabs__link">
           
   
     
@@ -390,7 +390,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../middleware/" class="md-tabs__link">
+        <a href="../../../../middleware/" class="md-tabs__link">
           
   
     
@@ -412,7 +412,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+        <a href="../../../" class="md-tabs__link">
           
   
     
@@ -432,7 +432,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../common/01-100_tips/" class="md-tabs__link">
+        <a href="../../../../common/01-100_tips/" class="md-tabs__link">
           
   
     
@@ -473,9 +473,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="catwithtudou️🌦️" class="md-nav__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+    <a href="../../../.." title="catwithtudou️🌦️" class="md-nav__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
       
-  <img src="../../../assets/logo.jpeg" alt="logo">
+  <img src="../../../../assets/logo.jpeg" alt="logo">
 
     </a>
     catwithtudou️🌦️
@@ -502,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -554,7 +554,7 @@
         
   
   
-    <a href="../../../blog/" class="md-nav__link">
+    <a href="../../../../blog/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -608,7 +608,7 @@
         
   
   
-    <a href="../../../language/" class="md-nav__link">
+    <a href="../../../../language/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -664,7 +664,7 @@
         
   
   
-    <a href="../../../algorithms/" class="md-nav__link">
+    <a href="../../../../algorithms/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -718,7 +718,7 @@
         
   
   
-    <a href="../../../os/" class="md-nav__link">
+    <a href="../../../../os/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -768,7 +768,7 @@
         
   
   
-    <a href="../../../network/" class="md-nav__link">
+    <a href="../../../../network/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -818,7 +818,7 @@
         
   
   
-    <a href="../../../ds/" class="md-nav__link">
+    <a href="../../../../ds/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -870,7 +870,7 @@
         
   
   
-    <a href="../../../architecture/" class="md-nav__link">
+    <a href="../../../../architecture/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -920,7 +920,7 @@
         
   
   
-    <a href="../../../middleware/" class="md-nav__link">
+    <a href="../../../../middleware/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -984,7 +984,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1014,8 +1014,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1042,16 +1040,16 @@
     
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_2" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../../apple/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1068,7 +1066,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_10_2">
             <span class="md-nav__icon md-icon"></span>
             apple
@@ -1081,8 +1079,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1101,39 +1097,29 @@
     
     
       
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_2_2" checked>
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="./" class="md-nav__link md-nav__link--active">
-              
+  
+  
+    <a href="../../../apple/AppleCalDuration/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     AppleCalDuration
   </span>
   
 
-            </a>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_10_2_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_10_2_2">
-            <span class="md-nav__icon md-icon"></span>
-            AppleCalDuration
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-          </ul>
-        </nav>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
       
     </li>
   
@@ -1171,7 +1157,7 @@
         
   
   
-    <a href="../CopyTxMate/" class="md-nav__link">
+    <a href="../../../apple/CopyTxMate/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1203,8 +1189,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1233,16 +1221,16 @@
     
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_3" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../learn/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1259,7 +1247,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_10_3">
             <span class="md-nav__icon md-icon"></span>
             learn
@@ -1305,7 +1293,7 @@
         
   
   
-    <a href="../../learn/KrillinAI/better/" class="md-nav__link">
+    <a href="../../KrillinAI/better/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1329,6 +1317,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1353,29 +1343,263 @@
     
     
       
-        
-        
-      
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
-  
-  
-    <a href="../../learn/hollywood/actor_model/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_3_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     hollywood
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10_3_3" id="__nav_10_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_10_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            hollywood
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../actor_model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    理解 Actor Model
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Actor Model ≠ 分布式事务 —— 如何在一致性与并发之间做取舍？
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Actor Model ≠ 分布式事务 —— 如何在一致性与并发之间做取舍？
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-actor--微型单机数据库" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. “Actor = 微型单机数据库”
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-与传统分布式一致性的差异" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 与传统分布式一致性的差异
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-常用跨-actor-一致性方案" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 常用跨 Actor 一致性方案
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 常用跨 Actor 一致性方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-saga--补偿事务" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Saga / 补偿事务
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-event-sourcing--cqrs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Event Sourcing + CQRS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-集中协调员actor" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 集中“协调员”Actor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-crdt--无冲突数据类型" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 CRDT / 无冲突数据类型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-hollywood-提供了什么没提供什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Hollywood 提供了什么、没提供什么？
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-示例账户转账的-actor-设计" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 示例：账户转账的 Actor 设计
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-cap-视角下的-actor-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. CAP 视角下的 Actor Model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-最佳实践清单" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 最佳实践清单
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-结语" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. 结语
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../game/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hollywood 在游戏服务端的落地范式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1417,7 +1641,7 @@
         
   
   
-    <a href="../../learn/langmanus/go_done/" class="md-nav__link">
+    <a href="../../langmanus/go_done/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1468,7 +1692,7 @@
         
   
   
-    <a href="../../learn/pocketbase/" class="md-nav__link">
+    <a href="../../pocketbase/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1533,7 +1757,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../mini_program/" class="md-nav__link ">
+            <a href="../../../mini_program/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1590,7 +1814,7 @@
         
   
   
-    <a href="../../mini_program/0305begin/" class="md-nav__link">
+    <a href="../../../mini_program/0305begin/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1655,7 +1879,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../web/" class="md-nav__link ">
+            <a href="../../../web/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1714,7 +1938,7 @@
         
   
   
-    <a href="../../web/dream_pic/01used_tool/" class="md-nav__link">
+    <a href="../../../web/dream_pic/01used_tool/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1792,7 +2016,7 @@
         
   
   
-    <a href="../../../common/01-100_tips/" class="md-nav__link">
+    <a href="../../../../common/01-100_tips/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1840,37 +2064,64 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#1-actor--微型单机数据库" class="md-nav__link">
     <span class="md-ellipsis">
-      Overview
+      1. “Actor = 微型单机数据库”
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
+  <a href="#2-与传统分布式一致性的差异" class="md-nav__link">
     <span class="md-ellipsis">
-      Features
+      2. 与传统分布式一致性的差异
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuration-options" class="md-nav__link">
+  <a href="#3-常用跨-actor-一致性方案" class="md-nav__link">
     <span class="md-ellipsis">
-      Configuration Options
+      3. 常用跨 Actor 一致性方案
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Configuration Options">
+    <nav class="md-nav" aria-label="3. 常用跨 Actor 一致性方案">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#configuration-details" class="md-nav__link">
+  <a href="#31-saga--补偿事务" class="md-nav__link">
     <span class="md-ellipsis">
-      Configuration Details
+      3.1 Saga / 补偿事务
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-event-sourcing--cqrs" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 Event Sourcing + CQRS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-集中协调员actor" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 集中“协调员”Actor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-crdt--无冲突数据类型" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 CRDT / 无冲突数据类型
     </span>
   </a>
   
@@ -1882,45 +2133,45 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-use" class="md-nav__link">
+  <a href="#4-hollywood-提供了什么没提供什么" class="md-nav__link">
     <span class="md-ellipsis">
-      How to Use
+      4. Hollywood 提供了什么、没提供什么？
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
+  <a href="#5-示例账户转账的-actor-设计" class="md-nav__link">
     <span class="md-ellipsis">
-      How It Works
+      5. 示例：账户转账的 Actor 设计
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
+  <a href="#6-cap-视角下的-actor-model" class="md-nav__link">
     <span class="md-ellipsis">
-      Troubleshooting
+      6. CAP 视角下的 Actor Model
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#safety-notes" class="md-nav__link">
+  <a href="#7-最佳实践清单" class="md-nav__link">
     <span class="md-ellipsis">
-      Safety Notes
+      7. 最佳实践清单
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#regular-usage" class="md-nav__link">
+  <a href="#8-结语" class="md-nav__link">
     <span class="md-ellipsis">
-      Regular Usage
+      8. 结语
     </span>
   </a>
   
@@ -1944,102 +2195,185 @@
   
 
 
-<h1 id="applecalduration">AppleCalDuration<a class="headerlink" href="#applecalduration" title="Permanent link">&para;</a></h1>
-<blockquote>
-<p><strong><a href="https://github.com/catwithtudou/AppleCalDuration">repo link:https://github.com/catwithtudou/AppleCalDuration</a></strong></p>
-</blockquote>
-<p><strong>(Calendar Event Duration Labeling Script)</strong></p>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>This AppleScript automatically adds duration labels to calendar events. It scans through your personal calendars, identifies events for the current day that don't have time markings, and appends the event duration to the end of the event title.</p>
-<p><img src="https://img.zhengyua.cn/blog/202503190935427.png" alt="Image" style="height: auto; width:200px; object-fit: contain;"></p>
-<p>For example:
-- "Project Discussion" → "Project Discussion 60min"
-- "Team Meeting" → "Team Meeting 1.5h"</p>
-<h2 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Automatically detects and processes only personal writable calendars</li>
-<li>Smart time formatting: short events shown in minutes (min), longer events in hours (h)</li>
-<li>Automatically skips events that already contain time information</li>
-<li>Configurable logging for troubleshooting</li>
-<li>Displays processing statistics upon completion</li>
-</ul>
-<h2 id="configuration-options">Configuration Options<a class="headerlink" href="#configuration-options" title="Permanent link">&para;</a></h2>
-<p>Several configuration options at the top of the script can be adjusted as needed:</p>
-<div class="language-applescript highlight"><span class="filename">AppleScript</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="c">-- Configuration options</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">set</span> <span class="nv">enableDetailedLogging</span> <span class="k">to</span> <span class="no">false</span> <span class="c">-- Enable detailed logging (set to true to enable)</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a><span class="k">set</span> <span class="nv">timeFormat</span> <span class="k">to</span> <span class="s2">&quot;auto&quot;</span> <span class="c">-- Time format: &quot;minutes&quot;, &quot;hours&quot;, or &quot;auto&quot;</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a><span class="k">set</span> <span class="nv">hourThreshold</span> <span class="k">to</span> <span class="mi">300</span> <span class="c">-- Minute threshold for using hours (when timeFormat is &quot;auto&quot;)</span>
-</code></pre></div>
-<h3 id="configuration-details">Configuration Details<a class="headerlink" href="#configuration-details" title="Permanent link">&para;</a></h3>
-<ol>
-<li>
-<p><strong>enableDetailedLogging</strong>
-   - <code>true</code>: Enables detailed logging, saving logs to a file on your desktop
-   - <code>false</code>: Disables detailed logging (default)</p>
-</li>
-<li>
-<p><strong>timeFormat</strong>
-   - <code>"minutes"</code>: Always use minutes as the time unit (e.g., 90min)
-   - <code>"hours"</code>: Always use hours as the time unit (e.g., 1.5h)
-   - <code>"auto"</code>: Automatically select the appropriate unit based on event duration (default)</p>
-</li>
-<li>
-<p><strong>hourThreshold</strong>
-   - When <code>timeFormat</code> is set to <code>"auto"</code>, events exceeding this minute threshold will use hours
-   - Default value is 300 (5 hours)</p>
-</li>
-</ol>
-<h2 id="how-to-use">How to Use<a class="headerlink" href="#how-to-use" title="Permanent link">&para;</a></h2>
-<ol>
-<li>Open the "Script Editor" application (located in the "Applications/Utilities" folder)</li>
-<li>Copy and paste the script content</li>
-<li>Adjust configuration options as needed</li>
-<li>Click the "Run" button to execute the script</li>
-<li>Upon completion, the script will display processing statistics</li>
-</ol>
-<h2 id="how-it-works">How It Works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
-<p>The script performs the following steps:</p>
-<ol>
-<li>
-<p><strong>Calendar Identification</strong>:
-   - Checks all accessible calendars
-   - Identifies personal calendars based on writability and other characteristics
-   - Excludes system preset calendars like "Birthdays", "Holidays", etc.</p>
-</li>
-<li>
-<p><strong>Event Processing</strong>:
-   - Only processes events for the current day (midnight to midnight)
-   - Calculates the duration of each event (in minutes)
-   - Checks if the event title already contains time information
-   - For events requiring processing, formats the time and adds it to the end of the title</p>
-</li>
-<li>
-<p><strong>Time Formatting</strong>:
-   - Short events are displayed in minutes (e.g., 45min)
-   - Longer events are converted to hours with one decimal place (e.g., 2.5h)
-   - Whole hours are displayed in x.0h format (e.g., 2.0h)</p>
-</li>
-</ol>
-<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<p>If the script doesn't work as expected:</p>
-<ol>
-<li>Set <code>enableDetailedLogging</code> to <code>true</code></li>
-<li>Run the script again</li>
-<li>Check the <code>calendar_script_log.txt</code> file generated on your desktop for detailed execution information and error messages</li>
-</ol>
-<h2 id="safety-notes">Safety Notes<a class="headerlink" href="#safety-notes" title="Permanent link">&para;</a></h2>
-<ul>
-<li>The script only modifies event titles, it will not delete events or change time information</li>
-<li>It only processes writable personal calendars, not shared or subscribed calendars</li>
-<li>Events that already contain time information will be automatically skipped to avoid duplicate time markings</li>
-</ul>
-<h2 id="regular-usage">Regular Usage<a class="headerlink" href="#regular-usage" title="Permanent link">&para;</a></h2>
-<p>You can:
-- Save this script as an application and add it to your login items to run each time you log in
-- Use "Automator" or the "Calendar" app to create an automation that runs this script regularly
-- Run the script manually when needed to mark the day's events with time information</p>
+<h1 id="actor-model--分布式事务--如何在一致性与并发之间做取舍">Actor Model ≠ 分布式事务 —— 如何在一致性与并发之间做取舍？<a class="headerlink" href="#actor-model--分布式事务--如何在一致性与并发之间做取舍" title="Permanent link">&para;</a></h1>
+<h2 id="1-actor--微型单机数据库">1. “Actor = 微型单机数据库”<a class="headerlink" href="#1-actor--微型单机数据库" title="Permanent link">&para;</a></h2>
+<p>在 Actor 语境里，每个 Actor
+* 拥有 <strong>私有、串行化访问</strong> 的状态（堪比单线程的内存数据库），
+* 对外通过 <strong>异步消息</strong> 交流。</p>
+<p>因此：
+* <strong>Actor 内部</strong> 可以轻松做到 <em>线性一致</em>——因为同时只有 1 条消息被处理，没有并发写。
+* <strong>Actor 之间</strong> 则呈现松耦合、最终一致特征，需要额外协议来保证跨 Actor 的业务一致性。</p>
 <hr />
-<p>Hope this script helps you better manage and view your calendar event timing! If you have questions or need additional features, you can further modify the script.</p>
+<h2 id="2-与传统分布式一致性的差异">2. 与传统分布式一致性的差异<a class="headerlink" href="#2-与传统分布式一致性的差异" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>RDB 事务 (2PC)</th>
+<th>分布式 KV (Raft)</th>
+<th>Actor Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一致性级别</td>
+<td>强一致 / ACID</td>
+<td>强一致 (线性化)</td>
+<td>Actor 内强、一致；跨 Actor 最终一致</td>
+</tr>
+<tr>
+<td>并发控制</td>
+<td>锁/日志</td>
+<td>共识日志</td>
+<td>单线程处理，无锁</td>
+</tr>
+<tr>
+<td>代价</td>
+<td>两阶段提交 + 锁时间</td>
+<td>写放大、复杂选举</td>
+<td>无分布式锁，但需要补偿逻辑</td>
+</tr>
+<tr>
+<td>失败恢复</td>
+<td>日志回放 / 重放</td>
+<td>自动 Leader 选举</td>
+<td>Actor 重启 + Crash Buffer</td>
+</tr>
+<tr>
+<td>典型模式</td>
+<td>银行转账</td>
+<td>配置中心、元数据存储</td>
+<td>电信会话、游戏房间、竞价撮合</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>结论：Actor Model 天然回避了「跨节点一致性协议」的高昂代价，却把一致性的职责下放到 <strong>业务层协议</strong>。</p>
+</blockquote>
+<hr />
+<h2 id="3-常用跨-actor-一致性方案">3. 常用跨 Actor 一致性方案<a class="headerlink" href="#3-常用跨-actor-一致性方案" title="Permanent link">&para;</a></h2>
+<h3 id="31-saga--补偿事务">3.1 Saga / 补偿事务<a class="headerlink" href="#31-saga--补偿事务" title="Permanent link">&para;</a></h3>
+<ol>
+<li>将长事务拆分为本地步骤（本地 ACID 在单个 Actor 内完成）。</li>
+<li>失败时发送补偿消息，逐步回滚。</li>
+<li>Hollywood 里可用 <em>幂等消息 + 重试</em> 保证补偿最终到达。</li>
+</ol>
+<h3 id="32-event-sourcing--cqrs">3.2 Event Sourcing + CQRS<a class="headerlink" href="#32-event-sourcing--cqrs" title="Permanent link">&para;</a></h3>
+<ul>
+<li>所有状态改动都写成事件流，Actor 状态由事件重建。</li>
+<li>读取侧可异步订阅并生成投影；天然适合 <strong>Eventstream</strong>。</li>
+</ul>
+<h3 id="33-集中协调员actor">3.3 集中“协调员”Actor<a class="headerlink" href="#33-集中协调员actor" title="Permanent link">&para;</a></h3>
+<ul>
+<li>让一个 Actor 担任 <em>Transaction Coordinator</em>，顺序驱动子任务。</li>
+<li>因 Coordinator 仍是单线程，避免分布式锁。</li>
+<li>缺点：Coordinator 可能成为瓶颈/单点，需要分片或层级化。</li>
+</ul>
+<h3 id="34-crdt--无冲突数据类型">3.4 CRDT / 无冲突数据类型<a class="headerlink" href="#34-crdt--无冲突数据类型" title="Permanent link">&para;</a></h3>
+<ul>
+<li>如果业务能容忍最终一致，可让多个 Actor 持有可合并的 CRDT 状态。</li>
+<li>通过 Gossip 把局部状态同步即可，无需顺序保证。</li>
+</ul>
+<hr />
+<h2 id="4-hollywood-提供了什么没提供什么">4. Hollywood 提供了什么、没提供什么？<a class="headerlink" href="#4-hollywood-提供了什么没提供什么" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>能力</th>
+<th>Hollywood 支持？</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Actor 内原子性</td>
+<td>✅</td>
+<td>单线程 Receive，天然序列化</td>
+</tr>
+<tr>
+<td>本地消息 <strong>按投递顺序</strong></td>
+<td>✅</td>
+<td>RingBuffer FIFO</td>
+</tr>
+<tr>
+<td>跨节点 <strong>至少一次</strong> 投递</td>
+<td>✅</td>
+<td>Remote + 重连 + Crash Buffer</td>
+</tr>
+<tr>
+<td><strong>全局事务 / 2PC</strong></td>
+<td>❌</td>
+<td>需业务层自行实现 Saga / 协调器</td>
+</tr>
+<tr>
+<td>幂等投递工具</td>
+<td>部分</td>
+<td>提供 Sender PID，可用去重表实现</td>
+</tr>
+<tr>
+<td>事件日志 / Source</td>
+<td>⚙️</td>
+<td>结合 Eventstream + 外部存储</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Hollywood 把<strong>可靠投递</strong>和<strong>Actor 重启不丢消息</strong>做到位，但不会替你解决「跨 Actor 的强一致」。</p>
+</blockquote>
+<hr />
+<h2 id="5-示例账户转账的-actor-设计">5. 示例：账户转账的 Actor 设计<a class="headerlink" href="#5-示例账户转账的-actor-设计" title="Permanent link">&para;</a></h2>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos=" 1 "></span></a>sequenceDiagram
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos=" 2 "></span></a>    participant C as Client
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos=" 3 "></span></a>    participant T as TransferActor
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos=" 4 "></span></a>    participant A as AccountA
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos=" 5 "></span></a>    participant B as AccountB
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos=" 6 "></span></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos=" 7 "></span></a>    C -&gt;&gt; T: Transfer(From=A, To=B, 100)
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><a href="#__codelineno-0-8"><span class="linenos" data-linenos=" 8 "></span></a>    T -&gt;&gt; A: Debit(100, sagaID)
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="#__codelineno-0-9"><span class="linenos" data-linenos=" 9 "></span></a>    A --&gt;&gt; T: DebitedOK
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><a href="#__codelineno-0-10"><span class="linenos" data-linenos="10 "></span></a>    T -&gt;&gt; B: Credit(100, sagaID)
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><a href="#__codelineno-0-11"><span class="linenos" data-linenos="11 "></span></a>    B --&gt;&gt; T: CreditedOK
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><a href="#__codelineno-0-12"><span class="linenos" data-linenos="12 "></span></a>    T --&gt;&gt; C: Success
+</code></pre></div>
+<p>失败场景：
+* 若 <code>Credit</code> 超时 → T 发送 <code>Compensate</code> 给 A 退回 100。
+* T 自身崩溃 → Hollywood Crash Buffer 回放，T 会继续 saga。</p>
+<p>保证点：
+1. 单个账户 Actor 内部余额修改是原子的。
+2. Saga Actor 序列化步骤，外部仅感知最终结果。
+3. 无需 2PC 锁，也无需分布式日志。</p>
+<hr />
+<h2 id="6-cap-视角下的-actor-model">6. CAP 视角下的 Actor Model<a class="headerlink" href="#6-cap-视角下的-actor-model" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Hollywood 集群默认选择 <strong>AP</strong>：</li>
+<li>网络分区时仍可本地处理请求（可写，可读，但跨节点数据可能不一致）。</li>
+<li>
+<p>最终通过消息重放 / 补偿达到一致。</p>
+</li>
+<li>
+<p>如果业务要求 <strong>CP</strong>：</p>
+</li>
+<li>需在应用层加锁或引入单写多读 Actor；</li>
+<li>或者把强一致数据放到外部数据库，把 Actor 当缓存/协调层。</li>
+</ul>
+<hr />
+<h2 id="7-最佳实践清单">7. 最佳实践清单<a class="headerlink" href="#7-最佳实践清单" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>边界分明</strong>：把需要强一致的核心数据限定在<strong>单个 Actor</strong>或<strong>单节点 DB</strong>。</li>
+<li><strong>幂等消息</strong>：为跨 Actor 的命令增加 <code>uuid</code>，Receiver 去重。</li>
+<li><strong>可补偿设计</strong>：保证所有业务操作都能“反向重做”，实现 Saga。</li>
+<li><strong>超时+重试</strong>：Hollywood 本地队列永不丢，但远程网络仍可能失联，需要超时检测。</li>
+<li><strong>监控 DeadLetter</strong>：任何未投递的消息都会进入 DeadLetterEvent，及时告警。</li>
+</ol>
+<hr />
+<h2 id="8-结语">8. 结语<a class="headerlink" href="#8-结语" title="Permanent link">&para;</a></h2>
+<p>Actor Model 在一致性层面的哲学是：</p>
+<blockquote>
+<p>“把<strong>强一致</strong>收敛到最小单元（Actor），把<strong>跨单元协调</strong>交给显式的业务协议（Saga、Event Sourcing、CRDT）。”</p>
+</blockquote>
+<p>这样既规避了分布式锁/2PC 带来的吞吐瓶颈，又保持了容错能力。Hollywood 为你做好了消息可靠投递、Actor 重启、跨节点寻址的底座；剩下的“规则”，由你用业务语言去编排。</p>
+<p>当你思考“是否需要分布式事务”时，先问自己：
+<em>能否把状态按 Actor <strong>切得更细</strong>，让世界无需全局锁就能前进？</em></p>
 
 
 
@@ -2062,7 +2396,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 19, 2025 11:08:36</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 22, 2025 11:03:49</span>
   </span>
 
     
@@ -2072,7 +2406,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 19, 2025 11:08:36</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">May 22, 2025 11:03:49</span>
   </span>
 
     
@@ -2111,7 +2445,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: apple">
+          <a href="../actor_model/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 理解 Actor Model">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2121,20 +2455,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                apple
+                理解 Actor Model
               </div>
             </div>
           </a>
         
         
           
-          <a href="../CopyTxMate/" class="md-footer__link md-footer__link--next" aria-label="Next: CopyTxMate">
+          <a href="../game/" class="md-footer__link md-footer__link--next" aria-label="Next: Hollywood 在游戏服务端的落地范式">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                CopyTxMate
+                Hollywood 在游戏服务端的落地范式
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2267,12 +2601,12 @@
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotation", "content.code.copy", "content.code.select", "header.autohide"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotation", "content.code.copy", "content.code.select", "header.autohide"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
-        <script src="../../../javascripts/mathjax.js"></script>
+        <script src="../../../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
