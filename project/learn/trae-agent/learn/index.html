@@ -18,7 +18,7 @@
         <link rel="prev" href="../">
       
       
-        <link rel="next" href="../../../mini_program/">
+        <link rel="next" href="../learn01/">
       
       
       <link rel="icon" href="../../../../assets/logo.jpeg">
@@ -26,7 +26,7 @@
     
     
       
-        <title>可学习和参考的地方 - catwithtudou️🌦️</title>
+        <title>可学习和参考的地方(01~11) - catwithtudou️🌦️</title>
       
     
     
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#可学习和参考的地方" class="md-skip">
+        <a href="#可学习和参考的地方0111" class="md-skip">
           Skip to content
         </a>
       
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              可学习和参考的地方
+              可学习和参考的地方(01~11)
             
           </span>
         </div>
@@ -1586,6 +1586,8 @@
       
         
       
+        
+      
     
     
     
@@ -1654,7 +1656,7 @@
   
   
   <span class="md-ellipsis">
-    可学习和参考的地方
+    可学习和参考的地方(01~11)
     
   </span>
   
@@ -1667,7 +1669,7 @@
   
   
   <span class="md-ellipsis">
-    可学习和参考的地方
+    可学习和参考的地方(01~11)
     
   </span>
   
@@ -1778,10 +1780,60 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#9-抽象基类abc与模板方法模式的现代实现" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. 抽象基类(ABC)与模板方法模式的现代实现
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-enum-枚举类的语义化设计模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Enum 枚举类的语义化设计模式
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-rich-库的表格渲染与条件渲染设计" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Rich 库的表格渲染与条件渲染设计
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../learn01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    可学习和参考的地方(12~)
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2249,6 +2301,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#9-抽象基类abc与模板方法模式的现代实现" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. 抽象基类(ABC)与模板方法模式的现代实现
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-enum-枚举类的语义化设计模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Enum 枚举类的语义化设计模式
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-rich-库的表格渲染与条件渲染设计" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Rich 库的表格渲染与条件渲染设计
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2268,7 +2347,7 @@
   
 
 
-<h1 id="可学习和参考的地方">可学习和参考的地方<a class="headerlink" href="#可学习和参考的地方" title="Permanent link">&para;</a></h1>
+<h1 id="可学习和参考的地方0111">可学习和参考的地方(01~11)<a class="headerlink" href="#可学习和参考的地方0111" title="Permanent link">&para;</a></h1>
 <h2 id="1-python-dataclass-和-classmethod-的现代应用模式">1. Python dataclass 和 classmethod 的现代应用模式<a class="headerlink" href="#1-python-dataclass-和-classmethod-的现代应用模式" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>dataclass 高级特性</strong>：使用 <code>@dataclass</code> 装饰器简化类定义，结合类型注解提供清晰的字段定义和 IDE 支持</li>
@@ -2417,13 +2496,12 @@
 1. <code>main()</code> 调用 <code>cli()</code> 启动 Click 框架
 2. Click 解析命令行参数，识别子命令（如 <code>run</code>、<code>interactive</code>）
 3. 根据参数自动路由到对应的函数执行</p>
+<p><strong>关于多个 Group 的处理</strong>：</p>
 <ul>
-<li>关于多个 Group 的处理</li>
+<li><strong>一个文件通常只有一个主 Group</strong>：在这个项目中，只有一个 <code>@click.group()</code> 装饰的 <code>cli</code> 函数</li>
+<li><strong>Command 自动绑定</strong>：所有 <code>@cli.command()</code> 装饰的函数都自动绑定到 <code>cli</code> 组</li>
+<li><strong>多 Group 场景</strong>：如果需要多个组，可以创建子组：</li>
 </ul>
-<p><strong>回答您的疑问</strong>：
-- <strong>一个文件通常只有一个主 Group</strong>：在这个项目中，只有一个 <code>@click.group()</code> 装饰的 <code>cli</code> 函数
-- <strong>Command 自动绑定</strong>：所有 <code>@cli.command()</code> 装饰的函数都自动绑定到 <code>cli</code> 组
-- <strong>多 Group 场景</strong>：如果需要多个组，可以创建子组：</p>
 <div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos="1 "></span></a><span class="nd">@cli</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">database</span><span class="p">():</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3"></a><a href="#__codelineno-7-3"><span class="linenos" data-linenos="3 "></span></a>    <span class="k">pass</span>
@@ -2573,6 +2651,53 @@
 <a id="__codelineno-11-32" name="__codelineno-11-32"></a><a href="#__codelineno-11-32"><span class="linenos" data-linenos="32 "></span></a>            <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[yellow]YAML config not found, using JSON config: </span><span class="si">{</span><span class="n">json_path</span><span class="si">}</span><span class="s2">[/yellow]&quot;</span><span class="p">)</span>
 <a id="__codelineno-11-33" name="__codelineno-11-33"></a><a href="#__codelineno-11-33"><span class="linenos" data-linenos="33 "></span></a>            <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">json_path</span><span class="p">)</span>
 </code></pre></div>
+<h2 id="9-抽象基类abc与模板方法模式的现代实现">9. 抽象基类(ABC)与模板方法模式的现代实现<a class="headerlink" href="#9-抽象基类abc与模板方法模式的现代实现" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>抽象基类设计</strong>：使用 <code>ABC</code> 和 <code>@abstractmethod</code> 定义接口契约，强制子类实现核心方法</li>
+<li><strong>模板方法模式</strong>：基类提供通用逻辑（如 <code>set_lakeview</code>），抽象方法定义变化点</li>
+<li><strong>类型安全的抽象</strong>：结合现代 Python 类型注解，为抽象方法提供清晰的签名约束</li>
+</ul>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><a href="#__codelineno-12-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">CLIConsole</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><a href="#__codelineno-12-2"><span class="linenos" data-linenos=" 2 "></span></a>    <span class="nd">@abstractmethod</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><a href="#__codelineno-12-3"><span class="linenos" data-linenos=" 3 "></span></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><a href="#__codelineno-12-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;强制子类实现启动逻辑&quot;&quot;&quot;</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><a href="#__codelineno-12-5"><span class="linenos" data-linenos=" 5 "></span></a>        <span class="k">pass</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a><a href="#__codelineno-12-6"><span class="linenos" data-linenos=" 6 "></span></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><a href="#__codelineno-12-7"><span class="linenos" data-linenos=" 7 "></span></a>    <span class="nd">@abstractmethod</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a><a href="#__codelineno-12-8"><span class="linenos" data-linenos=" 8 "></span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">update_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent_step</span><span class="p">:</span> <span class="n">AgentStep</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a><a href="#__codelineno-12-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;定义状态更新接口&quot;&quot;&quot;</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a><a href="#__codelineno-12-10"><span class="linenos" data-linenos="10 "></span></a>        <span class="k">pass</span>
+</code></pre></div>
+<h2 id="10-enum-枚举类的语义化设计模式">10. Enum 枚举类的语义化设计模式<a class="headerlink" href="#10-enum-枚举类的语义化设计模式" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>业务语义枚举</strong>：使用 <code>Enum</code> 将业务概念（控制台模式、类型）转化为类型安全的常量</li>
+<li><strong>枚举与字典映射</strong>：<code>AGENT_STATE_INFO</code> 展示了枚举作为字典键的优雅用法，实现状态到视觉元素的映射</li>
+<li><strong>文档化枚举值</strong>：每个枚举值都有清晰的注释说明其用途和场景</li>
+</ul>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><a href="#__codelineno-13-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">ConsoleMode</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><a href="#__codelineno-13-2"><span class="linenos" data-linenos="2 "></span></a>    <span class="n">RUN</span> <span class="o">=</span> <span class="s2">&quot;run&quot;</span>  <span class="c1"># Execute single task and exit</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><a href="#__codelineno-13-3"><span class="linenos" data-linenos="3 "></span></a>    <span class="n">INTERACTIVE</span> <span class="o">=</span> <span class="s2">&quot;interactive&quot;</span>  <span class="c1"># Take multiple tasks from user input</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a><a href="#__codelineno-13-4"><span class="linenos" data-linenos="4 "></span></a>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a><a href="#__codelineno-13-5"><span class="linenos" data-linenos="5 "></span></a><span class="c1"># 枚举映射模式</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a><a href="#__codelineno-13-6"><span class="linenos" data-linenos="6 "></span></a><span class="n">AGENT_STATE_INFO</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a><a href="#__codelineno-13-7"><span class="linenos" data-linenos="7 "></span></a>    <span class="n">AgentStepState</span><span class="o">.</span><span class="n">THINKING</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;🤔&quot;</span><span class="p">),</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a><a href="#__codelineno-13-8"><span class="linenos" data-linenos="8 "></span></a>    <span class="n">AgentStepState</span><span class="o">.</span><span class="n">CALLING_TOOL</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;🔧&quot;</span><span class="p">),</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a><a href="#__codelineno-13-9"><span class="linenos" data-linenos="9 "></span></a><span class="p">}</span>
+</code></pre></div>
+<h2 id="11-rich-库的表格渲染与条件渲染设计">11. Rich 库的表格渲染与条件渲染设计<a class="headerlink" href="#11-rich-库的表格渲染与条件渲染设计" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>动态表格构建</strong>：使用 Rich 库创建美观的控制台表格，支持样式和颜色</li>
+<li><strong>条件渲染逻辑</strong>：根据数据存在性动态添加表格行，避免空内容显示</li>
+<li><strong>状态可视化</strong>：通过颜色和 emoji 直观展示不同的执行状态，提升用户体验</li>
+</ul>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><a href="#__codelineno-14-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">def</span><span class="w"> </span><span class="nf">generate_agent_step_table</span><span class="p">(</span><span class="n">agent_step</span><span class="p">:</span> <span class="n">AgentStep</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Table</span><span class="p">:</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a><a href="#__codelineno-14-2"><span class="linenos" data-linenos="2 "></span></a>    <span class="n">color</span><span class="p">,</span> <span class="n">emoji</span> <span class="o">=</span> <span class="n">AGENT_STATE_INFO</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">agent_step</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;❓&quot;</span><span class="p">))</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a><a href="#__codelineno-14-3"><span class="linenos" data-linenos="3 "></span></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a><a href="#__codelineno-14-4"><span class="linenos" data-linenos="4 "></span></a>    <span class="c1"># 条件渲染 - 只在有数据时添加行</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a><a href="#__codelineno-14-5"><span class="linenos" data-linenos="5 "></span></a>    <span class="k">if</span> <span class="n">agent_step</span><span class="o">.</span><span class="n">tool_calls</span><span class="p">:</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a><a href="#__codelineno-14-6"><span class="linenos" data-linenos="6 "></span></a>        <span class="n">tool_names</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;[cyan]</span><span class="si">{</span><span class="n">call</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">[/cyan]&quot;</span> <span class="k">for</span> <span class="n">call</span> <span class="ow">in</span> <span class="n">agent_step</span><span class="o">.</span><span class="n">tool_calls</span><span class="p">]</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a><a href="#__codelineno-14-7"><span class="linenos" data-linenos="7 "></span></a>        <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">&quot;Tools&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;🔧 </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tool_names</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
 
 
 
@@ -2595,7 +2720,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="August 13, 2025 10:58:22 CST">August 13, 2025 10:58:22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="August 15, 2025 10:55:59 CST">August 15, 2025 10:55:59</span>
   </span>
 
     
@@ -2661,13 +2786,13 @@
         
         
           
-          <a href="../../../mini_program/" class="md-footer__link md-footer__link--next" aria-label="Next: mini_program">
+          <a href="../learn01/" class="md-footer__link md-footer__link--next" aria-label="Next: 可学习和参考的地方(12~)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                mini_program
+                可学习和参考的地方(12~)
               </div>
             </div>
             <div class="md-footer__button md-icon">
