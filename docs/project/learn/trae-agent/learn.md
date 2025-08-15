@@ -1,4 +1,4 @@
-﻿# 可学习和参考的地方
+﻿# 可学习和参考的地方(01~11)
 
 ## 1. Python dataclass 和 classmethod 的现代应用模式
 
@@ -164,9 +164,8 @@ if __name__ == "__main__":
 2. Click 解析命令行参数，识别子命令（如 `run`、`interactive`）
 3. 根据参数自动路由到对应的函数执行
 
-- 关于多个 Group 的处理
+**关于多个 Group 的处理**：
 
-**回答您的疑问**：
 - **一个文件通常只有一个主 Group**：在这个项目中，只有一个 `@click.group()` 装饰的 `cli` 函数
 - **Command 自动绑定**：所有 `@cli.command()` 装饰的函数都自动绑定到 `cli` 组
 - **多 Group 场景**：如果需要多个组，可以创建子组：
@@ -328,4 +327,57 @@ def resolve_config_file(config_file: str) -> str:
         elif json_path.exists():
             console.print(f"[yellow]YAML config not found, using JSON config: {json_path}[/yellow]")
             return str(json_path)
+```
+
+## 9. 抽象基类(ABC)与模板方法模式的现代实现
+
+- **抽象基类设计**：使用 `ABC` 和 `@abstractmethod` 定义接口契约，强制子类实现核心方法
+- **模板方法模式**：基类提供通用逻辑（如 `set_lakeview`），抽象方法定义变化点
+- **类型安全的抽象**：结合现代 Python 类型注解，为抽象方法提供清晰的签名约束
+
+```python
+class CLIConsole(ABC):
+    @abstractmethod
+    async def start(self):
+        """强制子类实现启动逻辑"""
+        pass
+
+    @abstractmethod
+    def update_status(self, agent_step: AgentStep | None = None):
+        """定义状态更新接口"""
+        pass
+```
+
+## 10. Enum 枚举类的语义化设计模式
+
+- **业务语义枚举**：使用 `Enum` 将业务概念（控制台模式、类型）转化为类型安全的常量
+- **枚举与字典映射**：`AGENT_STATE_INFO` 展示了枚举作为字典键的优雅用法，实现状态到视觉元素的映射
+- **文档化枚举值**：每个枚举值都有清晰的注释说明其用途和场景
+
+```python
+class ConsoleMode(Enum):
+    RUN = "run"  # Execute single task and exit
+    INTERACTIVE = "interactive"  # Take multiple tasks from user input
+
+# 枚举映射模式
+AGENT_STATE_INFO = {
+    AgentStepState.THINKING: ("blue", "🤔"),
+    AgentStepState.CALLING_TOOL: ("yellow", "🔧"),
+}
+```
+
+## 11. Rich 库的表格渲染与条件渲染设计
+
+- **动态表格构建**：使用 Rich 库创建美观的控制台表格，支持样式和颜色
+- **条件渲染逻辑**：根据数据存在性动态添加表格行，避免空内容显示
+- **状态可视化**：通过颜色和 emoji 直观展示不同的执行状态，提升用户体验
+
+```python
+def generate_agent_step_table(agent_step: AgentStep) -> Table:
+    color, emoji = AGENT_STATE_INFO.get(agent_step.state, ("white", "❓"))
+
+    # 条件渲染 - 只在有数据时添加行
+    if agent_step.tool_calls:
+        tool_names = [f"[cyan]{call.name}[/cyan]" for call in agent_step.tool_calls]
+        table.add_row("Tools", f"🔧 {', '.join(tool_names)}")
 ```
