@@ -1581,6 +1581,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    可学习和参考的地方(12~)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1590,6 +1601,54 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#12-依赖注入-di-与属性装饰器-property-的优雅实践" class="md-nav__link">
+    <span class="md-ellipsis">
+      12 依赖注入 (DI) 与属性装饰器 @property 的优雅实践
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-门面-facade-模式与异步任务的协同管理" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. 门面 (Facade) 模式与异步任务的协同管理
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-领域驱动的类型安全状态与数据建模" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. 领域驱动的类型安全状态与数据建模
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1951,6 +2010,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#12-依赖注入-di-与属性装饰器-property-的优雅实践" class="md-nav__link">
+    <span class="md-ellipsis">
+      12 依赖注入 (DI) 与属性装饰器 @property 的优雅实践
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-门面-facade-模式与异步任务的协同管理" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. 门面 (Facade) 模式与异步任务的协同管理
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-领域驱动的类型安全状态与数据建模" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. 领域驱动的类型安全状态与数据建模
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1968,6 +2062,113 @@
 
 
 <h1 id="可学习和参考的地方12">可学习和参考的地方(12~)<a class="headerlink" href="#可学习和参考的地方12" title="Permanent link">&para;</a></h1>
+<h2 id="12-依赖注入-di-与属性装饰器-property-的优雅实践">12 依赖注入 (DI) 与属性装饰器 <code>@property</code> 的优雅实践<a class="headerlink" href="#12-依赖注入-di-与属性装饰器-property-的优雅实践" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><strong>控制反转 (IoC) 实现</strong>: 在 <code>BaseAgent</code> 中，核心依赖（如 <code>cli_console</code>, <code>trajectory_recorder</code>）并非在内部直接创建，而是通过 <code>setter</code> 方法从外部注入。这体现了典型的控制反转，即组件不控制其依赖的创建，而是由外部容器或协调者来提供</p>
+</li>
+<li>
+<p><strong>优雅的依赖管理</strong>: 使用 <code>@property</code> 将内部私有变量（如 <code>_cli_console</code>）封装起来，提供了统一的、只读的访问接口。同时，配对的 <code>setter</code> 方法（如 <code>set_cli_console</code>）则提供了清晰的依赖注入点。这种模式既保护了内部状态，又提供了灵活的配置方式</p>
+</li>
+<li>
+<p><strong>提升可测试性</strong>: 这种设计极大地提升了代码的可测试性。在单元测试中，可以轻松地注入一个模拟（Mock）的 <code>CLIConsole</code> 或 <code>TrajectoryRecorder</code> 对象，从而在不依赖真实组件的情况下，对 <code>BaseAgent</code> 的逻辑进行隔离测试</p>
+</li>
+</ul>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1"># trae_agent/agent/base_agent.py</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos=" 2 "></span></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="k">class</span> <span class="nc">BaseAgent</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos=" 4 "></span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent_config</span><span class="p">:</span> <span class="n">AgentConfig</span><span class="p">):</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos=" 5 "></span></a>        <span class="c1"># ...</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos=" 6 "></span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_cli_console</span><span class="p">:</span> <span class="n">CLIConsole</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos=" 7 "></span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_trajectory_recorder</span><span class="p">:</span> <span class="n">TrajectoryRecorder</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><a href="#__codelineno-0-8"><span class="linenos" data-linenos=" 8 "></span></a>        <span class="c1"># ...</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="#__codelineno-0-9"><span class="linenos" data-linenos=" 9 "></span></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><a href="#__codelineno-0-10"><span class="linenos" data-linenos="10 "></span></a>    <span class="nd">@property</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><a href="#__codelineno-0-11"><span class="linenos" data-linenos="11 "></span></a>    <span class="k">def</span> <span class="nf">cli_console</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CLIConsole</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><a href="#__codelineno-0-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;通过 @property 提供对依赖的只读访问。&quot;&quot;&quot;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><a href="#__codelineno-0-13"><span class="linenos" data-linenos="13 "></span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cli_console</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><a href="#__codelineno-0-14"><span class="linenos" data-linenos="14 "></span></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><a href="#__codelineno-0-15"><span class="linenos" data-linenos="15 "></span></a>    <span class="k">def</span> <span class="nf">set_cli_console</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cli_console</span><span class="p">:</span> <span class="n">CLIConsole</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><a href="#__codelineno-0-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;[依赖注入点] 通过 setter 方法从外部注入依赖。&quot;&quot;&quot;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><a href="#__codelineno-0-17"><span class="linenos" data-linenos="17 "></span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_cli_console</span> <span class="o">=</span> <span class="n">cli_console</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><a href="#__codelineno-0-18"><span class="linenos" data-linenos="18 "></span></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><a href="#__codelineno-0-19"><span class="linenos" data-linenos="19 "></span></a>    <span class="c1"># ... (trajectory_recorder 的实现与此类似) ...</span>
+</code></pre></div>
+<h2 id="13-门面-facade-模式与异步任务的协同管理">13. 门面 (Facade) 模式与异步任务的协同管理<a class="headerlink" href="#13-门面-facade-模式与异步任务的协同管理" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><strong>简化复杂接口</strong>: <code>agent.py</code> 中的 <code>Agent</code> 类是门面模式的绝佳实践。它将代理创建、配置、轨迹记录、CLI 交互、MCP 工具初始化等一系列复杂操作，封装成一个简洁的 <code>run</code> 方法，极大地降低了客户端的使用复杂度</p>
+</li>
+<li>
+<p><strong>并发任务协调</strong>: 在 <code>run</code> 方法中，使用 <code>asyncio.create_task</code> 并发执行代理的核心任务 (<code>execute_task</code>) 和用户界面 (<code>cli_console.start</code>)。这种方式实现了后台任务与前台UI的并行处理，提升了应用的响应性和用户体验</p>
+</li>
+<li>
+<p><strong>健壮的资源管理</strong>: 巧妙运用 <code>try...finally</code> 结构，确保无论任务成功与否，<code>cleanup_mcp_clients</code> 等资源清理操作都能被执行。结合 <code>contextlib.suppress</code> 忽略清理过程中的次要异常，保证了系统的稳定性和鲁棒性</p>
+</li>
+</ul>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1"># trae_agent/agent/agent.py</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos=" 2 "></span></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="k">class</span> <span class="nc">Agent</span><span class="p">:</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos=" 4 "></span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agent_type</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos=" 5 "></span></a>        <span class="c1"># ... (根据类型创建具体 agent 实例，隐藏了创建细节) ...</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos=" 6 "></span></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><a href="#__codelineno-1-7"><span class="linenos" data-linenos=" 7 "></span></a>    <span class="k">async</span> <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><a href="#__codelineno-1-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;[门面方法] 封装了整个执行流程，简化客户端调用。&quot;&quot;&quot;</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><a href="#__codelineno-1-9"><span class="linenos" data-linenos=" 9 "></span></a>        <span class="c1"># ... (初始化 MCP, 打印任务详情等准备工作) ...</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><a href="#__codelineno-1-10"><span class="linenos" data-linenos="10 "></span></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><a href="#__codelineno-1-11"><span class="linenos" data-linenos="11 "></span></a>        <span class="c1"># [并发协调] 并发启动 CLI 和 Agent 核心任务</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><a href="#__codelineno-1-12"><span class="linenos" data-linenos="12 "></span></a>        <span class="n">cli_console_task</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><a href="#__codelineno-1-13"><span class="linenos" data-linenos="13 "></span></a>            <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">cli_console</span><span class="o">.</span><span class="n">start</span><span class="p">())</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">cli_console</span> <span class="k">else</span> <span class="kc">None</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><a href="#__codelineno-1-14"><span class="linenos" data-linenos="14 "></span></a>        <span class="p">)</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><a href="#__codelineno-1-15"><span class="linenos" data-linenos="15 "></span></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><a href="#__codelineno-1-16"><span class="linenos" data-linenos="16 "></span></a>        <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><a href="#__codelineno-1-17"><span class="linenos" data-linenos="17 "></span></a>            <span class="n">execution</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">execute_task</span><span class="p">()</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><a href="#__codelineno-1-18"><span class="linenos" data-linenos="18 "></span></a>        <span class="k">finally</span><span class="p">:</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><a href="#__codelineno-1-19"><span class="linenos" data-linenos="19 "></span></a>            <span class="c1"># [资源管理] 确保无论成功或失败，资源都能被正确清理</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a><a href="#__codelineno-1-20"><span class="linenos" data-linenos="20 "></span></a>            <span class="k">with</span> <span class="n">contextlib</span><span class="o">.</span><span class="n">suppress</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21"></a><a href="#__codelineno-1-21"><span class="linenos" data-linenos="21 "></span></a>                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">cleanup_mcp_clients</span><span class="p">()</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22"></a><a href="#__codelineno-1-22"><span class="linenos" data-linenos="22 "></span></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23"></a><a href="#__codelineno-1-23"><span class="linenos" data-linenos="23 "></span></a>        <span class="k">if</span> <span class="n">cli_console_task</span><span class="p">:</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24"></a><a href="#__codelineno-1-24"><span class="linenos" data-linenos="24 "></span></a>            <span class="k">await</span> <span class="n">cli_console_task</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25"></a><a href="#__codelineno-1-25"><span class="linenos" data-linenos="25 "></span></a>
+<a id="__codelineno-1-26" name="__codelineno-1-26"></a><a href="#__codelineno-1-26"><span class="linenos" data-linenos="26 "></span></a>        <span class="k">return</span> <span class="n">execution</span>
+</code></pre></div>
+<h2 id="14-领域驱动的类型安全状态与数据建模">14. 领域驱动的类型安全状态与数据建模<a class="headerlink" href="#14-领域驱动的类型安全状态与数据建模" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><strong>语义化状态枚举</strong>: 在 <code>agent_basics.py</code> 中，使用 <code>Enum</code> 定义 <code>AgentState</code> 和 <code>AgentStepState</code>。这不仅仅是简单的常量，更是将业务领域中的状态（如 <code>THINKING</code>, <code>CALLING_TOOL</code>, <code>REFLECTING</code>）转化为类型安全、自文档化的代码，极大地提高了代码的可读性和健壮性</p>
+</li>
+<li>
+<p><strong>结构化数据模型</strong>: 应用 <code>@dataclass</code> 创建 <code>AgentStep</code> 和 <code>AgentExecution</code>，将离散的执行信息（如 <code>thought</code>, <code>tool_calls</code>, <code>llm_response</code>）聚合为清晰、强类型的结构化数据。这使得数据在不同模块间传递时，其结构和类型都有了可靠的保证</p>
+</li>
+<li>
+<p><strong>数据组合与嵌套</strong>: 通过类型注解 <code>steps: list[AgentStep]</code> 将 <code>AgentStep</code> 组合进 <code>AgentExecution</code>，在代码层面清晰地表达了“一次完整的执行包含多个步骤”的领域概念，使得数据模型与业务逻辑高度一致</p>
+</li>
+</ul>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1"># trae_agent/agent/agent_basics.py</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos=" 2 "></span></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="k">class</span> <span class="nc">AgentStepState</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;[语义化枚举] 定义了代理执行单个步骤时的所有可能状态，使状态可读且类型安全。&quot;&quot;&quot;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos=" 5 "></span></a>    <span class="n">THINKING</span> <span class="o">=</span> <span class="s2">&quot;thinking&quot;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><a href="#__codelineno-2-6"><span class="linenos" data-linenos=" 6 "></span></a>    <span class="n">CALLING_TOOL</span> <span class="o">=</span> <span class="s2">&quot;calling_tool&quot;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><a href="#__codelineno-2-7"><span class="linenos" data-linenos=" 7 "></span></a>    <span class="c1"># ...</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><a href="#__codelineno-2-8"><span class="linenos" data-linenos=" 8 "></span></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><a href="#__codelineno-2-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="nd">@dataclass</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><a href="#__codelineno-2-10"><span class="linenos" data-linenos="10 "></span></a><span class="k">class</span> <span class="nc">AgentStep</span><span class="p">:</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><a href="#__codelineno-2-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;[结构化数据] 封装了代理执行单个步骤的所有信息，使数据结构清晰。&quot;&quot;&quot;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><a href="#__codelineno-2-12"><span class="linenos" data-linenos="12 "></span></a>    <span class="n">step_number</span><span class="p">:</span> <span class="nb">int</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><a href="#__codelineno-2-13"><span class="linenos" data-linenos="13 "></span></a>    <span class="n">state</span><span class="p">:</span> <span class="n">AgentStepState</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><a href="#__codelineno-2-14"><span class="linenos" data-linenos="14 "></span></a>    <span class="n">thought</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><a href="#__codelineno-2-15"><span class="linenos" data-linenos="15 "></span></a>    <span class="c1"># ...</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><a href="#__codelineno-2-16"><span class="linenos" data-linenos="16 "></span></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a><a href="#__codelineno-2-17"><span class="linenos" data-linenos="17 "></span></a><span class="nd">@dataclass</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><a href="#__codelineno-2-18"><span class="linenos" data-linenos="18 "></span></a><span class="k">class</span> <span class="nc">AgentExecution</span><span class="p">:</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><a href="#__codelineno-2-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;[数据组合] 记录了一次完整的代理任务执行过程，组合了多个 AgentStep。&quot;&quot;&quot;</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a><a href="#__codelineno-2-20"><span class="linenos" data-linenos="20 "></span></a>    <span class="n">task</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a><a href="#__codelineno-2-21"><span class="linenos" data-linenos="21 "></span></a>    <span class="n">steps</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AgentStep</span><span class="p">]</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a><a href="#__codelineno-2-22"><span class="linenos" data-linenos="22 "></span></a>    <span class="n">state</span><span class="p">:</span> <span class="n">AgentState</span> <span class="o">=</span> <span class="n">AgentState</span><span class="o">.</span><span class="n">RUNNING</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><a href="#__codelineno-2-23"><span class="linenos" data-linenos="23 "></span></a>    <span class="c1"># ...</span>
+</code></pre></div>
 
 
 
@@ -1990,7 +2191,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 15, 2025 10:55:59</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">September 20, 2025 20:32:07</span>
   </span>
 
     
