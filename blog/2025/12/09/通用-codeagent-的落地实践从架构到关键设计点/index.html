@@ -1,0 +1,2209 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Life">
+      
+      
+        <meta name="author" content="catwithtudou️">
+      
+      
+        <link rel="canonical" href="https://zhengyua.cn/new_blog/blog/2025/12/09/%E9%80%9A%E7%94%A8-codeagent-%E7%9A%84%E8%90%BD%E5%9C%B0%E5%AE%9E%E8%B7%B5%E4%BB%8E%E6%9E%B6%E6%9E%84%E5%88%B0%E5%85%B3%E9%94%AE%E8%AE%BE%E8%AE%A1%E7%82%B9/">
+      
+      
+        <link rel="prev" href="../../../11/09/%E7%A7%91%E5%AD%A6%E8%AF%84%E6%B5%8B-ai-%E5%BA%94%E7%94%A8%E5%88%86%E7%A6%BB%E9%9A%8F%E6%9C%BA%E6%80%A7%E4%B8%8E%E7%9C%9F%E5%AE%9E%E8%83%BD%E5%8A%9B/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/logo.jpeg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>通用 CodeAgent 的落地实践：从架构到关键设计点 - catwithtudou️🌦️</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WZVK8HDP5T"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WZVK8HDP5T",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WZVK8HDP5T",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#通用-codeagent-的落地实践从架构到关键设计点" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="catwithtudou️🌦️" class="md-header__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+      
+  <img src="../../../../../assets/logo.jpeg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            catwithtudou️🌦️
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              通用 CodeAgent 的落地实践：从架构到关键设计点
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/catwithtudou" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    catwithtudou
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  🌦️Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📌MainPage
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../language/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../algorithms/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Algorithms
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../os/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../network/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Network
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../ds/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  DS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../architecture/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../middleware/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Middleware
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../project/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Project
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../common/01-100_tips/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Common
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="catwithtudou️🌦️" class="md-nav__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+      
+  <img src="../../../../../assets/logo.jpeg" alt="logo">
+
+    </a>
+    catwithtudou️🌦️
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/catwithtudou" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    catwithtudou
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🌦️Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📌MainPage
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📌MainPage
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../me/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🌦️Me
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔗Tags
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📁Archive
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📁Archive
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2025/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2025
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../archive/2024/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2024
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🗂️Categories
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    🗂️Categories
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/aigc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    aigc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/monthly-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    monthly review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/os/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    os
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../category/server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../language/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Language
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../algorithms/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithms
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../os/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OS
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../network/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Network
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../ds/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DS
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../architecture/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../middleware/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Middleware
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../project/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../../../common/01-100_tips/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Common
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#引言" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        引言
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#我们期望的-codeagent-是什么样的" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        我们期望的 CodeAgent 是什么样的
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#整体架构三层分离的设计" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        整体架构：三层分离的设计
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-的状态设计不仅仅是消息历史" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent 的状态设计：不仅仅是消息历史
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#决策循环从-react-到更细粒度的控制" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        决策循环：从 ReAct 到更细粒度的控制
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#工具设计让模型能够可靠地调用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        工具设计：让模型能够可靠地调用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#上下文管理让-agent-看到该看的信息" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        上下文管理：让 Agent 看到该看的信息
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#错误处理与恢复agent-不可能永远正确" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        错误处理与恢复：Agent 不可能永远正确
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#人机协作边界何时需要人介入" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        人机协作边界：何时需要人介入
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#可观察性让-agent-的行为透明可查" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可观察性：让 Agent 的行为透明可查
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#能力模块化应对不同场景的需求" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        能力模块化：应对不同场景的需求
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#成本与延迟的权衡" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        成本与延迟的权衡
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#从一个具体场景开始" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        从一个具体场景开始
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#结语" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        结语
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+  <div class="md-content md-content--post" data-md-component="content">
+    <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner md-post">
+          <nav class="md-nav md-nav--primary">
+            <div class="md-post__back">
+              <div class="md-nav__title md-nav__container">
+                <a href="../../../../" class="md-nav__link">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+                  <span class="md-ellipsis">
+                    Back to index
+                  </span>
+                </a>
+              </div>
+            </div>
+            
+            <ul class="md-post__meta md-nav__list">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
+                  <span class="md-ellipsis">
+                    Metadata
+                  </span>
+                </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
+                        <time datetime="2025-12-09 00:00:00+00:00" class="md-ellipsis">Tuesday, December 9, 2025</time>
+                      </div>
+                    </li>
+                    
+                    
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3v15h3V3zm3 2 4 13 3-1-4-13zM5 5v13h3V5zM3 19v2h18v-2z"/></svg>
+                          <span class="md-ellipsis">
+                            in
+                            
+                              <a href="../../../../category/aigc/">aigc</a></span>
+                        </div>
+                      </li>
+                    
+                    
+                      
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
+                          <span class="md-ellipsis">
+                            
+                              3 min read
+                            
+                          </span>
+                        </div>
+                      </li>
+                    
+                  </ul>
+                </nav>
+              </li>
+            </ul>
+            
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+    <article class="md-content__inner md-typeset">
+      
+        
+  
+
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <a href="../../../../tags/#tag:aigc" class="md-tag">aigc</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../../tags/#tag:llm" class="md-tag">llm</a>
+      
+    
+  </nav>
+
+
+  
+  
+
+
+<h1 id="通用-codeagent-的落地实践从架构到关键设计点">通用 CodeAgent 的落地实践：从架构到关键设计点<a class="headerlink" href="#通用-codeagent-的落地实践从架构到关键设计点" title="Permanent link">&para;</a></h1>
+<h2 id="引言">引言<a class="headerlink" href="#引言" title="Permanent link">&para;</a></h2>
+<p>如何构建一个真正能在开发流程中派上用场的 CodeAgent？不是那种回答一次就结束的代码问答机器人，而是能够理解任务、拆解步骤、操作文件、运行测试、并在遇到问题时自主调整的开发助手。</p>
+<p>这个问题看似简单，实际落地时却会遇到大量工程细节：Agent 的状态如何建模？工具该怎么设计才能让模型稳定调用？上下文窗口有限的情况下如何让 Agent "看到"足够的信息？当 Agent 的一次操作出错时，系统该如何恢复？</p>
+<p>这篇文章试图分享我们在这个过程中积累的一些经验。技术选型上，我们使用的是 LangGraph 和 LangChain 1.0，配合 Textual TUI 和 MCP 工具协议。但我们更希望讨论的是设计思路本身——这些思路在其他框架和工具链下同样适用。</p>
+<!-- more -->
+
+<h2 id="我们期望的-codeagent-是什么样的">我们期望的 CodeAgent 是什么样的<a class="headerlink" href="#我们期望的-codeagent-是什么样的" title="Permanent link">&para;</a></h2>
+<p>在深入设计细节之前，有必要先明确我们想要构建的目标。</p>
+<p>我们期望的 CodeAgent 能够围绕一个开发任务持续推进。它不是回答一个问题就结束，而是能够主动拆解任务、查阅代码、修改文件、运行验证、汇报进展。在这个过程中，它需要维护清晰的任务状态——能够解释自己目前在做什么、已经完成了哪些步骤、接下来打算怎么做。</p>
+<p>同时，它与环境的交互必须是可控的。所有的读写操作都应该通过结构化的工具完成，而不是让模型直接输出 shell 命令然后盲目执行。这意味着需要有明确的权限边界和安全策略，让团队能够逐步建立对 Agent 的信任。</p>
+<p>终端环境是一个非常典型的落地场景：SSH 到服务器排查问题、在 CI 环境调试失败的构建、在容器里定位异常。这些场景的共性是信息密度高、需要多轮交互、且对操作的准确性有较高要求。本文以终端场景为例展开，但整体设计力求保持通用性。</p>
+<h2 id="整体架构三层分离的设计">整体架构：三层分离的设计<a class="headerlink" href="#整体架构三层分离的设计" title="Permanent link">&para;</a></h2>
+<p>从架构视角看，一个可复用的 CodeAgent 可以拆成三个相对独立的层次。</p>
+<p><strong>交互层</strong>负责与用户的直接沟通。它可以是 Textual 构建的终端界面，也可以是 Web 控制台或 IDE 插件。这一层的职责是展示对话、文件内容、终端输出和任务列表，同时接收用户的输入和确认。</p>
+<p><strong>Agent 编排层</strong>是系统的核心。它维护 Agent 的状态，决定何时调用哪个工具，在不同的处理节点之间流转控制。我们使用 LangGraph 来实现这一层。LangGraph 经过 Uber、LinkedIn、Klarna 等公司的生产验证，其核心能力包括持久化执行（durable execution）、短期记忆管理、人机协作模式以及流式输出。这些特性对于需要长时间运行的 CodeAgent 来说非常关键。</p>
+<p><strong>工具能力层</strong>是 Agent 与真实环境交互的唯一入口。文件系统、代码编辑器、Shell、Git、Issue 系统——这些能力通过统一的工具协议对外暴露。Agent 不直接"操作世界"，而是通过工具完成所有交互。这种设计借鉴了 Claude 工具使用的核心理念：将工具定义与 Agent 逻辑分离，使得工具可以独立测试、复用，并在不同场景下灵活组合。</p>
+<p>这种三层拆分带来了实际的工程收益。我们可以在不改动工具实现的前提下替换 Agent 框架或模型；可以在不修改 Agent 逻辑的情况下切换交互形式；不同项目也可以共享同一套工具层，实现多 Agent 共用基础能力。</p>
+<h2 id="agent-的状态设计不仅仅是消息历史">Agent 的状态设计：不仅仅是消息历史<a class="headerlink" href="#agent-的状态设计不仅仅是消息历史" title="Permanent link">&para;</a></h2>
+<p>传统的聊天应用只需要维护一个消息列表。但 CodeAgent 需要的状态要丰富得多。</p>
+<p>我们设计的状态结构包含几个核心部分：消息历史（包括用户输入、Agent 回复和工具调用结果）、当前的任务拆解（一个带有状态标记的 TODO 列表）、当前工作目录、正在聚焦的文件列表、当前高优先级子任务的描述，以及一个用于中间推理的草稿区。</p>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">CodingAgentState</span><span class="p">(</span><span class="n">TypedDict</span><span class="p">):</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a>    <span class="n">messages</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">List</span><span class="p">,</span> <span class="n">add_messages</span><span class="p">]</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a>    <span class="n">todos</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">TodoItem</span><span class="p">]</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a>    <span class="n">cwd</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a>    <span class="n">working_files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos="6 "></span></a>    <span class="n">focus_task</span><span class="p">:</span> <span class="nb">str</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos="7 "></span></a>    <span class="n">scratchpad</span><span class="p">:</span> <span class="nb">str</span>
+</code></pre></div>
+<p>这种显式的状态建模让 Agent 能够在多轮交互中保持连续性。当用户说"继续之前的重构工作"时，Agent 可以从状态中恢复上下文，而不需要重新解析整个对话历史。草稿区则用于承载中间推理结果——这些信息可能不需要展示给用户，但在调试和回放时非常有价值。</p>
+<p>LangGraph 1.0 将"显式状态 + 图式编排"作为核心设计理念。每个处理节点都以完整的状态作为输入，产出更新后的状态作为输出。这种模式天然支持状态的持久化、检查点和回放，对于长时间运行的任务来说意义重大。</p>
+<h2 id="决策循环从-react-到更细粒度的控制">决策循环：从 ReAct 到更细粒度的控制<a class="headerlink" href="#决策循环从-react-到更细粒度的控制" title="Permanent link">&para;</a></h2>
+<p>Agent 的决策循环是整个系统的心脏。最直接的实现是 ReAct 模式：模型根据当前上下文决定下一步动作，执行后将结果加入上下文，然后重复这个过程直到任务完成。LangChain 1.0 在新版本中引入了 <code>create_agent</code> 接口，正是基于这个模式：给 LLM 访问一组工具的能力，调用模型，如果模型选择调用工具就执行并循环，如果不调用工具就结束。</p>
+<div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">langchain.agents</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_agent</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos="3 "></span></a><span class="n">agent</span> <span class="o">=</span> <span class="n">create_agent</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tools</span><span class="p">)</span>
+</code></pre></div>
+<p>这个接口底层基于 LangGraph 实现，继承了 LangGraph 的 agent runtime 能力——包括持久化执行、流式输出和人机协作模式。对于简单场景来说，这已经足够好用。</p>
+<p>但在更复杂的 CodeAgent 场景下，我们发现将决策循环拆分为几个职责更清晰的节点会更加稳定。</p>
+<p><strong>Plan 节点</strong>负责根据用户请求和当前上下文生成或更新任务拆解。例如，当用户说"为这个服务添加健康检查接口"时，Plan 节点会将其拆解为：理解当前项目结构、定位服务入口、编写健康检查实现、补充测试用例、更新文档。</p>
+<p><strong>Decide 节点</strong>综合任务拆解、消息历史和最近的工具结果，决定当前应该执行什么动作。这个节点的输出是一个明确的意图：需要查看更多代码、需要修改文件、需要运行测试，还是需要向用户提问澄清。</p>
+<p><strong>Act 节点</strong>根据决策结果调用具体工具。这一步的实现相对直接，主要是参数构造和结果解析。</p>
+<p><strong>Reflect 节点</strong>对刚执行的动作做自检。这一步可能会触发额外的验证动作（例如只运行与修改相关的测试用例），并根据结果更新 TODO 状态。</p>
+<p>这种拆分让每个节点的职责更加单一，也更容易调试和优化。当发现 Agent 在某类任务上表现不佳时，可以定位到具体是规划出了问题、决策出了问题，还是执行出了问题。</p>
+<h2 id="工具设计让模型能够可靠地调用">工具设计：让模型能够可靠地调用<a class="headerlink" href="#工具设计让模型能够可靠地调用" title="Permanent link">&para;</a></h2>
+<p>工具是 Agent 与真实环境交互的桥梁。工具设计的质量直接决定了 Agent 行为的稳定性。</p>
+<p>根据 Claude 工具使用的最佳实践，好的工具定义应该有清晰的名称和描述、明确的输入输出 schema，以及合理的错误处理。模型会根据工具描述来决定何时使用哪个工具、如何构造参数。描述越清晰，模型的调用就越准确。</p>
+<p>在 CodeAgent 场景下，我们将工具分为几个类别。</p>
+<p><strong>项目结构工具</strong>帮助 Agent 理解代码库的整体布局。<code>tree</code> 工具返回目录结构，支持深度限制和忽略模式；<code>list_files</code> 按 glob 模式返回文件列表。这类工具的设计要点是控制输出规模——代码库可能有成千上万个文件，工具需要能够返回有用的摘要信息，而不是把整个文件树塞进上下文。</p>
+<p><strong>内容检索工具</strong>让 Agent 能够精准定位代码。<code>search_in_files</code> 返回匹配的代码片段及其行号，而不是整个文件内容；<code>read_file</code> 支持指定起止行号，让 Agent 可以精细控制读取范围。这些工具需要处理好大文件的情况——当文件超过一定长度时，应该引导 Agent 使用搜索而不是全量读取。</p>
+<p><strong>编辑器工具</strong>是最需要谨慎设计的部分。我们采用了 Claude 文档中推荐的做法：编辑操作基于唯一性检查的字符串替换，而不是简单的行号定位。当要替换的字符串在文件中出现多次时，工具会返回错误并引导 Agent 先缩小范围。这种设计避免了"误伤"的问题。</p>
+<p><strong>执行工具</strong>提供 Shell 访问能力。这里的关键是维护持久化的 Shell 会话（保持工作目录和环境变量），同时处理好超时、输出截断和控制字符过滤。我们还引入了命令白名单机制——对于明显危险的操作（如 <code>rm -rf /</code>）在工具层直接拒绝。</p>
+<p><strong>外部系统工具</strong>通过 MCP（Model Context Protocol）接入 Git、Issue 系统、监控平台等。这类工具的读写能力通常需要分级控制：默认只读，在明确需要时才开放写操作。</p>
+<p>一个容易被忽略的设计点是<strong>工具的错误信息</strong>。当工具调用失败时，返回的错误信息应该足够具体，让模型能够理解问题并调整策略。例如，"文件不存在"比"操作失败"更有用，"找到 3 处匹配，无法确定替换目标"比"替换失败"更能引导模型做出正确的下一步。</p>
+<h2 id="上下文管理让-agent-看到该看的信息">上下文管理：让 Agent 看到该看的信息<a class="headerlink" href="#上下文管理让-agent-看到该看的信息" title="Permanent link">&para;</a></h2>
+<p>代码库和相关文档的规模通常远超模型的上下文窗口。如何让 Agent 在有限的窗口内获得足够的信息，是一个需要持续优化的问题。</p>
+<p>我们采用的策略是将上下文分为三个层次。</p>
+<p><strong>任务上下文</strong>包含当前的用户目标、任务拆解和历史决策。这部分信息相对紧凑，由 Agent 状态直接承载，在每次调用时都会包含。</p>
+<p><strong>局部代码上下文</strong>是当前正在编辑或分析的代码片段。这部分内容通过工具调用动态获取，随着 Agent 的关注点移动而变化。关键是控制粒度——不需要整个文件，只需要相关的函数和调用链。</p>
+<p><strong>长期语义上下文</strong>包含架构文档、代码规范、历史讨论等。这部分内容通常通过检索（RAG 或工具调用）按需引入。它们的价值在于提供背景知识，而不是每次都需要出现在上下文中。</p>
+<p>在构建每次模型调用的上下文时，我们遵循一个简单的流程：先通过工具或向量检索获取候选内容，然后按相关度和大小进行过滤，对冗长的文档做摘要处理，最后以稳定的模板组织成最终的 prompt。这个模板通常包含任务描述、当前 TODO 状态、相关代码片段和最近一次执行结果。</p>
+<p>LangChain Core 在 1.0 版本中引入了 content blocks 的概念，为消息内容提供了更结构化的表示。这与现代 LLM API 返回结构化内容块的趋势一致，也让上下文的组织和解析变得更加清晰。</p>
+<h2 id="错误处理与恢复agent-不可能永远正确">错误处理与恢复：Agent 不可能永远正确<a class="headerlink" href="#错误处理与恢复agent-不可能永远正确" title="Permanent link">&para;</a></h2>
+<p>在生产环境中运行的 CodeAgent 必然会遇到各种错误：工具调用失败、模型产生幻觉、任务理解偏差、外部系统不可用。设计一个健壮的错误处理机制是系统可靠性的关键。</p>
+<p><strong>工具级别的错误处理</strong>是第一道防线。每个工具都应该有清晰的错误类型定义和信息描述。当文件不存在、命令超时、权限不足时，工具应该返回结构化的错误信息，而不是让异常直接传播。Agent 可以根据这些信息决定是调整参数重试、切换到其他工具，还是向用户求助。</p>
+<p><strong>Agent 级别的自我纠错</strong>需要在决策循环中显式设计。当连续多次工具调用失败时，Agent 应该能够退后一步重新评估策略，而不是陷入无限重试的循环。这可以通过在状态中维护失败计数、在 Reflect 节点检查执行结果来实现。</p>
+<p><strong>任务级别的中断与恢复</strong>依赖于 LangGraph 的持久化执行能力。当系统因为外部原因中断时（网络问题、服务重启），Agent 的状态应该能够被保存并在之后恢复。LangGraph 1.0 的 durable execution 正是为这类场景设计的。</p>
+<p>一个实用的做法是在 Agent 的系统提示中明确告知错误处理策略。例如：当工具调用失败时，优先根据错误信息调整调用方式；当连续三次失败时，暂停执行并向用户说明遇到的问题和尝试过的方法。这种显式的约束比期望模型"自己想明白"要可靠得多。</p>
+<h2 id="人机协作边界何时需要人介入">人机协作边界：何时需要人介入<a class="headerlink" href="#人机协作边界何时需要人介入" title="Permanent link">&para;</a></h2>
+<p>Agent 不是要完全取代人，而是要与人高效协作。明确什么时候需要人介入、以什么方式介入，是落地时必须考虑的问题。</p>
+<p>我们采用的模式是<strong>渐进式授权</strong>。Agent 默认以只读模式运行，可以自由地浏览代码、运行分析工具、查看测试结果。当需要修改文件时，Agent 会生成 diff 并等待用户确认。当需要执行可能有副作用的操作时（如提交代码、发布版本），Agent 会明确说明将要执行的操作并请求批准。</p>
+<p>LangGraph 提供了内置的 human-in-the-loop 模式来支持这种场景。在图的定义中，可以将特定节点标记为需要人工确认，框架会自动处理等待和恢复的逻辑。</p>
+<p>另一个重要的场景是<strong>澄清与求助</strong>。当 Agent 对任务理解存在歧义、当工具无法提供足够的信息、当决策涉及业务判断时，Agent 应该主动向用户提问，而不是基于假设继续执行。这需要在系统提示中明确鼓励这种行为，并在状态设计中支持等待用户输入的中间状态。</p>
+<h2 id="可观察性让-agent-的行为透明可查">可观察性：让 Agent 的行为透明可查<a class="headerlink" href="#可观察性让-agent-的行为透明可查" title="Permanent link">&para;</a></h2>
+<p>CodeAgent 的行为比传统应用更加复杂和不确定。具备充分的可观察性，是调试问题、优化效果和建立信任的基础。</p>
+<p><strong>会话追踪</strong>是最基础的能力。为每次会话分配唯一 ID，将该会话中的所有 LLM 调用和工具调用关联起来。记录每次调用的输入、输出、延迟和 token 消耗。这些数据不仅用于调试，也是持续优化的依据。</p>
+<p><strong>决策记录</strong>比原始日志更有价值。在关键节点记录 Agent 的"思考过程"：它看到了什么信息、考虑了哪些选项、为什么选择了当前的行动。这些记录可以帮助理解 Agent 的行为逻辑，也是优化 prompt 的重要参考。</p>
+<p><strong>回放与对比</strong>是更高级的能力。利用 LangGraph 的检查点机制，可以将某次执行的完整轨迹保存下来，之后用不同的 prompt 或工具配置重新执行，对比效果差异。这在优化 Agent 行为时非常有用。</p>
+<p>在交互层面，实时的状态展示可以显著提升用户体验。当 Agent 开始一次工具调用时，界面上立即显示简要说明（"正在搜索相关代码"、"正在运行单元测试"），避免用户在长时间等待中感到困惑。</p>
+<h2 id="能力模块化应对不同场景的需求">能力模块化：应对不同场景的需求<a class="headerlink" href="#能力模块化应对不同场景的需求" title="Permanent link">&para;</a></h2>
+<p>不同团队、不同项目对 CodeAgent 的需求差异很大。一个 Go 后端项目和一个 React 前端项目需要的工具和知识完全不同。将能力模块化，按需组合，是保持系统可维护性的关键。</p>
+<p>我们的做法是将工具和 prompt 片段组织成<strong>能力模块</strong>。每个模块定义自己的工具集合、补充的系统提示和可能的状态扩展。例如，Go 服务开发模块包含 <code>go test</code>、<code>go build</code> 等执行工具，以及 Go 项目结构和测试规范的知识；前端开发模块包含 <code>npm test</code>、<code>lint</code> 等工具，以及组件结构和样式规范的知识。</p>
+<p>通过配置文件选择启用哪些模块，可以快速适配不同的项目。这也降低了初始接入成本：一开始只启用最核心的能力，在稳定后再逐步扩展。</p>
+<p>这种设计思路与 LangChain 生态的理念一致。LangChain 核心库提供了统一的模型和工具抽象，各种集成（OpenAI、Anthropic、文件系统、Git 等）作为独立包存在，开发者按需引入。</p>
+<h2 id="成本与延迟的权衡">成本与延迟的权衡<a class="headerlink" href="#成本与延迟的权衡" title="Permanent link">&para;</a></h2>
+<p>在生产环境中，成本和延迟是不可忽视的因素。每次 LLM 调用都有时间和金钱成本，工具调用也有自己的开销。</p>
+<p><strong>减少不必要的调用</strong>是最直接的优化。通过更好的 prompt 设计，让模型在一次调用中完成更多推理；通过更精确的工具，减少"试错式"的探索调用。状态中缓存已获取的信息，避免重复读取同一个文件。</p>
+<p><strong>选择合适的模型</strong>也很重要。对于简单的分类或判断任务，可能不需要最强的模型；对于复杂的规划和推理，则需要更强的能力。可以在编排层实现模型选择逻辑，根据任务类型动态切换。</p>
+<p><strong>异步与并行</strong>可以改善用户感知的延迟。当多个独立的工具调用可以并行执行时，不必等待每个完成后再发起下一个。流式输出让用户能够在模型生成过程中就看到部分结果，而不是等待完整响应。</p>
+<h2 id="从一个具体场景开始">从一个具体场景开始<a class="headerlink" href="#从一个具体场景开始" title="Permanent link">&para;</a></h2>
+<p>通用 CodeAgent 的构建涉及的模块确实很多。但实际落地时，最有效的方式是从一个非常具体的场景开始。</p>
+<p>选择一个团队真实遇到的、频率足够高的问题。例如："帮助在某个服务仓库中定位并修复配置错误"，或者"协助为新增的 API 补充单元测试"。在这个具体场景下，逐步补齐本文讨论的关键设计：简单但足够的状态、最小工具集、有限的上下文管理、基础的错误处理。</p>
+<p>当 Agent 能够在这个局部场景中稳定工作时，再考虑扩展。增加新的工具、支持更复杂的任务类型、接入更多的外部系统。这种渐进式的方法比一开始就追求"通用"要务实得多。</p>
+<p>如果你正在考虑在自己的项目中落地 CodeAgent，可以从列一张"典型任务清单"开始。这些任务反映了团队真实的痛点，也定义了 Agent 需要具备的能力边界。然后将每个任务映射到具体的状态字段、工具调用和交互流程，就能得到一个可执行的实施计划。</p>
+<h2 id="结语">结语<a class="headerlink" href="#结语" title="Permanent link">&para;</a></h2>
+<p>构建一个真正能用的 CodeAgent，核心挑战不在于调用 LLM 的能力，而在于如何将 LLM 的能力可控地嵌入到工程系统中。这需要清晰的状态设计、稳健的工具实现、合理的上下文管理，以及对错误处理和人机协作边界的仔细考量。</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="December 9, 2025 11:44:55 CST">December 9, 2025 11:44:55</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="December 9, 2025 11:44:55 CST">December 9, 2025 11:44:55</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+  
+
+
+
+      
+    </article>
+  </div>
+
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../../11/09/%E7%A7%91%E5%AD%A6%E8%AF%84%E6%B5%8B-ai-%E5%BA%94%E7%94%A8%E5%88%86%E7%A6%BB%E9%9A%8F%E6%9C%BA%E6%80%A7%E4%B8%8E%E7%9C%9F%E5%AE%9E%E8%83%BD%E5%8A%9B/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 科学评测 AI 应用，分离“随机性”与“真实能力”">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                科学评测 AI 应用，分离“随机性”与“真实能力”
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 catwithtudou
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/catwithtudou" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/catwithtudou" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M357.2 48h70.6L273.6 224.2 455 464H313L201.7 318.6 74.5 464H3.8l164.9-188.5L-5.2 48h145.6l100.5 132.9zm-24.8 373.8h39.1L119.1 88h-42z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="analytics" checked>
+      <span class="task-list-indicator"></span>
+      Google Analytics
+    </label>
+  </li>
+
+      
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="github" checked>
+      <span class="task-list-indicator"></span>
+      GitHub
+    </label>
+  </li>
+
+      
+    
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotation", "content.code.copy", "content.code.select", "header.autohide"], "search": "../../../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
