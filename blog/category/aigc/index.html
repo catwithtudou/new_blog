@@ -992,6 +992,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#anthropic-agent-skills-完整指南让-ai-agent-掌握专业技能的标准化方案" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anthropic Agent Skills 完整指南：让 AI Agent 掌握专业技能的标准化方案
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#跨平台-skills-实践指南在任何-ai-工具中使用专业技能" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        跨平台 Skills 实践指南：在任何 AI 工具中使用专业技能
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#通用-codeagent-的落地实践从架构到关键设计点" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1758,6 +1780,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#anthropic-agent-skills-完整指南让-ai-agent-掌握专业技能的标准化方案" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anthropic Agent Skills 完整指南：让 AI Agent 掌握专业技能的标准化方案
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#跨平台-skills-实践指南在任何-ai-工具中使用专业技能" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        跨平台 Skills 实践指南：在任何 AI 工具中使用专业技能
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#通用-codeagent-的落地实践从架构到关键设计点" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1826,6 +1870,102 @@
       <header class="md-typeset">
         <h1 id="aigc">aigc<a class="headerlink" href="#aigc" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-01-03 00:00:00+00:00">Saturday, January 3, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">aigc</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              11 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="anthropic-agent-skills-完整指南让-ai-agent-掌握专业技能的标准化方案"><a class="toclink" href="../../2026/01/03/anthropic-agent-skills-%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97%E8%AE%A9-ai-agent-%E6%8E%8C%E6%8F%A1%E4%B8%93%E4%B8%9A%E6%8A%80%E8%83%BD%E7%9A%84%E6%A0%87%E5%87%86%E5%8C%96%E6%96%B9%E6%A1%88/">Anthropic Agent Skills 完整指南：让 AI Agent 掌握专业技能的标准化方案</a></h2>
+<h3 id="引言"><a class="toclink" href="../../2026/01/03/anthropic-agent-skills-%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97%E8%AE%A9-ai-agent-%E6%8E%8C%E6%8F%A1%E4%B8%93%E4%B8%9A%E6%8A%80%E8%83%BD%E7%9A%84%E6%A0%87%E5%87%86%E5%8C%96%E6%96%B9%E6%A1%88/#引言">引言</a></h3>
+<p>随着大语言模型在各个领域的应用越来越广泛，如何让 AI Agent 更好地完成特定领域的专业任务成为了一个重要课题。Anthropic 推出的 <strong>Agent Skills</strong> 提供了一个优雅的解决方案——通过标准化的技能包（Skill），让 Claude 能够动态加载专业指令和资源，从而在特定任务上表现得更加专业和一致。</p>
+<p>本文将深入介绍 Anthropic 的 Skills 项目，帮助你理解其核心价值、技术架构和实际应用。</p>
+<blockquote>
+<p><strong>技术准确性声明</strong>：本文中所有关键技术细节（Progressive Disclosure、高效脚本执行、环境隔离等）均基于 Anthropic 官方文档验证，包括：
+- <a href="https://platform.claude.com/docs/en/api/skills-guide">Agent Skills API Guide</a>
+- <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview">Agent Skills Overview</a>
+- <a href="https://anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills">Anthropic Engineering Blog - Agent Skills</a></p>
+<p>文中涉及官方文档的部分均以引用块标注，确保信息的准确性和可追溯性。</p>
+</blockquote>
+
+    
+      <nav class="md-post__action">
+        <a href="../../2026/01/03/anthropic-agent-skills-%E5%AE%8C%E6%95%B4%E6%8C%87%E5%8D%97%E8%AE%A9-ai-agent-%E6%8E%8C%E6%8F%A1%E4%B8%93%E4%B8%9A%E6%8A%80%E8%83%BD%E7%9A%84%E6%A0%87%E5%87%86%E5%8C%96%E6%96%B9%E6%A1%88/">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-01-03 00:00:00+00:00">Saturday, January 3, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="./" class="md-meta__link">aigc</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              13 min read
+            
+          </li>
+        
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="跨平台-skills-实践指南在任何-ai-工具中使用专业技能"><a class="toclink" href="../../2026/01/03/%E8%B7%A8%E5%B9%B3%E5%8F%B0-skills-%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97%E5%9C%A8%E4%BB%BB%E4%BD%95-ai-%E5%B7%A5%E5%85%B7%E4%B8%AD%E4%BD%BF%E7%94%A8%E4%B8%93%E4%B8%9A%E6%8A%80%E8%83%BD/">跨平台 Skills 实践指南：在任何 AI 工具中使用专业技能</a></h2>
+<h3 id="引言"><a class="toclink" href="../../2026/01/03/%E8%B7%A8%E5%B9%B3%E5%8F%B0-skills-%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97%E5%9C%A8%E4%BB%BB%E4%BD%95-ai-%E5%B7%A5%E5%85%B7%E4%B8%AD%E4%BD%BF%E7%94%A8%E4%B8%93%E4%B8%9A%E6%8A%80%E8%83%BD/#引言">引言</a></h3>
+<p>Anthropic 的 Agent Skills 提供了一套优雅的专业技能管理方案，但最初它是 Claude 专属特性。随着社区的发展，现在有多种方案让其他 AI 编程工具（Cursor、Windsurf、Aider 等）也能使用 Skills，甚至在 LangChain、LlamaIndex 等框架中实现类似的 Skills 模式。</p>
+<p>本文将介绍三种跨平台 Skills 实践方案，从<strong>开箱即用</strong>到<strong>深度定制</strong>，以及在实战中创建和迭代 Skills 的最佳工作流。</p>
+<blockquote>
+<p><strong>前置阅读</strong>：建议先阅读 <a href="./260103_anthropic_skills_guide.md">Anthropic Agent Skills 完整指南</a> 了解 Skills 的核心概念和技术架构。</p>
+</blockquote>
+
+    
+      <nav class="md-post__action">
+        <a href="../../2026/01/03/%E8%B7%A8%E5%B9%B3%E5%8F%B0-skills-%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97%E5%9C%A8%E4%BB%BB%E4%BD%95-ai-%E5%B7%A5%E5%85%B7%E4%B8%AD%E4%BD%BF%E7%94%A8%E4%B8%93%E4%B8%9A%E6%8A%80%E8%83%BD/">
+          Continue reading
+        </a>
+      </nav>
+    
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">
