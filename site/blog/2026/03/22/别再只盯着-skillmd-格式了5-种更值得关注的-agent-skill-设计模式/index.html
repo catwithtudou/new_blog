@@ -12,13 +12,11 @@
         <meta name="author" content="catwithtudou️">
       
       
-        <link rel="canonical" href="https://zhengyua.cn/new_blog/blog/2026/03/02/%E4%B8%80%E5%88%87%E9%83%BD%E5%9C%A8%E5%8A%A0%E9%80%9F-261-2%E6%9C%88%E6%80%BB%E7%BB%93/">
+        <link rel="canonical" href="https://zhengyua.cn/new_blog/blog/2026/03/22/%E5%88%AB%E5%86%8D%E5%8F%AA%E7%9B%AF%E7%9D%80-skillmd-%E6%A0%BC%E5%BC%8F%E4%BA%865-%E7%A7%8D%E6%9B%B4%E5%80%BC%E5%BE%97%E5%85%B3%E6%B3%A8%E7%9A%84-agent-skill-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
       
       
-        <link rel="prev" href="../../../01/03/%E4%BA%A4%E4%BB%A3%E8%BF%87%E5%8E%BB-2512%E6%9C%88%E6%80%BB%E7%BB%93/">
+        <link rel="prev" href="../../02/%E4%B8%80%E5%88%87%E9%83%BD%E5%9C%A8%E5%8A%A0%E9%80%9F-261-2%E6%9C%88%E6%80%BB%E7%BB%93/">
       
-      
-        <link rel="next" href="../../22/%E5%88%AB%E5%86%8D%E5%8F%AA%E7%9B%AF%E7%9D%80-skillmd-%E6%A0%BC%E5%BC%8F%E4%BA%865-%E7%A7%8D%E6%9B%B4%E5%80%BC%E5%BE%97%E5%85%B3%E6%B3%A8%E7%9A%84-agent-skill-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
       
       
       <link rel="icon" href="../../../../../assets/logo.jpeg">
@@ -26,7 +24,7 @@
     
     
       
-        <title>一切都在加速 26.1-2月总结 - catwithtudou️🌦️</title>
+        <title>别再只盯着 SKILL.md 格式了：5 种更值得关注的 Agent Skill 设计模式 - catwithtudou️🌦️</title>
       
     
     
@@ -88,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#一切都在加速-261-2月总结" class="md-skip">
+        <a href="#别再只盯着-skillmd-格式了5-种更值得关注的-agent-skill-设计模式" class="md-skip">
           Skip to content
         </a>
       
@@ -123,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              一切都在加速 26.1-2月总结
+              别再只盯着 SKILL.md 格式了：5 种更值得关注的 Agent Skill 设计模式
             
           </span>
         </div>
@@ -1441,36 +1439,282 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#0-前言" class="md-nav__link">
+  <a href="#一为什么继续堆-prompt正在变得越来越低效" class="md-nav__link">
     <span class="md-ellipsis">
-      0. 前言
+      一、为什么“继续堆 Prompt”正在变得越来越低效
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-工作上" class="md-nav__link">
+  <a href="#二从写-skill-文件到设计-skill-能力" class="md-nav__link">
     <span class="md-ellipsis">
-      1. 工作上
+      二、从“写 Skill 文件”到“设计 Skill 能力”
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-生活上" class="md-nav__link">
+  <a href="#三模式一tool-wrapper--让-agent-在特定场景下临时变成专家" class="md-nav__link">
     <span class="md-ellipsis">
-      2. 生活上
+      三、模式一：Tool Wrapper —— 让 Agent 在特定场景下临时变成专家
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、模式一：Tool Wrapper —— 让 Agent 在特定场景下临时变成专家">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-tool-wrapper-到底是什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 Tool Wrapper 到底是什么
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-一个很典型的误区" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 一个很典型的误区
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-一个最直观的例子fastapi-专家-skill" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 一个最直观的例子：FastAPI 专家 Skill
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-它和-rag-的区别" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 它和 RAG 的区别
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#四模式二generator--不让-agent-自由发挥而是让它填模板" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、模式二：Generator —— 不让 Agent 自由发挥，而是让它填模板
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、模式二：Generator —— 不让 Agent 自由发挥，而是让它填模板">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-generator-的核心价值" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 Generator 的核心价值
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-一个简单例子" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 一个简单例子
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-它适合哪些任务" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 它适合哪些任务
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#五模式三reviewer--把怎么评从-prompt-里拆出来" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、模式三：Reviewer —— 把“怎么评”从 Prompt 里拆出来
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、模式三：Reviewer —— 把“怎么评”从 Prompt 里拆出来">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-reviewer-的结构" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 Reviewer 的结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-为什么它很实用" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 为什么它很实用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-它适合哪些场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 它适合哪些场景
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#六模式四inversion--不让-agent-立刻开工而是先问清楚" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、模式四：Inversion —— 不让 Agent 立刻开工，而是先问清楚
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、模式四：Inversion —— 不让 Agent 立刻开工，而是先问清楚">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-它是什么" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 它是什么
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-为什么它叫-inversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 为什么它叫 Inversion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-它最适合什么场景" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 它最适合什么场景
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#七模式五pipeline--把复杂任务拆成不可跳过的工作流" class="md-nav__link">
+    <span class="md-ellipsis">
+      七、模式五：Pipeline —— 把复杂任务拆成不可跳过的工作流
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="七、模式五：Pipeline —— 把复杂任务拆成不可跳过的工作流">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-pipeline-的核心思想" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.1 Pipeline 的核心思想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-一个典型流程" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.2 一个典型流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-它适合哪些任务" class="md-nav__link">
+    <span class="md-ellipsis">
+      7.3 它适合哪些任务
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#八这五种模式最简单的区分方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      八、这五种模式最简单的区分方式
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-接下来的展望" class="md-nav__link">
+  <a href="#九真正重要的一点这些模式不是互斥的而是可以组合的" class="md-nav__link">
     <span class="md-ellipsis">
-      3. 接下来的展望
+      九、真正重要的一点：这些模式不是互斥的，而是可以组合的
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#十重新看-skill-设计它其实更像软件架构问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      十、重新看 Skill 设计：它其实更像软件架构问题
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#结语" class="md-nav__link">
+    <span class="md-ellipsis">
+      结语
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#参考文档" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考文档
     </span>
   </a>
   
@@ -1513,7 +1757,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
-                        <time datetime="2026-03-02 00:00:00+00:00" class="md-ellipsis">Monday, March 2, 2026</time>
+                        <time datetime="2026-03-22 00:00:00+00:00" class="md-ellipsis">Sunday, March 22, 2026</time>
                       </div>
                     </li>
                     
@@ -1524,7 +1768,7 @@
                           <span class="md-ellipsis">
                             in
                             
-                              <a href="../../../../category/monthly-review/">monthly review</a></span>
+                              <a href="../../../../category/aigc/">aigc</a></span>
                         </div>
                       </li>
                     
@@ -1535,7 +1779,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
                           <span class="md-ellipsis">
                             
-                              1 min read
+                              5 min read
                             
                           </span>
                         </div>
@@ -1553,98 +1797,535 @@
     <article class="md-content__inner md-typeset">
       
         
+  
+  
+
+<nav class="md-tags" >
+  
+    
+    
+    
+      <a href="../../../../tags/#llm" class="md-tag">llm</a>
+    
+  
+    
+    
+    
+      <a href="../../../../tags/#aigc" class="md-tag">aigc</a>
+    
+  
+</nav>
+
 
   
   
 
 
-<h1 id="一切都在加速-261-2月总结">一切都在加速 26.1-2月总结<a class="headerlink" href="#一切都在加速-261-2月总结" title="Permanent link">&para;</a></h1>
-<blockquote>
-<p>本来想回顾下25年的，但这一切衔接的太快了。而我也没有好好给自己留出时间。</p>
-<p>那就顺带着3月相关的结果尘埃落定，再来抽出时间完成吧。</p>
-</blockquote>
-<h2 id="0-前言">0. 前言<a class="headerlink" href="#0-前言" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>日复一日，时复一年，岁月就这样匆匆流逝……就这样逃亡着，它改变了整个世界。</p>
-<p>它既不休息，也不停留，更不会折返。直到最终将你化为了一粒微尘。</p>
-</blockquote>
-<p>第一次读到的时候，有一瞬间没明白自己被什么触动了。</p>
-<p>后来想，大概是"微尘"这个词。</p>
-<p>不是某种诗意的消逝，而是字面意义上的——被抹去，不被记得，连痕迹都没有留下。</p>
-<p>这种恐惧我平时不太说出来，但它是真实存在的。</p>
-<p>这两个月，时间加速的感觉不是比喻。</p>
-<p>没有喘息的余地去问"我在哪里"，因为一停下来，已经又被推着走出去很远了。</p>
-<p>推特永远有读不完的内容，永远有一种"你在落后"的低鸣。</p>
-<p>我知道这种焦虑本质上是对不确定性的应激，但知道归知道，感受是另一回事。</p>
-<p>“如果要 90 分的结果，那么就需要要付出 120 分的努力。”</p>
-<p>听起来还有很多的事情还要做。</p>
+<h1 id="别再只盯着-skillmd-格式了5-种更值得关注的-agent-skill-设计模式">别再只盯着 <code>SKILL.md</code> 格式了：5 种更值得关注的 Agent Skill 设计模式<a class="headerlink" href="#别再只盯着-skillmd-格式了5-种更值得关注的-agent-skill-设计模式" title="Permanent link">&para;</a></h1>
+<p>当越来越多 Agent 工具开始支持相似的 Skill 组织方式后，很多开发者仍然把注意力放在“外壳”上：</p>
+<ul>
+<li><code>SKILL.md</code> 怎么写</li>
+<li>frontmatter 怎么配</li>
+<li><code>references/</code>、<code>assets/</code> 目录怎么摆</li>
+<li>YAML 字段要不要补齐</li>
+</ul>
+<p>这些当然重要，但它们解决的，本质上只是<strong>封装格式</strong>的问题。</p>
+<p>真正决定一个 Skill 是否好用、是否稳定、是否能复用的，往往不是它“长什么样”，而是它内部的<strong>能力结构怎么设计</strong>。</p>
+<p>这也是 Google Cloud Tech 那篇<a href="https://x.com/GoogleCloudTech/status/2033953579824758855">《5 Agent Skill design patterns every ADK developer should know》</a>真正值得看的地方：</p>
+<p><strong>当 Skill 的包装格式逐渐标准化之后，真正拉开差距的，不再是会不会写 Skill 文件，而是会不会设计 Skill 的内容。</strong></p>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202603222248916.png" /></p>
+<p>文章总结了 5 种反复出现的 Skill 设计模式：</p>
+<ol>
+<li>Tool Wrapper</li>
+<li>Generator</li>
+<li>Reviewer</li>
+<li>Inversion</li>
+<li>Pipeline</li>
+</ol>
+<p>它们不是五个零散技巧，而更像五种常见的 <strong>Agent 能力组织方式</strong>。</p>
 <!-- more -->
 
-<h2 id="1-工作上">1. 工作上<a class="headerlink" href="#1-工作上" title="Permanent link">&para;</a></h2>
-<p>一月的状态，其实是几条线并行往前推：AI Widget、DeepCR，还有日常投放承接的业务。</p>
-<p>事情一直在做，甚至没有断过。但有一个感觉一直在——我很难说清楚，自己到底做成了什么。</p>
-<p>这不是“没做事”的空，而是另一种更钝的状态：你知道自己在用力，但这些用力没有形状。</p>
-<p>一直到月底写绩效、拆 Q1 OKR 的时候，才像是突然有了一面镜子。</p>
-<p>有些东西是确实在推进的，有些只是看起来在动。</p>
-<p>有时候会觉得，复盘的意义可能就在这里：不是为了证明你做了什么，而是让你看到——你其实在做什么。</p>
-<p>这段时间还有一个挺直接的认知修正。</p>
-<p>我尝试把一个高频任务塞进 AI 工作流里，一开始是带着“应该会更高效”的预期去做的。</p>
-<p>但实际跑下来，反而更慢，维护成本也更高。一开始有点沮丧。后来慢慢接受：</p>
-<p>高频，不等于值得优化；能用 AI，也不等于应该用 AI；上下文更长，也不一定带来更好的结果。</p>
-<p>承认一个东西“不好用”，比一开始相信它好用，要更难一点。</p>
-<p>再往上看一点，这两个月我开始反复想一个问题：AI 时代，一个软件工程师到底在做什么？</p>
-<p>越来越明显的一点是：</p>
-<p>AI 在压缩的是那些“偶然复杂度”——语法、模板、常规实现。而真正留下来的，是“本质复杂度”。</p>
+<h2 id="一为什么继续堆-prompt正在变得越来越低效">一、为什么“继续堆 Prompt”正在变得越来越低效<a class="headerlink" href="#一为什么继续堆-prompt正在变得越来越低效" title="Permanent link">&para;</a></h2>
+<p>很多 Agent 系统一开始都很像这样：</p>
+<ul>
+<li>在 system prompt 里塞框架知识</li>
+<li>塞代码规范</li>
+<li>塞输出格式要求</li>
+<li>塞评审标准</li>
+<li>塞多轮交互规则</li>
+<li>再补一堆“必须严格执行”“不要跳步”“先问清楚再做”的约束</li>
+</ul>
+<p>一开始似乎还能工作，但随着能力变多，问题也会越来越明显。</p>
+<p>第一，Prompt 会越来越长。
+第二，不同规则开始互相干扰。
+第三，很多知识只在某些任务里才需要，却被长期塞在上下文中。
+第四，维护成本迅速上升，一处改动就可能影响整体行为。</p>
+<p>于是，问题就不再是“怎么把 Prompt 写得更全”，而是：</p>
+<blockquote>
+<p><strong>能不能把不同类型的能力拆出来，按结构设计，而不是继续往一个总 Prompt 里堆。</strong></p>
+</blockquote>
+<p>这正是 Skill 设计真正重要的地方。</p>
+<hr />
+<h2 id="二从写-skill-文件到设计-skill-能力">二、从“写 Skill 文件”到“设计 Skill 能力”<a class="headerlink" href="#二从写-skill-文件到设计-skill-能力" title="Permanent link">&para;</a></h2>
+<p>如果从更抽象的角度看，这 5 种模式其实分别在解决 5 类不同的问题：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>核心作用</th>
+<th>主要解决的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tool Wrapper</td>
+<td>按需注入领域规则或知识</td>
+<td>Agent 不够专业，输出不稳定</td>
+</tr>
+<tr>
+<td>Generator</td>
+<td>强制输出遵循固定模板</td>
+<td>输出结构漂移、风格不一致</td>
+</tr>
+<tr>
+<td>Reviewer</td>
+<td>按清单进行审查与评分</td>
+<td>评审标准分散，难复用</td>
+</tr>
+<tr>
+<td>Inversion</td>
+<td>先收集信息再行动</td>
+<td>Agent 喜欢猜需求、过早生成</td>
+</tr>
+<tr>
+<td>Pipeline</td>
+<td>把任务拆成严格阶段执行</td>
+<td>复杂任务容易跳步、漏步</td>
+</tr>
+</tbody>
+</table>
+<p>如果再往上收一层，它们其实对应三类“控制”：</p>
+<ul>
+<li><strong>上下文控制</strong>：Tool Wrapper、Inversion</li>
+<li><strong>输出控制</strong>：Generator、Reviewer</li>
+<li><strong>流程控制</strong>：Pipeline</li>
+</ul>
+<p>也就是说，Skill 的本质并不是“多一个 Markdown 文件”，而是：</p>
+<blockquote>
+<p><strong>把原本混在 Prompt 里的能力，拆成可以独立设计、独立维护、按需组合的结构模块。</strong></p>
+</blockquote>
+<hr />
+<h2 id="三模式一tool-wrapper--让-agent-在特定场景下临时变成专家">三、模式一：Tool Wrapper —— 让 Agent 在特定场景下临时变成专家<a class="headerlink" href="#三模式一tool-wrapper--让-agent-在特定场景下临时变成专家" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202603222248253.png" /></p>
+<p>先说最容易被误解的一种。</p>
+<h3 id="31-tool-wrapper-到底是什么">3.1 Tool Wrapper 到底是什么<a class="headerlink" href="#31-tool-wrapper-到底是什么" title="Permanent link">&para;</a></h3>
+<p>Tool Wrapper 的核心思想可以概括成一句话：</p>
+<blockquote>
+<p><strong>把某一类明确的知识、规范或约束封装成一个 Skill，让 Agent 只在需要时加载，并按它来完成任务。</strong></p>
+</blockquote>
+<p>这里有两个关键词非常关键：</p>
+<p>第一，它是<strong>按需加载</strong>的。
+第二，它不仅是在“补信息”，更是在<strong>约束行为</strong>。</p>
+<hr />
+<h3 id="32-一个很典型的误区">3.2 一个很典型的误区<a class="headerlink" href="#32-一个很典型的误区" title="Permanent link">&para;</a></h3>
+<p>很多人第一次接触 Tool Wrapper 时，都会自然地问一句：</p>
+<blockquote>
+<p><strong>是不是要把 skill 都设计成这种类型？</strong></p>
+</blockquote>
+<p>这个疑问非常典型，也恰好能帮助理解 Tool Wrapper 的边界。</p>
+<p>答案是：<strong>不是。</strong></p>
+<p>Tool Wrapper 不是“Skill 的统称”，而只是 Skill 的一种设计模式。它适合解决的是这样一类问题：</p>
+<ul>
+<li>有一套明确的规则或规范</li>
+<li>这些规则只在某类任务中才需要</li>
+<li>你希望它能独立维护</li>
+<li>你希望 Agent 在该场景里“照着做”，而不是“参考一下”</li>
+</ul>
+<p>满足这些条件时，Skill 就很适合设计成 Tool Wrapper。</p>
+<hr />
+<h3 id="33-一个最直观的例子fastapi-专家-skill">3.3 一个最直观的例子：FastAPI 专家 Skill<a class="headerlink" href="#33-一个最直观的例子fastapi-专家-skill" title="Permanent link">&para;</a></h3>
+<p>假设你有一个 Agent，经常要帮助用户编写或审查 FastAPI 代码。</p>
+<p>最原始的做法是把所有规则都塞进总 Prompt：</p>
+<ul>
+<li>使用 <code>APIRouter</code></li>
+<li>使用 Pydantic 校验</li>
+<li>统一依赖注入写法</li>
+<li>所有函数要有类型注解</li>
+<li>避免直接返回裸 <code>dict</code></li>
+</ul>
+<p>但更合理的做法，是把它们拆成一个独立 Skill：</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a>skills/
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a>└── fastapi-expert/
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a>    ├── SKILL.md
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a>    └── references/
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a>        └── conventions.md
+</code></pre></div>
+<p>其中：</p>
+<ul>
+<li><code>SKILL.md</code> 负责定义：何时启用、启用后如何执行</li>
+<li><code>references/conventions.md</code> 负责存放真正的规则内容</li>
+</ul>
+<p>于是执行逻辑就变成：</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a>flowchart TD
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a>    A[用户请求] --&gt; B{是否命中 FastAPI 场景}
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos="3 "></span></a>    B -- 否 --&gt; C[走通用 Agent 逻辑]
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos="4 "></span></a>    B -- 是 --&gt; D[激活 fastapi-expert Skill]
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos="5 "></span></a>    D --&gt; E[加载 references/conventions.md]
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos="6 "></span></a>    E --&gt; F[按规则生成或审查代码]
+</code></pre></div>
+<p>这背后的关键变化是：</p>
+<blockquote>
+<p>原来是“模型自己想怎么写”；
+现在是“模型必须按这套规则来写”。</p>
+</blockquote>
+<hr />
+<h3 id="34-它和-rag-的区别">3.4 它和 RAG 的区别<a class="headerlink" href="#34-它和-rag-的区别" title="Permanent link">&para;</a></h3>
+<p>Tool Wrapper 最容易和 RAG 混淆，但两者的目标其实不同。</p>
+<p>RAG 解决的是：<strong>模型不知道某些事实，需要查资料。</strong>
+Tool Wrapper 解决的是：<strong>模型虽然会做，但做法不稳定，需要按规则执行。</strong></p>
+<p>所以两者的区别不在“有没有外部文档”，而在于文档扮演的角色不同：</p>
+<ul>
+<li><strong>RAG</strong>：提供事实和背景信息</li>
+<li><strong>Tool Wrapper</strong>：提供规则和执行约束</li>
+</ul>
+<p>一句话概括：</p>
+<blockquote>
+<p><strong>RAG 更像查资料，Tool Wrapper 更像拿操作手册。</strong></p>
+</blockquote>
+<hr />
+<h2 id="四模式二generator--不让-agent-自由发挥而是让它填模板">四、模式二：Generator —— 不让 Agent 自由发挥，而是让它填模板<a class="headerlink" href="#四模式二generator--不让-agent-自由发挥而是让它填模板" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202603222249270.png" /></p>
+<p>如果说 Tool Wrapper 主要控制“按什么规则做”，那么 Generator 主要控制的是：</p>
+<blockquote>
+<p><strong>最后输出长什么样。</strong></p>
+</blockquote>
+<h3 id="41-generator-的核心价值">4.1 Generator 的核心价值<a class="headerlink" href="#41-generator-的核心价值" title="Permanent link">&para;</a></h3>
+<p>很多时候，模型并不是“不知道该写什么”，而是“每次都写得不一样”。</p>
+<p>比如你让 Agent 生成一份技术报告：</p>
+<ul>
+<li>有时先写摘要</li>
+<li>有时先写背景</li>
+<li>有时带结论</li>
+<li>有时像聊天回复</li>
+<li>有时像正式文档</li>
+</ul>
+<p>这时问题不在内容理解，而在于：</p>
+<blockquote>
+<p><strong>输出骨架没有被约束住。</strong></p>
+</blockquote>
+<p>Generator 的思路就是把“内容”和“结构”拆开：</p>
+<ul>
+<li>用 <code>assets/</code> 放模板</li>
+<li>用 <code>references/</code> 放风格规范</li>
+<li>用 <code>SKILL.md</code> 负责编排填充过程</li>
+</ul>
+<p>它不是让模型“自由写”，而是让模型<strong>按模板完成文档</strong>。</p>
+<hr />
+<h3 id="42-一个简单例子">4.2 一个简单例子<a class="headerlink" href="#42-一个简单例子" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a>skills/
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a>└── report-generator/
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a>    ├── SKILL.md
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos="4 "></span></a>    ├── assets/
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos="5 "></span></a>    │   └── report-template.md
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><a href="#__codelineno-2-6"><span class="linenos" data-linenos="6 "></span></a>    └── references/
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><a href="#__codelineno-2-7"><span class="linenos" data-linenos="7 "></span></a>        └── style-guide.md
+</code></pre></div>
+<p>执行逻辑通常是：</p>
+<ol>
+<li>读取风格规范</li>
+<li>读取模板骨架</li>
+<li>检查模板变量是否齐全</li>
+<li>缺什么就向用户追问</li>
+<li>按模板填充，输出完整文档</li>
+</ol>
+<p>可以用下面这张图理解：</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a>flowchart TD
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><a href="#__codelineno-3-2"><span class="linenos" data-linenos="2 "></span></a>    A[用户请求生成报告] --&gt; B[加载 style-guide]
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><a href="#__codelineno-3-3"><span class="linenos" data-linenos="3 "></span></a>    B --&gt; C[加载 report-template]
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><a href="#__codelineno-3-4"><span class="linenos" data-linenos="4 "></span></a>    C --&gt; D{模板变量是否齐全}
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><a href="#__codelineno-3-5"><span class="linenos" data-linenos="5 "></span></a>    D -- 否 --&gt; E[向用户追问缺失信息]
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><a href="#__codelineno-3-6"><span class="linenos" data-linenos="6 "></span></a>    E --&gt; C
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><a href="#__codelineno-3-7"><span class="linenos" data-linenos="7 "></span></a>    D -- 是 --&gt; F[按模板填充内容]
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><a href="#__codelineno-3-8"><span class="linenos" data-linenos="8 "></span></a>    F --&gt; G[输出完整文档]
+</code></pre></div>
+<hr />
+<h3 id="43-它适合哪些任务">4.3 它适合哪些任务<a class="headerlink" href="#43-它适合哪些任务" title="Permanent link">&para;</a></h3>
+<p>Generator 很适合这类场景：</p>
+<ul>
+<li>技术报告</li>
+<li>方案文档</li>
+<li>周报月报</li>
+<li>PR 描述</li>
+<li>API 文档</li>
+<li>标准化总结稿</li>
+</ul>
+<p>它的价值不在于“让模型写得更华丽”，而在于：</p>
+<blockquote>
+<p><strong>把输出稳定性，从靠模型发挥，变成靠模板约束。</strong></p>
+</blockquote>
+<hr />
+<h2 id="五模式三reviewer--把怎么评从-prompt-里拆出来">五、模式三：Reviewer —— 把“怎么评”从 Prompt 里拆出来<a class="headerlink" href="#五模式三reviewer--把怎么评从-prompt-里拆出来" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202603222249048.png" /></p>
+<p>很多团队在做代码审查、文档验收、质量打分时，都会把规则直接写进 Prompt：</p>
+<ul>
+<li>检查命名</li>
+<li>检查复杂度</li>
+<li>检查错误处理</li>
+<li>检查边界条件</li>
+<li>检查潜在风险</li>
+</ul>
+<p>问题是，规则一多，Prompt 就会越来越长，而且越来越难维护。</p>
+<p>Reviewer 模式的思路是：</p>
+<blockquote>
+<p><strong>把“检查什么”单独存成 checklist，把“如何执行检查”交给 Skill。</strong></p>
+</blockquote>
+<hr />
+<h3 id="51-reviewer-的结构">5.1 Reviewer 的结构<a class="headerlink" href="#51-reviewer-的结构" title="Permanent link">&para;</a></h3>
+<p>一个典型 Reviewer 往往包含两部分：</p>
+<ul>
+<li><code>SKILL.md</code>：定义审查流程</li>
+<li><code>references/review-checklist.md</code>：定义评审标准</li>
+</ul>
+<p>Skill 本身只做这些事：</p>
+<ol>
+<li>加载 checklist</li>
+<li>理解用户输入内容</li>
+<li>按 checklist 逐项检查</li>
+<li>按严重等级组织结果</li>
+<li>给出修复建议或评分</li>
+</ol>
+<p>这类模式的核心思想非常重要：</p>
+<blockquote>
+<p><strong>规则是数据，执行是引擎。</strong></p>
+</blockquote>
+<p>换一份 checklist，Skill 的流程可以不变；
+但 Agent 的“评审能力”就会随之变化。</p>
+<hr />
+<h3 id="52-为什么它很实用">5.2 为什么它很实用<a class="headerlink" href="#52-为什么它很实用" title="Permanent link">&para;</a></h3>
+<p>Reviewer 的价值在于，它把原本写死在 Prompt 里的评审标准变成了<strong>可替换、可维护、可复用</strong>的结构。</p>
 <p>比如：</p>
 <ul>
-<li>你怎么理解需求</li>
-<li>你怎么做取舍</li>
-<li>你交付的结果是不是可验证</li>
-<li>以及你是否真的对这条结果链路负责</li>
+<li>换成 Python 风格清单，就是代码质量评审</li>
+<li>换成 OWASP 检查表，就是安全审计</li>
+<li>换成文档规范清单，就是内容验收</li>
 </ul>
-<p>2月年后的节奏依然没有慢下来。去深圳出差，是这段时间里一个比较不一样的节点。</p>
-<p>从屏幕里抬起头，见到真实的人，处在一个真实的场里，和线上开会，是完全不同的体感。</p>
-<h2 id="2-生活上">2. 生活上<a class="headerlink" href="#2-生活上" title="Permanent link">&para;</a></h2>
-<p>春节假期是这两个月里少有的慢节奏时段。</p>
-<p>陪家人、练车、遛狗、读书听播客——这些事情放在平时未必有多特别，但在假期里被放慢了，才有了重量。</p>
-<p>在老家的那几天，有人提起了小时候的记忆：剪睫毛、被表扬后装狗。</p>
-<p>那些细节我已经记不太清了，但有人还记得。"幸好还有人记得"——这句话当时在心里转了很久。</p>
-<p>因为它让我意识到，我们对自己的记忆是残缺的，而我们的存在，是由那些还记得我们的人共同拼凑起来的。</p>
-<p>时间会抹掉很多东西。</p>
-<p>这种感受和那首诗里的"微尘"是同一根线上的——不是对死亡的恐惧，而是对消失的恐惧，对被遗忘的恐惧。</p>
-<p>也让我想到一个问题：我为什么一直在记录？不只是为了效率和复盘，是因为写下来的东西不会轻易消失。</p>
-<p>某种意义上，这是一种抵抗——抵抗那个"微尘"的结局。</p>
-<blockquote>
-<p>没有人真的想过一种高效能的生活。</p>
-<p>我们渴望表达自我、与他人建立联系、探索这个世界：</p>
-<p>高效能只是实现这些目标的手段，绝不能以牺牲真正的生活体验为代价。</p>
-</blockquote>
-<p>想到这两个月里所有"我应该更努力""我应该更高效"的自我要求等，</p>
-<p>不知道其中有多少是真正属于我的，有多少是被时代的噪音装进来的。</p>
-<p>情绪上，二月前后有几段状态很低落的时刻。感觉做什么都没用，没有人在乎。</p>
-<p>这种感觉的来源很复杂：累是一部分，关系里的摩擦和误解是一部分，还有一部分是更底层的什么——</p>
-<p>好像一直在做，一直在给，但成果没有被接住，努力没有被看见。</p>
-<p>不是没有产出，而是产出没有回响。</p>
-<p>这和工作上"做了很多却说不清楚做了什么"的感觉，其实来自同一个地方：需要被看见，而没有被看见。</p>
-<p>后来做了一段比较长的自我梳理，试图理解：</p>
-<p>看到别人幸福或优秀时那种说不清楚的不适，到底从哪里来。</p>
-<p>想明白了，那不是嫉妒，是对比带来的隐痛，以及一种自我保护——心理在说"我现在承接不了这个"。</p>
-<p>而真正的根源，是内心有个声音在持续说"你不够"。这把尺子很厉害，会打你两次：</p>
-<p>第一次是看到别人好时量你</p>
-<p>第二次是你产生了负面情绪之后再量你"你怎么有这种想法"。</p>
-<p>知道它来自哪里，不能让情绪消失。</p>
-<p>失眠是持续的问题，几乎贯穿了整个复盘记录。</p>
-<p>不打算假装它已经解决了，因为它确实没有。</p>
-<p>睡不着的时候，脑子里转的往往不是某件具体的事，而是一种弥漫的不安——</p>
-<p>今天做得够不够，那些还没有答案的问题在黑暗里格外清晰。</p>
-<p>记录的习惯在这两个月依然很稳定。</p>
-<p>通勤路上、碎片时间，想法一直没有断。状态最差的时候，每日复盘也没有停。</p>
-<p>我不确定这算不算一种韧性，但它至少说明：哪怕不想，还是做了。这件事让我对自己稍微放心了一些。</p>
-<h2 id="3-接下来的展望">3. 接下来的展望<a class="headerlink" href="#3-接下来的展望" title="Permanent link">&para;</a></h2>
+<p>同一个执行框架，可以承载完全不同的审核体系。</p>
+<hr />
+<h3 id="53-它适合哪些场景">5.3 它适合哪些场景<a class="headerlink" href="#53-它适合哪些场景" title="Permanent link">&para;</a></h3>
+<p>Reviewer 特别适合：</p>
 <ul>
-<li>为自己多留一些时间</li>
-<li>坚强地面对这个，不断变化和焦躁的世界</li>
+<li>Code Review</li>
+<li>安全审计</li>
+<li>内容质检</li>
+<li>结构化评分</li>
+<li>交付物验收</li>
 </ul>
+<p>如果 Tool Wrapper 主要解决“怎么做”，那 Reviewer 主要解决的就是：</p>
+<blockquote>
+<p><strong>怎么评。</strong></p>
+</blockquote>
+<hr />
+<h2 id="六模式四inversion--不让-agent-立刻开工而是先问清楚">六、模式四：Inversion —— 不让 Agent 立刻开工，而是先问清楚<a class="headerlink" href="#六模式四inversion--不让-agent-立刻开工而是先问清楚" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202603222250531.png" /></p>
+<p>Agent 有一个天然倾向：
+<strong>一旦看到任务，就想马上给答案。</strong></p>
+<p>这在简单问题上是优点，但在复杂任务里经常会变成问题。</p>
+<p>比如用户说：</p>
+<ul>
+<li>帮我设计一个系统</li>
+<li>帮我规划一个项目</li>
+<li>帮我写一个方案</li>
+</ul>
+<p>很多时候需求还远远不完整，但 Agent 已经开始“规划”或“设计”了。结果要么靠猜，要么做了很多无效输出。</p>
+<p>Inversion 模式就是专门解决这个问题的。</p>
+<hr />
+<h3 id="61-它是什么">6.1 它是什么<a class="headerlink" href="#61-它是什么" title="Permanent link">&para;</a></h3>
+<p>Inversion 可以理解为一种<strong>控制流反转</strong>：</p>
+<ul>
+<li>不是用户一次性把信息给全，Agent 直接输出</li>
+<li>而是 Agent 先变成采访者，按步骤收集约束，再开始生成结果</li>
+</ul>
+<p>它的关键不只是“会提问”，而是：</p>
+<blockquote>
+<p><strong>通过强制 gating，阻止 Agent 在信息不完整时过早行动。</strong></p>
+</blockquote>
+<hr />
+<h3 id="62-为什么它叫-inversion">6.2 为什么它叫 Inversion<a class="headerlink" href="#62-为什么它叫-inversion" title="Permanent link">&para;</a></h3>
+<p>因为它把默认执行顺序反过来了。</p>
+<p>原本是：</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a>用户提需求 → Agent 直接输出
+</code></pre></div>
+<p>变成：</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a>用户提需求 → Agent 先采访 → 收齐信息 → 再输出
+</code></pre></div>
+<p>也就是把流程推动者从“用户”变成了“Agent”。</p>
+<hr />
+<h3 id="63-它最适合什么场景">6.3 它最适合什么场景<a class="headerlink" href="#63-它最适合什么场景" title="Permanent link">&para;</a></h3>
+<p>Inversion 特别适合：</p>
+<ul>
+<li>项目规划</li>
+<li>系统设计</li>
+<li>复杂需求澄清</li>
+<li>咨询型任务</li>
+<li>高不确定性场景</li>
+</ul>
+<p>它的核心价值不是让 Agent 更会猜，而是：</p>
+<blockquote>
+<p><strong>尽量减少它必须靠猜的部分。</strong></p>
+</blockquote>
+<hr />
+<h2 id="七模式五pipeline--把复杂任务拆成不可跳过的工作流">七、模式五：Pipeline —— 把复杂任务拆成不可跳过的工作流<a class="headerlink" href="#七模式五pipeline--把复杂任务拆成不可跳过的工作流" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202603222250863.png" /></p>
+<p>如果说 Inversion 解决的是“别太早开始”，那么 Pipeline 解决的就是：</p>
+<blockquote>
+<p><strong>开始之后，也别乱跳步骤。</strong></p>
+</blockquote>
+<p>很多复杂任务都不是“一步生成”能做好的，而是必须分阶段推进。例如：</p>
+<ul>
+<li>先盘点对象</li>
+<li>再补齐 docstring</li>
+<li>再组装文档</li>
+<li>最后做质量检查</li>
+</ul>
+<p>如果没有流程约束，Agent 很容易：</p>
+<ul>
+<li>省略中间步骤</li>
+<li>跳过确认</li>
+<li>没有验证就直接给最终结果</li>
+</ul>
+<p>Pipeline 模式就是为了解决这个问题。</p>
+<hr />
+<h3 id="71-pipeline-的核心思想">7.1 Pipeline 的核心思想<a class="headerlink" href="#71-pipeline-的核心思想" title="Permanent link">&para;</a></h3>
+<p>Pipeline 的本质是：</p>
+<blockquote>
+<p><strong>把复杂任务拆成明确阶段，并为每个阶段设置不可绕过的检查点。</strong></p>
+</blockquote>
+<p>它不仅要求“有步骤”，还要求“步骤之间有门槛”。</p>
+<hr />
+<h3 id="72-一个典型流程">7.2 一个典型流程<a class="headerlink" href="#72-一个典型流程" title="Permanent link">&para;</a></h3>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos="1 "></span></a>flowchart TD
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><a href="#__codelineno-6-2"><span class="linenos" data-linenos="2 "></span></a>    A[Step 1: 解析与盘点] --&gt; B[用户确认盘点结果]
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><a href="#__codelineno-6-3"><span class="linenos" data-linenos="3 "></span></a>    B --&gt; C[Step 2: 生成中间产物]
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><a href="#__codelineno-6-4"><span class="linenos" data-linenos="4 "></span></a>    C --&gt; D[用户确认中间产物]
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><a href="#__codelineno-6-5"><span class="linenos" data-linenos="5 "></span></a>    D --&gt; E[Step 3: 组装最终结果]
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><a href="#__codelineno-6-6"><span class="linenos" data-linenos="6 "></span></a>    E --&gt; F[Step 4: 质量检查]
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><a href="#__codelineno-6-7"><span class="linenos" data-linenos="7 "></span></a>    F --&gt; G[输出最终结果]
+</code></pre></div>
+<p>这个模式的重点不是“任务被分成了四步”，而是：</p>
+<blockquote>
+<p><strong>在上一步没有完成或没有确认之前，下一步不允许开始。</strong></p>
+</blockquote>
+<hr />
+<h3 id="73-它适合哪些任务">7.3 它适合哪些任务<a class="headerlink" href="#73-它适合哪些任务" title="Permanent link">&para;</a></h3>
+<p>Pipeline 特别适合：</p>
+<ul>
+<li>从代码生成文档</li>
+<li>多阶段内容加工</li>
+<li>复杂审查与修复</li>
+<li>需要中间确认的工作流</li>
+<li>结构化交付任务</li>
+</ul>
+<p>如果 Reviewer 更像“检查器”，那 Pipeline 更像一个轻量级的<strong>流程执行器</strong>。</p>
+<hr />
+<h2 id="八这五种模式最简单的区分方式">八、这五种模式最简单的区分方式<a class="headerlink" href="#八这五种模式最简单的区分方式" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.zhengyua.cn/blog/202603222250915.png" /></p>
+<p>如果把它们压缩成一句话，可以这样记：</p>
+<ul>
+<li><strong>Tool Wrapper</strong>：让 Agent 懂某个领域</li>
+<li><strong>Generator</strong>：让 Agent 按模板输出</li>
+<li><strong>Reviewer</strong>：让 Agent 按清单检查</li>
+<li><strong>Inversion</strong>：让 Agent 先问再做</li>
+<li><strong>Pipeline</strong>：让 Agent 分阶段执行</li>
+</ul>
+<p>或者换一种决策式的理解：</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos=" 1 "></span></a>flowchart TD
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos=" 2 "></span></a>    A[当前任务的核心问题是什么] --&gt; B{缺少领域规则吗}
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><a href="#__codelineno-7-3"><span class="linenos" data-linenos=" 3 "></span></a>    B -- 是 --&gt; C[Tool Wrapper]
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><a href="#__codelineno-7-4"><span class="linenos" data-linenos=" 4 "></span></a>    B -- 否 --&gt; D{输出结构不稳定吗}
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><a href="#__codelineno-7-5"><span class="linenos" data-linenos=" 5 "></span></a>    D -- 是 --&gt; E[Generator]
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><a href="#__codelineno-7-6"><span class="linenos" data-linenos=" 6 "></span></a>    D -- 否 --&gt; F{需要审查或评分吗}
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><a href="#__codelineno-7-7"><span class="linenos" data-linenos=" 7 "></span></a>    F -- 是 --&gt; G[Reviewer]
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a><a href="#__codelineno-7-8"><span class="linenos" data-linenos=" 8 "></span></a>    F -- 否 --&gt; H{需求不完整、Agent容易瞎猜吗}
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><a href="#__codelineno-7-9"><span class="linenos" data-linenos=" 9 "></span></a>    H -- 是 --&gt; I[Inversion]
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a><a href="#__codelineno-7-10"><span class="linenos" data-linenos="10 "></span></a>    H -- 否 --&gt; J{任务步骤复杂且不能跳步吗}
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a><a href="#__codelineno-7-11"><span class="linenos" data-linenos="11 "></span></a>    J -- 是 --&gt; K[Pipeline]
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a><a href="#__codelineno-7-12"><span class="linenos" data-linenos="12 "></span></a>    J -- 否 --&gt; L[普通 Prompt 可能就够了]
+</code></pre></div>
+<p>这个决策树背后的核心逻辑是：</p>
+<blockquote>
+<p><strong>先判断你要控制的是知识、输出、评审、交互，还是流程。</strong></p>
+</blockquote>
+<hr />
+<h2 id="九真正重要的一点这些模式不是互斥的而是可以组合的">九、真正重要的一点：这些模式不是互斥的，而是可以组合的<a class="headerlink" href="#九真正重要的一点这些模式不是互斥的而是可以组合的" title="Permanent link">&para;</a></h2>
+<p>这篇文章里最有价值的一点，不只是总结了 5 种模式，而是提醒我们：</p>
+<blockquote>
+<p><strong>这些模式是可以组合的。</strong></p>
+</blockquote>
+<p>比如：</p>
+<ul>
+<li>
+<p>一个 Generator 前面可以先接 Inversion</p>
+</li>
+<li>
+<p>先把变量问完整，再按模板生成</p>
+</li>
+<li>
+<p>一个 Pipeline 最后可以接 Reviewer</p>
+</li>
+<li>
+<p>先完成流程，再按清单验收</p>
+</li>
+<li>
+<p>一个 Reviewer 本身也可以依赖 Tool Wrapper</p>
+</li>
+<li>
+<p>先加载某个领域规范，再按规则审查</p>
+</li>
+</ul>
+<p>换句话说，这 5 种模式更像是 5 块“能力积木”，而不是 5 个互相排斥的标签。</p>
+<hr />
+<h2 id="十重新看-skill-设计它其实更像软件架构问题">十、重新看 Skill 设计：它其实更像软件架构问题<a class="headerlink" href="#十重新看-skill-设计它其实更像软件架构问题" title="Permanent link">&para;</a></h2>
+<p>如果只把 Skill 看成一个 <code>SKILL.md</code> 文件，那很容易停留在“语法正确、目录整洁”的层面。</p>
+<p>但当你从这 5 种模式往回看，会发现 Skill 真正重要的地方在于：</p>
+<ul>
+<li>它是不是把领域知识显式封装了</li>
+<li>它是不是把输出结构独立出来了</li>
+<li>它是不是把评审标准从 Prompt 中剥离了</li>
+<li>它是不是能控制交互顺序</li>
+<li>它是不是能约束复杂任务的执行流程</li>
+</ul>
+<p>也就是说，Skill 的本质并不是：</p>
+<blockquote>
+<p>“把说明文字放进一个规范文件里”</p>
+</blockquote>
+<p>而更像是：</p>
+<blockquote>
+<p><strong>把 Agent 的能力做成有边界、有职责、可组合、可维护的模块。</strong></p>
+</blockquote>
+<p>从这个角度看，Skill 设计越来越像软件架构问题，而不只是 Prompt 工程问题。</p>
+<hr />
+<h2 id="结语">结语<a class="headerlink" href="#结语" title="Permanent link">&para;</a></h2>
+<p>随着越来越多 Agent 工具在 Skill 的包装格式上趋于一致，真正值得拉开差距的，已经不是：</p>
+<ul>
+<li><code>SKILL.md</code> 怎么排版</li>
+<li>YAML 字段怎么凑齐</li>
+<li>目录是不是足够规范</li>
+</ul>
+<p>而是：</p>
+<blockquote>
+<p><strong>你有没有把能力设计成结构化模块，而不是继续把一切都压进一个越来越臃肿的总 Prompt。</strong></p>
+</blockquote>
+<p>Tool Wrapper、Generator、Reviewer、Inversion、Pipeline，这五种模式之所以重要，不是因为它们发明了新的文件结构，而是因为它们提供了一套更接近工程系统的思考方式：</p>
+<ul>
+<li>哪些知识该按需注入</li>
+<li>哪些输出该模板化</li>
+<li>哪些评审该清单化</li>
+<li>哪些任务必须先澄清</li>
+<li>哪些流程必须设置检查点</li>
+</ul>
+<p>当你开始这样设计 Skill 时，你构建的就不再只是“更长的 Prompt”，而是一个真正有组织的 Agent 能力系统。</p>
+<h2 id="参考文档">参考文档<a class="headerlink" href="#参考文档" title="Permanent link">&para;</a></h2>
+<p>https://x.com/GoogleCloudTech/status/2033953579824758855</p>
 
 
 
@@ -1667,7 +2348,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 22, 2026 19:03:47</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 22, 2026 22:55:12</span>
   </span>
 
     
@@ -1677,7 +2358,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 22, 2026 19:03:47</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">March 22, 2026 22:55:12</span>
   </span>
 
     
@@ -1720,7 +2401,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../../01/03/%E4%BA%A4%E4%BB%A3%E8%BF%87%E5%8E%BB-2512%E6%9C%88%E6%80%BB%E7%BB%93/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 交代过去 25.12月总结">
+          <a href="../../02/%E4%B8%80%E5%88%87%E9%83%BD%E5%9C%A8%E5%8A%A0%E9%80%9F-261-2%E6%9C%88%E6%80%BB%E7%BB%93/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 一切都在加速 26.1-2月总结">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1730,27 +2411,11 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                交代过去 25.12月总结
+                一切都在加速 26.1-2月总结
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../../22/%E5%88%AB%E5%86%8D%E5%8F%AA%E7%9B%AF%E7%9D%80-skillmd-%E6%A0%BC%E5%BC%8F%E4%BA%865-%E7%A7%8D%E6%9B%B4%E5%80%BC%E5%BE%97%E5%85%B3%E6%B3%A8%E7%9A%84-agent-skill-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="md-footer__link md-footer__link--next" aria-label="Next: 别再只盯着 SKILL.md 格式了：5 种更值得关注的 Agent Skill 设计模式">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                别再只盯着 SKILL.md 格式了：5 种更值得关注的 Agent Skill 设计模式
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     
