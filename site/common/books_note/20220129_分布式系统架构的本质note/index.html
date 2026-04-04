@@ -1,0 +1,4020 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Life">
+      
+      
+        <meta name="author" content="catwithtudou️">
+      
+      
+        <link rel="canonical" href="https://zhengyua.cn/new_blog/common/books_note/20220129_%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E7%9A%84%E6%9C%AC%E8%B4%A8note/">
+      
+      
+        <link rel="prev" href="../20220129_mit6824lec4%E7%AC%94%E8%AE%B0_primary-backup_replication/">
+      
+      
+        <link rel="next" href="../20220129_%E5%BC%B9%E5%8A%9B%E8%AE%BE%E8%AE%A1note/">
+      
+      
+      <link rel="icon" href="../../../assets/logo.jpeg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
+    
+    
+      
+        <title>分布式系统架构的本质note - catwithtudou️🌦️</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WZVK8HDP5T"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WZVK8HDP5T",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WZVK8HDP5T",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#分布式系统架构的本质note" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="catwithtudou️🌦️" class="md-header__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+      
+  <img src="../../../assets/logo.jpeg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            catwithtudou️🌦️
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              分布式系统架构的本质note
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/catwithtudou" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    catwithtudou
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  🌦️Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../blog/" class="md-tabs__link">
+          
+  
+    
+  
+  📌MainPage
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../language/" class="md-tabs__link">
+          
+  
+    
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../algorithms/" class="md-tabs__link">
+          
+  
+    
+  
+  Algorithms
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../os/" class="md-tabs__link">
+          
+  
+    
+  
+  OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../network/" class="md-tabs__link">
+          
+  
+    
+  
+  Network
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ds/" class="md-tabs__link">
+          
+  
+    
+  
+  DS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../architecture/" class="md-tabs__link">
+          
+  
+    
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../middleware/" class="md-tabs__link">
+          
+  
+    
+  
+  Middleware
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../project/" class="md-tabs__link">
+          
+  
+    
+  
+  Project
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../01-100_tips/" class="md-tabs__link">
+          
+  
+    
+  
+  Common
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="catwithtudou️🌦️" class="md-nav__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+      
+  <img src="../../../assets/logo.jpeg" alt="logo">
+
+    </a>
+    catwithtudou️🌦️
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/catwithtudou" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    catwithtudou
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    🌦️Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../blog/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📌MainPage
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../language/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Language
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../algorithms/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Algorithms
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../os/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    OS
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../network/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Network
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../ds/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    DS
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../architecture/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../middleware/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Middleware
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../project/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Common
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Common
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-100_tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    100 Tips from The Pragmatic Programmers Book
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-symbol_train/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Symbol 第二曲线
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-jetbrains_key_short/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    jetbrains 快捷键
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-nvim_use/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NVIM 备忘录
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../20220129_git%E4%B8%AD%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git中的工作流
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_7" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    books_note
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11_7" id="__nav_11_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_11_7">
+            <span class="md-nav__icon md-icon"></span>
+            books_note
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220128__rust_%E5%AE%9E%E6%88%98%E8%AF%BE_%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    《Rust 实战课》学习笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220128__%E8%9B%A4%E8%9F%86%E5%85%88%E7%94%9F%E5%8E%BB%E7%9C%8B%E5%BF%83%E7%90%86%E5%8C%BB%E7%94%9F_%E9%98%85%E8%AF%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    《蛤蟆先生去看心理医生》阅读
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220128__%E8%AE%A4%E7%9F%A5%E8%A7%89%E9%86%92_%E9%98%85%E8%AF%BB/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    《认知觉醒》阅读
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220129_go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E8%AF%BE%E7%AC%94%E8%AE%B0_atomic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go并发编程实战课笔记—Atomic
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220129_go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E8%AF%BE%E7%AC%94%E8%AE%B0_channel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go并发编程实战课笔记—Channel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220129_go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E8%AF%BE%E7%AC%94%E8%AE%B0_cond/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go并发编程实战课笔记—Cond
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220129_go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E8%AF%BE%E7%AC%94%E8%AE%B0_context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go并发编程实战课笔记—Context
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220129_go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E8%AF%BE%E7%AC%94%E8%AE%B0_etcd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go并发编程实战课笔记—Etcd
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220129_go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E8%AF%BE%E7%AC%94%E8%AE%B0_groupoperation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go并发编程实战课笔记—GroupOperation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220129_go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E8%AF%BE%E7%AC%94%E8%AE%B0_map/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go并发编程实战课笔记—Map
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220129_go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E8%AF%BE%E7%AC%94%E8%AE%B0_mutex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go并发编程实战课笔记—Mutex
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220129_go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E8%AF%BE%E7%AC%94%E8%AE%B0_once/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go并发编程实战课笔记—Once
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220129_go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E8%AF%BE%E7%AC%94%E8%AE%B0_pool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go并发编程实战课笔记—Pool
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220129_go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E8%AF%BE%E7%AC%94%E8%AE%B0_rwmutex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go并发编程实战课笔记—RWMutex
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220129_go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E8%AF%BE%E7%AC%94%E8%AE%B0_semaphore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go并发编程实战课笔记—Semaphore
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220129_go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E8%AF%BE%E7%AC%94%E8%AE%B0_singleflight_cyclicbarrier/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go并发编程实战课笔记—SingleFlight&amp;CyclicBarrier
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220129_go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E8%AF%BE%E7%AC%94%E8%AE%B0_waitgroup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go并发编程实战课笔记—WaitGroup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220129_go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E5%AE%9E%E6%88%98%E8%AF%BE%E7%AC%94%E8%AE%B0_%E8%AF%BB%E5%86%99%E9%A1%BA%E5%BA%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go并发编程实战课笔记—读写顺序
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220129_mit6824lec1%E7%AC%94%E8%AE%B0_map_reduce/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MIT6824LEC1笔记:Map Reduce
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220129_mit6824lec3%E7%AC%94%E8%AE%B0_gfs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GFS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220129_mit6824lec4%E7%AC%94%E8%AE%B0_primary-backup_replication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Primary/Backup Replication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    分布式系统架构的本质note
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    分布式系统架构的本质note
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#为什么需要分布式系统" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么需要分布式系统
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#分布式系统的发展" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式系统的发展
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#分布式系统中需要注意的问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式系统中需要注意的问题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分布式系统中需要注意的问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#异构系统的不标准问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      异构系统的不标准问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#系统架构中的服务依赖性问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      系统架构中的服务依赖性问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#故障发生的概率更大" class="md-nav__link">
+    <span class="md-ellipsis">
+      故障发生的概率更大
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#多层架构的运维复杂度更大" class="md-nav__link">
+    <span class="md-ellipsis">
+      多层架构的运维复杂度更大
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#分布式系统的技术栈" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式系统的技术栈
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分布式系统的技术栈">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#提高架构的性能" class="md-nav__link">
+    <span class="md-ellipsis">
+      提高架构的性能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#提高架构的稳定性" class="md-nav__link">
+    <span class="md-ellipsis">
+      提高架构的稳定性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#分布式系统的关键技术" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式系统的关键技术
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#分布式系统纲领" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式系统纲领
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#分布式系统关键技术监控" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式系统关键技术：监控
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分布式系统关键技术：监控">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#全栈监控" class="md-nav__link">
+    <span class="md-ellipsis">
+      全栈监控
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#好的监控" class="md-nav__link">
+    <span class="md-ellipsis">
+      好的监控
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#如何实现好的监控系统" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何实现好的监控系统
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#分布式系统关键技术服务调度" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式系统关键技术：服务调度
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分布式系统关键技术：服务调度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#服务关键程度和服务的依赖关系" class="md-nav__link">
+    <span class="md-ellipsis">
+      服务关键程度和服务的依赖关系
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#服务状态和生命周期的管理" class="md-nav__link">
+    <span class="md-ellipsis">
+      服务状态和生命周期的管理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#整个架构的版本管理" class="md-nav__link">
+    <span class="md-ellipsis">
+      整个架构的版本管理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#资源服务调度" class="md-nav__link">
+    <span class="md-ellipsis">
+      资源/服务调度
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#分布式系统关键技术流量和数据调度" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式系统关键技术：流量和数据调度
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分布式系统关键技术：流量和数据调度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#流量调度的主要功能" class="md-nav__link">
+    <span class="md-ellipsis">
+      流量调度的主要功能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#流量调度的关键技术" class="md-nav__link">
+    <span class="md-ellipsis">
+      流量调度的关键技术
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#状态数据调度" class="md-nav__link">
+    <span class="md-ellipsis">
+      状态数据调度
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#分布式事务一致性问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式事务一致性问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#数据结点的分布式方案" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据结点的分布式方案
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paas平台" class="md-nav__link">
+    <span class="md-ellipsis">
+      PaaS平台
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PaaS平台">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#软件工程能力体现" class="md-nav__link">
+    <span class="md-ellipsis">
+      软件工程能力体现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paas平台的本质" class="md-nav__link">
+    <span class="md-ellipsis">
+      PaaS平台的本质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paas平台的总体架构" class="md-nav__link">
+    <span class="md-ellipsis">
+      PaaS平台的总体架构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paas平台的生产和运维" class="md-nav__link">
+    <span class="md-ellipsis">
+      PaaS平台的生产和运维
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      小结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220129_%E5%BC%B9%E5%8A%9B%E8%AE%BE%E8%AE%A1note/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    弹力设计note
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220226__wip_%E8%BF%99%E5%B0%B1%E6%98%AF%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    （WIP）《这就是搜索引擎》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220305_helloos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    HelloOs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220307_os%E4%B8%AD%E7%9A%84%E5%86%85%E6%A0%B8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    os中的内核
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220313_cpu%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cpu工作模式
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20220314__%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%9E%E6%88%98_45_%E8%AE%B2_%E7%AC%94%E8%AE%B0%E6%A2%B3%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    《操作系统实战 45 讲》笔记梳理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20231226__rust%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F_%E9%AB%98%E9%98%B6%E9%83%A8%E5%88%86%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    《Rust语言圣经》高阶部分阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2402good_advice/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24.02《宝贵的人生建议》阅读
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2402think_out/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24.02《思考如何超越思考》阅读
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2405xthan2x/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24.07《10x easier than 2x》阅读
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2407antifragile/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24.07 《反脆弱：从不确定性中获益》阅读
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2408lack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24.08《稀缺》阅读
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2410user_growth/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24.10 《我在一线做用户增长:存量时代的用户运营之道》 阅读
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2412deep_work/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24.12《深度工作》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2501mindsight/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25.01《第七感》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2502find_what_you_want_to_do/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25.02《如何找到想做的事》阅读笔记
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25035percent_change/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25.03 《5%的改变》
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../25055courage_to_be_disliked/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    25.05 《被讨厌的勇气》
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_8" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../liuyao/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    liuyao
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11_8" id="__nav_11_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11_8">
+            <span class="md-nav__icon md-icon"></span>
+            liuyao
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../liuyao/01-liuyao_pre_basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    六爻前置基本概念
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11_9" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../pause_lab/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    pause_lab
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11_9" id="__nav_11_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_11_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11_9">
+            <span class="md-nav__icon md-icon"></span>
+            pause_lab
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pause_lab/01-solve_procrastination/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    😪拖延应对基础训练
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pause_lab/02-effective_effor_train/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    😠有效努力训练
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pause_lab/03-mindfulness_train/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    🧘正念一阶训练
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pause_lab/04-emotion_ebp_train_01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    🥲情绪EBP训练(上)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pause_lab/05-emotion_ebp_train_02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    🥲情绪EBP训练(下)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#为什么需要分布式系统" class="md-nav__link">
+    <span class="md-ellipsis">
+      为什么需要分布式系统
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#分布式系统的发展" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式系统的发展
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#分布式系统中需要注意的问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式系统中需要注意的问题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分布式系统中需要注意的问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#异构系统的不标准问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      异构系统的不标准问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#系统架构中的服务依赖性问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      系统架构中的服务依赖性问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#故障发生的概率更大" class="md-nav__link">
+    <span class="md-ellipsis">
+      故障发生的概率更大
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#多层架构的运维复杂度更大" class="md-nav__link">
+    <span class="md-ellipsis">
+      多层架构的运维复杂度更大
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#分布式系统的技术栈" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式系统的技术栈
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分布式系统的技术栈">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#提高架构的性能" class="md-nav__link">
+    <span class="md-ellipsis">
+      提高架构的性能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#提高架构的稳定性" class="md-nav__link">
+    <span class="md-ellipsis">
+      提高架构的稳定性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#分布式系统的关键技术" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式系统的关键技术
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#分布式系统纲领" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式系统纲领
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#分布式系统关键技术监控" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式系统关键技术：监控
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分布式系统关键技术：监控">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#全栈监控" class="md-nav__link">
+    <span class="md-ellipsis">
+      全栈监控
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#好的监控" class="md-nav__link">
+    <span class="md-ellipsis">
+      好的监控
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#如何实现好的监控系统" class="md-nav__link">
+    <span class="md-ellipsis">
+      如何实现好的监控系统
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#分布式系统关键技术服务调度" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式系统关键技术：服务调度
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分布式系统关键技术：服务调度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#服务关键程度和服务的依赖关系" class="md-nav__link">
+    <span class="md-ellipsis">
+      服务关键程度和服务的依赖关系
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#服务状态和生命周期的管理" class="md-nav__link">
+    <span class="md-ellipsis">
+      服务状态和生命周期的管理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#整个架构的版本管理" class="md-nav__link">
+    <span class="md-ellipsis">
+      整个架构的版本管理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#资源服务调度" class="md-nav__link">
+    <span class="md-ellipsis">
+      资源/服务调度
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#分布式系统关键技术流量和数据调度" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式系统关键技术：流量和数据调度
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分布式系统关键技术：流量和数据调度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#流量调度的主要功能" class="md-nav__link">
+    <span class="md-ellipsis">
+      流量调度的主要功能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#流量调度的关键技术" class="md-nav__link">
+    <span class="md-ellipsis">
+      流量调度的关键技术
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#状态数据调度" class="md-nav__link">
+    <span class="md-ellipsis">
+      状态数据调度
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#分布式事务一致性问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式事务一致性问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#数据结点的分布式方案" class="md-nav__link">
+    <span class="md-ellipsis">
+      数据结点的分布式方案
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#paas平台" class="md-nav__link">
+    <span class="md-ellipsis">
+      PaaS平台
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PaaS平台">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#软件工程能力体现" class="md-nav__link">
+    <span class="md-ellipsis">
+      软件工程能力体现
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paas平台的本质" class="md-nav__link">
+    <span class="md-ellipsis">
+      PaaS平台的本质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paas平台的总体架构" class="md-nav__link">
+    <span class="md-ellipsis">
+      PaaS平台的总体架构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paas平台的生产和运维" class="md-nav__link">
+    <span class="md-ellipsis">
+      PaaS平台的生产和运维
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#小结" class="md-nav__link">
+    <span class="md-ellipsis">
+      小结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="分布式系统架构的本质note">分布式系统架构的本质note<a class="headerlink" href="#分布式系统架构的本质note" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>以下为<a href="https://time.geekbang.org/column/intro/48">左耳听风</a> 记录的笔记。</p>
+</blockquote>
+<h2 id="为什么需要分布式系统">为什么需要分布式系统<a class="headerlink" href="#为什么需要分布式系统" title="Permanent link">&para;</a></h2>
+<p>放弃传统的单体架构，选择分布式系统，主要有两方面原因：</p>
+<ul>
+<li>增大系统容量。</li>
+</ul>
+<p>当业务量越来越大，一台机器的性能无法满足，需要多台机器才能应对大规模应用场景，所以需要垂直或者水平拆分业务系统，使其变成分布式架构。</p>
+<ul>
+<li>加强系统可用。</li>
+</ul>
+<p>业务越来越关键，需要提高整个系统架构的可用性，意味着架构中不能存在单点故障，为避免一台机器故障导致整体不可用，所以需要通过分布式架构来冗余系统以消除单点故障。</p>
+<blockquote>
+<p>还有其他优势：</p>
+<ul>
+<li>模块化，系统模块重用度高；</li>
+<li>软件服务模块被拆分，开发和发布速度可以并行而变得更快；</li>
+<li>系统扩展性更高；</li>
+<li>团队协作流程得到改善等。</li>
+</ul>
+</blockquote>
+<p><img alt="image-20201231201827935" src="https://img.zhengyua.cn/img/20201231201835.png" /></p>
+<h2 id="分布式系统的发展">分布式系统的发展<a class="headerlink" href="#分布式系统的发展" title="Permanent link">&para;</a></h2>
+<p>开发、维护和使用 SOA 要遵循以下几条基本原则：</p>
+<ul>
+<li>可重用，粒度合适，模块化，可组合，构件化以及有互操作性；</li>
+<li>符合开放标准（通用的或行业的）；</li>
+<li>服务的识别和分类，提供和发布，监控和跟踪。</li>
+</ul>
+<p>SOA架构的演化图：</p>
+<p><img alt="image-20201231202201323" src="https://img.zhengyua.cn/img/20201231202201.png" /></p>
+<ul>
+<li>单体架构，软件模块高度耦合；</li>
+<li>通过标准的协议或是中间件来联动其它相关联的服务来实现松耦合，利用IOC（控制反转）和DIP（依赖倒置原则）设计思想进行实践；</li>
+<li>业务拆分成多个微服务，微服务独立完整运行，服务间的整合需要服务编排或是服务整合的引擎，可以使工作流引擎，也可以是网关，也需要辅助于像容器化调度的技术方式来进行管理。</li>
+</ul>
+<p>微服务的出现使得开发速度变得更快，部署快，隔离性高，系统的扩展度也很好，但是在集成测试、运维和服务管理等方面难度提升，所以需要一套较好的微服务PaaS平台。</p>
+<h2 id="分布式系统中需要注意的问题">分布式系统中需要注意的问题<a class="headerlink" href="#分布式系统中需要注意的问题" title="Permanent link">&para;</a></h2>
+<h3 id="异构系统的不标准问题">异构系统的不标准问题<a class="headerlink" href="#异构系统的不标准问题" title="Permanent link">&para;</a></h3>
+<p>主要表现在：</p>
+<ul>
+<li>软件和应用不标准；</li>
+<li>通讯协议不标准；</li>
+<li>数据格式不标准；</li>
+<li>开发和运维的过程和方法不标准；</li>
+</ul>
+<h3 id="系统架构中的服务依赖性问题">系统架构中的服务依赖性问题<a class="headerlink" href="#系统架构中的服务依赖性问题" title="Permanent link">&para;</a></h3>
+<p>服务依赖会导致的问题主要有以下场景：</p>
+<ul>
+<li>如果非关键业务被关键业务所依赖，会导致非关键业务变成一个关键业务。</li>
+<li>服务依赖链中，出现“木桶短板效应”——整个 SLA 由最差的那个服务所决定。</li>
+</ul>
+<p>这就涉及到服务治理的内容。</p>
+<blockquote>
+<p>不但要拆分服务，还要为每个服务拆分相应的数据库。</p>
+</blockquote>
+<h3 id="故障发生的概率更大">故障发生的概率更大<a class="headerlink" href="#故障发生的概率更大" title="Permanent link">&para;</a></h3>
+<ul>
+<li>出现故障不可怕，故障恢复时间过长才可怕。</li>
+<li>出现故障不可怕，故障影响面过大才可怕。</li>
+</ul>
+<p>所谓 Design for Failure。在设计时就要考虑如何减轻故障。如果无法避免，也要使用自动化的方式恢复故障，减少故障影响面。</p>
+<h3 id="多层架构的运维复杂度更大">多层架构的运维复杂度更大<a class="headerlink" href="#多层架构的运维复杂度更大" title="Permanent link">&para;</a></h3>
+<p>通常来说可以把系统分成四层：基础层、平台层、应用层和接入层。</p>
+<ul>
+<li>基础层：机器、网络和存储设备等。</li>
+<li>平台层：中间件层，Tomcat、MySQL、Redis、Kafka 之类的软件。</li>
+<li>应用层：业务软件，比如，各种功能的服务。</li>
+<li>接入层：接入用户请求的网关、负载均衡或是 CDN、DNS 类似。</li>
+</ul>
+<p>需要注意：</p>
+<ul>
+<li>任何一层的问题都会导致整体的问题；</li>
+<li>没有统一的视图和管理，导致运维被割裂开来，造成更大的复杂度。</li>
+</ul>
+<h2 id="分布式系统的技术栈">分布式系统的技术栈<a class="headerlink" href="#分布式系统的技术栈" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>构建分布式系统的目的是为了增加系统容量，提高系统的可用性，转换为技术方面，就是以下两件事情，即<strong>一是提高整体架构的吞吐量，服务更多的并发和流量，二是为了提高系统的稳定性，让系统的可用性更高。</strong></p>
+<ul>
+<li>大流量处理。</li>
+<li>关键业务保护。</li>
+</ul>
+</blockquote>
+<h3 id="提高架构的性能">提高架构的性能<a class="headerlink" href="#提高架构的性能" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20210101115444787" src="https://img.zhengyua.cn/img/20210101115451.png" /></p>
+<ul>
+<li>缓存系统</li>
+</ul>
+<p>加入缓存系统，可以有效地提高系统的访问能力。对于分布式系统下的缓存系统，需要的是一个缓存集群。这其中需要一个 Proxy 来做缓存的分片和路由。</p>
+<ul>
+<li>负载均衡系统</li>
+</ul>
+<p>水平扩展的关键技术，使用多台机器来共同分担一部分流量请求。</p>
+<ul>
+<li>异步调用</li>
+</ul>
+<p>主要通过消息队列来对请求做排队处理，来达到削峰填谷的目的，但是会带来实时性的问题，同时需要通过消息持久化来解决消息丢失的问题，但这会造成“有状态”的结点，增加了服务调度的难度。</p>
+<ul>
+<li>数据分区</li>
+</ul>
+<p>把数据按一定的方式分成多个区，不同的数据区来分担不同区的流量。这需要一个数据路由的中间件，会导致跨库的 Join 和跨库的事务非常复杂。</p>
+<ul>
+<li>数据镜像</li>
+</ul>
+<p>把一个数据库镜像成多份一样的数据，这样就不需要数据路由的中间件了。为了达到内部同步的读写一致，数据镜像中最大的问题就是数据的一致性问题。</p>
+<h3 id="提高架构的稳定性">提高架构的稳定性<a class="headerlink" href="#提高架构的稳定性" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20210101115935777" src="https://img.zhengyua.cn/img/20210101115935.png" /></p>
+<ul>
+<li>服务拆分</li>
+</ul>
+<p>主要有两个目的：一是为了隔离故障，二是为了重用服务模块。但服务拆分完之后，会引入服务调用间的依赖问题。</p>
+<ul>
+<li>服务冗余</li>
+</ul>
+<p>服务冗余是为了去除单点故障，并可以支持服务的弹性伸缩，以及故障迁移。但是对于某些有状态的服务来说，冗余这些有状态的服务带来了更高的复杂性。其中一个是弹性伸缩时，需要考虑数据的复制或是重新分片，迁移的时候还要迁移数据到其它机器上。</p>
+<ul>
+<li>限流降级</li>
+</ul>
+<p>通过限流或者功能降级的方式来停掉一部分服务，或是拒绝一部分用户，以确保整个架构不会挂掉。这些技术属于保护措施。</p>
+<ul>
+<li>高可用架构</li>
+</ul>
+<p>从冗余架构的角度来保障可用性，如多租户隔离，灾备多活，或是数据可以在其中复制保持一致性的集群。主要目的就是解决单点故障。</p>
+<ul>
+<li>高可用运维</li>
+</ul>
+<p>指的是 DevOps 中的 CI/CD（持续集成 / 持续部署）。良好的运维应该是一条很流畅的软件发布管线，其中涉及到自动化测试和相应的灰度发布，以及对线上系统的自动化控制。这样，可以做到“计划内”或是“非计划内”的宕机事件的时长最短。</p>
+<h3 id="分布式系统的关键技术">分布式系统的关键技术<a class="headerlink" href="#分布式系统的关键技术" title="Permanent link">&para;</a></h3>
+<ul>
+<li>服务治理</li>
+</ul>
+<p>服务拆分、服务调用、服务发现、服务依赖、服务的关键度定义等，服务治理的最大意义是梳理服务间的依赖关系、服务调用链，以及关键的服务，且对这些服务进行性能和可用性方面的管理。</p>
+<ul>
+<li>架构软件管理</li>
+</ul>
+<p>因为服务之间有依赖且出现兼容性问题，所以整体服务所形成的架构需要有架构版本管理、整体架构的生命周期管理，以及对服务的编排、聚合、事务处理等服务调度功能。</p>
+<ul>
+<li>DevOps</li>
+</ul>
+<p>为了分布式系统可以更为快速地更新服务，且对于服务的测试和部署，所以需要 DevOps 的全流程，其中包括环境构建、持续集成、持续部署等。</p>
+<ul>
+<li>自动化运维</li>
+</ul>
+<p>通过DevOps对服务进行自动伸缩、故障迁移、配置管理、状态管理等一系列的自动化运维技术。</p>
+<ul>
+<li>资源调度管理</li>
+</ul>
+<p>应用层的自动化运维需要基础层的调度支持，即云计算 IaaS 层的计算、存储、网络等资源调度、隔离和管理。</p>
+<ul>
+<li>整体架构监控</li>
+</ul>
+<p>监控需要对三层系统（应用层、中间件层、基础层）进行监控。</p>
+<ul>
+<li>流量控制</li>
+</ul>
+<p>包括负载均衡、服务路由、熔断、降级、限流等和流量相关的调度，且包括灰度发布之类的功能等。</p>
+<h3 id="分布式系统纲领">分布式系统纲领<a class="headerlink" href="#分布式系统纲领" title="Permanent link">&para;</a></h3>
+<p>分布式系统关键技术总结下来有以下：</p>
+<ul>
+<li>全栈系统监控；</li>
+<li>服务 / 资源调度；</li>
+<li>流量调度；</li>
+<li>状态 / 数据调度；</li>
+<li>开发和运维的自动化。</li>
+</ul>
+<p><img alt="image-20210101120705056" src="https://img.zhengyua.cn/img/20210101120705.png" /></p>
+<h2 id="分布式系统关键技术监控">分布式系统关键技术：监控<a class="headerlink" href="#分布式系统关键技术监控" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>监控系统需要完成的功能：</p>
+<ul>
+<li>全栈监控；</li>
+<li>关键分析；</li>
+<li>跨系统调用的串联；</li>
+<li>实时报警和自动处置；</li>
+<li>系统性能分析；</li>
+</ul>
+</blockquote>
+<h3 id="全栈监控">全栈监控<a class="headerlink" href="#全栈监控" title="Permanent link">&para;</a></h3>
+<p>全栈监控简单来说就是三层监控：</p>
+<ul>
+<li><strong>基础层</strong>：监控主机和底层资源。</li>
+</ul>
+<p>比如：CPU、内存、网络吞吐、硬盘 I/O、硬盘使用等。</p>
+<ul>
+<li><strong>中间层</strong>：就是中间件层的监控。</li>
+</ul>
+<p>比如：Nginx、Redis、ActiveMQ、Kafka、MySQL、Tomcat 等。</p>
+<ul>
+<li><strong>应用层</strong>：监控应用层的使用。</li>
+</ul>
+<p>比如：HTTP 访问的吞吐量、响应时间、返回码、调用链路分析、性能瓶颈，还包括用户端的监控。</p>
+<p><img alt="image-20210102233301038" src="https://img.zhengyua.cn/img/20210102233308.png" /></p>
+<p>监控的标准化：</p>
+<ul>
+<li>日志数据结构化；</li>
+<li>监控数据格式标准化；</li>
+<li>统一的监控平台；</li>
+<li>统一的日志分析；</li>
+</ul>
+<h3 id="好的监控">好的监控<a class="headerlink" href="#好的监控" title="Permanent link">&para;</a></h3>
+<p>监控系统主要存在两个很大的问题：</p>
+<ul>
+<li>监控数据是隔离开来的。</li>
+<li>监控的数据项太多。</li>
+</ul>
+<p>一个好的监控系统应该有以下几个特征：</p>
+<ul>
+<li><strong>关注于整体应用的SLA</strong>。主要从为用户服务的 API 来监控整个系统。</li>
+<li><strong>关联指标聚合</strong>。把有关联的系统及其指标聚合展示。主要是三层系统数据：基础层、平台中间件层和应用层。把服务和相关的中间件以及主机关联在一起，尤其需要把服务的具体实例和主机关联在一起。</li>
+<li><strong>快速故障定位</strong>。以跟踪一个用户请求的trace来监控出现整个分布式系统上的调用链，最好是做成没有侵入性的。</li>
+</ul>
+<p>一个好的监控系统主要是为以下两个场景设计的：</p>
+<ol>
+<li>体验</li>
+</ol>
+<ul>
+<li><strong>容量管理</strong>。提供全局系统运行时数据展示，可以判断是否需要增加机器或者其他资源。</li>
+<li><strong>性能管理</strong>。通过查看Dashborad找到系统瓶颈，针对性地优化系统和相应代码。</li>
+</ul>
+<ol start="2">
+<li>急诊</li>
+</ol>
+<ul>
+<li><strong>定位问题</strong>。快速暴露并找到问题的发生点，以助于诊断问题。</li>
+<li><strong>性能分析</strong>。当出现非预期的流量提升时，可以快速找到系统瓶颈，帮助开发人员深入代码。</li>
+</ul>
+<h3 id="如何实现好的监控系统">如何实现好的监控系统<a class="headerlink" href="#如何实现好的监控系统" title="Permanent link">&para;</a></h3>
+<ul>
+<li>服务调用链跟踪</li>
+</ul>
+<p>对外API——关联后台实际服务——服务依赖关联——直至最后一个服务。</p>
+<p><img alt="image-20210102234348688" src="https://img.zhengyua.cn/img/20210102234348.png" /></p>
+<ul>
+<li>服务调用时长分布</li>
+</ul>
+<p>服务调用链上的时间分布。</p>
+<p><img alt="image-20210102234419023" src="https://img.zhengyua.cn/img/20210102234419.png" /></p>
+<ul>
+<li>服务的TOPN视图</li>
+</ul>
+<p>系统请求的排名情况，可根据调用量、请求耗时、热点进行排名。</p>
+<p><img alt="image-20210102234451055" src="https://img.zhengyua.cn/img/20210102234451.png" /></p>
+<ul>
+<li>数据库关联操作</li>
+</ul>
+<p>执行数据库操作的执行时间，将相关请求对应起来。</p>
+<p><img alt="image-20210102234526041" src="https://img.zhengyua.cn/img/20210102234526.png" /></p>
+<ul>
+<li>服务资源跟踪</li>
+</ul>
+<p>将服务运行的机器节点上的数据关联。</p>
+<p>在把数据收集好的同时，更重要的是把数据关联好，才能够很快地定位故障，进而才能进行自动化调度。如下图所出现的情况。</p>
+<p><img alt="image-20210102234654207" src="https://img.zhengyua.cn/img/20210102234654.png" /></p>
+<h2 id="分布式系统关键技术服务调度">分布式系统关键技术：服务调度<a class="headerlink" href="#分布式系统关键技术服务调度" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>关键技术，主要有以下几点：</p>
+<ul>
+<li>服务关键程度；</li>
+<li>服务依赖关系；</li>
+<li>服务发现；</li>
+<li>整个架构的版本管理；</li>
+<li>服务应用声明周期安全管理；</li>
+</ul>
+</blockquote>
+<h3 id="服务关键程度和服务的依赖关系">服务关键程度和服务的依赖关系<a class="headerlink" href="#服务关键程度和服务的依赖关系" title="Permanent link">&para;</a></h3>
+<ul>
+<li>服务关键程度，主要是要我们梳理和定义服务的重要程度。</li>
+<li>服务间的依赖关系，传统的SOA希望通过ESB来解决服务间的依赖关系，而微服务时服务依赖最优解的上限，而下限是千万不要有依赖环。</li>
+<li>解决服务依赖环的方案一般是依赖倒置的设计模式，即在分布式架构上通过一个第三方的服务来解决这个事。</li>
+<li>服务依赖关系可通过技术手段发现，如Zipkin服务调用跟踪系统。</li>
+</ul>
+<h3 id="服务状态和生命周期的管理">服务状态和生命周期的管理<a class="headerlink" href="#服务状态和生命周期的管理" title="Permanent link">&para;</a></h3>
+<ul>
+<li>需要服务发现的中间件来管理架构的服务、服务版本、服务实例、服务状态等。</li>
+<li>有了服务的状态和运行情况后，就需要对服务的生命周期进行管理，服务的生命周期通常有以下几个状态：<ul>
+<li>Provision，代表在供应一个新的服务；</li>
+<li>Ready，表示启动成功了；</li>
+<li>Run，表示通过了服务健康检查；</li>
+<li>Update，表示在升级中；</li>
+<li>Rollback，表示在回滚中；</li>
+<li>Scale，表示正在伸缩中（可以有 Scale-in 和 Scale-out 两种）；</li>
+<li>Destroy，表示在销毁中；</li>
+<li>Failed，表示失败状态。</li>
+</ul>
+</li>
+</ul>
+<h3 id="整个架构的版本管理">整个架构的版本管理<a class="headerlink" href="#整个架构的版本管理" title="Permanent link">&para;</a></h3>
+<ul>
+<li>VersionSet，由一堆服务的版本集所形成的整个架构的版本控制。</li>
+<li>考虑到版本兼容性的问题，除了各个项目的版本管理之外，还需要在上面再盖一层版本管理。</li>
+<li>版本管理为实现服务之间的版本兼容性，则需要定义服务清单即定义了所有服务的版本运行环境，其中包括但不限于：<ul>
+<li>服务的软件版本；</li>
+<li>服务的运行环境——环境变量、CPU、内存等；</li>
+<li>服务运行的最大最小实例数；</li>
+</ul>
+</li>
+</ul>
+<h3 id="资源服务调度">资源/服务调度<a class="headerlink" href="#资源服务调度" title="Permanent link">&para;</a></h3>
+<p>服务和资源调度的过程，与操作系统调度进程的方式很相似，主要有以下一些关键技术：</p>
+<ul>
+<li>服务状态的维持和拟合；</li>
+</ul>
+<p>服务的运行状态，包括一些非预期的变化和预期的变化。</p>
+<blockquote>
+<p>在发布新版本时，需要伸缩，需要回滚。集群管理控制器会把集群从现有的状态迁移到另一个状态，它需要一步一步地向集群发送若干控制命令，即这个过程为“拟合”。</p>
+<p>比如，当需要对集群进行 Scale 的时候，我们需要：</p>
+<ul>
+<li>先扩展出几个结点；</li>
+<li>再往上部署服务；</li>
+<li>然后启动服务；</li>
+<li>再检查服务的健康情况；</li>
+<li>最后把新扩展出来的服务实例加入服务发现中提供服务。</li>
+</ul>
+</blockquote>
+<ul>
+<li>服务的弹性伸缩和故障迁移；</li>
+</ul>
+<p>服务伸缩所需要的操作步骤，其中涉及到了：</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span class="linenos" data-linenos="1 "></span>- 底层资源的伸缩；
+<span class="linenos" data-linenos="2 "></span>- 服务的自动化部署；
+<span class="linenos" data-linenos="3 "></span>- 服务的健康检查；
+<span class="linenos" data-linenos="4 "></span>- 服务发现的注册；
+<span class="linenos" data-linenos="5 "></span>- 服务流量的调度。
+</code></pre></div>
+<p>而对于故障迁移，也就是服务的某个实例出现问题时则需要自动地恢复它。对于服务来说，有两种模式，一种是宠物模式，一种是奶牛模式。</p>
+<p>对于这两种模式，在运行中也是比较复杂的，其中涉及到了：</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span class="linenos" data-linenos="1 "></span>- 服务的健康监控（这可能需要一个 APM 的监控）。
+<span class="linenos" data-linenos="2 "></span>- 如果是宠物模式，需要：服务的重新启动和服务的监控报警（如果重试恢复不成功，需要人工介入）。
+<span class="linenos" data-linenos="3 "></span>- 如果是奶牛模式，需要：服务的资源申请，服务的自动化部署，服务发现的注册，以及服务的流量调度。
+</code></pre></div>
+<ul>
+<li>
+<p>作业和应用调度；</p>
+</li>
+<li>
+<p>作业工作流编排；</p>
+</li>
+<li>
+<p>服务编排；</p>
+</li>
+</ul>
+<p>一个好的操作系统需要能够通过一定的机制把一堆独立工作的进程给协同起来。在分布式的服务调度中，这个工作叫做 Orchestration，即“编排”。</p>
+<blockquote>
+<p>注意，ESB 的服务编制叫 Choreography，与Orchestration是不一样的，前者较为重量级。</p>
+<ul>
+<li>后者的意思是所有服务的交互是通过一个总控制者来进行编排。</li>
+<li>前者的意思是在各自完成专属自己的工作的基础上考虑怎样互相协作。</li>
+</ul>
+</blockquote>
+<p>一般来说，可以通过API Gateway或者一个简单的消息队列来做相应的编排工作，如Zuul、Ingress相似等。</p>
+<p>关于服务的编排会直接导致一个服务编排的工作流引擎中间件的产生。</p>
+<h2 id="分布式系统关键技术流量和数据调度">分布式系统关键技术：流量和数据调度<a class="headerlink" href="#分布式系统关键技术流量和数据调度" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>流量调度与服务治理需要区分开来，它们属于不同层面：</p>
+<ul>
+<li>服务治理是内部系统的事，而流量调度可以是内部的，更是外部接入层的事。</li>
+<li>服务治理是数据中心的事，而流量调度的最优应该是数据中心之外的事即边缘计算，在类似于 CDN 上完成的事。</li>
+</ul>
+</blockquote>
+<h4 id="流量调度的主要功能">流量调度的主要功能<a class="headerlink" href="#流量调度的主要功能" title="Permanent link">&para;</a></h4>
+<p>对于流量调度系统来说应具有的主要功能：</p>
+<ul>
+<li>依据系统运行的情况，<strong>自动地进行流量调度</strong>，在无需人工干预的情况下，提升整个系统的稳定性；</li>
+<li>让系统应对爆品等突发事件时，<strong>在弹性计算扩缩容的较长时间窗口内或底层资源消耗殆尽的情况下</strong>，保护系统平稳运行。</li>
+</ul>
+<p>流量调度系统还可以完成以下几方面的事情：</p>
+<ul>
+<li><strong>服务流控</strong>。服务发现、服务路由、服务降级、服务熔断、服务保护等。</li>
+<li><strong>流量控制</strong>。负载均衡、流量分配、流量控制、异地灾备（多活）等。</li>
+<li><strong>流量管理</strong>。协议转换、请求校验、数据缓存、数据计算等。</li>
+</ul>
+<blockquote>
+<p>所有这些都是一个API GateWay应该做的事情。</p>
+</blockquote>
+<h4 id="流量调度的关键技术">流量调度的关键技术<a class="headerlink" href="#流量调度的关键技术" title="Permanent link">&para;</a></h4>
+<p>调度流量首先需要抗住流量，而且需要一些比较轻量的业务逻辑。</p>
+<p>一个好的API GateWay应该具备以下关键技术：</p>
+<ul>
+<li><strong>高性能</strong>。高性能的技术，也需要使用高性能的语言。</li>
+<li><strong>抗流量</strong>。关键点在于集群技术，而该技术的关键点为结点之间的数据共享。且因部署在广域网上也需要集群的分组技术。</li>
+<li><strong>业务逻辑</strong>。需要有简单的业务逻辑。</li>
+<li><strong>服务化</strong>。能够通过 Admin API 来不停机地管理配置变更。</li>
+</ul>
+<h4 id="状态数据调度">状态数据调度<a class="headerlink" href="#状态数据调度" title="Permanent link">&para;</a></h4>
+<ul>
+<li>状态服务会保存数据，且不能丢失，需要随服务一起调度。</li>
+</ul>
+<p>一般通过转移到第三方服务使其变为无状态的服务，但数据存储结点在Scale上比较困难，所以成了一个单点的瓶颈。</p>
+<h4 id="分布式事务一致性问题">分布式事务一致性问题<a class="headerlink" href="#分布式事务一致性问题" title="Permanent link">&para;</a></h4>
+<p>数据 replication 则会带来数据一致性的问题，进而对性能带来严重的影响。</p>
+<p>解决数据不丢失或者说保证数据高可用性的问题，本质就是通过<strong>数据冗余</strong>来解决。</p>
+<p>解决数据副本间的一致性问题，一般有以下方案：</p>
+<ul>
+<li>M-S方案</li>
+<li>M-M方案</li>
+<li>两阶段和三阶段提交方案</li>
+<li>Paxos方案</li>
+</ul>
+<p><strong>通过业务补偿的方式</strong>解决数据一致性问题，即是在<strong>应用层</strong>上解决事务问题。</p>
+<p>若要在<strong>数据层</strong>解决事务问题，则Paxos算法则可以实现。</p>
+<h4 id="数据结点的分布式方案">数据结点的分布式方案<a class="headerlink" href="#数据结点的分布式方案" title="Permanent link">&para;</a></h4>
+<p>真正完整解决数据 Scale 问题的应该还是<strong>数据结点自身</strong>。</p>
+<p>只有数据结点自身解决了这个问题才能做到对上层业务层的透明，业务层可以像操作单机数据库一样来操作分布式数据库，这样才能做到整个分布式服务架构的调度。即该问题应该解决在<strong>数据存储方</strong>。数据存储结果有太多不同的Scheme，如AWS的Aurora、PingCAP的TiDB、MySQLCluster、阿里的OceanBase等。而对于一些需要文件存储的，则需要<strong>分布式文件系统</strong>的支持，</p>
+<blockquote>
+<p>状态数据调度应该是在 IaaS 层的数据存储解决的问题，而不是在 PaaS 层或者 SaaS 层来解决的。</p>
+</blockquote>
+<h2 id="paas平台">PaaS平台<a class="headerlink" href="#paas平台" title="Permanent link">&para;</a></h2>
+<h3 id="软件工程能力体现">软件工程能力体现<a class="headerlink" href="#软件工程能力体现" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>提高服务的SLA</strong></li>
+</ul>
+<p>主要表现在两个方面：</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span class="linenos" data-linenos="1 "></span>- 高可用的系统
+<span class="linenos" data-linenos="2 "></span>- 自动化的运维
+</code></pre></div>
+<ul>
+<li><strong>能力和资源重用或复用</strong></li>
+</ul>
+<p>其主要表现在两个方面：</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><span class="linenos" data-linenos="1 "></span>- 软件模块的重用
+<span class="linenos" data-linenos="2 "></span>- 软件运行环境和资源的重用
+</code></pre></div>
+<p>“软件抽象的能力”和“软件标准化的能力”</p>
+<ul>
+<li>
+<p><strong>过程的自动化</strong></p>
+<ul>
+<li>软件生产流水线</li>
+<li>软件运维自动化</li>
+</ul>
+</li>
+</ul>
+<p>软件工程的三个本质与分布式技术点是高度一致的，即下面三个方面的能力：</p>
+<ul>
+<li>分布式多层的系统架构</li>
+<li>服务化的能力供应</li>
+<li>自动化的运维能力</li>
+</ul>
+<h3 id="paas平台的本质">PaaS平台的本质<a class="headerlink" href="#paas平台的本质" title="Permanent link">&para;</a></h3>
+<p>一个好的PaaS平台应该具有分布式、服务化、自动化部署、高可用、敏捷以及分层开放的特征，并可与IaaS实现良好的联动。</p>
+<p><img alt="image-20210106233721178" src="https://img.zhengyua.cn/img/20210106233728.png" /></p>
+<p>PaaS和传统中间件最大的差别：</p>
+<ul>
+<li><strong>服务化是PaaS的本质</strong></li>
+</ul>
+<p>软件模块重用，服务治理，对外提供能力是PaaS的本质。</p>
+<ul>
+<li><strong>分布式是PaaS的根本特性</strong></li>
+</ul>
+<p>多租户隔离、高可用、服务编排是PaaS的基本特性。</p>
+<ul>
+<li><strong>自动化是PaaS的灵魂</strong></li>
+</ul>
+<p>自动化部署安装运维，自动化伸缩调度是PaaS的关键。</p>
+<h3 id="paas平台的总体架构">PaaS平台的总体架构<a class="headerlink" href="#paas平台的总体架构" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20210106234028195" src="https://img.zhengyua.cn/img/20210106234028.png" /></p>
+<p>一个完整的PaaS平台会包括以下几个部分：</p>
+<ul>
+<li><strong>PaaS调度层</strong> – 主要是PaaS的自动化和分布式对于高可用高性能的管理。</li>
+<li><strong>PaaS能力服务层</strong> – 主要是PaaS真正提供给用户的服务和能力。</li>
+<li><strong>PaaS的流量调度</strong> – 主要是与流量调度相关的东西，包括对高并发的管理。</li>
+<li><strong>PaaS的运营管理</strong> – 软件资源库、软件接入、认证和开放平台门户。</li>
+<li><strong>PaaS的运维管理</strong> – 主要是DevOps相关的东西。</li>
+</ul>
+<h3 id="paas平台的生产和运维">PaaS平台的生产和运维<a class="headerlink" href="#paas平台的生产和运维" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20210106234143856" src="https://img.zhengyua.cn/img/20210106234144.png" /></p>
+<h2 id="小结">小结<a class="headerlink" href="#小结" title="Permanent link">&para;</a></h2>
+<p>为了构建分布式系统，我们面临的主要问题如下：</p>
+<ul>
+<li>分布式系统的<strong>硬件故障发生率更高</strong>，故障发生是常态，需要尽可能地将<strong>运维流程自动化</strong>。</li>
+<li>需要良好地设计服务，避免某服务的<strong>单点故障</strong>对依赖它的其他服务造成大面积影响。</li>
+<li>为了<strong>容量的可伸缩性</strong>，服务的拆分、自治和无状态变得更加重要，可能需要对老的软件逻辑做大的修改。</li>
+<li>老的服务可能是异构的，此时需要让它们使用<strong>标准的协议</strong>，以便可以被<strong>调度、编排</strong>，且互相之间可以通信。</li>
+<li>服务软件故障的处理也变得复杂，需要<strong>优化的流程</strong>，以<strong>加快故障的恢复</strong>。</li>
+<li>为了管理各个服务的容量，让分布式系统发挥出最佳性能，需要有<strong>流量调度技术</strong>。</li>
+<li>分布式存储会让<strong>事务处理变得复杂</strong>；在事务遇到故障无法被自动恢复的情况下，手动恢复流程也会变得复杂。</li>
+<li><strong>测试和查错</strong>的复杂度增大。</li>
+<li>系统的<strong>吞吐量会变大</strong>，但<strong>响应时间会变长</strong>。</li>
+</ul>
+<p>为了解决这些问题，我们深入了解了以下这些解决方案：</p>
+<ul>
+<li>需要有完善的<strong>监控系统</strong>，以便对服务运行状态有全面的了解。</li>
+<li>设计服务时要<strong>分析其依赖链</strong>；当非关键服务故障时，其他服务要自动<strong>降级功能</strong>，避免调用该服务。</li>
+<li>重构老的软件，使其能被<strong>服务化</strong>；可以参考SOA和微服务的设计方式，目标是<strong>微服务化</strong>；使用Docker和Kubernetes来<strong>调度服务</strong>。</li>
+<li>为老的服务编写接口逻辑来使用<strong>标准协议</strong>，或在必要时重构老的服务以使得它们有这些功能。</li>
+<li>自动构建<strong>服务的依赖地图</strong>，并引入好的<strong>处理流程</strong>，让团队能以最快速度定位和恢复故障。</li>
+<li>使用一个<strong>API Gateway</strong>，它具备<strong>服务流向控制、流量控制和管理</strong>的功能。</li>
+<li>事务处理建议在<strong>存储层实现</strong>；根据业务需求，或者降级使用更简单、吞吐量更大的<strong>最终一致性</strong>方案，或者通过二阶段提交、Paxos、Raft、NWR等方案之一，使用吞吐量小的<strong>强一致</strong>方案。</li>
+<li>通过更真实地<strong>模拟生产环境</strong>，乃至在生产环境中做灰度发布，从而增加测试强度；同时做充分的<strong>单元测试和集成测试</strong>以发现和消除缺陷；最后，在服务故障发生时，相关的多个团队同 时<strong>上线自查服务状态</strong>，以最快地定位故障原因。</li>
+<li>通过<strong>异步调用</strong>来减少对短响应时间的依赖；对<strong>关键服务</strong>提供专属硬件资源，并优化软件逻辑以缩短响应时间。</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 4, 2026 22:15:21</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 4, 2026 22:15:21</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../20220129_mit6824lec4%E7%AC%94%E8%AE%B0_primary-backup_replication/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Primary/Backup Replication">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Primary/Backup Replication
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../20220129_%E5%BC%B9%E5%8A%9B%E8%AE%BE%E8%AE%A1note/" class="md-footer__link md-footer__link--next" aria-label="Next: 弹力设计note">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                弹力设计note
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 catwithtudou
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/catwithtudou" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/catwithtudou" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9zm-24.8 373.8h39.1L151.1 88h-42z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+  
+    
+  
+
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="github" checked>
+          <span class="task-list-indicator"></span>
+          GitHub
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotation", "content.code.copy", "content.code.select", "header.autohide"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f13b1293.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

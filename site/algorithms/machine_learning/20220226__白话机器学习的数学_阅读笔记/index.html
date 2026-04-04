@@ -1,0 +1,2824 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Life">
+      
+      
+        <meta name="author" content="catwithtudou️">
+      
+      
+        <link rel="canonical" href="https://zhengyua.cn/new_blog/algorithms/machine_learning/20220226__%E7%99%BD%E8%AF%9D%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%95%B0%E5%AD%A6_%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+      
+      
+        <link rel="prev" href="../20200306_%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%B8%8E%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
+      
+      
+        <link rel="next" href="../">
+      
+      
+      <link rel="icon" href="../../../assets/logo.jpeg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
+    
+    
+      
+        <title>《白话机器学习的数学》阅读笔记 - catwithtudou️🌦️</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-WZVK8HDP5T"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-WZVK8HDP5T",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-WZVK8HDP5T",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#白话机器学习的数学阅读笔记" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="catwithtudou️🌦️" class="md-header__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+      
+  <img src="../../../assets/logo.jpeg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            catwithtudou️🌦️
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              《白话机器学习的数学》阅读笔记
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/catwithtudou" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    catwithtudou
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  🌦️Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../blog/" class="md-tabs__link">
+          
+  
+    
+  
+  📌MainPage
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../language/" class="md-tabs__link">
+          
+  
+    
+  
+  Language
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  Algorithms
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../os/" class="md-tabs__link">
+          
+  
+    
+  
+  OS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../network/" class="md-tabs__link">
+          
+  
+    
+  
+  Network
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../ds/" class="md-tabs__link">
+          
+  
+    
+  
+  DS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../architecture/" class="md-tabs__link">
+          
+  
+    
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../middleware/" class="md-tabs__link">
+          
+  
+    
+  
+  Middleware
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../project/" class="md-tabs__link">
+          
+  
+    
+  
+  Project
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../common/01-100_tips/" class="md-tabs__link">
+          
+  
+    
+  
+  Common
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="catwithtudou️🌦️" class="md-nav__button md-logo" aria-label="catwithtudou️🌦️" data-md-component="logo">
+      
+  <img src="../../../assets/logo.jpeg" alt="logo">
+
+    </a>
+    catwithtudou️🌦️
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/catwithtudou" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    catwithtudou
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    🌦️Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../blog/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    📌MainPage
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../language/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Language
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Algorithms
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Algorithms
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../LLM/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    LLM
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            LLM
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../LLM/huggingface/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    huggingface
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../LLM/inbox/2412_prompt_begin/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    inbox
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../books/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    books
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            books
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../books/2401%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    2401代码随想录
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../common/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    common
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            common
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../common/load_balancer_algorithm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    深入理解四种经典负载均衡算法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    machine_learning
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            machine_learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20190623_machinelearning_andrewng_notes-week1-week5%E6%80%BB%E7%BB%93/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MachineLearning(AndrewNg)Notes-Week1-Week5总结
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20190627_machinelearning_andrewng_notes-week7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MachineLearning(AndrewNg)Notes-Week7
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20190705_machinelearning_andrewng_notes-week8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MachineLearning(AndrewNg)Notes-Week8
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20190727_machinelearning_andrewng_notes-week9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Week 9
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20200306_%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%B8%8E%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    线性回归与非线性回归
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    《白话机器学习的数学》阅读笔记
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    《白话机器学习的数学》阅读笔记
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#概述" class="md-nav__link">
+    <span class="md-ellipsis">
+      概述
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#回归问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      回归问题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="回归问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#最小二乘法公式" class="md-nav__link">
+    <span class="md-ellipsis">
+      最小二乘法公式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#最速下降法或梯度下降法" class="md-nav__link">
+    <span class="md-ellipsis">
+      最速下降法（或梯度下降法）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#多重回归" class="md-nav__link">
+    <span class="md-ellipsis">
+      多重回归
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#随机梯度下降法" class="md-nav__link">
+    <span class="md-ellipsis">
+      随机梯度下降法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#分类问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      分类问题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分类问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#感知机" class="md-nav__link">
+    <span class="md-ellipsis">
+      感知机
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigmoid函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      sigmoid函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#似然函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      似然函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#对数似然函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      对数似然函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#线性不可分" class="md-nav__link">
+    <span class="md-ellipsis">
+      线性不可分
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#模型评估" class="md-nav__link">
+    <span class="md-ellipsis">
+      模型评估
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模型评估">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#交叉验证" class="md-nav__link">
+    <span class="md-ellipsis">
+      交叉验证
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="交叉验证">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#回归" class="md-nav__link">
+    <span class="md-ellipsis">
+      回归
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#分类" class="md-nav__link">
+    <span class="md-ellipsis">
+      分类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#交叉验证方法" class="md-nav__link">
+    <span class="md-ellipsis">
+      交叉验证方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#正则化" class="md-nav__link">
+    <span class="md-ellipsis">
+      正则化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="正则化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#过拟合" class="md-nav__link">
+    <span class="md-ellipsis">
+      过拟合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#正则化方法" class="md-nav__link">
+    <span class="md-ellipsis">
+      正则化方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#分类的正则化" class="md-nav__link">
+    <span class="md-ellipsis">
+      分类的正则化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#包含正则化项的表达式的微分" class="md-nav__link">
+    <span class="md-ellipsis">
+      包含正则化项的表达式的微分
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#学习曲线" class="md-nav__link">
+    <span class="md-ellipsis">
+      学习曲线
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="学习曲线">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#欠拟合" class="md-nav__link">
+    <span class="md-ellipsis">
+      欠拟合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#区分过拟合与欠拟合" class="md-nav__link">
+    <span class="md-ellipsis">
+      区分过拟合与欠拟合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../os/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    OS
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../network/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Network
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../ds/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    DS
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../architecture/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../middleware/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Middleware
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../project/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../common/01-100_tips/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Common
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#概述" class="md-nav__link">
+    <span class="md-ellipsis">
+      概述
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#回归问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      回归问题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="回归问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#最小二乘法公式" class="md-nav__link">
+    <span class="md-ellipsis">
+      最小二乘法公式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#最速下降法或梯度下降法" class="md-nav__link">
+    <span class="md-ellipsis">
+      最速下降法（或梯度下降法）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#多重回归" class="md-nav__link">
+    <span class="md-ellipsis">
+      多重回归
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#随机梯度下降法" class="md-nav__link">
+    <span class="md-ellipsis">
+      随机梯度下降法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#分类问题" class="md-nav__link">
+    <span class="md-ellipsis">
+      分类问题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分类问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#感知机" class="md-nav__link">
+    <span class="md-ellipsis">
+      感知机
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sigmoid函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      sigmoid函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#似然函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      似然函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#对数似然函数" class="md-nav__link">
+    <span class="md-ellipsis">
+      对数似然函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#线性不可分" class="md-nav__link">
+    <span class="md-ellipsis">
+      线性不可分
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#模型评估" class="md-nav__link">
+    <span class="md-ellipsis">
+      模型评估
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模型评估">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#交叉验证" class="md-nav__link">
+    <span class="md-ellipsis">
+      交叉验证
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="交叉验证">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#回归" class="md-nav__link">
+    <span class="md-ellipsis">
+      回归
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#分类" class="md-nav__link">
+    <span class="md-ellipsis">
+      分类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#交叉验证方法" class="md-nav__link">
+    <span class="md-ellipsis">
+      交叉验证方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#正则化" class="md-nav__link">
+    <span class="md-ellipsis">
+      正则化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="正则化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#过拟合" class="md-nav__link">
+    <span class="md-ellipsis">
+      过拟合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#正则化方法" class="md-nav__link">
+    <span class="md-ellipsis">
+      正则化方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#分类的正则化" class="md-nav__link">
+    <span class="md-ellipsis">
+      分类的正则化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#包含正则化项的表达式的微分" class="md-nav__link">
+    <span class="md-ellipsis">
+      包含正则化项的表达式的微分
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#学习曲线" class="md-nav__link">
+    <span class="md-ellipsis">
+      学习曲线
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="学习曲线">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#欠拟合" class="md-nav__link">
+    <span class="md-ellipsis">
+      欠拟合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#区分过拟合与欠拟合" class="md-nav__link">
+    <span class="md-ellipsis">
+      区分过拟合与欠拟合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="白话机器学习的数学阅读笔记">《白话机器学习的数学》阅读笔记<a class="headerlink" href="#白话机器学习的数学阅读笔记" title="Permanent link">&para;</a></h1>
+<h2 id="概述">概述<a class="headerlink" href="#概述" title="Permanent link">&para;</a></h2>
+<p><strong>通过读取大量的数据、学习数据的特征并从中找出数据的模式。</strong> 这样的任务也被称为机器学习或者模式识别。</p>
+<p>机器学习中比较擅长的任务：</p>
+<ul>
+<li>回归（regression）：从连续数据中学习趋势，如时间序列数据；</li>
+<li>分类（classification）：数据携带标签进行分类；</li>
+<li>聚类（clustering）：数据本身不带标签；</li>
+</ul>
+<p>机器学习中监督学习区分：</p>
+<ul>
+<li>使用有标签的数据进行的学习称为有监督学习（回归和分类）；</li>
+<li>使用没有标签的数据进行的学习称为无监督学习（聚类）；</li>
+</ul>
+<h2 id="回归问题">回归问题<a class="headerlink" href="#回归问题" title="Permanent link">&para;</a></h2>
+<p><span class="arithmatex">\(y=\theta_0+\theta_1x\)</span></p>
+<p><span class="arithmatex">\(f_\theta(x)=\theta_0+\theta_1x\)</span></p>
+<h3 id="最小二乘法公式">最小二乘法公式<a class="headerlink" href="#最小二乘法公式" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+E(\theta)=\frac{1}{2}\sum_{i=1}^{n}(y^i-f_\theta(x^i))^2
+\]</div>
+<p>使<span class="arithmatex">\(y\)</span>与<span class="arithmatex">\(f_\theta(x)\)</span>误差尽可能减小即最优化问题，使用差值的平方是因为避免差值为负数同时利于微分，至于<span class="arithmatex">\(\frac{1}{2}\)</span>是为了让作为结果的表达式变得简单而随便加的常数（在最优化问题中不影响结果）。</p>
+<h3 id="最速下降法或梯度下降法">最速下降法（或梯度下降法）<a class="headerlink" href="#最速下降法或梯度下降法" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+x:=x-\eta\frac{\mathrm{d}}{\mathrm{d}x}g(x)
+\]</div>
+<p>其中<span class="arithmatex">\(\eta\)</span>即为学习率，可以理解<span class="arithmatex">\(\eta\)</span>越大，则下降越快，更新次数越少，甚至可能远离最优值，这就是发散状态，而<span class="arithmatex">\(\eta\)</span>较小时移动量较小，更新次数增多，但是值会往收敛方向移动。</p>
+<p>因为<span class="arithmatex">\(f_\theta(x)\)</span>拥有<span class="arithmatex">\(\theta_0\)</span>和<span class="arithmatex">\(\theta_1\)</span>两个参数，即目标函数是双变量函数，所以不能用普通的微分，而要用偏微分。</p>
+<div class="arithmatex">\[\theta_0=\theta_0-\eta\frac{\partial{E}}{\partial{\theta_0}}\]</div>
+<div class="arithmatex">\[\theta_1=\theta_1-\eta\frac{\partial{E}}{\partial{\theta_1}}\]</div>
+<blockquote>
+<p>假设<span class="arithmatex">\(u=E(\theta)\)</span>，<span class="arithmatex">\(v=f_\theta(x)\)</span>，利用阶梯性地进行微分：
+<span class="arithmatex">\(<span class="arithmatex">\(\frac{\partial{u}}{\partial{\theta_0}}=\frac{\partial{u}}{\partial{v}}\cdot\frac{\partial{v}}{\partial{\theta_0}}\)</span>\)</span></p>
+</blockquote>
+<p>最后得到：</p>
+<div class="arithmatex">\[\theta_0=\theta_0-\eta\sum_{i=1}^{n}(f_\theta(x^i)-y^i)\]</div>
+<div class="arithmatex">\[\theta_1=\theta_1-\eta\sum_{i=1}^{n}(f_\theta(x^i)-y^i)x^i\]</div>
+<p>前面我们假设<span class="arithmatex">\(f_\theta(x)=\theta_0+\theta_1x\)</span>，若这里为了更好拟合更新成<span class="arithmatex">\(f_\theta(x)=\theta_0+\theta_1x+\theta_2x^2\)</span>，进行上面类似的梯度计算也可以得到：</p>
+<div class="arithmatex">\[\theta_0=\theta_0-\eta\sum_{i=1}^{n}(f_\theta(x^i)-y^i)\]</div>
+<div class="arithmatex">\[\theta_1=\theta_1-\eta\sum_{i=1}^{n}(f_\theta(x^i)-y^i)x^i\]</div>
+<div class="arithmatex">\[\theta_2=\theta_2-\eta\sum_{i=1}^{n}(f_\theta(x^i)-y^i)x^{i^2}\]</div>
+<p>像这样增加函数中多项式的次数，然后再使用函数的分析方法被称为<strong>多项式回归</strong>。</p>
+<h3 id="多重回归">多重回归<a class="headerlink" href="#多重回归" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[f_\theta(x_1,...,x_n)=\theta_0+\theta_1x_1+...+\theta_nx_n\]</div>
+<p>将<span class="arithmatex">\(\theta\)</span>和<span class="arithmatex">\(x\)</span>转换为列向量简化表达式：</p>
+<div class="arithmatex">\[
+\mathbf{\theta}=\left[\begin{matrix}\theta_0\\\\\theta_1\\\\\vdots\\\\\theta_n\end{matrix} \right]
+\]</div>
+<div class="arithmatex">\[
+\mathbf{x}=\left[\begin{matrix}x_0\\\\x_2\\\\\vdots\\\\x_n\end{matrix}\right]
+\]</div>
+<p>得到：<span class="arithmatex">\(\mathbf{\theta^T}\mathbf{x}=\theta_0x_0+\theta_1x_1+...+\theta_nx_n\)</span> 即 <span class="arithmatex">\(f_\mathbf{\theta}(\mathbf{x})=\mathbf{\theta^T}\mathbf{x}\)</span></p>
+<p>然后我们代入梯度下降算法计算<span class="arithmatex">\(\theta\)</span>的公式：</p>
+<div class="arithmatex">\[
+\theta_j=\theta_j-\eta\sum_{i=1}^{n}(f_\mathbf{\theta}\mathbf{x}^{(i)}-y^{(i)})x{_j}{^{(i)}}
+\]</div>
+<h3 id="随机梯度下降法">随机梯度下降法<a class="headerlink" href="#随机梯度下降法" title="Permanent link">&para;</a></h3>
+<p>前面的最速下降法容易陷入局部最优解的情况：</p>
+<p><img alt="s14311002262022" src="https://img.zhengyua.cn/s14311002262022.png" /></p>
+<p>而随机梯度下降法就是训练时随机选择训练数据，设随机选择<span class="arithmatex">\(m\)</span>个训练数据额索引的集合为<span class="arithmatex">\(K\)</span>，那么更新参数的公式为：</p>
+<div class="arithmatex">\[
+\theta_j=\theta_j-\eta\sum_{k\in{K}}(f_\mathbf{\theta}\mathbf{x}^{(k)}-y^{(k)})x{_j}{^{(k)}}
+\]</div>
+<h2 id="分类问题">分类问题<a class="headerlink" href="#分类问题" title="Permanent link">&para;</a></h2>
+<p>使权重向量成为法线向量的直线，设权重向量为<span class="arithmatex">\(\mathbf{w}\)</span>，直线的表达式为（向量内积）：
+$$
+\mathbf{w}\cdot\mathbf{x} = 0
+$$</p>
+<blockquote>
+<p>或者另外一个内积表达式：<span class="arithmatex">\(\mathbf{w}\cdot\mathbf{x} = |\mathbf{w}|\cdot|\mathbf{x}|\cdot\cos{\theta}\)</span></p>
+</blockquote>
+<p>通过训练找到权重向量，然后才能得到与这个向量垂直的直线，最后根据这条直线就可以对数据进行分类了。</p>
+<h3 id="感知机">感知机<a class="headerlink" href="#感知机" title="Permanent link">&para;</a></h3>
+<p>接受多个输入后将每个值与各自的权重相乘，最后输出总和的模型。</p>
+<div class="arithmatex">\[
+f_\mathbf{w}(\mathbf{x})=\left\\\{\begin{array}{ll}1&amp;(\mathbf{w}\cdot\mathbf{x}\geq0)\\\\-1&amp;(\mathbf{w}\cdot\mathbf{x}&lt;0)\end{array}\right.
+\]</div>
+<p>权重向量的更新表达式：</p>
+<div class="arithmatex">\[
+\mathbf{w}=\left\\\{\begin{array}{ll}\mathbf{w}+y^{i}\mathbf{x}^{(i)}&amp;&amp;(f_\mathbf{w}(\mathbf{x}^{(i)})\neq y^{(i)})\\\\\mathbf{w}&amp;&amp;(f_\mathbf{w}(\mathbf{x}^{(i)})= ^{(i)})\end{array}\right.
+\]</div>
+<p>感知机的局限在于只能解决线性可分的问题。</p>
+<h3 id="sigmoid函数">sigmoid函数<a class="headerlink" href="#sigmoid函数" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+f_\theta(\mathbf{x})=\frac{1}{1+e^{-\mathbf{\theta}^{T}\mathbf{x}}}
+\]</div>
+<p><img alt="s15545702262022" src="https://img.zhengyua.cn/s15545702262022.png" /></p>
+<p>其sigmoid函数取值范围为<span class="arithmatex">\(0&lt;f_\theta(\mathbf{x})&lt;1\)</span>。</p>
+<blockquote>
+<p>其微分结果如下：
+<span class="arithmatex">\(\frac{\mathrm{d}\sigma{x}}{\mathrm{d}x}=\sigma{(x)}(1-\sigma{(x)})\)</span></p>
+</blockquote>
+<h3 id="似然函数">似然函数<a class="headerlink" href="#似然函数" title="Permanent link">&para;</a></h3>
+<p>目标函数即为通过<span class="arithmatex">\(P(y=1|\mathbf{x})\)</span>和<span class="arithmatex">\(P(y=0|\mathbf{x})\)</span>的联合概率得到：</p>
+<div class="arithmatex">\[
+L(\mathbf{\theta})=\prod_{i=1}^nP(y^{(i)}=1|\mathbf{x}^{(i)})^{y^{(i)}}P(y^{(i)}=0|\mathbf{x}^{(i)})^{1-y^{(i)}}
+\]</div>
+<h3 id="对数似然函数">对数似然函数<a class="headerlink" href="#对数似然函数" title="Permanent link">&para;</a></h3>
+<p>将似然函数进行对数化便于运算，公式如下：</p>
+<div class="arithmatex">\[
+\log{L(\mathbf{\theta})}=\sum_{i=1}^n(y^{(i)}\log{f_\mathbf{\theta}(\mathbf{x}^{(i)})}+(1-y^{(i)})\log{(1-f_\mathbf{\theta}(\mathbf{x}^{(i)}})))
+\]</div>
+<p>逻辑回归将这个对数似然函数用作目标函数，然后对目标函数求微分得到：</p>
+<div class="arithmatex">\[
+\frac{\partial{u}}{\partial{\theta_j}}=\frac{\partial{u}}{\partial{v}}\cdot\frac{\partial{v}}{\partial{\theta_j}}=\sum_{i=1}^{n}(y^{(i)}-f_\mathbf{\theta}(\mathbf{x}^{(i)}))x_j^{(i)}
+\]</div>
+<p>最后导出参数更新表达式（梯度下降），这里求的是最大化与之前最小化不同，所以其方向相反：</p>
+<div class="arithmatex">\[
+\theta_j:=\theta_j+\eta\sum_{i=1}^{n}(y^{(i)}-f_\mathbf{\theta}(\mathbf{x}^{(i)}))x_j^{(i)}
+\]</div>
+<p>若与前面回归保持一致即：</p>
+<div class="arithmatex">\[
+\theta_j:=\theta_j-\eta\sum_{i=1}^{n}(f_\mathbf{\theta}(\mathbf{x}^{(i)})-y^{(i)})x_j^{(i)}
+\]</div>
+<h3 id="线性不可分">线性不可分<a class="headerlink" href="#线性不可分" title="Permanent link">&para;</a></h3>
+<p>类似多项回归一样，增加次数得到非线性曲线。</p>
+<h2 id="模型评估">模型评估<a class="headerlink" href="#模型评估" title="Permanent link">&para;</a></h2>
+<h3 id="交叉验证">交叉验证<a class="headerlink" href="#交叉验证" title="Permanent link">&para;</a></h3>
+<p>将获取的全部训练数据分成两份，一份用于测试，一份用于训练。然后用前者来评估模型。（交叉验证）</p>
+<h4 id="回归">回归<a class="headerlink" href="#回归" title="Permanent link">&para;</a></h4>
+<p>对于回归的情况，只要在训练好的模型上计算测试数据的误差的平方，再取其平均值就可以了：</p>
+<div class="arithmatex">\[
+\frac{1}{n}\sum_{i=1}^n(y^{(i)}-f_\mathbf{\theta}(\mathbf{x}^{(i)}))^2
+\]</div>
+<p>上面得到的值被称为均方误差或者MSE（Mean Square Error）。<strong>这个误差越小，精度就越高，模型也就越好</strong>。</p>
+<h4 id="分类">分类<a class="headerlink" href="#分类" title="Permanent link">&para;</a></h4>
+<p>对于分类的情况，由于回归是连续值，所以可以从误差入手，但是分类中必须考虑分类的类别是否正确。</p>
+<p>对于二分类的结果可以用这张图表示：</p>
+<p><img alt="s16493902262022" src="https://img.zhengyua.cn/s16493902262022.png" /></p>
+<p>通过表中的4个记号来表示精度（Accuracy）,表达式如下，即值越高精度越高，也就意味着模型越好：</p>
+<div class="arithmatex">\[
+Accuracy = \frac{TP+TN}{TP+FP+FN+TN}
+\]</div>
+<p>在大多情况下，除了精度还需要引入其他指标进行评估：</p>
+<ul>
+<li>精确率（<span class="arithmatex">\(Precision=\frac{TP}{TP+FP}=\frac{TN}{TN+FN}\)</span>，值越高分类错误越少)</li>
+<li>召回率（<span class="arithmatex">\(Recall=\frac{TP}{TP+FN}=\frac{TN}{TN+FP}\)</span>，值越高即被正确分类的数据越多）</li>
+</ul>
+<blockquote>
+<p>当数据不平衡时，使用数量少的那个会更好。</p>
+</blockquote>
+<p>一般来说，精确率和召回率会一个高一个低，需要取舍。基于此就出现了评定综合性能的指标<span class="arithmatex">\(F1\)</span>值，表达式如下：</p>
+<blockquote>
+<p><span class="arithmatex">\(F1\)</span>值指标在数学上是精确率和召回率的调和平均值。</p>
+</blockquote>
+<div class="arithmatex">\[
+Fmeasure=\frac{2}{\frac{1}{Precision}+\frac{1}{Recall}}
+\]</div>
+<p>除<span class="arithmatex">\(F1\)</span>值指标外，还有较为通用的带权重的<span class="arithmatex">\(F\)</span>值指标，表达式如下：</p>
+<div class="arithmatex">\[
+WeightedFmeasure = \frac{(1+\beta^2)\cdot Precision\cdot Recall}{\beta^2\cdot Precision+Recall}
+\]</div>
+<h4 id="交叉验证方法">交叉验证方法<a class="headerlink" href="#交叉验证方法" title="Permanent link">&para;</a></h4>
+<p>在交叉验证的方法中，较为经典的是K折交叉验证:</p>
+<ul>
+<li>把全部训练数据分为K份；</li>
+<li>将K-1份数据用作训练数据，剩下的1份用作测试数据；</li>
+<li>每次更换训练数据和测试数据，重复进行K次交叉验证；</li>
+<li>最后计算K个精度的平均值，把它作为最终的精度；</li>
+</ul>
+<blockquote>
+<p>不切实际地增加K值会非常耗费时间，所以必须要确定一个合适的K值。</p>
+</blockquote>
+<h3 id="正则化">正则化<a class="headerlink" href="#正则化" title="Permanent link">&para;</a></h3>
+<h4 id="过拟合">过拟合<a class="headerlink" href="#过拟合" title="Permanent link">&para;</a></h4>
+<p>若模型只能拟合训练数据的状态被称为过拟合（overfitting）。</p>
+<p>避免过拟合的方法一般有：</p>
+<ul>
+<li>增加全部训练数据的数量</li>
+<li>使用简单的模型</li>
+<li>正则化</li>
+</ul>
+<h4 id="正则化方法">正则化方法<a class="headerlink" href="#正则化方法" title="Permanent link">&para;</a></h4>
+<p>可以在前面回归得到的目标函数（最小二乘法）加上正则化项得到一个新的目标函数，如下：</p>
+<div class="arithmatex">\[
+E(\mathbf{\theta})=\frac{1}{2}\sum_{i=1}^{n}{(y^i-f_\mathbf{\theta}(\mathbf{x}^i))^2}+R(\mathbf{\theta})=\frac{1}{2}\sum_{i=1}^{n}{(y^i-f_\mathbf{\theta}(\mathbf{x}^i))^2}+\frac{\lambda}{2}\sum_{j=1}^{m}\theta_j^2
+\]</div>
+<p>要对这个新的目标函数进行最小化，这种方法即称为正则化。</p>
+<blockquote>
+<p>其中正则化项中：</p>
+<ul>
+<li><span class="arithmatex">\(m\)</span>：参数的个数;</li>
+<li><span class="arithmatex">\(\theta_0\)</span>称为偏置项，一般不对它进行正则化；</li>
+<li><span class="arithmatex">\(\lambda\)</span>：决定正则化项影响程度的正的常数；</li>
+</ul>
+</blockquote>
+<p>正则化的效果<strong>可以防止参数变得过大，有助于参数接近较小的值</strong>。参数的值变小，意味着该参数的影响也会相应地变小。</p>
+<h4 id="分类的正则化">分类的正则化<a class="headerlink" href="#分类的正则化" title="Permanent link">&para;</a></h4>
+<p>在前面分类提到的目标函数（对数似然函数）增加正则化项，表达式如下：</p>
+<div class="arithmatex">\[
+\log{L(\mathbf{\theta})}=-\sum_{i=1}^n(y^{(i)}\log{f_\mathbf{\theta}(\mathbf{x}^{(i)})}+(1-y^{(i)})\log{(1-f_\mathbf{\theta}(\mathbf{x}^{(i)}})))+\frac{\lambda}{2}\sum_{j=1}^{m}\theta_j^2
+\]</div>
+<blockquote>
+<p>为方便与回归处理相似，将目标函数最大化的目标转化为最小化问题，在原目标函数增加负号，加上正则化项。且这里反转了符号之后，在更新参数时也需要将符号反方向移动。</p>
+</blockquote>
+<h4 id="包含正则化项的表达式的微分">包含正则化项的表达式的微分<a class="headerlink" href="#包含正则化项的表达式的微分" title="Permanent link">&para;</a></h4>
+<p>其中回归和分类的目标函数的微分我们在前面已经求过了，这里主要是求正则化项的微分表达式:</p>
+<div class="arithmatex">\[
+\frac{\partial{R(\mathbf{\theta})}}{\partial{\theta_j}}=\lambda\theta_j
+\]</div>
+<p>最后这里代入到回归场景下的参数更新表达式中：</p>
+<div class="arithmatex">\[
+\theta_j:=\theta_j-\eta\big (\sum_{i=1}^{n}(f_\mathbf{\theta}(\mathbf{x}^{(i)})-y^{(i)})x_j^{(i)}+\lambda\theta_j\big )
+\]</div>
+<p>这里一般不对<span class="arithmatex">\(\theta_0\)</span>应用正则化，所以这里区分两种情况：</p>
+<ul>
+<li><span class="arithmatex">\(j=0\)</span></li>
+</ul>
+<div class="arithmatex">\[
+\theta_0:=\theta_0-\eta\big (\sum_{i=1}^{n}(f_\mathbf{\theta}(\mathbf{x}^{(i)})-y^{(i)})x_j^{(i)}\big )
+\]</div>
+<ul>
+<li><span class="arithmatex">\(j&gt;0\)</span></li>
+</ul>
+<div class="arithmatex">\[
+\theta_j:=\theta_j-\eta\big (\sum_{i=1}^{n}(f_\mathbf{\theta}(\mathbf{x}^{(i)})-y^{(i)})x_j^{(i)}+\lambda\theta_j\big )
+\]</div>
+<p>至此提到的正则被称为<em>L2正则化</em>，除此之外还有<em>L1正则化</em>，它的正则化项如下：</p>
+<div class="arithmatex">\[
+R(\mathbf{\theta})= \lambda\sum_{i=1}^{m}|\theta_i|
+\]</div>
+<p>L1正则化的特征是被判定为不需要的参数会变为0，从而减少变量个数即直接去除不要的变量。而L2正则化不会把参数变为0，通过会抑制参数，使变量的影响不会过大。</p>
+<h3 id="学习曲线">学习曲线<a class="headerlink" href="#学习曲线" title="Permanent link">&para;</a></h3>
+<h4 id="欠拟合">欠拟合<a class="headerlink" href="#欠拟合" title="Permanent link">&para;</a></h4>
+<p>欠拟合（underfitting）与过拟合相反的状态即没有拟合训练数据。在这种情况下模型的性能也会变差。</p>
+<h4 id="区分过拟合与欠拟合">区分过拟合与欠拟合<a class="headerlink" href="#区分过拟合与欠拟合" title="Permanent link">&para;</a></h4>
+<p><img alt="s18072202262022" src="https://img.zhengyua.cn/s18072202262022.png" /></p>
+<p><img alt="s18103602262022" src="https://img.zhengyua.cn/s18103602262022.png" /></p>
+<p>将两份数据的精度用图来展示后，如果是这种形状，就说明出现了欠拟合的状态，也可以称为高偏差。</p>
+<p>而过拟合或称为高方差，如下图所示：</p>
+<p><img alt="s18100102262022" src="https://img.zhengyua.cn/s18100102262022.png" /></p>
+<p><img alt="s18104502262022" src="https://img.zhengyua.cn/s18104502262022.png" /></p>
+<p>像这样展示了数据数量和精度的图称为学习曲线。</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 4, 2026 22:15:16</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 4, 2026 22:15:16</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../20200306_%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E4%B8%8E%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 线性回归与非线性回归">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                线性回归与非线性回归
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--next" aria-label="Next: Machine Learning">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Machine Learning
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 catwithtudou
+    </div>
+  
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/catwithtudou" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/catwithtudou" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9zm-24.8 373.8h39.1L151.1 88h-42z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+  
+    
+  
+
+
+
+  
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="github" checked>
+          <span class="task-list-indicator"></span>
+          GitHub
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotation", "content.code.copy", "content.code.select", "header.autohide"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f13b1293.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
