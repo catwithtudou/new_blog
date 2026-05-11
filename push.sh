@@ -1,43 +1,37 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
 echo "Ready to execute script"
 
-# 默认 git commit message
+# Default git commit message.
 msg="update: default by script"
 
-# 默认 commit 分之
+# Default branch.
 branch="main"
 
-if [ -n "$1" ]
-then
+if [ -n "${1:-}" ]; then
   msg=$1
 fi
 
-if [ -n "$2" ]
-then
+if [ -n "${2:-}" ]; then
   branch=$2
 fi
 
 echo "git commit message:[$msg]"
 echo "git branch:[$branch]"
+echo "The site build output is ignored; GitHub Actions deploys the site after push."
 
-read -p "Press Enter to continue"
+read -r -p "Press Enter to build, commit, and push"
 
-# 执行 git push 过程
-git add .
-git status
+mkdocs build --strict
 
-sleep 1
+git add -A
+git status --short
 
-git commit -m "$msg"
-
-read -p "Press Enter to continue"
-
-mkdocs build
-
-git add .
-
-git commit -m "$msg(update the mkdocs build)"
-
-read -p "Press Enter to continue"
+if git diff --cached --quiet; then
+  echo "No staged changes to commit"
+else
+  git commit -m "$msg"
+fi
 
 git push origin "$branch"
-

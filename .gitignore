@@ -1,2 +1,4 @@
-﻿.vscode/
-.idea
+.vscode/
+.idea/
+.DS_Store
+site/

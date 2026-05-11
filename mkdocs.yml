@@ -87,7 +87,6 @@ plugins:
       pagination_format: "$link_first $link_previous ~2~ $link_next $link_last"
   - tags:
       enabled: true
-      tags_file: blog/tags.md
   - search:
       separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
       lang:
@@ -130,7 +129,6 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
   - footnotes
-  - pymdownx.mark
   - attr_list
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
@@ -174,9 +172,12 @@ extra:
     property: G-WZVK8HDP5T
 
 extra_javascript:
+  - javascripts/home.js
   - javascripts/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - stylesheets/home.css
 
 # Page tree
 nav:
