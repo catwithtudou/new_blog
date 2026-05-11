@@ -15,7 +15,7 @@
 - Create `scripts/check_release_invariants.sh`: validates tracked-file hygiene and workflow guardrails.
 - Modify `.github/workflows/ci.yml`: adds concurrency, explicit strict validation, release invariant check, and named deployment step.
 - Modify `push.sh`: optionally reuses the invariant script before push.
-- Modify `mkdocs.yml`: removes global MathJax scripts from `extra_javascript`.
+- Modify `mkdocs.yml`: removes global MathJax scripts from `extra_javascript` and excludes internal `docs/superpowers/` planning documents from the public MkDocs build.
 - Create `overrides/main.html`: extends Material's `base.html` and conditionally injects MathJax scripts inside the `scripts` block.
 - Modify Markdown pages that use math syntax: add `math: true` frontmatter only where formulas need MathJax.
 

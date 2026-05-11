@@ -5,6 +5,9 @@ site_author: catwithtudou️
 site_description: >-
   Life
 
+exclude_docs: |
+  superpowers/**
+
 # Repository =====================================================
 repo_name: catwithtudou
 repo_url: https://github.com/catwithtudou
@@ -173,8 +176,6 @@ extra:
 
 extra_javascript:
   - javascripts/home.js
-  - javascripts/mathjax.js
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:
   - stylesheets/home.css

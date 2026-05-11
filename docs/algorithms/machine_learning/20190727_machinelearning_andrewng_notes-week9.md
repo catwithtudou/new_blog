@@ -1,3 +1,7 @@
+---
+math: true
+---
+
 # Week 9
 
 ## Density Estimation(异常检测)

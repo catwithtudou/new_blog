@@ -24,6 +24,7 @@ echo "The site build output is ignored; GitHub Actions deploys the site after pu
 read -r -p "Press Enter to build, commit, and push"
 
 mkdocs build --strict
+bash scripts/check_release_invariants.sh
 
 git add -A
 git status --short

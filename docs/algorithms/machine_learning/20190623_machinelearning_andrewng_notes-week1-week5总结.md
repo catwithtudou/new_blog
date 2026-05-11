@@ -1,3 +1,7 @@
+---
+math: true
+---
+
 # MachineLearning(AndrewNg)Notes-Week1-Week5总结
 
 ### Liner Regression
