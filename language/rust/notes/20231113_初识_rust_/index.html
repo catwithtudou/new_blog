@@ -21,11 +21,8 @@
         <link rel="next" href="../20240121__build_a_parser_by_rust_%E4%B8%8A_/">
       
       
-        
-      
-      
       <link rel="icon" href="../../../../assets/logo.jpeg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
     
     
       
@@ -33,10 +30,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.d7758b05.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -55,6 +52,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../../stylesheets/home.css">
+    
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -69,6 +68,7 @@
     <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
   
 
+    
     
     
   </head>
@@ -163,13 +163,11 @@
     
     
     
-      
-      
-        <label class="md-header__button md-icon" for="__search">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -208,14 +206,13 @@
     </div>
   </div>
 </div>
-      
     
     
       <div class="md-header__source">
         <a href="https://github.com/catwithtudou" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
     catwithtudou
@@ -235,11 +232,9 @@
   
   
   
-  
     <li class="md-tabs__item">
       <a href="../../../.." class="md-tabs__link">
         
-  
   
     
   
@@ -254,13 +249,11 @@
   
   
   
-  
     
     
       <li class="md-tabs__item">
         <a href="../../../../blog/" class="md-tabs__link">
           
-  
   
     
   
@@ -275,7 +268,6 @@
         
   
   
-  
     
   
   
@@ -284,7 +276,6 @@
       <li class="md-tabs__item md-tabs__item--active">
         <a href="../../../" class="md-tabs__link">
           
-  
   
     
   
@@ -300,13 +291,11 @@
   
   
   
-  
     
     
       <li class="md-tabs__item">
         <a href="../../../../algorithms/" class="md-tabs__link">
           
-  
   
     
   
@@ -322,13 +311,11 @@
   
   
   
-  
     
     
       <li class="md-tabs__item">
         <a href="../../../../os/" class="md-tabs__link">
           
-  
   
     
   
@@ -344,13 +331,11 @@
   
   
   
-  
     
     
       <li class="md-tabs__item">
         <a href="../../../../network/" class="md-tabs__link">
           
-  
   
     
   
@@ -366,13 +351,11 @@
   
   
   
-  
     
     
       <li class="md-tabs__item">
         <a href="../../../../ds/" class="md-tabs__link">
           
-  
   
     
   
@@ -388,13 +371,11 @@
   
   
   
-  
     
     
       <li class="md-tabs__item">
         <a href="../../../../architecture/" class="md-tabs__link">
           
-  
   
     
   
@@ -410,13 +391,11 @@
   
   
   
-  
     
     
       <li class="md-tabs__item">
         <a href="../../../../middleware/" class="md-tabs__link">
           
-  
   
     
   
@@ -432,13 +411,11 @@
   
   
   
-  
     
     
       <li class="md-tabs__item">
         <a href="../../../../project/" class="md-tabs__link">
           
-  
   
     
   
@@ -454,13 +431,11 @@
   
   
   
-  
     
     
       <li class="md-tabs__item">
         <a href="../../../../common/01-100_tips/" class="md-tabs__link">
           
-  
   
     
   
@@ -512,7 +487,7 @@
       <a href="https://github.com/catwithtudou" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
     catwithtudou
@@ -532,16 +507,10 @@
       <a href="../../../.." class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     🌦️Home
-  
-
     
   </span>
-  
   
 
       </a>
@@ -572,7 +541,6 @@
       
     
     
-    
       
       
         
@@ -589,20 +557,13 @@
         
   
   
-  
     <a href="../../../../blog/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     📌MainPage
-  
-
     
   </span>
-  
   
 
       
@@ -637,7 +598,6 @@
       
         
       
-    
     
     
       
@@ -658,20 +618,15 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
+          
           <div class="md-nav__link md-nav__container">
             <a href="../../../" class="md-nav__link ">
               
   
-  
   <span class="md-ellipsis">
-    
-  
     Language
-  
-
     
   </span>
-  
   
 
             </a>
@@ -686,11 +641,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            
-  
-    Language
-  
-
+            Language
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -711,7 +662,6 @@
           
         
       
-    
     
     
       
@@ -732,20 +682,15 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
+          
           <div class="md-nav__link md-nav__container">
             <a href="../../../front_end/" class="md-nav__link ">
               
   
-  
   <span class="md-ellipsis">
-    
-  
     front_end
-  
-
     
   </span>
-  
   
 
             </a>
@@ -760,11 +705,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
-            
-  
-    front_end
-  
-
+            front_end
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -778,16 +719,10 @@
       <a href="../../../front_end/20220314__%E9%87%8D%E5%AD%A6%E5%89%8D%E7%AB%AF_%E7%AC%94%E8%AE%B0/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     《重学前端》笔记
-  
-
     
   </span>
-  
   
 
       </a>
@@ -825,7 +760,6 @@
       
     
     
-    
       
       
         
@@ -844,20 +778,15 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
         
           
+          
           <div class="md-nav__link md-nav__container">
             <a href="../../../golang/" class="md-nav__link ">
               
   
-  
   <span class="md-ellipsis">
-    
-  
     golang
-  
-
     
   </span>
-  
   
 
             </a>
@@ -872,11 +801,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
-            
-  
-    golang
-  
-
+            golang
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -901,7 +826,6 @@
       
     
     
-    
       
       
         
@@ -918,20 +842,13 @@
         
   
   
-  
     <a href="../../../golang/inbox/2502_go_best_practice/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     inbox
-  
-
     
   </span>
-  
   
 
       
@@ -969,7 +886,6 @@
       
     
     
-    
       
       
         
@@ -986,20 +902,13 @@
         
   
   
-  
     <a href="../../../golang/notes/20220128_netrpc%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     notes
-  
-
     
   </span>
-  
   
 
       
@@ -1043,7 +952,6 @@
       
     
     
-    
       
       
         
@@ -1062,20 +970,15 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
         
           
+          
           <div class="md-nav__link md-nav__container">
             <a href="../../" class="md-nav__link ">
               
   
-  
   <span class="md-ellipsis">
-    
-  
     rust
-  
-
     
   </span>
-  
   
 
             </a>
@@ -1090,11 +993,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
-            
-  
-    rust
-  
-
+            rust
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1117,7 +1016,6 @@
       
     
     
-    
       
       
         
@@ -1134,20 +1032,13 @@
         
   
   
-  
     <a href="../../inbox/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     inbox
-  
-
     
   </span>
-  
   
 
       
@@ -1184,12 +1075,9 @@
         
       
         
-      
-        
           
         
       
-    
     
     
       
@@ -1207,20 +1095,15 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_3" checked>
         
           
+          
           <div class="md-nav__link md-nav__container">
             <a href="../" class="md-nav__link ">
               
   
-  
   <span class="md-ellipsis">
-    
-  
     notes
-  
-
     
   </span>
-  
   
 
             </a>
@@ -1235,11 +1118,7 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_4_3">
             <span class="md-nav__icon md-icon"></span>
-            
-  
-    notes
-  
-
+            notes
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1262,16 +1141,10 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
-  
   <span class="md-ellipsis">
-    
-  
     初识🐣Rust🦀️
-  
-
     
   </span>
-  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -1280,16 +1153,10 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     初识🐣Rust🦀️
-  
-
     
   </span>
-  
   
 
       </a>
@@ -1314,9 +1181,7 @@
         <li class="md-nav__item">
   <a href="#背景" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        背景
-      
+      背景
     </span>
   </a>
   
@@ -1325,9 +1190,7 @@
         <li class="md-nav__item">
   <a href="#语言简介" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        语言简介
-      
+      语言简介
     </span>
   </a>
   
@@ -1337,9 +1200,7 @@
           <li class="md-nav__item">
   <a href="#rust-的发展历程" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Rust 的发展历程
-      
+      Rust 的发展历程
     </span>
   </a>
   
@@ -1348,9 +1209,7 @@
           <li class="md-nav__item">
   <a href="#rust-的特点" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Rust 的特点
-      
+      Rust 的特点
     </span>
   </a>
   
@@ -1359,9 +1218,7 @@
           <li class="md-nav__item">
   <a href="#rust-适合被改造的服务" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Rust 适合被改造的服务
-      
+      Rust 适合被改造的服务
     </span>
   </a>
   
@@ -1375,9 +1232,7 @@
         <li class="md-nav__item">
   <a href="#rust-特性简介" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Rust 特性简介
-      
+      Rust 特性简介
     </span>
   </a>
   
@@ -1387,9 +1242,7 @@
           <li class="md-nav__item">
   <a href="#性能" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        性能
-      
+      性能
     </span>
   </a>
   
@@ -1398,9 +1251,7 @@
           <li class="md-nav__item">
   <a href="#安全" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        安全
-      
+      安全
     </span>
   </a>
   
@@ -1410,9 +1261,7 @@
           <li class="md-nav__item">
   <a href="#所有权" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        所有权
-      
+      所有权
     </span>
   </a>
   
@@ -1421,9 +1270,7 @@
           <li class="md-nav__item">
   <a href="#借用" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        借用
-      
+      借用
     </span>
   </a>
   
@@ -1432,9 +1279,7 @@
           <li class="md-nav__item">
   <a href="#生命周期" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        生命周期
-      
+      生命周期
     </span>
   </a>
   
@@ -1443,9 +1288,7 @@
           <li class="md-nav__item">
   <a href="#无畏并发" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        无畏并发
-      
+      无畏并发
     </span>
   </a>
   
@@ -1459,9 +1302,7 @@
           <li class="md-nav__item">
   <a href="#协作" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        协作
-      
+      协作
     </span>
   </a>
   
@@ -1470,9 +1311,7 @@
           <li class="md-nav__item">
   <a href="#与-go-的相似点" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        与 Go 的相似点
-      
+      与 Go 的相似点
     </span>
   </a>
   
@@ -1486,21 +1325,17 @@
         <li class="md-nav__item">
   <a href="#rust-语法简介差异" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Rust 语法简介&amp;差异
-      
+      Rust 语法简介&amp;差异
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Rust 语法简介&amp;差异">
+    <nav class="md-nav" aria-label="Rust 语法简介&差异">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#变量绑定与解构" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        变量绑定与解构
-      
+      变量绑定与解构
     </span>
   </a>
   
@@ -1509,9 +1344,7 @@
           <li class="md-nav__item">
   <a href="#语句与表达式" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        语句与表达式
-      
+      语句与表达式
     </span>
   </a>
   
@@ -1520,9 +1353,7 @@
           <li class="md-nav__item">
   <a href="#所有权_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        所有权
-      
+      所有权
     </span>
   </a>
   
@@ -1532,9 +1363,7 @@
           <li class="md-nav__item">
   <a href="#前置知识" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        前置知识
-      
+      前置知识
     </span>
   </a>
   
@@ -1543,9 +1372,7 @@
           <li class="md-nav__item">
   <a href="#拷贝浅拷贝与克隆深拷贝" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        拷贝（浅拷贝）与克隆（深拷贝）
-      
+      拷贝（浅拷贝）与克隆（深拷贝）
     </span>
   </a>
   
@@ -1555,9 +1382,7 @@
           <li class="md-nav__item">
   <a href="#克隆深拷贝" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        克隆（深拷贝）
-      
+      克隆（深拷贝）
     </span>
   </a>
   
@@ -1566,9 +1391,7 @@
           <li class="md-nav__item">
   <a href="#拷贝浅拷贝" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        拷贝（浅拷贝）
-      
+      拷贝（浅拷贝）
     </span>
   </a>
   
@@ -1582,9 +1405,7 @@
           <li class="md-nav__item">
   <a href="#函数传值与返回" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        函数传值与返回
-      
+      函数传值与返回
     </span>
   </a>
   
@@ -1598,9 +1419,7 @@
           <li class="md-nav__item">
   <a href="#引用与借用" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        引用与借用
-      
+      引用与借用
     </span>
   </a>
   
@@ -1609,9 +1428,7 @@
           <li class="md-nav__item">
   <a href="#复合类型" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        复合类型
-      
+      复合类型
     </span>
   </a>
   
@@ -1621,9 +1438,7 @@
           <li class="md-nav__item">
   <a href="#数组与切片" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        数组与切片
-      
+      数组与切片
     </span>
   </a>
   
@@ -1632,9 +1447,7 @@
           <li class="md-nav__item">
   <a href="#字符串" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        字符串
-      
+      字符串
     </span>
   </a>
   
@@ -1643,9 +1456,7 @@
           <li class="md-nav__item">
   <a href="#元组" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        元组
-      
+      元组
     </span>
   </a>
   
@@ -1654,9 +1465,7 @@
           <li class="md-nav__item">
   <a href="#结构体" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        结构体
-      
+      结构体
     </span>
   </a>
   
@@ -1665,9 +1474,7 @@
           <li class="md-nav__item">
   <a href="#枚举" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        枚举
-      
+      枚举
     </span>
   </a>
   
@@ -1702,16 +1509,10 @@
       <a href="../20240121__build_a_parser_by_rust_%E4%B8%8A_/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     🔬Build A Parser By Rust（上）
-  
-
     
   </span>
-  
   
 
       </a>
@@ -1730,16 +1531,10 @@
       <a href="../20240126__build_a_parser_by_rust_%E4%B8%8B_/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     🔬Build A Parser By Rust（下）
-  
-
     
   </span>
-  
   
 
       </a>
@@ -1758,16 +1553,10 @@
       <a href="../2309_rust_async/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     202309《Rust 异步编程》阅读笔记
-  
-
     
   </span>
-  
   
 
       </a>
@@ -1786,44 +1575,10 @@
       <a href="../2402_rust_course/" class="md-nav__link">
         
   
-  
   <span class="md-ellipsis">
-    
-  
     202402《Rust 语言圣经》阅读笔记
-  
-
     
   </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../README.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    None
-  
-
-    
-  </span>
-  
   
 
       </a>
@@ -1880,7 +1635,6 @@
       
     
     
-    
       
       
         
@@ -1895,22 +1649,15 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../../../../algorithms/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     Algorithms
-  
-
     
   </span>
-  
   
 
       
@@ -1943,7 +1690,6 @@
       
     
     
-    
       
       
         
@@ -1958,22 +1704,15 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../../../../os/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     OS
-  
-
     
   </span>
-  
   
 
       
@@ -2002,7 +1741,6 @@
       
     
     
-    
       
       
         
@@ -2017,22 +1755,15 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../../../../network/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     Network
-  
-
     
   </span>
-  
   
 
       
@@ -2061,7 +1792,6 @@
       
     
     
-    
       
       
         
@@ -2076,22 +1806,15 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../../../../ds/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     DS
-  
-
     
   </span>
-  
   
 
       
@@ -2124,7 +1847,6 @@
       
     
     
-    
       
       
         
@@ -2139,22 +1861,15 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../../../../architecture/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     Architecture
-  
-
     
   </span>
-  
   
 
       
@@ -2185,7 +1900,6 @@
       
     
     
-    
       
       
         
@@ -2200,22 +1914,15 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../../../../middleware/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     Middleware
-  
-
     
   </span>
-  
   
 
       
@@ -2252,7 +1959,6 @@
       
     
     
-    
       
       
         
@@ -2267,22 +1973,15 @@
     <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-  
   
   
     <a href="../../../../project/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     Project
-  
-
     
   </span>
-  
   
 
       
@@ -2327,7 +2026,6 @@
       
     
     
-    
       
       
         
@@ -2344,20 +2042,13 @@
         
   
   
-  
     <a href="../../../../common/01-100_tips/" class="md-nav__link">
       
   
-  
   <span class="md-ellipsis">
-    
-  
     Common
-  
-
     
   </span>
-  
   
 
       
@@ -2402,9 +2093,7 @@
         <li class="md-nav__item">
   <a href="#背景" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        背景
-      
+      背景
     </span>
   </a>
   
@@ -2413,9 +2102,7 @@
         <li class="md-nav__item">
   <a href="#语言简介" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        语言简介
-      
+      语言简介
     </span>
   </a>
   
@@ -2425,9 +2112,7 @@
           <li class="md-nav__item">
   <a href="#rust-的发展历程" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Rust 的发展历程
-      
+      Rust 的发展历程
     </span>
   </a>
   
@@ -2436,9 +2121,7 @@
           <li class="md-nav__item">
   <a href="#rust-的特点" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Rust 的特点
-      
+      Rust 的特点
     </span>
   </a>
   
@@ -2447,9 +2130,7 @@
           <li class="md-nav__item">
   <a href="#rust-适合被改造的服务" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Rust 适合被改造的服务
-      
+      Rust 适合被改造的服务
     </span>
   </a>
   
@@ -2463,9 +2144,7 @@
         <li class="md-nav__item">
   <a href="#rust-特性简介" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Rust 特性简介
-      
+      Rust 特性简介
     </span>
   </a>
   
@@ -2475,9 +2154,7 @@
           <li class="md-nav__item">
   <a href="#性能" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        性能
-      
+      性能
     </span>
   </a>
   
@@ -2486,9 +2163,7 @@
           <li class="md-nav__item">
   <a href="#安全" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        安全
-      
+      安全
     </span>
   </a>
   
@@ -2498,9 +2173,7 @@
           <li class="md-nav__item">
   <a href="#所有权" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        所有权
-      
+      所有权
     </span>
   </a>
   
@@ -2509,9 +2182,7 @@
           <li class="md-nav__item">
   <a href="#借用" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        借用
-      
+      借用
     </span>
   </a>
   
@@ -2520,9 +2191,7 @@
           <li class="md-nav__item">
   <a href="#生命周期" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        生命周期
-      
+      生命周期
     </span>
   </a>
   
@@ -2531,9 +2200,7 @@
           <li class="md-nav__item">
   <a href="#无畏并发" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        无畏并发
-      
+      无畏并发
     </span>
   </a>
   
@@ -2547,9 +2214,7 @@
           <li class="md-nav__item">
   <a href="#协作" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        协作
-      
+      协作
     </span>
   </a>
   
@@ -2558,9 +2223,7 @@
           <li class="md-nav__item">
   <a href="#与-go-的相似点" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        与 Go 的相似点
-      
+      与 Go 的相似点
     </span>
   </a>
   
@@ -2574,21 +2237,17 @@
         <li class="md-nav__item">
   <a href="#rust-语法简介差异" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        Rust 语法简介&amp;差异
-      
+      Rust 语法简介&amp;差异
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Rust 语法简介&amp;差异">
+    <nav class="md-nav" aria-label="Rust 语法简介&差异">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#变量绑定与解构" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        变量绑定与解构
-      
+      变量绑定与解构
     </span>
   </a>
   
@@ -2597,9 +2256,7 @@
           <li class="md-nav__item">
   <a href="#语句与表达式" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        语句与表达式
-      
+      语句与表达式
     </span>
   </a>
   
@@ -2608,9 +2265,7 @@
           <li class="md-nav__item">
   <a href="#所有权_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        所有权
-      
+      所有权
     </span>
   </a>
   
@@ -2620,9 +2275,7 @@
           <li class="md-nav__item">
   <a href="#前置知识" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        前置知识
-      
+      前置知识
     </span>
   </a>
   
@@ -2631,9 +2284,7 @@
           <li class="md-nav__item">
   <a href="#拷贝浅拷贝与克隆深拷贝" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        拷贝（浅拷贝）与克隆（深拷贝）
-      
+      拷贝（浅拷贝）与克隆（深拷贝）
     </span>
   </a>
   
@@ -2643,9 +2294,7 @@
           <li class="md-nav__item">
   <a href="#克隆深拷贝" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        克隆（深拷贝）
-      
+      克隆（深拷贝）
     </span>
   </a>
   
@@ -2654,9 +2303,7 @@
           <li class="md-nav__item">
   <a href="#拷贝浅拷贝" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        拷贝（浅拷贝）
-      
+      拷贝（浅拷贝）
     </span>
   </a>
   
@@ -2670,9 +2317,7 @@
           <li class="md-nav__item">
   <a href="#函数传值与返回" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        函数传值与返回
-      
+      函数传值与返回
     </span>
   </a>
   
@@ -2686,9 +2331,7 @@
           <li class="md-nav__item">
   <a href="#引用与借用" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        引用与借用
-      
+      引用与借用
     </span>
   </a>
   
@@ -2697,9 +2340,7 @@
           <li class="md-nav__item">
   <a href="#复合类型" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        复合类型
-      
+      复合类型
     </span>
   </a>
   
@@ -2709,9 +2350,7 @@
           <li class="md-nav__item">
   <a href="#数组与切片" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        数组与切片
-      
+      数组与切片
     </span>
   </a>
   
@@ -2720,9 +2359,7 @@
           <li class="md-nav__item">
   <a href="#字符串" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        字符串
-      
+      字符串
     </span>
   </a>
   
@@ -2731,9 +2368,7 @@
           <li class="md-nav__item">
   <a href="#元组" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        元组
-      
+      元组
     </span>
   </a>
   
@@ -2742,9 +2377,7 @@
           <li class="md-nav__item">
   <a href="#结构体" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        结构体
-      
+      结构体
     </span>
   </a>
   
@@ -2753,9 +2386,7 @@
           <li class="md-nav__item">
   <a href="#枚举" class="md-nav__link">
     <span class="md-ellipsis">
-      
-        枚举
-      
+      枚举
     </span>
   </a>
   
@@ -2781,91 +2412,6 @@
           
           
             <div class="md-content" data-md-component="content">
-              
-                
-
-
-
-  
-
-
-  <nav class="md-path" aria-label="Navigation" >
-    <ol class="md-path__list">
-      
-        
-  
-  
-    <li class="md-path__item">
-      <a href="../../../.." class="md-path__link">
-        
-  <span class="md-ellipsis">
-    🌦️Home
-  </span>
-
-      </a>
-    </li>
-  
-
-      
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../../../" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Language
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="../../" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    rust
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="./" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    notes
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ol>
-  </nav>
-
-              
               <article class="md-content__inner md-typeset">
                 
                   
@@ -4419,7 +3965,7 @@ enum Number {
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="April 4, 2026 22:19:37 CST">April 4, 2026 22:19:37</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 4, 2026 22:19:37</span>
   </span>
 
     
@@ -4429,7 +3975,7 @@ enum Number {
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="April 4, 2026 22:19:37 CST">April 4, 2026 22:19:37</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">April 4, 2026 22:19:37</span>
   </span>
 
     
@@ -4514,8 +4060,7 @@ enum Number {
   
 </div>
       
-        
-<div class="md-social">
+        <div class="md-social">
   
     
     
@@ -4525,7 +4070,7 @@ enum Number {
       
     
     <a href="https://github.com/catwithtudou" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
     </a>
   
     
@@ -4536,7 +4081,7 @@ enum Number {
       
     
     <a href="https://twitter.com/catwithtudou" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M357.2 48h70.6L273.6 224.2 455 464H313L201.7 318.6 74.5 464H3.8l164.9-188.5L-5.2 48h145.6l100.5 132.9zm-24.8 373.8h39.1L119.1 88h-42z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8l164.9-188.5L26.8 48h145.6l100.5 132.9zm-24.8 373.8h39.1L151.1 88h-42z"/></svg>
     </a>
   
 </div>
@@ -4557,6 +4102,16 @@ enum Number {
           <form class="md-consent__form md-grid md-typeset" name="consent">
             
 
+  
+    
+  
+
+
+  
+    
+  
+
+
 
   
 
@@ -4567,42 +4122,31 @@ enum Number {
 <div class="md-consent__settings">
   <ul class="task-list">
     
-    
+      
       
         
-  
-  
-    
-    
-  
-  <li class="task-list-item">
-    <label class="task-list-control">
-      <input type="checkbox" name="analytics" checked>
-      <span class="task-list-indicator"></span>
-      Google Analytics
-    </label>
-  </li>
-
+        
       
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
     
-    
+      
       
         
-  
-  
-    
-    
-  
-  <li class="task-list-item">
-    <label class="task-list-control">
-      <input type="checkbox" name="github" checked>
-      <span class="task-list-indicator"></span>
-      GitHub
-    </label>
-  </li>
-
+        
       
-    
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="github" checked>
+          <span class="task-list-indicator"></span>
+          GitHub
+        </label>
+      </li>
     
   </ul>
 </div>
@@ -4626,17 +4170,14 @@ enum Number {
       </div>
       <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
     
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotation", "content.code.copy", "content.code.select", "header.autohide"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
+    
+      <script src="../../../../assets/javascripts/bundle.f13b1293.min.js"></script>
       
-      
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.prune", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.tabs.link", "content.code.annotation", "content.code.copy", "content.code.select", "header.autohide"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
-    
-    
-      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+        <script src="../../../../javascripts/home.js"></script>
       
         <script src="../../../../javascripts/mathjax.js"></script>
-      
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
