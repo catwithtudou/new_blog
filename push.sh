@@ -23,7 +23,12 @@ echo "The site build output is ignored; GitHub Actions deploys the site after pu
 
 read -r -p "Press Enter to build, commit, and push"
 
-mkdocs build --strict
+mkdocs_cmd="mkdocs"
+if [ -x ".venv/bin/mkdocs" ]; then
+  mkdocs_cmd=".venv/bin/mkdocs"
+fi
+
+"$mkdocs_cmd" build
 bash scripts/check_release_invariants.sh
 
 git add -A
@@ -35,4 +40,5 @@ else
   git commit -m "$msg"
 fi
 
+"$mkdocs_cmd" build --strict
 git push origin "$branch"
