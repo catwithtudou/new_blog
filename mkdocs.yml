@@ -96,6 +96,34 @@ plugins:
         json_updated: feed_json_updated.json
         rss_created: feed_rss_created.xml
         rss_updated: feed_rss_updated.xml
+  - document-dates:
+      type: datetime
+      locale: zh_CN
+      date_format: "%Y年%m月%d日"
+      time_format: "%H:%M"
+      position: bottom
+      show_created: false
+      show_updated: false
+      show_author: false
+      exclude:
+        - index.md
+        - "*/index.md"
+        - README.md
+        - "*/README.md"
+      recently-updated:
+        limit: 100
+        exclude:
+          - index.md
+          - "*/index.md"
+          - README.md
+          - "*/README.md"
+          - "blog/archive/*"
+          - "blog/category/*"
+          - "blog/page/*"
+          - updates.md
+        summary_lines:
+          grid: 2
+          detail: 4
   - tags:
       enabled: true
   - search:

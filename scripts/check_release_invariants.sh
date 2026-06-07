@@ -25,8 +25,14 @@ grep -q 'mkdocs build --strict --site-dir /tmp/new_blog_mkdocs_strict' .github/w
 grep -q 'mkdocs-rss-plugin==1.19.0' requirements.txt \
   || fail "requirements.txt is missing pinned mkdocs-rss-plugin"
 
+grep -q 'mkdocs-document-dates==3.8.6' requirements.txt \
+  || fail "requirements.txt is missing pinned mkdocs-document-dates"
+
 grep -q '^[[:space:]]*- rss:' mkdocs.yml \
   || fail "mkdocs.yml is missing rss plugin"
+
+grep -q '^[[:space:]]*- document-dates:' mkdocs.yml \
+  || fail "mkdocs.yml is missing document-dates plugin"
 
 grep -q 'feed_json_updated.json' mkdocs.yml \
   || fail "mkdocs.yml is missing updated JSON feed output"
@@ -36,6 +42,15 @@ grep -q 'length: 100' mkdocs.yml \
 
 grep -q 'match_path:' mkdocs.yml \
   || fail "mkdocs.yml is missing RSS page filtering"
+
+grep -q 'recently-updated:' mkdocs.yml \
+  || fail "document-dates recently updated module is not enabled"
+
+grep -q 'limit: 100' mkdocs.yml \
+  || fail "document-dates recent updates list does not expose enough entries"
+
+grep -q 'blog/archive/\*' mkdocs.yml \
+  || fail "document-dates recent updates list does not exclude blog archive pages"
 
 grep -q 'updates.md' mkdocs.yml \
   || fail "updates page is missing from navigation"
@@ -58,38 +73,42 @@ grep -q 'updates-note' docs/updates.md \
 grep -q 'updates-toolbar' docs/updates.md \
   || fail "updates feed links are not placed in the compact toolbar"
 
+grep -q '^<!-- RECENTLY_UPDATED_DOCS -->$' docs/updates.md \
+  || fail "updates page does not use document-dates recent updates placeholder"
+
+grep -q 'data-document-dates-updates' docs/updates.md \
+  || fail "updates page is missing document-dates enhancement root"
+
 grep -q 'data-page-size="20"' docs/updates.md \
   || fail "updates page is missing expandable list page size"
+
+if grep -q 'data-updates-list' docs/updates.md; then
+  fail "updates page still uses the old client-side feed list root"
+fi
 
 test -f docs/javascripts/updates.js \
   || fail "updates page JavaScript is missing"
 
-grep -q 'updates-summary' docs/javascripts/updates.js \
-  || fail "updates page JavaScript is missing summary rendering"
+grep -q 'enhanceDocumentDatesUpdates' docs/javascripts/updates.js \
+  || fail "updates page JavaScript is missing document-dates enhancement"
 
 grep -q 'updates-more' docs/javascripts/updates.js \
   || fail "updates page JavaScript is missing show-more rendering"
 
-grep -q 'cacheBustUrl' docs/javascripts/updates.js \
-  || fail "updates page JavaScript does not avoid stale feed cache"
-
-grep -q 'Cache-Control' docs/javascripts/updates.js \
-  || fail "updates page JavaScript is missing no-cache feed request headers"
-
-grep -q 'hour.*minute' docs/javascripts/updates.js \
+grep -q 'formatMinuteDate' docs/javascripts/updates.js \
   || fail "updates page JavaScript is missing minute-level time formatting"
 
-grep -q 'cleanSummaryText' docs/javascripts/updates.js \
-  || fail "updates page JavaScript is missing summary cleanup"
+grep -q 'updates-card-hidden' docs/javascripts/updates.js \
+  || fail "updates page JavaScript is missing hidden-card pagination"
 
-grep -q 'trimLeadingTitle' docs/javascripts/updates.js \
-  || fail "updates page JavaScript does not trim duplicated summary titles"
+grep -q 'layout-list-btn' docs/javascripts/updates.js \
+  || fail "updates page JavaScript does not bind document-dates layout controls"
 
 test -f docs/stylesheets/updates.css \
   || fail "updates page stylesheet is missing"
 
-grep -q '^\.updates-summary' docs/stylesheets/updates.css \
-  || fail "updates page stylesheet is missing summary styles"
+grep -q '^\.updates-document-dates' docs/stylesheets/updates.css \
+  || fail "updates page stylesheet is missing document-dates card styles"
 
 grep -q '^\.updates-note' docs/stylesheets/updates.css \
   || fail "updates page stylesheet is missing policy note styles"
@@ -99,6 +118,9 @@ grep -q '^\.updates-toolbar' docs/stylesheets/updates.css \
 
 grep -q '^\.updates-more' docs/stylesheets/updates.css \
   || fail "updates page stylesheet is missing show-more styles"
+
+grep -q '^\.updates-card-hidden' docs/stylesheets/updates.css \
+  || fail "updates page stylesheet is missing hidden-card pagination styles"
 
 grep -q 'Migration of old blog posts' README.md \
   && grep -q '\[x\] Migration of old blog posts' README.md \
