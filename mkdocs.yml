@@ -88,6 +88,14 @@ plugins:
       categories_name:  🗂️Categories
       pagination_per_page: 15
       pagination_format: "$link_first $link_previous ~2~ $link_next $link_last"
+  - rss:
+      length: 100
+      match_path: '^(?!updates\.md$)(?!blog/(archive|category|page)/)(?!.*(?:^|/)(README|index)\.md$).+\.md$'
+      feeds_filenames:
+        json_created: feed_json_created.json
+        json_updated: feed_json_updated.json
+        rss_created: feed_rss_created.xml
+        rss_updated: feed_rss_updated.xml
   - tags:
       enabled: true
   - search:
@@ -176,9 +184,11 @@ extra:
 
 extra_javascript:
   - javascripts/home.js
+  - javascripts/updates.js?v=20260607-2
 
 extra_css:
   - stylesheets/home.css
+  - stylesheets/updates.css
 
 # Page tree
 nav:
@@ -187,6 +197,7 @@ nav:
       - blog/index.md
       - blog/me.md
       - blog/tags.md
+  - 🆕Recently Updated: updates.md
   - Language: language
   - Algorithms: algorithms
   - OS: os

@@ -21,3 +21,85 @@ grep -q '^concurrency:' .github/workflows/ci.yml \
 
 grep -q 'mkdocs build --strict --site-dir /tmp/new_blog_mkdocs_strict' .github/workflows/ci.yml \
   || fail "GitHub Actions workflow is missing strict temporary build"
+
+grep -q 'mkdocs-rss-plugin==1.19.0' requirements.txt \
+  || fail "requirements.txt is missing pinned mkdocs-rss-plugin"
+
+grep -q '^[[:space:]]*- rss:' mkdocs.yml \
+  || fail "mkdocs.yml is missing rss plugin"
+
+grep -q 'feed_json_updated.json' mkdocs.yml \
+  || fail "mkdocs.yml is missing updated JSON feed output"
+
+grep -q 'length: 100' mkdocs.yml \
+  || fail "rss updated feed does not expose enough entries for expansion"
+
+grep -q 'match_path:' mkdocs.yml \
+  || fail "mkdocs.yml is missing RSS page filtering"
+
+grep -q 'updates.md' mkdocs.yml \
+  || fail "updates page is missing from navigation"
+
+grep -q 'javascripts/updates\.js?v=' mkdocs.yml \
+  || fail "updates page JavaScript is missing asset cache busting"
+
+grep -q '^[[:space:]]*- 🆕Recently Updated: updates\.md' mkdocs.yml \
+  || fail "updates page is not a top-level navigation entry"
+
+test -f docs/updates.md \
+  || fail "docs/updates.md is missing"
+
+grep -q '^# 🆕Recently Updated$' docs/updates.md \
+  || fail "updates page title is missing emoji"
+
+grep -q 'updates-note' docs/updates.md \
+  || fail "updates page is missing update policy note"
+
+grep -q 'updates-toolbar' docs/updates.md \
+  || fail "updates feed links are not placed in the compact toolbar"
+
+grep -q 'data-page-size="20"' docs/updates.md \
+  || fail "updates page is missing expandable list page size"
+
+test -f docs/javascripts/updates.js \
+  || fail "updates page JavaScript is missing"
+
+grep -q 'updates-summary' docs/javascripts/updates.js \
+  || fail "updates page JavaScript is missing summary rendering"
+
+grep -q 'updates-more' docs/javascripts/updates.js \
+  || fail "updates page JavaScript is missing show-more rendering"
+
+grep -q 'cacheBustUrl' docs/javascripts/updates.js \
+  || fail "updates page JavaScript does not avoid stale feed cache"
+
+grep -q 'Cache-Control' docs/javascripts/updates.js \
+  || fail "updates page JavaScript is missing no-cache feed request headers"
+
+grep -q 'hour.*minute' docs/javascripts/updates.js \
+  || fail "updates page JavaScript is missing minute-level time formatting"
+
+grep -q 'cleanSummaryText' docs/javascripts/updates.js \
+  || fail "updates page JavaScript is missing summary cleanup"
+
+grep -q 'trimLeadingTitle' docs/javascripts/updates.js \
+  || fail "updates page JavaScript does not trim duplicated summary titles"
+
+test -f docs/stylesheets/updates.css \
+  || fail "updates page stylesheet is missing"
+
+grep -q '^\.updates-summary' docs/stylesheets/updates.css \
+  || fail "updates page stylesheet is missing summary styles"
+
+grep -q '^\.updates-note' docs/stylesheets/updates.css \
+  || fail "updates page stylesheet is missing policy note styles"
+
+grep -q '^\.updates-toolbar' docs/stylesheets/updates.css \
+  || fail "updates page stylesheet is missing compact toolbar styles"
+
+grep -q '^\.updates-more' docs/stylesheets/updates.css \
+  || fail "updates page stylesheet is missing show-more styles"
+
+grep -q 'Migration of old blog posts' README.md \
+  && grep -q '\[x\] Migration of old blog posts' README.md \
+  || fail "README old blog migration TODO is not marked complete"

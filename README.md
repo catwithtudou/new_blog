@@ -10,6 +10,7 @@ Expansion Todo:
 - [x] directory folding
 - [x] Code Content Tab
 - [x] the connection between blogs and topics
-- [ ] Migration of old blog posts
-- [ ] site analysis (like baidu, google)
-- [ ] Displays a dynamic list of document updates
+- [x] Migration of old blog posts
+- [x] site analysis: Google Analytics
+- [ ] site analysis: Baidu Tongji (optional)
+- [x] Displays a dynamic list of document updates
