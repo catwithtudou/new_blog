@@ -791,6 +791,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#从-cli-agent-到本地-agent-runtime一套包装本地-agent-的工程模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      从 CLI Agent 到本地 Agent Runtime：一套包装本地 Agent 的工程模式
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#飘然地度过恐惧以及微小的改变-264下旬-5月总结" class="md-nav__link">
     <span class="md-ellipsis">
       飘然地度过恐惧，以及微小的改变 26.4下旬-5月总结
@@ -1720,6 +1729,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#从-cli-agent-到本地-agent-runtime一套包装本地-agent-的工程模式" class="md-nav__link">
+    <span class="md-ellipsis">
+      从 CLI Agent 到本地 Agent Runtime：一套包装本地 Agent 的工程模式
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#飘然地度过恐惧以及微小的改变-264下旬-5月总结" class="md-nav__link">
     <span class="md-ellipsis">
       飘然地度过恐惧，以及微小的改变 26.4下旬-5月总结
@@ -1796,6 +1814,69 @@
       <header class="md-typeset">
         <h1 id="2026">2026<a class="headerlink" href="#2026" title="Permanent link">&para;</a></h1>
       </header>
+      
+        <article class="md-post md-post--excerpt">
+  <header class="md-post__header">
+    
+    <div class="md-post__meta md-meta">
+      <ul class="md-meta__list">
+        <li class="md-meta__item">
+          <time datetime="2026-06-07 00:00:00+00:00">Sunday, June 7, 2026</time></li>
+        
+          <li class="md-meta__item">
+            in
+            
+              <a href="../../category/aigc/" class="md-meta__link">aigc</a></li>
+        
+        
+          
+          <li class="md-meta__item">
+            
+              6 min read
+            
+          </li>
+        
+      </ul>
+      
+    </div>
+  </header>
+  <div class="md-post__content md-typeset">
+    <h2 id="从-cli-agent-到本地-agent-runtime一套包装本地-agent-的工程模式"><a class="toclink" href="../../2026/06/07/%E4%BB%8E-cli-agent-%E5%88%B0%E6%9C%AC%E5%9C%B0-agent-runtime%E4%B8%80%E5%A5%97%E5%8C%85%E8%A3%85%E6%9C%AC%E5%9C%B0-agent-%E7%9A%84%E5%B7%A5%E7%A8%8B%E6%A8%A1%E5%BC%8F/">从 CLI Agent 到本地 Agent Runtime：一套包装本地 Agent 的工程模式</a></h2>
+<p><img alt="Local Agent Runtime article hero" src="../../../assets/blog/local-agent-runtime-agentara/local-agent-runtime-hero.svg" /></p>
+<h3 id="文档目标"><a class="toclink" href="../../2026/06/07/%E4%BB%8E-cli-agent-%E5%88%B0%E6%9C%AC%E5%9C%B0-agent-runtime%E4%B8%80%E5%A5%97%E5%8C%85%E8%A3%85%E6%9C%AC%E5%9C%B0-agent-%E7%9A%84%E5%B7%A5%E7%A8%8B%E6%A8%A1%E5%BC%8F/#文档目标">文档目标</a></h3>
+<ul>
+<li>解释 Codex / Claude Code 这类 CLI Agent 如何从“终端里的命令”变成“工作流里的 Runtime”</li>
+<li>用 Agentara 作为具体例子，拆解包装本地 Agent 需要补齐的工程层</li>
+<li>总结这套模式的适用场景、风险边界和可迁移原则</li>
+</ul>
+<h3 id="阅读受众"><a class="toclink" href="../../2026/06/07/%E4%BB%8E-cli-agent-%E5%88%B0%E6%9C%AC%E5%9C%B0-agent-runtime%E4%B8%80%E5%A5%97%E5%8C%85%E8%A3%85%E6%9C%AC%E5%9C%B0-agent-%E7%9A%84%E5%B7%A5%E7%A8%8B%E6%A8%A1%E5%BC%8F/#阅读受众">阅读受众</a></h3>
+<ul>
+<li>已经使用过 Codex、Claude Code 或类似 Coding Agent 的开发者</li>
+<li>想把本地 Agent 接入飞书、Web、定时任务或知识库工作流的同学</li>
+<li>希望理解 Agentara 这类项目工程本质，而不是只看安装和配置步骤的读者</li>
+</ul>
+<h3 id="0-insight"><a class="toclink" href="../../2026/06/07/%E4%BB%8E-cli-agent-%E5%88%B0%E6%9C%AC%E5%9C%B0-agent-runtime%E4%B8%80%E5%A5%97%E5%8C%85%E8%A3%85%E6%9C%AC%E5%9C%B0-agent-%E7%9A%84%E5%B7%A5%E7%A8%8B%E6%A8%A1%E5%BC%8F/#0-insight">0. Insight</a></h3>
+<ul>
+<li><strong>本地 Agent 的难点不只在模型</strong>：真正决定它能否进入真实工作流的，是模型外面的消息通道、会话系统、任务队列、记忆注入和可观测 UI</li>
+<li><strong>包装层的本质是 Agent Gateway</strong>：它不替代 Codex / Claude Code 的执行能力，而是把这些 CLI Agent 包装成可交互、可持续、可拓展的本地 Agent Runtime</li>
+<li><strong>核心抽象只有四层</strong>：统一 Runner、thread ↔ session 映射、session 级串行锁、分层上下文注入——四层补齐，CLI Agent 就成了 Runtime</li>
+<li><strong>这套模式有明确边界</strong>：一旦远程消息能触发本地执行，权限、目录、审批、日志和可撤销性就必须先于功能扩展被设计清楚</li>
+<li><strong>比起造一个更强的 Agent，更现实的是借力</strong>：模型和 AI CLI 仍在高速迭代，工程侧真正的价值在于把这些能力接入稳定工作流——这也是本文真正想说的</li>
+</ul>
+<p>本文会用开源项目 Agentara 作为贯穿全文的例子。</p>
+<p>它同时支持 Claude Code 和 OpenAI Codex，通过飞书收消息，通过本地服务管理会话与任务，再把 Agent 的流式输出渲染回飞书或 Web Dashboard。</p>
+<p>本文不展开 Agentara 的安装与配置，而是借这个项目回答一个更通用的问题：</p>
+<p><strong>一个本地 CLI Agent，需要补上哪几层工程，才能从终端命令变成工作流里的 Runtime。</strong></p>
+
+    
+      <nav class="md-post__action">
+        <a href="../../2026/06/07/%E4%BB%8E-cli-agent-%E5%88%B0%E6%9C%AC%E5%9C%B0-agent-runtime%E4%B8%80%E5%A5%97%E5%8C%85%E8%A3%85%E6%9C%AC%E5%9C%B0-agent-%E7%9A%84%E5%B7%A5%E7%A8%8B%E6%A8%A1%E5%BC%8F/">
+          Continue reading
+        </a>
+      </nav>
+    
+  </div>
+</article>
       
         <article class="md-post md-post--excerpt">
   <header class="md-post__header">

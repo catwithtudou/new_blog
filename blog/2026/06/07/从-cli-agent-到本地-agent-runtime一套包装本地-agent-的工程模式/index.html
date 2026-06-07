@@ -12,13 +12,11 @@
         <meta name="author" content="catwithtudou️">
       
       
-        <link rel="canonical" href="https://zhengyua.cn/new_blog/blog/2026/06/06/%E9%A3%98%E7%84%B6%E5%9C%B0%E5%BA%A6%E8%BF%87%E6%81%90%E6%83%A7%E4%BB%A5%E5%8F%8A%E5%BE%AE%E5%B0%8F%E7%9A%84%E6%94%B9%E5%8F%98-264%E4%B8%8B%E6%97%AC-5%E6%9C%88%E6%80%BB%E7%BB%93/">
+        <link rel="canonical" href="https://zhengyua.cn/new_blog/blog/2026/06/07/%E4%BB%8E-cli-agent-%E5%88%B0%E6%9C%AC%E5%9C%B0-agent-runtime%E4%B8%80%E5%A5%97%E5%8C%85%E8%A3%85%E6%9C%AC%E5%9C%B0-agent-%E7%9A%84%E5%B7%A5%E7%A8%8B%E6%A8%A1%E5%BC%8F/">
       
       
-        <link rel="prev" href="../../../04/18/%E5%A4%B1%E8%B4%A5%E4%B8%8E%E6%81%90%E6%83%A7%E7%9A%84%E5%9B%9E%E5%A3%B0-263-4%E6%9C%88%E4%B8%AD%E6%97%AC%E6%80%BB%E7%BB%93/">
+        <link rel="prev" href="../../06/%E9%A3%98%E7%84%B6%E5%9C%B0%E5%BA%A6%E8%BF%87%E6%81%90%E6%83%A7%E4%BB%A5%E5%8F%8A%E5%BE%AE%E5%B0%8F%E7%9A%84%E6%94%B9%E5%8F%98-264%E4%B8%8B%E6%97%AC-5%E6%9C%88%E6%80%BB%E7%BB%93/">
       
-      
-        <link rel="next" href="../../07/%E4%BB%8E-cli-agent-%E5%88%B0%E6%9C%AC%E5%9C%B0-agent-runtime%E4%B8%80%E5%A5%97%E5%8C%85%E8%A3%85%E6%9C%AC%E5%9C%B0-agent-%E7%9A%84%E5%B7%A5%E7%A8%8B%E6%A8%A1%E5%BC%8F/">
       
       
         <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../../../../feed_rss_created.xml">
@@ -29,7 +27,7 @@
     
     
       
-        <title>飘然地度过恐惧，以及微小的改变 26.4下旬-5月总结 - catwithtudou️🌦️</title>
+        <title>从 CLI Agent 到本地 Agent Runtime：一套包装本地 Agent 的工程模式 - catwithtudou️🌦️</title>
       
     
     
@@ -111,7 +109,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#飘然地度过恐惧以及微小的改变-264下旬-5月总结" class="md-skip">
+        <a href="#从-cli-agent-到本地-agent-runtime一套包装本地-agent-的工程模式" class="md-skip">
           Skip to content
         </a>
       
@@ -146,7 +144,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              飘然地度过恐惧，以及微小的改变 26.4下旬-5月总结
+              从 CLI Agent 到本地 Agent Runtime：一套包装本地 Agent 的工程模式
             
           </span>
         </div>
@@ -1614,129 +1612,144 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#0-前言" class="md-nav__link">
+  <a href="#文档目标" class="md-nav__link">
     <span class="md-ellipsis">
-      0. 前言
+      文档目标
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-工作上" class="md-nav__link">
+  <a href="#阅读受众" class="md-nav__link">
     <span class="md-ellipsis">
-      1. 工作上
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. 工作上">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#复杂不在执行而在判断" class="md-nav__link">
-    <span class="md-ellipsis">
-      复杂不在执行而在判断
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ai-协作需要你更像管理者" class="md-nav__link">
-    <span class="md-ellipsis">
-      AI 协作需要你更像管理者
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ai-系统需要更长的生命周期" class="md-nav__link">
-    <span class="md-ellipsis">
-      AI 系统需要更长的生命周期
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-生活上" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. 生活上
+      阅读受众
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-一些反思" class="md-nav__link">
+  <a href="#0-insight" class="md-nav__link">
     <span class="md-ellipsis">
-      3. 一些反思
+      0. Insight
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="3. 一些反思">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-放松不是退出而是把自己重新带回现实" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.1 放松不是退出，而是把自己重新带回现实
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-恐惧不只是情绪而是自我叙事到了需要更新的时刻" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.2 恐惧不只是情绪，而是自我叙事到了需要更新的时刻
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#33-判断和反馈是在复杂性中承担选择" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.3 判断和反馈，是在复杂性中承担选择
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#34-ai-协作照见的是主体性" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.4 AI 协作照见的是主体性
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#35-记录是我的秩序系统也是我的风险" class="md-nav__link">
-    <span class="md-ellipsis">
-      3.5 记录是我的秩序系统，也是我的风险
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-接下来的展望" class="md-nav__link">
+  <a href="#1-现象为什么大家都在包装本地-agent" class="md-nav__link">
     <span class="md-ellipsis">
-      4. 接下来的展望
+      1. 现象：为什么大家都在“包装”本地 Agent
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-全貌包装层的本质是一个-agent-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 全貌：包装层的本质是一个 Agent Gateway
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-抽象一统一-runner-接口把异构-cli-收敛成一种消息流" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 抽象一：统一 Runner 接口——把异构 CLI 收敛成一种消息流
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-抽象二thread--session-映射多入口系统的上下文连续性" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 抽象二：thread ↔ session 映射——多入口系统的上下文连续性
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-抽象三session-级串行锁有状态-agent-的并发控制" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 抽象三：session 级串行锁——有状态 Agent 的并发控制
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-抽象四分层上下文注入是调度记忆而不是堆砌记忆" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 抽象四：分层上下文注入——是调度记忆，而不是堆砌记忆
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-把四层拼起来能力的拓展空间" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 把四层拼起来：能力的拓展空间
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-边界和风险" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. 边界和风险
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-为什么是借力而不是替代" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. 为什么是“借力”，而不是“替代”
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-一点个人理解拓展本地-agent-的真正含义" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. 一点个人理解：拓展本地 Agent 的真正含义
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-可迁移原则" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. 可迁移原则
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#结尾" class="md-nav__link">
+    <span class="md-ellipsis">
+      结尾
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#参考" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
     </span>
   </a>
   
@@ -1779,7 +1792,7 @@
                     <li class="md-nav__item">
                       <div class="md-nav__link">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-1V1m-1 11h-5v5h5z"/></svg>
-                        <time datetime="2026-06-06 00:00:00+00:00" class="md-ellipsis">Saturday, June 6, 2026</time>
+                        <time datetime="2026-06-07 00:00:00+00:00" class="md-ellipsis">Sunday, June 7, 2026</time>
                       </div>
                     </li>
                     
@@ -1790,7 +1803,7 @@
                           <span class="md-ellipsis">
                             in
                             
-                              <a href="../../../../category/monthly-review/">monthly review</a></span>
+                              <a href="../../../../category/aigc/">aigc</a></span>
                         </div>
                       </li>
                     
@@ -1801,7 +1814,7 @@
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20a8 8 0 0 0 8-8 8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10 10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67-.75 1.23L11 13V7z"/></svg>
                           <span class="md-ellipsis">
                             
-                              4 min read
+                              6 min read
                             
                           </span>
                         </div>
@@ -1823,211 +1836,487 @@
   
 
 
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="../../../../tags/#tag:agent" class="md-tag">agent</a>
+      
+    
+      
+      
+      
+        <a href="../../../../tags/#tag:agentara" class="md-tag">agentara</a>
+      
+    
+      
+      
+      
+        <a href="../../../../tags/#tag:aigc" class="md-tag">aigc</a>
+      
+    
+      
+      
+      
+        <a href="../../../../tags/#tag:codex" class="md-tag">codex</a>
+      
+    
+      
+      
+      
+        <a href="../../../../tags/#tag:llm" class="md-tag">llm</a>
+      
+    
+  </nav>
+
 
   
   
 
 
-<h1 id="飘然地度过恐惧以及微小的改变-264下旬-5月总结">飘然地度过恐惧，以及微小的改变 26.4下旬-5月总结<a class="headerlink" href="#飘然地度过恐惧以及微小的改变-264下旬-5月总结" title="Permanent link">&para;</a></h1>
-<h2 id="0-前言">0. 前言<a class="headerlink" href="#0-前言" title="Permanent link">&para;</a></h2>
-<p>如果说之前是失败和恐惧的声音被重新放大，</p>
-<p>那么最近更像是在这些声音还没有完全安静的时候，试着用一种更轻的方式经过和面对它们。</p>
-<p>首先需要明确的是恐惧并没有消失，</p>
-<p>它依然会在我工作和生活的缝隙里出现，如同一阵潮气，悄悄漫上来：</p>
-<p>会在复杂事项开始前出现，</p>
-<p>会在结果不确定的时候出现，</p>
-<p>会在需要解释判断、承接反馈的时候出现，</p>
-<p>会在面对着这迷茫而不知如何往下走的生活时候出现.......</p>
-<p>我在慢慢地尝试转变我的想法：</p>
-<p>即恐惧出现之后，不一定要立刻要被它带走，也不一定要通过自责内疚来解释。</p>
-<p>最近在一本关于心理学相关书籍上看到一个词叫，”飘然“，作者也是在书中反复强调的治疗手段。</p>
-<p>飘然，简单来说就是一种顺其自然、不抗拒的应对态度，就和字面意思是一样的。</p>
-<p>我想它就是我在前面所提到尝试转变的，所需要的态度，面对恐惧时：</p>
-<p>让自身先”飘“起来之后，当然”飘“的前提是要承认自身的当下，”然“后再把注意力放回事情本身。</p>
-<p>这段时间并不是一个完全变好的阶段，而更像是一些很小的”松动“。</p>
-<p>而我就在这些”松动“中，就像一面充满污点的镜子，看着自己，慢慢地一点点擦拭着。</p>
+<h1 id="从-cli-agent-到本地-agent-runtime一套包装本地-agent-的工程模式">从 CLI Agent 到本地 Agent Runtime：一套包装本地 Agent 的工程模式<a class="headerlink" href="#从-cli-agent-到本地-agent-runtime一套包装本地-agent-的工程模式" title="Permanent link">&para;</a></h1>
+<p><img alt="Local Agent Runtime article hero" src="../../../../../assets/blog/local-agent-runtime-agentara/local-agent-runtime-hero.svg" /></p>
+<h2 id="文档目标">文档目标<a class="headerlink" href="#文档目标" title="Permanent link">&para;</a></h2>
+<ul>
+<li>解释 Codex / Claude Code 这类 CLI Agent 如何从“终端里的命令”变成“工作流里的 Runtime”</li>
+<li>用 Agentara 作为具体例子，拆解包装本地 Agent 需要补齐的工程层</li>
+<li>总结这套模式的适用场景、风险边界和可迁移原则</li>
+</ul>
+<h2 id="阅读受众">阅读受众<a class="headerlink" href="#阅读受众" title="Permanent link">&para;</a></h2>
+<ul>
+<li>已经使用过 Codex、Claude Code 或类似 Coding Agent 的开发者</li>
+<li>想把本地 Agent 接入飞书、Web、定时任务或知识库工作流的同学</li>
+<li>希望理解 Agentara 这类项目工程本质，而不是只看安装和配置步骤的读者</li>
+</ul>
+<h2 id="0-insight">0. Insight<a class="headerlink" href="#0-insight" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>本地 Agent 的难点不只在模型</strong>：真正决定它能否进入真实工作流的，是模型外面的消息通道、会话系统、任务队列、记忆注入和可观测 UI</li>
+<li><strong>包装层的本质是 Agent Gateway</strong>：它不替代 Codex / Claude Code 的执行能力，而是把这些 CLI Agent 包装成可交互、可持续、可拓展的本地 Agent Runtime</li>
+<li><strong>核心抽象只有四层</strong>：统一 Runner、thread ↔ session 映射、session 级串行锁、分层上下文注入——四层补齐，CLI Agent 就成了 Runtime</li>
+<li><strong>这套模式有明确边界</strong>：一旦远程消息能触发本地执行，权限、目录、审批、日志和可撤销性就必须先于功能扩展被设计清楚</li>
+<li><strong>比起造一个更强的 Agent，更现实的是借力</strong>：模型和 AI CLI 仍在高速迭代，工程侧真正的价值在于把这些能力接入稳定工作流——这也是本文真正想说的</li>
+</ul>
+<p>本文会用开源项目 Agentara 作为贯穿全文的例子。</p>
+<p>它同时支持 Claude Code 和 OpenAI Codex，通过飞书收消息，通过本地服务管理会话与任务，再把 Agent 的流式输出渲染回飞书或 Web Dashboard。</p>
+<p>本文不展开 Agentara 的安装与配置，而是借这个项目回答一个更通用的问题：</p>
+<p><strong>一个本地 CLI Agent，需要补上哪几层工程，才能从终端命令变成工作流里的 Runtime。</strong></p>
 <!-- more -->
 
-<h2 id="1-工作上">1. 工作上<a class="headerlink" href="#1-工作上" title="Permanent link">&para;</a></h2>
-<p>这段时间工作的主线依然很集中，还是围绕着 AICR 的相关事项展开，是围绕 AI 应用技术展开。</p>
-<p>也是从这段时间开始我开始对”长期规划“开始着重地去思考和执行。</p>
-<p>我开始尝试去设计和梳理相关的技术规划全景、多人协作管理、合作共建安排、推进风险节奏、长期能力建设等，很多事情逐渐从短期交付收口，尝试去转向更长期推进规划，看起来是逐渐偏向我所以为的”战略“相关的去投入。然后中间偶尔穿插着一些日常业务的需求承接和线上维护等。</p>
-<p>当然这么做的原因，也是因为我确实是对这方面还是有一些薄弱的，关联着过往的反馈和经验。</p>
-<p>我希望我能够提升之前提到的“工作事项的深度理解和判断决策力”的目标。</p>
-<p>即简单来说，你需要回答那些很难回答的问题：</p>
-<p>你到底理解了吗？你为什么这样判断？这个方案的边界在哪里？这件事现在为什么值得先做？</p>
-<p>过往每次收到这样的“死亡”追问，好像在10次追问中，我自己可能70%的回答都不是让我很满意。我想，摆脱这种不满意的结果就是我在当前的这个工作阶段所需要面对的最高优 Topic，而这让我进入了另一个”非舒适区“的位置，这对我来说是更加”复杂“，也更需要有”勇气“面对的挑战。</p>
-<h3 id="复杂不在执行而在判断">复杂不在执行而在判断<a class="headerlink" href="#复杂不在执行而在判断" title="Permanent link">&para;</a></h3>
-<p>表面上看，事情虽然一直在推进：产物在落地，文档在完善，方案在收敛等等。</p>
-<p>但这段时间真正反复出现的感受，比忙更深一层，是复杂。</p>
+<h2 id="1-现象为什么大家都在包装本地-agent">1. 现象：为什么大家都在“包装”本地 Agent<a class="headerlink" href="#1-现象为什么大家都在包装本地-agent" title="Permanent link">&para;</a></h2>
+<p>过去我们使用 AI Agent 的主要入口是终端或 IDE：打开 Codex，输入任务，等它读代码、改文件、跑命令。这个形态直接、高效，但边界也很明显：</p>
 <ul>
-<li>很多事情做完一个 checklist 只是开始。后面还要理解问题，判断优先级，明确边界，再把方案讲给别人听，并且在反馈里继续调整。而当前工作的难点已经开始落在执行之外——落在推进过程中能不能持续保持清醒的判断</li>
-<li>复杂不是任务数量变多这么简单。更深一层的复杂，是因果开始不透明，边界开始移动，数据产生波动，信息发生变化，甚至很多事情也没有一个所谓的“标准答案”。你也不能只问“下一步做什么”，还要问“为什么是这一步”、“这一步会改变什么”、“这个判断是否置信”等</li>
+<li>交互入口被锁在本地终端</li>
+<li>长任务状态难以被外部系统感知</li>
+<li>团队协作入口，比如飞书、Slack、群聊，很难直接接上</li>
+<li>记忆、知识库、定时任务、外部触发器，都需要额外系统承载</li>
+<li>多会话、多任务、取消、恢复、日志、用量展示，这些工程问题通常不会由 CLI 自己完整处理</li>
 </ul>
-<p>以前我更习惯把工作理解成一条执行链路：拆任务、推进、交付、反馈。但现在很多事情更像一团关系网——每一个技术选择、评测结论、协作边界，背后都连着更长的因果链。判断不只是脑子里的想法，而是一种把混乱临时组织成方向的能力，也是一种需要你深度思考的能力。</p>
-<p>以前我更容易被局部问题带着走。而当下我开始更频繁提醒自己，把每个点重新放回整体里看。我理解对于这部分的目标，你所能做的，就是要多去投入时间进行梳理和思考，“刷题”并不能给你带来太大的改变。</p>
-<hr />
-<p>除了上面提到的点，我也在观察目前 AI 本身的相关发展和变化，特别是涉及到工作上的改变。</p>
-<p>AI 的应用基本是互联网企业从上到下每一个人所需要面对的 Topic，我感觉和当初工作开始迎来拥有“个人电脑”的情况类似，AI 几乎就是我们所需要熟悉和实践的第二个生产力工具，甚至在某些程度上，它也超越了工具。而在面对 AI 的时候，我们应该保持什么样的态度和认知，每个人都有自己的思考，而对我来说就是最重要的点就是：</p>
-<p>“在这个时代，想法是廉价的，更多的需要看你能否实现和落地”。</p>
-<p>这句话并不是说想法不重要，而是说想法本身越来越容易被生成、组合和包装。真正拉开差距的，是能不能把一个想法继续往下压：压成具体问题、判断依据、可执行路径、验证标准，以及最后能被真实使用的结果。</p>
-<p>所以最近对我来说比较深刻的一点是：AI 带来的变化，并不只发生在“它能帮我做什么”上，也发生在“我应该如何组织它、约束它、验证它”上。</p>
-<p>放到个人协作里，它要求我更像一个管理者，而不是一个只会把问题丢出去的人。放到系统建设里，它又要求我不能只满足于一次 workflow 跑通、一次评测结果成立，而是要去思考任务、上下文、工具、验证、反馈和经验沉淀之间，能不能形成一条更长的闭环。</p>
-<h3 id="ai-协作需要你更像管理者">AI 协作需要你更像管理者<a class="headerlink" href="#ai-协作需要你更像管理者" title="Permanent link">&para;</a></h3>
-<p>在个人协作层面，以前我会很自然地希望 AI 帮我多做一点，甚至在复杂问题上下意识期待它直接给出更清楚的答案。但实际用下来，越复杂的事项，越不能把理解和判断整个交出去。AI 能提高速度，也能补充视角，但前提是我自己先知道问题是什么、想要什么结果、哪些边界不能越过。</p>
-<p>否则所谓的提效，很容易变成另一种形式的失控。</p>
-<p>它真正放大的，是我已有的判断和表达。如果我自己没想清楚，它只会把这种模糊放大。</p>
-<p>甚至会出现”越用越糟糕“的情况，这或者就是为什么有人即使在 sota 模型下也很难去完成任务。</p>
-<p>合理的一种 AI 协作方式，更像是在管理一个能力很强、但仍然需要被约束和校验的执行单元。不能只看它有没有输出，还要看它是否理解了上下文，是否沿着正确目标推进，是否遗漏了关键约束，是否经得起验证。</p>
-<p>特别是对于其责任的问题，AI 反而是更需要你负其责任的，它并不会给我们一个逃离责任的出口，比如奢望所有事情所有判断都交给 AI 自己决策，反而一个合理的 AI 需要让我们更清楚地看到，哪些判断必须由自己完成。过去我以为工具越强人就越轻松，但实际真正在一个较为复杂的事项里才越能体会到：</p>
-<p>答案变得更容易生成之后，稀缺的反而是问题本身、判断边界，以及对结果负责的能力。</p>
-<p>所以对我来说我与 AI 协作的边界目前是比较清晰的，简单来说就是：</p>
-<p>执行可以外包，判断不能外包，AI 可以帮助我提效，但我必须掌控其前进的方向。</p>
-<p>而这条边界线并不是静态的。我理解会随着我对问题的理解加深，更多东西可以被定义和抽象成"执行"的单元而交出去，就像在工程里面那些设计模式、系统架构、开发模式等抽象和封装出来的问题思路和能力。但在我还没有真正理解的阶段，提前交出去只会加速偏离。</p>
-<h3 id="ai-系统需要更长的生命周期">AI 系统需要更长的生命周期<a class="headerlink" href="#ai-系统需要更长的生命周期" title="Permanent link">&para;</a></h3>
-<p>在系统建设层面，这段时间做 AICR 相关长期方案时，我对 AI 工程的理解也开始有了新的变化。</p>
-<p>在更早的实践里，提示词工程和单次模型推理的局限已经是共识。后来我们逐渐开始往更专业的 workflow、可积累的专业知识、上下文工程，以及效果评测验证等方向去理解和落地 AI 工程应用。</p>
-<p>但现在我能更明显地意识到，workflow、知识库、上下文、工具、评测这些东西如果只是分散存在，它们仍然很容易停留在“这一次能跑”的层面。真正需要补上的关键“齿轮”，是把它们放进一条更长的生命周期里。</p>
-<p>一次 AI 任务不应该只是从输入到输出，而应该有更完整的生命过程：任务怎么进入、目标和边界怎么被确认、上下文怎么被组织、工具怎么被调用、结果怎么被验证、失败怎么被定位、反馈怎么被回收，最后哪些经验应该被沉淀，并影响下一次执行。</p>
-<p>这也是我现在对 Harness 工程基座更具体的理解。Harness 不是给 Agent 多写几个 prompt，也不是把流程图画得更完整，而是围绕 Agent 建出一套能稳定做事的工作系统。任务、上下文、工具、执行、验证、失败处理和反馈沉淀都要接上。缺一块，系统都可能看起来能跑，但跑不稳，也很难越用越好。</p>
-<p>Agent Memory 在这里也不是简单地“记住更多历史”，更不是把所有信息都塞进上下文。它更像是这个生命周期里的长期状态层：把那些真正值得保留的稳定规则、偏好、约束、失败原因、专家纠偏、工具边界和评测证据沉淀下来，在下一次任务需要时重新回到模型视野里。</p>
+<p>于是，越来越多工具开始做同一类事情：</p>
+<p><strong>不自己训练模型，而是把已经存在的 CLI Agent 当作底层执行引擎，在它外面包一层交互与编排系统。</strong></p>
+<p>Agentara 就是这条路线上一个相当完整的例子。</p>
+<p>这背后的趋势可以浓缩成一句话：</p>
 <blockquote>
-<p>这里也有一个很重要的边界：Memory 不是 summary 的替代，也不是强一致的业务状态。summary 解决的是长上下文被压缩后的信息保留问题，memory 更像是旁路沉淀面，用来保存那些可以长期影响行为的经验和约束。如果这一层没有筛选、验证、晋升和回滚机制，它也可能把错误经验带进下一次执行，反而让系统越跑越偏。</p>
+<p>CLI Agent 正在从“命令行工具”，变成一种“本地 Agent Runtime”。</p>
 </blockquote>
-<p>所以更长生命周期不只是“记得更久”，而是让每次执行都能进入一个可追踪、可验证、可修正的循环。这也和我最近看到的一些 Agent 自进化、局部纠偏、AI Friendly System 的思路其实是连在一起的。</p>
-<p>Agent 要持续变好，不能只依赖某一次 prompt 调整或者某一批静态知识。它需要在真实任务中执行、被 review、被纠偏、再把成功和失败都转成可以复用的经验。专家经验也不一定都要被加工成完整完美样本，很多时候只要能低成本指出错误点，形成样本-纠偏 pair，再进入评测器、知识库和线上纠偏链路，就已经是在延长系统的生命周期。</p>
-<p>同样，AI Friendly System 也不只是让代码和文档更容易被模型读懂。更重要的是把系统里的隐含逻辑、领域知识和设计意图显性化，让它们能够成为长期可维护、可对齐、可被 Agent 调用和修正的“逻辑锚点”。否则所谓上下文就只能靠人临时补，系统也很难自己积累。</p>
-<p>放回 AICR 里看，长期架构不应该只回答“怎么把这个流程跑起来”，而要回答几个更底层的问题：</p>
+<p>普通聊天机器人和本地 Agent Runtime 的差异，可以先用这张图压缩理解：</p>
+<p><img alt="Chatbot vs Local Agent Runtime" src="../../../../../assets/blog/local-agent-runtime-agentara/chatbot-vs-local-agent-runtime.jpeg" /></p>
+<blockquote>
+<p>图 1：普通聊天机器人更像无状态消息转发；本地 Agent Runtime 则是一套围绕多入口、会话、并发、上下文和可观测性搭起来的工程系统。</p>
+</blockquote>
+<p>那么要完成这层“包装”，工程上到底需要补齐什么？</p>
+<p>接下来先用一个 Agent Gateway 流程图看整体链路，再逐层拆开。</p>
+<h2 id="2-全貌包装层的本质是一个-agent-gateway">2. 全貌：包装层的本质是一个 Agent Gateway<a class="headerlink" href="#2-全貌包装层的本质是一个-agent-gateway" title="Permanent link">&para;</a></h2>
+<p>无论用什么技术栈实现，这类“包装层”的工程结构都高度相似——它本质上是一个 <strong>Agent Gateway</strong>。</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a>flowchart LR
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a>    A[&quot;飞书 / Web / 定时任务&quot;] --&gt; B[&quot;MessageChannel&lt;br/&gt;外部入口适配&quot;]
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a>    B --&gt; C[&quot;MessageGateway&lt;br/&gt;统一消息路由&quot;]
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a>    C --&gt; D[&quot;TaskDispatcher&lt;br/&gt;排队、串行、取消&quot;]
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a>    D --&gt; E[&quot;SessionManager&lt;br/&gt;会话创建与恢复&quot;]
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos="6 "></span></a>    E --&gt; F[&quot;AgentRunner&lt;br/&gt;统一 Agent 接口&quot;]
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos="7 "></span></a>    F --&gt; G[&quot;Codex CLI / Claude Code CLI&quot;]
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><a href="#__codelineno-0-8"><span class="linenos" data-linenos="8 "></span></a>    G --&gt; H[&quot;JSONL 流式事件&quot;]
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="#__codelineno-0-9"><span class="linenos" data-linenos="9 "></span></a>    H --&gt; I[&quot;消息渲染&lt;br/&gt;飞书卡片 / Web UI&quot;]
+</code></pre></div>
+<p>这个 Gateway 流程图里最关键的不是某个具体模块，而是它做的一件事：</p>
+<p><strong>把“外部交互”和“本地 Agent 执行”彻底隔离开。</strong></p>
+<p>外部系统不必知道 Codex 怎么 resume，也不必理解 Claude Code 的 stream-json 格式；反过来，底层 Agent 也不必知道消息来自飞书、网页还是定时任务。</p>
+<p>夹在中间的 Gateway，负责协议转换、会话映射、任务调度和输出渲染。</p>
+<p>这正是 Gateway 的意义：</p>
+<p><strong>它本身不是能力，而是让能力可以被更多场景稳定调用。</strong></p>
+<p>而真正撑起这个 Gateway 的，是四个核心技术抽象。它们才是这套模式的骨架。</p>
+<p>接下来四节，逐个拆开。</p>
+<p><img alt="Local Agent Runtime four core abstractions" src="../../../../../assets/blog/local-agent-runtime-agentara/local-agent-runtime-core-abstractions.jpeg" /></p>
+<blockquote>
+<p>图 2：Gateway 内部的四个核心抽象——统一 Runner、会话映射、串行锁、分层上下文注入。下面四节逐一展开。</p>
+</blockquote>
+<h2 id="3-抽象一统一-runner-接口把异构-cli-收敛成一种消息流">3. 抽象一：统一 Runner 接口——把异构 CLI 收敛成一种消息流<a class="headerlink" href="#3-抽象一统一-runner-接口把异构-cli-收敛成一种消息流" title="Permanent link">&para;</a></h2>
+<p>第一个问题是：底层 Agent 各不相同（Codex、Claude Code、未来还有更多），输出协议也各不相同。</p>
+<p>包装层怎么做到不被某个具体 Agent 绑死？</p>
+<p>答案是一个极小的抽象——<strong>统一 Runner 接口</strong>。它对底层 Agent 只提一个要求：能接收一条用户消息，并返回一个流式消息迭代器。以 Agentara 的 <code>AgentRunner</code> 为例：</p>
+<div class="language-ts highlight"><span class="filename">TypeScript</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a><span class="kd">interface</span><span class="w"> </span><span class="nx">AgentRunner</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">  </span><span class="k">readonly</span><span class="w"> </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos="3 "></span></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">  </span><span class="nx">stream</span><span class="p">(</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos="5 "></span></a><span class="w">    </span><span class="nx">userMessage</span><span class="o">:</span><span class="w"> </span><span class="kt">UserMessage</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos="6 "></span></a><span class="w">    </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="kt">AgentRunOptions</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><a href="#__codelineno-1-7"><span class="linenos" data-linenos="7 "></span></a><span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">AsyncIterableIterator</span><span class="o">&lt;</span><span class="nx">SystemMessage</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">AssistantMessage</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">ToolMessage</span><span class="o">&gt;</span><span class="p">;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><a href="#__codelineno-1-8"><span class="linenos" data-linenos="8 "></span></a><span class="p">}</span>
+</code></pre></div>
+<p>这个抽象很小，却很关键——它把包装层与具体 Agent 实现彻底解耦了：</p>
+<table>
+<thead>
+<tr>
+<th>Runner 类型</th>
+<th>底层执行方式</th>
+<th>输出协议</th>
+<th>Runner 做的事情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Code</td>
+<td><code>claude --print --output-format stream-json</code></td>
+<td>stream-json</td>
+<td>解析 system / assistant / tool_result</td>
+</tr>
+<tr>
+<td>Codex</td>
+<td><code>codex exec --json</code></td>
+<td>JSONL events</td>
+<td>解析 thread、message、command、file_change、mcp_tool_call</td>
+</tr>
+</tbody>
+</table>
+<p>注意它<strong>没有</strong>把 Codex 伪装成一个标准的 OpenAI Chat API。</p>
+<p>它做的是更工程化的事：</p>
+<p><strong>把不同 CLI Agent 的异构流式事件，映射成一套统一的内部消息类型。</strong></p>
+<p>这层映射看着只是适配代码，实则是整个系统能否扩展的命门。</p>
+<p>未来要接入 Gemini CLI、Aider 或任何自研 Agent，只需实现一个新的 Runner——外层的飞书、任务队列、Web UI 全部可以复用。</p>
+<p>把这层抽象落到 Codex 上是这样的：runner 启动一个子进程，</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a>codex<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--model<span class="w"> </span>&lt;model&gt;<span class="w"> </span>--json<span class="w"> </span>--skip-git-repo-check<span class="w"> </span>&lt;prompt&gt;
+</code></pre></div>
+<p>已有会话则带上 resume：</p>
+<div class="language-bash highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><a href="#__codelineno-3-1"><span class="linenos" data-linenos="1 "></span></a>codex<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--model<span class="w"> </span>&lt;model&gt;<span class="w"> </span>--json<span class="w"> </span>resume<span class="w"> </span>&lt;thread_id&gt;<span class="w"> </span>&lt;prompt&gt;
+</code></pre></div>
+<p>随后读取 stdout 中的 JSONL 事件，逐条转成内部消息。整个流程是这样流转的：</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos=" 1 "></span></a>sequenceDiagram
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos=" 2 "></span></a>    participant User as 用户
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><a href="#__codelineno-4-3"><span class="linenos" data-linenos=" 3 "></span></a>    participant Feishu as 飞书消息
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><a href="#__codelineno-4-4"><span class="linenos" data-linenos=" 4 "></span></a>    participant Kernel as Gateway Kernel
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><a href="#__codelineno-4-5"><span class="linenos" data-linenos=" 5 "></span></a>    participant Runner as CodexAgentRunner
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><a href="#__codelineno-4-6"><span class="linenos" data-linenos=" 6 "></span></a>    participant Codex as codex exec --json
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><a href="#__codelineno-4-7"><span class="linenos" data-linenos=" 7 "></span></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><a href="#__codelineno-4-8"><span class="linenos" data-linenos=" 8 "></span></a>    User-&gt;&gt;Feishu: 在话题里发送任务
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><a href="#__codelineno-4-9"><span class="linenos" data-linenos=" 9 "></span></a>    Feishu-&gt;&gt;Kernel: message:inbound
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><a href="#__codelineno-4-10"><span class="linenos" data-linenos="10 "></span></a>    Kernel-&gt;&gt;Kernel: 解析 thread -&gt; session
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><a href="#__codelineno-4-11"><span class="linenos" data-linenos="11 "></span></a>    Kernel-&gt;&gt;Runner: session.stream(userMessage)
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a><a href="#__codelineno-4-12"><span class="linenos" data-linenos="12 "></span></a>    Runner-&gt;&gt;Codex: 启动子进程并传入 prompt
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a><a href="#__codelineno-4-13"><span class="linenos" data-linenos="13 "></span></a>    Codex--&gt;&gt;Runner: thread.started / item.completed / tool events
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a><a href="#__codelineno-4-14"><span class="linenos" data-linenos="14 "></span></a>    Runner--&gt;&gt;Kernel: assistant / tool / system message
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a><a href="#__codelineno-4-15"><span class="linenos" data-linenos="15 "></span></a>    Kernel--&gt;&gt;Feishu: 更新流式回复卡片
+</code></pre></div>
+<p>这里有三个通用要点，适用于任何 CLI Agent 的包装：</p>
 <ul>
-<li>当前能力到底要解决什么真实任务</li>
-<li>任务进入系统后，如何被拆解成可执行、可验证的单元</li>
-<li>这次执行依赖哪些上下文、工具、知识和约束</li>
-<li>结果好不好，靠什么证据和评测判断</li>
-<li>失败之后，问题能不能被定位、归因和回放</li>
-<li>用户反馈和专家纠偏能不能安全地回流到系统里</li>
-<li>这次沉淀出来的经验，下一次能不能真正复用等等</li>
+<li><strong>CLI 始终是执行主体</strong>：读仓库、调工具、跑命令、改文件的是底层 Agent，包装层只负责调用与转译</li>
+<li><strong>结构化输出（<code>--json</code>）是命门</strong>：没有它，外层只能读自然语言，无法区分最终回答、命令执行、文件修改、工具调用和错误</li>
+<li><strong>resume 能力决定多轮会话是否成立</strong>：没有稳定的 resume，外部入口里的连续回复就很难对齐到底层 Agent thread</li>
 </ul>
-<p>如果没有这些问题，AI 能力就很容易停留在“一次性完成任务”的层面：这次跑完了，结果看起来不错，但为什么不错、哪里错了、下次如何变得更稳，都没有真正留下来。</p>
-<p>而一旦有了闭环，执行结果就不只是结果本身，而会变成下一轮系统优化的输入。反馈不再只是用户说好或不好，评测不再只是一次性打分，知识也不再只是被塞进上下文里的材料。它们都应该变成可以归因、可以回放、可以验证、可以晋升或回滚的系统资产。</p>
-<p>AICR 不应该只是某个阶段性流程或某次迁移融合的收口，而应该逐渐沉淀成一套能力系统：能持续吸收真实任务，识别问题边界，生成判断，暴露证据，接受反馈，并把失败和成功都变成下一轮更稳定的基础。</p>
-<p>如果说过去我更关注“AI 能不能把这件事做出来”，那现在更应该问的是：</p>
-<p>这套系统能不能让 AI 在复杂环境里持续做对？</p>
-<p>做错了能不能知道为什么错？</p>
-<p>做对了能不能把原因留下来？</p>
-<p>从这个角度看，所谓实现和落地：不是把一个想法变成一次看起来不错的输出</p>
-<p>而是把它变成一条能被反复执行、验证和修正的链路，所以说 AI 需要更长的生命周期。</p>
-<hr />
-<p>最后这段时间虽然开始更清楚地意识到“复杂不在执行而在判断”，但暴露的问题也变得更加具体。</p>
-<p>最直接的感受是，我仍然经常觉得自己推进得慢、想得不够深、表达不够清楚。</p>
-<p>尤其是在需要当场解释思路、判断依据和方案边界的时候，还是会暴露准备不足。</p>
-<p>但相比之前，问题不再只是“我不行”这种模糊结论，而是更具体地落到了几个能力缺口上：</p>
+<h2 id="4-抽象二thread--session-映射多入口系统的上下文连续性">4. 抽象二：thread ↔ session 映射——多入口系统的上下文连续性<a class="headerlink" href="#4-抽象二thread--session-映射多入口系统的上下文连续性" title="Permanent link">&para;</a></h2>
+<p>一旦交互入口从终端搬到飞书话题（thread），就冒出一个新问题：</p>
+<p><strong>下一条飞书回复，应该进入哪个 Agent 会话？</strong></p>
+<p>终端里这个问题不存在——一个终端窗口天然就是一个上下文。</p>
+<p>但飞书是多话题、多人、异步的，消息流本身不携带“我属于哪个任务”的信息。</p>
+<p>于是必须显式维护一张 <strong>thread 到 session 的映射表</strong>。</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos=" 1 "></span></a>flowchart TB
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos=" 2 "></span></a>    A[&quot;飞书 thread_id&quot;] --&gt; B{&quot;是否已有映射？&quot;}
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><a href="#__codelineno-5-3"><span class="linenos" data-linenos=" 3 "></span></a>    B --&gt;|有| C[&quot;复用 session_id&quot;]
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><a href="#__codelineno-5-4"><span class="linenos" data-linenos=" 4 "></span></a>    B --&gt;|没有| D[&quot;生成新的 session_id&quot;]
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><a href="#__codelineno-5-5"><span class="linenos" data-linenos=" 5 "></span></a>    D --&gt; E[&quot;写入 SQLite&lt;br/&gt;feishu_threads&quot;]
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><a href="#__codelineno-5-6"><span class="linenos" data-linenos=" 6 "></span></a>    C --&gt; F[&quot;resolveSession(session_id)&quot;]
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><a href="#__codelineno-5-7"><span class="linenos" data-linenos=" 7 "></span></a>    E --&gt; F
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><a href="#__codelineno-5-8"><span class="linenos" data-linenos=" 8 "></span></a>    F --&gt; G{&quot;session 是否存在？&quot;}
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><a href="#__codelineno-5-9"><span class="linenos" data-linenos=" 9 "></span></a>    G --&gt;|不存在| H[&quot;createSession&lt;br/&gt;isNewSession = true&quot;]
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><a href="#__codelineno-5-10"><span class="linenos" data-linenos="10 "></span></a>    G --&gt;|存在| I[&quot;resumeSession&lt;br/&gt;isNewSession = false&quot;]
+</code></pre></div>
+<p>这个设计看着朴素，但它解决的恰恰是多入口系统里最容易翻车的问题：</p>
+<p><strong>上下文连续性。</strong></p>
+<p>没有这层映射，飞书只是一条消息流；有了它，一个 thread 才真正变成一个能被 Agent 持续理解的任务容器。</p>
+<p>这也是这类系统与“简单 webhook 转发”的本质区别：</p>
 <ul>
-<li>面对复杂问题时，能不能更快把目标、路径、风险和验收拆清楚，而不是先陷入局部执行</li>
-<li>输出方案时，能不能先讲清核心思路和判断依据，而不是被概念、格式和细节带走</li>
-<li>协作推进时，能不能主动提供上下文、约束、风险和取舍理由，而不是等别人追问</li>
-<li>使用 AI 时，能不能先定义问题和验收标准，而不是期待 AI 替我补完模糊的部分</li>
-<li>遇到反馈时，能不能先把反馈转成下一步调整，而不是先被情绪和自我评价带走</li>
+<li>简单转发只处理“这一条消息”</li>
+<li>会话映射处理的是“这一串消息属于同一个任务”，并能一路对齐到底层 Agent 的 thread</li>
 </ul>
-<p>这些问题看起来都不新，但在当前的阶段让我更切实地意识到，它们已经不是可有可无的优化项，而是当前阶段必须补上的能力范围。因为如果这些点不补，后续即使执行更多，也可能只是把复杂度继续往后推。</p>
-<p>有时候所谓成长，就是那些过去只以模糊痛苦出现的问题，终于被拆成了可以练习的能力缺口。</p>
-<h2 id="2-生活上">2. 生活上<a class="headerlink" href="#2-生活上" title="Permanent link">&para;</a></h2>
-<p>每当我以为我的生活没什么波澜的时候，其实回过头看这期间好像也发生了不少的变化。</p>
-<p>首先4月下旬最主要的事情可能就是提前准备好五一要带小焦去重庆旅游以及见一见我的家长。</p>
-<p>这确实也算是终于到了这开始的第一步了，好像人生的里程又多了一个节点。</p>
-<p>好在五一期间过程都挺顺利的，重庆的天气好在没有像往常那样下着雨，也终于带小焦去了我的大学看看，还有重庆的一些景点和美食，让她简单体验一下重庆这座城市吧，还有就是我们在家长面前也是扮演起了想象中的“大人“一般，略带拘谨着面对着家长，然后聊着往后的一些人生。</p>
-<p>唯一的遗憾都是行程时间太短，还有很多地方和好吃的没有去，希望下次还可以去一次。</p>
-<p>重庆对我来说，既熟悉又陌生，陌生的是很多地方我也没去过，而熟悉的是，无论走到哪里，看到那些山呀、江呀、河呀、桥呀，以及那些路边的街道，居住的房屋，风吹过来的味道，耳朵听到的语言，有时候看到那土地上冒出的野草，都会有一种说不上来的情感，既重但好像又很轻。</p>
-<hr />
-<p>期间的某个周末我也开始走出独自“开车”（含“租车”）的这一步，还提前约了陪练一起开了一会。</p>
-<p>当汽车发动之后，我都尽力克制着自己可能会出现的恐惧，冷静地处理着可能遇到的风险。</p>
-<p>练习了整整一天，好在没出现问题，对车的操作等更加熟悉了，也顺利完成了接送小焦的任务。</p>
-<p>后面应该也可以带着小焦，以及土豆，开着车，去一些想去的地方看看。</p>
-<hr />
-<p>第一次去 livehouse 的成就也是达成了，陪着小焦去看了她很喜欢的南青（主要是张伟博）。</p>
-<p>果然现场听音乐还是不一样很多，各种声音能够直击身心，伴随摇滚独有的一些”疯狂“和”温柔“。</p>
-<p>就是过程中站久了挺累的，以及还有旁边有一些不好的”气味“和”触碰“等。</p>
-<hr />
-<p>平常周末的话，会和小焦度过着来之不易的日常，出去随便走走，逛街看电影，吃一些好吃的。</p>
-<p>对了，《阿嫲的情书》确实挺感人的：</p>
-<p>算是近年来，少数能够，好好讲完一个故事，且从人的情感本身出发来打动人的电影了。</p>
-<p>而周末一个人的时候，依然还是在忙碌着自己觉得应该做的那些事情。</p>
-<p>看的一些书，遛狗，随便走走逛逛的公园，日常的运动等等，就像总会出现的阳光和黑夜。</p>
-<h2 id="3-一些反思">3. 一些反思<a class="headerlink" href="#3-一些反思" title="Permanent link">&para;</a></h2>
-<p>这一段时间真正留下来的反思，不只是我又完成了什么，也不是我又发现了哪些问题。</p>
-<p>更重要的是，我开始更频繁地看到：很多事情并不是只靠意志、方法和执行就能解决。身体、恐惧、判断、反馈、AI、记录，这些看起来分散的东西，其实都在提醒我同一件事——我需要把稳定感从“必须掌控一切”，慢慢挪回到“可以在不确定里继续行动”。</p>
-<h3 id="31-放松不是退出而是把自己重新带回现实">3.1 放松不是退出，而是把自己重新带回现实<a class="headerlink" href="#31-放松不是退出而是把自己重新带回现实" title="Permanent link">&para;</a></h3>
-<p>这段时间我越来越能感受到，身体并不是一个可以被意志随便调用的工具。</p>
-<p>而恢复不是浪费时间，恢复本身就是维持系统的一部分。</p>
-<p>休息也不是从生活里暂时退出。它更像是在把自己从过度反应里取回来，让我重新有余地感受一点真实的世界：路上的风、练车时的身体感、没有被任务完全占满的下午。人如果只剩下推进，就会慢慢失去对生活的感知。一旦感知变钝，很多所谓的努力也会变成惯性。</p>
-<p>所以我也在重新理解“放松”。</p>
-<p>对我来说，它不是一种漂亮的生活态度，更接近一种不过度反应的练习。事情来了，情绪来了，恐惧来了，先承认它们在场，而不是立刻压下去，或者给自己加一套更重的要求。然后把注意力放回现在能做的一步。</p>
-<p>有时候是傍晚出门走一圈，路上什么都不想。</p>
-<p>有时候是把一个复杂问题拆到身体愿意开始的程度。</p>
-<p>有时候只是告诉自己，不要在脑子里把每件事都提前演成一场失败。</p>
-<p>这大概也是我理解的“飘然”：不是假装没事，也不是强行乐观，而是在恐惧还在的时候，先让自己不要被它完全带走，再轻一点地回到现实里。</p>
-<h3 id="32-恐惧不只是情绪而是自我叙事到了需要更新的时刻">3.2 恐惧不只是情绪，而是自我叙事到了需要更新的时刻<a class="headerlink" href="#32-恐惧不只是情绪而是自我叙事到了需要更新的时刻" title="Permanent link">&para;</a></h3>
-<p>如果只顺着感受去写，恐惧很容易被理解成一种状态问题：</p>
-<p>我害怕、我焦虑、我启动困难，所以需要先稳定身体，再拆一个小入口。</p>
-<p>这当然是成立的，但还不够。</p>
-<p>更深一层看，我害怕的并不只是事情做不好，而是事情做不好之后，会动摇我过去对自己的某种理解。</p>
-<p>我一直把自己看成一个可以持续成长、可以靠反思和执行把问题慢慢解决的人。这个自我叙事对我很重要——它支撑我长期记录，支撑我不断学习，也支撑我在混乱里相信自己还能重新组织秩序。所以当一个复杂事项推进不动、一个问题讲不清楚、一个判断被反馈击穿时，它打到的并不只是工作结果，也打到了那个"我应该是可靠的、能理解问题的、能靠努力继续变好的人"。</p>
-<p>这才是恐惧真正重的地方。</p>
-<p>它不是单纯怕失败，而是怕失败暴露出：我可能并不像自己希望的那样有掌控力。</p>
-<p>从这个角度看，行动入口变窄，也不只是懒惰或效率低。它更像是一种防御——只要还没有真正开始，就不用立刻面对那个可能会动摇自我叙事的结果。这也解释了为什么"更自律一点"有时没有用。真正卡住的不是任务本身，而是任务背后绑定了太多关于自我价值的东西。</p>
-<p>但如果再追问一步：这个叙事本身是否需要被修改？</p>
-<p>"只要我足够理解问题，就能解决它"——这是过去支撑我的信念。但现在的工作环境在告诉我另一件事：有些判断必须在理解不完整的时候做出，有些结果确实不会因为我更努力就更好，有些复杂性不是靠个人理解力就能穿透的。</p>
-<p>所以恐惧可能不只是在告诉我"叙事被威胁了"，它也在告诉我：这个叙事本身到了需要更新的时刻。</p>
-<p>从"我是可以靠努力解决问题的人"，转变到"我是可以在不确定性中承担行动后果的人"。</p>
-<p>前者需要掌控感才能行动，后者只需要负责。</p>
-<p>这不是降低标准。它是把稳定感从"掌控结果"转移到"承担过程"上——我不需要保证每次都对，但我需要保证每次都是认真做出的选择，并且愿意为这个选择面对后续。</p>
-<p>能把这一层拆开，行动才会变得轻一点。</p>
-<h3 id="33-判断和反馈是在复杂性中承担选择">3.3 判断和反馈，是在复杂性中承担选择<a class="headerlink" href="#33-判断和反馈是在复杂性中承担选择" title="Permanent link">&para;</a></h3>
-<p>过去我很容易把"判断质量"理解成一种工作能力：</p>
-<p>能不能想得更深，能不能讲得更清楚，能不能给出更好的方案。</p>
-<p>但站在更高一层看，判断并不是一种单纯的智力活动。</p>
-<p>判断意味着承担复杂性。</p>
-<p>在信息不完整、路径不确定、结果会被别人检验的情况下，我仍然要给出一个临时的方向，并愿意为这个方向承担后果。它不是把所有东西都想清楚之后再行动，而是在不可能完全想清楚的现实里，做出足够负责任的取舍。</p>
-<p>这也是为什么这件事会让我有压力。执行任务时，我只需要证明自己做了。承担判断时，我需要暴露自己怎么看世界、怎么理解因果、怎么权衡价值、怎么面对不确定性。</p>
-<p>这比执行更接近一个人的核心。</p>
-<p>真正让我有压力的，可能不是"做出判断"本身，而是我潜意识里把每次判断都当成终局。如果我把判断理解成一次不可撤回的承诺，那每次开口都会很重。但如果我把判断理解成一次"暂时的最优假设"——它需要被表达、被检验、被修正——那判断的门槛就会变低。</p>
-<p>好的判断不是一次就对，而是错了能知道错在哪里，下一次能调整。这其实也是工程系统里"可观测性"在人身上的对应：我不需要保证每次都对，但我需要让我的判断是可追溯的、可修正的、可被反馈的。</p>
-<p>所以这个月里很多工作上的不踏实，表面上是方案没完全收敛、文档没完全讲清、评测结论还需继续解释。更深处是我在进入一个新的角色要求：从完成事情的人，变成定义事情、解释事情、承担事情的人。</p>
-<p>"做了很多事但不踏实"并不是矛盾。</p>
-<p>它说明执行量已经无法再提供足够安全感，真正缺口转移到了判断、取舍和责任承担上。</p>
-<p>而反馈就是让判断真正成立的现实入口。</p>
-<p>反馈最刺痛的地方，往往不是指出一个具体错误。</p>
-<p>真正让人难受的是，它会打断我对自己的想象。</p>
-<p>我以为自己理解了，但别人一问，发现还没有。我以为表达清楚了，但对方听到的是模糊。我以为已经做了不少，但真正关键的判断还没有被沉淀下来。从心理上看，这些时刻会让人很想快速找回稳定感——要么解释自己为什么这样，要么把反馈理解成否定，要么赶紧修掉让不舒服的感觉快点过去。但从成长的角度看，反馈真正有价值的地方，恰恰在于它短暂地打断了我原本自洽的叙事。它告诉我：你对自己的理解，和现实对你的要求之间，还有差距。</p>
-<p>这里最需要警惕的，是把反馈道德化。如果每一次讲不清楚都被翻译成"我不行"，反馈就会变成自我攻击，下一次只会更害怕暴露。如果每一次判断不稳都被翻译成"我还缺一个具体能力"，反馈才会变成可训练的材料。</p>
-<p>反馈负责打破幻觉，耐心负责让我不要因为幻觉被打破，就把整个人一起否定掉。</p>
-<h3 id="34-ai-协作照见的是主体性">3.4 AI 协作照见的是主体性<a class="headerlink" href="#34-ai-协作照见的是主体性" title="Permanent link">&para;</a></h3>
-<p>AI 这件事表面上是工具问题，深一点看，其实是在逼我回答一个更根本的问题：</p>
-<p>当外部系统可以替我生成答案、整理表达、推进执行时，我自己还负责什么？</p>
-<p>如果我只是把问题丢给 AI，它确实能给我一份看起来完整的内容。但完整不等于理解，顺畅不等于成立，生成不等于负责。AI 越强，越容易制造一种错觉：好像只要我能调动它，事情就已经被掌控了。但真正的掌控不在于我让它输出了什么，而在于我能不能判断这些输出是否接近事情本身。</p>
-<p>所以 AI 协作真正考验的不是工具熟练度，而是主体性。</p>
-<p>我能不能先定义问题，而不是被它带着定义问题。我能不能给出上下文和边界，而不是期待它替我猜。我能不能在它写得很完整的时候，仍然看出哪些地方只是漂亮，哪些地方真的有判断。</p>
-<p>真正好的 AI 协作，应该把我推向更清楚的问题定义、更稳定的判断、更高质量的取舍，而不是让我躲进一份看起来完整的输出里。放到工程里，这种主体性会进一步变成系统能力：任务能不能进入一条清楚的链路，上下文、工具、验证、反馈和沉淀能不能接起来。</p>
-<p>AI 不是让我逃离判断，而是在不断提醒我：外部能力越强，内部秩序越要清楚。</p>
-<h3 id="35-记录是我的秩序系统也是我的风险">3.5 记录是我的秩序系统，也是我的风险<a class="headerlink" href="#35-记录是我的秩序系统也是我的风险" title="Permanent link">&para;</a></h3>
-<p>再往下看，我反复记录和复盘，其实是在对抗时间的流散。</p>
-<p>很多日子如果不写下来，很快就会混成一团：好像很忙，好像很累，又好像什么都没有留下。记录让这些日子重新有了形状，也让我能确认：我还在观察，我还在理解，我还没有彻底被混乱带走。</p>
-<p>这是一种力量。它让我能从经验里提炼模式，从失败里找到能力缺口，从混乱里重新建立主线。</p>
-<p>但它也有风险。当一切都要被记录、解释、归因、转化成方法论，生活就会变得很重。</p>
-<p>每一天都像一份材料，每个情绪都像一个待分析对象，每次失败都像一个需要被提炼的成长样本。</p>
-<p>这样看起来很清醒，但人会累。</p>
-<p>因为人不是只有在被理解之后，才配继续生活。</p>
-<p>有些日子就是混乱的，有些情绪就是解释不完的，有些状态就是暂时没有意义。它们不一定都要被立刻纳入系统，也不一定都要产出一个结论。</p>
-<p>一个简单的检验方式：如果记录和复盘之后，我感到更轻了、更清楚了、更有方向了——那它在服务于生活。如果记录之后，我反而更焦虑了、觉得自己又发现了更多问题、感到更重了——那它可能已经从工具变成了负担。</p>
-<p>不是所有感受都需要被命名，不是所有波动都需要被归因。有时候最好的记录只是一句"今天就是这样"，然后去睡觉。</p>
-<p>我身上有一种很强的建构欲——想建构能力，建构秩序，建构工作流，建构叙事，也建构一个可以解释自己的系统。这既是我的力量，也是我的负担。它让我不断往前，也让我很难真正放过自己。</p>
-<p>接下来真正要练的，不是放弃这种建构欲，而是让它服务于生活，而不是替代生活。</p>
-<p>结构应该帮助我走向世界，而不是让我永远待在对自己的分析里。</p>
-<h2 id="4-接下来的展望">4. 接下来的展望<a class="headerlink" href="#4-接下来的展望" title="Permanent link">&para;</a></h2>
+<h2 id="5-抽象三session-级串行锁有状态-agent-的并发控制">5. 抽象三：session 级串行锁——有状态 Agent 的并发控制<a class="headerlink" href="#5-抽象三session-级串行锁有状态-agent-的并发控制" title="Permanent link">&para;</a></h2>
+<p>本地 Agent 有个很现实的特性：它不是普通的无状态 API。</p>
+<p>一次 Codex 运行可能会读文件、改文件、跑命令、写入自己的 session 状态。如果同一个 session 里同时进来两条消息，让两个子进程并发跑，就可能出现：</p>
 <ul>
-<li>好好睡觉，好好吃饭，好好运动，好好生活</li>
-<li>让自己保持着好奇心和热情，就像刚开始那样</li>
-<li>要有更多的耐心，无论是对内部，还是对外部</li>
-<li>做一些小小的改变，直到让这些改变变成大大的</li>
+<li>两轮对话同时 resume 同一个 thread</li>
+<li>同一个仓库被两个任务同时修改</li>
+<li>后发的消息先完成，先发的消息反而后完成</li>
+<li>用户看到的飞书回复顺序错乱</li>
+<li><code>/stop</code> 不知道该停哪一个任务</li>
+</ul>
+<p>所以这类系统的任务调度必须遵循一条核心策略：</p>
+<blockquote>
+<p>同一 session 内串行执行，不同 session 之间可以并行执行。</p>
+</blockquote>
+<p>实现上通常是按 <code>session_id</code> 维护一把锁（或一个串行队列）：同一 session 的任务排队执行，锁释放后才取下一个；不同 session 各持各的锁，互不阻塞。</p>
+<p>换句话说，串行锁锁的是“同一 session 的任务队列”，而不是“子进程”本身。</p>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos=" 1 "></span></a>flowchart LR
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><a href="#__codelineno-6-2"><span class="linenos" data-linenos=" 2 "></span></a>    A[&quot;任务队列&quot;] --&gt; B[&quot;session A task 1&quot;]
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><a href="#__codelineno-6-3"><span class="linenos" data-linenos=" 3 "></span></a>    A --&gt; C[&quot;session A task 2&quot;]
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><a href="#__codelineno-6-4"><span class="linenos" data-linenos=" 4 "></span></a>    A --&gt; D[&quot;session B task 1&quot;]
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><a href="#__codelineno-6-5"><span class="linenos" data-linenos=" 5 "></span></a>    A --&gt; E[&quot;session C task 1&quot;]
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><a href="#__codelineno-6-6"><span class="linenos" data-linenos=" 6 "></span></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><a href="#__codelineno-6-7"><span class="linenos" data-linenos=" 7 "></span></a>    B --&gt; F[&quot;session A lock&quot;]
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a><a href="#__codelineno-6-8"><span class="linenos" data-linenos=" 8 "></span></a>    C --&gt; F
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a><a href="#__codelineno-6-9"><span class="linenos" data-linenos=" 9 "></span></a>    D --&gt; G[&quot;session B lock&quot;]
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a><a href="#__codelineno-6-10"><span class="linenos" data-linenos="10 "></span></a>    E --&gt; H[&quot;session C lock&quot;]
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a><a href="#__codelineno-6-11"><span class="linenos" data-linenos="11 "></span></a>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a><a href="#__codelineno-6-12"><span class="linenos" data-linenos="12 "></span></a>    F --&gt; I[&quot;A 内部串行&quot;]
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a><a href="#__codelineno-6-13"><span class="linenos" data-linenos="13 "></span></a>    G --&gt; J[&quot;B 可并行&quot;]
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a><a href="#__codelineno-6-14"><span class="linenos" data-linenos="14 "></span></a>    H --&gt; K[&quot;C 可并行&quot;]
+</code></pre></div>
+<p>这正是从“聊天机器人”走向“Agent Runtime”必须补上的那层工程。</p>
+<p>模型聪不聪明只是一个维度；能不能长期稳定运行，更取决于任务状态、并发控制、取消恢复和错误处理是否扎实。</p>
+<h2 id="6-抽象四分层上下文注入是调度记忆而不是堆砌记忆">6. 抽象四：分层上下文注入——是调度记忆，而不是堆砌记忆<a class="headerlink" href="#6-抽象四分层上下文注入是调度记忆而不是堆砌记忆" title="Permanent link">&para;</a></h2>
+<p>最后一个抽象，关于“记忆”。我一开始以为记忆系统是某种神秘的模型能力，但读下来发现，在本地 Agent 工程里，它更像是一个<strong>上下文调度问题</strong>。</p>
+<p>以 Codex 为例，可注入上下文的位置就有很多种，各自承担不同角色：</p>
+<ul>
+<li><code>AGENTS.md</code>：项目级稳定规则</li>
+<li>prompt 前缀：本轮任务相关的动态上下文</li>
+<li>MCP resource / tool：按需读取的外部知识</li>
+<li>本地检索结果：从知识库、日报、历史记录中取出的相关片段</li>
+<li>session summary：长会话压缩后的历史状态</li>
+<li>workspace 文件：让 Agent 直接通过文件系统读取上下文</li>
+</ul>
+<div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos="1 "></span></a>flowchart TB
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos="2 "></span></a>    A[&quot;用户消息&quot;] --&gt; F[&quot;本轮 Prompt&quot;]
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><a href="#__codelineno-7-3"><span class="linenos" data-linenos="3 "></span></a>    B[&quot;AGENTS.md&lt;br/&gt;项目规则&quot;] --&gt; F
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><a href="#__codelineno-7-4"><span class="linenos" data-linenos="4 "></span></a>    C[&quot;长期记忆&lt;br/&gt;用户偏好 / 历史决策&quot;] --&gt; E[&quot;检索与筛选&quot;]
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><a href="#__codelineno-7-5"><span class="linenos" data-linenos="5 "></span></a>    D[&quot;本地知识库&lt;br/&gt;Obsidian / repo docs&quot;] --&gt; E
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><a href="#__codelineno-7-6"><span class="linenos" data-linenos="6 "></span></a>    E --&gt; F
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><a href="#__codelineno-7-7"><span class="linenos" data-linenos="7 "></span></a>    F --&gt; G[&quot;Codex / Claude Code&quot;]
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a><a href="#__codelineno-7-8"><span class="linenos" data-linenos="8 "></span></a>    G --&gt; H[&quot;执行结果&quot;]
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><a href="#__codelineno-7-9"><span class="linenos" data-linenos="9 "></span></a>    H --&gt; I[&quot;日志 / session / memory 更新&quot;]
+</code></pre></div>
+<p>这也解释了为什么“记忆”不能粗暴地全塞进去。上下文不是越多越好，它至少带来三类风险：</p>
+<ul>
+<li><strong>污染风险</strong>：旧规则覆盖当前项目规则</li>
+<li><strong>预算风险</strong>：无关信息挤占真正重要的上下文</li>
+<li><strong>权限风险</strong>：远程消息可能诱导 Agent 读取或发送不该碰的信息</li>
+</ul>
+<p>所以更成熟的做法不是“有记忆就注入”，而是先做判断：</p>
+<p><strong>这条记忆与当前任务是否相关、是否仍然有效、是否应当覆盖项目原生规则。</strong></p>
+<p>一句话，上下文工程不是堆消息，而是设计信息在正确时机进入模型视野的方式。</p>
+<h2 id="7-把四层拼起来能力的拓展空间">7. 把四层拼起来：能力的拓展空间<a class="headerlink" href="#7-把四层拼起来能力的拓展空间" title="Permanent link">&para;</a></h2>
+<p>统一 Runner、会话映射、串行锁、分层上下文——这四层一旦补齐，本地 Agent 就不再只是一个“会回答的模型”。</p>
+<p>它会成为一个可以被系统调用、被用户协作、被长期维护的 Runtime。拓展空间随之打开：</p>
+<table>
+<thead>
+<tr>
+<th>可拓展方向</th>
+<th>具体形态</th>
+<th>背后复用的能力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多渠道入口</td>
+<td>飞书、Slack、Telegram、邮件、网页控制台</td>
+<td>MessageChannel / MessageGateway</td>
+</tr>
+<tr>
+<td>长期任务</td>
+<td>定时总结、PR 监控、知识库整理、日报生成</td>
+<td>TaskDispatcher / Scheduler</td>
+</tr>
+<tr>
+<td>个人知识助理</td>
+<td>Codex + Obsidian + 本地记忆</td>
+<td>分层上下文注入</td>
+</tr>
+<tr>
+<td>仓库维护助手</td>
+<td>自动读 repo、生成 issue、检查 PR、补测试</td>
+<td>统一 Runner / workspace</td>
+</tr>
+<tr>
+<td>团队协作 Agent</td>
+<td>群聊里创建任务、跟进状态、同步结论</td>
+<td>会话映射 / 流式渲染</td>
+</tr>
+<tr>
+<td>可观测面板</td>
+<td>session、usage、日志、任务状态、工具调用</td>
+<td>Web Dashboard / 本地数据库</td>
+</tr>
+</tbody>
+</table>
+<p>真正具备迁移价值的，不是某一段代码，而是这组工程问题：</p>
+<ol>
+<li>外部事件，如何变成标准的内部消息？</li>
+<li>一条消息，如何找到正确的会话？</li>
+<li>一个会话，如何恢复到底层 Agent 的 thread？</li>
+<li>同一会话里的多个任务，如何串行？</li>
+<li>Agent 的工具调用和文件修改，如何渲染给用户？</li>
+<li>长期记忆如何注入，又不污染上下文？</li>
+<li>失败、取消、重试、日志和用量，如何对用户可见？</li>
+</ol>
+<h2 id="8-边界和风险">8. 边界和风险<a class="headerlink" href="#8-边界和风险" title="Permanent link">&para;</a></h2>
+<p>这套模式很有想象空间，但不能只盯着兴奋点看。因为它连接的是<strong>远程消息入口</strong>和<strong>本地执行环境</strong>，风险天然比普通聊天机器人高。</p>
+<table>
+<thead>
+<tr>
+<th>风险点</th>
+<th>典型场景</th>
+<th>影响</th>
+<th>处理建议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>远程消息触发本地命令</td>
+<td>飞书、Slack、Web 消息直接触发 Codex 执行</td>
+<td>可能访问本地文件、修改仓库、执行危险命令</td>
+<td>明确运行目录、权限范围、审批策略和日志记录</td>
+</tr>
+<tr>
+<td>CLI 协议不是稳定 API</td>
+<td>依赖 <code>codex exec --json</code> 或 <code>claude --output-format stream-json</code> 解析事件</td>
+<td>CLI 输出字段变化会影响 Runner 适配</td>
+<td>用测试覆盖 assistant message、command execution、file change、MCP tool call、error / failed turn、session started / resume</td>
+</tr>
+<tr>
+<td>记忆注入覆盖项目规则</td>
+<td>长期记忆、个人偏好、项目规则同时进入上下文</td>
+<td>旧规则可能污染当前项目判断</td>
+<td>采用“检索 → 筛选 → 注入”，让 <code>AGENTS.md</code>、<code>CLAUDE.md</code>、README 等项目原生规则保持更高优先级</td>
+</tr>
+<tr>
+<td>用量展示被误读成 billing</td>
+<td>从本地 session 日志推断 token 和 rate limit telemetry</td>
+<td>用户可能误以为这是官方账单或精确用量</td>
+<td>明确标注为本地速率限制可见性，不包装成官方 billing 指标</td>
+</tr>
+</tbody>
+</table>
+<p>这里尤其需要注意权限问题。</p>
+<p>如果飞书里的一句话就能触发 Codex 在本地执行命令，系统必须先回答几个问题：</p>
+<ul>
+<li>运行目录在哪里</li>
+<li>是否允许修改文件</li>
+<li>是否允许执行危险命令</li>
+<li>是否允许访问用户目录</li>
+<li>是否允许读取密钥、token 或浏览器状态</li>
+</ul>
+<p>Agentara 当前对 Codex 采用了绕过审批和 sandbox 的执行方式，这让交互更顺滑，但也意味着它更适合<strong>个人受控环境</strong>，不建议直接暴露给不可信群聊。</p>
+<p>如果要放到团队群或更开放的入口里，安全边界必须先于功能扩展被设计清楚。</p>
+<h2 id="9-为什么是借力而不是替代">9. 为什么是“借力”，而不是“替代”<a class="headerlink" href="#9-为什么是借力而不是替代" title="Permanent link">&para;</a></h2>
+<p>前面八节讲的都是“怎么做”。</p>
+<p>但在动手之前，其实还有一个更上位的判断：</p>
+<p><strong>面对快速迭代的模型和 AI CLI，工程侧到底该把力气花在哪里？</strong></p>
+<p>我的结论是：更现实的方向是基于 Codex / Claude Code 这类工具做包装，而不是从零开始做一个“更强的 Agent”。</p>
+<p>这类 AI CLI 和它背后的模型能力仍在高速迭代：模型推理、工具调用、代码理解、终端执行，以及和 IDE / CLI 的结合，厂商的投入会持续把这层底座往前推。</p>
+<p>对个人或小团队来说，真正现实的策略不是在这些基础能力上正面超过它们，而是把它们当成一层持续升级的底座。</p>
+<p>如果说第 7 节回答的是“能拓展出什么”，那么这里想回答的是“在资源有限时，应该优先往哪里投”：</p>
+<table>
+<thead>
+<tr>
+<th>投入方向</th>
+<th>要解决的问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>接入真实协作入口</td>
+<td>让 Agent 不只停留在终端，而是进入飞书、Web、定时任务等实际工作入口</td>
+</tr>
+<tr>
+<td>分层上下文管理</td>
+<td>让 Agent 能拿到正确的项目规则、知识库信息和任务现场，而不是简单堆 prompt</td>
+</tr>
+<tr>
+<td>会话与任务调度</td>
+<td>降低多轮对话、并发执行、长任务恢复带来的状态混乱</td>
+</tr>
+<tr>
+<td>权限与可观测性</td>
+<td>用审批、日志、任务状态和 Dashboard 控制远程触发本地执行的风险</td>
+</tr>
+<tr>
+<td>工作场景适配</td>
+<td>把通用 AI CLI 能力转成适合个人知识库、团队协作和仓库维护的工作模式</td>
+</tr>
+</tbody>
+</table>
+<p>换句话说，AI 工程应用的价值不一定在于“造一个新的模型能力”。</p>
+<p>更重要的是：</p>
+<p><strong>把已经快速演进的 AI 能力，组织成更稳定的工作流和工作模式。</strong></p>
+<h2 id="10-一点个人理解拓展本地-agent-的真正含义">10. 一点个人理解：拓展本地 Agent 的真正含义<a class="headerlink" href="#10-一点个人理解拓展本地-agent-的真正含义" title="Permanent link">&para;</a></h2>
+<p>最初看 Agentara，我关注的是“能不能把 Codex 接到飞书”。</p>
+<p>但顺着这套模式拆下来，我最大的收获其实是一句更普适的话：</p>
+<p><strong>本地 Agent 的能力，不只由模型决定，而是由模型外面那层工程系统共同决定。</strong></p>
+<p>模型负责推理、读代码、调工具、执行修改；包装层负责让这些能力进入真实场景：</p>
+<ul>
+<li>飞书提供协作入口</li>
+<li>session 提供上下文连续性</li>
+<li>task queue 提供执行秩序</li>
+<li>Web UI 提供可见状态</li>
+<li>memory 提供长期上下文</li>
+<li>runner 把 CLI Agent 变成可流式调用的 Runtime</li>
+</ul>
+<p>这让我重新理解了“拓展 Codex”的含义：它不一定是改 Codex 本身，也不一定是训练新模型。</p>
+<p>很多时候，真正有效的拓展发生在模型<strong>外部</strong>。</p>
+<p>它做的是把 Agent 接入正确的入口，喂它正确的上下文，约束它的执行边界，记录它的状态，再把结果回流到用户真正工作的地方。</p>
+<h2 id="11-可迁移原则">11. 可迁移原则<a class="headerlink" href="#11-可迁移原则" title="Permanent link">&para;</a></h2>
+<p>如果要把这套经验迁移到自己的 Agent 工程实践里，我会优先记住这五条原则：</p>
+<table>
+<thead>
+<tr>
+<th>原则</th>
+<th>核心含义</th>
+<th>实践提醒</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>先设计运行时，再设计 prompt</td>
+<td>长任务 Agent 不能只靠 prompt</td>
+<td>先想清楚任务容器、会话、状态、取消、恢复、日志和交付物分别落在哪里</td>
+</tr>
+<tr>
+<td>把 CLI Agent 当成本地执行引擎</td>
+<td>Codex / Claude Code 的价值不只是回答，而是读 repo、跑命令、调工具、改文件</td>
+<td>外层系统应该尊重并包装这份能力，不要把它降级成普通聊天模型</td>
+</tr>
+<tr>
+<td>会话映射是多入口系统的地基</td>
+<td>飞书 thread、Web session、定时任务、底层 Agent thread 必须能彼此对齐</td>
+<td>否则系统表面能跑，实际很容易发生上下文漂移</td>
+</tr>
+<tr>
+<td>上下文工程要分层</td>
+<td>稳定规则、任务现场、长期记忆、历史摘要、本地文件不应该混成一坨</td>
+<td>不同信息应在不同阶段、以不同优先级进入 Agent 视野</td>
+</tr>
+<tr>
+<td>安全边界要早于功能扩展</td>
+<td>远程消息一旦能触发本地执行，权限就变成基础设施</td>
+<td>目录、审批、日志和可撤销性需要在功能扩展前设计清楚</td>
+</tr>
+</tbody>
+</table>
+<h2 id="结尾">结尾<a class="headerlink" href="#结尾" title="Permanent link">&para;</a></h2>
+<p>绕开具体项目来看，这套模式给我最大的启发是一个更大的方向：</p>
+<p><strong>本地 CLI Agent，可以成为个人和团队工作流里的 Runtime。</strong></p>
+<p>它们不必变成云端 API，也不必被重新包装成又一个聊天产品。</p>
+<p>只要外层系统能补齐统一 Runner、会话映射、任务调度、分层上下文和安全边界这几层工程，本地 Agent 就能自然地走进更多真实工作场景。</p>
+<p>Agentara 只是证明了这条路走得通——而这套模式，你完全可以拿去搭自己的那一个。</p>
+<h2 id="参考">参考<a class="headerlink" href="#参考" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://github.com/MagicCube/agentara">MagicCube/agentara</a></li>
 </ul>
 
 
@@ -2051,7 +2340,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 6, 2026 21:08:44</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 7, 2026 21:43:54</span>
   </span>
 
     
@@ -2061,7 +2350,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 6, 2026 21:08:44</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 7, 2026 21:43:54</span>
   </span>
 
     
@@ -2104,7 +2393,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../../04/18/%E5%A4%B1%E8%B4%A5%E4%B8%8E%E6%81%90%E6%83%A7%E7%9A%84%E5%9B%9E%E5%A3%B0-263-4%E6%9C%88%E4%B8%AD%E6%97%AC%E6%80%BB%E7%BB%93/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 失败与恐惧的回声 26.3-4月中旬总结">
+          <a href="../../06/%E9%A3%98%E7%84%B6%E5%9C%B0%E5%BA%A6%E8%BF%87%E6%81%90%E6%83%A7%E4%BB%A5%E5%8F%8A%E5%BE%AE%E5%B0%8F%E7%9A%84%E6%94%B9%E5%8F%98-264%E4%B8%8B%E6%97%AC-5%E6%9C%88%E6%80%BB%E7%BB%93/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 飘然地度过恐惧，以及微小的改变 26.4下旬-5月总结">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2114,27 +2403,11 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                失败与恐惧的回声 26.3-4月中旬总结
+                飘然地度过恐惧，以及微小的改变 26.4下旬-5月总结
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../../07/%E4%BB%8E-cli-agent-%E5%88%B0%E6%9C%AC%E5%9C%B0-agent-runtime%E4%B8%80%E5%A5%97%E5%8C%85%E8%A3%85%E6%9C%AC%E5%9C%B0-agent-%E7%9A%84%E5%B7%A5%E7%A8%8B%E6%A8%A1%E5%BC%8F/" class="md-footer__link md-footer__link--next" aria-label="Next: 从 CLI Agent 到本地 Agent Runtime：一套包装本地 Agent 的工程模式">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                从 CLI Agent 到本地 Agent Runtime：一套包装本地 Agent 的工程模式
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     

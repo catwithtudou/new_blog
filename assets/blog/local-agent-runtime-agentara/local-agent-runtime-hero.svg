@@ -1,0 +1,148 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFC"/>
+      <stop offset="1" stop-color="#EEF7F6"/>
+    </linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#111827"/>
+      <stop offset="1" stop-color="#233142"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#2DD4BF"/>
+      <stop offset="1" stop-color="#0891B2"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#60A5FA"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#FBBF24"/>
+      <stop offset="1" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="purple" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#A78BFA"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#0F172A" flood-opacity="0.14"/>
+    </filter>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="150%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#0F172A" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrowTeal" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2 2 L10 6 L2 10" stroke="#0EA5A7" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2 2 L10 6 L2 10" stroke="#2563EB" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="900" rx="42" fill="url(#bg)"/>
+  <path d="M80 732 C254 628 420 716 574 626 C758 518 838 314 1064 300 C1234 290 1348 392 1518 286" stroke="#D3E0E5" stroke-width="2" stroke-dasharray="9 13"/>
+  <path d="M116 246 C262 220 400 246 514 330" stroke="#D3E0E5" stroke-width="2" stroke-dasharray="9 13"/>
+
+  <text x="800" y="74" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="800" fill="#13202B" text-anchor="middle">
+    From CLI Agent to Local Agent Runtime
+  </text>
+  <text x="800" y="116" font-family="Inter, Arial, sans-serif" font-size="22" fill="#52616B" text-anchor="middle">
+    Leverage fast-evolving CLI agents, then engineer the workflow around them.
+  </text>
+
+  <g filter="url(#softShadow)">
+    <rect x="84" y="210" width="300" height="486" rx="30" fill="#FFFFFF" stroke="#D8E4E8" stroke-width="2"/>
+    <text x="234" y="264" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" fill="#17202A" text-anchor="middle">External Entries</text>
+    <text x="234" y="296" font-family="Inter, Arial, sans-serif" font-size="18" fill="#65747D" text-anchor="middle">where work is triggered</text>
+
+    <rect x="128" y="344" width="62" height="62" rx="18" fill="url(#teal)"/>
+    <path d="M144 374 H174 M144 390 H166" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
+    <text x="214" y="369" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="750" fill="#17202A">Feishu</text>
+    <text x="214" y="399" font-family="Inter, Arial, sans-serif" font-size="17" fill="#65747D">team thread</text>
+
+    <line x1="128" y1="440" x2="340" y2="440" stroke="#E7EEF1" stroke-width="2"/>
+
+    <rect x="128" y="472" width="62" height="62" rx="18" fill="url(#blue)"/>
+    <circle cx="159" cy="503" r="18" stroke="#FFFFFF" stroke-width="4"/>
+    <path d="M141 503 H177 M159 485 C166 495 166 512 159 521 M159 485 C152 495 152 512 159 521" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+    <text x="214" y="498" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="750" fill="#17202A">Web UI</text>
+    <text x="214" y="528" font-family="Inter, Arial, sans-serif" font-size="17" fill="#65747D">local dashboard</text>
+
+    <line x1="128" y1="568" x2="340" y2="568" stroke="#E7EEF1" stroke-width="2"/>
+
+    <rect x="128" y="600" width="62" height="62" rx="18" fill="url(#amber)"/>
+    <circle cx="159" cy="631" r="18" stroke="#FFFFFF" stroke-width="4"/>
+    <path d="M159 618 V633 L170 640" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="214" y="626" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="750" fill="#17202A">Schedule</text>
+    <text x="214" y="656" font-family="Inter, Arial, sans-serif" font-size="17" fill="#65747D">automatic task</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="498" y="174" width="604" height="560" rx="34" fill="#FFFFFF" stroke="#D5E2E6" stroke-width="2"/>
+    <text x="800" y="238" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#17202A" text-anchor="middle">Local Agent Gateway</text>
+    <text x="800" y="272" font-family="Inter, Arial, sans-serif" font-size="19" fill="#65747D" text-anchor="middle">the wrapper layer that makes local agent work structured</text>
+
+    <g>
+      <rect x="548" y="324" width="504" height="82" rx="20" fill="#EFF8FF" stroke="#CFE6FA"/>
+      <circle cx="592" cy="365" r="25" fill="#FFFFFF" stroke="#3B82F6" stroke-width="3"/>
+      <path d="M583 354 L598 365 L583 376 M601 378 H611" stroke="#2563EB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="632" y="356" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" fill="#1C2A36">1. Unified Runner</text>
+      <text x="632" y="383" font-family="Inter, Arial, sans-serif" font-size="16" fill="#52616B">convert heterogeneous CLI events into one message stream</text>
+    </g>
+
+    <g>
+      <rect x="548" y="428" width="504" height="82" rx="20" fill="#ECFDFB" stroke="#C9EFEA"/>
+      <circle cx="592" cy="469" r="25" fill="#FFFFFF" stroke="#14B8A6" stroke-width="3"/>
+      <path d="M580 463 H602 C608 463 612 467 612 473 C612 479 608 483 602 483 H593 L581 492 V483 H580 C574 483 570 479 570 473 C570 467 574 463 580 463Z" stroke="#0D9488" stroke-width="3" stroke-linejoin="round"/>
+      <text x="632" y="460" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" fill="#1C2A36">2. Thread ↔ Session Mapping</text>
+      <text x="632" y="487" font-family="Inter, Arial, sans-serif" font-size="16" fill="#52616B">keep context continuous across channels and agent threads</text>
+    </g>
+
+    <g>
+      <rect x="548" y="532" width="504" height="82" rx="20" fill="#FFFAEB" stroke="#F5E0AC"/>
+      <circle cx="592" cy="573" r="25" fill="#FFFFFF" stroke="#D97706" stroke-width="3"/>
+      <rect x="580" y="570" width="24" height="18" rx="4" stroke="#B45309" stroke-width="3"/>
+      <path d="M584 568 V561 C584 555 588 551 592 551 C596 551 600 555 600 561 V568" stroke="#B45309" stroke-width="3" stroke-linecap="round"/>
+      <text x="632" y="564" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" fill="#1C2A36">3. Session-level Serial Lock</text>
+      <text x="632" y="591" font-family="Inter, Arial, sans-serif" font-size="16" fill="#52616B">control concurrency for stateful local agent execution</text>
+    </g>
+
+    <g>
+      <rect x="548" y="636" width="504" height="82" rx="20" fill="#F5F3FF" stroke="#DED6FE"/>
+      <circle cx="592" cy="677" r="25" fill="#FFFFFF" stroke="#7C3AED" stroke-width="3"/>
+      <path d="M576 669 L592 659 L608 669 L592 679 Z M576 678 L592 688 L608 678 M576 687 L592 697 L608 687" stroke="#6D28D9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="632" y="668" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" fill="#1C2A36">4. Layered Context Injection</text>
+      <text x="632" y="695" font-family="Inter, Arial, sans-serif" font-size="16" fill="#52616B">schedule memory and project context instead of stuffing prompts</text>
+    </g>
+  </g>
+
+  <g filter="url(#softShadow)">
+    <rect x="1210" y="230" width="310" height="178" rx="28" fill="#FFFFFF" stroke="#D8E4E8" stroke-width="2"/>
+    <text x="1365" y="284" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" fill="#17202A" text-anchor="middle">CLI Agent</text>
+    <text x="1365" y="315" font-family="Inter, Arial, sans-serif" font-size="18" fill="#65747D" text-anchor="middle">Codex / Claude Code</text>
+    <rect x="1272" y="340" width="76" height="58" rx="18" fill="#ECFDFB" stroke="#A7E7DD" stroke-width="2"/>
+    <path d="M1295 361 L1312 373 L1295 386 M1316 388 H1332" stroke="#0D9488" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1395" y="366" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="750" fill="#1C2A36">read repo</text>
+    <text x="1395" y="392" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="750" fill="#1C2A36">run tools</text>
+  </g>
+
+  <g filter="url(#softShadow)">
+    <rect x="1210" y="520" width="310" height="150" rx="28" fill="#FFFFFF" stroke="#D8E4E8" stroke-width="2"/>
+    <text x="1365" y="575" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" fill="#17202A" text-anchor="middle">Render Back</text>
+    <text x="1365" y="606" font-family="Inter, Arial, sans-serif" font-size="18" fill="#65747D" text-anchor="middle">Feishu cards / Web UI</text>
+    <rect x="1274" y="628" width="138" height="14" rx="7" fill="#D8F3EF"/>
+    <rect x="1274" y="652" width="184" height="14" rx="7" fill="#E6EEF3"/>
+  </g>
+
+  <path d="M384 450 C430 450 450 450 498 450" stroke="#0EA5A7" stroke-width="5" marker-end="url(#arrowTeal)"/>
+  <path d="M1102 438 C1154 438 1176 318 1210 318" stroke="#2563EB" stroke-width="5" marker-end="url(#arrowBlue)"/>
+  <path d="M1365 408 V520" stroke="#0EA5A7" stroke-width="5" stroke-dasharray="10 10" marker-end="url(#arrowTeal)"/>
+  <path d="M1210 610 C1154 610 1134 664 1102 674" stroke="#0EA5A7" stroke-width="5" stroke-dasharray="10 10" marker-end="url(#arrowTeal)"/>
+
+  <g filter="url(#softShadow)">
+    <rect x="338" y="790" width="924" height="58" rx="29" fill="#FFFFFF" stroke="#D8E4E8" stroke-width="2"/>
+    <circle cx="382" cy="819" r="10" fill="#14B8A6"/>
+    <text x="410" y="826" font-family="Inter, Arial, sans-serif" font-size="20" fill="#52616B">
+      Do not outbuild the model vendor. Use engineering systems to make their agents fit your workflow.
+    </text>
+  </g>
+</svg>
