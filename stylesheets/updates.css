@@ -1,3 +1,7 @@
+.updates-document-dates {
+  margin-top: 1rem;
+}
+
 .updates-note {
   margin: 0.2rem 0 0;
   color: var(--md-default-fg-color--light);
@@ -9,7 +13,7 @@
   display: flex;
   align-items: center;
   gap: 0.55rem;
-  margin: 0.45rem 0 1.35rem;
+  margin: 0.45rem 0 1.1rem;
   color: var(--md-default-fg-color--light);
   font-size: 0.74rem;
 }
@@ -22,33 +26,102 @@
   color: var(--md-default-fg-color--light);
 }
 
-.updates-list {
-  display: grid;
-  gap: 0;
-  padding-left: 1.35rem;
+.updates-document-dates .article-layout-switcher {
+  justify-content: flex-start;
+  gap: 0.25rem;
+  margin: 0.2rem 0 0.75rem;
 }
 
-.updates-list li {
-  border-bottom: 1px solid var(--md-default-fg-color--lightest);
-  padding: 0.7rem 0 0.75rem 0.35rem;
-}
-
-.updates-list a {
-  font-weight: 600;
-}
-
-.updates-summary {
-  margin: 0.2rem 0 0;
+.updates-document-dates .article-layout-switcher button {
+  border-radius: 6px;
   color: var(--md-default-fg-color--light);
-  font-size: 0.86rem;
-  line-height: 1.55;
 }
 
-.updates-list time {
+.updates-document-dates .article-layout-switcher button.is-active {
+  color: var(--md-accent-fg-color);
+}
+
+.updates-document-dates .article-grid {
+  gap: 0.65rem !important;
+  margin: 0.6rem 0 0 !important;
+}
+
+.updates-document-dates .article-card {
+  border-color: var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+  padding: 0.72rem;
+  background: var(--md-default-bg-color);
+  box-shadow: none;
+}
+
+.updates-document-dates .card-header {
+  gap: 0.65rem;
+  align-items: flex-start;
+}
+
+.updates-document-dates .card-title {
+  color: var(--md-default-fg-color);
+  display: -webkit-box;
+  font-size: 0.7rem;
+  font-weight: 660;
+  line-height: 1.42;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  white-space: normal;
+}
+
+.updates-document-dates .card-date {
+  color: var(--md-default-fg-color--light);
+  flex-shrink: 0;
+  font-size: 0.56rem;
+  margin-right: 0;
+  padding-top: 0.08rem;
+  white-space: nowrap;
+}
+
+.updates-document-dates .card-body {
+  margin-top: 0.42rem;
+}
+
+.updates-document-dates .card-summary {
+  color: var(--md-default-fg-color--light);
+  font-size: 0.6rem;
+  line-height: 1.58;
+  letter-spacing: 0;
+  word-break: break-word;
+}
+
+.updates-document-dates .article-grid.is-list {
+  border-color: var(--md-default-fg-color--lightest);
+  padding: 0.5rem 0.75rem;
+}
+
+.updates-document-dates .article-grid.is-list .article-card {
+  padding: 0.38rem 0;
+}
+
+.updates-document-dates .article-grid.is-list .card-header {
+  align-items: flex-start;
+}
+
+.updates-document-dates .article-grid.is-list .card-title {
   display: block;
-  margin-top: 0.15rem;
-  color: var(--md-default-fg-color--light);
-  font-size: 0.8rem;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.updates-document-dates .article-grid.is-list .card-date {
+  font-size: 0.56rem;
+  padding-top: 0.1rem;
+}
+
+.updates-card-hidden {
+  display: none !important;
 }
 
 .updates-actions {
@@ -61,7 +134,7 @@
 .updates-count {
   margin: 0;
   color: var(--md-default-fg-color--light);
-  font-size: 0.78rem;
+  font-size: 0.7rem;
 }
 
 .updates-more {
@@ -71,7 +144,7 @@
   color: var(--md-accent-fg-color);
   cursor: pointer;
   font: inherit;
-  font-size: 0.82rem;
+  font-size: 0.72rem;
 }
 
 .updates-more:hover {

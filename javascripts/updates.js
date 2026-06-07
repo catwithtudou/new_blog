@@ -1,104 +1,36 @@
 (function () {
-  var scriptSrc = document.currentScript && document.currentScript.src;
-
-  function fallbackFeedUrl() {
-    var path = window.location.pathname;
-
-    if (path.charAt(path.length - 1) !== "/") {
-      path = path.replace(/[^/]*$/, "");
-    }
-
-    return window.location.protocol + "//" + window.location.host
-      + path.replace(/\/[^/]+\/?$/, "/")
-      + "feed_json_updated.json";
+  function pad(value) {
+    return String(value).padStart(2, "0");
   }
 
-  function getFeedUrl() {
-    if (!scriptSrc) {
-      return fallbackFeedUrl();
-    }
-
-    return scriptSrc.replace(/javascripts\/updates\.js(?:\?.*)?$/, "feed_json_updated.json");
-  }
-
-  function cacheBustUrl(url) {
-    return url + (url.indexOf("?") === -1 ? "?" : "&") + "v=" + Date.now();
-  }
-
-  function formatDate(value) {
-    if (!value) {
-      return "";
-    }
-
+  function formatMinuteDate(value) {
     var date = new Date(value);
 
-    if (Number.isNaN(date.getTime())) {
-      return value;
+    if (!value || Number.isNaN(date.getTime())) {
+      return value || "";
     }
 
-    return date.toLocaleString(undefined, {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-      hour: "2-digit", minute: "2-digit",
-      hour12: false
-    });
+    return date.getFullYear() + "年"
+      + (date.getMonth() + 1) + "月"
+      + date.getDate() + "日 "
+      + pad(date.getHours()) + ":"
+      + pad(date.getMinutes());
   }
 
-  function itemDate(item) {
-    return item.date_modified || item.date_published || item.date_created || "";
+  function readStoredLayout() {
+    try {
+      return window.localStorage.getItem("updates_document_dates_layout") || "grid";
+    } catch (error) {
+      return "grid";
+    }
   }
 
-  function trimLeadingTitle(text, title) {
-    var normalizedTitle = (title || "").replace(/\s+/g, " ").trim();
-
-    if (!normalizedTitle || text.indexOf(normalizedTitle) !== 0) {
-      return text;
+  function writeStoredLayout(layout) {
+    try {
+      window.localStorage.setItem("updates_document_dates_layout", layout);
+    } catch (error) {
+      // localStorage can be unavailable in strict browser contexts.
     }
-
-    return text.slice(normalizedTitle.length).replace(/^[\s:：\-—]+/, "").trim();
-  }
-
-  function cleanSummaryText(text) {
-    return text
-      .replace(/!\[[^\]]*]\([^)]+\)/g, "")
-      .replace(/\[([^\]]+)]\([^)]+\)/g, "$1")
-      .replace(/https?:\/\/\S+/g, "")
-      .replace(/\s+/g, " ")
-      .trim();
-  }
-
-  function itemSummary(item) {
-    var source = item.content_html || item.summary || item.content_text || "";
-    var text = source;
-    var maxLength = 150;
-
-    if (!source) {
-      return "";
-    }
-
-    if (item.content_html) {
-      var container = document.createElement("div");
-      var heading = null;
-
-      container.innerHTML = item.content_html;
-      heading = container.querySelector("h1");
-
-      if (heading && heading.parentNode) {
-        heading.parentNode.removeChild(heading);
-      }
-
-      text = container.textContent || container.innerText || "";
-    }
-
-    text = cleanSummaryText(text);
-    text = trimLeadingTitle(text, item.title);
-
-    if (text.length <= maxLength) {
-      return text;
-    }
-
-    return text.slice(0, maxLength).replace(/[，。,.、\s]+$/, "") + "...";
   }
 
   function clearElement(element) {
@@ -107,170 +39,129 @@
     }
   }
 
-  function fetchJson(url) {
-    if (typeof window.fetch === "function") {
-      return window.fetch(url, {
-        cache: "no-store",
-        credentials: "same-origin",
-        headers: {
-          "Cache-Control": "no-cache"
-        }
-      })
-        .then(function (response) {
-          if (!response.ok) {
-            throw new Error("feed request failed");
-          }
+  function formatTimes(root) {
+    root.querySelectorAll(".card-date").forEach(function (time) {
+      var datetime = time.getAttribute("datetime");
+      var formatted = formatMinuteDate(datetime);
 
-          return response.json();
-        });
-    }
-
-    return new Promise(function (resolve, reject) {
-      var request = new XMLHttpRequest();
-
-      request.open("GET", url, true);
-      request.setRequestHeader("Cache-Control", "no-cache");
-      request.onreadystatechange = function () {
-        if (request.readyState !== 4) {
-          return;
-        }
-
-        if (request.status < 200 || request.status >= 300) {
-          reject(new Error("feed request failed"));
-          return;
-        }
-
-        try {
-          resolve(JSON.parse(request.responseText));
-        } catch (error) {
-          reject(error);
-        }
-      };
-      request.onerror = function () {
-        reject(new Error("feed request failed"));
-      };
-      request.send();
+      if (formatted) {
+        time.textContent = formatted;
+      }
     });
   }
 
-  function isContentItem(item) {
-    var url = item.url || item.id || "";
-    var title = (item.title || "").trim();
+  function enhanceTitleTooltips(root) {
+    root.querySelectorAll(".card-title").forEach(function (title) {
+      var text = title.textContent.replace(/\s+/g, " ").trim();
+      var link = title.closest("a");
 
-    if (!url || !title) {
-      return false;
-    }
-
-    return !/\/(?:updates|blog\/(?:archive|category|page))(?:\/|$)/.test(url);
-  }
-
-  function normalizeItems(items) {
-    var seen = new Set();
-
-    return items.filter(function (item) {
-      var url = item.url || item.id || "";
-
-      if (!isContentItem(item) || seen.has(url)) {
-        return false;
+      if (!text) {
+        return;
       }
 
-      seen.add(url);
-      return true;
+      title.title = text;
+
+      if (link) {
+        link.title = text;
+      }
     });
   }
 
-  function renderError(root) {
-    root.innerHTML = '<p class="updates-status">Unable to load recent updates.</p>';
-  }
+  function bindLayoutControls(root, grid) {
+    var switcher = root.querySelector(".article-layout-switcher");
+    var listButton = switcher && switcher.querySelector(".layout-list-btn");
+    var detailButton = switcher && switcher.querySelector(".layout-detail-btn");
+    var gridButton = switcher && switcher.querySelector(".layout-grid-btn");
 
-  function createUpdateEntry(item) {
-    var date = itemDate(item);
-    var entry = document.createElement("li");
-    var link = document.createElement("a");
-    var summary = document.createElement("p");
-    var time = document.createElement("time");
-
-    link.href = item.url || item.id || "#";
-    link.textContent = item.title || link.href;
-    summary.className = "updates-summary";
-    summary.textContent = itemSummary(item);
-    time.dateTime = date;
-    time.textContent = formatDate(date);
-
-    entry.appendChild(link);
-
-    if (summary.textContent) {
-      entry.appendChild(summary);
-    }
-
-    if (date) {
-      entry.appendChild(time);
-    }
-
-    return entry;
-  }
-
-  function renderUpdates(root, items) {
-    var pageSize = parseInt(root.getAttribute("data-page-size") || root.getAttribute("data-count") || "20", 10);
-    var step = isFinite(pageSize) && pageSize > 0 ? pageSize : 20;
-    var allItems = normalizeItems(items);
-    var visibleCount = Math.min(step, allItems.length);
-
-    if (!allItems.length) {
-      root.innerHTML = '<p class="updates-status">No recent updates found.</p>';
+    if (!switcher || !listButton || !detailButton || !gridButton) {
       return;
     }
 
-    var list = document.createElement("ol");
+    function setLayout(layout) {
+      grid.classList.toggle("is-list", layout === "list");
+      grid.classList.toggle("is-detail", layout === "detail");
+      listButton.classList.toggle("is-active", layout === "list");
+      detailButton.classList.toggle("is-active", layout === "detail");
+      gridButton.classList.toggle("is-active", layout === "grid");
+      writeStoredLayout(layout);
+    }
+
+    listButton.type = "button";
+    detailButton.type = "button";
+    gridButton.type = "button";
+    listButton.setAttribute("aria-label", "List view");
+    detailButton.setAttribute("aria-label", "Detail view");
+    gridButton.setAttribute("aria-label", "Grid view");
+
+    listButton.addEventListener("click", function () {
+      setLayout("list");
+    });
+    detailButton.addEventListener("click", function () {
+      setLayout("detail");
+    });
+    gridButton.addEventListener("click", function () {
+      setLayout("grid");
+    });
+
+    setLayout(readStoredLayout());
+  }
+
+  function paginateCards(root, grid) {
+    var pageSize = parseInt(root.getAttribute("data-page-size") || "20", 10);
+    var step = isFinite(pageSize) && pageSize > 0 ? pageSize : 20;
+    var cards = Array.prototype.slice.call(grid.querySelectorAll(".article-card"));
+    var visibleCount = Math.min(step, cards.length);
     var actions = document.createElement("div");
     var count = document.createElement("p");
     var more = document.createElement("button");
 
-    list.className = "updates-list";
+    if (!cards.length) {
+      return;
+    }
+
     actions.className = "updates-actions";
     count.className = "updates-count";
     more.className = "updates-more";
     more.type = "button";
     more.textContent = "Show more updates";
 
-    function renderVisibleItems() {
-      clearElement(list);
-
-      allItems.slice(0, visibleCount).forEach(function (item) {
-        list.appendChild(createUpdateEntry(item));
+    function renderVisibleCards() {
+      cards.forEach(function (card, index) {
+        card.classList.toggle("updates-card-hidden", index >= visibleCount);
       });
 
-      count.textContent = "Showing " + visibleCount + " of " + allItems.length + " updates";
-      more.hidden = visibleCount >= allItems.length;
+      count.textContent = "Showing " + visibleCount + " of " + cards.length + " updates";
+      more.hidden = visibleCount >= cards.length;
     }
 
     more.addEventListener("click", function () {
-      visibleCount = Math.min(visibleCount + step, allItems.length);
-      renderVisibleItems();
+      visibleCount = Math.min(visibleCount + step, cards.length);
+      renderVisibleCards();
     });
 
-    clearElement(root);
+    clearElement(actions);
     actions.appendChild(count);
     actions.appendChild(more);
-    root.appendChild(list);
     root.appendChild(actions);
-    renderVisibleItems();
+    renderVisibleCards();
   }
 
-  function initUpdates() {
-    var root = document.querySelector("[data-updates-list]");
+  function enhanceDocumentDatesUpdates(root) {
+    var grid = root.querySelector(".article-grid");
 
-    if (!root) {
+    if (!grid || root.dataset.updatesEnhanced === "true") {
       return;
     }
 
-    fetchJson(cacheBustUrl(getFeedUrl()))
-      .then(function (feed) {
-        renderUpdates(root, Array.isArray(feed.items) ? feed.items : []);
-      })
-      .catch(function () {
-        renderError(root);
-      });
+    root.dataset.updatesEnhanced = "true";
+    formatTimes(root);
+    enhanceTitleTooltips(root);
+    bindLayoutControls(root, grid);
+    paginateCards(root, grid);
+  }
+
+  function initUpdates() {
+    document.querySelectorAll("[data-document-dates-updates]").forEach(enhanceDocumentDatesUpdates);
   }
 
   if (document.readyState === "loading") {
