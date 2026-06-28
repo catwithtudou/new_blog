@@ -63,15 +63,15 @@
     
       <link rel="stylesheet" href="../assets/document_dates/tippy/material.css">
     
-      <link rel="stylesheet" href="../assets/document_dates/tippy/shift-away.css">
-    
       <link rel="stylesheet" href="../assets/document_dates/tippy/light.css">
-    
-      <link rel="stylesheet" href="../assets/document_dates/tippy/tippy.css">
     
       <link rel="stylesheet" href="../assets/document_dates/tippy/backdrop.css">
     
+      <link rel="stylesheet" href="../assets/document_dates/tippy/tippy.css">
+    
       <link rel="stylesheet" href="../assets/document_dates/tippy/scale.css">
+    
+      <link rel="stylesheet" href="../assets/document_dates/tippy/shift-away.css">
     
       <link rel="stylesheet" href="../assets/document_dates/core/core.css">
     
@@ -1108,6 +1108,10 @@
         
       
         
+      
+        
+      
+        
           
         
       
@@ -1196,7 +1200,7 @@
 
 <h1 id="recently-updated">🆕Recently Updated<a class="headerlink" href="#recently-updated" title="Permanent link">&para;</a></h1>
 <p class="updates-note">
-  Sorted by Git last-modified time at build time. Only Markdown content pages are included; index pages, archives, categories, pagination pages, and this page are excluded. The page initially shows 20 entries and can expand the rest in place.
+  Sorted by Git last-modified time at build time. Only Markdown content pages are included; index pages, inbox drafts, archives, categories, pagination pages, and this page are excluded. The page initially shows 20 entries and can expand the rest in place.
 </p>
 
 <div class="updates-toolbar" aria-label="Update feed links">
@@ -1468,27 +1472,125 @@
         --summary-lines-detail: 4;
      ">
     <div class="article-card">
-        <a class="card-header" href="/new_blog/algorithms/LLM/inbox/260607_local_agent_runtime_agentara/" target="_blank">
-            <div class="card-title">从 CLI Agent 到本地 Agent Runtime：一套包装本地 Agent 的工程模式</div>
-            <time class="dd-timeago card-date" datetime="2026-06-07T13:43:54+00:00">2026-06-07</time>
+        <a class="card-header" href="/new_blog/common/20220129_%E7%A8%8B%E5%BA%8F%E4%B8%AD%E7%9A%84%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86note/" target="_blank">
+            <div class="card-title">程序中的错误处理note</div>
+            <time class="dd-timeago card-date" datetime="2026-06-28T12:47:13+00:00">2026-06-28</time>
         </a>
         <div class="card-body">
-            <div class="card-summary">文档目标  - 解释 Codex / Claude Code 这类 CLI Agent 如何从“终端里的命令”变成“工作流里的 Runtime”  - 用 Agentara 作为具体例子，拆解包装本地 Agent 需要补齐的工程层  - 总结这套模式的适用场景、风险边界和可迁移原则   阅读受众  - 已经使用过 Codex、Claude Code 或类似 Coding Agent 的开发者  - 想把本地 Agent 接入飞书、Web、定时任务或知识库工作流的同学  - 希望理解 Agentara 这类项目工程本质，而不是只看安装和配置步骤的读者   0. Insight  - 本地 Agent 的难点不只在模型：真正决定它能否进入真实工作流的，是模型外面的消息通道、会话系统、任务队列、记忆注入和可观测 UI</div>
+            <div class="card-summary">错误返回和异常捕捉  错误可以分为三个大类：  - 资源的错误。当我们的代码去请求一些资源时导致的错误，比如打开一个没有权限的文件，写文件时出现的写错误，发送文件到网络端发现网络故障的错误，等等。这一类错误属于程序运行环境的问题。对于这类错误，有的我们可以处理，有的我们则无法处理。比如，内存耗尽、栈溢出或是一些程序运行时关键性资源不能满足等等这些情况，我们只能停止运行，甚至退出整个程序。  - 程序的错误。比如：空指针、非法参数等。这类是我们自己程序的错误，我们要记录下来，写入日志，最好触发监控系统报警。  - 用户的错误。比如：Bad Request、Bad Format 等这类由用户不合法输入带来的错误。这类错误基本上是在用户的 API 层上出现的问题。比如，解析一个 XML 或 JSON 文件，或是用户输入的字段不合法之类的。对于这类问题，我们需要向用户端报错，让用户自己处理修正他们的输入或操作。然后，我们正常执行，但是需要做统计，统计相应的错误率，这样有利于我们改善软件或是侦测是否有恶意的用户请求。  我们可以看到，这三类错误中，有些是我们希望杜绝发生的，比如程序的 Bug，有些则是我们杜绝不了的，比如用户的输入。而对于程序运行环境中的一些错误，则是我们希望可以恢复的。也就是说，我们希望可以通过重试或是妥协的方式来解决这些环境的问题，比如重建网络连接，重新打开一个新的文件。  所以，是不是我们可以这样来在逻辑上分类：  - 对于我们并不期望会发生的事，我们可以使用异常捕捉；  - 对于我们觉得可能会发生的事，使用返回码。  总之，“报错的类型” 和 “错误处理” 是紧密相关的，错误处理方法多种多样，而且会在不同的层面上处理错误。有些底层错误就需要自己处理掉（比如：底层模块会自动重建网络连接），而有一些错误需要更上层的业务逻辑来处理（比如：重建网络连接不成功后只能让上层业务来处理怎么办？降级使用本地缓存还是直接报错给用户？）。</div>
         </div>
         <div class="card-footer">
-            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>11 min read</span>
+            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>4 min read</span>
+        </div>
+    </div>
+    <div class="article-card">
+        <a class="card-header" href="/new_blog/common/20220313_%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_blank">
+            <div class="card-title">思维导图的使用</div>
+            <time class="dd-timeago card-date" datetime="2026-06-28T12:47:13+00:00">2026-06-28</time>
+        </a>
+        <div class="card-body">
+            <div class="card-summary">在讲述如何使用思维导图之前，我们不妨先思考为什么在一开始我们需要思维导图？  带着这一问题，我们首先来简单了解下思维导图的本质。   思维导图的本质  简单概括下来，传统思维导图的本质就是信息结构的可视化。  如何理解这句话呢？下面我们来根据以下几方面来理解：  - 信息及信息的载体  - 自然语言的缺陷  - 传统思维导图的意义   信息及信息的载体  任何信息，都包含着：</div>
+        </div>
+        <div class="card-footer">
+            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>3 min read</span>
+        </div>
+    </div>
+    <div class="article-card">
+        <a class="card-header" href="/new_blog/common/books_note/20220324__%E5%93%B2%E5%AD%A6_%E6%AD%BB%E4%BA%A1_notes/" target="_blank">
+            <div class="card-title">《哲学-死亡》notes</div>
+            <time class="dd-timeago card-date" datetime="2026-06-28T12:47:13+00:00">2026-06-28</time>
+        </a>
+        <div class="card-body">
+            <div class="card-summary">对于死亡的普遍观点：  - 我们拥有灵魂，这是比肉体更重要的事物，精神上的非物质的。死亡只能毁灭肉体，而不能摧毁灵魂。通过灵魂得到永生，以此面对死亡的可怕和恐惧；  课程的重点是在于自己的深思熟虑，而不是重点争论观点的正确与否。  尝试从理性的角度去分析死亡。</div>
+        </div>
+        <div class="card-footer">
+            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>1 min read</span>
+        </div>
+    </div>
+    <div class="article-card">
+        <a class="card-header" href="/new_blog/common/books_note/20240110_%E4%B9%A6%E7%B1%8D%E9%98%85%E8%AF%BB%E6%B8%85%E5%8D%95/" target="_blank">
+            <div class="card-title">书籍阅读清单</div>
+            <time class="dd-timeago card-date" datetime="2026-06-28T12:47:13+00:00">2026-06-28</time>
+        </a>
+        <div class="card-body">
+            <div class="card-summary"></div>
+        </div>
+        <div class="card-footer">
+            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>1 min read</span>
+        </div>
+    </div>
+    <div class="article-card">
+        <a class="card-header" href="/new_blog/middleware/search_engine/20220318_elasticsearch%E6%B7%B1%E5%85%A5%E6%90%9C%E7%B4%A2/" target="_blank">
+            <div class="card-title">ElasticSearch深入搜索</div>
+            <time class="dd-timeago card-date" datetime="2026-06-28T12:47:13+00:00">2026-06-28</time>
+        </a>
+        <div class="card-body">
+            <div class="card-summary">基于词项和基于全文搜索   基于 Term 的查询  - Term 的重要性  - Term 是表达语意的最小单位  - 搜索和利用统计语言模型进行自然语言处理都需要处理 Term  - 特点  - Term Level Query:Term Query/Range Query/Exists Query/Prefix Query/Wildcard Query  - Term 查询对输入不做分词（会将输入作为一个整体，在倒排索引中查找准确的词项，并且使用相关度算分公式为每个包含该词项的文档进行相关度算分）  - 可以通过 Constant Score 将查询转换成一个 Filtering，避免算分，并利用缓存，提高性能   复合查询（Constant Score 转为 Filter）</div>
+        </div>
+        <div class="card-footer">
+            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>3 min read</span>
+        </div>
+    </div>
+    <div class="article-card">
+        <a class="card-header" href="/new_blog/blog/2022/01/28/2020/" target="_blank">
+            <div class="card-title">2020</div>
+            <time class="dd-timeago card-date" datetime="2026-06-28T12:44:02+00:00">2026-06-28</time>
+        </a>
+        <div class="card-body">
+            <div class="card-summary">又到了一年的末尾，见到周围许多人都开始书写自己的年终总结，虽然每一年自己都有这个想法，但是每次写到一半的时候心情就开始发生一些变化，可能回想着其他人的总结与自己的对比会产生的落差感，也可能回想着自己没有实现的目标会觉得有很多遗憾，最后全选所选内容删除，以复杂的心情为自己的一年画上不完美的句号。  于是又到今年的这一天，想下定决心认真写下自己的年终总结。首先我不由得思考年终总结的意义，又或者我有没有必要花上这段时间去做事情，因为很多时候，我总是会被周围的想法所引导，这是一个不好的习惯，由此也可以看出我在对于某件事情若不够自信，就会不自觉地会被他人所影响，从而放弃自己的思考。  回到年终总结的意义，应该是对于生活的记录，对于自我的反思，对于他人的分享。随着年龄越来越大，越发感觉时间越走越快，对于以前不喜欢记录生活的我，现在也变得越发珍惜如今的生活。说起长大的变化，可能最大的就是自我的反思，见识得越多越能认识到自己的渺小与无助，总是觉得自己还缺少些什么，无论与他人相比还是与自己相比，总是不能让自己满意。  好了，说了这么多还是来回顾一下这糟糕的一年吧。  - 1月：学校期末考试的阶段，除了每天复习，也在忙着学习springboot2、python、卷积分神经网络相关的，当时对于计算机视觉这一块比较感兴趣，还是花了很多时间在这上面的。  - 2月：寒假期间发生的疫情打乱了过年的计划，做的事情比较少，大概还是在学习MySQL高性能分析和卷积分神经网络相关的，还有就是在做Go网盘项目和掌上重邮项目。  - 3月-5月：在家无论是上课还是学习，学习效率都比较低，其中还尝试开学习直播之类的，期间一直也在学习机器学习相关，在忙着轻语项目和一些网课实战的项目。  - 6月：回到学校就开始组织的换届和期末考试了，虽然之前有很多顾虑，但是想了想还是决定去竞选组织的负责人，最后学长学姐也比较信任我，重任也就担任在我身上了。  - 7月-9月：这段时间开始接手和管理组织的所有事情，同时也在忙着重邮帮微信小程序的项目，算下来一共写了差不多有将近60多个接口，第一次写这么大的项目，收获还是蛮多的，这个时间段几乎组织大多项目我都在接手，因为短时间还不能转接给干事。一边在处理组织的事情（也是组织事情最多的时间段），也一边写着项目，这段时间过得非常累，可能不太适应领导者的身份，还不太习惯将任务事情分担。对了这段事情也在学习前端的相关知识，但是学习的时间不是很多。  - 10月：这个月在渐渐把项目转接给学弟，自己也适应了组织领导者的身份，虽然事情还是比较多，但是没有之前那么慌乱和心急了。同时这个月接触到分布式系统架构还有就是CNCF相关的项目，自己觉得挺感兴趣的，但是无奈要学习的东西太多了，平时也开始逛Go社区论坛之类的。</div>
+        </div>
+        <div class="card-footer">
+            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>4 min read</span>
+            <div class="md-tags">
+                <span class="md-tag md-tag-icon">生活随笔</span>
+                <span class="md-tag md-tag-icon">年度总结</span>
+                <span class="md-tag md-tag-icon">日常生活</span>
+            </div>
+        </div>
+    </div>
+    <div class="article-card">
+        <a class="card-header" href="/new_blog/blog/2022/01/28/2021/" target="_blank">
+            <div class="card-title">2021</div>
+            <time class="dd-timeago card-date" datetime="2026-06-28T12:44:02+00:00">2026-06-28</time>
+        </a>
+        <div class="card-body">
+            <div class="card-summary">又到了新的一年，想了想还是来总结下吧。  还是来梳理下这糟糕的一年吧：  - 1月：准备学校期末考试，月底实习入职；  - 2月：熟悉公司内部各种环境，接触分享方面业务；  - 3月：完成了在公司的第一个需求（属于优化的技术需求且难度不大）；  - 4月-5月上旬：完成了在公司的第一个P0级活动需求和复盘；  - 5月中下旬：完成了在公司的第一个重构优化方面的技术需求；  - 6月：回到学校准备期末考试和集中处理学校事务；  - 7月：深挖理解公司内部的某业务技术组件和熟悉交接过来的业务技术组件，并准备串讲和实习转正答辩；  - 8月-10月上旬：完成了在公司的第二个P0级活动需求和复盘；</div>
+        </div>
+        <div class="card-footer">
+            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>2 min read</span>
+            <div class="md-tags">
+                <span class="md-tag md-tag-icon">生活随笔</span>
+                <span class="md-tag md-tag-icon">年度总结</span>
+                <span class="md-tag md-tag-icon">日常生活</span>
+            </div>
+        </div>
+    </div>
+    <div class="article-card">
+        <a class="card-header" href="/new_blog/blog/2024/01/21/%E4%BB%8A%E6%99%9A%E5%81%9C%E4%B8%8B%E6%9D%A5%E5%90%8E%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/" target="_blank">
+            <div class="card-title">今晚停下来后的一些想法</div>
+            <time class="dd-timeago card-date" datetime="2026-06-28T12:44:02+00:00">2026-06-28</time>
+        </a>
+        <div class="card-body">
+            <div class="card-summary">能量装在瓶子里  这里的能量就是我每天想去做某件事所需要的必要前置条件，每件事在需要消耗的数值也是不同的，有的高，有的低  当然影响数值的因素，不仅是某件事本身，还有当时这件事的环境，包含自身内部环境和周围外部环境  而能量是装在瓶子里的，每个人的瓶子不一样，有的人容量很大，有的人很小，大到每天都倒不完，小到老是看到底  当瓶子变空了，你就没办法做所想的事情，就比如平常下班的时候，到家就直接躺在了床上，做一些不用想的事情  不过也有办法，你可以通过某些方式去向别人或自己借一些能量，只不过是有代价的，日积月累可能会让瓶子碎掉  所以最好的方式，还是需要小心翼翼得保护好瓶子，若想做某件事情也需要提前做好准备，通过开源节流进行控制  最后在你思考想做某件事情之前，需要明白能量是装在瓶子里的，不要因为没有做成而否定自己，即使机器也是这样   一件事情好像就能定义我的生活  我把不同的时光拆成不同的生活，如果假设这段时光，只有真正定义了这个生活，才会代表有价值、没有白过的话</div>
+        </div>
+        <div class="card-footer">
+            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>3 min read</span>
+            <div class="md-tags">
+                <span class="md-tag md-tag-icon">生活随笔</span>
+                <span class="md-tag md-tag-icon">日常生活</span>
+            </div>
         </div>
     </div>
     <div class="article-card">
         <a class="card-header" href="/new_blog/blog/2026/06/07/%E4%BB%8E-cli-agent-%E5%88%B0%E6%9C%AC%E5%9C%B0-agent-runtime%E4%B8%80%E5%A5%97%E5%8C%85%E8%A3%85%E6%9C%AC%E5%9C%B0-agent-%E7%9A%84%E5%B7%A5%E7%A8%8B%E6%A8%A1%E5%BC%8F/" target="_blank">
             <div class="card-title">从 CLI Agent 到本地 Agent Runtime：一套包装本地 Agent 的工程模式</div>
-            <time class="dd-timeago card-date" datetime="2026-06-07T13:43:54+00:00">2026-06-07</time>
+            <time class="dd-timeago card-date" datetime="2026-06-28T12:44:02+00:00">2026-06-28</time>
         </a>
         <div class="card-body">
-            <div class="card-summary">文档目标  - 解释 Codex / Claude Code 这类 CLI Agent 如何从“终端里的命令”变成“工作流里的 Runtime”  - 用 Agentara 作为具体例子，拆解包装本地 Agent 需要补齐的工程层  - 总结这套模式的适用场景、风险边界和可迁移原则   阅读受众  - 已经使用过 Codex、Claude Code 或类似 Coding Agent 的开发者  - 想把本地 Agent 接入飞书、Web、定时任务或知识库工作流的同学  - 希望理解 Agentara 这类项目工程本质，而不是只看安装和配置步骤的读者   0. Insight  - 本地 Agent 的难点不只在模型：真正决定它能否进入真实工作流的，是模型外面的消息通道、会话系统、任务队列、记忆注入和可观测 UI</div>
+            <div class="card-summary">文档目标  - 解释 Codex / Claude Code 这类 CLI Agent 如何从“终端里的命令”变成“工作流里的 Runtime”  - 用 Agentara 作为具体例子，拆解包装本地 Agent 需要补齐的运行时抽象、记忆机制和安全边界  - 总结这套模式在个人知识库、团队协作和仓库维护场景中的可迁移原则   文档受众  - 已经使用过 Codex、Claude Code 或类似 Coding Agent 的开发者  - 想把本地 Agent 接入飞书、Web、定时任务或知识库工作流的同学  - 希望理解 Agentara 这类项目工程本质，而不是只看安装和配置步骤的读者   0. Insight  - 本地 Agent 的难点不只在模型</div>
         </div>
         <div class="card-footer">
-            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>11 min read</span>
+            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>13 min read</span>
             <div class="md-tags">
                 <span class="md-tag md-tag-icon">llm</span>
                 <span class="md-tag md-tag-icon">aigc</span>
@@ -2019,40 +2121,6 @@
         </div>
     </div>
     <div class="article-card">
-        <a class="card-header" href="/new_blog/blog/2022/01/28/2020/" target="_blank">
-            <div class="card-title">2020</div>
-            <time class="dd-timeago card-date" datetime="2026-04-04T14:19:37+00:00">2026-04-04</time>
-        </a>
-        <div class="card-body">
-            <div class="card-summary">又到了一年的末尾，见到周围许多人都开始书写自己的年终总结，虽然每一年自己都有这个想法，但是每次写到一半的时候心情就开始发生一些变化，可能回想着其他人的总结与自己的对比会产生的落差感，也可能回想着自己没有实现的目标会觉得有很多遗憾，最后全选所选内容删除，以复杂的心情为自己的一年画上不完美的句号。  于是又到今年的这一天，想下定决心认真写下自己的年终总结。首先我不由得思考年终总结的意义，又或者我有没有必要花上这段时间去做事情，因为很多时候，我总是会被周围的想法所引导，这是一个不好的习惯，由此也可以看出我在对于某件事情若不够自信，就会不自觉地会被他人所影响，从而放弃自己的思考。  回到年终总结的意义，应该是对于生活的记录，对于自我的反思，对于他人的分享。随着年龄越来越大，越发感觉时间越走越快，对于以前不喜欢记录生活的我，现在也变得越发珍惜如今的生活。说起长大的变化，可能最大的就是自我的反思，见识得越多越能认识到自己的渺小与无助，总是觉得自己还缺少些什么，无论与他人相比还是与自己相比，总是不能让自己满意。  好了，说了这么多还是来回顾一下这糟糕的一年吧。  - 1月：学校期末考试的阶段，除了每天复习，也在忙着学习springboot2、python、卷积分神经网络相关的，当时对于计算机视觉这一块比较感兴趣，还是花了很多时间在这上面的。  - 2月：寒假期间发生的疫情打乱了过年的计划，做的事情比较少，大概还是在学习MySQL高性能分析和卷积分神经网络相关的，还有就是在做Go网盘项目和掌上重邮项目。  - 3月-5月：在家无论是上课还是学习，学习效率都比较低，其中还尝试开学习直播之类的，期间一直也在学习机器学习相关，在忙着轻语项目和一些网课实战的项目。  - 6月：回到学校就开始组织的换届和期末考试了，虽然之前有很多顾虑，但是想了想还是决定去竞选组织的负责人，最后学长学姐也比较信任我，重任也就担任在我身上了。  - 7月-9月：这段时间开始接手和管理组织的所有事情，同时也在忙着重邮帮微信小程序的项目，算下来一共写了差不多有将近60多个接口，第一次写这么大的项目，收获还是蛮多的，这个时间段几乎组织大多项目我都在接手，因为短时间还不能转接给干事。一边在处理组织的事情（也是组织事情最多的时间段），也一边写着项目，这段时间过得非常累，可能不太适应领导者的身份，还不太习惯将任务事情分担。对了这段事情也在学习前端的相关知识，但是学习的时间不是很多。  - 10月：这个月在渐渐把项目转接给学弟，自己也适应了组织领导者的身份，虽然事情还是比较多，但是没有之前那么慌乱和心急了。同时这个月接触到分布式系统架构还有就是CNCF相关的项目，自己觉得挺感兴趣的，但是无奈要学习的东西太多了，平时也开始逛Go社区论坛之类的。</div>
-        </div>
-        <div class="card-footer">
-            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>3 min read</span>
-            <div class="md-tags">
-                <span class="md-tag md-tag-icon">生活随笔</span>
-                <span class="md-tag md-tag-icon">年度总结</span>
-                <span class="md-tag md-tag-icon">日常生活</span>
-            </div>
-        </div>
-    </div>
-    <div class="article-card">
-        <a class="card-header" href="/new_blog/blog/2022/01/28/2021/" target="_blank">
-            <div class="card-title">2021</div>
-            <time class="dd-timeago card-date" datetime="2026-04-04T14:19:37+00:00">2026-04-04</time>
-        </a>
-        <div class="card-body">
-            <div class="card-summary">又到了新的一年，想了想还是来总结下吧。  还是来梳理下这糟糕的一年吧：  - 1月：准备学校期末考试，月底实习入职；  - 2月：熟悉公司内部各种环境，接触分享方面业务；  - 3月：完成了在公司的第一个需求（属于优化的技术需求且难度不大）；  - 4月-5月上旬：完成了在公司的第一个P0级活动需求和复盘；  - 5月中下旬：完成了在公司的第一个重构优化方面的技术需求；  - 6月：回到学校准备期末考试和集中处理学校事务；  - 7月：深挖理解公司内部的某业务技术组件和熟悉交接过来的业务技术组件，并准备串讲和实习转正答辩；  - 8月-10月上旬：完成了在公司的第二个P0级活动需求和复盘；</div>
-        </div>
-        <div class="card-footer">
-            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>1 min read</span>
-            <div class="md-tags">
-                <span class="md-tag md-tag-icon">生活随笔</span>
-                <span class="md-tag md-tag-icon">年度总结</span>
-                <span class="md-tag md-tag-icon">日常生活</span>
-            </div>
-        </div>
-    </div>
-    <div class="article-card">
         <a class="card-header" href="/new_blog/blog/2022/01/28/simple-socks5-proxy--the-c10k-problem/" target="_blank">
             <div class="card-title">simple socks5 proxy &amp; the c10k problem</div>
             <time class="dd-timeago card-date" datetime="2026-04-04T14:19:37+00:00">2026-04-04</time>
@@ -2065,22 +2133,6 @@
             <div class="md-tags">
                 <span class="md-tag md-tag-icon">network</span>
                 <span class="md-tag md-tag-icon">socks5</span>
-            </div>
-        </div>
-    </div>
-    <div class="article-card">
-        <a class="card-header" href="/new_blog/blog/2024/01/21/%E4%BB%8A%E6%99%9A%E5%81%9C%E4%B8%8B%E6%9D%A5%E5%90%8E%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/" target="_blank">
-            <div class="card-title">今晚停下来后的一些想法</div>
-            <time class="dd-timeago card-date" datetime="2026-04-04T14:19:37+00:00">2026-04-04</time>
-        </a>
-        <div class="card-body">
-            <div class="card-summary">今晚停下来后的一些想法</div>
-        </div>
-        <div class="card-footer">
-            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>1 min read</span>
-            <div class="md-tags">
-                <span class="md-tag md-tag-icon">生活随笔</span>
-                <span class="md-tag md-tag-icon">日常生活</span>
             </div>
         </div>
     </div>
@@ -2325,18 +2377,6 @@
         </div>
     </div>
     <div class="article-card">
-        <a class="card-header" href="/new_blog/algorithms/LLM/inbox/260322_skills_pattern/" target="_blank">
-            <div class="card-title">别再只盯着 SKILL.md 格式了：5 种更值得关注的 Agent Skill 设计模式</div>
-            <time class="dd-timeago card-date" datetime="2026-03-22T14:55:12+00:00">2026-03-22</time>
-        </a>
-        <div class="card-body">
-            <div class="card-summary">当越来越多 Agent 工具开始支持相似的 Skill 组织方式后，很多开发者仍然把注意力放在“外壳”上：   SKILL.md 怎么写   frontmatter 怎么配   references/、assets/ 目录怎么摆   YAML 字段要不要补齐  这些当然重要，但它们解决的，本质上只是封装格式的问题。  真正决定一个 Skill 是否好用、是否稳定、是否能复用的，往往不是它“长什么样”，而是它内部的能力结构怎么设计。  这也是 Google Cloud Tech 那篇《5 Agent Skill design patterns every ADK developer should know》真正值得看的地方：  当 Skill 的包装格式逐渐标准化之后，真正拉开差距的，不再是会不会写 Skill 文件，而是会不会设计 Skill 的内容。  文章总结了 5 种反复出现的 Skill 设计模式：</div>
-        </div>
-        <div class="card-footer">
-            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>9 min read</span>
-        </div>
-    </div>
-    <div class="article-card">
         <a class="card-header" href="/new_blog/blog/2026/03/22/%E5%88%AB%E5%86%8D%E5%8F%AA%E7%9B%AF%E7%9D%80-skillmd-%E6%A0%BC%E5%BC%8F%E4%BA%865-%E7%A7%8D%E6%9B%B4%E5%80%BC%E5%BE%97%E5%85%B3%E6%B3%A8%E7%9A%84-agent-skill-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" target="_blank">
             <div class="card-title">别再只盯着 SKILL.md 格式了：5 种更值得关注的 Agent Skill 设计模式</div>
             <time class="dd-timeago card-date" datetime="2026-03-22T14:55:12+00:00">2026-03-22</time>
@@ -2362,30 +2402,6 @@
         </div>
         <div class="card-footer">
             <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>4 min read</span>
-        </div>
-    </div>
-    <div class="article-card">
-        <a class="card-header" href="/new_blog/algorithms/LLM/inbox/260103_anthropic_skills_guide/" target="_blank">
-            <div class="card-title">Anthropic Agent Skills 完整指南：让 AI Agent 掌握专业技能的标准化方案</div>
-            <time class="dd-timeago card-date" datetime="2026-01-03T15:32:38+00:00">2026-01-03</time>
-        </a>
-        <div class="card-body">
-            <div class="card-summary">引言  随着大语言模型在各个领域的应用越来越广泛，如何让 AI Agent 更好地完成特定领域的专业任务成为了一个重要课题。Anthropic 推出的 Agent Skills 提供了一个优雅的解决方案——通过标准化的技能包（Skill），让 Claude 能够动态加载专业指令和资源，从而在特定任务上表现得更加专业和一致。  本文将深入介绍 Anthropic 的 Skills 项目，帮助你理解其核心价值、技术架构和实际应用。   什么是 Agent Skills？  Agent Skills 是一种将指令、脚本和资源打包成独立技能单元的标准化方案。简单来说，Skill 就是一个包含特定任务指令的文件夹，Claude 可以动态加载这些指令来完成专业化的任务。  Anthropic 在 GitHub 上开源了 skills 仓库，其中包含：  - 示例技能集：展示各种应用场景的参考实现  - 文档处理技能：PDF、DOCX、PPTX、XLSX 等格式的处理能力  - Agent Skills 规范：定义技能包的标准格式  - 技能模板：帮助快速创建自定义技能</div>
-        </div>
-        <div class="card-footer">
-            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>20 min read</span>
-        </div>
-    </div>
-    <div class="article-card">
-        <a class="card-header" href="/new_blog/algorithms/LLM/inbox/260103_skills_cross_platform/" target="_blank">
-            <div class="card-title">跨平台 Skills 实践指南：在任何 AI 工具中使用专业技能</div>
-            <time class="dd-timeago card-date" datetime="2026-01-03T15:32:38+00:00">2026-01-03</time>
-        </a>
-        <div class="card-body">
-            <div class="card-summary">引言  Anthropic 的 Agent Skills 提供了一套优雅的专业技能管理方案，但最初它是 Claude 专属特性。随着社区的发展，现在有多种方案让其他 AI 编程工具（Cursor、Windsurf、Aider 等）也能使用 Skills，甚至在 LangChain、LlamaIndex 等框架中实现类似的 Skills 模式。  本文将介绍三种跨平台 Skills 实践方案，从开箱即用到深度定制，以及在实战中创建和迭代 Skills 的最佳工作流。   方案概览：三种方式使用 Skills   方案一：OpenSkills（推荐 - 开箱即用）  OpenSkills 是一个由社区开发的通用 Skills 加载器，可以将 Anthropic 的 Skills 系统带给所有 AI 编程工具。   核心特性  - ✅ 跨平台支持：适配 Claude Code、Cursor、Windsurf、Aider 等主流 AI 编程工具  - ✅ 零配置使用：通过 AGENTS.md 格式自动同步 Skills 元数据  - ✅ 兼容官方 Skills：可以直接使用 Anthropic 官方 Skills 仓库</div>
-        </div>
-        <div class="card-footer">
-            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>20 min read</span>
         </div>
     </div>
     <div class="article-card">
@@ -2441,18 +2457,6 @@
         </div>
     </div>
     <div class="article-card">
-        <a class="card-header" href="/new_blog/algorithms/LLM/inbox/251209_common_code_agent/" target="_blank">
-            <div class="card-title">通用 CodeAgent 的落地实践：从架构到关键设计点</div>
-            <time class="dd-timeago card-date" datetime="2025-12-09T03:44:55+00:00">2025-12-09</time>
-        </a>
-        <div class="card-body">
-            <div class="card-summary">引言  如何构建一个真正能在开发流程中派上用场的 CodeAgent？不是那种回答一次就结束的代码问答机器人，而是能够理解任务、拆解步骤、操作文件、运行测试、并在遇到问题时自主调整的开发助手。  这个问题看似简单，实际落地时却会遇到大量工程细节：Agent 的状态如何建模？工具该怎么设计才能让模型稳定调用？上下文窗口有限的情况下如何让 Agent "看到"足够的信息？当 Agent 的一次操作出错时，系统该如何恢复？  这篇文章试图分享我们在这个过程中积累的一些经验。技术选型上，我们使用的是 LangGraph 和 LangChain 1.0，配合 Textual TUI 和 MCP 工具协议。但我们更希望讨论的是设计思路本身——这些思路在其他框架和工具链下同样适用。   我们期望的 CodeAgent 是什么样的  在深入设计细节之前，有必要先明确我们想要构建的目标。  我们期望的 CodeAgent 能够围绕一个开发任务持续推进。它不是回答一个问题就结束，而是能够主动拆解任务、查阅代码、修改文件、运行验证、汇报进展。在这个过程中，它需要维护清晰的任务状态——能够解释自己目前在做什么、已经完成了哪些步骤、接下来打算怎么做。  同时，它与环境的交互必须是可控的。所有的读写操作都应该通过结构化的工具完成，而不是让模型直接输出 shell 命令然后盲目执行。这意味着需要有明确的权限边界和安全策略，让团队能够逐步建立对 Agent 的信任。  终端环境是一个非常典型的落地场景：SSH 到服务器排查问题、在 CI 环境调试失败的构建、在容器里定位异常。这些场景的共性是信息密度高、需要多轮交互、且对操作的准确性有较高要求。本文以终端场景为例展开，但整体设计力求保持通用性。   整体架构：三层分离的设计</div>
-        </div>
-        <div class="card-footer">
-            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>12 min read</span>
-        </div>
-    </div>
-    <div class="article-card">
         <a class="card-header" href="/new_blog/blog/2025/12/09/%E9%80%9A%E7%94%A8-codeagent-%E7%9A%84%E8%90%BD%E5%9C%B0%E5%AE%9E%E8%B7%B5%E4%BB%8E%E6%9E%B6%E6%9E%84%E5%88%B0%E5%85%B3%E9%94%AE%E8%AE%BE%E8%AE%A1%E7%82%B9/" target="_blank">
             <div class="card-title">通用 CodeAgent 的落地实践：从架构到关键设计点</div>
             <time class="dd-timeago card-date" datetime="2025-12-09T03:44:55+00:00">2025-12-09</time>
@@ -2482,18 +2486,6 @@
                 <span class="md-tag md-tag-icon">llm</span>
                 <span class="md-tag md-tag-icon">aigc</span>
             </div>
-        </div>
-    </div>
-    <div class="article-card">
-        <a class="card-header" href="/new_blog/algorithms/LLM/inbox/251109_llm_evaluate_n_fold/" target="_blank">
-            <div class="card-title">科学评测 AI 应用，分离“随机性”与“真实能力”</div>
-            <time class="dd-timeago card-date" datetime="2025-11-09T07:12:08+00:00">2025-11-09</time>
-        </a>
-        <div class="card-body">
-            <div class="card-summary">🎯 一、核心痛点：你优化的是模型能力，还是在“掷骰子”？  作为 AI 工程师，我们都经历过这个令人沮丧的场景：  1. 你发现了一个 Bad Case。  2. 你精心修改了 Prompt，本地测试通过，信心满满地上线。  3. 第二天，另一个几乎一样的 Case 又失败了。  4. 更糟糕的是，你昨天“修复”的那个 Case，在生产环境中又失败了！  问题出在哪里？  问题在于，我们评估 AI 应用（尤其是基于 LLM 的应用）时，常常将“单次性能”与“稳定能力”混为一谈。  temperature 和 topp 等采样参数引入的随机性，就像一层“战争迷雾”，让我们无法看清模型的真实能力边界。  - 一次评测跑出了 90% 的召回率——这是因为它真的强，还是因为这次“运气好”？</div>
-        </div>
-        <div class="card-footer">
-            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>5 min read</span>
         </div>
     </div>
     <div class="article-card">
@@ -2712,6 +2704,18 @@
             <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>6 min read</span>
         </div>
     </div>
+    <div class="article-card">
+        <a class="card-header" href="/new_blog/algorithms/LLM/huggingface/AIAgentCourse/UNIT30/" target="_blank">
+            <div class="card-title">UNIT3 Use Case for Agentic RAG</div>
+            <time class="dd-timeago card-date" datetime="2025-05-12T03:01:36+00:00">2025-05-12</time>
+        </a>
+        <div class="card-body">
+            <div class="card-summary">Agentic RAG 简介  1. 用例背景：盛大晚会筹备  - 本用例围绕一个名为 Alfred 的智能体主持人，负责筹备并管理一场奢华的文艺复兴风格晚会  - Alfred 需要掌握菜单、宾客名单、日程安排、天气预报等各类信息  - 作为晚会主持人，Alfred 需具备实时解答问题和处理突发状况的能力  2. 晚会核心需求  3. 为何选择 Agentic RAG  传统大语言模型在这类场景下面临的挑战：  - 宾客信息为特定活动数据，不在模型训练范围内  - 需要获取实时天气和新闻等更新信息</div>
+        </div>
+        <div class="card-footer">
+            <span class="read-time"><span class="read-time-icon material-icons">hourglass_top</span>6 min read</span>
+        </div>
+    </div>
 </div>
 </div>
 
@@ -2740,7 +2744,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 7, 2026 18:37:33</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">June 28, 2026 20:44:02</span>
   </span>
 
     
