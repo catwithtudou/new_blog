@@ -43,6 +43,9 @@ grep -q 'length: 100' mkdocs.yml \
 grep -q 'match_path:' mkdocs.yml \
   || fail "mkdocs.yml is missing RSS page filtering"
 
+grep -q '(?:^|/)inbox/' mkdocs.yml \
+  || fail "updated feeds do not exclude inbox source pages"
+
 grep -q 'recently-updated:' mkdocs.yml \
   || fail "document-dates recently updated module is not enabled"
 
@@ -51,6 +54,9 @@ grep -q 'limit: 100' mkdocs.yml \
 
 grep -q 'blog/archive/\*' mkdocs.yml \
   || fail "document-dates recent updates list does not exclude blog archive pages"
+
+grep -q '\*/inbox/\*' mkdocs.yml \
+  || fail "document-dates recent updates list does not exclude inbox source pages"
 
 grep -q 'updates.md' mkdocs.yml \
   || fail "updates page is missing from navigation"

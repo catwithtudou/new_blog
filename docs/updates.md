@@ -1,7 +1,7 @@
 # 🆕Recently Updated
 
 <p class="updates-note">
-  Sorted by Git last-modified time at build time. Only Markdown content pages are included; index pages, archives, categories, pagination pages, and this page are excluded. The page initially shows 20 entries and can expand the rest in place.
+  Sorted by Git last-modified time at build time. Only Markdown content pages are included; index pages, inbox drafts, archives, categories, pagination pages, and this page are excluded. The page initially shows 20 entries and can expand the rest in place.
 </p>
 
 <div class="updates-toolbar" aria-label="Update feed links">

@@ -90,7 +90,7 @@ plugins:
       pagination_format: "$link_first $link_previous ~2~ $link_next $link_last"
   - rss:
       length: 100
-      match_path: '^(?!updates\.md$)(?!blog/(archive|category|page)/)(?!.*(?:^|/)(README|index)\.md$).+\.md$'
+      match_path: '^(?!updates\.md$)(?!blog/(archive|category|page)/)(?!.*(?:^|/)inbox/)(?!.*(?:^|/)(README|index)\.md$).+\.md$'
       feeds_filenames:
         json_created: feed_json_created.json
         json_updated: feed_json_updated.json
@@ -120,6 +120,7 @@ plugins:
           - "blog/archive/*"
           - "blog/category/*"
           - "blog/page/*"
+          - "*/inbox/*"
           - updates.md
         summary_lines:
           grid: 2
