@@ -61,17 +61,17 @@
     
       <link rel="stylesheet" href="../../../../assets/document_dates/fonts/material-icons.css">
     
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/material.css">
-    
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/light.css">
-    
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/backdrop.css">
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/scale.css">
     
       <link rel="stylesheet" href="../../../../assets/document_dates/tippy/tippy.css">
     
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/scale.css">
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/material.css">
+    
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/backdrop.css">
     
       <link rel="stylesheet" href="../../../../assets/document_dates/tippy/shift-away.css">
+    
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/light.css">
     
       <link rel="stylesheet" href="../../../../assets/document_dates/core/core.css">
     
@@ -2609,10 +2609,10 @@
 <a id="__codelineno-2-7" name="__codelineno-2-7"></a><a href="#__codelineno-2-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">RoomActor</span><span class="p">)</span><span class="w"> </span><span class="nx">Receive</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="o">*</span><span class="nx">actor</span><span class="p">.</span><span class="nx">Context</span><span class="p">){</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8"></a><a href="#__codelineno-2-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">Message</span><span class="p">().(</span><span class="kd">type</span><span class="p">){</span>
 <a id="__codelineno-2-9" name="__codelineno-2-9"></a><a href="#__codelineno-2-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="nx">actor</span><span class="p">.</span><span class="nx">Started</span><span class="p">:</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a><a href="#__codelineno-2-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">        </span><span class="nx">r</span><span class="p">.</span><span class="nx">tick</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">NewTicker</span><span class="p">(</span><span class="mi">33</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span><span class="w"> </span><span class="c1">// 30 FPS</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a><a href="#__codelineno-2-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">        </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">SpawnFunc</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">loop</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;room-loop&quot;</span><span class="p">)</span><span class="w">             </span><span class="c1">// 内部协程</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><a href="#__codelineno-2-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">        </span><span class="nx">r</span><span class="p">.</span><span class="nx">tick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">NewTicker</span><span class="p">(</span><span class="mi">33</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Millisecond</span><span class="p">)</span><span class="w"> </span><span class="c1">// 30 FPS</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><a href="#__codelineno-2-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">        </span><span class="nx">ctx</span><span class="p">.</span><span class="nx">SpawnFunc</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">loop</span><span class="p">,</span><span class="w"> </span><span class="s">"room-loop"</span><span class="p">)</span><span class="w">             </span><span class="c1">// 内部协程</span>
 <a id="__codelineno-2-12" name="__codelineno-2-12"></a><a href="#__codelineno-2-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="o">*</span><span class="nx">Enter</span><span class="p">:</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13"></a><a href="#__codelineno-2-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">        </span><span class="nx">r</span><span class="p">.</span><span class="nx">players</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">players</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">Player</span><span class="p">)</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><a href="#__codelineno-2-13"><span class="linenos" data-linenos="13 "></span></a><span class="w">        </span><span class="nx">r</span><span class="p">.</span><span class="nx">players</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">append</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">players</span><span class="p">,</span><span class="w"> </span><span class="nx">msg</span><span class="p">.</span><span class="nx">Player</span><span class="p">)</span>
 <a id="__codelineno-2-14" name="__codelineno-2-14"></a><a href="#__codelineno-2-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="o">*</span><span class="nx">Leave</span><span class="p">:</span>
 <a id="__codelineno-2-15" name="__codelineno-2-15"></a><a href="#__codelineno-2-15"><span class="linenos" data-linenos="15 "></span></a><span class="w">        </span><span class="c1">// …</span>
 <a id="__codelineno-2-16" name="__codelineno-2-16"></a><a href="#__codelineno-2-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">    </span><span class="p">}</span>

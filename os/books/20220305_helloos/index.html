@@ -61,17 +61,17 @@
     
       <link rel="stylesheet" href="../../../assets/document_dates/fonts/material-icons.css">
     
-      <link rel="stylesheet" href="../../../assets/document_dates/tippy/material.css">
-    
-      <link rel="stylesheet" href="../../../assets/document_dates/tippy/light.css">
-    
-      <link rel="stylesheet" href="../../../assets/document_dates/tippy/backdrop.css">
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/scale.css">
     
       <link rel="stylesheet" href="../../../assets/document_dates/tippy/tippy.css">
     
-      <link rel="stylesheet" href="../../../assets/document_dates/tippy/scale.css">
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/material.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/backdrop.css">
     
       <link rel="stylesheet" href="../../../assets/document_dates/tippy/shift-away.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/light.css">
     
       <link rel="stylesheet" href="../../../assets/document_dates/core/core.css">
     
@@ -1934,10 +1934,10 @@ PC 机上电后的第一条指令就是 BIOS 固件中的，然后加载引导�
 <p>该部分汇编代码是服务 <strong>CPU 工作模式所需要的数据</strong>。</p>
 <h2 id="hello-os-的主函数">Hello OS 的主函数<a class="headerlink" href="#hello-os-的主函数" title="Permanent link">&para;</a></h2>
 <p>上述汇编代码调用的 main 函数，是由下面 C 语言代码<strong>分别由 nasm 和 GCC 编译可链接模块，由 LD 连接器链接在一起，形成可执行程序文件</strong>：</p>
-<div class="language-c highlight"><span class="filename">C</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;vgastr.h&quot;</span>
+<div class="language-c highlight"><span class="filename">C</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"vgastr.h"</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2"></a><a href="#__codelineno-4-2"><span class="linenos" data-linenos="2 "></span></a><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3"></a><a href="#__codelineno-4-3"><span class="linenos" data-linenos="3 "></span></a><span class="p">{</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4"></a><a href="#__codelineno-4-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello OS!&quot;</span><span class="p">);</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><a href="#__codelineno-4-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">"Hello OS!"</span><span class="p">);</span>
 <a id="__codelineno-4-5" name="__codelineno-4-5"></a><a href="#__codelineno-4-5"><span class="linenos" data-linenos="5 "></span></a><span class="w">  </span><span class="k">return</span><span class="p">;</span>
 <a id="__codelineno-4-6" name="__codelineno-4-6"></a><a href="#__codelineno-4-6"><span class="linenos" data-linenos="6 "></span></a><span class="p">}</span><span class="w"> </span>
 </code></pre></div>
@@ -2006,10 +2006,10 @@ PC 机上电后的第一条指令就是 BIOS 固件中的，然后加载引导�
 <p><strong>当<code>Hello OS.bin</code>生成之后，需要让 GRUB 能够发现才能在启动时被加载，该过程称之为安装。</strong></p>
 <p>我们通过 GRUB 启动时的规整，即加载一个<code>grub.cfg</code>的文本文件，根据其中的内容执行相应的操作，其中一部分内容就是启动项。在启动时<strong>可选择不同的启动项后根据选择的启动项信息来加载 OS 文件到内存</strong>。</p>
 <p>下面即 Hello OS 的启动项：</p>
-<div class="language-PYTHON highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">menuentry</span> <span class="s1">&#39;HelloOS&#39;</span> <span class="p">{</span>
+<div class="language-PYTHON highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos="1 "></span></a><span class="n">menuentry</span> <span class="s1">'HelloOS'</span> <span class="p">{</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos="2 "></span></a>     <span class="n">insmod</span> <span class="n">part_msdos</span> <span class="c1">#GRUB加载分区模块识别分区</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3"></a><a href="#__codelineno-7-3"><span class="linenos" data-linenos="3 "></span></a>     <span class="n">insmod</span> <span class="n">ext2</span> <span class="c1">#GRUB加载ext文件系统模块识别ext文件系统</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a><a href="#__codelineno-7-4"><span class="linenos" data-linenos="4 "></span></a>     <span class="nb">set</span> <span class="n">root</span><span class="o">=</span><span class="s1">&#39;hd0,msdos4&#39;</span> <span class="c1">#注意boot目录挂载的分区，</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><a href="#__codelineno-7-4"><span class="linenos" data-linenos="4 "></span></a>     <span class="nb">set</span> <span class="n">root</span><span class="o">=</span><span class="s1">'hd0,msdos4'</span> <span class="c1">#注意boot目录挂载的分区，</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5"></a><a href="#__codelineno-7-5"><span class="linenos" data-linenos="5 "></span></a>     <span class="n">multiboot2</span> <span class="o">/</span><span class="n">boot</span><span class="o">/</span><span class="n">HelloOS</span><span class="o">.</span><span class="n">bin</span> <span class="c1">#GRUB以multiboot2协议加载HelloOS.bin</span>
 <a id="__codelineno-7-6" name="__codelineno-7-6"></a><a href="#__codelineno-7-6"><span class="linenos" data-linenos="6 "></span></a>     <span class="n">boot</span> <span class="c1">#GRUB启动HelloOS.bin</span>
 <a id="__codelineno-7-7" name="__codelineno-7-7"></a><a href="#__codelineno-7-7"><span class="linenos" data-linenos="7 "></span></a><span class="p">}</span>

@@ -61,17 +61,17 @@
     
       <link rel="stylesheet" href="../../../../assets/document_dates/fonts/material-icons.css">
     
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/material.css">
-    
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/light.css">
-    
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/backdrop.css">
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/scale.css">
     
       <link rel="stylesheet" href="../../../../assets/document_dates/tippy/tippy.css">
     
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/scale.css">
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/material.css">
+    
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/backdrop.css">
     
       <link rel="stylesheet" href="../../../../assets/document_dates/tippy/shift-away.css">
+    
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/light.css">
     
       <link rel="stylesheet" href="../../../../assets/document_dates/core/core.css">
     
@@ -2246,11 +2246,11 @@
 <a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="#__codelineno-0-9"><span class="linenos" data-linenos=" 9 "></span></a>
 <a id="__codelineno-0-10" name="__codelineno-0-10"></a><a href="#__codelineno-0-10"><span class="linenos" data-linenos="10 "></span></a>    <span class="nd">@property</span>
 <a id="__codelineno-0-11" name="__codelineno-0-11"></a><a href="#__codelineno-0-11"><span class="linenos" data-linenos="11 "></span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">cli_console</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CLIConsole</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12"></a><a href="#__codelineno-0-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;通过 @property 提供对依赖的只读访问。&quot;&quot;&quot;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><a href="#__codelineno-0-12"><span class="linenos" data-linenos="12 "></span></a><span class="w">        </span><span class="sd">"""通过 @property 提供对依赖的只读访问。"""</span>
 <a id="__codelineno-0-13" name="__codelineno-0-13"></a><a href="#__codelineno-0-13"><span class="linenos" data-linenos="13 "></span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cli_console</span>
 <a id="__codelineno-0-14" name="__codelineno-0-14"></a><a href="#__codelineno-0-14"><span class="linenos" data-linenos="14 "></span></a>
 <a id="__codelineno-0-15" name="__codelineno-0-15"></a><a href="#__codelineno-0-15"><span class="linenos" data-linenos="15 "></span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">set_cli_console</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cli_console</span><span class="p">:</span> <span class="n">CLIConsole</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16"></a><a href="#__codelineno-0-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;[依赖注入点] 通过 setter 方法从外部注入依赖。&quot;&quot;&quot;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><a href="#__codelineno-0-16"><span class="linenos" data-linenos="16 "></span></a><span class="w">        </span><span class="sd">"""[依赖注入点] 通过 setter 方法从外部注入依赖。"""</span>
 <a id="__codelineno-0-17" name="__codelineno-0-17"></a><a href="#__codelineno-0-17"><span class="linenos" data-linenos="17 "></span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_cli_console</span> <span class="o">=</span> <span class="n">cli_console</span>
 <a id="__codelineno-0-18" name="__codelineno-0-18"></a><a href="#__codelineno-0-18"><span class="linenos" data-linenos="18 "></span></a>
 <a id="__codelineno-0-19" name="__codelineno-0-19"></a><a href="#__codelineno-0-19"><span class="linenos" data-linenos="19 "></span></a>    <span class="c1"># ... (trajectory_recorder 的实现与此类似) ...</span>
@@ -2274,7 +2274,7 @@
 <a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos=" 5 "></span></a>        <span class="c1"># ... (根据类型创建具体 agent 实例，隐藏了创建细节) ...</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos=" 6 "></span></a>
 <a id="__codelineno-1-7" name="__codelineno-1-7"></a><a href="#__codelineno-1-7"><span class="linenos" data-linenos=" 7 "></span></a>    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8"></a><a href="#__codelineno-1-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;[门面方法] 封装了整个执行流程，简化客户端调用。&quot;&quot;&quot;</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><a href="#__codelineno-1-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">        </span><span class="sd">"""[门面方法] 封装了整个执行流程，简化客户端调用。"""</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9"></a><a href="#__codelineno-1-9"><span class="linenos" data-linenos=" 9 "></span></a>        <span class="c1"># ... (初始化 MCP, 打印任务详情等准备工作) ...</span>
 <a id="__codelineno-1-10" name="__codelineno-1-10"></a><a href="#__codelineno-1-10"><span class="linenos" data-linenos="10 "></span></a>
 <a id="__codelineno-1-11" name="__codelineno-1-11"></a><a href="#__codelineno-1-11"><span class="linenos" data-linenos="11 "></span></a>        <span class="c1"># [并发协调] 并发启动 CLI 和 Agent 核心任务</span>
@@ -2309,14 +2309,14 @@
 <div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1"># trae_agent/agent/agent_basics.py</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos=" 2 "></span></a>
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">AgentStepState</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;[语义化枚举] 定义了代理执行单个步骤时的所有可能状态，使状态可读且类型安全。&quot;&quot;&quot;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos=" 5 "></span></a>    <span class="n">THINKING</span> <span class="o">=</span> <span class="s2">&quot;thinking&quot;</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><a href="#__codelineno-2-6"><span class="linenos" data-linenos=" 6 "></span></a>    <span class="n">CALLING_TOOL</span> <span class="o">=</span> <span class="s2">&quot;calling_tool&quot;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="sd">"""[语义化枚举] 定义了代理执行单个步骤时的所有可能状态，使状态可读且类型安全。"""</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><a href="#__codelineno-2-5"><span class="linenos" data-linenos=" 5 "></span></a>    <span class="n">THINKING</span> <span class="o">=</span> <span class="s2">"thinking"</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><a href="#__codelineno-2-6"><span class="linenos" data-linenos=" 6 "></span></a>    <span class="n">CALLING_TOOL</span> <span class="o">=</span> <span class="s2">"calling_tool"</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7"></a><a href="#__codelineno-2-7"><span class="linenos" data-linenos=" 7 "></span></a>    <span class="c1"># ...</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8"></a><a href="#__codelineno-2-8"><span class="linenos" data-linenos=" 8 "></span></a>
 <a id="__codelineno-2-9" name="__codelineno-2-9"></a><a href="#__codelineno-2-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="nd">@dataclass</span>
 <a id="__codelineno-2-10" name="__codelineno-2-10"></a><a href="#__codelineno-2-10"><span class="linenos" data-linenos="10 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">AgentStep</span><span class="p">:</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11"></a><a href="#__codelineno-2-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;[结构化数据] 封装了代理执行单个步骤的所有信息，使数据结构清晰。&quot;&quot;&quot;</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><a href="#__codelineno-2-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">    </span><span class="sd">"""[结构化数据] 封装了代理执行单个步骤的所有信息，使数据结构清晰。"""</span>
 <a id="__codelineno-2-12" name="__codelineno-2-12"></a><a href="#__codelineno-2-12"><span class="linenos" data-linenos="12 "></span></a>    <span class="n">step_number</span><span class="p">:</span> <span class="nb">int</span>
 <a id="__codelineno-2-13" name="__codelineno-2-13"></a><a href="#__codelineno-2-13"><span class="linenos" data-linenos="13 "></span></a>    <span class="n">state</span><span class="p">:</span> <span class="n">AgentStepState</span>
 <a id="__codelineno-2-14" name="__codelineno-2-14"></a><a href="#__codelineno-2-14"><span class="linenos" data-linenos="14 "></span></a>    <span class="n">thought</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
@@ -2324,7 +2324,7 @@
 <a id="__codelineno-2-16" name="__codelineno-2-16"></a><a href="#__codelineno-2-16"><span class="linenos" data-linenos="16 "></span></a>
 <a id="__codelineno-2-17" name="__codelineno-2-17"></a><a href="#__codelineno-2-17"><span class="linenos" data-linenos="17 "></span></a><span class="nd">@dataclass</span>
 <a id="__codelineno-2-18" name="__codelineno-2-18"></a><a href="#__codelineno-2-18"><span class="linenos" data-linenos="18 "></span></a><span class="k">class</span><span class="w"> </span><span class="nc">AgentExecution</span><span class="p">:</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19"></a><a href="#__codelineno-2-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;[数据组合] 记录了一次完整的代理任务执行过程，组合了多个 AgentStep。&quot;&quot;&quot;</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><a href="#__codelineno-2-19"><span class="linenos" data-linenos="19 "></span></a><span class="w">    </span><span class="sd">"""[数据组合] 记录了一次完整的代理任务执行过程，组合了多个 AgentStep。"""</span>
 <a id="__codelineno-2-20" name="__codelineno-2-20"></a><a href="#__codelineno-2-20"><span class="linenos" data-linenos="20 "></span></a>    <span class="n">task</span><span class="p">:</span> <span class="nb">str</span>
 <a id="__codelineno-2-21" name="__codelineno-2-21"></a><a href="#__codelineno-2-21"><span class="linenos" data-linenos="21 "></span></a>    <span class="n">steps</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AgentStep</span><span class="p">]</span>
 <a id="__codelineno-2-22" name="__codelineno-2-22"></a><a href="#__codelineno-2-22"><span class="linenos" data-linenos="22 "></span></a>    <span class="n">state</span><span class="p">:</span> <span class="n">AgentState</span> <span class="o">=</span> <span class="n">AgentState</span><span class="o">.</span><span class="n">RUNNING</span>

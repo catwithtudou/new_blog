@@ -61,17 +61,17 @@
     
       <link rel="stylesheet" href="../../../assets/document_dates/fonts/material-icons.css">
     
-      <link rel="stylesheet" href="../../../assets/document_dates/tippy/material.css">
-    
-      <link rel="stylesheet" href="../../../assets/document_dates/tippy/light.css">
-    
-      <link rel="stylesheet" href="../../../assets/document_dates/tippy/backdrop.css">
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/scale.css">
     
       <link rel="stylesheet" href="../../../assets/document_dates/tippy/tippy.css">
     
-      <link rel="stylesheet" href="../../../assets/document_dates/tippy/scale.css">
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/material.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/backdrop.css">
     
       <link rel="stylesheet" href="../../../assets/document_dates/tippy/shift-away.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/light.css">
     
       <link rel="stylesheet" href="../../../assets/document_dates/core/core.css">
     
@@ -2093,7 +2093,7 @@
 </blockquote>
 <p>实模式下的汇编代码，共 16 位：</p>
 <div class="language-asm highlight"><span class="filename">GAS</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="nf">data</span><span class="w"> </span><span class="no">SEGMENT</span><span class="w"> </span><span class="c1">;定义一个数据段存放Hello World!</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="w">    </span><span class="nf">hello</span><span class="w">  </span><span class="no">DB</span><span class="w"> </span><span class="err">&#39;</span><span class="no">Hello</span><span class="w"> </span><span class="no">World</span><span class="p">!</span><span class="no">$</span><span class="err">&#39;</span><span class="w"> </span><span class="c1">;注意要以$结束</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="w">    </span><span class="nf">hello</span><span class="w">  </span><span class="no">DB</span><span class="w"> </span><span class="err">'</span><span class="no">Hello</span><span class="w"> </span><span class="no">World</span><span class="p">!</span><span class="no">$</span><span class="err">'</span><span class="w"> </span><span class="c1">;注意要以$结束</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="nf">data</span><span class="w"> </span><span class="no">ENDS</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="nf">code</span><span class="w"> </span><span class="no">SEGMENT</span><span class="w"> </span><span class="c1">;定义一个代码段存放程序指令</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="w">    </span><span class="nf">ASSUME</span><span class="w"> </span><span class="no">CS</span><span class="p">:</span><span class="no">CODE</span><span class="p">,</span><span class="no">DS</span><span class="p">:</span><span class="no">DATA</span><span class="w"> </span><span class="c1">;告诉汇编程序，DS指向数据段，CS指向代码段</span>

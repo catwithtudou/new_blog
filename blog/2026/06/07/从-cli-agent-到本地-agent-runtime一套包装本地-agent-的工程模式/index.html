@@ -61,17 +61,17 @@
     
       <link rel="stylesheet" href="../../../../../assets/document_dates/fonts/material-icons.css">
     
-      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/material.css">
-    
-      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/light.css">
-    
-      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/backdrop.css">
+      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/scale.css">
     
       <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/tippy.css">
     
-      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/scale.css">
+      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/material.css">
+    
+      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/backdrop.css">
     
       <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/shift-away.css">
+    
+      <link rel="stylesheet" href="../../../../../assets/document_dates/tippy/light.css">
     
       <link rel="stylesheet" href="../../../../../assets/document_dates/core/core.css">
     
@@ -1950,14 +1950,14 @@
 <h2 id="全貌包装层的本质是一个-agent-gateway">全貌：包装层的本质是一个 Agent Gateway<a class="headerlink" href="#全貌包装层的本质是一个-agent-gateway" title="Permanent link">&para;</a></h2>
 <p>无论用什么技术栈实现，这类包装层的工程结构都高度相似。它本质上是一个 Agent Gateway：</p>
 <div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a>flowchart LR
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a>    A[&quot;飞书 / Web / 定时任务&quot;] --&gt; B[&quot;MessageChannel&lt;br/&gt;外部入口适配&quot;]
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a>    B --&gt; C[&quot;MessageGateway&lt;br/&gt;统一消息路由&quot;]
-<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a>    C --&gt; D[&quot;TaskDispatcher&lt;br/&gt;排队、串行、取消&quot;]
-<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a>    D --&gt; E[&quot;SessionManager&lt;br/&gt;会话创建与恢复&quot;]
-<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos="6 "></span></a>    E --&gt; F[&quot;AgentRunner&lt;br/&gt;统一 Agent 接口&quot;]
-<a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos="7 "></span></a>    F --&gt; G[&quot;Codex CLI / Claude Code CLI&quot;]
-<a id="__codelineno-0-8" name="__codelineno-0-8"></a><a href="#__codelineno-0-8"><span class="linenos" data-linenos="8 "></span></a>    G --&gt; H[&quot;JSONL 流式事件&quot;]
-<a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="#__codelineno-0-9"><span class="linenos" data-linenos="9 "></span></a>    H --&gt; I[&quot;消息渲染&lt;br/&gt;飞书卡片 / Web UI&quot;]
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a>    A["飞书 / Web / 定时任务"] --&gt; B["MessageChannel&lt;br/&gt;外部入口适配"]
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a>    B --&gt; C["MessageGateway&lt;br/&gt;统一消息路由"]
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a>    C --&gt; D["TaskDispatcher&lt;br/&gt;排队、串行、取消"]
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><a href="#__codelineno-0-5"><span class="linenos" data-linenos="5 "></span></a>    D --&gt; E["SessionManager&lt;br/&gt;会话创建与恢复"]
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><a href="#__codelineno-0-6"><span class="linenos" data-linenos="6 "></span></a>    E --&gt; F["AgentRunner&lt;br/&gt;统一 Agent 接口"]
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos="7 "></span></a>    F --&gt; G["Codex CLI / Claude Code CLI"]
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><a href="#__codelineno-0-8"><span class="linenos" data-linenos="8 "></span></a>    G --&gt; H["JSONL 流式事件"]
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><a href="#__codelineno-0-9"><span class="linenos" data-linenos="9 "></span></a>    H --&gt; I["消息渲染&lt;br/&gt;飞书卡片 / Web UI"]
 </code></pre></div>
 <p>这个 Gateway 流程图里最关键的不是某个具体模块，而是它做的一件事：</p>
 <ul>
@@ -2052,13 +2052,13 @@
 <p>终端窗口天然就是一个上下文。但飞书是多话题、多人、异步的，消息流本身不携带“我属于哪个任务”的信息。</p>
 <p>所以系统<strong>必须显式维护 thread 到 session 的映射：</strong></p>
 <div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos="1 "></span></a>flowchart TB
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos="2 "></span></a>  A[&quot;飞书 thread_id&quot;] --&gt; B{&quot;是否已有映射？&quot;}
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a><a href="#__codelineno-5-3"><span class="linenos" data-linenos="3 "></span></a>  B --&gt;|有| C[&quot;复用 session_id&quot;]
-<a id="__codelineno-5-4" name="__codelineno-5-4"></a><a href="#__codelineno-5-4"><span class="linenos" data-linenos="4 "></span></a>  B --&gt;|没有| D[&quot;生成新的 session_id&quot;]
-<a id="__codelineno-5-5" name="__codelineno-5-5"></a><a href="#__codelineno-5-5"><span class="linenos" data-linenos="5 "></span></a>  D --&gt; E[&quot;写入数据库&lt;br/&gt;thread ↔ session&quot;]
-<a id="__codelineno-5-6" name="__codelineno-5-6"></a><a href="#__codelineno-5-6"><span class="linenos" data-linenos="6 "></span></a>  C --&gt; F[&quot;resolveSession(session_id)&quot;]
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos="2 "></span></a>  A["飞书 thread_id"] --&gt; B{"是否已有映射？"}
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><a href="#__codelineno-5-3"><span class="linenos" data-linenos="3 "></span></a>  B --&gt;|有| C["复用 session_id"]
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><a href="#__codelineno-5-4"><span class="linenos" data-linenos="4 "></span></a>  B --&gt;|没有| D["生成新的 session_id"]
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><a href="#__codelineno-5-5"><span class="linenos" data-linenos="5 "></span></a>  D --&gt; E["写入数据库&lt;br/&gt;thread ↔ session"]
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><a href="#__codelineno-5-6"><span class="linenos" data-linenos="6 "></span></a>  C --&gt; F["resolveSession(session_id)"]
 <a id="__codelineno-5-7" name="__codelineno-5-7"></a><a href="#__codelineno-5-7"><span class="linenos" data-linenos="7 "></span></a>  E --&gt; F
-<a id="__codelineno-5-8" name="__codelineno-5-8"></a><a href="#__codelineno-5-8"><span class="linenos" data-linenos="8 "></span></a>  F --&gt; G[&quot;恢复底层 Agent thread&quot;]
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><a href="#__codelineno-5-8"><span class="linenos" data-linenos="8 "></span></a>  F --&gt; G["恢复底层 Agent thread"]
 </code></pre></div>
 <p>这个设计看起来朴素，但它解决的是多入口 Agent 系统里最容易翻车的问题：<strong>上下文连续性</strong>。</p>
 <p>没有这层映射，飞书只是一条消息流。而有了它，一个 thread 才真正变成一个能被 Agent 持续理解的任务容器。</p>
@@ -2086,18 +2086,18 @@
 <p>同一 session 的任务排队执行，锁释放后才取下一个；不同 session 各持各的锁，互不阻塞。</p>
 <p>换句话说，<strong>串行锁锁的是“同一 session 的任务队列”，不是“子进程”本身</strong>。</p>
 <div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos=" 1 "></span></a>flowchart LR
-<a id="__codelineno-6-2" name="__codelineno-6-2"></a><a href="#__codelineno-6-2"><span class="linenos" data-linenos=" 2 "></span></a>  A[&quot;任务队列&quot;] --&gt; B[&quot;session A task 1&quot;]
-<a id="__codelineno-6-3" name="__codelineno-6-3"></a><a href="#__codelineno-6-3"><span class="linenos" data-linenos=" 3 "></span></a>  A --&gt; C[&quot;session A task 2&quot;]
-<a id="__codelineno-6-4" name="__codelineno-6-4"></a><a href="#__codelineno-6-4"><span class="linenos" data-linenos=" 4 "></span></a>  A --&gt; D[&quot;session B task 1&quot;]
-<a id="__codelineno-6-5" name="__codelineno-6-5"></a><a href="#__codelineno-6-5"><span class="linenos" data-linenos=" 5 "></span></a>  A --&gt; E[&quot;session C task 1&quot;]
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><a href="#__codelineno-6-2"><span class="linenos" data-linenos=" 2 "></span></a>  A["任务队列"] --&gt; B["session A task 1"]
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><a href="#__codelineno-6-3"><span class="linenos" data-linenos=" 3 "></span></a>  A --&gt; C["session A task 2"]
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><a href="#__codelineno-6-4"><span class="linenos" data-linenos=" 4 "></span></a>  A --&gt; D["session B task 1"]
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><a href="#__codelineno-6-5"><span class="linenos" data-linenos=" 5 "></span></a>  A --&gt; E["session C task 1"]
 <a id="__codelineno-6-6" name="__codelineno-6-6"></a><a href="#__codelineno-6-6"><span class="linenos" data-linenos=" 6 "></span></a>
-<a id="__codelineno-6-7" name="__codelineno-6-7"></a><a href="#__codelineno-6-7"><span class="linenos" data-linenos=" 7 "></span></a>  B --&gt; F[&quot;session A lock&quot;]
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><a href="#__codelineno-6-7"><span class="linenos" data-linenos=" 7 "></span></a>  B --&gt; F["session A lock"]
 <a id="__codelineno-6-8" name="__codelineno-6-8"></a><a href="#__codelineno-6-8"><span class="linenos" data-linenos=" 8 "></span></a>  C --&gt; F
-<a id="__codelineno-6-9" name="__codelineno-6-9"></a><a href="#__codelineno-6-9"><span class="linenos" data-linenos=" 9 "></span></a>  D --&gt; G[&quot;session B lock&quot;]
-<a id="__codelineno-6-10" name="__codelineno-6-10"></a><a href="#__codelineno-6-10"><span class="linenos" data-linenos="10 "></span></a>  E --&gt; H[&quot;session C lock&quot;]
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a><a href="#__codelineno-6-9"><span class="linenos" data-linenos=" 9 "></span></a>  D --&gt; G["session B lock"]
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a><a href="#__codelineno-6-10"><span class="linenos" data-linenos="10 "></span></a>  E --&gt; H["session C lock"]
 <a id="__codelineno-6-11" name="__codelineno-6-11"></a><a href="#__codelineno-6-11"><span class="linenos" data-linenos="11 "></span></a>
-<a id="__codelineno-6-12" name="__codelineno-6-12"></a><a href="#__codelineno-6-12"><span class="linenos" data-linenos="12 "></span></a>  F --&gt; I[&quot;串行执行&quot;]
-<a id="__codelineno-6-13" name="__codelineno-6-13"></a><a href="#__codelineno-6-13"><span class="linenos" data-linenos="13 "></span></a>  G --&gt; J[&quot;并行执行&quot;]
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a><a href="#__codelineno-6-12"><span class="linenos" data-linenos="12 "></span></a>  F --&gt; I["串行执行"]
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a><a href="#__codelineno-6-13"><span class="linenos" data-linenos="13 "></span></a>  G --&gt; J["并行执行"]
 <a id="__codelineno-6-14" name="__codelineno-6-14"></a><a href="#__codelineno-6-14"><span class="linenos" data-linenos="14 "></span></a>  H --&gt; J
 </code></pre></div>
 <blockquote>
@@ -2146,14 +2146,14 @@
 </tbody>
 </table>
 <div class="language-text highlight"><span class="filename">Text Only</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><a href="#__codelineno-7-1"><span class="linenos" data-linenos="1 "></span></a>flowchart TB
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos="2 "></span></a>  A[&quot;用户消息&quot;] --&gt; F[&quot;本轮 Prompt&quot;]
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a><a href="#__codelineno-7-3"><span class="linenos" data-linenos="3 "></span></a>  B[&quot;AGENTS.md&lt;br/&gt;项目规则&quot;] --&gt; F
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a><a href="#__codelineno-7-4"><span class="linenos" data-linenos="4 "></span></a>  C[&quot;长期记忆&lt;br/&gt;用户偏好 / 历史决策&quot;] --&gt; E[&quot;检索与筛选&quot;]
-<a id="__codelineno-7-5" name="__codelineno-7-5"></a><a href="#__codelineno-7-5"><span class="linenos" data-linenos="5 "></span></a>  D[&quot;本地知识库&lt;br/&gt;Obsidian / repo docs&quot;] --&gt; E
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><a href="#__codelineno-7-2"><span class="linenos" data-linenos="2 "></span></a>  A["用户消息"] --&gt; F["本轮 Prompt"]
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><a href="#__codelineno-7-3"><span class="linenos" data-linenos="3 "></span></a>  B["AGENTS.md&lt;br/&gt;项目规则"] --&gt; F
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><a href="#__codelineno-7-4"><span class="linenos" data-linenos="4 "></span></a>  C["长期记忆&lt;br/&gt;用户偏好 / 历史决策"] --&gt; E["检索与筛选"]
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><a href="#__codelineno-7-5"><span class="linenos" data-linenos="5 "></span></a>  D["本地知识库&lt;br/&gt;Obsidian / repo docs"] --&gt; E
 <a id="__codelineno-7-6" name="__codelineno-7-6"></a><a href="#__codelineno-7-6"><span class="linenos" data-linenos="6 "></span></a>  E --&gt; F
-<a id="__codelineno-7-7" name="__codelineno-7-7"></a><a href="#__codelineno-7-7"><span class="linenos" data-linenos="7 "></span></a>  F --&gt; G[&quot;Codex / Claude Code&quot;]
-<a id="__codelineno-7-8" name="__codelineno-7-8"></a><a href="#__codelineno-7-8"><span class="linenos" data-linenos="8 "></span></a>  G --&gt; H[&quot;执行结果&quot;]
-<a id="__codelineno-7-9" name="__codelineno-7-9"></a><a href="#__codelineno-7-9"><span class="linenos" data-linenos="9 "></span></a>  H --&gt; I[&quot;日志 / 摘要 / 记忆更新&quot;]
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><a href="#__codelineno-7-7"><span class="linenos" data-linenos="7 "></span></a>  F --&gt; G["Codex / Claude Code"]
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a><a href="#__codelineno-7-8"><span class="linenos" data-linenos="8 "></span></a>  G --&gt; H["执行结果"]
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><a href="#__codelineno-7-9"><span class="linenos" data-linenos="9 "></span></a>  H --&gt; I["日志 / 摘要 / 记忆更新"]
 </code></pre></div>
 <p>这也解释了为什么记忆不能粗暴地全塞进去。上下文不是越多越好，它至少会带来三类风险：</p>
 <ul>

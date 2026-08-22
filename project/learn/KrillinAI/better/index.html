@@ -61,17 +61,17 @@
     
       <link rel="stylesheet" href="../../../../assets/document_dates/fonts/material-icons.css">
     
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/material.css">
-    
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/light.css">
-    
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/backdrop.css">
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/scale.css">
     
       <link rel="stylesheet" href="../../../../assets/document_dates/tippy/tippy.css">
     
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/scale.css">
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/material.css">
+    
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/backdrop.css">
     
       <link rel="stylesheet" href="../../../../assets/document_dates/tippy/shift-away.css">
+    
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/light.css">
     
       <link rel="stylesheet" href="../../../../assets/document_dates/core/core.css">
     
@@ -2279,7 +2279,7 @@
 </li>
 </ul>
 <h2 id="2-任务状态管理考虑持久化处理避免重启导致任务状态丢失">2. 任务状态管理考虑持久化处理避免重启导致任务状态丢失<a class="headerlink" href="#2-任务状态管理考虑持久化处理避免重启导致任务状态丢失" title="Permanent link">&para;</a></h2>
-<div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="nx">storage</span><span class="p">.</span><span class="nx">SubtitleTasks</span><span class="p">[</span><span class="nx">taskId</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">types</span><span class="p">.</span><span class="nx">SubtitleTask</span><span class="p">{</span>
+<div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="nx">storage</span><span class="p">.</span><span class="nx">SubtitleTasks</span><span class="p">[</span><span class="nx">taskId</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">types</span><span class="p">.</span><span class="nx">SubtitleTask</span><span class="p">{</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">    </span><span class="nx">TaskId</span><span class="p">:</span><span class="w">   </span><span class="nx">taskId</span><span class="p">,</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">    </span><span class="nx">VideoSrc</span><span class="p">:</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">Url</span><span class="p">,</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4"></a><a href="#__codelineno-0-4"><span class="linenos" data-linenos="4 "></span></a><span class="w">    </span><span class="nx">Status</span><span class="p">:</span><span class="w">   </span><span class="nx">types</span><span class="p">.</span><span class="nx">SubtitleTaskStatusProcessing</span><span class="p">,</span>
@@ -2297,14 +2297,14 @@
 </ul>
 <div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1">// 建议添加类似这样的任务队列控制</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kd">type</span><span class="w"> </span><span class="nx">TaskQueue</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="nx">semaphore</span><span class="w"> </span><span class="kd">chan</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="nx">tasks</span><span class="w">     </span><span class="kd">chan</span><span class="w"> </span><span class="o">*</span><span class="nx">types</span><span class="p">.</span><span class="nx">SubtitleTask</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="w">    </span><span class="nx">semaphore</span><span class="w"> </span><span class="kt">chan</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><a href="#__codelineno-1-4"><span class="linenos" data-linenos=" 4 "></span></a><span class="w">    </span><span class="nx">tasks</span><span class="w">     </span><span class="kt">chan</span><span class="w"> </span><span class="o">*</span><span class="nx">types</span><span class="p">.</span><span class="nx">SubtitleTask</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5"></a><a href="#__codelineno-1-5"><span class="linenos" data-linenos=" 5 "></span></a><span class="p">}</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6"></a><a href="#__codelineno-1-6"><span class="linenos" data-linenos=" 6 "></span></a>
 <a id="__codelineno-1-7" name="__codelineno-1-7"></a><a href="#__codelineno-1-7"><span class="linenos" data-linenos=" 7 "></span></a><span class="kd">func</span><span class="w"> </span><span class="nx">NewTaskQueue</span><span class="p">(</span><span class="nx">maxConcurrent</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">TaskQueue</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8"></a><a href="#__codelineno-1-8"><span class="linenos" data-linenos=" 8 "></span></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">TaskQueue</span><span class="p">{</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9"></a><a href="#__codelineno-1-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">        </span><span class="nx">semaphore</span><span class="p">:</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="kd">struct</span><span class="p">{},</span><span class="w"> </span><span class="nx">maxConcurrent</span><span class="p">),</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10"></a><a href="#__codelineno-1-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">        </span><span class="nx">tasks</span><span class="p">:</span><span class="w">     </span><span class="nb">make</span><span class="p">(</span><span class="kd">chan</span><span class="w"> </span><span class="o">*</span><span class="nx">types</span><span class="p">.</span><span class="nx">SubtitleTask</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">),</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><a href="#__codelineno-1-9"><span class="linenos" data-linenos=" 9 "></span></a><span class="w">        </span><span class="nx">semaphore</span><span class="p">:</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kt">chan</span><span class="w"> </span><span class="kd">struct</span><span class="p">{},</span><span class="w"> </span><span class="nx">maxConcurrent</span><span class="p">),</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><a href="#__codelineno-1-10"><span class="linenos" data-linenos="10 "></span></a><span class="w">        </span><span class="nx">tasks</span><span class="p">:</span><span class="w">     </span><span class="nb">make</span><span class="p">(</span><span class="kt">chan</span><span class="w"> </span><span class="o">*</span><span class="nx">types</span><span class="p">.</span><span class="nx">SubtitleTask</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">),</span>
 <a id="__codelineno-1-11" name="__codelineno-1-11"></a><a href="#__codelineno-1-11"><span class="linenos" data-linenos="11 "></span></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-1-12" name="__codelineno-1-12"></a><a href="#__codelineno-1-12"><span class="linenos" data-linenos="12 "></span></a><span class="p">}</span>
 </code></pre></div>

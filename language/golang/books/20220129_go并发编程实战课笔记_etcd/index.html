@@ -61,17 +61,17 @@
     
       <link rel="stylesheet" href="../../../../assets/document_dates/fonts/material-icons.css">
     
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/material.css">
-    
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/light.css">
-    
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/backdrop.css">
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/scale.css">
     
       <link rel="stylesheet" href="../../../../assets/document_dates/tippy/tippy.css">
     
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/scale.css">
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/material.css">
+    
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/backdrop.css">
     
       <link rel="stylesheet" href="../../../../assets/document_dates/tippy/shift-away.css">
+    
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/light.css">
     
       <link rel="stylesheet" href="../../../../assets/document_dates/core/core.css">
     
@@ -2429,7 +2429,7 @@
 <div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1">// 监控主节点的变化</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos="2 "></span></a><span class="c1">// 它会返回一个 chan，显示主节点的变动信息</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos="3 "></span></a><span class="c1">// 需要注意的是它不会返回主节点的全部历史变动信息，而是只返回最近的一条变动信息以及之后的变动信息</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos="4 "></span></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="o">*</span><span class="nx">Election</span><span class="p">)</span><span class="w"> </span><span class="nx">Observe</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="kd">chan</span><span class="w"> </span><span class="nx">v3</span><span class="p">.</span><span class="nx">GetResponse</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><a href="#__codelineno-2-4"><span class="linenos" data-linenos="4 "></span></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="o">*</span><span class="nx">Election</span><span class="p">)</span><span class="w"> </span><span class="nx">Observe</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="kt">chan</span><span class="w"> </span><span class="nx">v3</span><span class="p">.</span><span class="nx">GetResponse</span>
 </code></pre></div>
 <h2 id="互斥锁">互斥锁<a class="headerlink" href="#互斥锁" title="Permanent link">&para;</a></h2>
 <p>主要关注在分布在不同机器中的不同进程内的 goroutine，如何利用分布式互斥锁来保护共享资源。</p>

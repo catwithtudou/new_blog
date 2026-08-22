@@ -61,17 +61,17 @@
     
       <link rel="stylesheet" href="../../../../assets/document_dates/fonts/material-icons.css">
     
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/material.css">
-    
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/light.css">
-    
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/backdrop.css">
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/scale.css">
     
       <link rel="stylesheet" href="../../../../assets/document_dates/tippy/tippy.css">
     
-      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/scale.css">
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/material.css">
+    
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/backdrop.css">
     
       <link rel="stylesheet" href="../../../../assets/document_dates/tippy/shift-away.css">
+    
+      <link rel="stylesheet" href="../../../../assets/document_dates/tippy/light.css">
     
       <link rel="stylesheet" href="../../../../assets/document_dates/core/core.css">
     
@@ -2439,9 +2439,9 @@
 <li>这个箭头总是射向左边的，元素类型总在最右边；</li>
 <li>若箭头指向chan即表示可以往chan中塞数据，若箭头远离chan就表示chan会往外吐数据；</li>
 </ul>
-<div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="kd">chan</span><span class="o">&lt;-</span><span class="w"> </span><span class="nx">dataType</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a><span class="o">&lt;-</span><span class="kd">chan</span><span class="w"> </span><span class="nx">dataType</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a><span class="kd">chan</span><span class="w"> </span><span class="nx">dataType</span>
+<div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="kt">chan</span><span class="o">&lt;-</span><span class="w"> </span><span class="nx">dataType</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a><span class="o">&lt;-</span><span class="kt">chan</span><span class="w"> </span><span class="nx">dataType</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a><span class="kt">chan</span><span class="w"> </span><span class="nx">dataType</span>
 </code></pre></div>
 <p>channel根据设置容量分为 buffer chan 和 unbuffered chan。</p>
 <p>在 buffer chan 被阻塞时只有在容量已满的时候才会被阻塞，而 unbuffered chan 只有读写都准备好之后才不不会阻塞。</p>
