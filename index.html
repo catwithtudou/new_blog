@@ -59,7 +59,7 @@
     
       <link rel="stylesheet" href="assets/document_dates/fonts/material-icons.css">
     
-      <link rel="stylesheet" href="assets/document_dates/tippy/scale.css">
+      <link rel="stylesheet" href="assets/document_dates/tippy/shift-away.css">
     
       <link rel="stylesheet" href="assets/document_dates/tippy/tippy.css">
     
@@ -67,7 +67,7 @@
     
       <link rel="stylesheet" href="assets/document_dates/tippy/backdrop.css">
     
-      <link rel="stylesheet" href="assets/document_dates/tippy/shift-away.css">
+      <link rel="stylesheet" href="assets/document_dates/tippy/scale.css">
     
       <link rel="stylesheet" href="assets/document_dates/tippy/light.css">
     
@@ -107,6 +107,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#精选文章" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -365,46 +370,6 @@
     
     
       <li class="md-tabs__item">
-        <a href="network/" class="md-tabs__link">
-          
-  
-    
-  
-  Network
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="ds/" class="md-tabs__link">
-          
-  
-    
-  
-  DS
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
         <a href="architecture/" class="md-tabs__link">
           
   
@@ -494,8 +459,10 @@
 <header class="home-hero">
   <div class="home-hero__content">
     <h1 class="home-hero__title" aria-label="always the self-reflection">
-      <span id="typed-text" data-text="always the self-reflection"></span><span class="home-hero__cursor"></span>
+      <span id="typed-text" data-text="always the self-reflection">always the self-reflection</span><span class="home-hero__cursor"></span>
     </h1>
+    <p class="home-hero__intro">技术实践、学习笔记与生活复盘</p>
+    <a class="home-hero__action" href="#intro-cards">从这里开始</a>
   </div>
   <a class="home-hero__scroll" href="#intro-cards" aria-label="Scroll to intro">
     <span aria-hidden="true">↓</span>
@@ -556,6 +523,18 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    🌦️Home
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
@@ -566,6 +545,52 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#精选文章" class="md-nav__link">
+    <span class="md-ellipsis">
+      精选文章
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#按主题阅读" class="md-nav__link">
+    <span class="md-ellipsis">
+      按主题阅读
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#继续看看" class="md-nav__link">
+    <span class="md-ellipsis">
+      继续看看
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -809,108 +834,6 @@
   
   <span class="md-ellipsis">
     OS
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="network/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Network
-    
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-    
-    
-      
-      
-        
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="ds/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    DS
     
   </span>
   
@@ -1186,6 +1109,41 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#精选文章" class="md-nav__link">
+    <span class="md-ellipsis">
+      精选文章
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#按主题阅读" class="md-nav__link">
+    <span class="md-ellipsis">
+      按主题阅读
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#继续看看" class="md-nav__link">
+    <span class="md-ellipsis">
+      继续看看
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1196,17 +1154,42 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-<section id="intro-cards" class="home-intro">
-  <div class="home-intro__container">
-    <h2 class="home-intro__heading">For what?</h2>
-    <div class="home-intro__cards">
-      <article class="home-intro__card">
-        <img class="home-intro__avatar" src="assets/logo.jpeg" alt="catwithtudou">
-        <h3 class="home-intro__name">catwithtudou🌦️</h3>
-        <blockquote class="home-intro__quote">渺小得像尘埃</blockquote>
-      </article>
-    </div>
-  </div>
+<section id="intro-cards" class="home-reading" aria-label="文章与阅读入口">
+  <h2 id="精选文章">精选文章<a class="headerlink" href="#精选文章" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><strong><a href="blog/2026/06/07/%E4%BB%8E-cli-agent-%E5%88%B0%E6%9C%AC%E5%9C%B0-agent-runtime%E4%B8%80%E5%A5%97%E5%8C%85%E8%A3%85%E6%9C%AC%E5%9C%B0-agent-%E7%9A%84%E5%B7%A5%E7%A8%8B%E6%A8%A1%E5%BC%8F/">从 CLI Agent 到本地 Agent Runtime</a></strong></p>
+<p>从会话、记忆与工作流出发，拆解本地 Agent 的运行时设计。</p>
+</li>
+<li>
+<p><strong><a href="blog/2026/03/22/%E5%88%AB%E5%86%8D%E5%8F%AA%E7%9B%AF%E7%9D%80-skillmd-%E6%A0%BC%E5%BC%8F%E4%BA%865-%E7%A7%8D%E6%9B%B4%E5%80%BC%E5%BE%97%E5%85%B3%E6%B3%A8%E7%9A%84-agent-skill-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">5 种 Agent Skill 设计模式</a></strong></p>
+<p>从工具包装到流水线，理解 Skill 如何组织能力、参与工作。</p>
+</li>
+<li>
+<p><strong><a href="blog/2025/03/24/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%9B%9B%E7%A7%8D%E7%BB%8F%E5%85%B8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E7%AE%97%E6%B3%95/">深入理解四种经典负载均衡算法</a></strong></p>
+<p>梳理算法思路、适用场景与 Go 实现。</p>
+</li>
+</ul>
+<h2 id="按主题阅读">按主题阅读<a class="headerlink" href="#按主题阅读" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><strong><a href="algorithms/LLM/">AI 与 Agent</a></strong></p>
+<p>从基础概念出发，按能力组织、架构、运行时和评测逐步阅读。</p>
+</li>
+<li>
+<p><strong><a href="language/golang/">Go 与后端</a></strong></p>
+<p>Go 语言、并发编程与工程实践的学习记录。</p>
+</li>
+<li>
+<p><strong><a href="blog/category/monthly-review/">生活与月度复盘</a></strong></p>
+<p>按时间回顾工作、生活和自己的变化。</p>
+</li>
+</ul>
+<h2 id="继续看看">继续看看<a class="headerlink" href="#继续看看" title="Permanent link">&para;</a></h2>
+<p><a href="updates/">最近更新</a> · <a href="blog/">全部文章</a> · <a href="blog/tags/">标签索引</a> · <a href="blog/me/">关于我</a></p>
+<blockquote>
+<p>catwithtudou🌦️ · 渺小得像尘埃</p>
+</blockquote>
 </section>
 
               </article>

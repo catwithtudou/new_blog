@@ -1,7 +1,7 @@
 .home-hero {
   position: relative;
   display: grid;
-  min-height: 100vh;
+  min-height: 55vh;
   place-items: center;
   overflow: hidden;
   background:
@@ -11,7 +11,28 @@
 }
 
 .home-hero__content {
-  padding: 0 1.5rem;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.home-hero__intro {
+  color: #fff;
+  font-size: 1rem;
+  text-shadow: 0 1px 4px #000;
+}
+
+.home-hero__action {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid #fff;
+  border-radius: 0.25rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.home-hero__action:hover,
+.home-hero__action:focus-visible {
+  background: #fff;
+  color: #111;
 }
 
 .home-hero__title {
@@ -48,56 +69,35 @@
   animation: home-arrow-bounce 2s infinite;
 }
 
-.home-intro {
-  padding: 3rem 0;
-  background-color: #000;
-  text-align: center;
-}
-
-.home-intro__container {
-  max-width: 75rem;
+.home-reading {
+  max-width: 60rem;
   margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 0 0 2rem;
+  scroll-margin-top: 5rem;
 }
 
-.home-intro__heading {
-  margin: 0 0 1.5rem;
-  color: #fff;
+.home-reading > h2 {
+  margin-top: 2rem;
 }
 
-.home-intro__cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.25rem;
+.md-typeset .home-reading > ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: 1rem;
+  margin: 1rem 0 2rem;
+  list-style: none;
 }
 
-.home-intro__card {
-  width: min(100%, 20rem);
+.md-typeset .home-reading > ul > li {
   margin: 0;
-  padding: 1.25rem;
-  border-radius: 0.625rem;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.4rem;
+  background: var(--md-default-bg-color);
 }
 
-.home-intro__avatar {
-  width: 6.25rem;
-  height: 6.25rem;
-  margin-bottom: 1.25rem;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.home-intro__name {
-  margin: 0.625rem 0;
-}
-
-.home-intro__quote {
-  margin: 1.25rem 0 0;
-  color: #555;
-  font-size: 0.875rem;
-  line-height: 1.6;
+.home-reading > ul > li > p:last-child {
+  margin-bottom: 0;
 }
 
 @keyframes home-cursor-blink {
