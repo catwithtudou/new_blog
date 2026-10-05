@@ -5,8 +5,10 @@
 <header class="home-hero">
   <div class="home-hero__content">
     <h1 class="home-hero__title" aria-label="always the self-reflection">
-      <span id="typed-text" data-text="always the self-reflection"></span><span class="home-hero__cursor"></span>
+      <span id="typed-text" data-text="always the self-reflection">always the self-reflection</span><span class="home-hero__cursor"></span>
     </h1>
+    <p class="home-hero__intro">技术实践、学习笔记与生活复盘</p>
+    <a class="home-hero__action" href="#intro-cards">从这里开始</a>
   </div>
   <a class="home-hero__scroll" href="#intro-cards" aria-label="Scroll to intro">
     <span aria-hidden="true">↓</span>
@@ -15,17 +17,8 @@
 {% endblock %}
 
 {% block content %}
-<section id="intro-cards" class="home-intro">
-  <div class="home-intro__container">
-    <h2 class="home-intro__heading">For what?</h2>
-    <div class="home-intro__cards">
-      <article class="home-intro__card">
-        <img class="home-intro__avatar" src="{{ 'assets/logo.jpeg' | url }}" alt="catwithtudou">
-        <h3 class="home-intro__name">catwithtudou🌦️</h3>
-        <blockquote class="home-intro__quote">渺小得像尘埃</blockquote>
-      </article>
-    </div>
-  </div>
+<section id="intro-cards" class="home-reading" aria-label="文章与阅读入口">
+  {{ page.content }}
 </section>
 {% endblock %}
 

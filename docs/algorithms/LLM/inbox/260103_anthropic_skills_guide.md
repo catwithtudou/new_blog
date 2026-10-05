@@ -1,4 +1,11 @@
+---
+search:
+  exclude: true
+---
+
 # Anthropic Agent Skills 完整指南：让 AI Agent 掌握专业技能的标准化方案
+
+> 本页保留写作草稿，阅读请前往[正式发布文章](../../../blog/posts/20260103_skill_intro.md)。
 
 ## 引言
 

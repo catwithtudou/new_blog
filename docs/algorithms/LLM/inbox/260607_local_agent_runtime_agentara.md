@@ -1,4 +1,11 @@
+---
+search:
+  exclude: true
+---
+
 # 从 CLI Agent 到本地 Agent Runtime：一套包装本地 Agent 的工程模式
+
+> 本页保留写作草稿，阅读请前往[正式发布文章](../../../blog/posts/20260607_local_agent_runtime_agentara.md)。
 
 ## 文档目标
 

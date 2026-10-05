@@ -1,4 +1,11 @@
-﻿# 通用 CodeAgent 的落地实践：从架构到关键设计点
+---
+search:
+  exclude: true
+---
+
+# 通用 CodeAgent 的落地实践：从架构到关键设计点
+
+> 本页保留写作草稿，阅读请前往[正式发布文章](../../../blog/posts/20251209_common_code_agent.md)。
 
 ## 引言
 

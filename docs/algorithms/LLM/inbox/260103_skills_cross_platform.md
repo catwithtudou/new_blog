@@ -1,4 +1,11 @@
+---
+search:
+  exclude: true
+---
+
 # 跨平台 Skills 实践指南：在任何 AI 工具中使用专业技能
+
+> 本页保留写作草稿，阅读请前往[正式发布文章](../../../blog/posts/20260103_skills_cross.md)。
 
 ## 引言
 

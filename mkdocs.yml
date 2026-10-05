@@ -230,8 +230,6 @@ nav:
   - Language: language
   - Algorithms: algorithms
   - OS: os
-  - Network: network
-  - DS: ds
   - Architecture: architecture
   - Middleware: middleware
   - Project: project
