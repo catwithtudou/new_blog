@@ -15,14 +15,14 @@ tags:
 
 本文将深入介绍 Anthropic 的 Skills 项目，帮助你理解其核心价值、技术架构和实际应用。
 
+<!-- more -->
+
 > **技术准确性声明**：本文中所有关键技术细节（Progressive Disclosure、高效脚本执行、环境隔离等）均基于 Anthropic 官方文档验证，包括：
 > - [Agent Skills API Guide](https://platform.claude.com/docs/en/api/skills-guide)
 > - [Agent Skills Overview](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
 > - [Anthropic Engineering Blog - Agent Skills](https://anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
 >
 > 文中涉及官方文档的部分均以引用块标注，确保信息的准确性和可追溯性。
-
-<!-- more -->
 
 ## 什么是 Agent Skills？
 

@@ -20,6 +20,8 @@ tags:
 
 真正决定一个 Skill 是否好用、是否稳定、是否能复用的，往往不是它“长什么样”，而是它内部的**能力结构怎么设计**。
 
+<!-- more -->
+
 这也是 Google Cloud Tech 那篇[《5 Agent Skill design patterns every ADK developer should know》](https://x.com/GoogleCloudTech/status/2033953579824758855)真正值得看的地方：
 
 **当 Skill 的包装格式逐渐标准化之后，真正拉开差距的，不再是会不会写 Skill 文件，而是会不会设计 Skill 的内容。**
@@ -35,8 +37,6 @@ tags:
 5. Pipeline
 
 它们不是五个零散技巧，而更像五种常见的 **Agent 能力组织方式**。
-
-<!-- more -->
 
 ## 一、为什么“继续堆 Prompt”正在变得越来越低效
 

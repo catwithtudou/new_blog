@@ -23,15 +23,15 @@ hide:
 
 - **[AI 与 Agent](algorithms/LLM/README.md)**
 
-    LLM、Agent 课程和实践笔记。也可以从上面的两篇精选文章开始。
+    从基础概念出发，按能力组织、架构、运行时和评测逐步阅读。
 
 - **[Go 与后端](language/golang/README.md)**
 
     Go 语言、并发编程与工程实践的学习记录。
 
-- **[生活与写作](blog/index.md)**
+- **[生活与月度复盘](blog/category/monthly-review.md)**
 
-    月度复盘、生活随笔，以及按时间归档的技术文章。
+    按时间回顾工作、生活和自己的变化。
 
 ## 继续看看
 
