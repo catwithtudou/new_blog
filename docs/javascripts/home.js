@@ -10,33 +10,45 @@
     var typingDelay = 200;
     var erasingDelay = 100;
     var newTextDelay = 2000;
-    var charIndex = 0;
-
-    typedTextSpan.textContent = "";
+    var charIndex = text.length;
+    var timerId;
+    var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
     function type() {
       if (charIndex < text.length) {
         typedTextSpan.textContent += text.charAt(charIndex);
         charIndex += 1;
-        window.setTimeout(type, typingDelay);
+        timerId = window.setTimeout(type, typingDelay);
         return;
       }
 
-      window.setTimeout(erase, newTextDelay);
+      timerId = window.setTimeout(erase, newTextDelay);
     }
 
     function erase() {
       if (charIndex > 0) {
         typedTextSpan.textContent = text.substring(0, charIndex - 1);
         charIndex -= 1;
-        window.setTimeout(erase, erasingDelay);
+        timerId = window.setTimeout(erase, erasingDelay);
         return;
       }
 
-      window.setTimeout(type, typingDelay);
+      timerId = window.setTimeout(type, typingDelay);
     }
 
-    window.setTimeout(type, newTextDelay + 250);
+    function resetAnimation() {
+      window.clearTimeout(timerId);
+      typedTextSpan.textContent = text;
+      charIndex = text.length;
+
+      if (!reducedMotion.matches && !document.hidden) {
+        timerId = window.setTimeout(erase, newTextDelay);
+      }
+    }
+
+    reducedMotion.addEventListener("change", resetAnimation);
+    document.addEventListener("visibilitychange", resetAnimation);
+    resetAnimation();
   }
 
   if (document.readyState === "loading") {

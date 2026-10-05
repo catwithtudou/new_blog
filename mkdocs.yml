@@ -212,11 +212,11 @@ extra:
     property: G-WZVK8HDP5T
 
 extra_javascript:
-  - javascripts/home.js
+  - javascripts/home.js?v=20261005
   - javascripts/updates.js?v=20260607-2
 
 extra_css:
-  - stylesheets/home.css
+  - stylesheets/home.css?v=20261005
   - stylesheets/updates.css
 
 # Page tree
