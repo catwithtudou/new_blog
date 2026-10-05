@@ -55,7 +55,7 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/home.css">
+      <link rel="stylesheet" href="../stylesheets/home.css?v=20261005">
     
       <link rel="stylesheet" href="../stylesheets/updates.css">
     
@@ -1621,6 +1621,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#软件设计与工程管理" class="md-nav__link">
+    <span class="md-ellipsis">
+      软件设计与工程管理
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#分布式系统" class="md-nav__link">
+    <span class="md-ellipsis">
+      分布式系统
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1639,6 +1665,22 @@
 
 
 <h1 id="architecture-design">Architecture Design<a class="headerlink" href="#architecture-design" title="Permanent link">&para;</a></h1>
+<p>这里整理软件设计、分布式系统与工程管理的阅读笔记。可以从代码层面的设计问题开始，也可以直接查看分布式系统的专题。</p>
+<h2 id="软件设计与工程管理">软件设计与工程管理<a class="headerlink" href="#软件设计与工程管理" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="books/2403%E3%80%8A%E9%87%8D%E6%9E%84%EF%BC%9A%E6%94%B9%E5%96%84%E6%97%A2%E6%9C%89%E4%BB%A3%E7%A0%81%E7%9A%84%E8%AE%BE%E8%AE%A1%E3%80%8B/01refactor/">《重构：改善既有代码的设计》</a>：从示例、原则与代码坏味道开始。</li>
+<li><a href="books/2406%E3%80%8A%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93%E3%80%8B/01init/">《代码整洁之道》</a>：命名、函数、注释与代码组织。</li>
+<li><a href="books/2502%E3%80%8A%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%93%B2%E5%AD%A6%E3%80%8B/01init/">《软件设计的哲学》</a>：理解复杂性与模块设计。</li>
+<li><a href="books/2411%E3%80%8A%E4%BA%BA%E6%9C%88%E7%A5%9E%E8%AF%9D%E3%80%8B/01init/">《人月神话》</a>：软件项目中的协作与管理问题。</li>
+</ul>
+<p>每本书的后续章节可以通过左侧目录继续阅读。</p>
+<h2 id="分布式系统">分布式系统<a class="headerlink" href="#分布式系统" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>整体认识</strong>：<a href="distributed/20220129_%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E7%9A%84%E6%9C%AC%E8%B4%A8note/">分布式系统架构的本质</a></li>
+<li><strong>应对故障</strong>：<a href="distributed/20220129_%E5%BC%B9%E5%8A%9B%E8%AE%BE%E8%AE%A1note/">弹力设计</a> · <a href="distributed/20220129_%E5%88%86%E5%B8%83%E5%BC%8F%E7%86%94%E6%96%AD%E6%96%B9%E6%A1%88/">熔断方案</a> · <a href="distributed/20220129_%E6%9C%8D%E5%8A%A1%E9%99%90%E6%B5%81%E7%9A%84%E9%80%9A%E7%94%A8%E6%96%B9%E6%A1%88/">服务限流</a></li>
+<li><strong>基础组件</strong>：<a href="distributed/20220129_%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E5%85%A8%E5%B1%80%E5%94%AF%E4%B8%80id%E7%94%9F%E6%88%90%E5%99%A8/">全局唯一 ID 生成器</a></li>
+<li><strong>课程笔记</strong>：<a href="distributed/mit6824/20220129_mit6824lec3%E7%AC%94%E8%AE%B0_gfs/">GFS</a> · <a href="distributed/mit6824/20220129_mit6824lec4%E7%AC%94%E8%AE%B0_primary-backup_replication/">Primary/Backup Replication</a></li>
+</ul>
 
 
 
@@ -1661,7 +1703,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">February 4, 2024 00:32:50</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 5, 2026 10:17:37</span>
   </span>
 
     
@@ -1872,7 +1914,7 @@
 
       <script src="../assets/javascripts/bundle.f13b1293.min.js"></script>
       
-        <script src="../javascripts/home.js"></script>
+        <script src="../javascripts/home.js?v=20261005"></script>
       
         <script src="../javascripts/updates.js?v=20260607-2"></script>
       

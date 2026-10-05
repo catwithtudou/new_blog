@@ -55,7 +55,7 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/home.css">
+      <link rel="stylesheet" href="../stylesheets/home.css?v=20261005">
     
       <link rel="stylesheet" href="../stylesheets/updates.css">
     
@@ -1391,6 +1391,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#先理解搜索与索引" class="md-nav__link">
+    <span class="md-ellipsis">
+      先理解搜索与索引
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#组织数据与查询" class="md-nav__link">
+    <span class="md-ellipsis">
+      组织数据与查询
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1409,6 +1435,20 @@
 
 
 <h1 id="middleware">Middleware<a class="headerlink" href="#middleware" title="Permanent link">&para;</a></h1>
+<p>这里目前以 Elasticsearch 与搜索引擎的学习笔记为主。下面按概念、索引设计和查询的顺序整理阅读入口。</p>
+<h2 id="先理解搜索与索引">先理解搜索与索引<a class="headerlink" href="#先理解搜索与索引" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="search_engine/20220228_elasticsearch%E5%88%9D%E8%AF%86/">初识 Elasticsearch</a></li>
+<li><a href="search_engine/20220303_elasticsearch%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">文档、索引与基本概念</a></li>
+<li><a href="search_engine/20220305_elasticsearch%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95_analysis%E5%88%86%E8%AF%8D/">倒排索引与 Analysis 分词</a></li>
+</ol>
+<h2 id="组织数据与查询">组织数据与查询<a class="headerlink" href="#组织数据与查询" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>定义数据结构</strong>：<a href="search_engine/20220307_elasticsearchmapping/">Mapping</a> · <a href="search_engine/20220308_elasticsearchtemplate%E4%BD%BF%E7%94%A8/">Template</a></li>
+<li><strong>处理文本</strong>：<a href="search_engine/20220308_elasticsearch%E5%A4%9A%E5%AD%97%E6%AE%B5%E7%89%B9%E6%80%A7_%E8%87%AA%E5%AE%9A%E4%B9%89analyzer/">多字段特性与自定义 Analyzer</a></li>
+<li><strong>查询与分析</strong>：<a href="search_engine/20220307_elasticsearchsearchapi/">Search API</a> · <a href="search_engine/20220318_elasticsearch%E6%B7%B1%E5%85%A5%E6%90%9C%E7%B4%A2/">深入搜索</a> · <a href="search_engine/20220308_elasticsearch%E8%81%9A%E5%90%88%E7%AE%80%E4%BB%8B/">聚合简介</a></li>
+</ul>
+<p>这些笔记记录于 2022 年，API 与配置示例需要结合所用的 Elasticsearch 版本阅读。</p>
 
 
 
@@ -1431,7 +1471,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">February 4, 2024 00:32:50</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">October 5, 2026 10:17:37</span>
   </span>
 
     
@@ -1642,7 +1682,7 @@
 
       <script src="../assets/javascripts/bundle.f13b1293.min.js"></script>
       
-        <script src="../javascripts/home.js"></script>
+        <script src="../javascripts/home.js?v=20261005"></script>
       
         <script src="../javascripts/updates.js?v=20260607-2"></script>
       
