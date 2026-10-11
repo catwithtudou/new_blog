@@ -1,11 +1,4 @@
----
-search:
-  exclude: true
----
-
-# 探索 Cursor AI 编程
-
-> 本页保留写作草稿，阅读请前往[正式发布文章](../../../blog/posts/20250214_cursor_review.md)。
+﻿# 探索 Cursor AI 编程
 
 > **文档目标**
 >

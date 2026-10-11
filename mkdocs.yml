@@ -212,11 +212,11 @@ extra:
     property: G-WZVK8HDP5T
 
 extra_javascript:
-  - javascripts/home.js?v=20261005
+  - javascripts/home.js
   - javascripts/updates.js?v=20260607-2
 
 extra_css:
-  - stylesheets/home.css?v=20261005
+  - stylesheets/home.css
   - stylesheets/updates.css
 
 # Page tree
@@ -230,6 +230,8 @@ nav:
   - Language: language
   - Algorithms: algorithms
   - OS: os
+  - Network: network
+  - DS: ds
   - Architecture: architecture
   - Middleware: middleware
   - Project: project
