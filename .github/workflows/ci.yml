@@ -16,6 +16,8 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Shanghai
     steps:
       - uses: actions/checkout@v4
         with:

@@ -28,7 +28,9 @@ if [ -x ".venv/bin/mkdocs" ]; then
   mkdocs_cmd=".venv/bin/mkdocs"
 fi
 
-"$mkdocs_cmd" build
+echo "Pre-commit check: new, uncommitted pages may report missing Git dates; these will be checked again after commit."
+# Keep the build timezone aligned with RSS date_from_meta.default_timezone.
+TZ=Asia/Shanghai "$mkdocs_cmd" build
 bash scripts/check_release_invariants.sh
 
 git add -A
@@ -40,5 +42,6 @@ else
   git commit -m "$msg"
 fi
 
-"$mkdocs_cmd" build --strict
+echo "Post-commit strict check: warnings must be resolved before pushing."
+TZ=Asia/Shanghai "$mkdocs_cmd" build --strict
 git push origin "$branch"

@@ -90,6 +90,8 @@ plugins:
       pagination_format: "$link_first $link_previous ~2~ $link_next $link_last"
   - rss:
       length: 100
+      date_from_meta:
+        default_timezone: Asia/Shanghai
       match_path: '^(?!updates\.md$)(?!blog/(archive|category|page)/)(?!.*(?:^|/)inbox/)(?!.*(?:^|/)(README|index)\.md$).+\.md$'
       feeds_filenames:
         json_created: feed_json_created.json
