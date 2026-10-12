@@ -1,4 +1,9 @@
-﻿# 探索 Cursor AI 编程
+﻿---
+search:
+  exclude: true
+---
+
+# 探索 Cursor AI 编程
 
 > **文档目标**
 >

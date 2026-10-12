@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # 从 CLI Agent 到本地 Agent Runtime：一套包装本地 Agent 的工程模式
 
 ## 文档目标

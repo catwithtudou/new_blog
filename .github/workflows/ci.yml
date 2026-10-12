@@ -33,6 +33,11 @@ jobs:
           cache-dependency-path: requirements.txt
       - name: Install dependencies
         run: pip install -r requirements.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check homepage animation
+        run: node --test scripts/home_animation.test.cjs
       - name: Validate MkDocs build
         run: mkdocs build --strict --site-dir /tmp/new_blog_mkdocs_strict
       - name: Check release invariants

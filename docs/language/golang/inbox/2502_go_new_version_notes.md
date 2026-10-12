@@ -1,4 +1,9 @@
-﻿# Go 1.24 Notes
+﻿---
+search:
+  exclude: true
+---
+
+# Go 1.24 Notes
 
 > 更新具体内容：https://antonz.org/go-1-24/
 

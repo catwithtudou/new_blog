@@ -1,4 +1,9 @@
-﻿# 别再只盯着 `SKILL.md` 格式了：5 种更值得关注的 Agent Skill 设计模式
+﻿---
+search:
+  exclude: true
+---
+
+# 别再只盯着 `SKILL.md` 格式了：5 种更值得关注的 Agent Skill 设计模式
 
 当越来越多 Agent 工具开始支持相似的 Skill 组织方式后，很多开发者仍然把注意力放在“外壳”上：
 
