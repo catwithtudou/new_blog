@@ -130,6 +130,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .home-hero__cursor {
+    display: none;
+  }
+
   .home-hero__cursor,
   .home-hero__scroll span {
     animation: none;
