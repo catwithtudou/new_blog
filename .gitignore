@@ -3,3 +3,6 @@
 .venv/
 .DS_Store
 site/
+
+# Local handoff notes; keep out of commits and published documentation.
+/context/

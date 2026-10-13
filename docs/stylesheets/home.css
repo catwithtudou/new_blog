@@ -50,7 +50,7 @@
 
 .home-intro {
   padding: 3rem 0;
-  background-color: #000;
+  background-color: var(--md-default-bg-color);
   text-align: center;
 }
 
@@ -62,7 +62,7 @@
 
 .home-intro__heading {
   margin: 0 0 1.5rem;
-  color: #fff;
+  color: var(--md-default-fg-color);
 }
 
 .home-intro__cards {
@@ -76,9 +76,9 @@
   width: min(100%, 20rem);
   margin: 0;
   padding: 1.25rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
   border-radius: 0.625rem;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--md-code-bg-color);
 }
 
 .home-intro__avatar {
@@ -95,7 +95,7 @@
 
 .home-intro__quote {
   margin: 1.25rem 0 0;
-  color: #555;
+  color: var(--md-default-fg-color--light);
   font-size: 0.875rem;
   line-height: 1.6;
 }
