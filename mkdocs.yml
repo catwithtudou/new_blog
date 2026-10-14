@@ -215,6 +215,7 @@ extra:
 
 extra_javascript:
   - javascripts/home.js?v=20261011
+  - javascripts/search.js?v=20261014
   - javascripts/updates.js?v=20260607-2
 
 extra_css:
