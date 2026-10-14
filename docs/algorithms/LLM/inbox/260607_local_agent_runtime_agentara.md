@@ -5,6 +5,8 @@ search:
 
 # 从 CLI Agent 到本地 Agent Runtime：一套包装本地 Agent 的工程模式
 
+> 本页为留存副本，阅读请前往[正式发布文章](../../../blog/posts/20260607_local_agent_runtime_agentara.md)。
+
 ## 文档目标
 
 - 解释 Codex / Claude Code 这类 CLI Agent 如何从“终端里的命令”变成“工作流里的 Runtime”

@@ -5,6 +5,8 @@ search:
 
 # Anthropic Agent Skills 完整指南：让 AI Agent 掌握专业技能的标准化方案
 
+> 本页为留存副本，阅读请前往[正式发布文章](../../../blog/posts/20260103_skill_intro.md)。
+
 ## 引言
 
 随着大语言模型在各个领域的应用越来越广泛，如何让 AI Agent 更好地完成特定领域的专业任务成为了一个重要课题。Anthropic 推出的 **Agent Skills** 提供了一个优雅的解决方案——通过标准化的技能包（Skill），让 Claude 能够动态加载专业指令和资源，从而在特定任务上表现得更加专业和一致。

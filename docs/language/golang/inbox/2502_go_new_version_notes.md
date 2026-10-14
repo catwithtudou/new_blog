@@ -5,6 +5,8 @@ search:
 
 # Go 1.24 Notes
 
+> 本页为留存副本，阅读请前往[正式发布文章](../../../blog/posts/20250223_go_version_update.md)。
+
 > 更新具体内容：https://antonz.org/go-1-24/
 
 ## 版本总结

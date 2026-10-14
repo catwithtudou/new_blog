@@ -5,6 +5,8 @@ search:
 
 # 探索 Cursor AI 编程
 
+> 本页为留存副本，阅读请前往[正式发布文章](../../../blog/posts/20250214_cursor_review.md)。
+
 > **文档目标**
 >
 > - 科普当前 AI 编程的“版本答案”之一——Cursor 的概念及使用

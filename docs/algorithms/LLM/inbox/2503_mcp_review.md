@@ -5,6 +5,8 @@ search:
 
 # 🔌从0到1带你了解和使用 MCP—AI应用拓展绕不开的协议
 
+> 本页为留存副本，阅读请前往[正式发布文章](../../../blog/posts/20250317_mcp_review.md)。
+
 > **文档目标**
 >
 > - 科普当前 AI 模型与应用主流的交互标准协议 MCP（Model Context Protocol）

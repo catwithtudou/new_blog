@@ -5,6 +5,8 @@ search:
 
 # 跨平台 Skills 实践指南：在任何 AI 工具中使用专业技能
 
+> 本页为留存副本，阅读请前往[正式发布文章](../../../blog/posts/20260103_skills_cross.md)。
+
 ## 引言
 
 Anthropic 的 Agent Skills 提供了一套优雅的专业技能管理方案，但最初它是 Claude 专属特性。随着社区的发展，现在有多种方案让其他 AI 编程工具（Cursor、Windsurf、Aider 等）也能使用 Skills，甚至在 LangChain、LlamaIndex 等框架中实现类似的 Skills 模式。
