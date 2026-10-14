@@ -25,6 +25,7 @@ theme:
   # page tab logo
   favicon: assets/logo.jpeg
   features:
+    - navigation.instant
     - navigation.tracking  #锚点跟踪
     - navigation.tabs
     - navigation.tabs.sticky
@@ -214,9 +215,10 @@ extra:
     property: G-WZVK8HDP5T
 
 extra_javascript:
-  - javascripts/home.js?v=20261011
+  - javascripts/home.js?v=20261014
   - javascripts/search.js?v=20261014
-  - javascripts/updates.js?v=20260607-2
+  - javascripts/updates.js?v=20261014
+  - javascripts/mathjax.js?v=20261014
 
 extra_css:
   - stylesheets/home.css?v=20261012

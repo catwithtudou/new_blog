@@ -164,7 +164,14 @@
     document.querySelectorAll("[data-document-dates-updates]").forEach(enhanceDocumentDatesUpdates);
   }
 
-  if (document.readyState === "loading") {
+  // Instant navigation swaps pages without reloading, so run on every page.
+  // The microtask lets document-dates apply its own saved layout first, so this
+  // page's layout still wins, as it does on a full page load.
+  if (window.document$ && !window.document$.isStopped) {
+    window.document$.subscribe(function () {
+      queueMicrotask(initUpdates);
+    });
+  } else if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initUpdates);
   } else {
     initUpdates();

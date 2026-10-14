@@ -1,5 +1,10 @@
 (function () {
+  var stopTyping = function () {};
+
   function startTyping() {
+    stopTyping();
+    stopTyping = function () {};
+
     var typedTextSpan = document.getElementById("typed-text");
 
     if (!typedTextSpan) {
@@ -47,10 +52,17 @@
     }
 
     reducedMotion.addEventListener("change", resetAnimation);
+    stopTyping = function () {
+      window.clearTimeout(timerId);
+      reducedMotion.removeEventListener("change", resetAnimation);
+    };
     resetAnimation();
   }
 
-  if (document.readyState === "loading") {
+  // Instant navigation swaps pages without reloading, so restart on every page.
+  if (window.document$ && !window.document$.isStopped) {
+    window.document$.subscribe(startTyping);
+  } else if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", startTyping);
   } else {
     startTyping();

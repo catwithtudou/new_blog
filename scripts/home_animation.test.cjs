@@ -10,34 +10,38 @@ const source = read("docs/javascripts/home.js");
 const template = read("overrides/home.html");
 const [, title, fallback] = template.match(/<span id="typed-text" data-text="([^"]*)">([^<]*)<\/span>/);
 
-function load({ reduced = false, homepage = true, loading = false } = {}) {
+function load({ reduced = false, homepage = true, loading = false, instant = false } = {}) {
   const timers = new Map();
   const events = new Map();
+  const listeners = new Set();
+  const subscribers = [];
   let nextId = 0;
-  let preferenceChanged;
+  let onHomepage = homepage;
   const span = { textContent: fallback, getAttribute: () => title };
   const media = {
     matches: reduced,
-    addEventListener: (event, callback) => { preferenceChanged = callback; },
+    addEventListener: (event, callback) => listeners.add(callback),
+    removeEventListener: (event, callback) => listeners.delete(callback),
   };
   const document = {
     readyState: loading ? "loading" : "complete",
-    getElementById: () => homepage ? span : null,
+    getElementById: () => onHomepage ? span : null,
     addEventListener: (event, callback) => events.set(event, callback),
   };
-  runInNewContext(source, {
-    document,
-    window: {
-      matchMedia: () => media,
-      setTimeout: (callback, delay) => {
-        timers.set(++nextId, { callback, delay });
-        return nextId;
-      },
-      clearTimeout: (id) => timers.delete(id),
+  const window = {
+    matchMedia: () => media,
+    setTimeout: (callback, delay) => {
+      timers.set(++nextId, { callback, delay });
+      return nextId;
     },
-  });
+    clearTimeout: (id) => timers.delete(id),
+  };
+  if (instant) {
+    window.document$ = { isStopped: false, subscribe: (callback) => subscribers.push(callback) };
+  }
+  runInNewContext(source, { document, window });
   return {
-    span, timers,
+    span, timers, listeners,
     tick(expectedDelay) {
       assert.equal(timers.size, 1, "only one animation timer should run");
       const [id, { callback, delay }] = timers.entries().next().value;
@@ -47,9 +51,13 @@ function load({ reduced = false, homepage = true, loading = false } = {}) {
     },
     setReduced(value) {
       media.matches = value;
-      preferenceChanged({ matches: value });
+      listeners.forEach((callback) => callback({ matches: value }));
     },
     ready: () => events.get("DOMContentLoaded")(),
+    navigate(toHomepage) {
+      onHomepage = toHomepage;
+      subscribers.forEach((callback) => callback());
+    },
   };
 }
 
@@ -105,4 +113,20 @@ test("loading preserves the fallback until the DOM is ready", () => {
 
 test("non-home pages do not start animation timers", () => {
   assert.equal(load({ homepage: false }).timers.size, 0);
+});
+
+test("instant navigation restarts the animation without leftover timers or listeners", () => {
+  const page = load({ instant: true });
+  assert.equal(page.timers.size, 0, "waits for the first document$ emission");
+  page.navigate(true);
+  page.tick(2250);
+  assert.equal(page.span.textContent, title[0]);
+  page.navigate(false);
+  assert.equal(page.timers.size, 0);
+  assert.equal(page.listeners.size, 0);
+  page.navigate(true);
+  assert.equal(page.span.textContent, "");
+  assert.equal(page.listeners.size, 1);
+  page.tick(2250);
+  assert.equal(page.span.textContent, title[0]);
 });
