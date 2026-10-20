@@ -3,7 +3,8 @@ site_name: catwithtudou️🌦️
 site_url: https://zhengyua.cn/new_blog/
 site_author: catwithtudou️
 site_description: >-
-  Life
+  catwithtudou's blog: technical notes on server engineering and applied LLM
+  technologies, plus periodic reflections on life, work, and technical practice.
 
 exclude_docs: |
   superpowers/**
