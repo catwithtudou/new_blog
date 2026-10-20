@@ -46,7 +46,7 @@ theme:
     - content.code.select
     - header.autohide
   # language
-  language: en
+  language: zh
 
   # color scheme
   palette:
