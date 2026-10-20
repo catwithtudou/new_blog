@@ -2528,8 +2528,8 @@
 <ul>
 <li>让我们做到<strong>使用统一规范对接各种数据源、工具和服务，轻松实现</strong> <strong>AI</strong> <strong>与外部环境的动态交互</strong></li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503190952139.png" /></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503190953379.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503190952139.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503190953379.png" /></p>
 <blockquote>
 <p>历史 Tips：MCP 最开始是 Anthropic 的一个项目，目的是让 Claude 等模型更容易与工具和数据源交互。</p>
 <p>但随着 AI 系统工程迅速发展，它已经迅速发展成为了一个开放标准，越来越多的公司和开发者正在采用。</p>
@@ -2573,7 +2573,7 @@
 <li>
 <p><strong>传统 API 就像建筑物中每扇门都需要不同钥匙</strong></p>
 <p>每个 API 都有自己的文档、认证方法和错误处理，同时需要为每个服务编写特定的集成代码（如下图所示）</p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503190954960.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503190954960.png" /></p>
 </li>
 <li>
 <p><strong>MCP 就像拥有一把适用于不同系统的万能钥匙</strong></p>
@@ -2655,8 +2655,8 @@
 </ul>
 <h2 id="3-mcp-的底层架构">3. MCP 的底层架构<a class="headerlink" href="#3-mcp-的底层架构" title="Permanent link">&para;</a></h2>
 <p>通过上面提到的图我可以看到：MCP 实际还是采用的<strong>典型的客户端-服务器（client-server）架构</strong>：</p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503190956856.png" /></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503190957878.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503190956856.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503190957878.png" /></p>
 <p>这里我们对上述提到的常见交互要素进行说明：</p>
 <table>
 <thead>
@@ -2668,11 +2668,11 @@
 <tbody>
 <tr>
 <td><strong>MCP</strong> <strong>客户端</strong></td>
-<td>建立与 MCP 服务器的专用连接，<strong>负责通信</strong>!<img alt="" src="https://img.zhengyua.cn/blog/202503190957429.png" /></td>
+<td>建立与 MCP 服务器的专用连接，<strong>负责通信</strong>!<img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503190957429.png" /></td>
 </tr>
 <tr>
 <td><strong>MCP</strong> <strong>服务器</strong></td>
-<td>轻量级服务，<strong>暴露具体的功能给</strong> <strong>AI</strong> <strong>模型</strong>，连接本地或远程数据资源<img alt="" src="https://img.zhengyua.cn/blog/202503190957268.png" /></td>
+<td>轻量级服务，<strong>暴露具体的功能给</strong> <strong>AI</strong> <strong>模型</strong>，连接本地或远程数据资源<img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503190957268.png" /></td>
 </tr>
 <tr>
 <td><strong>数据源</strong></td>
@@ -2688,7 +2688,7 @@
 <p>为了帮助理解，接下来我们以<strong>从零开始搭建一个简单的</strong> <strong>MCP</strong> <strong>服务（提供计算器 Tool）并在</strong> <strong>AI</strong> <strong>工具中进行使用</strong>。</p>
 <h3 id="41-通用实现流程">4.1 通用实现流程<a class="headerlink" href="#41-通用实现流程" title="Permanent link">&para;</a></h3>
 <p>在具体搭建前，我们可以先了解目前集成 MCP 的常见实现流程：</p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503191006467.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503191006467.png" /></p>
 <h3 id="42-开发环境准备">4.2 开发环境准备<a class="headerlink" href="#42-开发环境准备" title="Permanent link">&para;</a></h3>
 <ul>
 <li>编程语言：Golang</li>
@@ -2801,18 +2801,18 @@
 <p>⭐️如果想要了解 Cursor 的基本用法和高阶用法，以及适用场景和短板和最佳实践，这里推荐我写的<a href="https://zhengyua.cn/new_blog/blog/2025/02/14/%E6%8E%A2%E7%B4%A2-cursorai-%E7%BC%96%E7%A8%8B%E7%9A%84%E7%89%88%E6%9C%AC%E7%AD%94%E6%A1%88%E4%B9%8B%E4%B8%80/">另一篇文档</a>。</p>
 </blockquote>
 <p>最近也了解到字节最新的大模型开发框架 eino（同样也是 Golang 实现）<a href="https://www.cloudwego.io/zh/docs/eino/ecosystem_integration/tool/tool_mcp/">已支持 MCP Tool 调用</a>，读者可自行尝试：</p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503191008379.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503191008379.png" /></p>
 <p><strong>#1. 找到 Cursor 中配置 MCP server 的位置</strong></p>
 <p>在首选项中找到 Cursor Settings 点击后，在“Features”中找到“MCP Servers”模块：</p>
 <blockquote>
 <p>注：在 Cursor 的最新版本中，MCP Servers 模块已经放到 Cursor Settings 左侧主要模块中。</p>
 </blockquote>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503191009351.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503191009351.png" /></p>
 <p><strong>#2. 添加一个新的 MCP Server</strong></p>
 <p>选择“Add new MCP server”后，将我们刚刚打包好的应用程序的路径添加进去，当指示变绿的时候便可正常使用：</p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503191009207.png" /></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503191009917.png" /></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503191009364.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503191009207.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503191009917.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503191009364.png" /></p>
 <p><strong>#3. 在 Cursor 中使用 MCP server 提供 Tool</strong></p>
 <p>在上面添加好 MCP Server 后，我们就可以在 Cursor 里使用了，这里需要额外注意的是：</p>
 <ul>
@@ -2823,7 +2823,7 @@
 <p>注意：由于目前模型基本上都能支持较为简单的运算，所以若不指定 mcp tool，则会直接计算得到结果，</p>
 <p>所以这里为了方便演示 mcp tool 的调用过程，这里在输出的指令中强调了需要使用我们所提供的 mcp tool。</p>
 </blockquote>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503191009252.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503191009252.png" /></p>
 <h2 id="5-mcp-相关资源">5. MCP 相关资源<a class="headerlink" href="#5-mcp-相关资源" title="Permanent link">&para;</a></h2>
 <h3 id="51-官方-wiki">5.1 官方 Wiki<a class="headerlink" href="#51-官方-wiki" title="Permanent link">&para;</a></h3>
 <p>首先要提的就是 MCP 官方的 Wiki，包含相关介绍和发展以及面对不同开发者的教程和案例等，非常值得一看：</p>
@@ -2840,23 +2840,23 @@
 <tbody>
 <tr>
 <td><strong><a href="https://glama.ai/mcp/servers">Glama.ai</a></strong></td>
-<td>来自开源 <a href="https://github.com/punkpeye/awesome-mcp-servers">awesome-mcp-servers</a>，目前已有将近 9.8k 的 stars 数。无论是语言还是应用场景，分类齐全，收录数量也是比较多的 <img alt="" src="https://img.zhengyua.cn/blog/202503191010429.png" /></td>
+<td>来自开源 <a href="https://github.com/punkpeye/awesome-mcp-servers">awesome-mcp-servers</a>，目前已有将近 9.8k 的 stars 数。无论是语言还是应用场景，分类齐全，收录数量也是比较多的 <img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503191010429.png" /></td>
 </tr>
 <tr>
 <td><strong><a href="https://smithery.ai/">Smithery.ai</a></strong></td>
-<td>界面直观清晰，交互体验较好每个 MCP Server 都有不同客户端使用的示例和说明 <img alt="" src="https://img.zhengyua.cn/blog/202503191010558.png" /><img alt="" src="https://img.zhengyua.cn/blog/202503191010165.png" /></td>
+<td>界面直观清晰，交互体验较好每个 MCP Server 都有不同客户端使用的示例和说明 <img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503191010558.png" /><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503191010165.png" /></td>
 </tr>
 <tr>
 <td><strong><a href="https://mcp.so/">MCP.so</a></strong></td>
-<td>号称最大的 MCP 服务器集合导航，目前共收录将近 2.8k 个 Server <img alt="" src="https://img.zhengyua.cn/blog/202503191011035.png" /></td>
+<td>号称最大的 MCP 服务器集合导航，目前共收录将近 2.8k 个 Server <img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503191011035.png" /></td>
 </tr>
 <tr>
 <td><strong><a href="https://mcp.composio.dev/">MCP.composio</a></strong></td>
-<td>该市场较为特别的点在于可直接生成对应 MCP 的 SSE URL：做到立即连接到完全托管的 MCP 服务器使用，具有内置身份验证和无缝可扩展性 <img alt="" src="https://img.zhengyua.cn/blog/202503191011011.png" /> <img alt="" src="https://img.zhengyua.cn/blog/202503191011737.png" /></td>
+<td>该市场较为特别的点在于可直接生成对应 MCP 的 SSE URL：做到立即连接到完全托管的 MCP 服务器使用，具有内置身份验证和无缝可扩展性 <img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503191011011.png" /> <img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503191011737.png" /></td>
 </tr>
 <tr>
 <td><strong><a href="https://www.pulsemcp.com/">Pulse Mcp</a></strong></td>
-<td>目前共收录了 1.6k 个Server，提供较多 Use Cases，方便用户了解如何使用 <img alt="" src="https://img.zhengyua.cn/blog/202503191011362.png" /> <img alt="" src="https://img.zhengyua.cn/blog/202503191011211.png" /></td>
+<td>目前共收录了 1.6k 个Server，提供较多 Use Cases，方便用户了解如何使用 <img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503191011362.png" /> <img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503191011211.png" /></td>
 </tr>
 </tbody>
 </table>
@@ -2988,7 +2988,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

@@ -2152,7 +2152,7 @@
 <li>Furthermore, it is easier for different parts of the op- erating system to cooperate.</li>
 <li>A downside of the monolithic organization is that the interfaces between different parts of the operating system are often complex (as we will see in the rest of this text)</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402221049075.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402221049075.png" /></p>
 <ul>
 <li>easy for an operating system developer to make a mistake. In a monolithic kernel, a mistake is fatal, because an error in supervisor mode will often cause the kernel to fail.</li>
 <li>To reduce the risk of mistakes in the kernel, OS designers can minimize the amount of operating system code that runs in supervisor mode, and execute the bulk of the operating system in user mode. This kernel organization is called a microkernel.</li>
@@ -2166,7 +2166,7 @@
 <ul>
 <li>The source is divided into files, following a rough notion of modularity.</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402221051133.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402221051133.png" /></p>
 <h3 id="15-process-overview">1.5 Process overview<a class="headerlink" href="#15-process-overview" title="Permanent link">&para;</a></h3>
 <ul>
 <li>The unit of isolation in xv6 (as in other Unix operating systems) is a process. The process ab- straction prevents one process from wrecking or spying on another process’s memory, CPU, file descriptors, etc. It also prevents a process from wrecking the kernel itself, so that a process can’t subvert the kernel’s isolation mechanisms. The kernel must implement the process abstraction with care because a buggy or malicious application may trick the kernel or hardware into doing something bad (e.g., circumventing isolation). </li>
@@ -2174,7 +2174,7 @@
 <li>Xv6 uses page tables (which are implemented by hardware) to give each process its own ad- dress space. The RISC-V page table translates (or “maps”) a virtual address (the address that an RISC-V instruction manipulates) to a physical address (an address that the CPU chip sends to main memory).</li>
 <li>Xv6 maintains a separate page table for each process that defines that process’s address space. As illustrated in Figure 2.3, an address space includes the process’s user memory starting at virtual address zero. Instructions come first, followed by global variables, then the stack, and finally a “heap” area (for malloc) that the process can expand as needed.</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402221052976.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402221052976.png" /></p>
 <ul>
 <li>the trampoline page contains the code to transition in and out of the kernel and mapping the trapframe is necessary to save/restore the state of the user process</li>
 <li>The xv6 kernel maintains many pieces of state for each </li>
@@ -2222,7 +2222,7 @@
 </li>
 <li>First system call in xv6</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402230942514.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402230942514.png" /></p>
 <p><strong>2. Goal of OS</strong> </p>
 <ul>
 <li>run multiple applications </li>
@@ -2326,7 +2326,7 @@
 <li>OS sets up page tables so that each application can access only its memory</li>
 </ul>
 <h3 id="24-userkernel-mode-change">2.4 User/Kernel mode change<a class="headerlink" href="#24-userkernel-mode-change" title="Permanent link">&para;</a></h3>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402231024402.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402231024402.png" /></p>
 <p><strong>1. Apps must be able to communicate with kernel</strong> </p>
 <ul>
 <li>Write to storage device, which is shared =&gt; must be protected =&gt; in kernel </li>
@@ -2338,7 +2338,7 @@
 <li>ecall</li>
 <li>enters kernel mode at a pre-agreed entry point</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402231028158.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402231028158.png" /></p>
 <ul>
 <li>user / kernel (redline)</li>
 <li>app -&gt; printf() -&gt; write() -&gt; SYSTEM CALL -&gt; sys_write() -&gt; ... <ul>
@@ -2390,7 +2390,7 @@
 <li>but h/w user/kernel mode is the most popular plan</li>
 </ul>
 </blockquote>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402260925820.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402260925820.png" /></p>
 <p><strong>2. Monolothic kernel</strong></p>
 <ul>
 <li>OS runs in kernel space </li>
@@ -2407,7 +2407,7 @@
 </ul>
 </li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402260926457.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402260926457.png" /></p>
 <p><strong>3. Microkernel design</strong></p>
 <ul>
 <li>many OS services run as ordinary user programs <ul>
@@ -2457,7 +2457,7 @@
 </li>
 </ul>
 <p><strong>2. Building kernel</strong></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402260938296.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402260938296.png" /></p>
 <p>.c -&gt; gcc -&gt; .s -&gt; .o  \
 ....                     ld -&gt; a.out
 .c -&gt; gcc -&gt; .s -&gt; .o  /</p>
@@ -2469,7 +2469,7 @@
 </ul>
 <h3 id="27-risc-v-computer">2.7 RISC-V computer<a class="headerlink" href="#27-risc-v-computer" title="Permanent link">&para;</a></h3>
 <p><strong>1. The RISC-V computer</strong></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402260948246.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402260948246.png" /></p>
 <ul>
 <li>RISC-V processor with 4 cores</li>
 <li>RAM (128 MB)</li>
@@ -2491,7 +2491,7 @@
 </li>
 </ul>
 <p><strong>3. What is "to emulate"?</strong></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402260950342.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402260950342.png" /></p>
 <ul>
 <li>Qemu is a C program that faithfully implements a RISC-V processor</li>
 </ul>
@@ -2651,7 +2651,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

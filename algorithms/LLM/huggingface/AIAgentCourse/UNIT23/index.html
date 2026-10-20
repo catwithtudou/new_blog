@@ -2391,7 +2391,7 @@
 </code></pre></div></p>
 <p>当需要人类设计行动流程并根据每个操作的输出决定下一步执行什么时，LangGraph 是最佳选择。</p>
 <h2 id="2-langgraph-工作原理">2. LangGraph 工作原理<a class="headerlink" href="#2-langgraph-工作原理" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503291950877.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503291950877.png" /></p>
 <p>LangGraph 使用<strong>有向图结构</strong>来定义应用程序的流程：</p>
 <ul>
 <li><strong>节点</strong>：表示独立的处理步骤（如调用LLM、使用工具或做出决策）</li>
@@ -2409,7 +2409,7 @@
 </ul>
 <p>LangGraph 被认为是市场上最适合生产环境的智能体框架。</p>
 <h2 id="3-langgraph-核心构建模块">3. LangGraph 核心构建模块<a class="headerlink" href="#3-langgraph-核心构建模块" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503291953579.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503291953579.png" /></p>
 <p><strong>1. 状态 (State)</strong></p>
 <p>状态是 LangGraph 中的核心概念，表示流经应用程序的所有信息。</p>
 <div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing_extensions</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypedDict</span>
@@ -2452,7 +2452,7 @@
 <a id="__codelineno-4-5" name="__codelineno-4-5"></a><a href="#__codelineno-4-5"><span class="linenos" data-linenos="5 "></span></a>    <span class="k">return</span> <span class="s2">"node_3"</span>  <span class="c1"># 50% 时间</span>
 </code></pre></div>
 <p><strong>4. 状态图 (StateGraph)</strong></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503291953685.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503291953685.png" /></p>
 <p>StateGraph 是包含整个 agent 工作流的容器：</p>
 <div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">langgraph.graph</span><span class="w"> </span><span class="kn">import</span> <span class="n">StateGraph</span><span class="p">,</span> <span class="n">START</span><span class="p">,</span> <span class="n">END</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos=" 2 "></span></a>
@@ -2472,7 +2472,7 @@
 <a id="__codelineno-5-16" name="__codelineno-5-16"></a><a href="#__codelineno-5-16"><span class="linenos" data-linenos="16 "></span></a><span class="n">graph</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
 </code></pre></div>
 <h2 id="4-创建第一个-langgraph-应用邮件处理系统">4. 创建第一个 LangGraph 应用：邮件处理系统<a class="headerlink" href="#4-创建第一个-langgraph-应用邮件处理系统" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503291953023.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503291953023.png" /></p>
 <p>以下是构建一个邮件处理系统的步骤，该系统可以：</p>
 <ul>
 <li>阅读传入的邮件</li>
@@ -2573,9 +2573,9 @@
 <a id="__codelineno-9-26" name="__codelineno-9-26"></a><a href="#__codelineno-9-26"><span class="linenos" data-linenos="26 "></span></a><span class="c1"># 编译图</span>
 <a id="__codelineno-9-27" name="__codelineno-9-27"></a><a href="#__codelineno-9-27"><span class="linenos" data-linenos="27 "></span></a><span class="n">compiled_graph</span> <span class="o">=</span> <span class="n">email_graph</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503291953293.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503291953293.png" /></p>
 <p><strong>5. 应用流程图</strong></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503291954177.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503291954177.png" /></p>
 <h2 id="5-文档分析智能体示例">5. 文档分析智能体示例<a class="headerlink" href="#5-文档分析智能体示例" title="Permanent link">&para;</a></h2>
 <p><strong>1. 工作流程</strong></p>
 <p>文档分析智能体可以：</p>
@@ -2799,7 +2799,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

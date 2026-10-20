@@ -2457,7 +2457,7 @@
 <p>以下大多为鸟窝大佬的<a href="https://time.geekbang.org/column/intro/100061801">Go 并发编程实战课</a> 中摘录的笔记</p>
 <p><a href="https://github.com/catwithtudou/golang_concurrent_examples/tree/master/atomic">代码repo</a></p>
 </blockquote>
-<p><img alt="image-20210222114638703" src="https://img.zhengyua.cn/20210222114638.png" /></p>
+<p><img loading="lazy" alt="image-20210222114638703" src="https://img.zhengyua.cn/20210222114638.png" /></p>
 <h2 id="原子操作基础">原子操作基础<a class="headerlink" href="#原子操作基础" title="Permanent link">&para;</a></h2>
 <p>在并发编程中，很多场景中使用并发原语较为复杂，而<strong>原子操作可以更容易实现底层优化</strong>。</p>
 <p>因为<strong>原子操作就是最小的粒子不可分割</strong>，并不会像其他操作一样产生竞争的逻辑。由原子操作进行组合就能够实现比较复杂的指令或者操作。</p>
@@ -2484,11 +2484,11 @@
 <blockquote>
 <p>目前Darwin架构不支持386的架构</p>
 </blockquote>
-<p><img alt="image-20210222102441269" src="https://img.zhengyua.cn/20210222102446.png" /></p>
+<p><img loading="lazy" alt="image-20210222102441269" src="https://img.zhengyua.cn/20210222102446.png" /></p>
 <ul>
 <li>GOOS=linux GOARCH=amd64的架构编译</li>
 </ul>
-<p><img alt="image-20210222103315098" src="https://img.zhengyua.cn/20210222103315.png" /></p>
+<p><img loading="lazy" alt="image-20210222103315098" src="https://img.zhengyua.cn/20210222103315.png" /></p>
 <p>可以看到在386架构是拆分成两条赋值语句来执行，amd64架构中是一条指令来执行。</p>
 <h2 id="应用场景">应用场景<a class="headerlink" href="#应用场景" title="Permanent link">&para;</a></h2>
 <p>我们在某些场景可以使用Mutex等并发原语进行优化，虽然可以解决问题，但是这些<strong>并发原语的逻辑比较复杂且对性能有一定的影响</strong>，但我们<strong>使用atomic的一些方法时可以实现更底层的部分优化</strong>。</p>
@@ -2533,7 +2533,7 @@
 <a id="__codelineno-1-34" name="__codelineno-1-34"></a><a href="#__codelineno-1-34"><span class="linenos" data-linenos="34 "></span></a><span class="p">}</span>
 </code></pre></div>
 <p>通过性能评测后可以得到如下结果：</p>
-<p><img alt="image-20210222110055469" src="https://img.zhengyua.cn/20210222110055.png" /></p>
+<p><img loading="lazy" alt="image-20210222110055469" src="https://img.zhengyua.cn/20210222110055.png" /></p>
 <p>有时候我们可以<strong>使用atomic实现自己定义的基本并发原语</strong>，在网上也能够搜集到相关的实现方法，且有些基本并发原语的底层就是基于通过atomic的方法实现的。</p>
 <p>除此之外，<strong>atomic原子操作也是实现lock-free数据结构的基石</strong>，lock-free就是避免互斥锁来优化并发的性能。</p>
 <h2 id="atomic提供的方法">atomic提供的方法<a class="headerlink" href="#atomic提供的方法" title="Permanent link">&para;</a></h2>
@@ -2812,7 +2812,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

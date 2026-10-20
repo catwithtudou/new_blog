@@ -2411,7 +2411,7 @@
 </ul>
 <h2 id="智能体评估类型">智能体评估类型<a class="headerlink" href="#智能体评估类型" title="Permanent link">&para;</a></h2>
 <p><strong>1. 离线评估(Offline Evaluation)</strong></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202505121051175.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202505121051175.png" /></p>
 <p>离线评估在受控环境中使用测试数据集进行，而非实时用户查询：</p>
 <table>
 <thead>
@@ -2512,7 +2512,7 @@
 <a id="__codelineno-1-15" name="__codelineno-1-15"></a><a href="#__codelineno-1-15"><span class="linenos" data-linenos="15 "></span></a><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"OTEL_EXPORTER_OTLP_HEADERS"</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"Authorization=Basic </span><span class="si">{</span><span class="n">LANGFUSE_AUTH</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
 <p><strong>2. 智能体检测</strong></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202505121052745.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202505121052745.png" /></p>
 <p>使用OpenTelemetry设置跟踪提供程序并对智能体进行检测：</p>
 <div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">opentelemetry.sdk.trace</span><span class="w"> </span><span class="kn">import</span> <span class="n">TracerProvider</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">openinference.instrumentation.smolagents</span><span class="w"> </span><span class="kn">import</span> <span class="n">SmolagentsInstrumentor</span>
@@ -2615,7 +2615,7 @@
 <li>评判LLM以评分或标签形式回应，记录到可观察性工具中</li>
 </ol>
 <p><strong>5. 离线评估示例</strong></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202505121052785.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202505121052785.png" /></p>
 <p>使用GSM8K数据集进行离线评估：</p>
 <div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dataset</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2"></a><a href="#__codelineno-8-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -2801,7 +2801,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

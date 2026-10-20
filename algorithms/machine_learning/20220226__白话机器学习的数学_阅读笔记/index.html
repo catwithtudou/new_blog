@@ -2475,7 +2475,7 @@ $<span class="arithmatex">\(\frac{\partial{u}}{\partial{\theta_0}}=\frac{\partia
 \]</div>
 <h3 id="随机梯度下降法">随机梯度下降法<a class="headerlink" href="#随机梯度下降法" title="Permanent link">&para;</a></h3>
 <p>前面的最速下降法容易陷入局部最优解的情况：</p>
-<p><img alt="s14311002262022" src="https://img.zhengyua.cn/s14311002262022.png" /></p>
+<p><img loading="lazy" alt="s14311002262022" src="https://img.zhengyua.cn/s14311002262022.png" /></p>
 <p>而随机梯度下降法就是训练时随机选择训练数据，设随机选择<span class="arithmatex">\(m\)</span>个训练数据额索引的集合为<span class="arithmatex">\(K\)</span>，那么更新参数的公式为：</p>
 <div class="arithmatex">\[
 \theta_j=\theta_j-\eta\sum_{k\in{K}}(f_\mathbf{\theta}\mathbf{x}^{(k)}-y^{(k)})x{_j}{^{(k)}}
@@ -2503,7 +2503,7 @@ f_\mathbf{w}(\mathbf{x})=\left\\\{\begin{array}{ll}1&amp;(\mathbf{w}\cdot\mathbf
 <div class="arithmatex">\[
 f_\theta(\mathbf{x})=\frac{1}{1+e^{-\mathbf{\theta}^{T}\mathbf{x}}}
 \]</div>
-<p><img alt="s15545702262022" src="https://img.zhengyua.cn/s15545702262022.png" /></p>
+<p><img loading="lazy" alt="s15545702262022" src="https://img.zhengyua.cn/s15545702262022.png" /></p>
 <p>其sigmoid函数取值范围为<span class="arithmatex">\(0&lt;f_\theta(\mathbf{x})&lt;1\)</span>。</p>
 <blockquote>
 <p>其微分结果如下：
@@ -2545,7 +2545,7 @@ L(\mathbf{\theta})=\prod_{i=1}^nP(y^{(i)}=1|\mathbf{x}^{(i)})^{y^{(i)}}P(y^{(i)}
 <h4 id="分类">分类<a class="headerlink" href="#分类" title="Permanent link">&para;</a></h4>
 <p>对于分类的情况，由于回归是连续值，所以可以从误差入手，但是分类中必须考虑分类的类别是否正确。</p>
 <p>对于二分类的结果可以用这张图表示：</p>
-<p><img alt="s16493902262022" src="https://img.zhengyua.cn/s16493902262022.png" /></p>
+<p><img loading="lazy" alt="s16493902262022" src="https://img.zhengyua.cn/s16493902262022.png" /></p>
 <p>通过表中的4个记号来表示精度（Accuracy）,表达式如下，即值越高精度越高，也就意味着模型越好：</p>
 <div class="arithmatex">\[
 Accuracy = \frac{TP+TN}{TP+FP+FN+TN}
@@ -2643,12 +2643,12 @@ R(\mathbf{\theta})= \lambda\sum_{i=1}^{m}|\theta_i|
 <h4 id="欠拟合">欠拟合<a class="headerlink" href="#欠拟合" title="Permanent link">&para;</a></h4>
 <p>欠拟合（underfitting）与过拟合相反的状态即没有拟合训练数据。在这种情况下模型的性能也会变差。</p>
 <h4 id="区分过拟合与欠拟合">区分过拟合与欠拟合<a class="headerlink" href="#区分过拟合与欠拟合" title="Permanent link">&para;</a></h4>
-<p><img alt="s18072202262022" src="https://img.zhengyua.cn/s18072202262022.png" /></p>
-<p><img alt="s18103602262022" src="https://img.zhengyua.cn/s18103602262022.png" /></p>
+<p><img loading="lazy" alt="s18072202262022" src="https://img.zhengyua.cn/s18072202262022.png" /></p>
+<p><img loading="lazy" alt="s18103602262022" src="https://img.zhengyua.cn/s18103602262022.png" /></p>
 <p>将两份数据的精度用图来展示后，如果是这种形状，就说明出现了欠拟合的状态，也可以称为高偏差。</p>
 <p>而过拟合或称为高方差，如下图所示：</p>
-<p><img alt="s18100102262022" src="https://img.zhengyua.cn/s18100102262022.png" /></p>
-<p><img alt="s18104502262022" src="https://img.zhengyua.cn/s18104502262022.png" /></p>
+<p><img loading="lazy" alt="s18100102262022" src="https://img.zhengyua.cn/s18100102262022.png" /></p>
+<p><img loading="lazy" alt="s18104502262022" src="https://img.zhengyua.cn/s18104502262022.png" /></p>
 <p>像这样展示了数据数量和精度的图称为学习曲线。</p>
 
 
@@ -2761,7 +2761,7 @@ R(\mathbf{\theta})= \lambda\sum_{i=1}^{m}|\theta_i|
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

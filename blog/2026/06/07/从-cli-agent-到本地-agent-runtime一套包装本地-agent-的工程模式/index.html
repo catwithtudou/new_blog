@@ -1894,7 +1894,7 @@
 <li>想把本地 Agent 接入飞书、Web、定时任务或知识库工作流的同学</li>
 <li>希望理解 Agentara 这类项目工程本质，而不是只看安装和配置步骤的读者</li>
 </ul>
-<p><img alt="图片展示了从CLI Agent到Local Agent Runtime的演进过程。左侧是外部入口，包括Team IM/Feishu、Web Dashboard和Scheduled Tasks。中间是Local Agent Gateway，包含统一运行时、线程与会话映射、会话级别锁定和分层上下文注入等机制。右侧是Local CLI Agent，可执行Codex CLI、Claude Code CLI等操作。底部是Memory Layer，包含Memory、Logs、Project Knowledge等。该图与文档中对Agentara等本地Agent包装工程模式的拆解内容相关，直观呈现了其架构。" src="../../../../../assets/blog/local-agent-runtime-agentara/local-agent-runtime-hero.svg" /></p>
+<p><img loading="lazy" alt="图片展示了从CLI Agent到Local Agent Runtime的演进过程。左侧是外部入口，包括Team IM/Feishu、Web Dashboard和Scheduled Tasks。中间是Local Agent Gateway，包含统一运行时、线程与会话映射、会话级别锁定和分层上下文注入等机制。右侧是Local CLI Agent，可执行Codex CLI、Claude Code CLI等操作。底部是Memory Layer，包含Memory、Logs、Project Knowledge等。该图与文档中对Agentara等本地Agent包装工程模式的拆解内容相关，直观呈现了其架构。" src="../../../../../assets/blog/local-agent-runtime-agentara/local-agent-runtime-hero.svg" /></p>
 <h2 id="0-insight">0. Insight<a class="headerlink" href="#0-insight" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>本地 Agent 的难点不只在模型</strong>
@@ -1940,7 +1940,7 @@
 <p>CLI Agent 正在从“命令行工具”，变成一种“本地 Agent Runtime”。</p>
 </blockquote>
 <p>普通聊天机器人和本地 Agent Runtime 的差异，可以先用这张图压缩理解：</p>
-<p><img alt="图片展示了普通聊天机器人与本地Agent Runtime的对比。左侧为普通聊天机器人，呈现无状态消息转发，有单入口、一次消息、无会话连续性、无持久上下文、无可观测性等缺点，强调其能力有限且无工程支持。右侧为本地Agent Runtime，围绕多入口、会话、任务、上下文和可观测性搭建，具备多渠道入口、统一运行器、线程与会话映射、会话级别串行、文件基础内存层、日志/使用/任务状态等优势，强调其为CLI代理提供可靠、状态和可观测性。" src="../../../../../assets/blog/local-agent-runtime-agentara/chatbot-vs-local-agent-runtime.jpeg" /></p>
+<p><img loading="lazy" alt="图片展示了普通聊天机器人与本地Agent Runtime的对比。左侧为普通聊天机器人，呈现无状态消息转发，有单入口、一次消息、无会话连续性、无持久上下文、无可观测性等缺点，强调其能力有限且无工程支持。右侧为本地Agent Runtime，围绕多入口、会话、任务、上下文和可观测性搭建，具备多渠道入口、统一运行器、线程与会话映射、会话级别串行、文件基础内存层、日志/使用/任务状态等优势，强调其为CLI代理提供可靠、状态和可观测性。" src="../../../../../assets/blog/local-agent-runtime-agentara/chatbot-vs-local-agent-runtime.jpeg" /></p>
 <blockquote>
 <p>普通聊天机器人更像无状态消息转发；</p>
 <p>本地 Agent Runtime 则是一套围绕多入口、会话、任务、上下文和可观测性搭起来的工程系统。</p>
@@ -1969,7 +1969,7 @@
 <li>它们解决消息进入、会话延续、任务执行和上下文注入的问题</li>
 <li>随后还需要单独看 memory layer 如何让长期上下文稳定沉淀</li>
 </ul>
-<p><img alt="图片展示了Local Agent Runtime的运行时抽象和Memory Layer。左侧是外部入口，包括Feishu/Team IM、Web和Scheduled Tasks。中间是Local Agent Gateway，包含统一运行器、线程与会话映射、会话级序列锁和分层上下文注入等核心抽象。右侧是CLI Agent Execution Engine，有CodeX CLI、Claude Code CLI等。底部是Memory Layer，有User/Soul memory files等。该图与上下文紧密相关，直观呈现了Local Agent Runtime的架构及各部分功能。" src="../../../../../assets/blog/local-agent-runtime-agentara/local-agent-runtime-core-abstractions.jpeg" /></p>
+<p><img loading="lazy" alt="图片展示了Local Agent Runtime的运行时抽象和Memory Layer。左侧是外部入口，包括Feishu/Team IM、Web和Scheduled Tasks。中间是Local Agent Gateway，包含统一运行器、线程与会话映射、会话级序列锁和分层上下文注入等核心抽象。右侧是CLI Agent Execution Engine，有CodeX CLI、Claude Code CLI等。底部是Memory Layer，有User/Soul memory files等。该图与上下文紧密相关，直观呈现了Local Agent Runtime的架构及各部分功能。" src="../../../../../assets/blog/local-agent-runtime-agentara/local-agent-runtime-core-abstractions.jpeg" /></p>
 <h2 id="抽象一统一-runner-接口把异构-cli-收敛成一种消息流">抽象一：统一 Runner 接口——把异构 CLI 收敛成一种消息流<a class="headerlink" href="#抽象一统一-runner-接口把异构-cli-收敛成一种消息流" title="Permanent link">&para;</a></h2>
 <p>第一个问题是：底层 Agent 各不相同，输出协议也各不相同：</p>
 <ul>
@@ -2208,7 +2208,7 @@
 <p>同样的还有针对 Codex 侧的适配，因为 Codex 原生读取的是 AGENTS.md，</p>
 <p>所以 Agentara 会在每次 Codex runner 执行前，把展开后的 CLAUDE.md 同步成 AGENTS.md。</p>
 </blockquote>
-<p><img alt="图片展示了Agentara Memory Layer的工作流程，核心是将长期记忆变成可控的上下文资产。从外部消息（Feishu/Web）进入，经记忆文件USER/SOUL、CLAUDE.md导入，再通过resolveimports展开约束，生成AGENTS.md，最后本地执行codex resume。底部标注“核心不是‘多塞记忆’，而是让正确上下文在正确时机进入模型视野”。该图与上下文紧密相关，直观呈现了文档中提到的Agentara记忆机制及指令导入与Codex运行时桥接链路。" src="../../../../../assets/blog/local-agent-runtime-agentara/agentara-memory-runtime-pipeline.png" /></p>
+<p><img loading="lazy" alt="图片展示了Agentara Memory Layer的工作流程，核心是将长期记忆变成可控的上下文资产。从外部消息（Feishu/Web）进入，经记忆文件USER/SOUL、CLAUDE.md导入，再通过resolveimports展开约束，生成AGENTS.md，最后本地执行codex resume。底部标注“核心不是‘多塞记忆’，而是让正确上下文在正确时机进入模型视野”。该图与上下文紧密相关，直观呈现了文档中提到的Agentara记忆机制及指令导入与Codex运行时桥接链路。" src="../../../../../assets/blog/local-agent-runtime-agentara/agentara-memory-runtime-pipeline.png" /></p>
 <p>这种机制设计的好处可以看到有以下几点：</p>
 <ul>
 <li><strong>记忆是文件化的</strong>：可以被查看、编辑、审阅和版本化，而不是藏在不可见的 prompt 拼接里</li>
@@ -2579,7 +2579,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

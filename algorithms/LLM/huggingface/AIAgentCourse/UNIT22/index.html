@@ -2346,7 +2346,7 @@
 <li><strong>LlamaHub</strong>：包含数百个集成组件、智能体和工具的注册中心</li>
 </ol>
 <h2 id="2-llamahub简介">2. LlamaHub简介<a class="headerlink" href="#2-llamahub简介" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503291935497.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503291935497.png" /></p>
 <p>LlamaHub是一个包含数百个集成组件、智能体和工具的注册中心，为LlamaIndex框架提供资源。</p>
 <p><strong>1. 安装组件</strong></p>
 <p>安装命令遵循统一格式：
@@ -2369,7 +2369,7 @@
 <a id="__codelineno-2-11" name="__codelineno-2-11"></a><a href="#__codelineno-2-11"><span class="linenos" data-linenos="11 "></span></a><span class="c1"># 输出: I am good, how can I help you today?</span>
 </code></pre></div>
 <h2 id="3-llamaindex中的组件">3. LlamaIndex中的组件<a class="headerlink" href="#3-llamaindex中的组件" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503291935656.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503291935656.png" /></p>
 <p><strong>#RAG流程的五个关键阶段</strong></p>
 <ol>
 <li><strong>加载</strong>：从原始位置导入数据</li>
@@ -2469,7 +2469,7 @@
 <a id="__codelineno-8-6" name="__codelineno-8-6"></a><a href="#__codelineno-8-6"><span class="linenos" data-linenos="6 "></span></a><span class="n">eval_result</span><span class="o">.</span><span class="n">passing</span>
 </code></pre></div>
 <h2 id="4-在llamaindex中使用工具">4. 在LlamaIndex中使用工具<a class="headerlink" href="#4-在llamaindex中使用工具" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503291935563.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503291935563.png" /></p>
 <p>LlamaIndex中主要包含四种工具类型：</p>
 <ol>
 <li><strong>FunctionTool</strong>：将任意Python函数转换为智能体可用的工具</li>
@@ -2517,7 +2517,7 @@
 <li><strong>OnDemandToolLoader</strong>：将任何现有的LlamaIndex数据加载器转化为智能体可使用的工具</li>
 <li><strong>LoadAndSearchToolSpec</strong>：接受任何现有工具作为输入的工具规范，返回加载工具和搜索工具</li>
 </ol>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503291938253.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503291938253.png" /></p>
 <h2 id="5-在llamaindex中使用智能体">5. 在LlamaIndex中使用智能体<a class="headerlink" href="#5-在llamaindex中使用智能体" title="Permanent link">&para;</a></h2>
 <p>LlamaIndex支持三种主要类型的推理智能体：</p>
 <ol>
@@ -2557,7 +2557,7 @@
 <a id="__codelineno-13-9" name="__codelineno-13-9"></a><a href="#__codelineno-13-9"><span class="linenos" data-linenos="9 "></span></a><span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"What was my name again?"</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>#使用QueryEngineTools创建RAG智能体</strong></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503291939285.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503291939285.png" /></p>
 <p>智能体增强检索(Agentic RAG)是通过智能体实现数据问答的强大范式：</p>
 <div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><a href="#__codelineno-14-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">llama_index.core.tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">QueryEngineTool</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2"></a><a href="#__codelineno-14-2"><span class="linenos" data-linenos=" 2 "></span></a>
@@ -2618,7 +2618,7 @@
 <a id="__codelineno-15-40" name="__codelineno-15-40"></a><a href="#__codelineno-15-40"><span class="linenos" data-linenos="40 "></span></a><span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">agent</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">user_msg</span><span class="o">=</span><span class="s2">"Can you add 5 and 3?"</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="6-在llamaindex中创建智能工作流">6. 在LlamaIndex中创建智能工作流<a class="headerlink" href="#6-在llamaindex中创建智能工作流" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503291939899.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503291939899.png" /></p>
 <p>LlamaIndex工作流提供结构化方式组织代码，通过定义由<strong>事件(Events)</strong>触发的<strong>步骤(Steps)</strong>创建，步骤本身也会发出<strong>事件</strong>触发后续步骤。</p>
 <p>工作流的关键优势：
 - 将代码清晰组织为离散步骤
@@ -2691,7 +2691,7 @@
 <a id="__codelineno-18-27" name="__codelineno-18-27"></a><a href="#__codelineno-18-27"><span class="linenos" data-linenos="27 "></span></a><span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">w</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
 <p><strong>4. 绘制工作流程</strong></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202503291939121.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202503291939121.png" /></p>
 <p>可以使用<code>draw_all_possible_flows</code>函数将工作流可视化：</p>
 <div class="language-python highlight"><span class="filename">Python</span><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><a href="#__codelineno-19-1"><span class="linenos" data-linenos="1 "></span></a><span class="kn">from</span><span class="w"> </span><span class="nn">llama_index.utils.workflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">draw_all_possible_flows</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2"></a><a href="#__codelineno-19-2"><span class="linenos" data-linenos="2 "></span></a>
@@ -3115,7 +3115,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

@@ -2719,7 +2719,7 @@
 <li>并且我能决定这支笔能借多久，即多久就是这支笔的生命周期</li>
 </ul>
 <h4 id="所有权">所有权<a class="headerlink" href="#所有权" title="Permanent link">&para;</a></h4>
-<p><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=NGNmNWI2YTU0MDhlNDE1MmE1MTY0ZDIxNTA4NDc4NzFfVzN0aGRldXVtNGRBVXJNWUd6TzVFNFBSYk1SVkdVdUZfVG9rZW46QmUxNGJGWW5Pb3o1UEZ4TkswNmNqUUQ5bjRnXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
+<p><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=NGNmNWI2YTU0MDhlNDE1MmE1MTY0ZDIxNTA4NDc4NzFfVzN0aGRldXVtNGRBVXJNWUd6TzVFNFBSYk1SVkdVdUZfVG9rZW46QmUxNGJGWW5Pb3o1UEZ4TkswNmNqUUQ5bjRnXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
 <p>这里代码的含义就是申请了一个 String 类型的值为"hello world!"的变量，打印到控制台中。对应到概念中即：</p>
 <ul>
 <li><strong>变量 x 拥有"hello world!"值的所有权，最后变量 x 在作用域出去后，其值的内存就被释放了</strong><ul>
@@ -2727,7 +2727,7 @@
 </ul>
 </li>
 </ul>
-<p><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=NDM0N2VjNmQ0ZmFkMzExMmE0NmFlY2I1ZDE1ZTg3OTJfMUl4WHd1OHVLS1M3MXFBMUJxRXVvdW1aZ3V1WUJpbXhfVG9rZW46Rm5tb2J6dU9Zb0VVWkN4YjdvRmNqa3BoblVnXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=ZWQzNzBjZGVjZjcyNTQ4Mzk0ZWFhNDNiMzdlOTUzNzhfQjRKY1E2cWJwZDFMNXlQQmdQbGNnajl2bzVIMjJ3ZzhfVG9rZW46TDM4SmJaVlUxb0dQYm94MHJRTmNGWGVnbldiXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
+<p><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=NDM0N2VjNmQ0ZmFkMzExMmE0NmFlY2I1ZDE1ZTg3OTJfMUl4WHd1OHVLS1M3MXFBMUJxRXVvdW1aZ3V1WUJpbXhfVG9rZW46Rm5tb2J6dU9Zb0VVWkN4YjdvRmNqa3BoblVnXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=ZWQzNzBjZGVjZjcyNTQ4Mzk0ZWFhNDNiMzdlOTUzNzhfQjRKY1E2cWJwZDFMNXlQQmdQbGNnajl2bzVIMjJ3ZzhfVG9rZW46TDM4SmJaVlUxb0dQYm94MHJRTmNGWGVnbldiXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
 <p>通过上述代码执行后的错误提示能看出，<strong>s1 拥有值的所有权被转移 s2 后，s1 就无法使用该值了</strong>。</p>
 <blockquote>
 <p>其中错误提示也给出该代码的错误原因和后续修复的建议，就涉及到深拷贝和浅拷贝的问题，这里先不关心。</p>
@@ -2751,7 +2751,7 @@
 <h4 id="借用">借用<a class="headerlink" href="#借用" title="Permanent link">&para;</a></h4>
 <p>在上面的例子中可看出，根据所有权规则，若想访问"hello"的值的话，只能通过<code>s2</code>访问，显然这样并不利于我们对值复杂的访问需求，虽然这样的规则能够带来内存安全的保障，但若保持这样的访问限制，使用成本就会变得非常高。<strong>所以为了解决这里的问题，Rust 就引入另外一个概念——借用。</strong></p>
 <p>这里我们修改上述例子的代码，来通过借用做到没有所有权的变量也能够访问其值：</p>
-<p><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=MTc5MjQ5NjdhMzcxNGY0ZWNhMjYyNjcwYmVmMzA4NDhfNW1VME15Z3RrTEVvQWpnS2d1RWZtZWxPZFJUUDZlSG1fVG9rZW46TnoxVGIwTG85b2dQTHd4eU1YdGM4YVpWbkhjXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
+<p><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=MTc5MjQ5NjdhMzcxNGY0ZWNhMjYyNjcwYmVmMzA4NDhfNW1VME15Z3RrTEVvQWpnS2d1RWZtZWxPZFJUUDZlSG1fVG9rZW46TnoxVGIwTG85b2dQTHd4eU1YdGM4YVpWbkhjXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
 <p><strong>通过借用避免所有权转移，通过共享访问权限（只读且不拥有值），满足多个入口能访问相同所有权值的需求。</strong></p>
 <blockquote>
 <p>注意：看到这里大家可能就会联想到“指针”（通用表示内存地址的类型），但指针和引用在 Rust 中是两个概念。</p>
@@ -2762,14 +2762,14 @@
 <li><strong>「可变」和「不可变」</strong>在 Rust 中是手动显示设置的</li>
 <li>变量默认是不可变的（比如上面提到的变量均是），若该变量是可变的，则需要用<code>mut</code>关键词来声明</li>
 </ul>
-<p><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=OGRmMDM2NDFjMWZiYWFmOGJlNjM2OTdhNDY2NmZkMDhfWEJEUUNHeklHRFNrWHdnT3VSNnNMSDEyNkplbWo2cGFfVG9rZW46RlVJSWJ5ZlVwb2JRNEp4RTBGZmNLREd6bkpoXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=YTMxYTIzZmM1MGNhNzMzZDZjZDg5YWNlMjI5MTczOGZfMW1GZW1HSjBSd1NZVFNpenJNWDZqenhSRVVrQVY4NDhfVG9rZW46UzhGY2JxRkEzbzJNNEx4UXY1OGNCd0I0bmpiXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
+<p><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=OGRmMDM2NDFjMWZiYWFmOGJlNjM2OTdhNDY2NmZkMDhfWEJEUUNHeklHRFNrWHdnT3VSNnNMSDEyNkplbWo2cGFfVG9rZW46RlVJSWJ5ZlVwb2JRNEp4RTBGZmNLREd6bkpoXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=YTMxYTIzZmM1MGNhNzMzZDZjZDg5YWNlMjI5MTczOGZfMW1GZW1HSjBSd1NZVFNpenJNWDZqenhSRVVrQVY4NDhfVG9rZW46UzhGY2JxRkEzbzJNNEx4UXY1OGNCd0I0bmpiXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
 <p>根据该知识点我们可知前面共享只读访问的例子是，<code>s2</code>绑定了<code>s1</code>变量的不可变引用。而若想要修改就能推理出：</p>
 <ul>
 <li>我们需要创建一个可变引用，允许绑定了该可变引用的变量对值进行修改（注意所有权还是在<code>s1</code>上）</li>
 </ul>
-<p><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=MTdmYjg4OWRlMzIzOTRkODUzMzVmN2VmODZmY2RmNDZfbkxhcldjTXZFaU1mV09XandBdDFndFU5ZHZwNEhPM2xfVG9rZW46VDZtcWJkRVZJb1VXa0N4aU9VRWNkdEhhbmpkXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=MTlmN2U0NWJkNjk1YjdmNDVhM2M4MDljNzdjOWFiYjRfMllSMnF6REJjMDZGVFFpeDRRTlVHZld3dGlCc1EyZ3BfVG9rZW46UTM3eGI1V0lCb1hWZjR4UVhnYWM2eWV4bk1lXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=NjdkMDQwOGZjNzZhNWVjNmU0ODZiOTgyODkzMTNlMDJfRFJhMHlCZHN5ZDV0b3JXWW14NGt3bndCNVNLYkdzeThfVG9rZW46U1FMRmJCZ1FEb0pDY2p4RDhqZWN0RWJrbkZkXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
+<p><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=MTdmYjg4OWRlMzIzOTRkODUzMzVmN2VmODZmY2RmNDZfbkxhcldjTXZFaU1mV09XandBdDFndFU5ZHZwNEhPM2xfVG9rZW46VDZtcWJkRVZJb1VXa0N4aU9VRWNkdEhhbmpkXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=MTlmN2U0NWJkNjk1YjdmNDVhM2M4MDljNzdjOWFiYjRfMllSMnF6REJjMDZGVFFpeDRRTlVHZld3dGlCc1EyZ3BfVG9rZW46UTM3eGI1V0lCb1hWZjR4UVhnYWM2eWV4bk1lXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=NjdkMDQwOGZjNzZhNWVjNmU0ODZiOTgyODkzMTNlMDJfRFJhMHlCZHN5ZDV0b3JXWW14NGt3bndCNVNLYkdzeThfVG9rZW46U1FMRmJCZ1FEb0pDY2p4RDhqZWN0RWJrbkZkXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
 <p>上面例子只将<code>s2</code>进行了打印，那如果我们尝试把<code>s1</code>也跟着一起打印出来，会发生什么呢？</p>
-<p><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=Mjk1YmEyMDdjMTY3YzZlY2NmZTRjZTkyYzNhZDNmMzJfeG1YMU5RaGUzZ21VeVNEcFhDZzY1Nm5iR1NpTGlPVzVfVG9rZW46UnJ5SGJ2dWFRbzlaUWZ4WHNBOWNEcTBZbk1nXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
+<p><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=Mjk1YmEyMDdjMTY3YzZlY2NmZTRjZTkyYzNhZDNmMzJfeG1YMU5RaGUzZ21VeVNEcFhDZzY1Nm5iR1NpTGlPVzVfVG9rZW46UnJ5SGJ2dWFRbzlaUWZ4WHNBOWNEcTBZbk1nXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
 <p>根据错误提示我们大概知道，Rust 好像不允许同时存在可变引用和不可变引用。所以这其实就是借用的规则：</p>
 <ul>
 <li><strong>同一时刻，要么只能存在一个可变借用，要么任意多个不可变借用</strong><ul>
@@ -2784,7 +2784,7 @@
 </li>
 </ul>
 <p>而由于存在了引用，让我们来看一个新的问题即“悬垂引用”（指针指向某个值后，该值被释放掉了但指针仍存在）：</p>
-<p><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=ODNmMTMxOWVhYjc3MTBjYjQ0OTYxMDc0MzQ4M2ZjZjlfbzg1NDNsY3l1MlpXOFVOV1VmOXp6b1kzUTlDbElIZDZfVG9rZW46SXJia2I0RVhOb2hTZU14NmhjRmM4V2ZPblJoXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDYyNGRhMWVhYjE2MTVjYzA2NmVkYTJhNDgwYTNkMGZfbkdrcjVBVVFON0MwZVZ5dFAzeWcwdkxvRnMxcVo5RUhfVG9rZW46TElwUWJMbklJb2FYQ1l4UVNFbmNCR1ZkbjFnXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
+<p><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=ODNmMTMxOWVhYjc3MTBjYjQ0OTYxMDc0MzQ4M2ZjZjlfbzg1NDNsY3l1MlpXOFVOV1VmOXp6b1kzUTlDbElIZDZfVG9rZW46SXJia2I0RVhOb2hTZU14NmhjRmM4V2ZPblJoXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDYyNGRhMWVhYjE2MTVjYzA2NmVkYTJhNDgwYTNkMGZfbkdrcjVBVVFON0MwZVZ5dFAzeWcwdkxvRnMxcVo5RUhfVG9rZW46TElwUWJMbklJb2FYQ1l4UVNFbmNCR1ZkbjFnXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
 <p>从上述创垂引用的例子可看出，编译报出错误提示该函数返回了一个借用的值，但是已找不到它所借用值的来源。</p>
 <p>所以这里也可以看出借用的另一个规则：<strong>引用必须总是有效的。</strong>Rust 会确保引用永远也不会变成悬垂状态。</p>
 <p>让我们再回到错误提示中，发现有一个<code>lifetime parameter</code> 的关键词，这也就是下面要讲的生命周期。</p>
@@ -2803,7 +2803,7 @@
 <a id="__codelineno-0-7" name="__codelineno-0-7"></a><a href="#__codelineno-0-7"><span class="linenos" data-linenos="7 "></span></a><span class="w">        </span><span class="fm">println!</span><span class="p">(</span><span class="s">"r: {}"</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">);</span><span class="w"> </span><span class="c1">//   |</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8"></a><a href="#__codelineno-0-8"><span class="linenos" data-linenos="8 "></span></a><span class="p">}</span><span class="w">                      </span><span class="c1">// ---------+</span>
 </code></pre></div>
-<p><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=Nzc4YjU5NTU0NmM4MTgzNmQ2ZjBhOTBiOTdmMjJmNDlfUlpvRmVqQ3hBaE9pWWxKa0FGZ1dhZWJXUTUxUlRIemtfVG9rZW46QkpVRmJDeVdnbzFVYUt4OGpMMGNBd3RobmxkXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
+<p><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=Nzc4YjU5NTU0NmM4MTgzNmQ2ZjBhOTBiOTdmMjJmNDlfUlpvRmVqQ3hBaE9pWWxKa0FGZ1dhZWJXUTUxUlRIemtfVG9rZW46QkpVRmJDeVdnbzFVYUt4OGpMMGNBd3RobmxkXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
 <p>实际上错误提示给出的原因非常清晰：</p>
 <ul>
 <li>在变量 x 自动释放后，变量 r 所绑定的不可变借用的资源已经被自动释放了</li>
@@ -2864,7 +2864,7 @@
 <li><strong>通用语言</strong>：都是功能强大，可扩展的通用编程语言，可使用它们来开发各种现代软件，从 Web 应用程序到分布式微服务，或者从嵌入式微控制器到移动应用程序。两者都具有出色的标准库和蓬勃发展的第三方生态系统，以及强大的商业支持和庞大的用户群</li>
 <li><strong>务实的编程风格</strong>：都不是纯函数式语言，也不是全面面向对象的语言。相反，尽管 Go 和 Rust 都具有与函数和面向对象的编程相关的功能，但它们都是务实的语言，旨在以最合适的方式解决问题（如无构造函数，使用组合抛弃继承，函数是一等公民，不允许函数重载、错误处理基于值而非异常等），而不是强迫采用特定的处理方式</li>
 </ul>
-<p><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=Nzc2ZGQzM2ZlOGFmMGZlMDcyMmViMmMxMjg1N2VmNmRfNnNLcVdhcGFJNTRUOGJyRjRuTkhMZmhoSnd1MHpnTVpfVG9rZW46UGd1ZGJENXZ6b3hrNml4djBUdGNOQUo1bkJkXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=N2FmNzdhZDY0YTc5YjcyMzBhNWNiMTQyOGU4NWI4YTFfM0xzUkttTDlwVGtKOVI4UzhteXNCRWZtZEZjS1FZeUdfVG9rZW46VU4xSmJERjVDb254RkR4V25tMGNFNzRsbmloXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
+<p><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=Nzc2ZGQzM2ZlOGFmMGZlMDcyMmViMmMxMjg1N2VmNmRfNnNLcVdhcGFJNTRUOGJyRjRuTkhMZmhoSnd1MHpnTVpfVG9rZW46UGd1ZGJENXZ6b3hrNml4djBUdGNOQUo1bkJkXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=N2FmNzdhZDY0YTc5YjcyMzBhNWNiMTQyOGU4NWI4YTFfM0xzUkttTDlwVGtKOVI4UzhteXNCRWZtZEZjS1FZeUdfVG9rZW46VU4xSmJERjVDb254RkR4V25tMGNFNzRsbmloXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
 <h2 id="rust-语法简介差异">Rust 语法简介&amp;差异<a class="headerlink" href="#rust-语法简介差异" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p><strong>语法小抄：</strong> <strong><a href="https://docs.google.com/document/d/1kQidzAlbqapu-WZTuw4Djik0uTqMZYyiMXTM9F21Dz4/edit#heading=h.gjdgxs">Rust Cheat sheet</a></strong></p>
@@ -3031,7 +3031,7 @@
 </blockquote>
 <h4 id="拷贝浅拷贝与克隆深拷贝">拷贝（浅拷贝）与克隆（深拷贝）<a class="headerlink" href="#拷贝浅拷贝与克隆深拷贝" title="Permanent link">&para;</a></h4>
 <p>回到前面介绍的例子：</p>
-<p><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=MDZmMjVhZmE1YjVmN2RiMmE3NWI5MzA1MmIyZTQ2ZmFfc2dtMVVrUG5JRGFHcjRpa3o1MndHb05UMnR0MlZTWlNfVG9rZW46UXY1WWJhRUpWb1AySTV4bGhGQmNlRjk1blZjXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDdjOTRiYjJmMTlhMjE5YWI3NzNhYjlkNDZmOTE1OTZfZVl2c1U4QjJkRWFHUHJnVFpzdE9nbk9PTEE5Z1V4MUFfVG9rZW46TzZxbGJsMjBNb2FISkp4QmVlOWNnOVJMbkdnXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
+<p><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=MDZmMjVhZmE1YjVmN2RiMmE3NWI5MzA1MmIyZTQ2ZmFfc2dtMVVrUG5JRGFHcjRpa3o1MndHb05UMnR0MlZTWlNfVG9rZW46UXY1WWJhRUpWb1AySTV4bGhGQmNlRjk1blZjXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDdjOTRiYjJmMTlhMjE5YWI3NzNhYjlkNDZmOTE1OTZfZVl2c1U4QjJkRWFHUHJnVFpzdE9nbk9PTEE5Z1V4MUFfVG9rZW46TzZxbGJsMjBNb2FISkp4QmVlOWNnOVJMbkdnXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
 <p>在错误提示中我们可以发现有两个关键词<code>Copy</code>和<code>Clone</code>，实际上这两个关键词就分别对应着：</p>
 <ul>
 <li>Copy -&gt; <strong>拷贝（浅拷贝，shallow copy）</strong></li>
@@ -3045,7 +3045,7 @@
 <blockquote>
 <p>注意这里实际上没有深浅拷贝的区别，可以理解成在栈上做了深拷贝。</p>
 </blockquote>
-<p><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=OWU2Yzg4MjJjMDRmNWYzMTFlZjBkMGUwN2RiYTQ5NWJfeHZCN1NVNnM3a0hsUVROMDV5TVZCb0RuSzBhbUVkQzhfVG9rZW46V3J1VWJJRFlhb2dXMTN4ZHRXQ2N5dHUybjVmXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
+<p><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=OWU2Yzg4MjJjMDRmNWYzMTFlZjBkMGUwN2RiYTQ5NWJfeHZCN1NVNnM3a0hsUVROMDV5TVZCb0RuSzBhbUVkQzhfVG9rZW46V3J1VWJJRFlhb2dXMTN4ZHRXQ2N5dHUybjVmXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
 <p>根据上述知识点，我们来进行理解：</p>
 <ol>
 <li><strong>复合类型为什么不能自动拷贝</strong></li>
@@ -3060,12 +3060,12 @@
 </ul>
 </li>
 <li>当拷贝 String 类型的指针、长度和容量而不拷贝数据，虽然听起来像浅拷贝，但因为 Rust 同时使第一个变量 s1 无效了，所以该操作<strong>被称为移动（move），而不是浅拷贝</strong><ul>
-<li><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=MGEyMDNkMjlhNzM0ODkyOWUwY2I2Y2EyYjdiNGM3ZmFfZHY5NHRNbzI4bklrUTlDdDRpUVpBTGphU0dDUTFPN2RfVG9rZW46Rzhmb2J5c29sbzJFZEp4UnhqV2NjbTdFblN1XzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></li>
+<li><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=MGEyMDNkMjlhNzM0ODkyOWUwY2I2Y2EyYjdiNGM3ZmFfZHY5NHRNbzI4bklrUTlDdDRpUVpBTGphU0dDUTFPN2RfVG9rZW46Rzhmb2J5c29sbzJFZEp4UnhqV2NjbTdFblN1XzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></li>
 </ul>
 </li>
 </ul>
 <p>而如果将上述例子替换成前面的字符串字面值（<code>&amp;str</code>），以下代码能够正常编译：</p>
-<p><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=YThiNmViM2VmYzRjNzhkZTYxOTc4OTk2ZGU5ZGM4ZjNfNm1HVkdsRlQyQ3kyWUVoQWZEOEFsV0RTak4wWmlaTndfVG9rZW46Uzdvc2JNamZnb1A4TGR4NUpYbGM4QzBSbmFmXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
+<p><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=YThiNmViM2VmYzRjNzhkZTYxOTc4OTk2ZGU5ZGM4ZjNfNm1HVkdsRlQyQ3kyWUVoQWZEOEFsV0RTak4wWmlaTndfVG9rZW46Uzdvc2JNamZnb1A4TGR4NUpYbGM4QzBSbmFmXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
 <h5 id="克隆深拷贝">克隆（深拷贝）<a class="headerlink" href="#克隆深拷贝" title="Permanent link">&para;</a></h5>
 <ul>
 <li><strong>Rust 永远也不会自动创建数据的 “深拷贝”</strong><ul>
@@ -3078,7 +3078,7 @@
 </li>
 <li>String 类型可理解实现了<code>Clone</code>的特征（特征可先简单理解为接口 interface），拥有了克隆的能力</li>
 </ul>
-<p><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=MzIzNjYyODUxOTcyZGVhNjgxOGQ4ZDViYjBhYjg1YmJfQnExU3dlcXVVOEtWZnVDTnRxM0F1ZG1qUFBwa2wwOHhfVG9rZW46QjNhcWJVemJPb1dXWkl4V0pnamNpMGl4bkNkXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
+<p><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=MzIzNjYyODUxOTcyZGVhNjgxOGQ4ZDViYjBhYjg1YmJfQnExU3dlcXVVOEtWZnVDTnRxM0F1ZG1qUFBwa2wwOHhfVG9rZW46QjNhcWJVemJPb1dXWkl4V0pnamNpMGl4bkNkXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
 <h5 id="拷贝浅拷贝">拷贝（浅拷贝）<a class="headerlink" href="#拷贝浅拷贝" title="Permanent link">&para;</a></h5>
 <ul>
 <li>浅拷贝只发生在栈上，因此性能很高</li>
@@ -3188,7 +3188,7 @@
 <a id="__codelineno-7-9" name="__codelineno-7-9"></a><a href="#__codelineno-7-9"><span class="linenos" data-linenos=" 9 "></span></a>    return len(s)
 <a id="__codelineno-7-10" name="__codelineno-7-10"></a><a href="#__codelineno-7-10"><span class="linenos" data-linenos="10 "></span></a>}
 </code></pre></div></p>
-<p><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=MDg2NTFmMzNiZWNkZGYzOTQ3NzViOGIwMmU2ZjExYThfdGdrdEh4Sm1DQ0dlMU9VakZNd3RQdFNWRGlBbUFIemRfVG9rZW46RzNsTmIwbFVib2tvcWt4NW8wNGNiSDhrbmJjXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
+<p><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=MDg2NTFmMzNiZWNkZGYzOTQ3NzViOGIwMmU2ZjExYThfdGdrdEh4Sm1DQ0dlMU9VakZNd3RQdFNWRGlBbUFIemRfVG9rZW46RzNsTmIwbFVib2tvcWt4NW8wNGNiSDhrbmJjXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
 <ul>
 <li>在使用具体值时需要解引用</li>
 </ul>
@@ -3250,7 +3250,7 @@
 <a id="__codelineno-11-7" name="__codelineno-11-7"></a><a href="#__codelineno-11-7"><span class="linenos" data-linenos="7 "></span></a><span class="w">      </span><span class="fm">println!</span><span class="p">(</span><span class="s">"{}, {}"</span><span class="p">,</span><span class="w"> </span><span class="n">r1</span><span class="p">,</span><span class="w"> </span><span class="n">r2</span><span class="p">);</span>
 <a id="__codelineno-11-8" name="__codelineno-11-8"></a><a href="#__codelineno-11-8"><span class="linenos" data-linenos="8 "></span></a><span class="w">  </span><span class="p">}</span>
 </code></pre></div>
-<p><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=MjYzYzUyMzliYmNkMjU5NGEyZjJiNGRhZDQyM2IyY2FfaE5lSHpaRlplaGZuSGREZzZSZ3ZNOHU0Rm9wR29OY0lfVG9rZW46RHhJaGJ5a1Jlb3FlY2p4ZVNXMGNJZzl5bk1oXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
+<p><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=MjYzYzUyMzliYmNkMjU5NGEyZjJiNGRhZDQyM2IyY2FfaE5lSHpaRlplaGZuSGREZzZSZ3ZNOHU0Rm9wR29OY0lfVG9rZW46RHhJaGJ5a1Jlb3FlY2p4ZVNXMGNJZzl5bk1oXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
 <div class="language-Rust highlight"><span class="filename">Rust</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><a href="#__codelineno-12-1"><span class="linenos" data-linenos="1 "></span></a><span class="w">  </span><span class="k">fn</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2"></a><a href="#__codelineno-12-2"><span class="linenos" data-linenos="2 "></span></a><span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span><span class="p">::</span><span class="n">from</span><span class="p">(</span><span class="s">"hello"</span><span class="p">);</span>
 <a id="__codelineno-12-3" name="__codelineno-12-3"></a><a href="#__codelineno-12-3"><span class="linenos" data-linenos="3 "></span></a>
@@ -3261,7 +3261,7 @@
 <a id="__codelineno-12-8" name="__codelineno-12-8"></a><a href="#__codelineno-12-8"><span class="linenos" data-linenos="8 "></span></a><span class="w">      </span><span class="fm">println!</span><span class="p">(</span><span class="s">"{}, {}, and {}"</span><span class="p">,</span><span class="w"> </span><span class="n">r1</span><span class="p">,</span><span class="w"> </span><span class="n">r2</span><span class="p">,</span><span class="w"> </span><span class="n">r3</span><span class="p">);</span>
 <a id="__codelineno-12-9" name="__codelineno-12-9"></a><a href="#__codelineno-12-9"><span class="linenos" data-linenos="9 "></span></a><span class="w">  </span><span class="p">}</span>
 </code></pre></div>
-<p><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=OTIwZTRkOWZhYzZiNmYwOWU1ZDk0NWViYmRhNGY2NzRfc2xhVzhjMnRSekFQY1cwaE5xRlVacDg0U0l4QmROcEhfVG9rZW46V2dlTWJRYk9sbzliV1N4cnZpd2NHTTJFbmtiXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
+<p><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=OTIwZTRkOWZhYzZiNmYwOWU1ZDk0NWViYmRhNGY2NzRfc2xhVzhjMnRSekFQY1cwaE5xRlVacDg0U0l4QmROcEhfVG9rZW46V2dlTWJRYk9sbzliV1N4cnZpd2NHTTJFbmtiXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
 </li>
 <li>
 <p>引用必须总是有效的</p>
@@ -3477,7 +3477,7 @@
 <a id="__codelineno-22-14" name="__codelineno-22-14"></a><a href="#__codelineno-22-14"><span class="linenos" data-linenos="14 "></span></a><span class="w">    </span><span class="p">};</span>
 <a id="__codelineno-22-15" name="__codelineno-22-15"></a><a href="#__codelineno-22-15"><span class="linenos" data-linenos="15 "></span></a><span class="p">}</span>
 </code></pre></div>
-<p><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=ODkwYjYyMWFmNjNkYzRkYzc3YmM5NzZlZWQ5ODIyZWNfYng2V0Y1REZMdzM2Uk1ROHRsWjZ1aTE0bXlVc245cUxfVG9rZW46SW9iaGI5aUdNb1hGNHR4WE55dGNvWVNLbmZoXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
+<p><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=ODkwYjYyMWFmNjNkYzRkYzc3YmM5NzZlZWQ5ODIyZWNfYng2V0Y1REZMdzM2Uk1ROHRsWjZ1aTE0bXlVc245cUxfVG9rZW46SW9iaGI5aUdNb1hGNHR4WE55dGNvWVNLbmZoXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
 <ul>
 <li>修复如下：</li>
 </ul>
@@ -4129,7 +4129,7 @@ enum Number {
 </table>
 <h2 id="学习建议">学习建议<a class="headerlink" href="#学习建议" title="Permanent link">&para;</a></h2>
 <p>学习 Rust 的过程好比邓克效应，需要我们保持耐心，花时间去适应 Rust 这门特殊的语言。</p>
-<p><img alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDI0NTkxZTQ1ZDQ0YjdhMjAwZmJkZDk0MzkxNzExZGRfNGsySlV5dFJZMUNTSTlSRnJ5Uzc5Z3p0aHJJejlrdlpfVG9rZW46RU5zRGJIWTNib2VWQ2V4TXdKSWNXaEYwbkZmXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
+<p><img loading="lazy" alt="img" src="https://jih9axn4gg.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDI0NTkxZTQ1ZDQ0YjdhMjAwZmJkZDk0MzkxNzExZGRfNGsySlV5dFJZMUNTSTlSRnJ5Uzc5Z3p0aHJJejlrdlpfVG9rZW46RU5zRGJIWTNib2VWQ2V4TXdKSWNXaEYwbkZmXzE3MDU3NzEyNzk6MTcwNTc3NDg3OV9WNA" /></p>
 <p>如何修成 Rust 正果，这里参考某位同学给出的学习建议：</p>
 <ul>
 <li>夯实计算机基础知识</li>
@@ -4261,7 +4261,7 @@ enum Number {
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

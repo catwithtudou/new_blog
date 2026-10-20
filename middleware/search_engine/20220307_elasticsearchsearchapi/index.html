@@ -1821,24 +1821,24 @@
 <p>比如：</p>
 <div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a>curl<span class="w"> </span>-XGET<span class="w"> </span><span class="s2">"http://localhost:9200/</span><span class="si">${</span><span class="nv">index</span><span class="si">}</span><span class="s2">/_search?q=</span><span class="si">${</span><span class="nv">search</span><span class="si">}</span><span class="s2">"</span>
 </code></pre></div>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203062050129.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203062050129.png" /></p>
 <h3 id="request-body-查询">Request Body 查询<a class="headerlink" href="#request-body-查询" title="Permanent link">&para;</a></h3>
 <div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1">#支持POST和GET</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos="2 "></span></a><span class="c1">#'match_all'指返回所有的文档</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos="3 "></span></a>curl<span class="w"> </span>-XGET<span class="w"> </span><span class="s2">"http://localhost:9200/</span><span class="si">${</span><span class="nv">index</span><span class="si">}</span><span class="s2">/_search"</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">'Content-Type:application/json` -d '</span><span class="o">{</span><span class="s2">"query:{"</span>match_all<span class="s2">":{}}}'</span>
 </code></pre></div>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203062053397.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203062053397.png" /></p>
 <h3 id="搜索相关性-relevance">搜索相关性 Relevance<a class="headerlink" href="#搜索相关性-relevance" title="Permanent link">&para;</a></h3>
 <p><strong>用户搜索关心的是搜索结果的相关性</strong>，如是否可用找到所有有关的内容、是否有不相关的内容、文档的打分是否合理、结果排名是否满足需求等。</p>
 <p>如不同的搜索需求：</p>
 <ul>
 <li>Web 搜索</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203062039847.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203062039847.png" /></p>
 <ul>
 <li>电商搜索</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203062040935.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203062040935.png" /></p>
 <p>衡量相关性（Information Retrieval）主要有以下标准衡量：</p>
 <ul>
 <li><strong>Precision</strong>：尽可能返回较少的无关文档</li>
@@ -2329,7 +2329,7 @@ Recall = TP/TP+FN</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

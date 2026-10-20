@@ -2345,25 +2345,25 @@
 </code></pre></div>
 <h2 id="2-lecture-2programming-xv6-in-c">2. Lecture 2:programming xv6 in C<a class="headerlink" href="#2-lecture-2programming-xv6-in-c" title="Permanent link">&para;</a></h2>
 <h3 id="21-memory">2.1 memory<a class="headerlink" href="#21-memory" title="Permanent link">&para;</a></h3>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402211018818.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402211018818.png" /></p>
 <h4 id="211-hardware-layer-ram-and-io">2.1.1 Hardware layer: RAM and I/O<a class="headerlink" href="#211-hardware-layer-ram-and-io" title="Permanent link">&para;</a></h4>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402211020282.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402211020282.png" /></p>
 <ul>
 <li>"How does a bus work?"</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402211021969.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402211021969.png" /></p>
 <h4 id="212-cpuos-layer-address-spaces">2.1.2 CPU/OS layer: Address Spaces<a class="headerlink" href="#212-cpuos-layer-address-spaces" title="Permanent link">&para;</a></h4>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402211022570.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402211022570.png" /></p>
 <ul>
 <li>How to interact with an address space?</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402211022641.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402211022641.png" /></p>
 <p><strong>Idea #1: Address spaces can have holes</strong></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402211024527.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402211024527.png" /></p>
 <p><strong>Idea #2: Address spaces can have permissions</strong></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402211024366.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402211024366.png" /></p>
 <p><strong>Idea #3: Combine RAM and devices</strong></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402211024444.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402211024444.png" /></p>
 <blockquote>
 <p>More ideas not discussed today    </p>
 <p>Typical granularity for mappings is a page (4KB), not a byte</p>
@@ -2377,10 +2377,10 @@ Will be covered in later lectures.....</p>
 <p><strong>memory allocation</strong></p>
 <p><strong>1. Stack</strong></p>
 <p>A stack allocates memory when a function is called and frees itwhen a function returns.</p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402211031833.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402211031833.png" /></p>
 <p><strong>2. Heap</strong></p>
 <p>A heap manages memory that is allocated and freed independently of function invocationst.</p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402211031909.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402211031909.png" /></p>
 <div class="language-C highlight"><span class="filename">C</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos="1 "></span></a><span class="k">struct</span><span class="w"> </span><span class="nc">foo</span><span class="w"> </span><span class="o">*</span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">));</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2"></a><a href="#__codelineno-8-2"><span class="linenos" data-linenos="2 "></span></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="c1">// handle out of memory error </span>
 <a id="__codelineno-8-3" name="__codelineno-8-3"></a><a href="#__codelineno-8-3"><span class="linenos" data-linenos="3 "></span></a><span class="w">    </span><span class="n">memset</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">f</span><span class="p">));</span><span class="w"> </span><span class="c1">// initialization </span>
@@ -2435,7 +2435,7 @@ Will be covered in later lectures.....</p>
 </ul>
 <h3 id="23-use-of-c-in-xv6">2.3 use of C in xv6<a class="headerlink" href="#23-use-of-c-in-xv6" title="Permanent link">&para;</a></h3>
 <h4 id="231-memory-layout">2.3.1 memory layout<a class="headerlink" href="#231-memory-layout" title="Permanent link">&para;</a></h4>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402211038134.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402211038134.png" /></p>
 <ul>
 <li>text: code, read-only data</li>
 <li>data: global C variables</li>
@@ -2628,7 +2628,7 @@ Will be covered in later lectures.....</p>
 </li>
 </ul>
 <h4 id="236-bitwise-operators">2.3.6 bitwise operators<a class="headerlink" href="#236-bitwise-operators" title="Permanent link">&para;</a></h4>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402211049174.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402211049174.png" /></p>
 <div class="language-C highlight"><span class="filename">C</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><a href="#__codelineno-12-1"><span class="linenos" data-linenos="1 "></span></a><span class="mb">0b10001</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mb">0b10000</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mb">0b10000</span><span class="w"> </span>
 <a id="__codelineno-12-2" name="__codelineno-12-2"></a><a href="#__codelineno-12-2"><span class="linenos" data-linenos="2 "></span></a><span class="mb">0b10001</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mb">0b10000</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mb">0b10001</span><span class="w"> </span>
 <a id="__codelineno-12-3" name="__codelineno-12-3"></a><a href="#__codelineno-12-3"><span class="linenos" data-linenos="3 "></span></a><span class="mb">0b10001</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="mb">0b10000</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mb">0b00001</span><span class="w"> </span>
@@ -2757,7 +2757,7 @@ Will be covered in later lectures.....</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

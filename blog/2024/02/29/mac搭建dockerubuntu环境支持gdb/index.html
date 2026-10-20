@@ -1826,7 +1826,7 @@
 <p>最近在准备通过 gdb 来调试 c 语言程序时，发现目前 gdb 是没有支持 mac m1 的，如下图：</p>
 <!-- more -->
 
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402282108182.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402282108182.png" /></p>
 <p>如果想要在 mac 本机来使用 gdb 的话，那只有采取类似虚拟机或容器等的思路，去运行其他系统类型去安装解决。 </p>
 <p>之前也尝试过本机安装 docker desktop 去通过 docker 解决，但发现运行过程中老是出现异常和超时，基本不可用。</p>
 <p>最后找到了 lima 来解决该问题，使用成本极低和兼容性好，能让 mac 很方便地本地运行其他系统。</p>
@@ -1880,7 +1880,7 @@ The original goal of Lima was to promote containerd including nerdctl (contaiNER
 </blockquote>
 <div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><a href="#__codelineno-4-1"><span class="linenos" data-linenos="1 "></span></a>$<span class="w"> </span>limactl<span class="w"> </span>start<span class="w"> </span>./docker.yaml
 </code></pre></div>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402282318785.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402282318785.png" /></p>
 <p>需要注意的是：</p>
 <ul>
 <li>此命令通常是初始化的时候执行，后续创建成功后不用重复执行</li>
@@ -1915,13 +1915,13 @@ The original goal of Lima was to promote containerd including nerdctl (contaiNER
 <a id="__codelineno-7-8" name="__codelineno-7-8"></a><a href="#__codelineno-7-8"><span class="linenos" data-linenos="8 "></span></a><span class="c1"># 3. 像 docker cli 一样直接在本地终端执行 docker 命令</span>
 <a id="__codelineno-7-9" name="__codelineno-7-9"></a><a href="#__codelineno-7-9"><span class="linenos" data-linenos="9 "></span></a>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>hello-world
 </code></pre></div>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402282335529.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402282335529.png" /></p>
 <h3 id="33-新增-ubuntu-容器">3.3 新增 ubuntu 容器<a class="headerlink" href="#33-新增-ubuntu-容器" title="Permanent link">&para;</a></h3>
 <p>目前 docker 镜像中已经有现成的镜像可以使用，下面安装的是 ubuntu 20.04 版本：</p>
 <div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><a href="#__codelineno-8-1"><span class="linenos" data-linenos="1 "></span></a>$<span class="w"> </span>docker<span class="w"> </span>pull<span class="w"> </span>ubuntu:20.04
 <a id="__codelineno-8-2" name="__codelineno-8-2"></a><a href="#__codelineno-8-2"><span class="linenos" data-linenos="2 "></span></a>$<span class="w"> </span>docker<span class="w"> </span>images<span class="w"> </span>
 </code></pre></div>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402282342158.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402282342158.png" /></p>
 <p>安装好镜像后，我们直接创建一个 ubuntu 的容器：</p>
 <div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><a href="#__codelineno-9-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># 初始化容器</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2"></a><a href="#__codelineno-9-2"><span class="linenos" data-linenos="2 "></span></a>$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>ubuntu-container<span class="w"> </span>-it<span class="w"> </span>ubuntu:20.04<span class="w"> </span>bash
@@ -1934,7 +1934,7 @@ The original goal of Lima was to promote containerd including nerdctl (contaiNER
 <a id="__codelineno-10-5" name="__codelineno-10-5"></a><a href="#__codelineno-10-5"><span class="linenos" data-linenos="5 "></span></a><span class="c1"># 进行该容器的终端</span>
 <a id="__codelineno-10-6" name="__codelineno-10-6"></a><a href="#__codelineno-10-6"><span class="linenos" data-linenos="6 "></span></a>$<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>ubuntu-container<span class="w"> </span>bash
 </code></pre></div>
-<img alt="" src="https://img.zhengyua.cn/blog/202402282354707.png" /></p>
+<img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402282354707.png" /></p>
 <h3 id="34-安装-gdb">3.4 安装 gdb<a class="headerlink" href="#34-安装-gdb" title="Permanent link">&para;</a></h3>
 <p>进入 ubuntu 容器后，就可以安装 gdb 来调试 c 语言程序了：</p>
 <div class="language-shell highlight"><span class="filename">Bash</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><a href="#__codelineno-11-1"><span class="linenos" data-linenos="1 "></span></a><span class="c1"># 进入容器后更新软件包</span>
@@ -2063,7 +2063,7 @@ The original goal of Lima was to promote containerd including nerdctl (contaiNER
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

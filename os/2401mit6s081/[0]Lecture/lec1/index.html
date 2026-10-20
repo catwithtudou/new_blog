@@ -2134,13 +2134,13 @@
 <blockquote>
 <p><strong>book-riscv-rev3</strong> Chapter1</p>
 </blockquote>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402050847707.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402050847707.png" /></p>
 <h3 id="11-processes-and-memory">1.1 Processes and memory<a class="headerlink" href="#11-processes-and-memory" title="Permanent link">&para;</a></h3>
 <ul>
 <li>An xv6 process consists of user-space memory (instructions, data, and stack) and per-process state private to the kernel.</li>
 <li>A process may create a new process using the <code>fork</code> system call.</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402050855451.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402050855451.png" /></p>
 <ul>
 <li>If <code>exec</code> succeeds then the child will execute instructions from <code>echo</code> instead of <code>runcmd</code>. At some point <code>echo</code> will call <code>exit</code>, which will cause the parent to return from <code>wait</code> in <code>main</code> (user/sh.c:146).</li>
 <li>why <code>fork</code> and <code>exec</code> are not combined in a single call; we will see later that the shell exploits the separation in its implementation of I/O redirection. To avoid the wastefulness of creating a duplicate process and then immediately replacing it (with <code>exec</code>), operating kernels optimize the implementation of <code>fork</code> for this use case by using virtual memory techniques such as copy-on-write (see Section 4.6).</li>
@@ -2172,7 +2172,7 @@
 <ul>
 <li>A <em>pipe</em> is a small kernel buffer exposed to processes as a pair of file descriptors, one for reading and one for writing. Writing data to one end of the pipe makes that data available for reading from the other end of the pipe. Pipes provide a way for processes to communicate.</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402051015521.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402051015521.png" /></p>
 <ul>
 <li>If no data is available, a <code>read</code> on a pipe waits for either data to be written or for all file descriptors referring to the write end to be closed.</li>
 <li>The fact that <code>read</code> blocks until it is impossible for new data to arrive is one reason that it’s important for the child to close the write end of the pipe before executing wc above</li>
@@ -2196,7 +2196,7 @@
 </ul>
 </li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402051035562.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402051035562.png" /></p>
 <ul>
 <li>There are system calls to create new files and directories: <ul>
 <li><code>mkdir</code> creates a new directory</li>
@@ -2205,7 +2205,7 @@
 </ul>
 </li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402051036493.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402051036493.png" /></p>
 <ul>
 <li><code>mknod</code> creates a special file that refers to a device. Associated with a device file are the major and minor device numbers (the two arguments to <code>mknod</code>), which uniquely identify a kernel device.<ul>
 <li>When a process later opens a device file, the kernel diverts <code>read</code> and <code>write</code> system calls to the kernel device implementation instead of passing them to the file system.</li>
@@ -2217,7 +2217,7 @@
 </li>
 <li>The <code>fstat</code> system call retrieves information from the inode that a file descriptor refers to.</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402051039010.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402051039010.png" /></p>
 <ul>
 <li>The <code>link</code> system call creates another file system name referring to the same inode as an existing file.<ul>
 <li>Each inode is identified by a unique inode number.</li>
@@ -2767,7 +2767,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

@@ -2255,7 +2255,7 @@ your own custom app specific business logic and still have a single portable exe
 <h3 id="技术栈选择">技术栈选择<a class="headerlink" href="#技术栈选择" title="Permanent link">&para;</a></h3>
 <h3 id="整体架构设计">整体架构设计<a class="headerlink" href="#整体架构设计" title="Permanent link">&para;</a></h3>
 <h3 id="目录结构">目录结构<a class="headerlink" href="#目录结构" title="Permanent link">&para;</a></h3>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202412150938032.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202412150938032.png" /></p>
 <p><strong>1. 核心目录</strong></p>
 <p>apis/: 包含 API 相关的实现代码
 core/: 核心功能实现
@@ -2306,13 +2306,13 @@ pocketbase_test.go: 主程序测试文件</p>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a>↑                                     ↓
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a><a href="#__codelineno-0-3"><span class="linenos" data-linenos="3 "></span></a>└─────────────────── 响应 ←───────────┘
 </code></pre></div>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202412150956740.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202412150956740.png" /></p>
 <h2 id="2-流程分析">2. 流程分析<a class="headerlink" href="#2-流程分析" title="Permanent link">&para;</a></h2>
 <h3 id="入口启动流程">入口启动流程<a class="headerlink" href="#入口启动流程" title="Permanent link">&para;</a></h3>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202412151044529.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202412151044529.png" /></p>
 <h2 id="3-可学习的地方">3. 可学习的地方<a class="headerlink" href="#3-可学习的地方" title="Permanent link">&para;</a></h2>
 <h3 id="31-入口流程使用base结构体进行收敛">3.1 入口流程使用Base结构体进行收敛<a class="headerlink" href="#31-入口流程使用base结构体进行收敛" title="Permanent link">&para;</a></h3>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202412151039990.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202412151039990.png" /></p>
 <h3 id="32-检测运行环境区分是通过gorun还是编译后运行">3.2 检测运行环境(区分是通过gorun还是编译后运行)<a class="headerlink" href="#32-检测运行环境区分是通过gorun还是编译后运行" title="Permanent link">&para;</a></h3>
 <div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kd">func</span><span class="w"> </span><span class="nx">inspectRuntime</span><span class="p">()</span><span class="w"> </span><span class="p">(</span><span class="nx">baseDir</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">withGoRun</span><span class="w"> </span><span class="kt">bool</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">strings</span><span class="p">.</span><span class="nx">HasPrefix</span><span class="p">(</span><span class="nx">os</span><span class="p">.</span><span class="nx">Args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="nx">os</span><span class="p">.</span><span class="nx">TempDir</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
@@ -2487,7 +2487,7 @@ pocketbase_test.go: 主程序测试文件</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

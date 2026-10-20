@@ -1851,7 +1851,7 @@
 <li>原生并不支持水平扩展</li>
 </ul>
 <h3 id="elasticsearch-的分布式架构">ElasticSearch 的分布式架构<a class="headerlink" href="#elasticsearch-的分布式架构" title="Permanent link">&para;</a></h3>
-<p><img alt="" src="https://img.zhengyua.cn/img/20220228095556.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/20220228095556.png" /></p>
 <ul>
 <li>集群规模可以从单个节点扩展至数百节点</li>
 <li>高可用且支持水命扩展（服务和数据两个维度）</li>
@@ -1873,7 +1873,7 @@
 <li>聚合功能</li>
 </ul>
 <h2 id="elasticstack-生态圈">ElasticStack 生态圈<a class="headerlink" href="#elasticstack-生态圈" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://img.zhengyua.cn/img/20220228094934.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/20220228094934.png" /></p>
 <ol>
 <li>Logstash</li>
 </ol>
@@ -1888,12 +1888,12 @@
 <li>Kibana</li>
 </ol>
 <p>数据可视化工具。</p>
-<p><img alt="" src="https://img.zhengyua.cn/img/20220228093053.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/20220228093053.png" /></p>
 <ol start="3">
 <li>BEATS</li>
 </ol>
 <p>使用GO语言开发的轻量数据采集器。</p>
-<p><img alt="" src="https://img.zhengyua.cn/img/20220228093320.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/20220228093320.png" /></p>
 <ol start="4">
 <li>X-Pack</li>
 </ol>
@@ -1913,7 +1913,7 @@
 <p>总结下来就是<strong>搜索</strong>和<strong>分析</strong>。</p>
 <h2 id="常见架构接入场景">常见架构接入场景<a class="headerlink" href="#常见架构接入场景" title="Permanent link">&para;</a></h2>
 <h3 id="elasticsearch-与数据库的集成">ElasticSearch 与数据库的集成<a class="headerlink" href="#elasticsearch-与数据库的集成" title="Permanent link">&para;</a></h3>
-<p><img alt="" src="https://img.zhengyua.cn/img/20220228094058.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/20220228094058.png" /></p>
 <ul>
 <li>单独使用 ElasticSearch 存储</li>
 <li>以下情况可以考虑与数据库集成：</li>
@@ -1922,7 +1922,7 @@
 <li><strong>数据更新频繁</strong></li>
 </ul>
 <h3 id="指标分析日志分析">指标分析/日志分析<a class="headerlink" href="#指标分析日志分析" title="Permanent link">&para;</a></h3>
-<p><img alt="" src="https://img.zhengyua.cn/img/20220228094229.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/20220228094229.png" /></p>
 <h2 id="安装部署">安装部署<a class="headerlink" href="#安装部署" title="Permanent link">&para;</a></h2>
 <h3 id="elasticsearch-安装简单配置">ElasticSearch 安装&amp;简单配置<a class="headerlink" href="#elasticsearch-安装简单配置" title="Permanent link">&para;</a></h3>
 <blockquote>
@@ -1934,7 +1934,7 @@
 </ol>
 <p><a href="https://www.elastic.co/cn/downloads/elasticsearch">官网下载链接</a></p>
 <p>安装及运行过程该页面都有相应提示：</p>
-<p><img alt="" src="https://img.zhengyua.cn/img/20220228102131.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/20220228102131.png" /></p>
 <p>ElasticSearch 安装目录：</p>
 <ul>
 <li>Bin：脚本文件</li>
@@ -1958,11 +1958,11 @@
 <li><strong>启动ElasticSearch</strong></li>
 </ol>
 <p>运行程序如下：</p>
-<p><img alt="" src="https://img.zhengyua.cn/img/20220228121711.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/20220228121711.png" /></p>
 <blockquote>
 <p>这里可以将 ElasticSearch 下的 bin 目录放入环境变量，方便后续使用。</p>
 </blockquote>
-<p><img alt="" src="https://img.zhengyua.cn/img/20220301123644.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/20220301123644.png" /></p>
 <p>这里需要注意的是，这里下载的是 8.0 的版本，第一次启动的时候默认是开启了<code>x-pack</code>安全鉴权和<code>https</code>等配置，所以在我们访问的是时候都是<code>HTTPS</code>进行访问，且需要输入账号密码进行登录，默认用户名为<code>elastic</code>，密码是第一次启动的时候自动生成的。</p>
 <ol start="3">
 <li><strong>验证ElasticSearch是否启动成功</strong></li>
@@ -1971,15 +1971,15 @@
 <ul>
 <li>https://localhost:9200</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/img/20220301124248.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/20220301124248.png" /></p>
 <p>出现上述页面就说明启动成功了。</p>
 <ol start="4">
 <li><strong>安装并查看ElasticSearch插件</strong></li>
 </ol>
 <p>我们可以通过<code>elasticsearch-plugin</code>来进行插件的安装，如下图所示：</p>
-<p><img alt="" src="https://img.zhengyua.cn/img/20220228132648.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/20220228132648.png" /></p>
 <p>安装成功后，可以通过<code>https://localhost:9200/_cat/plugins</code>查看：</p>
-<p><img alt="" src="https://img.zhengyua.cn/img/20220228132829.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/20220228132829.png" /></p>
 
 
 
@@ -2091,7 +2091,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

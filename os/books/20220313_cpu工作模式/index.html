@@ -2078,9 +2078,9 @@
 <li>发往内存的地址是真实的，<strong>对任何地址不加限制地发往内存</strong></li>
 </ul>
 <h3 id="实模式寄存器">实模式寄存器<a class="headerlink" href="#实模式寄存器" title="Permanent link">&para;</a></h3>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203130951830.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203130951830.png" /></p>
 <h3 id="实模式下访问内存">实模式下访问内存<a class="headerlink" href="#实模式下访问内存" title="Permanent link">&para;</a></h3>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203130952433.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203130952433.png" /></p>
 <p>可以发现所有的内存地址都是：</p>
 <ul>
 <li>段寄存器左移 4 位</li>
@@ -2130,13 +2130,13 @@
 <p>基于上述问题 CPU 实现了保护模式。</p>
 <p>同时为了解决软件规模增大带来的寻址问题，<strong>保护模式下的寄存器和运算单位都要扩展成 32 位</strong>。</p>
 <h3 id="保护模式寄存器">保护模式寄存器<a class="headerlink" href="#保护模式寄存器" title="Permanent link">&para;</a></h3>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203131006244.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203131006244.png" /></p>
 <blockquote>
 <p>保护模式相比于实模式，增加了一些控制寄存器和段寄存器，扩展通用寄存器的位宽，所有的通用寄存器都是 32 位的，还可以单独使用低 16 位，这个低 16 位又可以拆分成两个 8 位寄存器。</p>
 </blockquote>
 <h3 id="保护模式特权级">保护模式特权级<a class="headerlink" href="#保护模式特权级" title="Permanent link">&para;</a></h3>
 <p><strong>为区分指令和资源可以被访问</strong>，CPU 实现了 特权级。</p>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203131007908.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203131007908.png" /></p>
 <p>可以看到从外到内各权级之间的联系与区别。如 R0 拥有最大权力，可以访问低特权级的资源。</p>
 <h3 id="保护模式段描述符">保护模式段描述符<a class="headerlink" href="#保护模式段描述符" title="Permanent link">&para;</a></h3>
 <p>保护模式下内存还是分段模型，<strong>要对内存进行保护，就可以转换成对段的保护</strong>。</p>
@@ -2144,12 +2144,12 @@
 <li><strong>段描述符</strong></li>
 </ol>
 <p>保护模式下 16 位的段寄存器放不下 32位的段基地址和段内偏移，通过借内存空间，把描述一个段的信息封装成<strong>特定格式的段描述符，放在内存中</strong>。</p>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203131014669.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203131014669.png" /></p>
 <ol start="2">
 <li><strong>全局描述符</strong></li>
 </ol>
 <p>多个段描述符在内存中形成全局段描述符表，<strong>该表的基地址和长度由 CPU 和 GDTR 寄存器指示</strong>。</p>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203131016813.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203131016813.png" /></p>
 <ol start="3">
 <li><strong>访问段</strong></li>
 </ol>
@@ -2164,7 +2164,7 @@
 <li>低三位的 TI 和 RPL：对齐段描述符的8字节，每个索引低3位都为0</li>
 <li>CPL（当前权限级别）：通常由 CS 和 SS 中 RPL 组成，当 CPL 大于目标段 DPL 则禁止访问</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203131021155.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203131021155.png" /></p>
 <h3 id="保护模式平坦模型">保护模式平坦模型<a class="headerlink" href="#保护模式平坦模型" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>分段模型有很多权限，现代操作系统大多使用分页模型。</p>
@@ -2207,7 +2207,7 @@
 <li>实模式下 CPU 不需要做权限检查，所以可直接通过中断向量表中的值装载 CS:IP 寄存器</li>
 <li>保护模式下的中断需要权限检查和特权级的切换，所以<strong>需要扩展中断向量表的信息</strong>，即每个中断用一个中断门描述符来表示（简称为中断门）</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203131042594.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203131042594.png" /></p>
 <p>保护模式下中断实现与实模式大致相同，<strong>区别在于条目换成了中断门描述符</strong>。其产生中断的主要过程如下：</p>
 <ul>
 <li>检查<strong>中断门描述符</strong></li>
@@ -2220,7 +2220,7 @@
 <li><strong>目标代码段选择子到 CS 寄存器中</strong></li>
 <li><strong>目标代码段偏移加载到 EIP 寄存器中</strong></li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203131044009.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203131044009.png" /></p>
 <h3 id="切换到保护模式">切换到保护模式<a class="headerlink" href="#切换到保护模式" title="Permanent link">&para;</a></h3>
 <p>x86 CPU 在<strong>第一次加电和每次 reset 后，都会自动进入实模式</strong>，若要进入保护模式，则需要通过代码实现切换,其步骤如下:</p>
 <ol>
@@ -2282,11 +2282,11 @@
 <p>长模式又名 AMD64（该标准是 AMD 公司最早定义的），<strong>它使 CPU 在现有的基础上有了 64 位的处理能力</strong>（完成 64 位数据运算和寻址 64 位的地址空间）。</p>
 <h3 id="长模式寄存器">长模式寄存器<a class="headerlink" href="#长模式寄存器" title="Permanent link">&para;</a></h3>
 <p>长模式相比于保护模式，增加了一些通用寄存器，并扩展通用寄存器的位宽，所有的通用寄存器都是 64 位，还可以单独使用低 32 位。</p>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203131113440.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203131113440.png" /></p>
 <h3 id="长模式段描述符">长模式段描述符<a class="headerlink" href="#长模式段描述符" title="Permanent link">&para;</a></h3>
 <p>与保护模式绝大多数特性相同，如特权级和权限检查。</p>
 <p>长模式下的段描述符格式如下：</p>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203131114066.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203131114066.png" /></p>
 <p>在长模式下，<strong>弱化段模式管理，CPU 不再对段基址和段长度进行检查（地址检查交给 MMU），只对 DPL 进行相关的检查</strong>。同样也有全局段描述符，且由 CPU 的 GDTR 寄存器指向。</p>
 <div class="language-asm highlight"><span class="filename">GAS</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><a href="#__codelineno-6-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="nl">ex64_GDT:</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2"></a><a href="#__codelineno-6-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="nl">null_dsc:</span><span class="w">  </span><span class="nf">dq</span><span class="w"> </span><span class="mi">0</span>
@@ -2315,7 +2315,7 @@
 <li>目标代码段选择子对应的代码段描述符必须是 64 位的代码段</li>
 <li>IST 是 64 位 TSS 中的 IST 指针</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203131120421.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203131120421.png" /></p>
 <h3 id="切换到长模式">切换到长模式<a class="headerlink" href="#切换到长模式" title="Permanent link">&para;</a></h3>
 <p>切换到长模式的步骤如下：</p>
 <ol>
@@ -2482,7 +2482,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

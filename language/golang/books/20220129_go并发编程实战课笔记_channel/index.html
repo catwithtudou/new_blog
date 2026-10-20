@@ -2468,7 +2468,7 @@
 <p>在此部分中不会贴出相应源码部分，仅讲述实现逻辑思路。</p>
 </blockquote>
 <h3 id="chand的数据结构">chand的数据结构<a class="headerlink" href="#chand的数据结构" title="Permanent link">&para;</a></h3>
-<p><img alt="image-20210223145429969" src="https://img.zhengyua.cn/20210223145435.png" /></p>
+<p><img loading="lazy" alt="image-20210223145429969" src="https://img.zhengyua.cn/20210223145435.png" /></p>
 <h3 id="chan初始化">chan初始化<a class="headerlink" href="#chan初始化" title="Permanent link">&para;</a></h3>
 <p>底层调用<code>makechan</code>实现，根据chan的容量的大小和元素的类型不同，初始化不同的存储空间。最终，针对不同的容量和元素类型，分配不同的对象来初始化 hchan 对象的字段，返回 hchan 对象。</p>
 <p>这里需要注意的是在 buffer chan 中元素包含指针和不包含指针中分配内存方式不同，前者是单独分配内存给 buf ，而后者是一段连续的内存给 对象和 buf。</p>
@@ -2613,7 +2613,7 @@
 <li>需要和 Select 语句结合，使用 Channel；</li>
 <li>需要和超时配合，使用 Channel 和 Context；</li>
 </ul>
-<p><img alt="image-20210223154037981" src="https://img.zhengyua.cn/20210223154038.png" /></p>
+<p><img loading="lazy" alt="image-20210223154037981" src="https://img.zhengyua.cn/20210223154038.png" /></p>
 
 
 
@@ -2725,7 +2725,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

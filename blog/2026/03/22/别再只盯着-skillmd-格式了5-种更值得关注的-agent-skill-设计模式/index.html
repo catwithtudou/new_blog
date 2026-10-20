@@ -2013,7 +2013,7 @@
 <p>真正决定一个 Skill 是否好用、是否稳定、是否能复用的，往往不是它“长什么样”，而是它内部的<strong>能力结构怎么设计</strong>。</p>
 <p>这也是 Google Cloud Tech 那篇<a href="https://x.com/GoogleCloudTech/status/2033953579824758855">《5 Agent Skill design patterns every ADK developer should know》</a>真正值得看的地方：</p>
 <p><strong>当 Skill 的包装格式逐渐标准化之后，真正拉开差距的，不再是会不会写 Skill 文件，而是会不会设计 Skill 的内容。</strong></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202603222248916.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202603222248916.png" /></p>
 <p>文章总结了 5 种反复出现的 Skill 设计模式：</p>
 <ol>
 <li>Tool Wrapper</li>
@@ -2096,7 +2096,7 @@
 </blockquote>
 <hr />
 <h2 id="三模式一tool-wrapper--让-agent-在特定场景下临时变成专家">三、模式一：Tool Wrapper —— 让 Agent 在特定场景下临时变成专家<a class="headerlink" href="#三模式一tool-wrapper--让-agent-在特定场景下临时变成专家" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202603222248253.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202603222248253.png" /></p>
 <p>先说最容易被误解的一种。</p>
 <h3 id="31-tool-wrapper-到底是什么">3.1 Tool Wrapper 到底是什么<a class="headerlink" href="#31-tool-wrapper-到底是什么" title="Permanent link">&para;</a></h3>
 <p>Tool Wrapper 的核心思想可以概括成一句话：</p>
@@ -2174,7 +2174,7 @@ Tool Wrapper 解决的是：<strong>模型虽然会做，但做法不稳定，�
 </blockquote>
 <hr />
 <h2 id="四模式二generator--不让-agent-自由发挥而是让它填模板">四、模式二：Generator —— 不让 Agent 自由发挥，而是让它填模板<a class="headerlink" href="#四模式二generator--不让-agent-自由发挥而是让它填模板" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202603222249270.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202603222249270.png" /></p>
 <p>如果说 Tool Wrapper 主要控制“按什么规则做”，那么 Generator 主要控制的是：</p>
 <blockquote>
 <p><strong>最后输出长什么样。</strong></p>
@@ -2245,7 +2245,7 @@ Tool Wrapper 解决的是：<strong>模型虽然会做，但做法不稳定，�
 </blockquote>
 <hr />
 <h2 id="五模式三reviewer--把怎么评从-prompt-里拆出来">五、模式三：Reviewer —— 把“怎么评”从 Prompt 里拆出来<a class="headerlink" href="#五模式三reviewer--把怎么评从-prompt-里拆出来" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202603222249048.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202603222249048.png" /></p>
 <p>很多团队在做代码审查、文档验收、质量打分时，都会把规则直接写进 Prompt：</p>
 <ul>
 <li>检查命名</li>
@@ -2306,7 +2306,7 @@ Tool Wrapper 解决的是：<strong>模型虽然会做，但做法不稳定，�
 </blockquote>
 <hr />
 <h2 id="六模式四inversion--不让-agent-立刻开工而是先问清楚">六、模式四：Inversion —— 不让 Agent 立刻开工，而是先问清楚<a class="headerlink" href="#六模式四inversion--不让-agent-立刻开工而是先问清楚" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202603222250531.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202603222250531.png" /></p>
 <p>Agent 有一个天然倾向：
 <strong>一旦看到任务，就想马上给答案。</strong></p>
 <p>这在简单问题上是优点，但在复杂任务里经常会变成问题。</p>
@@ -2355,7 +2355,7 @@ Tool Wrapper 解决的是：<strong>模型虽然会做，但做法不稳定，�
 </blockquote>
 <hr />
 <h2 id="七模式五pipeline--把复杂任务拆成不可跳过的工作流">七、模式五：Pipeline —— 把复杂任务拆成不可跳过的工作流<a class="headerlink" href="#七模式五pipeline--把复杂任务拆成不可跳过的工作流" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202603222250863.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202603222250863.png" /></p>
 <p>如果说 Inversion 解决的是“别太早开始”，那么 Pipeline 解决的就是：</p>
 <blockquote>
 <p><strong>开始之后，也别乱跳步骤。</strong></p>
@@ -2408,7 +2408,7 @@ Tool Wrapper 解决的是：<strong>模型虽然会做，但做法不稳定，�
 <p>如果 Reviewer 更像“检查器”，那 Pipeline 更像一个轻量级的<strong>流程执行器</strong>。</p>
 <hr />
 <h2 id="八这五种模式最简单的区分方式">八、这五种模式最简单的区分方式<a class="headerlink" href="#八这五种模式最简单的区分方式" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202603222250915.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202603222250915.png" /></p>
 <p>如果把它们压缩成一句话，可以这样记：</p>
 <ul>
 <li><strong>Tool Wrapper</strong>：让 Agent 懂某个领域</li>
@@ -2621,7 +2621,7 @@ Tool Wrapper 解决的是：<strong>模型虽然会做，但做法不稳定，�
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

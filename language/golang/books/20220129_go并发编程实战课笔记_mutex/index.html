@@ -2464,7 +2464,7 @@
 <p>有时候采用嵌入字段的方式，来标注不同作用的mutex。</p>
 </blockquote>
 <h2 id="源码解析">源码解析<a class="headerlink" href="#源码解析" title="Permanent link">&para;</a></h2>
-<p><img alt="image-20201230095135808" src="https://img.zhengyua.cn/img/20201230095510.png" /></p>
+<p><img loading="lazy" alt="image-20201230095135808" src="https://img.zhengyua.cn/img/20201230095510.png" /></p>
 <h3 id="初版互斥锁">初版互斥锁<a class="headerlink" href="#初版互斥锁" title="Permanent link">&para;</a></h3>
 <div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="c1">// CAS操作，当时还没有抽象出atomic包</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="kd">func</span><span class="w"> </span><span class="nx">cas</span><span class="p">(</span><span class="nx">val</span><span class="w"> </span><span class="o">*</span><span class="kt">int32</span><span class="p">,</span><span class="w"> </span><span class="nx">old</span><span class="p">,</span><span class="w"> </span><span class="nx">new</span><span class="w"> </span><span class="kt">int32</span><span class="p">)</span><span class="w"> </span><span class="kt">bool</span>
@@ -2499,7 +2499,7 @@
 <a id="__codelineno-0-31" name="__codelineno-0-31"></a><a href="#__codelineno-0-31"><span class="linenos" data-linenos="31 "></span></a><span class="nx">semrelease</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">m</span><span class="p">.</span><span class="nx">sema</span><span class="p">)</span><span class="w"> </span><span class="c1">// 唤醒其它阻塞的goroutine</span>
 <a id="__codelineno-0-32" name="__codelineno-0-32"></a><a href="#__codelineno-0-32"><span class="linenos" data-linenos="32 "></span></a><span class="p">}</span>
 </code></pre></div>
-<p><img alt="image-20201230095618527" src="https://img.zhengyua.cn/img/20201230095618.png" /></p>
+<p><img loading="lazy" alt="image-20201230095618527" src="https://img.zhengyua.cn/img/20201230095618.png" /></p>
 <ul>
 <li>由于Mutex 本身并没有包含持有这把锁的goroutine的信息，Unlock也不会对此进行检查，Unlock方法可以被任意的goroutine调用释放锁，即使是没持有这个互斥锁的goroutine也可以。</li>
 </ul>
@@ -2511,7 +2511,7 @@
 <li>初版互斥锁有一个问题在于请求锁的goroutine会排队等待获取互斥锁，在高并发场景下不是性能最优的策略，如果能够把锁交给正在占用CPU时间片的goroutine就不用做上下文的切换。</li>
 </ul>
 <h3 id="新来的goroutine竞争">新来的goroutine竞争<a class="headerlink" href="#新来的goroutine竞争" title="Permanent link">&para;</a></h3>
-<p><img alt="image-20201230100300919" src="https://img.zhengyua.cn/img/20201230100301.png" /></p>
+<p><img loading="lazy" alt="image-20201230100300919" src="https://img.zhengyua.cn/img/20201230100301.png" /></p>
 <div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><a href="#__codelineno-1-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">Mutex</span><span class="p">)</span><span class="w"> </span><span class="nx">Lock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2"></a><a href="#__codelineno-1-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="c1">// Fast path: 幸运case，能够直接获取到锁</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3"></a><a href="#__codelineno-1-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="k">if</span><span class="w"> </span><span class="nx">atomic</span><span class="p">.</span><span class="nx">CompareAndSwapInt32</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">m</span><span class="p">.</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nx">mutexLocked</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -2543,7 +2543,7 @@
 <li>Fast Path：首先通过CAS检测state字段的标志，判断是否持有锁，若没有则直接获得锁；</li>
 <li>下面循环检查，涉及到state不同标志位的操作，</li>
 </ul>
-<p><img alt="image-20201230100846349" src="https://img.zhengyua.cn/img/20201230100846.png" /></p>
+<p><img loading="lazy" alt="image-20201230100846349" src="https://img.zhengyua.cn/img/20201230100846.png" /></p>
 <div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="o">*</span><span class="nx">Mutex</span><span class="p">)</span><span class="w"> </span><span class="nx">Unlock</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a><a href="#__codelineno-2-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="c1">// Fast path: drop lock bit.</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a><a href="#__codelineno-2-3"><span class="linenos" data-linenos=" 3 "></span></a><span class="nx">new</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">atomic</span><span class="p">.</span><span class="nx">AddInt32</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">m</span><span class="p">.</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="nx">mutexLocked</span><span class="p">)</span><span class="w"> </span><span class="c1">//去掉锁标志</span>
@@ -2620,7 +2620,7 @@
 <blockquote>
 <p>Mutex 不能容忍这种事情发生。所以，2016 年 Go 1.9 中 Mutex 增加了饥饿模式，让锁变得更公平，不公平的等待时间限制在1毫秒，并且修复了一个大 Bug：总是把唤醒的 goroutine 放在等待队列的尾部，会导致更加不公平的等待时间。之后，2018 年，Go 开发者将 fast path 和 slow path 拆成独立的方法，以便内联，提高性能。2019 年也有一个 Mutex 的优化，虽然没有 Mutex 做修改，但是，对 Mutex唤醒后持有锁的那个 waiter，调度器可以有更高的优先级去执行，这已经是很细致的性能优化了。</p>
 </blockquote>
-<p><img alt="image-20201230102230186" src="https://img.zhengyua.cn/img/20201230102230.png" /></p>
+<p><img loading="lazy" alt="image-20201230102230186" src="https://img.zhengyua.cn/img/20201230102230.png" /></p>
 <p>Mutex让每一个goroutine都有机会获取到锁，而且它也尽可能地让等待较长的 goroutine 更有机会获取到锁。</p>
 <h3 id="饥饿模式和正常模式">饥饿模式和正常模式<a class="headerlink" href="#饥饿模式和正常模式" title="Permanent link">&para;</a></h3>
 <p>请求锁时调用的 Lock 方法中一开始是 fast path，这是一个幸运的场景，当前的 goroutine 幸运地获得了锁，没有竞争，直接返回，否则就进入了 lockSlow 方法。</p>
@@ -2770,7 +2770,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

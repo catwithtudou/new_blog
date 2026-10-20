@@ -1963,7 +1963,7 @@
 <li>硬件资源（如总线、CPU、内存、硬盘、网卡、显卡、I/O设备等）</li>
 <li>软件资源（如各种文件、软件程序等）</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203071032147.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203071032147.png" /></p>
 <p>内核作为硬件资源和软件资源的管理者，其内部组成在逻辑上大致如下：</p>
 <blockquote>
 <p>内核除了下面这些必要组件，根据功能不同还有安全组件等，且为了<strong>管理和控制各种硬件编写的代码，即称为“驱动程序”</strong>。</p>
@@ -2014,7 +2014,7 @@
 <ul>
 <li><strong>性能很好</strong>（组件之间互相直接调用，没有过多消耗）</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203071043129.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203071043129.png" /></p>
 <p>比如宏内核提供内存分配功能的服务过程，具体如下：</p>
 <ol>
 <li><strong>调用API</strong>：应用程序首先调用内存分配的 API（应用程序接口）函数；</li>
@@ -2042,7 +2042,7 @@
 <blockquote>
 <p>微内核的代表作有 MACH、MINIX、L4 系统，这些系统都是微内核，但是它们不是商业级的系统，商业级的系统不采用微内核主要还是因为性能差。</p>
 </blockquote>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203071055747.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203071055747.png" /></p>
 <p>而比如微内核提供内存分配功能的服务过程，具体如下：</p>
 <ol>
 <li><strong>调用API发送消息</strong>：应用程序发送内存分配的消息，这个发送消息的函数是微内核提供的，相当于系统 API，微内核的 API（应用程序接口）相当少，极端情况下仅需要两个，一个接收消息的 API 和一个发送消息的 API；</li>
@@ -2077,7 +2077,7 @@
 <li>吸取微内核优势（内核小维护成本小，且扩展性强），内核实现的功能很少；</li>
 <li>吸收宏内核优势（高耦合代来的性能提升），把文件系统、网络组件、其它功能组件作为虚拟设备交由设备管理；</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203071122381.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203071122381.png" /></p>
 <h2 id="业界成熟内核架构">业界成熟内核架构<a class="headerlink" href="#业界成熟内核架构" title="Permanent link">&para;</a></h2>
 <h3 id="linux-内核">Linux 内核<a class="headerlink" href="#linux-内核" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2085,11 +2085,11 @@
 <li>支持<strong>类 UNIX、POSIX 标准接口</strong>，也支持<strong>多用户、多进程、多线程、多核运行</strong></li>
 <li><strong>宏内核结构</strong></li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203071143971.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203071143971.png" /></p>
 <blockquote>
 <p><a href="https://makelinux.github.io/kernel/map/">原图地址</a></p>
 </blockquote>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203071144376.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203071144376.png" /></p>
 <h3 id="darwin-xnu-内核">Darwin-XNU 内核<a class="headerlink" href="#darwin-xnu-内核" title="Permanent link">&para;</a></h3>
 <ul>
 <li>主要特点就是<strong>两个内核层即 Mach 层与 BSD 层</strong>。</li>
@@ -2098,7 +2098,7 @@
 <blockquote>
 <p>在调用 Darwin 系统 API 时，会传入一个 API 号码，用这个号码去索引 Mach 陷入中断服务表中的函数。此时，API 号码如果小于 0，则表明请求的是 Mach 内核的服务，API 号码如果大于 0，则表明请求的是 BSD 内核的服务，它提供一整套标准的 POSIX 接口。</p>
 </blockquote>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203071131577.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203071131577.png" /></p>
 <h3 id="windows-nt-内核">Windows NT 内核<a class="headerlink" href="#windows-nt-内核" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>高内聚，低耦合</strong></li>
@@ -2108,7 +2108,7 @@
 <blockquote>
 <p>Windows NT从设计架构上看属于微内核结构，HAL层之上的内核层属于微内核的核心，之上的执行体属于内核级别的应用层。Windows NT从权限的角度看属于宏内核，内核模式之下功能完备，并不是微内核那样单薄。这种设计兼顾了结构清晰和性能良好两个优点。</p>
 </blockquote>
-<p><img alt="" src="https://img.zhengyua.cn/img/202203071135866.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/202203071135866.png" /></p>
 <h2 id="参考">参考<a class="headerlink" href="#参考" title="Permanent link">&para;</a></h2>
 <p>https://time.geekbang.org/column/article/372609</p>
 
@@ -2222,7 +2222,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

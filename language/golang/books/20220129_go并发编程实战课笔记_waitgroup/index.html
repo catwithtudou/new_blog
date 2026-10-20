@@ -2451,7 +2451,7 @@
 <p>以下为鸟窝大佬的<a href="https://time.geekbang.org/column/intro/100061801">Go 并发编程实战课</a> 中摘录的笔记</p>
 <p><a href="https://github.com/catwithtudou/golang_concurrent_examples/tree/master/waitGroup">代码repo</a></p>
 </blockquote>
-<p><img alt="image-20210105004212097" src="https://img.zhengyua.cn/img/20210105004212.png" /></p>
+<p><img loading="lazy" alt="image-20210105004212097" src="https://img.zhengyua.cn/img/20210105004212.png" /></p>
 <h2 id="基本用法">基本用法<a class="headerlink" href="#基本用法" title="Permanent link">&para;</a></h2>
 <div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><a href="#__codelineno-0-1"><span class="linenos" data-linenos="1 "></span></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">wg</span><span class="w"> </span><span class="o">*</span><span class="nx">WaitGroup</span><span class="p">)</span><span class="w"> </span><span class="nx">Add</span><span class="p">(</span><span class="nx">delta</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="c1">//设置计数值</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><a href="#__codelineno-0-2"><span class="linenos" data-linenos="2 "></span></a><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">wg</span><span class="w"> </span><span class="o">*</span><span class="nx">WaitGroup</span><span class="p">)</span><span class="w"> </span><span class="nx">Done</span><span class="p">()</span><span class="w"> </span><span class="c1">//Add(-1)</span>
@@ -2483,8 +2483,8 @@
 <a id="__codelineno-1-19" name="__codelineno-1-19"></a><a href="#__codelineno-1-19"><span class="linenos" data-linenos="19 "></span></a><span class="p">}</span>
 </code></pre></div>
 <p>其中在64位环境和32位环境中的state字段组成是不一样的：</p>
-<p><img alt="image-20210105002456455" src="https://img.zhengyua.cn/img/20210105002503.png" /></p>
-<p><img alt="image-20210105002511725" src="https://img.zhengyua.cn/img/20210105002511.png" /></p>
+<p><img loading="lazy" alt="image-20210105002456455" src="https://img.zhengyua.cn/img/20210105002503.png" /></p>
+<p><img loading="lazy" alt="image-20210105002511725" src="https://img.zhengyua.cn/img/20210105002511.png" /></p>
 <ul>
 <li>除了方法本身的实现外，需要一些race检查和异常检查的额外代码，避免出现panic。</li>
 </ul>
@@ -2683,7 +2683,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

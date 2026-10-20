@@ -1832,7 +1832,7 @@
 <p>Hello OS 是基于硬件，一个最小的操作系统内核</p>
 </blockquote>
 <p>Hello OS 的引导流程如下：</p>
-<p><img alt="" src="https://img.zhengyua.cn/img/20220305093741.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/20220305093741.png" /></p>
 <blockquote>
 <p>BIOS 固件是固化在 PC 机主板上的 ROM 芯片中的，可掉电保存，它负责<strong>检测和初始化 CPU、内存及主板平台</strong>。
 PC 机上电后的第一条指令就是 BIOS 固件中的，然后加载引导设备（大概率是硬盘）中的第一个扇区数据，到 0x7c00 地址开始的内存空间，再接着跳转到 0x7c00 处执行指令。</p>
@@ -1945,7 +1945,7 @@ PC 机上电后的第一条指令就是 BIOS 固件中的，然后加载引导�
 <p>屏幕上显示字符，就要编程操作显卡。</p>
 <p><strong>显卡都会支持 VESA 的标准</strong>，该标准下有两种工作模式（字符和图形），且为支持该标准还会<strong>提供 VGABIOS 的固件程序</strong>。</p>
 <p>下图即显卡的字符模式工作细节，可以看到主要的特点是在于<strong>会每两个字节（ASCII码和字符颜色值）对应一个字符</strong>。</p>
-<p><img alt="" src="https://img.zhengyua.cn/img/20220305095902.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/20220305095902.png" /></p>
 <p>上述主函数中<code>printf</code>控制输出代码如下：</p>
 <div class="language-c highlight"><span class="filename">C</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><a href="#__codelineno-5-1"><span class="linenos" data-linenos=" 1 "></span></a><span class="kt">void</span><span class="w"> </span><span class="nf">_strwrite</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">string</span><span class="p">)</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2"></a><a href="#__codelineno-5-2"><span class="linenos" data-linenos=" 2 "></span></a><span class="p">{</span>
@@ -1994,14 +1994,14 @@ PC 机上电后的第一条指令就是 BIOS 固件中的，然后加载引导�
 </ul>
 <blockquote>
 <p>这里补充下上面 GCC 编译的过程，我们可以手动控制该流程来得到相应的中间文件：
-<img alt="" src="https://img.zhengyua.cn/img/20220305102135.png" /></p>
+<img loading="lazy" alt="" src="https://img.zhengyua.cn/img/20220305102135.png" /></p>
 <p><code>gcc HelloWorld.c -E -o  HelloWorld.i</code>预处理：加入头文件，替换宏</p>
 <p><code>gcc HelloWorld.c -S -c -o HelloWorld.s</code>编译：包含预处理，将 C 程序转换成汇编程序</p>
 <p><code>gcc HelloWorld.c -c -o HelloWorld.o</code>汇编：包含预处理和编译，将汇编程序转换成可链接的二进制程序</p>
 <p><code>gcc HelloWorld.c -o HelloWorld</code>链接：包含以上所有操作，将可链接的二进制程序和其它别的库链接在一起，形成可执行的程序文件</p>
 </blockquote>
 <h2 id="编译">编译<a class="headerlink" href="#编译" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://img.zhengyua.cn/img/20220305100940.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/20220305100940.png" /></p>
 <h2 id="安装">安装<a class="headerlink" href="#安装" title="Permanent link">&para;</a></h2>
 <p><strong>当<code>Hello OS.bin</code>生成之后，需要让 GRUB 能够发现才能在启动时被加载，该过程称之为安装。</strong></p>
 <p>我们通过 GRUB 启动时的规整，即加载一个<code>grub.cfg</code>的文本文件，根据其中的内容执行相应的操作，其中一部分内容就是启动项。在启动时<strong>可选择不同的启动项后根据选择的启动项信息来加载 OS 文件到内存</strong>。</p>
@@ -2023,8 +2023,8 @@ eg:<code>“hd0,msdos4”</code>，代表sda4就是硬盘的第四个分区（�
 <p>需要注意的是，Ubuntu或者其他操作系统进入 GRUB 引导界面可能也需要进行设置，比如 Ubuntu 默认就是关闭和隐藏的，需要修改<code>/etc/default/grub</code>配置才能够看到。</p>
 </blockquote>
 <p>最后重启计算机，你就可以看到 Hello OS 的启动选项了。</p>
-<p><img alt="" src="https://img.zhengyua.cn/img/20220305114135.png" /></p>
-<p><img alt="" src="https://img.zhengyua.cn/img/20220305114059.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/20220305114135.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/img/20220305114059.png" /></p>
 <h2 id="参考">参考<a class="headerlink" href="#参考" title="Permanent link">&para;</a></h2>
 <p>https://time.geekbang.org/column/intro/100078401?tab=catalog</p>
 
@@ -2138,7 +2138,7 @@ eg:<code>“hd0,msdos4”</code>，代表sda4就是硬盘的第四个分区（�
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

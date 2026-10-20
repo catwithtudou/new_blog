@@ -2809,7 +2809,7 @@
 </div>
 <h2 id="3-cursor-的使用">3. Cursor 的使用<a class="headerlink" href="#3-cursor-的使用" title="Permanent link">&para;</a></h2>
 <h3 id="31-界面介绍">3.1 界面介绍<a class="headerlink" href="#31-界面介绍" title="Permanent link">&para;</a></h3>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202502161134815.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202502161134815.png" /></p>
 <p>从上面图示可看到 cursor 的界面上实际就是在 vscode 基础上增加了右侧的 AI 对话框，分别对应以下模式：</p>
 <p><strong>1. Chat（对话模式）：开放式编程助手</strong></p>
 <ul>
@@ -2838,28 +2838,28 @@
 <h4 id="composer">Composer<a class="headerlink" href="#composer" title="Permanent link">&para;</a></h4>
 <p>首先使用 xcode 来创建一个空的 DocumentApp，然后使用 cursor 打开该项目（文件均是 xcode 初始化生成）。</p>
 <p>然后我们通过利用 Composer 开始进行对话，<strong>直接向它描述我们所想要实现的诉求</strong>：</p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202502161136934.png" /></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202502161136019.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202502161136934.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202502161136019.png" /></p>
 <p>然后你可以看到 cursor 会根据项目<strong>直接对需要实现目标功能的多个文件按步骤修改，询问是否采纳其修改内容</strong>。</p>
 <p>当我们点击 accept all 后相当于同意其修改内容并进行保存，后续我们就可以直接在 xcode 上运行并确认是否正常。</p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202502161136391.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202502161136391.png" /></p>
 <p>测试没有问题之后，我们还可以让它生成该项目的 README.md 文件，至此简单的 demo 项目就通过两步完成。</p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202502161137118.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202502161137118.png" /></p>
 <h4 id="chat">Chat<a class="headerlink" href="#chat" title="Permanent link">&para;</a></h4>
 <p>如果我们此时想要了解该项目的目录架构含义以及最核心的文件，则可利用 Chat 进行询问：</p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202502161137530.png" /></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202502161137327.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202502161137530.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202502161137327.png" /></p>
 <h4 id="bugfinder">BugFinder<a class="headerlink" href="#bugfinder" title="Permanent link">&para;</a></h4>
 <p>接下来为使用该功能，故意删除一些关键代码然后启动 BugFinder 进行处理（注意使用时需按不同 git 版本 Run）：</p>
 <blockquote>
 <p>实际上当出现 Bug 的时候也可直接通过 Composer 进行解决，它会根据你提供的报错内容进行修复。</p>
 </blockquote>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202502161138052.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202502161138052.png" /></p>
 <h3 id="33-高阶使用">3.3 高阶使用<a class="headerlink" href="#33-高阶使用" title="Permanent link">&para;</a></h3>
 <p>除了上面的基础应用，以下 cursor 目前使用较为频繁以及提升效果较好的高阶用法也需要我们了解：</p>
 <h4 id="指定-context">指定 Context<a class="headerlink" href="#指定-context" title="Permanent link">&para;</a></h4>
 <p>无论是在 chat 还是 composer 中我们可以指定多种类型的上下文信息来帮助 cursor 更好地理解诉求，比如以下：</p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202502161138404.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202502161138404.png" /></p>
 <ul>
 <li><strong>@Chat</strong>：将当前聊天历史（对话记录）作为上下文，使 AI 能基于之前的问答逻辑继续响应</li>
 <li><strong>@Code</strong>：引用选中的代码片段（如函数、类或变量），作为核心上下文供 AI 分析</li>
@@ -2881,8 +2881,8 @@
 <h4 id="rules-for-ai">Rules For AI<a class="headerlink" href="#rules-for-ai" title="Permanent link">&para;</a></h4>
 <p>Cursor <strong>允许用户自定义的 AI 行为约束规则即「Rules For AI」，可以理解为 cursor 设置的提示词 Prompt</strong>。</p>
 <p>目前 cursor 支持在全局粒度（左图）或者项目粒度（右图）中进行定义，如下所示：</p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202502161139684.png" /></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202502161139911.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202502161139684.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202502161139911.png" /></p>
 <p>通过该功能可以更好地控制 AI 输出方式和规范，确保生成的代码或建议更符合项目需求、团队风格或开发规范等。</p>
 <p>目前网上也有许多可以参考的预设模版帮助你进行设置：</p>
 <ul>
@@ -2895,16 +2895,16 @@
 <ul>
 <li><strong>选择其他模型</strong>以及可支持接入符合如 OpenAIAPI、AzureAPI 等不同规范的模型</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202502161140601.png" /></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202502161140084.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202502161140601.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202502161140084.png" /></p>
 <ul>
 <li><strong>自动分析代码库上下文</strong>，帮助提升 AI 生成代码的准确性和相关性</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202502161140127.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202502161140127.png" /></p>
 <ul>
 <li>支持<strong>接入 MCP Servers 来</strong>集中管理 AI 交互的上下文、规则和资源</li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202502161141099.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202502161141099.png" /></p>
 <ul>
 <li>同时还能够扩展支持浏览器搜索、网页浏览以及集成内部组件等</li>
 </ul>
@@ -3079,7 +3079,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

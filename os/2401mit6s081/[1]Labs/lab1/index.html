@@ -1922,8 +1922,8 @@
 <a id="__codelineno-5-4" name="__codelineno-5-4"></a><a href="#__codelineno-5-4"><span class="linenos" data-linenos="4 "></span></a>riscv64-unknown-elf-gcc<span class="w"> </span><span class="o">(</span>GCC<span class="o">)</span><span class="w"> </span><span class="m">10</span>.1.0
 <a id="__codelineno-5-5" name="__codelineno-5-5"></a><a href="#__codelineno-5-5"><span class="linenos" data-linenos="5 "></span></a>...
 </code></pre></div>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402061057442.png" /></p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402061058245.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402061057442.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402061058245.png" /></p>
 <h2 id="1-boot-xv6">1. Boot xv6<a class="headerlink" href="#1-boot-xv6" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Fetch the git repository for the xv6 source for the lab:</li>
@@ -1933,7 +1933,7 @@
 <a id="__codelineno-6-3" name="__codelineno-6-3"></a><a href="#__codelineno-6-3"><span class="linenos" data-linenos="3 "></span></a>...
 <a id="__codelineno-6-4" name="__codelineno-6-4"></a><a href="#__codelineno-6-4"><span class="linenos" data-linenos="4 "></span></a>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>xv6-labs-2023
 </code></pre></div>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402061112613.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402061112613.png" /></p>
 <ul>
 <li>Build and run xv6:</li>
 </ul>
@@ -1956,14 +1956,14 @@
 <a id="__codelineno-7-17" name="__codelineno-7-17"></a><a href="#__codelineno-7-17"><span class="linenos" data-linenos="17 "></span></a>hart<span class="w"> </span><span class="m">1</span><span class="w"> </span>starting
 <a id="__codelineno-7-18" name="__codelineno-7-18"></a><a href="#__codelineno-7-18"><span class="linenos" data-linenos="18 "></span></a>init:<span class="w"> </span>starting<span class="w"> </span>sh
 </code></pre></div>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402061113732.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402061113732.png" /></p>
 <ul>
 <li>xv6 has no ps command, but, if you type <code>Ctrl-p</code>, the kernel will print information about each process.<ul>
 <li>If you try it now, you'll see two lines: one for init, and one for <code>sh</code>. </li>
 </ul>
 </li>
 </ul>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402061115427.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402061115427.png" /></p>
 <ul>
 <li>To quit qemu type: <code>Ctrl-a x</code> (press <code>Ctrl</code> and <code>a</code> at the same time, followed by x).</li>
 </ul>
@@ -1992,7 +1992,7 @@
 <a id="__codelineno-8-13" name="__codelineno-8-13"></a><a href="#__codelineno-8-13"><span class="linenos" data-linenos="13 "></span></a><span class="p">}</span>
 </code></pre></div>
 <h2 id="3-pingpongeasy">3. pingpong(easy)<a class="headerlink" href="#3-pingpongeasy" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402180945534.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402180945534.png" /></p>
 <p>该题主要考查 pipe、fork 的使用和文件描述符的读写应用。根据提示和参考示例8进行实现，其中较为关键的是：</p>
 <ul>
 <li>父子进程是双向通信，ping 和 pong 需要两个 pipe</li>
@@ -2037,9 +2037,9 @@
 <a id="__codelineno-9-35" name="__codelineno-9-35"></a><a href="#__codelineno-9-35"><span class="linenos" data-linenos="35 "></span></a><span class="p">}</span>
 </code></pre></div>
 <h2 id="4-primesmoderatehard">4. primes(moderate/hard)<a class="headerlink" href="#4-primesmoderatehard" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402181004931.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402181004931.png" /></p>
 <p>即实现Sieve质数算法，在 https://swtch.com/~rsc/thread/ 中实际上提示了关键思路：</p>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402181132102.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402181132102.png" /></p>
 <p>根据上述思路，通过 pipe 和 fork 进行实现，其中还需要特别注意：</p>
 <ul>
 <li>为了保证进程生命周期链的正确性，需要等待所有子进程都结束，则需要将 fork 出来的子进程进行 wait </li>
@@ -2111,7 +2111,7 @@
 <a id="__codelineno-10-63" name="__codelineno-10-63"></a><a href="#__codelineno-10-63"><span class="linenos" data-linenos="63 "></span></a><span class="p">}</span>
 </code></pre></div>
 <h2 id="5-findmoderate">5. find(moderate)<a class="headerlink" href="#5-findmoderate" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402181835482.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402181835482.png" /></p>
 <p>此系统命令的功能为：</p>
 <ul>
 <li>输入:一个初始路径和一个目标文件名</li>
@@ -2271,7 +2271,7 @@
 <a id="__codelineno-12-82" name="__codelineno-12-82"></a><a href="#__codelineno-12-82"><span class="linenos" data-linenos="82 "></span></a><span class="p">}</span>
 </code></pre></div>
 <h2 id="6-xargsmoderate">6. xargs(moderate)<a class="headerlink" href="#6-xargsmoderate" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="https://img.zhengyua.cn/blog/202402182136921.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/blog/202402182136921.png" /></p>
 <p>这里需要实现的功能为：</p>
 <ul>
 <li>参数描述要运行的命令，它从标准输入读取行，并为每一行运行命令，并将该行附加到命令的参数中</li>
@@ -2457,7 +2457,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

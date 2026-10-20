@@ -2361,14 +2361,14 @@
 <p>以下为鸟窝大佬的<a href="https://time.geekbang.org/column/intro/100061801">Go 并发编程实战课</a> 中摘录的笔记</p>
 <p><a href="https://github.com/catwithtudou/golang_concurrent_examples/tree/master/singleFlight_cyclicBarrier">代码repo</a></p>
 </blockquote>
-<p><img alt="image-20210226140728952" src="https://img.zhengyua.cn/20210226140728.png" /></p>
+<p><img loading="lazy" alt="image-20210226140728952" src="https://img.zhengyua.cn/20210226140728.png" /></p>
 <h2 id="请求合并-singleflight">请求合并 SingleFlight<a class="headerlink" href="#请求合并-singleflight" title="Permanent link">&para;</a></h2>
 <p>SingleFlight 是 Go 开发组提供的一个扩展并发原语，其作用为<strong>在处理多个 goroutine 同时调用同一个函数的时候，只让一个 goroutine 去调用这个函数，等待这个 goroutine 返回结果的时候，再把结果返回给这个几个同时调用的 goroutine</strong>。这样可以减少并发调用的数量。</p>
 <p>与 <code>sync.Once</code> 面对的场景不同，前者是主要用在单次初始化场景中，而 SingleFlight 主要用在合并并发请求的场景中，尤其是缓存场景。</p>
 <h3 id="实现原理">实现原理<a class="headerlink" href="#实现原理" title="Permanent link">&para;</a></h3>
 <p>使用互斥锁 Mutex 和 Map 来实现，其中 Mutex 提供并发时的读写保护， Map 用来保存同一个 key 的正在处理（in flight）的请求。</p>
 <p>SingleFlight 的数据结构是 Group，它提供了三个方法：</p>
-<p><img alt="image-20210226120051148" src="https://img.zhengyua.cn/20210226120056.png" /></p>
+<p><img loading="lazy" alt="image-20210226120051148" src="https://img.zhengyua.cn/20210226120056.png" /></p>
 <ul>
 <li>Do：<strong>执行一个函数，并返回函数执行的结果</strong>。需要提供一个 key，对于同一个 key，在同一时间只有一个在执行，<strong>同一个 key 并发的请求会等待</strong>。第一个执行的请求返回的结果就是它的返回结果。函数 fn 是一个无参的函数，返回一个结果或者 error，而 Do 方法会返回函数执行的结果或者是 error，shared 会指示 v 是否返回给多个请求；</li>
 <li>DoChan：类似 Do 方法但是返回 fn 函数结果的 chan 来对结果进行接收；</li>
@@ -2464,7 +2464,7 @@
 <h2 id="循环栅栏-cyclicbarrier">循环栅栏 CyclicBarrier<a class="headerlink" href="#循环栅栏-cyclicbarrier" title="Permanent link">&para;</a></h2>
 <p>循环栅栏 CyclicBarrier 常常应用于重复进行一组 goroutine 同时执行的场景中。该并发原语<strong>允许一组 goroutine 彼此等待，到达一个共同的执行点</strong>。同时可以被重复使用。</p>
 <p>这其实与 WaitGroup 并发原语的功能较为类似，但是其在重用时需要注意其 panic 的情况，且在处理可重用的多 goroutine 等待同一个执行点的场景的时候，两种并发原语的方法调用的对应关系如下：</p>
-<p><img alt="image-20210226121409156" src="https://img.zhengyua.cn/20210226121409.png" /></p>
+<p><img loading="lazy" alt="image-20210226121409156" src="https://img.zhengyua.cn/20210226121409.png" /></p>
 <h3 id="实现原理_1">实现原理<a class="headerlink" href="#实现原理_1" title="Permanent link">&para;</a></h3>
 <p>两个初始化方法：</p>
 <div class="language-go highlight"><span class="filename">Go</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><a href="#__codelineno-2-1"><span class="linenos" data-linenos="1 "></span></a><span class="kd">func</span><span class="w"> </span><span class="nx">New</span><span class="p">(</span><span class="nx">parties</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="nx">CyclicBarrier</span><span class="w"> </span><span class="c1">//指定循环栅栏参与者的数量</span>
@@ -2585,7 +2585,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   

@@ -2029,11 +2029,11 @@
 </li>
 </ul>
 <p>而除了服务冗余之外就是服务熔断和限流的保护机制，熔断是预防下游服务出现故障时阻断下游调用，限流是防止上游服务调用量过大导致当前服务或下游服务被压垮。</p>
-<p><img alt="" src="https://img.zhengyua.cn/20210209102233.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/20210209102233.png" /></p>
 <h2 id="熔断器设计方案">熔断器设计方案<a class="headerlink" href="#熔断器设计方案" title="Permanent link">&para;</a></h2>
 <h3 id="核心思想">核心思想<a class="headerlink" href="#核心思想" title="Permanent link">&para;</a></h3>
 <p>核心在于AOP进行请求拦截判断是否熔断，根据策略进行熔断状态转移。</p>
-<p><img alt="" src="https://img.zhengyua.cn/20210209104619.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/20210209104619.png" /></p>
 <h3 id="设计思想">设计思想<a class="headerlink" href="#设计思想" title="Permanent link">&para;</a></h3>
 <p>根据服务发现和服务调用的不同方式，目前主要有三种方案：</p>
 <ul>
@@ -2051,16 +2051,16 @@
 <h4 id="直连模式">直连模式<a class="headerlink" href="#直连模式" title="Permanent link">&para;</a></h4>
 <p>该模式下具体到服务访问流程中最为直接，即在代码层面加入熔断判断，基于AOP模式需要经过BeforeCall、Call、AfterCall的操作流程。</p>
 <p>具体流程可以参考下图：</p>
-<p><img alt="" src="https://img.zhengyua.cn/20210209114513.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/20210209114513.png" /></p>
 <h4 id="代理模式">代理模式<a class="headerlink" href="#代理模式" title="Permanent link">&para;</a></h4>
 <p>该模式下一般引入网关进行统一熔断限流处理后再进行转发到达具体服务，可以为异步也可以为同步，具体根据实际业务场景。</p>
 <p>在异步模式下需要注意熔断状态判断切换时的延时，优势在于对请求性能无影响。</p>
 <p>在这里可以参考下图架构的方案，重点是利用Kafka进行异步日志收集：</p>
-<p><img alt="" src="https://img.zhengyua.cn/20210209115826.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/20210209115826.png" /></p>
 <h4 id="服务网格模式">服务网格模式<a class="headerlink" href="#服务网格模式" title="Permanent link">&para;</a></h4>
 <p>该模式适应于微服务架构下的服务治理，在服务节点中加入粒度更小的治理模块，本质就是将SDK代码部署为单独进程且与服务机器共存，并作为该机器的代理与其他节点进行交互。</p>
 <p>具体实现方案和策略与上述模式没有太大区别，只是落地方案不同，因为服务网格模式下都处于类似于k8s等集群管理的系统下。</p>
-<p><img alt="" src="https://img.zhengyua.cn/20210209120909.png" /></p>
+<p><img loading="lazy" alt="" src="https://img.zhengyua.cn/20210209120909.png" /></p>
 <h2 id="参考">参考<a class="headerlink" href="#参考" title="Permanent link">&para;</a></h2>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MzIyMzMxNjYwNw==&amp;mid=2247484006&amp;idx=1&amp;sn=14083070db9a5aa54d6d55718c6f967c&amp;chksm=e8215d76df56d4605b7364fafbb7dc344cac86f3f7955d7131a8b6263caa78514c2976aa4fab&amp;scene=178&amp;cur_album_id=1511862059553095681#rd">微服务高可用之熔断器实现原理与 Golang 实践</a></p>
 
@@ -2174,7 +2174,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2024 catwithtudou
+      Copyright &copy; 2024–2026 catwithtudou
     </div>
   
   
