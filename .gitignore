@@ -3,6 +3,7 @@
 .venv/
 .DS_Store
 site/
+__pycache__/
 
 # Local handoff notes; keep out of commits and published documentation.
 /context/

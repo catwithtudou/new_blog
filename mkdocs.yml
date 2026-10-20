@@ -146,7 +146,8 @@ plugins:
       enable_creation_date: true
       timezone: Asia/Shanghai
 
-
+hooks:
+  - hooks/lazy_images.py
 
 
 
